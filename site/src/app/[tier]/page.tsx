@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { PageFallback } from "@/components/PageFallback";
 import type { Metadata } from "next";
 import { Section, Heading } from "@/components/Section";
 import { PieceCard } from "@/components/PieceCard";
@@ -18,7 +20,15 @@ export async function generateMetadata({ params }: { params: Promise<{ tier: str
   return t ? { title: t.name, description: `${t.tagline} ${t.stones}` } : {};
 }
 
-export default async function TierPage({ params }: { params: Promise<{ tier: string }> }) {
+export default function TierPage({ params }: { params: Promise<{ tier: string }> }) {
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <TierPageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function TierPageContent({ params }: { params: Promise<{ tier: string }> }) {
   const { tier } = await params;
   const t = TIERS.find((x) => x.slug === tier);
   if (!t) notFound();

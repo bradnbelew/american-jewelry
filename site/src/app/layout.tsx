@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   },
   description:
     "American Jewelry designs and makes its own jewelry in Tennessee: one-of-one pieces, signature designs in natural diamond and solid gold, and man made diamond pieces held to one standard.",
+  // The preview on *.vercel.app must not be indexed; flipped by NEXT_PUBLIC_SITE_LIVE when the real domain attaches.
+  robots: process.env.NEXT_PUBLIC_SITE_LIVE === "true" ? undefined : { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

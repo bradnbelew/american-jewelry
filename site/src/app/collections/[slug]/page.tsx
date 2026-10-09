@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { PageFallback } from "@/components/PageFallback";
 import type { Metadata } from "next";
 import { Section, Heading } from "@/components/Section";
 import { PieceCard } from "@/components/PieceCard";
@@ -15,7 +17,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return c ? { title: `${c.name} collection`, description: c.intro } : {};
 }
 
-export default async function CollectionPage({ params }: { params: Promise<{ slug: string }> }) {
+export default function CollectionPage({ params }: { params: Promise<{ slug: string }> }) {
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <CollectionPageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function CollectionPageContent({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const c = collectionBySlug(slug);
   if (!c) notFound();

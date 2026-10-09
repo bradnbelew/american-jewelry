@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { PageFallback } from "@/components/PageFallback";
 import { Section, Heading } from "@/components/Section";
 import { STORES, storeBySlug } from "@/lib/catalog/data";
 import { JsonLd, storeJsonLd } from "@/lib/seo";
@@ -20,7 +22,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : {};
 }
 
-export default async function StorePage({ params }: { params: Promise<{ slug: string }> }) {
+export default function StorePage({ params }: { params: Promise<{ slug: string }> }) {
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <StorePageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function StorePageContent({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const s = storeBySlug(slug);
   if (!s) notFound();

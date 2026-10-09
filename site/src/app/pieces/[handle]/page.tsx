@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { PageFallback } from "@/components/PageFallback";
 import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { PieceArt } from "@/components/PieceArt";
@@ -22,7 +24,15 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
 
 const RING_TYPES = new Set(["ring", "band", "solitaire", "eternity-band", "stack-band", "signet"]);
 
-export default async function PiecePage({ params }: { params: Promise<{ handle: string }> }) {
+export default function PiecePage({ params }: { params: Promise<{ handle: string }> }) {
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <PiecePageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function PiecePageContent({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
   const piece = pieceByHandle(handle);
   if (!piece) notFound();
