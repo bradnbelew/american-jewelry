@@ -59,6 +59,7 @@ American Jewelry (Brentwood + Mt. Juliet, Tennessee; 2,537 Google reviews; famil
 - The pricing engine is a working model with made-up market inputs (`market.ts`); the family will replace them with the bench's cost sheet.
 - Store hours are provisional (`hoursConfirmed: false`, shown as such on the page). Founding year unknown; the House page carries a letter instead of a timeline. The appointment form and checkout send nowhere until Shopify and a calendar are connected.
 - The Open Graph image route builds as a dynamic function (fine on Vercel). It reads `site/assets/EBGaramond-400.woff` and the photo from `public/` at request time.
+- **Vercel served a stale CSS chunk** after the type change (HTML new, stylesheet old: headings fell back to Jost, the skip link showed). Cause: Turbopack reused a cached CSS module from the restored `.next/cache`. Fix applied 10/09: project env `VERCEL_FORCE_NO_BUILD_CACHE=1` (production + preview) and an empty-commit rebuild. If a CSS change ever fails to appear in production, check the live stylesheet for the old rule before debugging the code.
 - Six parallel audit agents once hit the account's spend limit; run at most one or two agents at a time on this account. Agents cannot use the browser pane while this session is using it.
 
 ## What the family still has to supply
