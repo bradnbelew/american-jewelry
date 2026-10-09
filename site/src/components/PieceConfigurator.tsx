@@ -7,6 +7,7 @@ import { METAL_LABEL } from "@/lib/catalog/types";
 import { formatPrice } from "@/lib/catalog/data";
 import { PIECE_PHOTOS } from "@/lib/catalog/photos";
 import { useBag } from "./bag/BagProvider";
+import { SaveButton } from "./saved/SaveButton";
 
 export function PieceConfigurator({ piece }: { piece: Piece }) {
   const [version, setVersion] = useState<Version>(piece.versions[0]);
@@ -26,7 +27,7 @@ export function PieceConfigurator({ piece }: { piece: Piece }) {
       <div className="flex flex-col gap-1.5">
         <span className="font-display text-[1.75rem] tabular-nums">{price === null ? "Price on request" : formatPrice(price)}</span>
         <span className="text-[0.8125rem] text-ink-2">
-          {manMade ? "Man-made (laboratory-grown) diamond · D–F · VVS · IGI report" : version.stones ?? "Solid gold"}
+          {manMade ? "Man-made (laboratory-grown) diamond, D-F color, VVS clarity, IGI report" : version.stones ?? "Solid 14k or 18k gold, karat-marked"}
         </span>
         <span className="text-[0.8125rem] text-muted">{piece.leadTime}</span>
       </div>
@@ -56,14 +57,14 @@ export function PieceConfigurator({ piece }: { piece: Piece }) {
       </Field>
 
       {piece.sizes && (
-        <Field label="Size" hint={<Link href="/care#sizing" className="underline underline-offset-4 hover:text-ink">Sizing help</Link>}>
-          <div className="flex flex-wrap gap-2">
+        <Field label="Size" hint={<Link href="/care#sizing" className="link-quiet">Sizing help</Link>}>
+          <select id={`size-${piece.handle}`} className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
             {piece.sizes.map((s) => (
-              <button key={s} type="button" className="pill" aria-pressed={s === size} onClick={() => setSize(s)}>
+              <option key={s} value={s}>
                 {s}
-              </button>
+              </option>
             ))}
-          </div>
+          </select>
         </Field>
       )}
 
@@ -102,9 +103,12 @@ export function PieceConfigurator({ piece }: { piece: Piece }) {
             >
               Add to bag
             </button>
-            <Link href={`/appointments?${query}`} className="btn btn-outline">
-              See it in store
-            </Link>
+            <div className="grid grid-cols-2 gap-3">
+              <Link href={`/appointments?${query}`} className="btn btn-outline">
+                See it in store
+              </Link>
+              <SaveButton item={{ id: piece.handle, href: `/pieces/${piece.handle}`, name: piece.name, detail: version.name, photo: (PIECE_PHOTOS[piece.handle] ?? ["hero-box"])[0] }} />
+            </div>
           </>
         )}
         <p className="text-[0.75rem] text-muted leading-relaxed">

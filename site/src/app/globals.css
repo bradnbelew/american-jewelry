@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 /*
- * American Jewelry — house system.
+ * American Jewelry: the house system.
  * White ground, near-black type, one navy for the primary action, hairline rules.
  * Photography carries the color; the interface stays out of its way.
+ * Display type is EB Garamond (the family's choice for the house documents); UI type is Jost.
  */
 :root {
   --white: #ffffff;
-  --ivory: #f7f5f0;
+  --paper: #f6f5f2;
+  --ivory: var(--paper);
   --ink: #141414;
   --ink-2: #4a4a4a;
   --muted: #63676e;
-  --hair: #e6e3dc;
+  --hair: #e4e2dd;
   --navy: #14213a;
   --navy-2: #1b2b4b;
   --gilt: #a58a4c;
@@ -19,7 +21,8 @@
 
 @theme inline {
   --color-white: var(--white);
-  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-ivory: var(--paper);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-muted: var(--muted);
@@ -27,7 +30,7 @@
   --color-navy: var(--navy);
   --color-navy-2: var(--navy-2);
   --color-gilt: var(--gilt);
-  --font-display: var(--font-cormorant);
+  --font-display: var(--font-garamond);
   --font-sans: var(--font-jost);
 }
 
@@ -45,25 +48,32 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 .font-display {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-garamond), Garamond, Georgia, serif;
 }
 
 /* Type roles */
 .h-display {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-weight: 300;
-  line-height: 1.02;
-  letter-spacing: -0.005em;
+  font-family: var(--font-garamond), Garamond, Georgia, serif;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 .h-section {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-garamond), Garamond, Georgia, serif;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   text-wrap: balance;
+}
+.h-item {
+  font-family: var(--font-garamond), Garamond, Georgia, serif;
+  font-weight: 400;
+  line-height: 1.15;
 }
 .caps {
   font-size: 0.6875rem; /* 11px */
@@ -82,6 +92,12 @@ body {
   line-height: 1.65;
   color: var(--ink-2);
   text-wrap: pretty;
+}
+.measure {
+  max-width: 62ch;
+}
+.prose-house p + p {
+  margin-top: 1.1em;
 }
 
 /* Controls: fixed heights so state changes never move layout */
@@ -109,6 +125,10 @@ body {
   outline: 2px solid var(--gilt);
   outline-offset: 2px;
 }
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
 .btn-outline {
   background: transparent;
   color: var(--ink);
@@ -125,8 +145,8 @@ body {
   border-color: var(--white);
 }
 .btn-light:hover {
-  background: var(--ivory);
-  border-color: var(--ivory);
+  background: var(--paper);
+  border-color: var(--paper);
 }
 
 .link {
@@ -151,6 +171,16 @@ body {
 .link-light:hover {
   color: rgba(255, 255, 255, 0.75);
   border-color: rgba(255, 255, 255, 0.75);
+}
+.link-quiet {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-color: var(--hair);
+  transition: text-decoration-color 0.18s ease;
+}
+.link-quiet:hover {
+  text-decoration-color: var(--ink);
 }
 
 /* Selection rows: border is always 1px; only the color changes */
@@ -201,6 +231,10 @@ body {
   border-color: var(--ink);
   box-shadow: inset 0 0 0 1px var(--ink);
 }
+.pill:focus-visible {
+  outline: 2px solid var(--gilt);
+  outline-offset: 2px;
+}
 
 .field {
   width: 100%;
@@ -211,9 +245,18 @@ body {
   color: var(--ink);
   font-size: 0.9rem;
 }
+.field::placeholder {
+  color: var(--muted);
+}
 .field:focus {
   outline: none;
   border-color: var(--ink);
+}
+textarea.field {
+  height: auto;
+  min-height: 7rem;
+  padding: 0.8rem 0.9rem;
+  resize: vertical;
 }
 select.field {
   appearance: none;
@@ -246,13 +289,13 @@ details.acc > summary::-webkit-details-marker {
 }
 details.acc > summary::after {
   content: "+";
-  font-family: var(--font-cormorant), serif;
+  font-family: var(--font-garamond), serif;
   font-size: 1.25rem;
   line-height: 1;
   color: var(--muted);
 }
 details.acc[open] > summary::after {
-  content: "–";
+  content: "\2013";
 }
 
 .img-hover img {
@@ -265,6 +308,28 @@ details.acc[open] > summary::after {
 ::selection {
   background: var(--navy);
   color: var(--white);
+}
+
+/* Editorial reveal: sections ease in as they enter the viewport. CSS only, no scroll listeners.
+   Falls back to fully visible where scroll-driven animations are unsupported or motion is reduced. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -282,4 +347,27 @@ details.acc[open] > summary::after {
 /* Type set over photography always carries a shadow so it survives light areas of the image. */
 .on-photo {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 28px rgba(0, 0, 0, 0.3);
+}
+
+/* Skip link for keyboard users */
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 60;
+  background: var(--white);
+  color: var(--ink);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink);
+}
+.skip:focus {
+  top: 1rem;
+}
+
+@media print {
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
 }

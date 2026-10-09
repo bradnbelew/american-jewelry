@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { useBag } from "./bag/BagProvider";
+import { useSaved } from "./saved/SavedProvider";
 
 const LINKS: { href: string; label: string }[] = [
   { href: "/royal-american", label: "Royal American" },
@@ -12,12 +13,14 @@ const LINKS: { href: string; label: string }[] = [
   { href: "/collections/bridal", label: "Bridal" },
   { href: "/build/ring", label: "Build a ring" },
   { href: "/house", label: "The House" },
+  { href: "/services", label: "Services" },
   { href: "/stores", label: "Stores" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const { count, openBag } = useBag();
+  const { count: saved, ready } = useSaved();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -31,15 +34,17 @@ export function Header() {
       <div className="mx-auto max-w-[1440px] px-5 md:px-10">
         <div className="grid grid-cols-[auto_1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center h-[4.25rem] md:h-20 gap-3">
           <div className="flex items-center gap-5">
-            <button type="button" className="lg:hidden caps -ml-1 px-1 h-10 inline-flex items-center" aria-expanded={open} aria-controls="menu" onClick={() => setOpen((v) => !v)}>
+            <button type="button" className="lg:hidden caps -ml-1 px-1 h-10 w-14 inline-flex items-center" aria-expanded={open} aria-controls="menu" onClick={() => setOpen((v) => !v)}>
               {open ? "Close" : "Menu"}
             </button>
-            <span className="hidden lg:inline caps-sm text-muted">Brentwood · Mt. Juliet, Tennessee</span>
+            <Link href="/stores" className="hidden lg:inline caps-sm text-muted hover:text-ink transition-colors">
+              Brentwood · Mt. Juliet, Tennessee
+            </Link>
           </div>
 
           <Link
             href="/"
-            className="font-display text-[0.95rem] sm:text-[1.2rem] md:text-[1.6rem] tracking-[0.2em] md:tracking-[0.26em] uppercase whitespace-nowrap justify-self-center"
+            className="font-display text-[1rem] sm:text-[1.25rem] md:text-[1.65rem] tracking-[0.2em] md:tracking-[0.26em] uppercase whitespace-nowrap justify-self-center"
             aria-label="American Jewelry home"
             onClick={() => setOpen(false)}
           >
@@ -50,9 +55,13 @@ export function Header() {
             <Link href="/appointments" className="hidden md:inline caps hover:text-muted transition-colors">
               Appointment
             </Link>
+            <Link href="/saved" className="hidden sm:inline-flex caps h-10 items-center gap-2 hover:text-muted transition-colors" aria-label={`Saved, ${saved} items`}>
+              Saved
+              <span className="inline-flex items-center justify-center w-5 h-5 text-[0.625rem] tabular-nums text-muted">{ready ? saved : ""}</span>
+            </Link>
             <button type="button" onClick={openBag} className="caps h-10 inline-flex items-center gap-2 hover:text-muted transition-colors" aria-label={`Bag, ${count} items`}>
               Bag
-              <span className="inline-flex items-center justify-center min-w-5 h-5 px-1 text-[0.625rem] border border-ink rounded-full tabular-nums">{count}</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 text-[0.625rem] tabular-nums text-muted">{count}</span>
             </button>
           </div>
         </div>
@@ -71,10 +80,13 @@ export function Header() {
               {l.label}
             </Link>
           ))}
+          <Link href="/saved" className="font-display text-3xl py-3.5 border-b border-hair sm:hidden" onClick={() => setOpen(false)}>
+            Saved
+          </Link>
           <Link href="/appointments" className="btn mt-8" onClick={() => setOpen(false)}>
             Book an appointment
           </Link>
-          <p className="caps-sm text-muted mt-8">Brentwood · Mt. Juliet, Tennessee</p>
+          <p className="text-sm text-muted mt-8">Brentwood and Mt. Juliet, Tennessee</p>
         </nav>
       </div>
     </header>

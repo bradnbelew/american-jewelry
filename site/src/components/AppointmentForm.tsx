@@ -5,25 +5,28 @@ import { STORES } from "@/lib/catalog/data";
 
 const KINDS = [
   ["bridal", "Engagement or wedding"],
-  ["viewing", "Private viewing · Royal American"],
+  ["viewing", "Private viewing, Royal American"],
   ["commission", "Commission a piece"],
-  ["fitting", "Fitting for a piece I've chosen"],
+  ["fitting", "Fitting for a piece or a design code"],
   ["care", "Care, resizing or repair"],
+  ["other", "Something else"],
 ] as const;
+
+const LABELS: Record<string, string> = { piece: "Piece", code: "Design code", build: "Builder", version: "Version", metal: "Metal", size: "Size", tier: "Tier" };
 
 export function AppointmentForm({ prefill }: { prefill: Record<string, string> }) {
   const [sent, setSent] = useState(false);
   const context = Object.entries(prefill)
     .filter(([k]) => !["store", "kind"].includes(k))
-    .map(([k, v]) => `${k}: ${v}`)
-    .join(" · ");
-  const defaultKind = prefill.kind ?? (prefill.tier === "royal-american" ? "viewing" : prefill.build || prefill.piece ? "fitting" : "bridal");
+    .map(([k, v]) => `${LABELS[k] ?? k}: ${v}`)
+    .join(", ");
+  const defaultKind = prefill.kind ?? (prefill.tier === "royal-american" ? "viewing" : prefill.build || prefill.piece || prefill.code ? "fitting" : "bridal");
 
   if (sent) {
     return (
-      <div className="hair pt-10 flex flex-col gap-3 max-w-2xl">
-        <span className="caps-sm text-muted">Received</span>
-        <p className="h-section text-[1.75rem] md:text-[2.25rem]">Thank you. We&apos;ll confirm by text or email within one business day.</p>
+      <div className="hair pt-10 flex flex-col gap-3 max-w-2xl min-h-[20rem]">
+        <p className="h-section text-[1.75rem] md:text-[2.25rem]">Thank you. We will confirm by text or email within one business day.</p>
+        <p className="text-ink-2 leading-relaxed">If it is for today, call the store and we will do our best.</p>
         <p className="text-[0.8125rem] text-muted">In this preview nothing is sent yet. At launch this reaches the store team and your calendar.</p>
       </div>
     );
@@ -38,17 +41,18 @@ export function AppointmentForm({ prefill }: { prefill: Record<string, string> }
       }}
     >
       {context && (
-        <p className="md:col-span-2 text-[0.8125rem] text-ink-2 bg-ivory px-4 py-3">
-          We&apos;ll have this ready: <span className="text-ink">{context}</span>
+        <p className="md:col-span-2 text-[0.875rem] text-ink-2 bg-paper px-4 py-3">
+          We will have this ready: <span className="text-ink">{context}</span>
         </p>
       )}
-      <Field label="Store">
+      <Field label="Where">
         <select id="store" name="store" defaultValue={prefill.store ?? "brentwood"} className="field">
           {STORES.map((s) => (
             <option key={s.slug} value={s.slug}>
-              {s.name} · {s.role.split(".")[0]}
+              {s.name}, {s.role.split(".")[0].toLowerCase()}
             </option>
           ))}
+          <option value="virtual">By video, from wherever you are</option>
         </select>
       </Field>
       <Field label="What for">
@@ -66,26 +70,29 @@ export function AppointmentForm({ prefill }: { prefill: Record<string, string> }
       <Field label="Phone or email">
         <input id="contact" name="contact" required className="field" autoComplete="tel" />
       </Field>
-      <Field label="Preferred day and time">
+      <Field label="When suits you">
         <input id="when" name="when" placeholder="Saturday morning, any weekday after 4" className="field" />
       </Field>
-      <Field label="Anything we should know">
-        <input id="notes" name="notes" placeholder="Budget, ring size, an heirloom you're bringing" className="field" />
+      <Field label="Anything we should know" hint="optional">
+        <input id="notes" name="notes" placeholder="A budget, a ring size, an heirloom you are bringing" className="field" />
       </Field>
       <div className="md:col-span-2 flex flex-wrap items-center gap-6 pt-2">
         <button type="submit" className="btn">
           Request the appointment
         </button>
-        <span className="text-[0.75rem] text-muted">We never share your details. Walk-ins are always welcome.</span>
+        <span className="text-[0.8125rem] text-muted">No cost, no obligation. We never share your details.</span>
       </div>
     </form>
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
     <label className="flex flex-col gap-2">
-      <span className="caps-sm">{label}</span>
+      <span className="flex items-baseline justify-between text-[0.8125rem]">
+        <span className="text-ink">{label}</span>
+        {hint && <span className="text-muted">{hint}</span>}
+      </span>
       {children}
     </label>
   );

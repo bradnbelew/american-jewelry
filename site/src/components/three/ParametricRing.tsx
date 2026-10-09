@@ -1,13 +1,14 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { ContactShadows, Environment, Lightformer, OrbitControls } from "@react-three/drei";
+import { ContactShadows, Environment, Lightformer, MeshRefractionMaterial, OrbitControls } from "@react-three/drei";
 import { useEffect, useMemo, useRef, type ComponentRef } from "react";
 import * as THREE from "three";
 import { BIRTHSTONES, sizeToInnerDiameterMm, stoneDiameterMm, type RingConfig } from "@/lib/builder/model";
 import { bandThicknessMm } from "@/lib/builder/pricing";
 import { brilliantGeometry } from "./brilliant";
 import { bandGeometry, starShape, MM } from "./band";
+import { studioEquirect } from "./studio";
 
 export type View = "hero" | "stone" | "side" | "inside" | "review";
 
@@ -130,6 +131,7 @@ function Ring({ config: c, onGroup }: { config: RingConfig; onGroup?: (g: THREE.
     m.side = THREE.DoubleSide;
     return m;
   }, [gold]);
+  const studio = useMemo(() => studioEquirect(), []);
   const birth = BIRTHSTONES.find((b) => b.month === c.birthstone);
   const birthMat = useMemo(
     () =>
@@ -172,7 +174,7 @@ function Ring({ config: c, onGroup }: { config: RingConfig; onGroup?: (g: THREE.
     ctx.fillStyle = METAL_COLOR[c.metal];
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     if (c.engraving) {
-      const fam = getComputedStyle(document.documentElement).getPropertyValue(c.hand === "script" ? "--font-cormorant" : "--font-jost").trim() || (c.hand === "script" ? "Georgia" : "sans-serif");
+      const fam = getComputedStyle(document.documentElement).getPropertyValue(c.hand === "script" ? "--font-garamond" : "--font-jost").trim() || (c.hand === "script" ? "Georgia" : "sans-serif");
       ctx.fillStyle = c.metal === "14k-white" || c.metal === "platinum" ? "#5a5c60" : "#5a4318";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -286,8 +288,10 @@ function Ring({ config: c, onGroup }: { config: RingConfig; onGroup?: (g: THREE.
         </mesh>
       ))}
 
-      {/* center stone */}
-      <mesh geometry={stoneGeo} material={diamond} position={[0, headY + r * 0.02, 0]} />
+      {/* center stone: a real cut geometry traced against the studio environment */}
+      <mesh geometry={stoneGeo} position={[0, headY + r * 0.02, 0]}>
+        {studio ? <MeshRefractionMaterial envMap={studio} bounces={3} ior={2.42} fresnel={1} aberrationStrength={0.012} color="#ffffff" toneMapped={false} /> : <primitive object={diamond} attach="material" />}
+      </mesh>
 
       {/* shooting star */}
       {c.setting === "shooting-star" && (

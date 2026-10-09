@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PageFallback } from "@/components/PageFallback";
-import { DesignDrawing } from "@/components/DesignDrawing";
 import { certificateNumber, decodeCode } from "@/lib/builder/code";
 import { BIRTHSTONES, HAND_LABEL, METAL_LABEL, PROFILE_LABEL, PRONG_LABEL, STONE_STANDARD, leadTimeWeeks, ringName, stoneDiameterMm } from "@/lib/builder/model";
 import { DESIGN_NOTES } from "@/lib/builder/notes";
@@ -51,11 +50,11 @@ async function Content({ params }: { params: Promise<{ code: string }> }) {
           <span className="font-display text-[2rem] md:text-[2.5rem] leading-tight">{ringName(c)}</span>
           <span className="caps-sm">No. {number}</span>
         </div>
-        <div className="grid md:grid-cols-[14rem_1fr] gap-10 items-start">
-          <div className="flex flex-col items-center gap-3">
-            <DesignDrawing setting={c.setting} className="w-44 h-44 text-ink" />
-            <span className="caps-sm text-muted">The drawing</span>
-            <span className="font-display text-[1rem] italic text-center text-ink-2">{note.line}</span>
+        <div className="grid md:grid-cols-[12rem_1fr] gap-10 items-start">
+          <div className="flex flex-col gap-3">
+            <span className="caps-sm text-muted">The design</span>
+            <span className="font-display text-[1.25rem] italic text-ink-2">{note.line}</span>
+            <span className="text-[0.8125rem] text-muted">The designer&apos;s drawing is printed here on the issued certificate.</span>
           </div>
           <dl className="grid grid-cols-[7.5rem_1fr] gap-y-3 gap-x-5 text-[0.875rem]">
             {rows.map(([k, v]) => (

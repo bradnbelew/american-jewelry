@@ -53,7 +53,7 @@ export type VersionKey = "gold" | "gemstone" | "diamond" | "man-made";
 
 export interface Version {
   key: VersionKey;
-  name: string; // e.g. "Solid gold", "Birthstone", "Natural diamond", "Man made diamond"
+  name: string; // e.g. "Solid gold", "Birthstone", "Natural diamond", "Man-made diamond"
   priceCents: number | null; // null = price on request
   stones?: string; // e.g. "0.42 ct natural diamonds, F–G, VS"
   origin: StoneOrigin;
@@ -114,7 +114,13 @@ export interface Store {
   reviews: number;
   role: string;
   hours: { days: string; open: string }[];
+  hoursConfirmed: boolean; // hours only enter structured data once the family confirms them
   mapQuery: string;
+  lat: number;
+  lng: number;
+  photo: string; // PHOTO key
+  place: string; // where it sits, for the person finding it
+  expect: string; // what a visit is like
   services: string[];
 }
 

@@ -5,53 +5,55 @@ import { Year } from "./Year";
 export function Footer() {
   return (
     <footer className="mt-32 border-t border-hair">
-      <div className="mx-auto max-w-[1440px] px-5 md:px-10 py-16 grid gap-12 md:grid-cols-4">
-        <div className="flex flex-col gap-4">
+      <div className="mx-auto max-w-[1440px] px-5 md:px-10 py-16 grid gap-12 md:grid-cols-12">
+        <div className="md:col-span-4 flex flex-col gap-5">
           <span className="font-display text-xl tracking-[0.26em] uppercase">American Jewelry</span>
           <p className="text-sm text-ink-2 max-w-xs leading-relaxed">
-            Designed in Tennessee. Set and finished in our own workshop. Two stores, one bench, since the family opened the
-            first door.
+            A house of fine jewelry in Tennessee. Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
           </p>
           <Link href="/appointments" className="link self-start">
             Book an appointment
           </Link>
         </div>
         <Col
+          className="md:col-span-2"
           title="The House"
           links={[
             ["/royal-american", "Royal American"],
             ["/americana", "Americana"],
             ["/new-american", "New American"],
             ["/collections/bridal", "Bridal"],
-            ["/collections/family", "Family"],
             ["/house", "Our story"],
+            ["/journal", "Journal"],
           ]}
         />
         <Col
+          className="md:col-span-2"
           title="Services"
           links={[
             ["/build/ring", "Build a ring"],
-            ["/build/band", "Build a band"],
             ["/commission", "Commission a piece"],
+            ["/services", "Repair and restoration"],
             ["/care", "Lifetime Care Program"],
             ["/natural-or-man-made", "Natural or man-made"],
-            ["/policies", "Shipping and returns"],
+            ["/saved", "Saved pieces"],
           ]}
         />
-        <div className="flex flex-col gap-5">
-          <span className="caps-sm text-muted">Stores</span>
+        <div className="md:col-span-4 grid sm:grid-cols-2 gap-8">
           {STORES.map((s) => (
-            <div key={s.slug} className="text-sm leading-relaxed">
+            <div key={s.slug} className="text-sm leading-relaxed flex flex-col gap-1">
               <Link href={`/stores/${s.slug}`} className="font-display text-lg hover:text-muted transition-colors">
                 {s.name}
               </Link>
-              <div className="text-ink-2">
+              <address className="not-italic text-ink-2">
                 {s.address1}
                 <br />
                 {s.city}, {s.state} {s.zip}
                 <br />
-                <span className="select-all">{s.phone}</span>
-              </div>
+                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="hover:text-ink">
+                  {s.phone}
+                </a>
+              </address>
             </div>
           ))}
         </div>
@@ -61,13 +63,22 @@ export function Footer() {
           <span>
             © <Year /> American Jewelry
           </span>
+          <Link href="/policies#shipping" className="hover:text-ink">
+            Shipping and insurance
+          </Link>
+          <Link href="/policies#returns" className="hover:text-ink">
+            Returns
+          </Link>
+          <Link href="/policies#warranty" className="hover:text-ink">
+            Warranty and care
+          </Link>
           <Link href="/policies#disclosures" className="hover:text-ink">
             Diamond and metal disclosures
           </Link>
           <Link href="/policies#privacy" className="hover:text-ink">
             Privacy
           </Link>
-          <Link href="/policies" className="hover:text-ink">
+          <Link href="/policies#accessibility" className="hover:text-ink">
             Accessibility
           </Link>
         </div>
@@ -76,9 +87,9 @@ export function Footer() {
   );
 }
 
-function Col({ title, links }: { title: string; links: [string, string][] }) {
+function Col({ title, links, className = "" }: { title: string; links: [string, string][]; className?: string }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className={`flex flex-col gap-3 ${className}`}>
       <span className="caps-sm text-muted">{title}</span>
       {links.map(([href, label]) => (
         <Link key={href} href={href} className="text-sm text-ink hover:text-muted transition-colors">

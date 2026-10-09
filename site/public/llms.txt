@@ -1,20 +1,23 @@
 # American Jewelry
 
-> A jewelry house in Tennessee (Brentwood and Mt. Juliet) that designs, casts and sets its own jewelry. Three tiers: Royal American (one-of-one, price on request), Americana (signature designs in solid gold, birthstone and natural diamond versions), New American (man made, i.e. laboratory-grown, diamonds, D–F color, VVS clarity, IGI reports). Custom ring and band builders. Lifetime care included.
+> A house of fine jewelry in Tennessee (Brentwood and Mt. Juliet) that designs its own pieces and sets and finishes them at its own bench. Three tiers: Royal American (one-of-one, numbered, price on request), Americana (signature designs in solid gold, birthstone and natural-diamond versions), New American (man-made, i.e. laboratory-grown, diamonds, D-F color, VVS clarity, IGI reports). A ring builder on three house settings. Lifetime Care Program included.
 
 ## Stores
-- Brentwood: 157 Franklin Road, Brentwood, TN 37027. (615) 457-2089. The salon: Royal American, bridal, by appointment.
-- Mt. Juliet: 401 S Mt Juliet Road, Suite 165, Mt. Juliet, TN 37122. (615) 754-6046. The workshop: casting, setting, repair, lifetime care.
+- Brentwood: 157 Franklin Road, Brentwood, TN 37027. (615) 457-2089. The salon: Royal American, bridal, commissions, by appointment.
+- Mt. Juliet: 401 S Mt Juliet Road, Suite 165 (Providence Marketplace), Mt. Juliet, TN 37122. (615) 754-6046. The workshop: setting, repair, resizing, lifetime care, bench behind glass.
 
 ## Pages
-- /royal-american: one-of-one pieces, numbered and registered
-- /americana: house designs (Shooting Star, Prism) in gold, birthstone and natural diamond versions
-- /new-american: man made diamond pieces to the New American Standard
-- /build/ring: ring builder (setting, natural or man made stone, metal, size)
+- /royal-american: one-of-one pieces, numbered and entered in the house registry
+- /americana: house designs (Shooting Star, Prism) in solid gold, birthstone and natural-diamond versions
+- /new-american: man-made diamond pieces (Signal, Grid) to the New American Standard
+- /build/ring: ring builder; three house settings, natural or man-made diamond at set qualities, metal, size, engraving; priced from geometry; design codes AJ-XXXXXX-C
 - /collections/bridal, /collections/family, /collections/signets, /collections/the-stack
-- /natural-or-man-made: plain comparison of natural and man made diamonds
-- /commission, /care, /appointments, /stores, /policies
+- /natural-or-man-made: plain comparison of natural and man-made diamonds
+- /journal: how to read an IGI report, what "Designed in Tennessee" means, ring size, how a ring is made
+- /services, /care, /commission, /appointments, /stores, /house, /policies
 
 ## Terms
-- "Man made diamond" on this site means a laboratory-grown diamond. Not mined.
-- All gold is solid and karat-marked. Pieces are designed and handcrafted in Tennessee.
+- "Man-made diamond" on this site means a laboratory-grown diamond. Not mined. Growth method and any post-growth treatment are stated on each piece.
+- Natural diamonds: F-G color, VS1 clarity, GIA report. Man-made diamonds: D-F color, VVS1-VVS2 clarity, IGI Laboratory Grown Diamond Report.
+- All gold is solid and karat-marked. Origin statement: Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
+- Prices are shown on Americana and New American pieces; Royal American pieces are price on request. No discounts.

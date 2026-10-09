@@ -286,7 +286,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose", "18k-yellow"],
     leadTime: "Made to order · about 4 weeks",
     madeToOrder: true,
-    description: "Three stars in flight along a hand-made chain, each with its own tail.",
+    description: "Three stars in flight along a chain made link by link at the bench, each star with its own tail.",
     specs: [
       { label: "Length", value: "6.5, 7 or 7.5 in" },
       { label: "Clasp", value: "Hidden box clasp with the AJ star" },
@@ -607,11 +607,18 @@ export const STORES: Store[] = [
     reviews: 995,
     role: "The salon. Royal American and bridal, by appointment.",
     hours: [
-      { days: "Monday – Friday", open: "10 am – 6 pm" },
-      { days: "Saturday", open: "10 am – 5 pm" },
+      { days: "Monday - Friday", open: "10 am - 6 pm" },
+      { days: "Saturday", open: "10 am - 5 pm" },
       { days: "Sunday", open: "Closed" },
     ],
+    hoursConfirmed: false,
     mapQuery: "American Jewelry 157 Franklin Rd Brentwood TN 37027",
+    lat: 36.03433,
+    lng: -86.78828,
+    photo: "box-peach",
+    place: "On Franklin Road in Brentwood.",
+    expect:
+      "The salon. A quiet room, a table, and whatever you asked about already laid out: a Royal American piece, three bridal settings with both stones to compare, or the drawings for a commission. Allow an hour.",
     services: ["Private viewing room", "Bridal fittings", "Custom commissions", "Engraving", "Appraisals"],
   },
   {
@@ -626,11 +633,18 @@ export const STORES: Store[] = [
     reviews: 1542,
     role: "The workshop. Casting, setting, repair and lifetime care.",
     hours: [
-      { days: "Monday – Friday", open: "10 am – 6 pm" },
-      { days: "Saturday", open: "10 am – 5 pm" },
+      { days: "Monday - Friday", open: "10 am - 6 pm" },
+      { days: "Saturday", open: "10 am - 5 pm" },
       { days: "Sunday", open: "Closed" },
     ],
+    hoursConfirmed: false,
     mapQuery: "American Jewelry 401 S Mt Juliet Rd Ste 165 Mt Juliet TN 37122",
+    lat: 36.16746,
+    lng: -86.50746,
+    photo: "bench",
+    place: "Suite 165 at Providence Marketplace, off South Mt. Juliet Road.",
+    expect:
+      "The workshop. The bench is behind glass, so you can watch a prong being retipped or a stone being set while you wait. Bring the piece; most cleaning and inspection happens on the spot.",
     services: ["Workbench behind glass", "Lifetime cleaning and prong checks", "Resizing and repair", "Watch service", "Appraisals"],
   },
 ];

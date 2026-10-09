@@ -4,3 +4,6 @@ node_modules/
 .env*
 !.env.example
 docs/_*.svg
+
+research/shots/houses/
+research/shots/pass3/

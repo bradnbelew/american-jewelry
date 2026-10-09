@@ -1,154 +1,179 @@
 import Link from "next/link";
-import { Section, SectionTitle } from "@/components/Section";
+import { PhotoOpener, Section } from "@/components/Section";
 import { ProductTile } from "@/components/ProductTile";
 import { Pic } from "@/components/Pic";
-import { COLLECTIONS, PIECES, STORES, TIERS, TOTAL_REVIEWS } from "@/lib/catalog/data";
-import { COLLECTION_PHOTO, STORE_PHOTO, TIER_PHOTO } from "@/lib/catalog/photos";
-import { JsonLd, organizationJsonLd } from "@/lib/seo";
+import { PIECES, STORES, TIERS, TOTAL_REVIEWS, designBySlug, piecesForDesign } from "@/lib/catalog/data";
+import { DESIGN_PHOTO, TIER_PHOTO } from "@/lib/catalog/photos";
+import { DESIGN_NOTES, SETTING_PHOTO } from "@/lib/builder/notes";
+import { SETTINGS } from "@/lib/builder/model";
+import { FIGURES_AS_OF } from "@/lib/site";
 
 export default function Home() {
-  const selected = ["signal-solitaire", "shooting-star-pendant", "prism-signet", "signal-studs", "grid-tennis-bracelet", "shooting-star-ring", "grid-eternity-band", "prism-necklace"]
+  const featured = designBySlug("shooting-star")!;
+  const featuredPieces = piecesForDesign(featured.slug).slice(0, 3);
+  const selected = ["signal-solitaire", "prism-signet", "grid-tennis-bracelet", "shooting-star-pendant", "prism-necklace", "grid-eternity-band", "signal-studs", "shooting-star-signet"]
     .map((h) => PIECES.find((p) => p.handle === h)!)
     .filter(Boolean);
 
   return (
     <>
-      <JsonLd data={organizationJsonLd()} />
+      <PhotoOpener photo="hero-box" position="50% 45%" title="An American house of fine jewelry." lede="Our own designs, set and finished at our own bench in Tennessee. One designer, one workshop, nothing bought from a catalog.">
+        <div className="flex flex-wrap gap-3 mt-1">
+          <Link href="/americana" className="btn btn-light">
+            The designs
+          </Link>
+          <Link href="/appointments" className="link link-light self-center ml-2">
+            Book an appointment
+          </Link>
+        </div>
+      </PhotoOpener>
 
-      {/* Hero */}
-      <section className="relative h-[78vh] min-h-[520px] max-h-[900px] overflow-hidden bg-navy">
-        <Pic k="hero-box" priority sizes="100vw" position="50% 45%" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/5" />
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="mx-auto max-w-[1440px] px-5 md:px-10 pb-14 md:pb-20 flex flex-col items-start gap-6 text-white on-photo">
-            <span className="caps text-white/90">Brentwood · Mt. Juliet, Tennessee</span>
-            <h1 className="h-display text-[3rem] md:text-[5.25rem] max-w-3xl">The American jewelry house.</h1>
-            <p className="lede !text-white/90 max-w-xl">
-              A house, not a store. Every design is drawn here, every stone is set here, and every piece is finished by hand,
-              marked for life, and made for the person who will wear it.
-            </p>
-            <Link href="/house" className="link link-light">
-              Discover the house
+      {/* The featured design: one design, its story, three of its pieces. */}
+      <Section className="pt-20 md:pt-28" reveal>
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-end">
+          <div className="md:col-span-7 relative aspect-[4/5] md:aspect-[5/4] overflow-hidden bg-paper img-hover">
+            <Link href={`/designs/${featured.slug}`} className="absolute inset-0">
+              <Pic k={DESIGN_PHOTO[featured.slug]} sizes="(min-width: 768px) 58vw, 100vw" />
+            </Link>
+          </div>
+          <div className="md:col-span-5 flex flex-col gap-6 md:pb-6">
+            <h2 className="h-display text-[3rem] md:text-[4rem]">{featured.name}</h2>
+            <p className="lede measure">{featured.story}</p>
+            <Link href={`/designs/${featured.slug}`} className="link self-start">
+              Discover the design
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* Statement */}
-      <Section className="py-20 md:py-28">
-        <p className="font-display font-light text-[1.75rem] md:text-[2.5rem] leading-[1.25] text-center max-w-4xl mx-auto text-balance">
-          We draw every design, set every stone and finish every piece at our own bench. Three tiers, one hand, and a mark
-          you will not find anywhere else.
-        </p>
-      </Section>
-
-      {/* Tiers */}
-      <Section>
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {TIERS.map((t) => (
-            <Link key={t.slug} href={`/${t.slug}`} className="group flex flex-col gap-4">
-              <div className="relative aspect-[4/5] overflow-hidden bg-ivory img-hover">
-                <Pic k={TIER_PHOTO[t.slug]} sizes="(min-width: 768px) 33vw, 100vw" />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <span className="font-display text-[1.75rem] leading-tight">{t.name}</span>
-                <span className="text-sm text-ink-2">{t.tagline}</span>
-                <span className="link mt-2 self-start">Discover</span>
-              </div>
-            </Link>
+        <div className="grid grid-cols-3 gap-x-5 gap-y-10 md:gap-x-8 mt-12 md:mt-16">
+          {featuredPieces.map((p) => (
+            <ProductTile key={p.handle} piece={p} />
           ))}
         </div>
       </Section>
 
-      {/* Editorial: Americana */}
-      <section className="mt-24 md:mt-32 relative h-[70vh] min-h-[460px] overflow-hidden bg-ivory">
-        <Pic k="hero-hand" sizes="100vw" position="50% 40%" />
-        <div className="absolute inset-0 bg-black/35" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-5 text-white px-5 on-photo">
-          <span className="caps text-white/90">The signature designs</span>
-          <h2 className="h-display text-[2.75rem] md:text-[4.5rem]">Americana</h2>
-          <p className="lede !text-white/90 max-w-xl">Drawn in Tennessee and worked in solid gold, birthstone and natural diamond. The pieces a family keeps.</p>
-          <Link href="/americana" className="link link-light mt-2">
-            See the designs
-          </Link>
-        </div>
+      {/* Three tiers as a ledger: name, what it is, and one photograph each. */}
+      <Section className="pt-24 md:pt-36" reveal>
+        <h2 className="h-section text-[2rem] md:text-[2.75rem] mb-10 md:mb-14">Three tiers. One house.</h2>
+        <ol className="hair">
+          {TIERS.map((t) => (
+            <li key={t.slug} className="border-b border-hair">
+              <Link href={`/${t.slug}`} className="group grid grid-cols-[1fr_auto] md:grid-cols-12 gap-x-6 gap-y-4 py-8 md:py-10 items-center">
+                <div className="md:col-span-4 flex flex-col gap-2">
+                  <span className="h-section text-[2rem] md:text-[2.75rem] group-hover:text-muted transition-colors">{t.name}</span>
+                  <span className="text-sm text-muted">{t.tagline}</span>
+                </div>
+                <p className="col-span-2 md:col-span-5 md:col-start-5 text-ink-2 leading-relaxed measure order-3 md:order-none">{t.intro}</p>
+                <div className="md:col-span-2 md:col-start-11 relative w-28 md:w-full aspect-square overflow-hidden bg-paper img-hover justify-self-end">
+                  <Pic k={TIER_PHOTO[t.slug]} sizes="(min-width: 768px) 16vw, 112px" />
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      {/* The ring builder: the one thing a store cannot offer. */}
+      <section className="mt-24 md:mt-36 bg-paper">
+        <Section className="py-20 md:py-28" reveal>
+          <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+            <div className="md:col-span-5 flex flex-col gap-6">
+              <h2 className="h-section text-[2.25rem] md:text-[3rem]">Build a ring on a house setting.</h2>
+              <p className="lede measure">
+                Three settings we drew. Choose the band, the prongs, the stone at a set quality, the metal and the fit, and watch the ring change as you decide. It is priced from its own geometry and made to order at our bench.
+              </p>
+              <Link href="/build/ring" className="btn self-start">
+                Build a ring
+              </Link>
+            </div>
+            <ul className="md:col-span-7 grid grid-cols-3 gap-4 md:gap-6">
+              {SETTINGS.map((s) => (
+                <li key={s}>
+                  <Link href={`/build/ring?setting=${s}`} className="group flex flex-col gap-3">
+                    <span className="relative block aspect-[4/5] overflow-hidden bg-white img-hover">
+                      <Pic k={SETTING_PHOTO[s]} sizes="(min-width: 768px) 19vw, 30vw" />
+                    </span>
+                    <span className="h-item text-[1.125rem] md:text-[1.375rem] group-hover:text-muted transition-colors">{DESIGN_NOTES[s].name}</span>
+                    <span className="text-[0.8125rem] text-muted leading-snug hidden sm:block">{DESIGN_NOTES[s].line}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
       </section>
 
-      {/* Selected pieces */}
-      <Section className="pt-24 md:pt-32">
-        <SectionTitle eyebrow="From the bench" title="Selected pieces" />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-8 mt-12">
+      {/* Pieces */}
+      <Section className="pt-24 md:pt-36" reveal>
+        <div className="flex items-end justify-between gap-6 mb-10 md:mb-14">
+          <h2 className="h-section text-[2rem] md:text-[2.75rem]">From the bench</h2>
+          <Link href="/americana" className="link">
+            All designs
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-8">
           {selected.map((p) => (
             <ProductTile key={p.handle} piece={p} />
           ))}
         </div>
-        <div className="flex justify-center mt-12">
-          <Link href="/americana" className="btn btn-outline">
-            All designs
+      </Section>
+
+      {/* A statement on stones, in plain words. */}
+      <Section className="pt-24 md:pt-36" width="text" reveal>
+        <div className="hair pt-10 md:pt-14 flex flex-col items-center text-center gap-6">
+          <p className="h-section text-[1.75rem] md:text-[2.5rem] max-w-4xl">
+            We sell natural diamonds and man-made diamonds, and we say which is which on every tag, every listing and every certificate. The design, the gold and the hands are the same.
+          </p>
+          <Link href="/natural-or-man-made" className="link">
+            Natural or man-made
           </Link>
         </div>
       </Section>
 
       {/* The bench */}
-      <Section className="pt-24 md:pt-32">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
-          <div className="relative aspect-[4/3] overflow-hidden bg-ivory">
-            <Pic k="bench" sizes="(min-width: 768px) 50vw, 100vw" />
+      <Section className="pt-24 md:pt-36" reveal>
+        <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="md:col-span-7 relative aspect-[4/3] overflow-hidden bg-paper">
+            <Pic k="bench" sizes="(min-width: 768px) 58vw, 100vw" />
           </div>
-          <div className="flex flex-col gap-6 md:pr-10">
-            <span className="caps text-muted">The House</span>
-            <h2 className="h-section text-[2.25rem] md:text-[3.25rem]">Most jewelers are stores. We are a house.</h2>
-            <p className="lede">
-              A store buys what vendors make and sells it. A house draws its own designs, sets its own stones, finishes
-              every piece by hand, marks it, and stands behind it for life. In Mt. Juliet you can watch it happen through
-              the glass.
+          <div className="md:col-span-5 flex flex-col gap-6">
+            <h2 className="h-section text-[2.25rem] md:text-[3rem]">The bench is behind glass.</h2>
+            <p className="lede measure">
+              In Mt. Juliet you can watch a stone being set while you wait, and the person who sets it is usually the one who says hello. Every piece is drawn by our designer, set and finished at this bench, and marked inside with the AJ hallmark.
             </p>
             <Link href="/house" className="link self-start">
-              Our story
+              The House
             </Link>
           </div>
-        </div>
-      </Section>
-
-      {/* Collections */}
-      <Section className="pt-24 md:pt-32">
-        <SectionTitle eyebrow="Collections" title="Gathered by what they are for" />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8 mt-12">
-          {COLLECTIONS.map((c) => (
-            <Link key={c.slug} href={`/collections/${c.slug}`} className="group flex flex-col gap-3">
-              <div className="relative aspect-square overflow-hidden bg-ivory img-hover">
-                <Pic k={COLLECTION_PHOTO[c.slug]} sizes="(min-width: 1024px) 25vw, 50vw" />
-              </div>
-              <span className="font-display text-[1.375rem]">{c.name}</span>
-              <span className="text-[0.8125rem] text-ink-2 -mt-2">{c.intro}</span>
-            </Link>
-          ))}
         </div>
       </Section>
 
       {/* Stores */}
-      <section className="mt-24 md:mt-32 bg-ivory">
-        <Section className="py-20 md:py-28">
-          <SectionTitle eyebrow="Tennessee" title="Two stores. One bench." />
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mt-12">
-            {STORES.map((s) => (
-              <Link key={s.slug} href={`/stores/${s.slug}`} className="group flex flex-col gap-4">
-                <div className="relative aspect-[16/10] overflow-hidden bg-white img-hover">
-                  <Pic k={STORE_PHOTO[s.slug]} sizes="(min-width: 768px) 50vw, 100vw" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-[1.75rem]">{s.name}</span>
-                  <span className="text-sm text-ink-2">
-                    {s.address1}, {s.city}
-                  </span>
-                  <span className="text-[0.8125rem] text-muted">{s.role}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <p className="caps-sm text-muted text-center mt-14">{TOTAL_REVIEWS.toLocaleString()} Google reviews · 4.9 stars across both stores</p>
-        </Section>
-      </section>
+      <Section className="pt-24 md:pt-36" reveal>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+          {STORES.map((s) => (
+            <Link key={s.slug} href={`/stores/${s.slug}`} className="group flex flex-col gap-5">
+              <div className="relative aspect-[16/10] overflow-hidden bg-paper img-hover">
+                <Pic k={s.photo} sizes="(min-width: 768px) 50vw, 100vw" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="h-section text-[1.75rem] md:text-[2rem] group-hover:text-muted transition-colors">{s.name}</span>
+                <span className="text-sm text-ink-2">
+                  {s.address1}, {s.city}
+                </span>
+                <span className="text-[0.8125rem] text-muted">{s.role}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="hair mt-14 pt-6 flex flex-wrap items-baseline justify-between gap-4">
+          <p className="text-sm text-ink-2">
+            {TOTAL_REVIEWS.toLocaleString()} Google reviews across the two stores, as of {FIGURES_AS_OF}.
+          </p>
+          <Link href="/appointments" className="link">
+            Book an appointment
+          </Link>
+        </div>
+      </Section>
     </>
   );
 }
