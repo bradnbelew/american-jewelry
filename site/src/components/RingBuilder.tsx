@@ -64,8 +64,8 @@ export function RingBuilder() {
         <div className="aspect-square border border-line overflow-hidden">
           <RingViewer metal={metal} setting={setting} carat={carat} className="w-full h-full" autoRotate={step === 1} />
         </div>
-        <div className="flex items-baseline justify-between border-t border-navy pt-4">
-          <div className="flex flex-col">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-navy pt-4">
+          <div className="flex flex-col min-w-0">
             <span className="label text-muted">{tierName}</span>
             <span className="font-display text-2xl text-navy">
               {s.name} · {carat.toFixed(2)} ct {origin === "natural" ? "natural" : "man made"} diamond · {METAL_LABEL[metal]}
