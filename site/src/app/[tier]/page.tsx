@@ -39,7 +39,7 @@ async function TierPageContent({ params }: { params: Promise<{ tier: string }> }
   return (
     <>
       <Section className="pt-16 md:pt-24 pb-12 md:pb-16">
-        <PageTitle eyebrow={`Tier ${t.numeral}`} title={t.name} lede={t.intro} />
+        <PageTitle eyebrow={t.tagline} title={t.name} lede={t.intro} />
       </Section>
       <Section>
         <PhotoBand k={TIER_PHOTO[slug]} position={slug === "royal-american" ? "50% 45%" : "50% 40%"} />

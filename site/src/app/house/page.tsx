@@ -36,8 +36,7 @@ export default function HousePage() {
       <Chapter eyebrow="Three tiers" title="One house, three doors.">
         <div className="flex flex-col divide-y divide-hair -mt-2">
           {TIERS.map((t) => (
-            <Link key={t.slug} href={`/${t.slug}`} className="group grid sm:grid-cols-[5rem_1fr] gap-2 py-5">
-              <span className="caps-sm text-muted pt-1.5">Tier {t.numeral}</span>
+            <Link key={t.slug} href={`/${t.slug}`} className="group flex py-5">
               <span className="flex flex-col gap-1">
                 <span className="font-display text-[1.5rem] group-hover:text-muted transition-colors">{t.name}</span>
                 <span className="text-ink-2 leading-relaxed">{t.intro}</span>

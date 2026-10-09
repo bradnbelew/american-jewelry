@@ -10,7 +10,7 @@
   --ivory: #f7f5f0;
   --ink: #141414;
   --ink-2: #4a4a4a;
-  --muted: #7a7a7a;
+  --muted: #63676e;
   --hair: #e6e3dc;
   --navy: #14213a;
   --navy-2: #1b2b4b;
@@ -277,4 +277,9 @@ details.acc[open] > summary::after {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Type set over photography always carries a shadow so it survives light areas of the image. */
+.on-photo {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 28px rgba(0, 0, 0, 0.3);
 }

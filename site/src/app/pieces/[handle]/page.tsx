@@ -41,7 +41,7 @@ async function PiecePageContent({ params }: { params: Promise<{ handle: string }
   const siblings = piecesForDesign(piece.design).filter((p) => p.handle !== piece.handle).slice(0, 4);
   const is3d = RING_TYPES.has(piece.pieceType);
   const setting = piece.design === "shooting-star" ? "shooting-star" : piece.design === "prism" ? "prism" : "signal";
-  const carat = piece.pieceType === "solitaire" ? 1.5 : piece.pieceType === "signet" ? 0.5 : 0.35;
+  const carat = piece.pieceType === "solitaire" ? 1.5 : piece.pieceType === "signet" ? 0.5 : 0.75;
   const manMade = piece.versions.some((v) => v.origin === "man-made");
 
   return (

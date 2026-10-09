@@ -12,7 +12,7 @@ export const TIERS: Tier[] = [
     tagline: "One of one.",
     stones: "Natural diamonds and gemstones of exceptional character.",
     intro:
-      "Pieces made once and never repeated. Each is numbered, registered to its owner, and shown by appointment in the salon.",
+      "Pieces made once and never again. Each begins as a drawing, is cut from the finest stones we can find, and is entered in the house registry under the name of the person who will wear it. There is one, and it is yours.",
     pricing: "on-request",
     hallmark: "crown",
   },
@@ -23,7 +23,7 @@ export const TIERS: Tier[] = [
     tagline: "The signature designs.",
     stones: "Natural diamonds, solid gold, and family gemstones.",
     intro:
-      "The house designs: motifs drawn by our designer and worked across rings, bands, pendants and bracelets, in solid gold, gemstone and natural diamond versions.",
+      "The signature designs of the house, drawn in Tennessee and worked in solid gold, birthstone and natural diamond. These are the pieces a family keeps: worn every day, handed down, and recognized across a room.",
     pricing: "listed",
     hallmark: "star",
   },
@@ -34,7 +34,7 @@ export const TIERS: Tier[] = [
     tagline: "Man-made diamonds. Designed in Tennessee.",
     stones: "Man-made diamonds, D–F color, VVS clarity, every one.",
     intro:
-      "Bolder designs, more light, and a standard most stores cannot meet at any price: colorless, flawless to the loupe, independently graded, set at our bench.",
+      "Man-made diamonds held to a standard no store publishes: colorless, flawless to the loupe, cut for light, and set by the same hands that set everything else we make. The newest American idea, made the oldest American way: properly.",
     pricing: "listed",
     hallmark: "line",
   },

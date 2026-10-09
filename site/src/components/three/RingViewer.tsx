@@ -1,13 +1,13 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { RingSceneProps } from "./RingScene";
+import type { ParametricRingProps } from "./ParametricRing";
 
-const RingScene = dynamic(() => import("./RingScene").then((m) => m.RingScene), {
+const ParametricRing = dynamic(() => import("./ParametricRing").then((m) => m.ParametricRing), {
   ssr: false,
-  loading: () => <div className="plate w-full h-full flex items-center justify-center text-muted label">Loading the piece…</div>,
+  loading: () => <div className="absolute inset-0 flex items-center justify-center caps-sm text-muted">Preparing the piece…</div>,
 });
 
-export function RingViewer(props: RingSceneProps) {
-  return <RingScene {...props} />;
+export function RingViewer(props: ParametricRingProps) {
+  return <ParametricRing {...props} />;
 }

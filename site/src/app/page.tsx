@@ -18,11 +18,15 @@ export default function Home() {
       {/* Hero */}
       <section className="relative h-[78vh] min-h-[520px] max-h-[900px] overflow-hidden bg-navy">
         <Pic k="hero-box" priority sizes="100vw" position="50% 45%" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/5" />
         <div className="absolute inset-x-0 bottom-0">
-          <div className="mx-auto max-w-[1440px] px-5 md:px-10 pb-14 md:pb-20 flex flex-col items-start gap-6 text-white">
-            <span className="caps text-white/85">Brentwood · Mt. Juliet, Tennessee</span>
+          <div className="mx-auto max-w-[1440px] px-5 md:px-10 pb-14 md:pb-20 flex flex-col items-start gap-6 text-white on-photo">
+            <span className="caps text-white/90">Brentwood · Mt. Juliet, Tennessee</span>
             <h1 className="h-display text-[3rem] md:text-[5.25rem] max-w-3xl">The American jewelry house.</h1>
+            <p className="lede !text-white/90 max-w-xl">
+              A house, not a store. Every design is drawn here, every stone is set here, and every piece is finished by hand,
+              marked for life, and made for the person who will wear it.
+            </p>
             <Link href="/house" className="link link-light">
               Discover the house
             </Link>
@@ -47,7 +51,6 @@ export default function Home() {
                 <Pic k={TIER_PHOTO[t.slug]} sizes="(min-width: 768px) 33vw, 100vw" />
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="caps-sm text-muted">Tier {t.numeral}</span>
                 <span className="font-display text-[1.75rem] leading-tight">{t.name}</span>
                 <span className="text-sm text-ink-2">{t.tagline}</span>
                 <span className="link mt-2 self-start">Discover</span>
@@ -60,11 +63,11 @@ export default function Home() {
       {/* Editorial: Americana */}
       <section className="mt-24 md:mt-32 relative h-[70vh] min-h-[460px] overflow-hidden bg-ivory">
         <Pic k="hero-hand" sizes="100vw" position="50% 40%" />
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-5 text-white px-5">
-          <span className="caps text-white/85">Tier II</span>
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-5 text-white px-5 on-photo">
+          <span className="caps text-white/90">The signature designs</span>
           <h2 className="h-display text-[2.75rem] md:text-[4.5rem]">Americana</h2>
-          <p className="lede text-white/90 max-w-xl">The signature designs, in solid gold, birthstone and natural diamond versions.</p>
+          <p className="lede !text-white/90 max-w-xl">Drawn in Tennessee and worked in solid gold, birthstone and natural diamond. The pieces a family keeps.</p>
           <Link href="/americana" className="link link-light mt-2">
             See the designs
           </Link>
