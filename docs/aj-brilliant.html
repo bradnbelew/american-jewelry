@@ -1,0 +1,130 @@
+<title>AJ Brilliant Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&family=Cormorant+Garamond:wght@600&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: crit wall for a wide mark. One wide white plate per version, a sizing row, two lines of text. */
+:root{
+  --bg:#EDEDEA; --fg:#17191F; --muted:#6B6F7A; --line:#D6D6D2; --plate:#FFFFFF; --mark:#111318;
+  --display:"EB Garamond",Garamond,Georgia,serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171C;--fg:#ECEDEF;--muted:#9A9EA8;--line:#2B2E36;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15171C;--fg:#ECEDEF;--muted:#9A9EA8;--line:#2B2E36;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;margin:0;padding-inline:20px;padding-block:0 110px}
+.wrap{max-width:1000px;margin:0 auto}
+h1,h2{font-family:var(--display);font-weight:500;margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+header{padding-block:64px 36px;display:flex;flex-direction:column;gap:12px}
+header h1{font-size:clamp(40px,6vw,64px)}
+header p{max-width:46em;color:var(--muted);font-size:18px}
+.stack{display:flex;flex-direction:column;gap:56px}
+.item{display:flex;flex-direction:column;gap:16px;min-width:0}
+.plate{background:var(--plate);aspect-ratio:16/10;max-width:100%;display:flex;align-items:center;justify-content:center;padding:9% 12%;color:var(--mark);--knock:var(--plate)}
+.plate svg{width:100%;height:100%}
+.row{display:flex;align-items:center;gap:22px;padding:0 4px;flex-wrap:wrap}
+.row .s{color:var(--mark);--knock:var(--plate);background:var(--plate);display:flex;align-items:center;justify-content:center}
+.row .s1{width:48px;height:40px}.row .s1 svg{width:28px;height:20px}
+.row .s2{width:80px;height:56px}.row .s2 svg{width:56px;height:38px}
+.row .s3{width:132px;height:88px}.row .s3 svg{width:100px;height:66px}
+.row .inv{background:var(--mark);color:var(--plate);--knock:var(--mark);width:132px;height:88px}.row .inv svg{width:100px;height:66px}
+.text{display:flex;flex-direction:column;gap:6px;padding:0 4px}
+.text h2{font-size:28px}
+.text p{color:var(--muted);font-size:16px;max-width:44em}
+.text .k{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg);font-weight:600}
+.lockup{background:var(--plate);padding:56px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;color:var(--mark);--knock:var(--plate)}
+.lockup svg{width:min(260px,70%);height:auto}
+.lockup .wm{font-family:"Cormorant Garamond","EB Garamond",Georgia,serif;font-weight:600;font-size:clamp(18px,3vw,26px);letter-spacing:.34em;text-transform:uppercase;text-align:center;padding-left:.34em}
+.lockup .sub{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);padding-left:.34em}
+.verdict{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px;max-width:52em}
+.verdict h2{font-size:30px}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <!-- Shared profile: table y=20 (105..235), girdle y=78 (13..327), culet (170,210). Width:height 1.65 -->
+
+  <!-- 1 PROFILE · line art. The A's legs are crown facets that continue past the girdle to the culet. The J is the only curve. -->
+  <symbol id="b1" viewBox="0 0 340 222">
+    <g fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="10">
+      <path d="M105,20 L235,20 L327,78 L170,210 L13,78 Z"/>
+      <path d="M13,78 L327,78"/>
+      <path d="M80,78 L130,20 L180,78"/>
+      <path d="M99.8,55 L160.2,55"/>
+      <path d="M235,20 L260,78"/>
+      <path d="M80,78 L170,210 M260,78 L170,210"/>
+      <path d="M190,78 L190,150 A18,18 0 0 1 154,150"/>
+    </g>
+  </symbol>
+
+  <!-- 2 BRILLIANT · same stone, the A and J are the two facets catching light (filled), facets drawn thin -->
+  <symbol id="b2" viewBox="0 0 340 222">
+    <g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-miterlimit="10">
+      <path d="M105,20 L235,20 L327,78 L170,210 L13,78 Z" stroke-width="5"/>
+      <path d="M13,78 L327,78"/>
+      <path d="M235,20 L260,78"/>
+      <path d="M68,78 L170,210 M192,78 L170,210 M260,78 L170,210"/>
+      <path d="M105,20 L68,78"/>
+    </g>
+    <path fill="currentColor" fill-rule="evenodd" d="M130,20 L192,78 L166,78 L153.2,66 L106.8,66 L94,78 L68,78 Z M130,44 L142.5,56 L117.5,56 Z"/>
+    <path fill="currentColor" fill-rule="evenodd" d="M182,78 L202,78 L202,150 A30,30 0 0 1 142,150 L162,150 A10,10 0 0 0 182,150 Z"/>
+  </symbol>
+
+  <!-- 3 CUT · solid stone, the letters are the two facets left open -->
+  <symbol id="b3" viewBox="0 0 340 222">
+    <path d="M105,20 L235,20 L327,78 L170,210 L13,78 Z" fill="currentColor"/>
+    <g fill="none" stroke="var(--knock)" stroke-width="2.5" stroke-linejoin="miter">
+      <path d="M13,78 L327,78"/>
+      <path d="M235,20 L260,78"/>
+      <path d="M68,78 L170,210 M192,78 L170,210 M260,78 L170,210"/>
+      <path d="M105,20 L68,78"/>
+    </g>
+    <path fill="var(--knock)" fill-rule="evenodd" d="M130,20 L192,78 L166,78 L153.2,66 L106.8,66 L94,78 L68,78 Z M130,44 L142.5,56 L117.5,56 Z"/>
+    <path fill="var(--knock)" fill-rule="evenodd" d="M182,78 L202,78 L202,150 A30,30 0 0 1 142,150 L162,150 A10,10 0 0 0 182,150 Z"/>
+  </symbol>
+</defs>
+</svg>
+
+<header class="wrap">
+  <h1>AJ in the brilliant profile</h1>
+  <p>Your reference, as a mark. Table, girdle and pavilion at a 1.65 to 1 ratio, the proportions of a real round brilliant seen from the side. The letters are not placed inside the stone; they are built out of its facets. The A's two legs are crown facets that bend at the girdle and run on down to the culet, the way facet edges actually do. The J is the only curve in the drawing: light moving through the pavilion.</p>
+</header>
+
+<main class="wrap">
+  <div class="stack">
+
+    <div class="item">
+      <div class="plate"><svg role="img" aria-label="Profile mark"><use href="#b1"/></svg></div>
+      <div class="row"><div class="s s1"><svg><use href="#b1"/></svg></div><div class="s s2"><svg><use href="#b1"/></svg></div><div class="s s3"><svg><use href="#b1"/></svg></div><div class="s inv"><svg><use href="#b1"/></svg></div></div>
+      <div class="text"><span class="k">1</span><h2>Profile</h2><p>One line weight, eleven lines. Outline, girdle, the A and its crossbar, one bezel facet on the right, two pavilion facets, the J. Everything that is not a letter is a facet, and every letter is also a facet.</p></div>
+    </div>
+
+    <div class="item">
+      <div class="plate"><svg role="img" aria-label="Brilliant mark"><use href="#b2"/></svg></div>
+      <div class="row"><div class="s s1"><svg><use href="#b2"/></svg></div><div class="s s2"><svg><use href="#b2"/></svg></div><div class="s s3"><svg><use href="#b2"/></svg></div><div class="s inv"><svg><use href="#b2"/></svg></div></div>
+      <div class="text"><span class="k">2</span><h2>Brilliant</h2><p>Your sketch's own language: thin facet lines, and two facets filled where the light catches. The two dark facets are the A and the J. The letters are read first; the stone is read a half second later.</p></div>
+    </div>
+
+    <div class="item">
+      <div class="plate"><svg role="img" aria-label="Cut mark"><use href="#b3"/></svg></div>
+      <div class="row"><div class="s s1"><svg><use href="#b3"/></svg></div><div class="s s2"><svg><use href="#b3"/></svg></div><div class="s s3"><svg><use href="#b3"/></svg></div><div class="s inv"><svg><use href="#b3"/></svg></div></div>
+      <div class="text"><span class="k">3</span><h2>Cut</h2><p>The same stone, solid, with the A and J left open. The strongest of the three at a distance and on a dark box; the version for foil, enamel and the storefront.</p></div>
+    </div>
+
+    <div class="item">
+      <div class="lockup">
+        <svg viewBox="0 0 340 222" role="img" aria-label="Profile mark with wordmark"><use href="#b1"/></svg>
+        <div class="wm">American Jewelry</div>
+        <div class="sub">Tennessee</div>
+      </div>
+      <div class="text"><span class="k">Lockup</span><h2>With the name</h2><p>The wide mark takes a wide wordmark. Placeholder serif, letterspaced; the real wordmark gets drawn once the mark is chosen.</p></div>
+    </div>
+
+  </div>
+
+  <div class="verdict">
+    <h2>Where I land</h2>
+    <p>Profile is the mark. It is the one that is honest about what it is: a diamond drawn the way a jeweler draws one, where the lines happen to spell the house. Cut is the same drawing for places that need weight. Brilliant is the in-between and probably not needed. If this is the direction, the next pass is proportion work on the A (how wide it sits in the crown) and the J (how far the hook reaches), then the wordmark, then the stamp version, which will be the Cut silhouette at 2 mm with no interior lines at all.</p>
+  </div>
+</main>

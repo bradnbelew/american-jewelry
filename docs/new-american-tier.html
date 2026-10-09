@@ -1,0 +1,433 @@
+<title>New American Tier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: a single editorial column like a house lookbook, with full-bleed "plates" for the mockups (floor plan, product card, hallmarks). */
+:root{
+  --paper:#F5F6F4; --plate:#E9EEF1; --ink:#14213A; --muted:#566074; --line:#D5DAE1; --gilt:#9C7A3C; --card:#FFFFFF;
+  --display:"EB Garamond",Garamond,Georgia,serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --label:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1420; --plate:#16203A; --ink:#E8EBF0; --muted:#9BA4B6; --line:#2A3448; --gilt:#CFA968; --card:#131B2C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1420; --plate:#16203A; --ink:#E8EBF0; --muted:#9BA4B6; --line:#2A3448; --gilt:#CFA968; --card:#131B2C; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;margin:0;padding-inline:20px;padding-block:0 96px}
+.wrap{max-width:760px;margin:0 auto}
+.wide{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:500;text-wrap:balance;line-height:1.12;margin:0}
+h2{font-size:clamp(30px,4.4vw,42px)}
+h3{font-size:22px;font-weight:500}
+p{margin:0}
+.flow{display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-family:var(--label);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gilt)}
+.muted{color:var(--muted)}
+.small{font-size:14.5px;line-height:1.6}
+em{font-style:italic}
+section{padding-block:72px 0}
+section>.wrap,section>.wide{display:flex;flex-direction:column;gap:22px}
+hr.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+/* hero */
+.hero{padding-block:88px 24px;text-align:left}
+.hero .mark{font-family:var(--label);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-size:clamp(50px,9vw,92px);letter-spacing:0;margin-top:18px}
+.hero h1 i{font-style:italic;color:var(--gilt)}
+.hero .lede{font-size:clamp(19px,2.3vw,23px);line-height:1.55;max-width:34em;margin-top:26px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:34px;font-family:var(--label);font-size:13px;letter-spacing:.06em;color:var(--muted)}
+
+/* tier ladder */
+.ladder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.ladder>div{padding:22px 20px 24px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ladder>div+div{border-left:1px solid var(--line)}
+.ladder .t{font-family:var(--display);font-size:24px}
+.ladder .r{font-family:var(--label);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ladder .here{background:var(--plate)}
+.ladder .here .r{color:var(--gilt)}
+
+/* two-column pairs */
+.pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 36px}
+.pairs>div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pairs h3{font-size:20px}
+
+/* spec card */
+.standard{background:var(--ink);color:var(--paper);padding:40px clamp(22px,5vw,52px);display:flex;flex-direction:column;gap:24px}
+.standard .eyebrow{color:var(--gilt)}
+.standard h2{color:var(--paper)}
+.spec{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);border-top:1px solid color-mix(in srgb,var(--paper) 25%,transparent)}
+.spec>div{padding:14px 0;border-bottom:1px solid color-mix(in srgb,var(--paper) 25%,transparent);min-width:0}
+.spec .k{font-family:var(--label);font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.75;padding-right:16px;padding-top:17px}
+.spec .v{font-size:16.5px}
+
+/* table */
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15.5px;min-width:560px}
+th{font-family:var(--label);font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--ink)}
+td{padding:14px 12px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-family:var(--label);font-size:14.5px}
+td b{font-family:var(--display);font-weight:500;font-size:17px}
+
+/* plates */
+.plate{background:var(--plate);padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;gap:18px}
+.caption{font-family:var(--label);font-size:12.5px;letter-spacing:.05em;color:var(--muted)}
+.svgbox{overflow-x:auto}
+.svgbox svg{display:block;width:100%;height:auto;min-width:560px}
+
+/* product card mockup */
+.pdp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:0;background:var(--card);border:1px solid var(--line)}
+.pdp .img{background:linear-gradient(180deg,var(--paper),var(--plate));display:flex;align-items:center;justify-content:center;padding:28px;min-height:320px}
+.pdp .img svg{width:min(260px,100%);height:auto}
+.pdp .info{padding:30px 28px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.pdp .house{font-family:var(--label);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pdp .name{font-family:var(--display);font-size:30px;line-height:1.1}
+.pdp .disc{font-family:var(--label);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gilt)}
+.pdp .price{font-family:var(--label);font-size:18px;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--label);font-size:12.5px;padding:6px 12px;border:1px solid var(--line)}
+.chip.on{border-color:var(--ink)}
+.pdp .btn{font-family:var(--label);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;background:var(--ink);color:var(--paper);text-align:center;padding:14px}
+.pdp dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;margin:0;font-size:14px;border-top:1px solid var(--line);padding-top:14px}
+.pdp dt{font-family:var(--label);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.pdp dd{margin:0}
+
+/* hallmarks */
+.marks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.marks>div{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;min-width:0}
+.marks svg{width:120px;height:auto}
+.marks .n{font-family:var(--display);font-size:19px}
+
+/* say / never */
+.words{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.words>div{padding:18px 18px 18px 0;min-width:0}
+.words>div+div{padding-left:18px;border-left:1px solid var(--line)}
+.words ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15.5px}
+.words li{padding-left:16px;position:relative}
+.words li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--gilt)}
+
+.quote{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(28px,4.6vw,44px);line-height:1.2;text-wrap:balance;padding-block:8px}
+.note{border-left:2px solid var(--gilt);padding:4px 0 4px 18px}
+ol.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+ol.steps li::marker{font-family:var(--label);color:var(--gilt)}
+.foot{font-family:var(--label);font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+
+@media (max-width:700px){
+  .ladder,.marks{grid-template-columns:minmax(0,1fr)}
+  .ladder>div+div{border-left:0;border-top:1px solid var(--line)}
+  .pairs,.words{grid-template-columns:minmax(0,1fr)}
+  .words>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .pdp{grid-template-columns:minmax(0,1fr)}
+  .spec{grid-template-columns:minmax(0,1fr)}
+  .spec .k{padding-bottom:0;border-bottom:0}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="mark">American Jewelry &nbsp;·&nbsp; Tier concept, draft 1</div>
+    <h1>New <i>American</i></h1>
+    <p class="lede">The third house of American Jewelry. Man made diamonds, designed and cast in Tennessee, held to the same bench standard as everything else we make. It is our most produced line and our front door, and it should never feel like the discount aisle.</p>
+    <div class="meta"><span>Prepared October 2026</span><span>For the family</span><span>Every name and number here is a proposal</span></div>
+  </div>
+</header>
+
+<section>
+  <div class="wide">
+    <div class="eyebrow">Where it sits</div>
+    <div class="ladder">
+      <div><span class="r">Tier I · One of one</span><span class="t">Royal American</span><span class="small muted">Scarce releases, natural stones, private salon. The pieces that make the name.</span></div>
+      <div><span class="r">Tier II · Natural diamonds</span><span class="t">Americana</span><span class="small muted">The signature designs. The Cartier Love bracelet equivalent: the icons people save up for.</span></div>
+      <div class="here"><span class="r">Tier III · Man made diamonds</span><span class="t">New American</span><span class="small muted">The line most people meet first. Bold, modern, precise, and ready sooner.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The job of this tier</div>
+    <h2>Every great house has a door people can walk through.</h2>
+    <div class="flow">
+      <p>Ralph Lauren sells Purple Label to a few people and Polo to everyone, and Polo is what makes Purple Label possible. Armani has Emporio. The lower line pays the bills, builds the customer list, and introduces people to the house. It works only when it has its own name, its own look, and a clear place below the top.</p>
+      <p>New American has three jobs:</p>
+      <ol class="steps">
+        <li><b>Win the customer who would otherwise buy a lab diamond online.</b> More than half of US engagement rings are now lab grown in recent surveys (The Knot, 2024). If we don't sell a man made diamond, that couple buys one somewhere else.</li>
+        <li><b>Volume for the bench.</b> Calibrated stones and fixed sizes keep the casting and setting schedule full and predictable, which pays for the one-of-one work.</li>
+        <li><b>Start the relationship.</b> Someone who buys a New American tennis bracelet at 27 is the person who buys Americana at 35 and commissions Royal American at 50. The line is built to move people up.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The hard truth, and the strategy it forces</div>
+    <h2>The stone is a commodity. Sell the making.</h2>
+    <div class="flow">
+      <p>Man made diamond prices have fallen steeply year after year and are still falling. Pandora moved its whole line to lab grown in 2021, and De Beers announced in 2025 that it was winding down its own lab-grown brand, Lightbox. A man made diamond has almost no resale value. Any brand that sells this tier as "a big diamond for less" is selling something that loses value the moment it leaves the store, and its prices look worse every year.</p>
+      <p>So New American is never priced or marketed on the stone. It is priced on the design, the solid gold, and the hands that made it. The man made diamond is the material that lets us do what natural stones make impossible at this price: full eternity bands, real tennis lines, 2 carat studs, all in top color and clarity.</p>
+      <p class="note">Rule of the house: we never show price per carat on New American, never compare its price to a natural stone, and never discount it. The price belongs to the piece.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The name</div>
+    <h2>Why "New American"</h2>
+    <div class="flow">
+      <p>Put next to the other two tiers, it completes a sentence: <em>Royal American</em> is the past we're reaching for, <em>Americana</em> is the classic, and <em>New American</em> is the future. "New" says what the stones are without the word "lab," and it frames them as progress, not as a substitute. It speaks to a younger buyer, and it doesn't apologize.</p>
+      <p class="muted">Alternates if the trademark search or the family says no:</p>
+      <div class="pairs">
+        <div><h3>Foundry</h3><p class="small muted">We cast in house, so it's literally true. Industrial American heritage, in the spirit of Shinola and RRL. Harder edge, more masculine.</p></div>
+        <div><h3>Filament</h3><p class="small muted">A thread of light and a thread of gold. Very ownable, fits delicate and tennis pieces well, weaker for bold statement pieces.</p></div>
+      </div>
+      <p class="small muted">"New American" is a common phrase, so the protectable mark is the combination with the AJ monogram and the tier hallmark. A trademark screen is needed before anything is printed.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The campaign line</div>
+    <p class="quote">Edison didn't find light. He made it.</p>
+    <p class="muted">The American story is a story of making things. That is the honest, proud frame for a man made diamond, and nobody in the category is using it. The common lab-grown slogan, "made, not mined," is everywhere and sounds defensive. This line is offensive in the right sense.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <div class="standard">
+      <div class="eyebrow">The quality promise, published on every product page</div>
+      <h2>The New American Standard</h2>
+      <div class="spec">
+        <div class="k">Color</div><div class="v">D, E or F only. Colorless, every stone, including the small ones.</div>
+        <div class="k">Clarity</div><div class="v">VVS1 or VVS2. Nothing visible under a loupe at a glance.</div>
+        <div class="k">Cut</div><div class="v">Excellent or Ideal, with Hearts and Arrows on round centers.</div>
+        <div class="k">Grading</div><div class="v">Independent report (IGI) on every center stone 0.30 ct and above, laser inscribed.</div>
+        <div class="k">Disclosure</div><div class="v">Every listing says "man made diamond," and names the growth method and any post-growth treatment.</div>
+        <div class="k">Metal</div><div class="v">Solid 14k or 18k gold or platinum. Never plated, never vermeil, never hollow.</div>
+        <div class="k">Made</div><div class="v">Designed by our designer, cast and set at our bench in Tennessee.</div>
+        <div class="k">Care</div><div class="v">Lifetime cleaning, prong checks, and rhodium refresh at either store.</div>
+      </div>
+      <p class="small" style="opacity:.8">The point: our lowest tier carries a higher spec than most stores' best case. That's what makes it ours.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What we make in this tier</div>
+    <h2>Five product families, chosen for where man made stones beat natural ones</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Family</th><th>Why it belongs here</th><th>Starting price idea</th></tr></thead>
+        <tbody>
+          <tr><td><b>Solitaire</b></td><td>Bridal. Shares the setting designs with Americana, and the customer chooses the stone. The only place the two tiers meet.</td><td class="num">$2,500–9,000</td></tr>
+          <tr><td><b>Tennis</b></td><td>Necklaces and bracelets need dozens of matched stones. In natural D–F VVS that's a five-figure piece; here it's within reach.</td><td class="num">$3,000–8,000</td></tr>
+          <tr><td><b>Eternity &amp; Stack</b></td><td>Full eternity bands and stacking rings. Bought in multiples, gifted for anniversaries, collected over years.</td><td class="num">$800–3,500</td></tr>
+          <tr><td><b>Statement Studs</b></td><td>1 to 3 carat studs and drops. The first "real" piece for a self-purchaser.</td><td class="num">$900–4,000</td></tr>
+          <tr><td><b>Men's</b></td><td>Diamond signets, tennis chains, cuban links with set clasps. Nashville's music crowd buys this category heavily.</td><td class="num">$1,500–12,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Prices are starting hypotheses to test against cost of goods and the local market, not decisions. Each family uses a small set of fixed stone sizes, so stones can be bought in calibrated lots and most pieces can be made to order in about two weeks with no inventory sitting in the case.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Design direction</div>
+    <h2>Same house, different temperament</h2>
+    <div class="pairs">
+      <div><h3>Bolder and cleaner</h3><p class="small">Americana is warm, engraved, storied. New American is crisp: high polish, sharp geometry, more stones, more light. Think architecture and machined precision, not heirloom.</p></div>
+      <div><h3>Its own motifs</h3><p class="small">Designs are never shared with Americana outside bridal settings. New American gets motifs of its own, for example a "Grid" and a "Signal" line.</p></div>
+      <div><h3>House signatures stay</h3><p class="small">The AJ hallmark, the small star inside every shank, the proportions and the finishing. You can tell it's ours. You can't mistake it for Americana.</p></div>
+      <div><h3>Fewer, deeper designs</h3><p class="small">Three or four motifs at launch, each worked across the five families. Your brother draws the motif once; parametric CAD generates the sizes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <div class="eyebrow">How it sits online</div>
+    <div class="plate">
+      <div class="pdp">
+        <div class="img" aria-hidden="true">
+          <svg viewBox="0 0 260 260" fill="none">
+            <ellipse cx="130" cy="168" rx="78" ry="64" stroke="var(--gilt)" stroke-width="13"/>
+            <ellipse cx="130" cy="168" rx="78" ry="64" stroke="var(--paper)" stroke-opacity=".35" stroke-width="2"/>
+            <path d="M112 112 L118 86 M148 112 L142 86 M130 114 L130 88" stroke="var(--gilt)" stroke-width="4" stroke-linecap="round"/>
+            <polygon points="96,70 112,52 148,52 164,70 130,108" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+            <path d="M96 70 H164 M112 52 L122 70 L130 52 L138 70 L148 52 M122 70 L130 108 L138 70" stroke="var(--ink)" stroke-width="1.2" stroke-opacity=".55"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="house">AJ · New American</div>
+          <div class="name">Signal Solitaire</div>
+          <div class="disc">1.50 ct man made diamond · E · VVS1</div>
+          <div class="price">$4,800</div>
+          <div class="chips"><span class="chip on">14k Yellow</span><span class="chip">14k White</span><span class="chip">Platinum</span></div>
+          <div class="btn">Reserve a fitting</div>
+          <dl>
+            <dt>Made</dt><dd>Cast and set in Tennessee, about 2 weeks</dd>
+            <dt>Report</dt><dd>IGI, laser inscribed</dd>
+            <dt>Standard</dt><dd>Meets the New American Standard</dd>
+            <dt>Care</dt><dd>Lifetime cleaning and prong checks</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="caption">Mockup. The disclosure line sits directly under the name, in the house accent color, so it reads as a spec rather than fine print. The main button books a fitting first; checkout still exists, but the store visit is where the brand wins. Price is illustrative.</p>
+    </div>
+    <div class="wrap pairs" style="max-width:none">
+      <div><h3>Its own world on the site</h3><p class="small">A separate landing page with a lighter, brighter look than Americana. Shoppers can filter by family and by stack. "Ready in two weeks" is a feature, shown plainly.</p></div>
+      <div><h3>An honest explainer</h3><p class="small">One beautiful page, "Natural or man made," that explains both without picking a side, and links to Americana for people who want a natural stone. The comparison is an upsell, not an attack.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <div class="eyebrow">How it sits in the store</div>
+    <h2 class="wrap" style="margin:0">Walking deeper means moving up</h2>
+    <div class="plate">
+      <div class="svgbox">
+        <svg viewBox="0 0 900 360" role="img" aria-label="Store floor plan: New American bar at the entrance, Americana cases in the middle, Royal American salon at the back, workbench window on the side">
+          <rect x="20" y="20" width="860" height="320" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+          <!-- entrance -->
+          <rect x="20" y="140" width="6" height="80" fill="var(--plate)"/>
+          <text x="36" y="132" font-family="Figtree,system-ui,sans-serif" font-size="12" letter-spacing="2" fill="var(--muted)">ENTRANCE</text>
+          <!-- New American bar -->
+          <rect x="70" y="70" width="210" height="220" fill="var(--plate)" stroke="var(--line)"/>
+          <rect x="110" y="150" width="130" height="60" rx="30" fill="none" stroke="var(--gilt)" stroke-width="2"/>
+          <text x="175" y="185" text-anchor="middle" font-family="Figtree,system-ui,sans-serif" font-size="11" letter-spacing="1.5" fill="var(--muted)">STACK TABLE</text>
+          <text x="175" y="100" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="22" fill="var(--ink)">New American</text>
+          <text x="175" y="262" text-anchor="middle" font-family="Figtree,system-ui,sans-serif" font-size="11.5" fill="var(--muted)">Open, bright, try-on</text>
+          <!-- Americana -->
+          <rect x="320" y="70" width="270" height="220" fill="none" stroke="var(--line)"/>
+          <rect x="350" y="120" width="210" height="22" fill="none" stroke="var(--ink)"/>
+          <rect x="350" y="170" width="210" height="22" fill="none" stroke="var(--ink)"/>
+          <rect x="350" y="220" width="210" height="22" fill="none" stroke="var(--ink)"/>
+          <text x="455" y="100" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="22" fill="var(--ink)">Americana</text>
+          <text x="455" y="270" text-anchor="middle" font-family="Figtree,system-ui,sans-serif" font-size="11.5" fill="var(--muted)">Signature cases, seated service</text>
+          <!-- Royal American -->
+          <rect x="630" y="70" width="220" height="220" fill="var(--ink)"/>
+          <circle cx="740" cy="180" r="34" fill="none" stroke="var(--gilt)" stroke-width="2"/>
+          <text x="740" y="100" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="22" fill="var(--paper)">Royal American</text>
+          <text x="740" y="262" text-anchor="middle" font-family="Figtree,system-ui,sans-serif" font-size="11.5" fill="var(--paper)" fill-opacity=".75">Private salon, by appointment</text>
+          <!-- bench window -->
+          <rect x="320" y="296" width="270" height="44" fill="var(--plate)" stroke="var(--gilt)" stroke-dasharray="5 4"/>
+          <text x="455" y="323" text-anchor="middle" font-family="Figtree,system-ui,sans-serif" font-size="11.5" letter-spacing="1.5" fill="var(--ink)">WORKBENCH BEHIND GLASS</text>
+          <!-- path arrow -->
+          <path d="M60 46 H840" stroke="var(--gilt)" stroke-width="1.5"/>
+          <path d="M832 40 L842 46 L832 52" fill="none" stroke="var(--gilt)" stroke-width="1.5"/>
+          <text x="450" y="40" text-anchor="middle" font-family="Figtree,system-ui,sans-serif" font-size="11" letter-spacing="2" fill="var(--muted)">FROM FIRST PIECE TO COMMISSION</text>
+        </svg>
+      </div>
+      <p class="caption">Concept layout, not to scale. New American sits at the front because it draws traffic and invites touching. The privacy and the price rise as you walk in.</p>
+    </div>
+    <div class="wrap pairs" style="max-width:none">
+      <div><h3>The stack table</h3><p class="small">An open table where customers try bands and tennis pieces on together, with a mirror and good light. No locked case between the customer and the piece for the core styles (security trays as needed).</p></div>
+      <div><h3>The bench window</h3><p class="small">The casting and setting bench seen through glass, placed so it's visible from every tier. It's the proof that everything here is made here.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Marks and packaging</div>
+    <h2>One monogram, three hallmarks</h2>
+    <div class="marks">
+      <div>
+        <svg viewBox="0 0 120 80" aria-hidden="true"><rect x="4" y="14" width="112" height="56" rx="4" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M48 12 L52 4 L56 10 L60 2 L64 10 L68 4 L72 12 Z" fill="var(--gilt)"/><text x="60" y="54" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="30" fill="var(--ink)">AJ</text></svg>
+        <span class="n">Royal American</span><span class="small muted">AJ with a crown. Ink box, gilt foil, numbered certificate.</span>
+      </div>
+      <div>
+        <svg viewBox="0 0 120 80" aria-hidden="true"><rect x="4" y="14" width="112" height="56" rx="4" fill="none" stroke="var(--ink)" stroke-width="2"/><polygon points="60,2 62.6,8.6 69.5,8.9 64.1,13.1 66,19.8 60,16 54,19.8 55.9,13.1 50.5,8.9 57.4,8.6" fill="var(--gilt)"/><text x="60" y="54" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="30" fill="var(--ink)">AJ</text></svg>
+        <span class="n">Americana</span><span class="small muted">AJ with a star. House navy box, the signature.</span>
+      </div>
+      <div>
+        <svg viewBox="0 0 120 80" aria-hidden="true"><rect x="4" y="14" width="112" height="56" rx="4" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M40 8 H80" stroke="var(--gilt)" stroke-width="2.5"/><text x="60" y="54" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="30" fill="var(--ink)">AJ</text></svg>
+        <span class="n">New American</span><span class="small muted">AJ with a single line. Ivory box with navy lettering.</span>
+      </div>
+    </div>
+    <p class="small muted">Placeholder marks to show the system. The real monogram comes from the logo work. The New American box should feel just as heavy and just as well made as the others; the only difference is the color.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Who buys it</div>
+    <h2>Four customers to design for</h2>
+    <div class="pairs">
+      <div><h3>The self-purchaser, 26–38</h3><p class="small">Buying her own first real piece: studs, a tennis bracelet, a stack band. Researches on her phone, buys in person if the store feels special.</p></div>
+      <div><h3>The engaged couple</h3><p class="small">Wants a large, clean center stone and a custom feel on a set budget. Comes in for the ring builder and the fitting appointment.</p></div>
+      <div><h3>The Nashville celebration</h3><p class="small">Nashville is one of the country's biggest bachelorette destinations. Bridesmaid gifts, bride gifts, and "we were here" pieces. A real local channel almost nobody is serving.</p></div>
+      <div><h3>The men's buyer</h3><p class="small">Signets, tennis chains, cuban links. Music industry, athletes, Brentwood money. Buys bold and buys again.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">How we talk about it</div>
+    <div class="words">
+      <div><span class="eyebrow">We say</span>
+        <ul><li>Man made diamond (always, on every listing and tag)</li><li>Made in our Tennessee workshop</li><li>D color, VVS clarity, Ideal cut</li><li>The New American Standard</li><li>Made to order, ready in about two weeks</li></ul>
+      </div>
+      <div><span class="eyebrow">We never say</span>
+        <ul><li>Cheaper, affordable alternative, budget</li><li>Fake, faux, simulant</li><li>"Diamond" with the qualifier dropped</li><li>Eco-friendly, sustainable, conflict-free (unless proven, item by item)</li><li>Investment, holds its value</li></ul>
+      </div>
+    </div>
+    <p class="small muted">The FTC Jewelry Guides require lab-grown stones to carry a clear qualifier every time. "Man made" should qualify as a phrase of the same meaning, but have a lawyer confirm it before launch. Environmental claims fall under the FTC Green Guides and need proof.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The upgrade promise</div>
+    <h2>A ladder, not a dead end</h2>
+    <p>Because a man made diamond holds little resale value, the customer's fear is "I'll want a natural stone later." Answer it: within a set number of years, a New American bridal or solitaire purchase earns a fixed credit toward an Americana piece. That turns the tier into the first step of a lifelong relationship, and it moves people up the ladder on purpose.</p>
+    <p class="small muted">The credit amount and window need to be modeled against margins before it's offered. It's a strong idea only if the numbers hold.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">One question changes everything</div>
+    <h2>Do we grow our own diamonds?</h2>
+    <p>You said "we design, grow, and cast." If "grow" means we grow man made diamonds ourselves, this tier has the strongest story in the company. Natural diamonds can't be mined in America at commercial scale, so Americana can never be fully American-made. A man made diamond grown in Tennessee, set in recycled gold, at our bench, can. The lowest tier would carry the purest "made in America" claim in the house, and almost no jeweler in the country can say it.</p>
+    <p class="small muted">If "grow" means printing wax or resin models for casting, the concept above still stands. We'd source US-grown stones where possible and say "designed and handcrafted in Tennessee."</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Guardrails</div>
+    <h2>What would sink it</h2>
+    <div class="pairs">
+      <div><h3>Sharing designs downward</h3><p class="small">The moment an Americana design shows up with man made stones at a third of the price, Americana loses its value.</p></div>
+      <div><h3>Competing on price</h3><p class="small">Online lab brands will always be cheaper. We win on design, the spec, and the store, and we stop there.</p></div>
+      <div><h3>Letting it take over the store</h3><p class="small">It will likely sell the most units. It should still take the smallest share of the brand's attention in ads and window displays.</p></div>
+      <div><h3>Sloppy disclosure</h3><p class="small">One listing that drops "man made" is a legal and reputational problem. Build the disclosure into the product templates so it can't be left off.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Decisions for the family</div>
+    <ol class="steps">
+      <li>The name: New American, Foundry, Filament, or something else.</li>
+      <li>Whether we grow our own stones, and if so, at what volume.</li>
+      <li>Which three or four motifs your brother starts with for this tier.</li>
+      <li>The price bands, once cost of goods per family is known.</li>
+      <li>Whether to offer the upgrade promise, and on what terms.</li>
+      <li>Box and hallmark colors, after the monogram is chosen.</li>
+    </ol>
+    <hr class="rule">
+    <p class="foot">Draft prepared for American Jewelry, October 2026. Market facts are from public reporting and should be re-checked before anything goes public. Nothing here is legal advice.</p>
+  </div>
+</section>

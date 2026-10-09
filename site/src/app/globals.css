@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* American Jewelry — house tokens. Single light theme by design: a jewelry house does not flip to dark. */
+:root {
+  --cream: #f6f2ea;
+  --cream-2: #efe9dd;
+  --paper: #fbf9f4;
+  --white: #ffffff;
+  --navy: #14213a;
+  --navy-2: #1f2c4d;
+  --ink: #1b2238;
+  --muted: #6b7080;
+  --line: #ddd6c8;
+  --gilt: #a58a4c;
+  --gilt-2: #c9ae6e;
+  --red: #8f2430;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-paper: var(--paper);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-gilt: var(--gilt);
+  --color-gilt-2: var(--gilt-2);
+  --color-red: var(--red);
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-figtree);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gilt);
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rule {
+  border-top: 1px solid var(--line);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--cream);
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover {
+  background: var(--navy-2);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--navy);
+}
+.btn-ghost:hover {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.plate {
+  background: linear-gradient(180deg, var(--paper), var(--cream-2));
+}
+
+.balance {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--gilt-2);
+  color: var(--navy);
+}

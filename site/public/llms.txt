@@ -1,0 +1,20 @@
+# American Jewelry
+
+> A jewelry house in Tennessee (Brentwood and Mt. Juliet) that designs, casts and sets its own jewelry. Three tiers: Royal American (one-of-one, price on request), Americana (signature designs in solid gold, birthstone and natural diamond versions), New American (man made, i.e. laboratory-grown, diamonds, D–F color, VVS clarity, IGI reports). Custom ring and band builders. Lifetime care included.
+
+## Stores
+- Brentwood: 157 Franklin Road, Brentwood, TN 37027. (615) 457-2089. The salon: Royal American, bridal, by appointment.
+- Mt. Juliet: 401 S Mt Juliet Road, Suite 165, Mt. Juliet, TN 37122. (615) 754-6046. The workshop: casting, setting, repair, lifetime care.
+
+## Pages
+- /royal-american: one-of-one pieces, numbered and registered
+- /americana: house designs (Shooting Star, Prism) in gold, birthstone and natural diamond versions
+- /new-american: man made diamond pieces to the New American Standard
+- /build/ring: ring builder (setting, natural or man made stone, metal, size)
+- /collections/bridal, /collections/family, /collections/signets, /collections/the-stack
+- /natural-or-man-made: plain comparison of natural and man made diamonds
+- /commission, /care, /appointments, /stores, /policies
+
+## Terms
+- "Man made diamond" on this site means a laboratory-grown diamond. Not mined.
+- All gold is solid and karat-marked. Pieces are designed and handcrafted in Tennessee.
