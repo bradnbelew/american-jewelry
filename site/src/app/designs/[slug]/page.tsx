@@ -9,6 +9,8 @@ import { ProductTile } from "@/components/ProductTile";
 import { DESIGNS, designBySlug, piecesForDesign, tierBySlug } from "@/lib/catalog/data";
 import { DESIGN_PHOTO } from "@/lib/catalog/photos";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return DESIGNS.map((d) => ({ slug: d.slug }));
 }
