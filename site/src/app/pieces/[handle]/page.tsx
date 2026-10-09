@@ -7,7 +7,7 @@ import { Section } from "@/components/Section";
 import { ProductTile } from "@/components/ProductTile";
 import { PieceConfigurator } from "@/components/PieceConfigurator";
 import { PieceGallery } from "@/components/PieceGallery";
-import { PIECES, STORES, designBySlug, pieceByHandle, piecesForDesign, tierBySlug } from "@/lib/catalog/data";
+import { PIECES, STORES, designBySlug, pieceByHandle, pieceRef, piecesForDesign, tierBySlug } from "@/lib/catalog/data";
 import { PIECE_PHOTOS } from "@/lib/catalog/photos";
 import { METAL_LABEL, PIECE_TYPE_LABEL, type Piece } from "@/lib/catalog/types";
 import { JsonLd, breadcrumbJsonLd, productJsonLd } from "@/lib/seo";
@@ -32,16 +32,26 @@ const RING_TYPES = new Set(["ring", "band", "solitaire", "eternity-band", "stack
 
 /** One sentence that says what the piece is made of, with the material words carried in ink. */
 function madeOf(p: Piece): { text: string; key?: boolean }[] {
-  const metals = p.metals.map((m) => METAL_LABEL[m].replace("14k ", "").replace("18k ", ""));
+  const metals = p.metals.map((m) => METAL_LABEL[m].replace("14k ", "").replace("18k ", "").toLowerCase());
   const uniqueMetals = Array.from(new Set(metals));
   const metalText = uniqueMetals.length === 1 ? METAL_LABEL[p.metals[0]] : uniqueMetals.length === 2 ? `${uniqueMetals[0]} or ${uniqueMetals[1]}` : `${uniqueMetals.slice(0, -1).join(", ")} or ${uniqueMetals[uniqueMetals.length - 1]}`;
   const manMade = p.versions.some((v) => v.origin === "man-made");
   const natural = p.versions.some((v) => v.key === "diamond" && v.origin === "natural");
   const gem = p.versions.some((v) => v.key === "gemstone");
-  const stone = p.oneOfOne ? p.versions[0].stones ?? "" : manMade ? "man-made diamonds" : natural && gem ? "a birthstone or natural diamonds" : natural ? "natural diamonds" : "";
+  const single = p.pieceType === "solitaire" || p.pieceType === "signet";
+  const stone = p.oneOfOne
+    ? (p.versions[0].stones ?? "").toLowerCase()
+    : manMade
+      ? single ? "one man-made diamond" : "man-made diamonds"
+      : natural && gem
+        ? "a birthstone or natural diamonds"
+        : natural
+          ? single ? "a natural diamond" : "natural diamonds"
+          : "";
   const type = PIECE_TYPE_LABEL[p.pieceType].toLowerCase();
-  const parts: { text: string; key?: boolean }[] = [{ text: `A ${type} in ` }, { text: metalText, key: true }];
-  if (stone) parts.push({ text: p.oneOfOne ? ", set with " : ", set with " }, { text: stone, key: true });
+  const article = /^[aeiou]/.test(type) ? "An" : "A";
+  const parts: { text: string; key?: boolean }[] = [{ text: `${article} ${type} in ` }, { text: metalText, key: true }];
+  if (stone) parts.push({ text: ", set with " }, { text: stone, key: true });
   parts.push({ text: ", designed in Tennessee and finished at our bench." });
   return parts;
 }
@@ -103,7 +113,7 @@ async function PiecePageContent({ params }: { params: Promise<{ handle: string }
                 {design ? `, ${design.name}` : royal ? `, No. ${piece.oneOfOne?.number}` : ""}
               </span>
               <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{royal ? piece.name.replace(/^No\. \d+ · /, "") : piece.name}</h1>
-              <p className="text-[0.8125rem] text-muted">Reference {piece.handle.toUpperCase().replace(/-/g, " ").replace(/^NO (\d+) /, "No. $1, ")}</p>
+              <p className="text-[0.8125rem] text-muted">Ref. {pieceRef(piece)}</p>
               <p className="text-ink-2 leading-relaxed">{piece.description}</p>
             </div>
 

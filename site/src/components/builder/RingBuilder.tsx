@@ -327,7 +327,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
               The certificate
             </Link>
             <Link href={`/commission?code=${encodeURIComponent(code)}`} className="link-quiet h-6">
-              Make it bespoke
+              Commission a variation
             </Link>
           </div>
           <div className="flex items-baseline gap-3 text-[0.8125rem]">

@@ -20,7 +20,7 @@ export default function CommissionPage() {
   return (
     <>
       <Section className="pt-16 md:pt-24 pb-12 md:pb-16">
-        <PageTitle eyebrow="Bespoke" title="Commission a piece" lede="Something that exists nowhere, made here. Four to eight weeks from the first conversation; a deposit of a third to begin." />
+        <PageTitle title="Commission a piece" lede="Something that exists nowhere yet, made here. Four to eight weeks from the first conversation; a deposit of a third to begin, refundable until you approve the drawing." />
       </Section>
       <Section>
         <PhotoBand k="ring-halo" />

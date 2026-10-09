@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Piece } from "@/lib/catalog/types";
-import { formatPrice, startingPrice } from "@/lib/catalog/data";
+import { formatPrice, startingPrice, tierBySlug } from "@/lib/catalog/data";
 import { PIECE_PHOTOS } from "@/lib/catalog/photos";
 import { Pic } from "./Pic";
 
@@ -20,11 +20,13 @@ export function ProductTile({ piece, eyebrow }: { piece: Piece; eyebrow?: string
       </div>
       <div className="flex flex-col gap-1 min-w-0 px-0.5">
         {eyebrow && <span className="caps-sm text-muted">{eyebrow}</span>}
-        <span className="font-display text-[1.125rem] leading-snug">{piece.name}</span>
-        <span className="text-[0.8125rem] text-ink-2">
-          {price === null ? "Price on request" : `From ${formatPrice(price)}`}
-          {manMade ? " · Man-made diamond" : ""}
+        <span className="h-item text-[1.125rem]">{piece.name}</span>
+        <span className="text-[0.8125rem] text-muted">
+          {eyebrow ? null : tierBySlug(piece.tier).name}
+          {eyebrow ? "" : ", "}
+          {piece.oneOfOne ? "one of one" : manMade ? "man-made diamond" : piece.versions.some((v) => v.key === "diamond") ? "gold, birthstone or natural diamond" : "solid gold"}
         </span>
+        <span className="text-[0.8125rem] text-ink-2">{price === null ? "Price on request" : `From ${formatPrice(price)}`}</span>
       </div>
     </Link>
   );

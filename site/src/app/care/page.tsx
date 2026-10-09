@@ -11,7 +11,7 @@ export default function CarePage() {
   return (
     <>
       <Section className="pt-16 md:pt-24 pb-12 md:pb-16">
-        <PageTitle eyebrow="Included with every piece" title="Lifetime Care Program" lede="Bring it in two or three times a year. We clean it, check every prong, and polish it while you wait. No charge, for as long as you own it." />
+        <PageTitle title="Lifetime Care Program" lede="Bring it in two or three times a year. We clean it, check every prong, and polish it while you wait. No charge, for as long as you own it." />
       </Section>
       <Section width="text">
         <div className="grid md:grid-cols-3 gap-10 hair pt-10">

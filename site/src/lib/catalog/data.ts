@@ -9,7 +9,7 @@ export const TIERS: Tier[] = [
     slug: "royal-american",
     name: "Royal American",
     numeral: "I",
-    tagline: "One of one.",
+    tagline: "One of one. Never made again.",
     stones: "Natural diamonds and gemstones of exceptional character.",
     intro:
       "Pieces made once and never again. Each begins as a drawing, is cut from the finest stones we can find, and is entered in the house registry under the name of the person who will wear it. There is one, and it is yours.",
@@ -20,7 +20,7 @@ export const TIERS: Tier[] = [
     slug: "americana",
     name: "Americana",
     numeral: "II",
-    tagline: "The signature designs.",
+    tagline: "Natural diamonds. Our own designs.",
     stones: "Natural diamonds, solid gold, and family gemstones.",
     intro:
       "The signature designs of the house, drawn in Tennessee and worked in solid gold, birthstone and natural diamond. These are the pieces a family keeps: worn every day, handed down, and recognized across a room.",
@@ -31,7 +31,7 @@ export const TIERS: Tier[] = [
     slug: "new-american",
     name: "New American",
     numeral: "III",
-    tagline: "Man-made diamonds. Designed in Tennessee.",
+    tagline: "Man-made diamonds. The same hands.",
     stones: "Man-made diamonds, D–F color, VVS clarity, every one.",
     intro:
       "Man-made diamonds held to a standard no store publishes: colorless, flawless to the loupe, cut for light, and set by the same hands that set everything else we make. The newest American idea, made the oldest American way: properly.",
@@ -578,6 +578,10 @@ export const PIECES: Piece[] = [
 ];
 
 export const pieceByHandle = (handle: string) => PIECES.find((p) => p.handle === handle);
+
+const TIER_CODE: Record<TierSlug, string> = { "royal-american": "RA", americana: "AM", "new-american": "NA" };
+/** The house reference for a piece: tier code plus its number in the catalog, stable for as long as the order holds. */
+export const pieceRef = (p: Piece) => `${TIER_CODE[p.tier]} ${String(PIECES.indexOf(p) + 1).padStart(3, "0")}`;
 export const piecesForTier = (tier: TierSlug) => PIECES.filter((p) => p.tier === tier);
 export const piecesForDesign = (design: string) => PIECES.filter((p) => p.design === design);
 export const piecesForCollection = (slug: string) => PIECES.filter((p) => p.collections.includes(slug));
