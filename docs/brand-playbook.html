@@ -1,0 +1,304 @@
+<title>Brand Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: a playbook. One reading column, numbered parts, tables where decisions need comparing, a tagline bank set large. */
+:root{
+  --paper:#F5F6F4; --plate:#ECEFF2; --ink:#14213A; --muted:#566074; --line:#D5DAE1; --gilt:#9C7A3C; --card:#FFFFFF; --warn:#8F2430;
+  --display:"EB Garamond",Garamond,Georgia,serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1420; --plate:#16203A; --ink:#E8EBF0; --muted:#9BA4B6; --line:#2A3448; --gilt:#CFA968; --card:#131B2C; --warn:#E08A93; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1420; --plate:#16203A; --ink:#E8EBF0; --muted:#9BA4B6; --line:#2A3448; --gilt:#CFA968; --card:#131B2C; --warn:#E08A93; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;margin:0;padding-inline:20px;padding-block:0 96px}
+.wrap{max-width:880px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.12;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4vw,38px)}
+h3{font-size:21px}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gilt)}
+.muted{color:var(--muted)}
+.small{font-size:14.5px;line-height:1.55}
+header{padding-block:64px 20px;display:flex;flex-direction:column;gap:14px}
+header h1{font-size:clamp(40px,6.5vw,66px)}
+header .lede{font-size:19px;color:var(--muted);max-width:42em}
+section{padding-block:52px 0;display:flex;flex-direction:column;gap:16px}
+ul,ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:7px}
+li::marker{color:var(--gilt)}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:620px}
+th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:8px 12px 8px 0;border-bottom:1px solid var(--ink)}
+td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-family:var(--display);font-size:17.5px;white-space:nowrap}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 36px}
+.box{background:var(--card);border:1px solid var(--line);padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.note{border-left:2px solid var(--gilt);padding:4px 0 4px 16px}
+.warn{border-left:2px solid var(--warn);padding:4px 0 4px 16px}
+.lines{display:flex;flex-direction:column;gap:14px}
+.line{font-family:var(--display);font-size:clamp(24px,3.6vw,34px);line-height:1.15;text-wrap:balance}
+.line small{display:block;font-family:var(--body);font-size:13px;color:var(--muted);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+.big{font-family:var(--display);font-size:clamp(26px,4vw,40px);line-height:1.2;text-wrap:balance;padding-block:6px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;background:var(--plate);padding:1px 5px}
+@media (max-width:640px){.two{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<header class="wrap">
+  <div class="eyebrow">American Jewelry · The playbook</div>
+  <h1>How to build the house</h1>
+  <p class="lede">The thinking behind the brand, the designs, the selling, the advertising and the transition, written as if I were running it. Every section ends in things to do. Nothing in here is a discount.</p>
+</header>
+
+<main class="wrap">
+
+<section>
+  <div class="eyebrow">Part one</div>
+  <h2>The idea we are selling</h2>
+  <p>People do not buy fine jewelry because they need it. They buy a story they can wear and hand down, and they buy it from someone they trust to have told the truth. A house is the form that trust takes: a name, a hand, a set of designs that are recognizably its own, and a mark inside the piece that says who made it. Every house you admire sells exactly this. Cartier sells the Cartier hand. Van Cleef sells a clover it has drawn ten thousand ways. We are going to sell the American Jewelry hand, from Tennessee, and the proof will be inside every piece.</p>
+  <p class="big">A house, not a store. Every piece begins as a drawing, is set and finished at our bench, and is marked for life.</p>
+  <p>Three claims hold the whole thing up, and each one has to be true before we say it out loud:</p>
+  <ol>
+    <li><b>Drawn here.</b> Every design is your brother's. Nothing licensed, nothing from a vendor catalog. The drawing ships with the piece.</li>
+    <li><b>Made here.</b> Set and finished at our own bench, which a customer can watch through glass. (The legal line stays: diamonds and gold are imported; we say "designed in Tennessee, set and finished in our workshop," never "made in America.")</li>
+    <li><b>Marked for life.</b> The AJ hallmark and tier mark inside the shank, a numbered certificate, and the Lifetime Care Program. A house stands behind its name.</li>
+  </ol>
+  <div class="warn small">
+    <b>One honest caution on "the first American house."</b> Tiffany has called itself America's house since 1837, and David Yurman and Harry Winston are American houses too. Say "first" only where it is true: the first house of fine jewelry in Tennessee, or the first American house built around made-to-order. "The American house, from Tennessee" is strong, true, and nobody can argue with it.
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Part two</div>
+  <h2>The codes: what makes a piece ours from across a room</h2>
+  <p>Recognition is not a logo. It is a small number of decisions repeated without exception until people learn them. Cartier's screw heads. Van Cleef's quatrefoil. Yurman's cable. Boucheron's four stacked bands. Each house owns one shape and one way of making, and then does them a thousand ways. These are ours.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Code</th><th>The rule</th><th>Why it works</th></tr></thead>
+      <tbody>
+        <tr><td>The Star</td><td>A sharp, five-point star, always the same proportions, appears on every piece the house makes: set in a clasp, cut into a signet face, struck inside a band, hidden under a center stone as the star-shaped gallery. Shooting Star is the star in motion; "The Star" pieces are the star at rest.</td><td>It is American, it is Tennessee, it is Nashville, and it is drawable at every scale from a 1 mm stamp to a storefront. It becomes our clover.</td></tr>
+        <tr><td>The Edge</td><td>Knife-edge profiles and mirror polish on every band and shoulder. Faceted where the design calls for it (Prism). Never a soft, rounded, catalog band.</td><td>A feeling in the hand that customers notice before they can name it: crisp, cut, deliberate. The construction signature.</td></tr>
+        <tr><td>The Inside</td><td>Every shank carries AJ, the tier mark (crown, star, line) and TN. Under every center stone, a star-shaped cut-out in the gallery, visible from the side. The engraving in the house hand.</td><td>The signature you see when you take the piece off. People show it to each other. Tacori built a brand on a hidden crescent.</td></tr>
+        <tr><td>The Weight</td><td>Solid, karat-marked, substantial. Never hollow, never plated, never thin to hit a price.</td><td>Luxury is weight in the hand. It is also the thing the Kay's of the world cannot afford to copy.</td></tr>
+        <tr><td>Gold first</td><td>Yellow gold leads every photograph, every window and every launch. White and rose exist; they follow.</td><td>Warm, American, and photographically ours against a navy ground. A house has a color temperature.</td></tr>
+        <tr><td>The Navy Hexagon</td><td>The navy velvet hexagonal box the family already uses becomes the house box: same shape, same navy, the gilt AJ on the lid, for every tier. The pouch, the certificate folder and the bags match it.</td><td>Tiffany is a blue box. We are a navy hexagon. It is already in the photographs and already in customers' drawers.</td></tr>
+        <tr><td>One-word names</td><td>Designs are named with one plain word: Signal, Prism, Grid, Star. Royal pieces take Tennessee place names: Cumberland, Harpeth, Belle Meade. Collections are named for what they are for: Family, Bridal, Signets, The Stack.</td><td>Names that sound like a house, not a product code. Easy to ask for by name across a counter.</td></tr>
+        <tr><td>Drawn before built</td><td>No piece enters CAD without a drawing. The drawing is photographed, kept, and printed on the certificate.</td><td>It keeps the hand in the work, and it is the proof of the first claim.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note small">Write these eight rules on one page, sign it as a family, and refuse every design that breaks one. The rules are the brand. The logo is just how the rules sign their name.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Part three</div>
+  <h2>What to design first</h2>
+  <p>The mistake is to launch a whole catalog. Launch two motifs deep rather than six motifs shallow, and make one of them the icon. Every house has one piece that pays for the rest and teaches the public its shape: Love, Alhambra, Cable, the T. Ours should be <b>The Star</b>, in its simplest form, in solid gold, at a price a person can decide on in an afternoon. The Shooting Star signet is the piece that makes the house serious; the Star stud and pendant are the pieces that put the navy hexagon into a thousand drawers.</p>
+  <h3>The first twenty-four drawings</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Tier · motif</th><th>Pieces</th><th>Job</th></tr></thead>
+      <tbody>
+        <tr><td>Americana · Star</td><td>Stud (single and pair), pendant, charm, small signet</td><td>The icon and the entry to the house. Solid 14k, from about $650. Yes, the house has an entry object; Cartier sells a $600 cord bracelet. It is the first piece, not a lesser one.</td></tr>
+        <tr><td>Americana · Shooting Star</td><td>Signet, band, pendant, studs</td><td>The hero. The signet with a family stone in the tail is the piece we photograph most.</td></tr>
+        <tr><td>Americana · Prism</td><td>Band, signet, link bracelet</td><td>The geometry code, for the person who wants edges rather than stars. Men's door.</td></tr>
+        <tr><td>New American · Signal</td><td>Solitaire (the builder), studs in three sizes, a pendant</td><td>Bridal and the self-purchaser, at the published standard.</td></tr>
+        <tr><td>New American · Grid</td><td>Tennis bracelet in two weights, eternity band, stack band</td><td>Where man-made stones beat natural ones honestly: lines of light.</td></tr>
+        <tr><td>Royal American</td><td>Three pieces: a ring, a necklace, a bracelet, each made once</td><td>Not to sell quickly. To be photographed, written about, and shown by appointment. They make the name.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Twenty-four pieces, every one carrying the codes, with versions handled by the builder and the version selector rather than by more drawings. Add the second wave (hoops, a cuff, a chain, the Family necklace) only after the first wave has sold for a season and the bench has found its rhythm.</p>
+  <h3>Make them unique on purpose</h3>
+  <ul>
+    <li><b>One shape, many pieces.</b> The Star should exist at 4 mm, 7 mm, 11 mm and 16 mm, and only those, so a stud and a pendant and a signet obviously belong together.</li>
+    <li><b>Family stones as a system, not an afterthought.</b> Every motif gets one designed place for a birthstone. That is the Family collection, and it is the reason a client comes back when a child is born.</li>
+    <li><b>The hidden star gallery</b> under every center stone. Nobody else does it. It costs the bench ten minutes and gives us the thing people show their friends.</li>
+    <li><b>The tier marks</b> inside: crown, star, line. A customer learns them in one visit and can read any piece we have ever made.</li>
+    <li><b>Numbered first editions.</b> The first hundred of each design carry 001 to 100 on the certificate. After that, unnumbered. Scarcity without a sale.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="eyebrow">Part four</div>
+  <h2>Lines for the house</h2>
+  <p class="muted">A bank to choose from, written in the house voice: plain, confident, no exclamation marks. One line for the house, one per tier, and a few for moments. Trademark-screen anything that goes on a sign.</p>
+  <div class="lines">
+    <span class="line">American, by design.<small>The house line. Designed in America, and American by intention. True on its face, and it stays inside the legal line.</small></span>
+    <span class="line">A house, not a store.<small>The positioning line. It explains the whole change in five words.</small></span>
+    <span class="line">Drawn, set and finished in Tennessee.<small>The origin line, compliant and specific. Use it under the wordmark on paper.</small></span>
+    <span class="line">Know who made it.<small>For the bench and the certificate. The quiet answer to everything from a vendor catalog.</small></span>
+    <span class="line">Signed inside.<small>The hallmark campaign. Macro photograph of the inside of a band.</small></span>
+    <span class="line">Find the star.<small>The code, turned into a game. Every piece, every photograph, every window.</small></span>
+    <span class="line">Made once.<small>Royal American.</small></span>
+    <span class="line">The pieces a family keeps.<small>Americana.</small></span>
+    <span class="line">Made properly.<small>New American. Or the longer one from the tier book: "Edison didn't find light. He made it."</small></span>
+    <span class="line">The setting is ours. The rest is yours.<small>The ring builder.</small></span>
+    <span class="line">A ring that grows.<small>The Family collection.</small></span>
+    <span class="line">For as long as it's yours.<small>The Lifetime Care Program.</small></span>
+    <span class="line">Two stores. One bench.<small>Stores and local advertising.</small></span>
+    <span class="line">Come see the bench.<small>The invitation. Nobody else in Nashville can say it.</small></span>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Part five</div>
+  <h2>How we sell</h2>
+  <h3>Price</h3>
+  <ul>
+    <li>Round, confident prices: $2,400, never $2,399. "From $" when the stone varies. "Price on request" for Royal American only.</li>
+    <li>Never a discount, a sale, a percent-off, a countdown or a coupon. The moment a house discounts, its customers learn to wait, and its best customers feel foolish. Houses add value instead: engraving included, resizing included, the box, the certificate, the care.</li>
+    <li>Financing exists and is never advertised. It is offered quietly at the counter and at checkout in the compliant words.</li>
+    <li>Promotions are releases: a new drawing, a numbered first edition, a Royal piece announced to the client list before anyone else, a trunk evening in the salon, a gift with a first purchase (the travel pouch). Scarcity and access, never price.</li>
+    <li>The upgrade promise, if the numbers hold: a New American solitaire earns a fixed credit toward an Americana piece within three years. It answers the one fear man-made buyers have and it moves people up the ladder on purpose.</li>
+  </ul>
+  <h3>The salon</h3>
+  <ul>
+    <li>Every conversation starts with the drawing. The advisor opens the drawing book before the case. "This is the piece. This is where it came from."</li>
+    <li>Every piece is handed over inside-up, so the first thing the customer sees is the mark.</li>
+    <li>The New American Standard card sits on the counter, printed, signed. We are the only store that publishes its line.</li>
+    <li>Appointments are the default for bridal, commissions and Royal viewings; walk-ins are welcome for everything else. A design code from the site is pulled up in ten seconds at either counter.</li>
+    <li>Repair customers, who are most of today's traffic, are the transition: every repair comes back cleaned, in a care card, with a look at what the bench is making. "While it was on the bench, we made this."</li>
+    <li>Titles matter: house advisors, the bench, the designer. Never "sales."</li>
+    <li>A client book: birthdays, anniversaries, children, the pieces they own and their birthstones. The Family collection sells itself from that book.</li>
+  </ul>
+  <h3>The transition</h3>
+  <ul>
+    <li>Vendor inventory leaves quietly: in-store, by trade-in toward house pieces, or through estate channels. No public clearance. A house does not announce that it used to be a store.</li>
+    <li>Repair and watch service stay as revenue and move under one name, the Workshop, and one program, Lifetime Care. The identity shifts; the cash flow does not stop.</li>
+    <li>Pre-owned Rolex becomes a discreet estate service with its own page and room, never in the house navigation.</li>
+    <li>The old site stays up and cross-links until the new one takes the domain; the 404s and missing location pages on it get fixed now, because they are losing search this week.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="eyebrow">Part six</div>
+  <h2>Advertising and channels</h2>
+  <p>Luxury advertising has one rule: the photograph is the message. No prices in creative (except "from" for bridal), no urgency, no stock imagery, no emoji. Every piece of creative is one of five motions: the drawing becoming the piece; the bench setting a stone; the inside of a band; a piece on a hand in daylight; the navy hexagon opening.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Channel</th><th>Job</th><th>Share</th></tr></thead>
+      <tbody>
+        <tr><td>Google Search</td><td>Intent: "engagement rings Nashville," "custom jewelry Brentwood," "jewelry store Mt. Juliet," "lab grown diamond ring Nashville." The builder is the landing page for bridal; store pages for local.</td><td>35%</td></tr>
+        <tr><td>Instagram and Meta</td><td>The content engine's home. Reels of the bench and the drawings; retargeting people who built a ring or saved a piece.</td><td>25%</td></tr>
+        <tr><td>Pinterest</td><td>Where bridal and gifting are researched. Every design, every version, pinned once, forever.</td><td>10%</td></tr>
+        <tr><td>Paper</td><td>A printed house book mailed to Brentwood, Franklin, Green Hills and Mt. Juliet zip codes twice a year. Nobody in the category mails anything worth keeping.</td><td>10%</td></tr>
+        <tr><td>Local press and partners</td><td>Nashville Lifestyles, StyleBlueprint, the Williamson Herald; wedding planners and venues; stylists for artists; CMA week gifting.</td><td>10%</td></tr>
+        <tr><td>Events</td><td>Trunk evenings in the salon by invitation; a release night for each Royal piece; the bench open on first Saturdays in Mt. Juliet.</td><td>10%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">Measure appointments booked, design codes created, pieces saved, bag adds and store visits. Likes are not a metric a house reports.</p>
+  <h3>The content engine</h3>
+  <ul>
+    <li><b>The Drawing</b> (30 seconds): your brother drawing a piece, start to finish, no talking. Weekly.</li>
+    <li><b>From the Bench</b> (15 to 60 seconds): one setting, one polish, one engraving. Twice a week.</li>
+    <li><b>Signed Inside</b> (10 seconds): macro of the hallmark, the tier mark, the hidden star. Weekly.</li>
+    <li><b>Plainly</b> (60 to 90 seconds): one honest answer about stones, grades, metals, care. Weekly. This is what AI search engines will quote.</li>
+    <li><b>The Registry</b> (two minutes, YouTube): the story of each Royal piece. Monthly.</li>
+    <li><b>From the Bench</b>, the email: one piece, one drawing, one sentence from the family. Weekly. Plus a printed client letter twice a year.</li>
+  </ul>
+  <p>The designer is the face. People follow a hand, not a storefront. The family appears, named, in the House page and the letters. Nobody says "we're so excited."</p>
+</section>
+
+<section>
+  <div class="eyebrow">Part seven</div>
+  <h2>Market research worth doing</h2>
+  <ul>
+    <li><b>Mine the 2,537 reviews.</b> Pull every one and read what people already praise: honesty, repair quality, staff by name. That is the brand's true reputation, and the house is built on it rather than against it.</li>
+    <li><b>The local set.</b> Price and position every fine jeweler within thirty minutes (Green Hills, Franklin, Cool Springs, downtown) and the one house presence, Tiffany at Green Hills. The gap is obvious: Nashville has no house of its own.</li>
+    <li><b>Bridal volume.</b> Tennessee marriages per year, Davidson and Williamson share, the Nashville wedding economy, and what share of engagement rings here are now man-made (nationally it passed half in 2024).</li>
+    <li><b>Search demand.</b> The keyword map for Nashville and Middle Tennessee jewelry, bridal and custom terms; what the current site ranks for; where the 404s are bleeding.</li>
+    <li><b>Twenty clients.</b> Sit with the twenty best clients, show them the three motifs and the Star, and ask what they would wear and what they would give. Design testing, done the old way.</li>
+    <li><b>Trademark screens</b> on Royal American, Americana, New American, Shooting Star, Prism, Signal, Grid, and "American, by design," before any of it goes on a sign.</li>
+    <li><b>Price anchors.</b> What a 1 ct natural solitaire, a man-made equivalent, a gold signet and a tennis bracelet cost at Brilliant Earth, VRAI, Blue Nile, Tiffany and the local set, so our prices read as a house, not a bargain and not a bluff.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="eyebrow">Part eight</div>
+  <h2>The first ninety days, if I were driving</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Weeks</th><th>Brand and product</th><th>Selling and stores</th><th>Marketing</th></tr></thead>
+      <tbody>
+        <tr><td>1–2</td><td>Sign the eight codes. Choose the mark. Lock the first twenty-four drawings. Order the navy hexagon boxes with the lid mark.</td><td>Write the counter script and the compliance words. Start the client book from the repair ledger.</td><td>Mine the reviews. Trademark screens. Fix the old site's 404s and add its location pages.</td></tr>
+        <tr><td>3–6</td><td>CAD and waxes for the first wave. Hallmark punches cut. Certificate and drawing cards printed. The New American Standard card printed.</td><td>Build the salon ladder in Brentwood: Star table at the front, Americana cases, the private room. Glass on the bench in Mt. Juliet.</td><td>Photograph the first wave on navy and in daylight. Film the first six Drawings and Bench pieces. Start the weekly email to the existing list.</td></tr>
+        <tr><td>7–10</td><td>First pieces cast and set. Numbered first editions begin at 001. The three Royal pieces finished.</td><td>Soft open: existing clients and repair customers see the house first. Every repair goes home in the care card.</td><td>Site goes live on the domain. Search and Pinterest on. The House page with the family's story. Press notes to Nashville Lifestyles and StyleBlueprint.</td></tr>
+        <tr><td>11–13</td><td>Second-wave drawings begin. Builder prices replaced with the bench's cost sheet.</td><td>Release night for Royal American No. 001, by invitation. Trunk evening for the Star.</td><td>Meta and Instagram on with the content engine running. First printed house book mailed. CMA-week gifting plan for November.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Part nine</div>
+  <h2>Everything I would change, in one list</h2>
+  <div class="two">
+    <div class="box">
+      <span class="eyebrow">Stop</span>
+      <ul class="small">
+        <li>Buying vendor jewelry for the cases.</li>
+        <li>Any sale, coupon, percent-off, or holiday discount.</li>
+        <li>Calling the business a store, a shop or "jewelers" in copy.</li>
+        <li>Leading with repair in the brand (keep the revenue; change the name).</li>
+        <li>Stock photography, emoji, exclamation marks, "we're so excited."</li>
+        <li>Letting the current site 404 on the pages Google sends people to.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="eyebrow">Start</span>
+      <ul class="small">
+        <li>The eight codes, signed.</li>
+        <li>The Star as the icon; the Shooting Star signet as the hero; the Signal solitaire as the bridal door.</li>
+        <li>The hidden star gallery and the inside marks on every piece.</li>
+        <li>Numbered first editions and client-list-first releases.</li>
+        <li>The drawing book on the counter and the standard card beside it.</li>
+        <li>The weekly Drawing and Bench films, with your brother's hand in every one.</li>
+        <li>The client book and the Family collection as the reason to come back.</li>
+        <li>A printed house book, mailed, twice a year.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="two">
+    <div class="box">
+      <span class="eyebrow">Make</span>
+      <ul class="small">
+        <li>The mark, the wordmark, the hallmark punches, the three tier marks.</li>
+        <li>The navy hexagon box, pouch, certificate folder, hangtag, bag, stationery.</li>
+        <li>The drawing cards and the certificate of making.</li>
+        <li>The salon ladder, the private room, the bench glass, the Star table.</li>
+        <li>The counter script, the compliance card, the care card.</li>
+        <li>A photography and film style guide so every image is ours.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="eyebrow">Measure</span>
+      <ul class="small">
+        <li>Appointments per week, and how many came from the site.</li>
+        <li>Design codes created, saved pieces, bag adds.</li>
+        <li>Share of revenue from house designs versus vendor pieces, monthly, until it is all house.</li>
+        <li>Average ticket, and the Family collection's share of repeat purchases.</li>
+        <li>Client list size and the weekly email's replies, not its opens.</li>
+        <li>Reviews that mention the house, the bench, the drawing or the mark.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Part ten</div>
+  <h2>What I would not do</h2>
+  <ul>
+    <li>Launch all three tiers with full catalogs on one day. Launch the Star and the signet; let the house grow in public.</li>
+    <li>Put the flag, an eagle or red-white-and-blue anywhere. American is a way of making, not a costume.</li>
+    <li>Advertise the man-made tier as the headline. It is the door most people walk through; it is not the sign over the door.</li>
+    <li>Chase influencers. Give pieces to three people in Nashville whose taste the city trusts, and let the drawing do the talking.</li>
+    <li>Claim "handmade," "made in America," "sustainable" or "first American house." Say the true thing, which is better anyway: drawn here, set and finished here, marked for life.</li>
+  </ul>
+  <p class="note">The whole strategy fits in one sentence, and it is the test for every decision from here on: <b>would a house do this?</b> If the answer is no, we don't.</p>
+</section>
+
+</main>
