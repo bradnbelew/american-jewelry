@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-hair">
       <div className="mx-auto max-w-[1440px] px-5 md:px-10">
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center h-[4.25rem] md:h-20">
+        <div className="grid grid-cols-[auto_1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center h-[4.25rem] md:h-20 gap-3">
           <div className="flex items-center gap-5">
             <button
               type="button"
@@ -45,7 +45,7 @@ export function Header() {
             <span className="hidden lg:inline caps-sm text-muted">Brentwood · Mt. Juliet, Tennessee</span>
           </div>
 
-          <Link href="/" className="font-display text-[1.35rem] md:text-[1.6rem] tracking-[0.26em] uppercase whitespace-nowrap" aria-label="American Jewelry home">
+          <Link href="/" className="font-display text-[0.95rem] sm:text-[1.2rem] md:text-[1.6rem] tracking-[0.2em] md:tracking-[0.26em] uppercase whitespace-nowrap justify-self-center" aria-label="American Jewelry home">
             American Jewelry
           </Link>
 

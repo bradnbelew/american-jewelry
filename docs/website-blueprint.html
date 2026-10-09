@@ -1,0 +1,219 @@
+<title>Website Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: a working document. One reading column, tables for the page-by-page spec, numbered phases. */
+:root{
+  --paper:#F5F6F4; --plate:#ECEFF2; --ink:#14213A; --muted:#566074; --line:#D5DAE1; --gilt:#9C7A3C; --card:#FFFFFF; --ok:#2E6B4F; --warn:#8F2430;
+  --display:"EB Garamond",Garamond,Georgia,serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1420; --plate:#16203A; --ink:#E8EBF0; --muted:#9BA4B6; --line:#2A3448; --gilt:#CFA968; --card:#131B2C; --ok:#7FC8A0; --warn:#E08A93; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1420; --plate:#16203A; --ink:#E8EBF0; --muted:#9BA4B6; --line:#2A3448; --gilt:#CFA968; --card:#131B2C; --ok:#7FC8A0; --warn:#E08A93; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;margin:0;padding-inline:20px;padding-block:0 96px}
+.wrap{max-width:860px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.12;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4vw,38px)}
+h3{font-size:21px}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gilt)}
+.muted{color:var(--muted)}
+.small{font-size:14.5px;line-height:1.55}
+header{padding-block:64px 24px;display:flex;flex-direction:column;gap:14px}
+header h1{font-size:clamp(40px,6.5vw,66px)}
+header .lede{font-size:19px;color:var(--muted);max-width:40em}
+header .meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:13.5px;color:var(--muted)}
+header .meta a{color:var(--ink)}
+section{padding-block:48px 0;display:flex;flex-direction:column;gap:16px}
+ul,ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:7px}
+li::marker{color:var(--gilt)}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:600px}
+th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:8px 12px 8px 0;border-bottom:1px solid var(--ink)}
+td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-family:var(--display);font-size:17.5px;white-space:nowrap}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 36px}
+.box{background:var(--card);border:1px solid var(--line);padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.ok{color:var(--ok)}.warn{color:var(--warn)}
+.phase{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr);gap:8px 20px;border-top:1px solid var(--line);padding-top:14px}
+.phase .n{font-family:var(--display);font-size:24px}
+.note{border-left:2px solid var(--gilt);padding:4px 0 4px 16px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;background:var(--plate);padding:1px 5px}
+@media (max-width:640px){.two{grid-template-columns:minmax(0,1fr)}.phase{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<header class="wrap">
+  <div class="eyebrow">American Jewelry · Website</div>
+  <h1>Website blueprint</h1>
+  <p class="lede">What the new site is, what every page must do, how it plugs into Shopify and 3D, what the copy may and may not say, and the order of work from the mockup that exists today to launch.</p>
+  <div class="meta">
+    <span>October 2026</span>
+    <span>Preview: <a href="https://american-jewelry.vercel.app">american-jewelry.vercel.app</a></span>
+    <span>Research: four tracks in <code>research/</code></span>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <div class="eyebrow">What it is</div>
+  <h2>A house site, not a store site</h2>
+  <p>Every house we tore down (Cartier, Van Cleef, Harry Winston, Tiffany, Graff, Boucheron, Bulgari, David Yurman, Ralph Lauren) shares one skeleton: a high-jewelry realm, a jewelry hub organized by named designs, a bridal lane, productized services, a page about the house itself, and boutiques sold as destinations. The utility bar is always the same: search, wishlist, account, bag, contact, boutique, appointment. Designs have names and biographies. Collection pages open with the story, then the grid, never the grid first. The appointment is everywhere and human.</p>
+  <p>The digital natives (VRAI, Brilliant Earth, Catbird, Mejuri) add what the houses lack: live itemized builder prices, education at the point of decision, honest lead times, stores sold as experiences with two-click booking, and a materials page that tells the truth about stone origin. American Jewelry takes the house skeleton and the natives' candor, and has one thing none of them have: two real stores with a bench behind glass.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Principles</div>
+  <h2>Ten rules the site follows</h2>
+  <ol>
+    <li><b>Photography carries everything.</b> White ground, quiet type, no borders, no cards, no icons. If a section needs decoration, it needs a better photograph.</li>
+    <li><b>Named designs with a story.</b> Shooting Star, Prism, Signal, Grid each get a page that opens with why it exists, then the pieces.</li>
+    <li><b>Three tiers, one catalog.</b> Americana and New American are hubs that explain and link into the same pieces; stone origin is chosen on the piece or in the builder, and the tier badge follows the stone. Royal American is the high-jewelry realm: chapters, making-of, price on request, private viewing.</li>
+    <li><b>Tiered price grammar.</b> Fixed price for a fixed piece; "From $" when the stone varies; "Price on request" only for one-of-ones. Never a discount, a countdown, a popup, or a percent off.</li>
+    <li><b>The appointment is omnipresent.</b> Utility bar, every product page, every grid, every store page, the footer. Same-day capable. A named person answers.</li>
+    <li><b>Calm product pages.</b> Metal, size, version, one price line, two buttons, then accordions. No reviews on house pages, no financing banners, no urgency.</li>
+    <li><b>Services are products.</b> Engrave, adjust, repair, appraise, Lifetime Care Program: each its own page with what it costs and how long it takes.</li>
+    <li><b>Plain words about stones.</b> "Man-made diamond," hyphenated, every time, with "(laboratory-grown)" on the spec line and the IGI report number. Natural diamonds say natural. Nothing is "real," "genuine" or "sustainable."</li>
+    <li><b>Nothing moves when you click.</b> Controls have fixed heights and one-pixel borders in every state. Fonts load before paint. Images reserve their space.</li>
+    <li><b>Fast, and measured.</b> LCP under 2.5 s, INP under 200 ms, CLS under 0.1 at the 75th percentile. 3D loads behind a photo, never before it.</li>
+  </ol>
+</section>
+
+<section>
+  <div class="eyebrow">Sitemap</div>
+  <h2>Navigation and URLs</h2>
+  <div class="two">
+    <div class="box">
+      <span class="eyebrow">Primary nav</span>
+      <ul class="small">
+        <li>The House</li>
+        <li>Royal American</li>
+        <li>Americana</li>
+        <li>New American</li>
+        <li>Bridal</li>
+        <li>Build a ring · Build a band</li>
+        <li>Visit (stores and appointments)</li>
+      </ul>
+      <span class="small muted">Utility: search, wishlist, bag, appointment. Mobile: menu, wordmark, bag.</span>
+    </div>
+    <div class="box">
+      <span class="eyebrow">URL scheme</span>
+      <ul class="small">
+        <li><code>/royal-american</code> · <code>/americana</code> · <code>/new-american</code></li>
+        <li><code>/designs/[motif]</code> (the biography and the pieces)</li>
+        <li><code>/pieces/[handle]</code> today → <code>/jewelry/[motif]/[piece]/[version]</code> at Shopify launch</li>
+        <li><code>/collections/[curation]</code> editorial only (Family, Bridal, Signets, The Stack)</li>
+        <li><code>/build/ring</code> · <code>/build/band</code> · <code>/commission</code></li>
+        <li><code>/services/*</code> · <code>/care</code> · <code>/natural-or-man-made</code></li>
+        <li><code>/stores</code> · <code>/stores/[slug]</code> · <code>/appointments</code> · <code>/house</code> · <code>/policies</code></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Page by page</div>
+  <h2>What each page must do</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Page</th><th>Job</th><th>Must have</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Home</td><td>Say what the house is in one frame; route to the three tiers.</td><td>Full-bleed hero photograph; one-sentence statement; three tier tiles; editorial band; eight pieces; the bench story; collections; both stores; reviews count.</td><td class="ok">Built</td></tr>
+        <tr><td>Tier hubs</td><td>Explain the tier, then link into the catalog.</td><td>Title, lede, photograph; per design: name, motif, story link, pieces. New American shows the published Standard.</td><td class="ok">Built</td></tr>
+        <tr><td>Royal American</td><td>The high-jewelry realm.</td><td>Numbered pieces, registry language, price on request, private-viewing request. Later: chapters per release, making-of film, "Acquired" archive, client-list-first announcements.</td><td>Built; chapters later</td></tr>
+        <tr><td>Design page</td><td>The biography of a motif.</td><td>Story, signature, versions, every piece in the motif. Later: the designer's drawing, a short film.</td><td class="ok">Built</td></tr>
+        <tr><td>Collection</td><td>Editorial curation across designs.</td><td>Story first, then the grid; Bridal routes to the builder.</td><td class="ok">Built</td></tr>
+        <tr><td>Piece (PDP)</td><td>Decide, with nothing in the way.</td><td>Gallery (photo first, 3D on request); name, description; price; origin line; version, metal, size, engraving; Add to bag; See it in store; details, care, delivery accordions; "More in [design]". Later: true-scale view, on-hand view, report viewer, "complete the set", wishlist, hint.</td><td class="ok">Built</td></tr>
+        <tr><td>Build a ring</td><td>Setting → stone → metal → fit, with the ring in view.</td><td>Persistent 3D; live price; natural vs man-made side by side with the tier badge switching; sizes; engraving; add to bag; reserve a fitting carrying the design. Later: design code and share, six-stone shortlist, true-scale strip, width-aware sizing.</td><td class="ok">Built (model prices)</td></tr>
+        <tr><td>Build a band</td><td>Width, profile, stone layout.</td><td>Today: the band pieces. Later: iJewel Wedding Band Builder in headless mode under our UI.</td><td>Placeholder</td></tr>
+        <tr><td>The House</td><td>Why a house, not a store.</td><td>Design, three tiers, the mark. Later: a dated timeline in the family's voice, atelier, stones expertise, commitments.</td><td>Built; timeline later</td></tr>
+        <tr><td>Stores</td><td>Sell the visit.</td><td>Photograph, address, hours, phone, services by location, directions, appointment. JewelryStore schema per store.</td><td>Built; hours unconfirmed</td></tr>
+        <tr><td>Appointments</td><td>Two clicks to a human.</td><td>Store, purpose, name, contact, time; carries the piece or design the visitor was looking at. Later: real calendar (Cal.com or Sesami), virtual option, same-day.</td><td>Built; not wired</td></tr>
+        <tr><td>Services</td><td>Productized care.</td><td>Engrave, adjust, repair, appraisal, Lifetime Care Program, each with cost and time. "Check its status" later.</td><td>Care only</td></tr>
+        <tr><td>Natural or man-made</td><td>Education without a side.</td><td>Side-by-side table; where each belongs; disclosure.</td><td class="ok">Built</td></tr>
+        <tr><td>Policies</td><td>The fine print, plainly.</td><td>Shipping, returns, disclosures, care, financing, privacy, accessibility. Warranty text separate from the care program.</td><td>Draft</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Commerce and stack</div>
+  <h2>How it is built</h2>
+  <ul>
+    <li><b>Front end:</b> Next.js 16 App Router on Vercel, calling Shopify's Storefront API directly (version pinned), with the vercel/commerce cart pattern as reference. Not Hydrogen. Shopify's new framework-agnostic Hydrogen preview is shaped to be adopted at GA.</li>
+    <li><b>Catalog model:</b> Tier and Design motif are metaobjects; piece type is the product type; each version is its own product linked by design and version metafields; metal × size are options (2,048-variant limit, three options); everything else (engraving, font, finish, design code) rides as line-item attributes.</li>
+    <li><b>Price on request:</b> no native Shopify path. One-of-ones sit at price 0, unavailable, published only to the headless channel, and close through an Admin draft order. They never reach Google, Shop or agentic channels; their schema carries no offer.</li>
+    <li><b>Builder to cart:</b> the server re-resolves the variant from the chosen options, persists the configuration, adds the line with attributes, and redirects to Shopify checkout on a custom checkout subdomain. Never a product per configuration; bespoke is a draft order.</li>
+    <li><b>3D:</b> GLB everywhere. iJewel3D as the asset pipeline (MatrixGold and Rhino plugins, auto materials, Draco) and as a headless viewer and Wedding Band Builder API under our own React UI. Shopify-native GLB/USDZ with <code>model-viewer</code> for AR. react-three-fiber (the repos you sent) for the custom ring builder and as the fallback if iJewel licensing surprises. iJewel Professional is $1,500/yr; get in writing whether self-hosted SDK use on our domain is covered.</li>
+    <li><b>Asset pipeline:</b> MatrixGold/Rhino → GLB → Blender for diamond and gold materials (metal variants in one file) → gltf-transform optimize. About 4 MB per model, 2K textures.</li>
+    <li><b>Domains:</b> preview stays noindexed on Vercel; when americanjewelers.com attaches, www is primary with the apex redirecting, and the preview host redirects permanently. american.jewelry stays up with cross-links until a 301 map and change-of-address move it.</li>
+    <li><b>SEO and schema:</b> Organization plus two JewelryStore nodes; Product with offers on priced pieces; BreadcrumbList; collection pages as ItemList. Our own Merchant Center feed (made-to-order as in stock with handling time; one-of-ones excluded). llms.txt last; Shopify's agentic catalog is the real AI channel.</li>
+    <li><b>Performance:</b> hero poster as LCP, 3D behind a photo, two self-hosted variable fonts, server-rendered JSON-LD, 31-day image cache, ISR with webhook revalidation.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="eyebrow">Words</div>
+  <h2>What the copy may and may not say</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Topic</th><th>Say</th><th>Never</th></tr></thead>
+      <tbody>
+        <tr><td>Man-made tier</td><td>"Man-made diamond" (hyphenated, immediately before "diamond", same size and color, every time); spec line "Origin: man-made (laboratory-grown) · IGI Laboratory Grown Diamond Report No. …"; growth method; "as grown" or the treatment.</td><td>Unqualified "diamond"; "real," "genuine," "natural," "precious," "cultured," "synthetic," "above-ground," "faux." A FAQ page does not cure a missing label on the piece.</td></tr>
+        <tr><td>Grading</td><td>D–F, VVS as an IGI promise.</td><td>Anything implying GIA grades for man-made stones (GIA stopped letter grades for them in 2025).</td></tr>
+        <tr><td>Origin</td><td>"Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported."</td><td>"Made in America," "Made in Tennessee," "#madeintennessee," "handmade" (CAD-modeled cast pieces do not qualify). "Hand-set," "hand-finished," "bench-made" are fine.</td></tr>
+        <tr><td>Gold</td><td>Karat immediately before "gold"; "solid 14k gold"; rhodium plating on white gold disclosed.</td><td>"Solid" on anything hollow; plating terms without thresholds.</td></tr>
+        <tr><td>Environment</td><td>"Not mined." Certified recycled-gold percentage if documented.</td><td>"Sustainable," "eco-friendly," "ethical," "carbon-neutral," "conflict-free" without Kimberley Process paperwork.</td></tr>
+        <tr><td>Financing</td><td>"As low as 0% APR," "subject to an eligibility check," APR and term one click from any "$X/mo."</td><td>"No credit check," "guaranteed."</td></tr>
+        <tr><td>Reviews</td><td>Google reviews shown with attribution through the Places API.</td><td>Incentives tied to sentiment; self-serving star markup on the organization (Google ignores it).</td></tr>
+        <tr><td>Care</td><td>"Lifetime Care Program" as a service.</td><td>"Lifetime warranty" without defined terms (Magnuson-Moss).</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">Full citations, the disclosure checklist per page type, the policy terms and the fifteen questions for counsel are in <code>research/04-compliance-trust-local.md</code>.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Order of work</div>
+  <h2>From here to launch</h2>
+  <div class="phase"><span class="n">0 · Now</span><div><b>The mockup that exists.</b> Design system, 54 pages, real photography, bag, builder with model prices, procedural 3D, schema, noindexed preview, private repo, auto-deploy. Remaining in this phase: the family's own photography of the new designs, one CAD export to replace the stand-in model, store hours, founding year, the chosen logo, and a copy pass with the family.</div></div>
+  <div class="phase"><span class="n">1 · Shopify</span><div>Create the store; define metaobjects, metafields, options; import the catalog from the local data; connect the Storefront API; real bag and checkout; draft-order flow for one-of-ones and commissions; webhooks for revalidation; Merchant Center feed; Affirm; appointment calendar; transactional email. Keep the local catalog as the fallback source behind one interface.</div></div>
+  <div class="phase"><span class="n">2 · Domain</span><div>Attach americanjewelers.com, switch canonicals, lift noindex, redirect the preview host, link both Google Business Profiles to the new store pages, submit sitemaps, start the 301 map from american.jewelry.</div></div>
+  <div class="phase"><span class="n">3 · Depth</span><div>iJewel headless viewer and band builder under our UI; CAD-driven ring builder; Royal American chapters and films; the House timeline; services as products; wishlist and accounts; reviews widget; search; adopt the new Hydrogen when it ships.</div></div>
+</section>
+
+<section>
+  <div class="eyebrow">Decisions and inputs</div>
+  <h2>What only the family can supply</h2>
+  <div class="two">
+    <div class="box">
+      <span class="eyebrow">Decide</span>
+      <ul class="small">
+        <li>The logo and wordmark (the header is one file to swap).</li>
+        <li>Final tier names and whether "New American" stands.</li>
+        <li>Whether to sign off on "man-made" with counsel, and the origin sentence.</li>
+        <li>Price bands per family once cost of goods is known.</li>
+        <li>Founding year and the timeline for The House.</li>
+        <li>Which Shopify plan, and who owns the store account.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="eyebrow">Send</span>
+      <ul class="small">
+        <li>Store hours and a photograph of each store and the bench.</li>
+        <li>Photography of the first house designs (or we shoot them).</li>
+        <li>One MatrixGold export of a ring to prove the 3D pipeline.</li>
+        <li>Access to Google Business Profile, Analytics and Search Console.</li>
+        <li>The americanjewelers.com purchase, when it happens.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note small">Everything in the preview that is a placeholder is labeled as one on the page: hours, model prices, the stand-in 3D model, and the photography, which is the family's current product photography standing in for the new designs.</p>
+</section>
+
+</main>
