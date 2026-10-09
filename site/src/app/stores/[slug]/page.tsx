@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PageFallback } from "@/components/PageFallback";
-import { Section, Heading } from "@/components/Section";
+import { Section, PageTitle } from "@/components/Section";
+import { PhotoBand } from "@/components/PhotoBand";
 import { STORES, storeBySlug } from "@/lib/catalog/data";
+import { STORE_PHOTO } from "@/lib/catalog/photos";
 import { JsonLd, storeJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -14,12 +16,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const s = storeBySlug(slug);
-  return s
-    ? {
-        title: `${s.name} store`,
-        description: `American Jewelry ${s.name}: ${s.address1}, ${s.city}, TN. ${s.role} ${s.rating} stars from ${s.reviews.toLocaleString()} reviews.`,
-      }
-    : {};
+  return s ? { title: `${s.name} store`, description: `American Jewelry ${s.name}: ${s.address1}, ${s.city}, TN. ${s.role}` } : {};
 }
 
 export default function StorePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -39,61 +36,67 @@ async function StorePageContent({ params }: { params: Promise<{ slug: string }> 
   return (
     <>
       <JsonLd data={storeJsonLd(s)} />
-      <Section className="pt-20 pb-14">
-        <Heading eyebrow={`American Jewelry · ${s.city}, Tennessee`} title={s.name} lede={s.role} size="xl" />
+      <Section className="pt-16 md:pt-24 pb-12 md:pb-16">
+        <PageTitle eyebrow={`American Jewelry · ${s.city}, Tennessee`} title={s.name} lede={s.role} />
       </Section>
       <Section>
-        <div className="grid md:grid-cols-[1fr_1fr_1.2fr] gap-10 border-t border-navy pt-8">
-          <div className="flex flex-col gap-4">
-            <span className="label text-gilt">Address</span>
-            <p className="text-ink/85 leading-relaxed">
-              {s.address1}
-              <br />
-              {s.city}, {s.state} {s.zip}
-            </p>
-            <span className="label text-gilt">Phone</span>
-            <p className="text-ink/85 select-all">{s.phone}</p>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.mapQuery)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="label text-navy hover:text-gilt"
-            >
-              Directions →
+        <PhotoBand k={STORE_PHOTO[s.slug]} />
+      </Section>
+      <Section className="pt-16 md:pt-24">
+        <div className="grid md:grid-cols-3 gap-10 hair pt-10">
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-1.5">
+              <span className="caps-sm text-muted">Address</span>
+              <p className="text-ink-2 leading-relaxed">
+                {s.address1}
+                <br />
+                {s.city}, {s.state} {s.zip}
+              </p>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <span className="caps-sm text-muted">Phone</span>
+              <p className="text-ink-2 select-all">{s.phone}</p>
+            </div>
+            <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.mapQuery)}`} target="_blank" rel="noreferrer" className="link self-start">
+              Directions
             </a>
           </div>
-          <div className="flex flex-col gap-4">
-            <span className="label text-gilt">Hours</span>
-            <dl className="flex flex-col gap-1 text-sm">
-              {s.hours.map((h) => (
-                <div key={h.days} className="flex justify-between gap-4">
-                  <dt className="text-muted">{h.days}</dt>
-                  <dd className="text-ink/85">{h.open}</dd>
-                </div>
-              ))}
-            </dl>
-            <span className="label text-navy">
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-1.5">
+              <span className="caps-sm text-muted">Hours</span>
+              <dl className="flex flex-col gap-1 text-sm">
+                {s.hours.map((h) => (
+                  <div key={h.days} className="flex justify-between gap-4 max-w-xs">
+                    <dt className="text-muted">{h.days}</dt>
+                    <dd className="text-ink-2">{h.open}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <span className="caps-sm text-muted">
               {s.rating.toFixed(1)} ★ · {s.reviews.toLocaleString()} Google reviews
             </span>
           </div>
-          <div className="flex flex-col gap-4">
-            <span className="label text-gilt">At this store</span>
-            <ul className="flex flex-col gap-2 text-ink/85">
-              {s.services.map((x) => (
-                <li key={x} className="border-b border-line pb-2">
-                  {x}
-                </li>
-              ))}
-            </ul>
-            <Link href={`/appointments?store=${s.slug}`} className="btn self-start mt-2">
-              Book an appointment in {s.name}
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-1.5">
+              <span className="caps-sm text-muted">At this store</span>
+              <ul className="flex flex-col text-sm text-ink-2">
+                {s.services.map((x) => (
+                  <li key={x} className="py-2 border-b border-hair">
+                    {x}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Link href={`/appointments?store=${s.slug}`} className="btn self-start">
+              Book in {s.name}
             </Link>
           </div>
         </div>
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
-          <span className="text-ink/80">Looking for {other.name}?</span>
-          <Link href={`/stores/${other.slug}`} className="label text-navy hover:text-gilt">
-            {other.name} store →
+        <div className="mt-20 hair pt-6 flex flex-wrap items-center justify-between gap-4">
+          <span className="text-ink-2">Looking for {other.name}?</span>
+          <Link href={`/stores/${other.slug}`} className="link">
+            {other.name} store
           </Link>
         </div>
       </Section>

@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { PageFallback } from "@/components/PageFallback";
 import type { Metadata } from "next";
+import { PageFallback } from "@/components/PageFallback";
 import { Section } from "@/components/Section";
-import { PieceArt } from "@/components/PieceArt";
-import { PieceCard } from "@/components/PieceCard";
+import { ProductTile } from "@/components/ProductTile";
 import { PieceConfigurator } from "@/components/PieceConfigurator";
-import { RingViewer } from "@/components/three/RingViewer";
+import { PieceGallery } from "@/components/PieceGallery";
 import { PIECES, designBySlug, pieceByHandle, piecesForDesign, tierBySlug } from "@/lib/catalog/data";
+import { PIECE_PHOTOS } from "@/lib/catalog/photos";
 import { PIECE_TYPE_LABEL } from "@/lib/catalog/types";
 import { JsonLd, productJsonLd } from "@/lib/seo";
 
@@ -42,96 +42,98 @@ async function PiecePageContent({ params }: { params: Promise<{ handle: string }
   const is3d = RING_TYPES.has(piece.pieceType);
   const setting = piece.design === "shooting-star" ? "shooting-star" : piece.design === "prism" ? "prism" : "signal";
   const carat = piece.pieceType === "solitaire" ? 1.5 : piece.pieceType === "signet" ? 0.5 : 0.35;
+  const manMade = piece.versions.some((v) => v.origin === "man-made");
 
   return (
     <>
       <JsonLd data={productJsonLd(piece)} />
-      <Section className="pt-8">
-        <nav className="text-xs text-muted flex flex-wrap gap-2" aria-label="Breadcrumb">
-          <Link href={`/${tier.slug}`} className="hover:text-navy">
+      <Section className="pt-6 md:pt-8">
+        <nav className="caps-sm text-muted flex flex-wrap gap-2" aria-label="Breadcrumb">
+          <Link href={`/${tier.slug}`} className="hover:text-ink">
             {tier.name}
           </Link>
           {design && (
             <>
               <span>/</span>
-              <Link href={`/designs/${design.slug}`} className="hover:text-navy">
+              <Link href={`/designs/${design.slug}`} className="hover:text-ink">
                 {design.name}
               </Link>
             </>
           )}
           <span>/</span>
-          <span className="text-navy">{PIECE_TYPE_LABEL[piece.pieceType]}</span>
+          <span className="text-ink">{PIECE_TYPE_LABEL[piece.pieceType]}</span>
         </nav>
       </Section>
 
-      <Section className="pt-8 pb-20">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-start">
-          <div className="flex flex-col gap-4">
-            <div className="aspect-square border border-line overflow-hidden plate">
-              {is3d ? (
-                <RingViewer metal={piece.metals[0]} setting={setting} carat={carat} className="w-full h-full" />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center p-16">
-                  <PieceArt art={piece.art} className="w-full h-full" />
-                </div>
-              )}
-            </div>
-            <div className="grid grid-cols-4 gap-3">
-              {[0, 1, 2, 3].map((i) => (
-                <div key={i} className="aspect-square border border-line plate flex items-center justify-center p-5">
-                  <PieceArt art={piece.art} className="w-full h-full opacity-70" tone={i % 2 ? "gilt" : "navy"} />
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-muted">
-              {is3d ? "Drag to turn. A stand-in model until the piece's own CAD is exported." : "Photography in progress. Line drawings stand in."}
-            </p>
-          </div>
+      <Section className="pt-6 md:pt-8">
+        <div className="grid lg:grid-cols-[1.25fr_1fr] gap-10 lg:gap-20 items-start">
+          <PieceGallery photos={PIECE_PHOTOS[piece.handle] ?? ["hero-box"]} three={is3d ? { metal: piece.metals[0], setting, carat } : undefined} />
 
-          <div className="flex flex-col gap-8">
+          <div className="lg:sticky lg:top-32 flex flex-col gap-8">
             <div className="flex flex-col gap-3">
-              <span className="eyebrow">
+              <span className="caps-sm text-muted">
                 {tier.name}
                 {design ? ` · ${design.name}` : ""}
                 {piece.family ? ` · ${piece.family}` : ""}
               </span>
-              <h1 className="font-display text-4xl md:text-5xl text-navy leading-tight balance">{piece.name}</h1>
-              <p className="text-lg text-ink/85 leading-relaxed">{piece.description}</p>
+              <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{piece.name}</h1>
+              <p className="text-ink-2 leading-relaxed">{piece.description}</p>
             </div>
 
             <PieceConfigurator piece={piece} />
 
-            <dl className="border-t border-navy divide-y divide-line">
-              {piece.specs.map((s) => (
-                <div key={s.label} className="grid grid-cols-[8rem_1fr] gap-4 py-3 text-sm">
-                  <dt className="label text-muted">{s.label}</dt>
-                  <dd className="text-ink/85">{s.value}</dd>
-                </div>
-              ))}
-              <div className="grid grid-cols-[8rem_1fr] gap-4 py-3 text-sm">
-                <dt className="label text-muted">Care</dt>
-                <dd className="text-ink/85">Lifetime cleaning, prong checks and polishing at either store. Included.</dd>
-              </div>
-              <div className="grid grid-cols-[8rem_1fr] gap-4 py-3 text-sm">
-                <dt className="label text-muted">Delivery</dt>
-                <dd className="text-ink/85">Insured, signature required, in the house box. Or collect at the store and we size it on the spot.</dd>
-              </div>
-            </dl>
+            <div className="hair">
+              <details className="acc border-b border-hair" open>
+                <summary>Details</summary>
+                <dl className="pb-5 flex flex-col gap-2 text-sm">
+                  {piece.specs.map((s) => (
+                    <div key={s.label} className="grid grid-cols-[7rem_1fr] gap-4">
+                      <dt className="text-muted">{s.label}</dt>
+                      <dd className="text-ink-2">{s.value}</dd>
+                    </div>
+                  ))}
+                  {manMade && (
+                    <div className="grid grid-cols-[7rem_1fr] gap-4">
+                      <dt className="text-muted">Origin</dt>
+                      <dd className="text-ink-2">Man-made (laboratory-grown) · IGI Laboratory Grown Diamond Report · as grown, no post-growth treatment</dd>
+                    </div>
+                  )}
+                  <div className="grid grid-cols-[7rem_1fr] gap-4">
+                    <dt className="text-muted">Made</dt>
+                    <dd className="text-ink-2">Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.</dd>
+                  </div>
+                </dl>
+              </details>
+              <details className="acc border-b border-hair">
+                <summary>Lifetime Care Program</summary>
+                <p className="pb-5 text-sm text-ink-2 leading-relaxed">
+                  Cleaning, prong checks and polishing at either store, for as long as you own the piece. One free resize within
+                  60 days on rings we made.
+                </p>
+              </details>
+              <details className="acc border-b border-hair">
+                <summary>Delivery and returns</summary>
+                <p className="pb-5 text-sm text-ink-2 leading-relaxed">
+                  Insured, adult signature required, in the house box. Or collect in store and we size it on the spot. Made-to-order,
+                  engraved and sized pieces are exchangeable, not refundable; ready-to-ship pieces may be returned within 30 days.
+                </p>
+              </details>
+            </div>
           </div>
         </div>
       </Section>
 
       {siblings.length > 0 && design && (
-        <Section>
-          <div className="flex items-end justify-between gap-6 mb-8">
-            <h2 className="font-display text-3xl md:text-4xl text-navy">More in {design.name}</h2>
-            <Link href={`/designs/${design.slug}`} className="label text-navy hover:text-gilt">
-              The whole design →
+        <Section className="pt-24 md:pt-32">
+          <div className="flex items-end justify-between gap-6 mb-10">
+            <h2 className="h-section text-[1.75rem] md:text-[2.25rem]">More in {design.name}</h2>
+            <Link href={`/designs/${design.slug}`} className="link">
+              The design
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-8">
             {siblings.map((p) => (
-              <PieceCard key={p.handle} piece={p} />
+              <ProductTile key={p.handle} piece={p} />
             ))}
           </div>
         </Section>

@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { Section } from "@/components/Section";
-import { PieceCard } from "@/components/PieceCard";
-import { Mark } from "@/components/Mark";
+import { Section, SectionTitle } from "@/components/Section";
+import { ProductTile } from "@/components/ProductTile";
+import { Pic } from "@/components/Pic";
 import { COLLECTIONS, PIECES, STORES, TIERS, TOTAL_REVIEWS } from "@/lib/catalog/data";
+import { COLLECTION_PHOTO, STORE_PHOTO, TIER_PHOTO } from "@/lib/catalog/photos";
 import { JsonLd, organizationJsonLd } from "@/lib/seo";
 
 export default function Home() {
-  const featured = ["signal-solitaire", "shooting-star-pendant", "prism-signet", "grid-tennis-bracelet"]
+  const selected = ["signal-solitaire", "shooting-star-pendant", "prism-signet", "signal-studs", "grid-tennis-bracelet", "shooting-star-ring", "grid-eternity-band", "prism-necklace"]
     .map((h) => PIECES.find((p) => p.handle === h)!)
     .filter(Boolean);
 
@@ -15,151 +16,136 @@ export default function Home() {
       <JsonLd data={organizationJsonLd()} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 pt-20 pb-24 md:pt-32 md:pb-36 grid gap-12 md:grid-cols-[1.1fr_0.9fr] items-center">
-          <div className="flex flex-col gap-7">
-            <span className="eyebrow">Brentwood · Mt. Juliet · Tennessee</span>
-            <h1 className="font-display font-light leading-[0.98] text-navy text-[3.4rem] md:text-[5.6rem] balance">
-              A jewelry house,
-              <br />
-              <em className="font-normal">made in America.</em>
-            </h1>
-            <p className="text-lg md:text-xl text-ink/80 leading-relaxed max-w-xl">
-              We draw every design, cast every piece and set every stone at our own bench in Tennessee. One-of-one
-              pieces, signature designs in natural diamond and solid gold, and man made diamonds held to a standard no
-              one else publishes.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/americana" className="btn">
-                See the designs
-              </Link>
-              <Link href="/appointments" className="btn btn-ghost">
-                Book an appointment
-              </Link>
-            </div>
-          </div>
-          <div className="plate aspect-[4/5] border border-line flex items-center justify-center">
-            <Mark className="w-1/2 text-navy/90" />
+      <section className="relative h-[78vh] min-h-[520px] max-h-[900px] overflow-hidden bg-navy">
+        <Pic k="hero-box" priority sizes="100vw" position="50% 45%" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="mx-auto max-w-[1440px] px-5 md:px-10 pb-14 md:pb-20 flex flex-col items-start gap-6 text-white">
+            <span className="caps text-white/85">Brentwood · Mt. Juliet, Tennessee</span>
+            <h1 className="h-display text-[3rem] md:text-[5.25rem] max-w-3xl">The American jewelry house.</h1>
+            <Link href="/house" className="link link-light">
+              Discover the house
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Three tiers */}
-      <Section className="pt-4">
-        <div className="grid md:grid-cols-3 border-t border-navy">
-          {TIERS.map((t, i) => (
-            <Link
-              key={t.slug}
-              href={`/${t.slug}`}
-              className={`group flex flex-col gap-4 py-10 pr-8 ${i > 0 ? "md:pl-8 md:border-l border-line" : ""} border-b border-line md:border-b-0`}
-            >
-              <span className="label text-muted">Tier {t.numeral}</span>
-              <span className="font-display text-4xl text-navy group-hover:text-gilt transition-colors">{t.name}</span>
-              <span className="font-display text-xl italic text-ink/80">{t.tagline}</span>
-              <span className="text-sm text-muted leading-relaxed">{t.stones}</span>
-              <span className="label text-gilt mt-2">Enter →</span>
+      {/* Statement */}
+      <Section className="py-20 md:py-28">
+        <p className="font-display font-light text-[1.75rem] md:text-[2.5rem] leading-[1.25] text-center max-w-4xl mx-auto text-balance">
+          We draw every design, set every stone and finish every piece at our own bench. Three tiers, one hand, and a mark
+          you will not find anywhere else.
+        </p>
+      </Section>
+
+      {/* Tiers */}
+      <Section>
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          {TIERS.map((t) => (
+            <Link key={t.slug} href={`/${t.slug}`} className="group flex flex-col gap-4">
+              <div className="relative aspect-[4/5] overflow-hidden bg-ivory img-hover">
+                <Pic k={TIER_PHOTO[t.slug]} sizes="(min-width: 768px) 33vw, 100vw" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <span className="caps-sm text-muted">Tier {t.numeral}</span>
+                <span className="font-display text-[1.75rem] leading-tight">{t.name}</span>
+                <span className="text-sm text-ink-2">{t.tagline}</span>
+                <span className="link mt-2 self-start">Discover</span>
+              </div>
             </Link>
           ))}
         </div>
       </Section>
 
-      {/* Featured pieces */}
-      <Section className="pt-24">
-        <div className="flex items-end justify-between gap-6 mb-10">
-          <div className="flex flex-col gap-3">
-            <span className="eyebrow">From the bench</span>
-            <h2 className="font-display text-4xl md:text-5xl text-navy">Four pieces to start with</h2>
-          </div>
-          <Link href="/americana" className="label text-navy hover:text-gilt hidden sm:inline">
-            All designs →
+      {/* Editorial: Americana */}
+      <section className="mt-24 md:mt-32 relative h-[70vh] min-h-[460px] overflow-hidden bg-ivory">
+        <Pic k="hero-hand" sizes="100vw" position="50% 40%" />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-5 text-white px-5">
+          <span className="caps text-white/85">Tier II</span>
+          <h2 className="h-display text-[2.75rem] md:text-[4.5rem]">Americana</h2>
+          <p className="lede text-white/90 max-w-xl">The signature designs, in solid gold, birthstone and natural diamond versions.</p>
+          <Link href="/americana" className="link link-light mt-2">
+            See the designs
           </Link>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {featured.map((p) => (
-            <PieceCard key={p.handle} piece={p} showTier />
+      </section>
+
+      {/* Selected pieces */}
+      <Section className="pt-24 md:pt-32">
+        <SectionTitle eyebrow="From the bench" title="Selected pieces" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-8 mt-12">
+          {selected.map((p) => (
+            <ProductTile key={p.handle} piece={p} />
           ))}
+        </div>
+        <div className="flex justify-center mt-12">
+          <Link href="/americana" className="btn btn-outline">
+            All designs
+          </Link>
         </div>
       </Section>
 
-      {/* The bench / the house */}
-      <section className="bg-navy text-cream mt-28">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 py-24 grid gap-14 md:grid-cols-2 items-center">
-          <div className="flex flex-col gap-6">
-            <span className="eyebrow !text-gilt-2">The house</span>
-            <h2 className="font-display font-light text-4xl md:text-6xl leading-[1.02] balance">
-              We don&apos;t buy jewelry and sell it. We make it.
-            </h2>
-            <p className="text-cream/80 text-lg leading-relaxed max-w-xl">
-              Most jewelers are stores. Their cases are filled by vendors who fill everyone else&apos;s cases too. Ours
-              are filled from our own bench: drawn by our designer, cast in our workshop, set by hand, and struck with
-              a mark you will not find anywhere else.
+      {/* The bench */}
+      <Section className="pt-24 md:pt-32">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+          <div className="relative aspect-[4/3] overflow-hidden bg-ivory">
+            <Pic k="bench" sizes="(min-width: 768px) 50vw, 100vw" />
+          </div>
+          <div className="flex flex-col gap-6 md:pr-10">
+            <span className="caps text-muted">The House</span>
+            <h2 className="h-section text-[2.25rem] md:text-[3.25rem]">Most jewelers are stores. We are a house.</h2>
+            <p className="lede">
+              A store buys what vendors make and sells it. A house draws its own designs, sets its own stones, finishes
+              every piece by hand, marks it, and stands behind it for life. In Mt. Juliet you can watch it happen through
+              the glass.
             </p>
-            <Link href="/house" className="btn !bg-transparent !border-cream/50 !text-cream hover:!bg-cream hover:!text-navy self-start">
+            <Link href="/house" className="link self-start">
               Our story
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-px bg-cream/15 border border-cream/15">
-            {[
-              ["Drawn", "Every design begins as a drawing by our designer. Nothing is licensed, bought or copied."],
-              ["Cast", "Lost-wax casting in our own workshop. Solid gold and platinum, never plated, never hollow."],
-              ["Set", "Stones set by hand at a bench you can watch through glass in Mt. Juliet."],
-              ["Marked", "The AJ hallmark struck inside every shank, with the tier mark above it."],
-            ].map(([k, v]) => (
-              <div key={k} className="bg-navy p-7 flex flex-col gap-3">
-                <span className="font-display text-3xl text-gilt-2">{k}</span>
-                <span className="text-sm text-cream/75 leading-relaxed">{v}</span>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
+      </Section>
 
       {/* Collections */}
-      <Section className="pt-24">
-        <div className="flex flex-col gap-3 mb-10">
-          <span className="eyebrow">Collections</span>
-          <h2 className="font-display text-4xl md:text-5xl text-navy">Designs, gathered by what they are for</h2>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Section className="pt-24 md:pt-32">
+        <SectionTitle eyebrow="Collections" title="Gathered by what they are for" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8 mt-12">
           {COLLECTIONS.map((c) => (
-            <Link key={c.slug} href={`/collections/${c.slug}`} className="group border border-line p-7 flex flex-col gap-3 hover:border-gilt transition-colors bg-paper">
-              <span className="font-display text-3xl text-navy">{c.name}</span>
-              <span className="text-sm text-muted leading-relaxed">{c.intro}</span>
-              <span className="label text-gilt mt-auto pt-4">View →</span>
+            <Link key={c.slug} href={`/collections/${c.slug}`} className="group flex flex-col gap-3">
+              <div className="relative aspect-square overflow-hidden bg-ivory img-hover">
+                <Pic k={COLLECTION_PHOTO[c.slug]} sizes="(min-width: 1024px) 25vw, 50vw" />
+              </div>
+              <span className="font-display text-[1.375rem]">{c.name}</span>
+              <span className="text-[0.8125rem] text-ink-2 -mt-2">{c.intro}</span>
             </Link>
           ))}
         </div>
       </Section>
 
-      {/* Stores + reviews */}
-      <Section className="pt-24">
-        <div className="grid gap-10 md:grid-cols-[1fr_1fr_1.2fr] items-start">
-          {STORES.map((s) => (
-            <Link key={s.slug} href={`/stores/${s.slug}`} className="group flex flex-col gap-3 border-t border-navy pt-6">
-              <span className="font-display text-3xl text-navy group-hover:text-gilt transition-colors">{s.name}</span>
-              <span className="text-sm text-ink/80">
-                {s.address1}
-                <br />
-                {s.city}, {s.state} {s.zip}
-              </span>
-              <span className="text-sm text-muted">{s.role}</span>
-              <span className="label text-navy">
-                {s.rating.toFixed(1)} ★ · {s.reviews.toLocaleString()} reviews
-              </span>
-            </Link>
-          ))}
-          <div className="border-t border-navy pt-6 flex flex-col gap-4">
-            <span className="font-display text-5xl text-navy">{TOTAL_REVIEWS.toLocaleString()}</span>
-            <span className="text-sm text-ink/80 leading-relaxed">
-              Google reviews across two stores, averaging 4.9 stars. Families in Williamson and Wilson County have trusted us
-              with engagement rings, heirlooms and repairs for years. The house is built on that.
-            </span>
-            <Link href="/appointments" className="btn self-start">
-              Book an appointment
-            </Link>
+      {/* Stores */}
+      <section className="mt-24 md:mt-32 bg-ivory">
+        <Section className="py-20 md:py-28">
+          <SectionTitle eyebrow="Tennessee" title="Two stores. One bench." />
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mt-12">
+            {STORES.map((s) => (
+              <Link key={s.slug} href={`/stores/${s.slug}`} className="group flex flex-col gap-4">
+                <div className="relative aspect-[16/10] overflow-hidden bg-white img-hover">
+                  <Pic k={STORE_PHOTO[s.slug]} sizes="(min-width: 768px) 50vw, 100vw" />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="font-display text-[1.75rem]">{s.name}</span>
+                  <span className="text-sm text-ink-2">
+                    {s.address1}, {s.city}
+                  </span>
+                  <span className="text-[0.8125rem] text-muted">{s.role}</span>
+                </div>
+              </Link>
+            ))}
           </div>
-        </div>
-      </Section>
+          <p className="caps-sm text-muted text-center mt-14">{TOTAL_REVIEWS.toLocaleString()} Google reviews · 4.9 stars across both stores</p>
+        </Section>
+      </section>
     </>
   );
 }

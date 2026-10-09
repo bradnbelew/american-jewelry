@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { PageFallback } from "@/components/PageFallback";
 import type { Metadata } from "next";
-import { Section, Heading } from "@/components/Section";
-import { PieceCard } from "@/components/PieceCard";
+import { PageFallback } from "@/components/PageFallback";
+import { Section, PageTitle } from "@/components/Section";
+import { PhotoBand } from "@/components/PhotoBand";
+import { ProductTile } from "@/components/ProductTile";
 import { DESIGNS, designBySlug, piecesForDesign, tierBySlug } from "@/lib/catalog/data";
+import { DESIGN_PHOTO } from "@/lib/catalog/photos";
 
 export function generateStaticParams() {
   return DESIGNS.map((d) => ({ slug: d.slug }));
@@ -34,35 +36,38 @@ async function DesignPageContent({ params }: { params: Promise<{ slug: string }>
 
   return (
     <>
-      <Section className="pt-20 pb-14">
-        <Heading eyebrow={`${tier.name} · design`} title={d.name} lede={d.motif} size="xl" />
-      </Section>
-      <Section className="pb-16">
-        <div className="grid md:grid-cols-2 gap-10 border-t border-navy pt-8">
-          <p className="text-lg text-ink/85 leading-relaxed">{d.story}</p>
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1">
-              <span className="label text-gilt">Signature</span>
-              <span className="text-ink/85">{d.signature}</span>
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="label text-gilt">Versions</span>
-              <span className="text-ink/85">
-                {d.tier === "americana"
-                  ? "Solid gold, birthstone, and natural diamond. Same drawing, three ways."
-                  : "Man made diamonds only, D–F, VVS, to the New American Standard."}
-              </span>
-            </div>
-            <Link href={`/${tier.slug}`} className="label text-navy hover:text-gilt">
-              All of {tier.name} →
-            </Link>
-          </div>
-        </div>
+      <Section className="pt-16 md:pt-24 pb-12 md:pb-16">
+        <PageTitle eyebrow={`${tier.name} · Design`} title={d.name} lede={d.motif} />
       </Section>
       <Section>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <PhotoBand k={DESIGN_PHOTO[d.slug]} />
+      </Section>
+      <Section className="pt-16 md:pt-24" width="text">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 hair pt-10">
+          <p className="lede">{d.story}</p>
+          <dl className="flex flex-col gap-6">
+            <div className="flex flex-col gap-1.5">
+              <dt className="caps-sm text-muted">Signature</dt>
+              <dd className="text-ink-2 leading-relaxed">{d.signature}</dd>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <dt className="caps-sm text-muted">Versions</dt>
+              <dd className="text-ink-2 leading-relaxed">
+                {d.tier === "americana"
+                  ? "Solid gold, birthstone, and natural diamond. Same drawing, three ways."
+                  : "Man-made diamonds only, D–F, VVS, to the New American Standard."}
+              </dd>
+            </div>
+            <Link href={`/${tier.slug}`} className="link self-start">
+              All of {tier.name}
+            </Link>
+          </dl>
+        </div>
+      </Section>
+      <Section className="pt-16 md:pt-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-8">
           {pieces.map((p) => (
-            <PieceCard key={p.handle} piece={p} />
+            <ProductTile key={p.handle} piece={p} />
           ))}
         </div>
       </Section>

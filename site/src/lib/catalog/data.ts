@@ -31,8 +31,8 @@ export const TIERS: Tier[] = [
     slug: "new-american",
     name: "New American",
     numeral: "III",
-    tagline: "Man made diamonds. Made in Tennessee.",
-    stones: "Man made diamonds, D–F color, VVS clarity, every one.",
+    tagline: "Man-made diamonds. Designed in Tennessee.",
+    stones: "Man-made diamonds, D–F color, VVS clarity, every one.",
     intro:
       "Bolder designs, more light, and a standard most stores cannot meet at any price: colorless, flawless to the loupe, independently graded, set at our bench.",
     pricing: "listed",
@@ -104,9 +104,9 @@ export const COLLECTIONS: Collection[] = [
   {
     slug: "bridal",
     name: "Bridal",
-    intro: "Engagement and wedding, in natural or man made diamond, in the same house settings.",
+    intro: "Engagement and wedding, in natural or man-made diamond, in the same house settings.",
     story:
-      "The one place our tiers share designs. Choose the setting; then choose the stone: a natural diamond in Americana, or a man made diamond in New American. Every ring is labeled plainly with which it is.",
+      "The one place our tiers share designs. Choose the setting; then choose the stone: a natural diamond in Americana, or a man-made diamond in New American. Every ring is labeled plainly with which it is.",
     crossTier: true,
   },
   {
@@ -145,7 +145,7 @@ const manMade = (name: string, price: number, spec: string): Version => ({
   key: "man-made",
   name,
   priceCents: usd(price),
-  stones: `${spec} man made diamond${spec.includes("tw") || spec.includes("stones") ? "s" : ""}, D–F, VVS`,
+  stones: `${spec} man-made diamond${spec.includes("tw") || spec.includes("stones") ? "s" : ""}, D–F, VVS`,
   origin: "man-made",
 });
 
@@ -428,9 +428,9 @@ export const PIECES: Piece[] = [
     leadTime: "Made to order · about 2 weeks",
     madeToOrder: true,
     description:
-      "One man made diamond, colorless and flawless to the loupe, on an open four-prong head. The same setting is available in Americana with a natural diamond.",
+      "One man-made diamond, colorless and flawless to the loupe, on an open four-prong head. The same setting is available in Americana with a natural diamond.",
     specs: [
-      { label: "Center", value: "Round brilliant man made diamond, D–F, VVS1–VVS2, Ideal cut, IGI report, laser inscribed" },
+      { label: "Center", value: "Round brilliant man-made diamond, D–F, VVS1–VVS2, Ideal cut, IGI report, laser inscribed" },
       { label: "Band", value: "1.8 mm knife edge" },
       { label: "Hallmark", value: "AJ line, inside shank" },
     ],
@@ -454,7 +454,7 @@ export const PIECES: Piece[] = [
     madeToOrder: true,
     description: "The Signal head as a stud: open on four sides, the stone the whole story.",
     specs: [
-      { label: "Stones", value: "Matched pair, man made diamonds, D–F, VVS" },
+      { label: "Stones", value: "Matched pair, man-made diamonds, D–F, VVS" },
       { label: "Backs", value: "Screw backs, same metal" },
     ],
     collections: [],
@@ -471,7 +471,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose"],
     leadTime: "Made to order · about 2 weeks",
     madeToOrder: true,
-    description: "Calibrated man made diamonds set edge to edge in a square grid. No gaps, no gallery.",
+    description: "Calibrated man-made diamonds set edge to edge in a square grid. No gaps, no gallery.",
     specs: [
       { label: "Length", value: "6.5, 7 or 7.5 in" },
       { label: "Clasp", value: "Hidden box clasp with the AJ line, double safety" },
@@ -493,7 +493,7 @@ export const PIECES: Piece[] = [
     description: "The Grid line at the neck: one continuous field of light, 16 inches of it.",
     specs: [
       { label: "Length", value: "16 or 18 in" },
-      { label: "Stones", value: "Calibrated 2.5 mm man made diamonds, D–F, VVS" },
+      { label: "Stones", value: "Calibrated 2.5 mm man-made diamonds, D–F, VVS" },
     ],
     collections: [],
     art: "tennis",
@@ -510,7 +510,7 @@ export const PIECES: Piece[] = [
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9"],
     leadTime: "Made to order · about 2 weeks",
     madeToOrder: true,
-    description: "Man made diamonds all the way around, set in the Grid, with no visible metal between them.",
+    description: "Man-made diamonds all the way around, set in the Grid, with no visible metal between them.",
     specs: [
       { label: "Band", value: "2.4 mm" },
       { label: "Note", value: "Full eternity bands cannot be resized; we remake them" },
@@ -548,7 +548,7 @@ export const PIECES: Piece[] = [
     engraving: true,
     leadTime: "Made to order · about 3 weeks",
     madeToOrder: true,
-    description: "A square signet with one man made diamond flush at the center of a brushed face.",
+    description: "A square signet with one man-made diamond flush at the center of a brushed face.",
     specs: [
       { label: "Face", value: "13 mm square, brushed" },
       { label: "Weight", value: "about 15 g in 14k" },

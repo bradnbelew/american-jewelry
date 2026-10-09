@@ -1,107 +1,279 @@
 @import "tailwindcss";
 
-/* American Jewelry — house tokens. Single light theme by design: a jewelry house does not flip to dark. */
+/*
+ * American Jewelry — house system.
+ * White ground, near-black type, one navy for the primary action, hairline rules.
+ * Photography carries the color; the interface stays out of its way.
+ */
 :root {
-  --cream: #f6f2ea;
-  --cream-2: #efe9dd;
-  --paper: #fbf9f4;
   --white: #ffffff;
+  --ivory: #f7f5f0;
+  --ink: #141414;
+  --ink-2: #4a4a4a;
+  --muted: #7a7a7a;
+  --hair: #e6e3dc;
   --navy: #14213a;
-  --navy-2: #1f2c4d;
-  --ink: #1b2238;
-  --muted: #6b7080;
-  --line: #ddd6c8;
+  --navy-2: #1b2b4b;
   --gilt: #a58a4c;
-  --gilt-2: #c9ae6e;
-  --red: #8f2430;
 }
 
 @theme inline {
-  --color-cream: var(--cream);
-  --color-cream-2: var(--cream-2);
-  --color-paper: var(--paper);
+  --color-white: var(--white);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-hair: var(--hair);
   --color-navy: var(--navy);
   --color-navy-2: var(--navy-2);
-  --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-line: var(--line);
   --color-gilt: var(--gilt);
-  --color-gilt-2: var(--gilt-2);
-  --color-red: var(--red);
   --font-display: var(--font-cormorant);
-  --font-sans: var(--font-figtree);
+  --font-sans: var(--font-jost);
 }
 
 html {
   color-scheme: light;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--cream);
+  background: var(--white);
   color: var(--ink);
-  font-family: var(--font-figtree), system-ui, sans-serif;
+  font-family: var(--font-jost), "Futura", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .font-display {
   font-family: var(--font-cormorant), Georgia, serif;
 }
 
-.eyebrow {
-  font-size: 0.72rem;
-  font-weight: 600;
+/* Type roles */
+.h-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.h-section {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.caps {
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.caps-sm {
+  font-size: 0.625rem;
+  font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gilt);
+}
+.lede {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  text-wrap: pretty;
 }
 
-.label {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.rule {
-  border-top: 1px solid var(--line);
-}
-
+/* Controls: fixed heights so state changes never move layout */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.95rem 1.6rem;
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  height: 3rem;
+  padding: 0 1.75rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   border: 1px solid var(--navy);
   background: var(--navy);
-  color: var(--cream);
-  transition: background 0.2s, color 0.2s;
+  color: var(--white);
+  white-space: nowrap;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 .btn:hover {
   background: var(--navy-2);
+  border-color: var(--navy-2);
 }
-.btn-ghost {
+.btn:focus-visible {
+  outline: 2px solid var(--gilt);
+  outline-offset: 2px;
+}
+.btn-outline {
   background: transparent;
-  color: var(--navy);
+  color: var(--ink);
+  border-color: var(--ink);
 }
-.btn-ghost:hover {
-  background: var(--navy);
-  color: var(--cream);
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+.btn-light {
+  background: var(--white);
+  color: var(--ink);
+  border-color: var(--white);
+}
+.btn-light:hover {
+  background: var(--ivory);
+  border-color: var(--ivory);
 }
 
-.plate {
-  background: linear-gradient(180deg, var(--paper), var(--cream-2));
+.link {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--ink);
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.link:hover {
+  color: var(--muted);
+  border-color: var(--muted);
+}
+.link-light {
+  color: var(--white);
+  border-color: var(--white);
+}
+.link-light:hover {
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.75);
 }
 
-.balance {
-  text-wrap: balance;
+/* Selection rows: border is always 1px; only the color changes */
+.opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0 1rem;
+  border: 1px solid var(--hair);
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease;
+}
+.opt:hover {
+  border-color: var(--ink-2);
+}
+.opt[aria-pressed="true"],
+.opt[data-active="true"] {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.opt:focus-visible {
+  outline: 2px solid var(--gilt);
+  outline-offset: 2px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--hair);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  transition: border-color 0.15s ease;
+}
+.pill:hover {
+  border-color: var(--ink-2);
+}
+.pill[aria-pressed="true"] {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.field {
+  width: 100%;
+  height: 3rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--hair);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+select.field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23141414' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.5rem;
+}
+
+.hair {
+  border-top: 1px solid var(--hair);
+}
+
+/* Accordions without layout jump */
+details.acc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.25rem;
+  padding: 0.5rem 0;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+details.acc > summary::-webkit-details-marker {
+  display: none;
+}
+details.acc > summary::after {
+  content: "+";
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--muted);
+}
+details.acc[open] > summary::after {
+  content: "–";
+}
+
+.img-hover img {
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.img-hover:hover img {
+  transform: scale(1.03);
 }
 
 ::selection {
-  background: var(--gilt-2);
-  color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

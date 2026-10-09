@@ -14,36 +14,36 @@ const KINDS = [
 export function AppointmentForm({ prefill }: { prefill: Record<string, string> }) {
   const [sent, setSent] = useState(false);
   const context = Object.entries(prefill)
-    .filter(([k]) => !["store"].includes(k))
+    .filter(([k]) => !["store", "kind"].includes(k))
     .map(([k, v]) => `${k}: ${v}`)
     .join(" · ");
-  const defaultKind = prefill.tier === "royal-american" ? "viewing" : prefill.build || prefill.piece ? "fitting" : "bridal";
+  const defaultKind = prefill.kind ?? (prefill.tier === "royal-american" ? "viewing" : prefill.build || prefill.piece ? "fitting" : "bridal");
 
   if (sent) {
     return (
-      <div className="border border-line bg-paper p-10 flex flex-col gap-3 max-w-2xl">
-        <span className="eyebrow">Received</span>
-        <p className="font-display text-3xl text-navy">Thank you. We&apos;ll confirm by text or email within one business day.</p>
-        <p className="text-sm text-muted">In this preview nothing is sent yet. At launch this reaches the store team and your calendar.</p>
+      <div className="hair pt-10 flex flex-col gap-3 max-w-2xl">
+        <span className="caps-sm text-muted">Received</span>
+        <p className="h-section text-[1.75rem] md:text-[2.25rem]">Thank you. We&apos;ll confirm by text or email within one business day.</p>
+        <p className="text-[0.8125rem] text-muted">In this preview nothing is sent yet. At launch this reaches the store team and your calendar.</p>
       </div>
     );
   }
 
   return (
     <form
-      className="grid md:grid-cols-2 gap-x-10 gap-y-7 border-t border-navy pt-10"
+      className="grid md:grid-cols-2 gap-x-8 gap-y-6 hair pt-10"
       onSubmit={(e) => {
         e.preventDefault();
         setSent(true);
       }}
     >
       {context && (
-        <div className="md:col-span-2 text-sm text-muted border border-line bg-paper px-4 py-3">
-          We&apos;ll have this ready: <span className="text-navy">{context}</span>
-        </div>
+        <p className="md:col-span-2 text-[0.8125rem] text-ink-2 bg-ivory px-4 py-3">
+          We&apos;ll have this ready: <span className="text-ink">{context}</span>
+        </p>
       )}
       <Field label="Store">
-        <select id="store" name="store" defaultValue={prefill.store ?? "brentwood"} className={input}>
+        <select id="store" name="store" defaultValue={prefill.store ?? "brentwood"} className="field">
           {STORES.map((s) => (
             <option key={s.slug} value={s.slug}>
               {s.name} · {s.role.split(".")[0]}
@@ -52,7 +52,7 @@ export function AppointmentForm({ prefill }: { prefill: Record<string, string> }
         </select>
       </Field>
       <Field label="What for">
-        <select id="kind" name="kind" defaultValue={defaultKind} className={input}>
+        <select id="kind" name="kind" defaultValue={defaultKind} className="field">
           {KINDS.map(([v, l]) => (
             <option key={v} value={v}>
               {l}
@@ -61,34 +61,31 @@ export function AppointmentForm({ prefill }: { prefill: Record<string, string> }
         </select>
       </Field>
       <Field label="Name">
-        <input id="name" name="name" required className={input} autoComplete="name" />
+        <input id="name" name="name" required className="field" autoComplete="name" />
       </Field>
       <Field label="Phone or email">
-        <input id="contact" name="contact" required className={input} autoComplete="tel" />
+        <input id="contact" name="contact" required className="field" autoComplete="tel" />
       </Field>
       <Field label="Preferred day and time">
-        <input id="when" name="when" placeholder="Saturday morning, any weekday after 4" className={input} />
+        <input id="when" name="when" placeholder="Saturday morning, any weekday after 4" className="field" />
       </Field>
       <Field label="Anything we should know">
-        <input id="notes" name="notes" placeholder="Budget, ring size, an heirloom you're bringing" className={input} />
+        <input id="notes" name="notes" placeholder="Budget, ring size, an heirloom you're bringing" className="field" />
       </Field>
       <div className="md:col-span-2 flex flex-wrap items-center gap-6 pt-2">
         <button type="submit" className="btn">
           Request the appointment
         </button>
-        <span className="text-xs text-muted">We never share your details. Walk-ins are always welcome, too.</span>
+        <span className="text-[0.75rem] text-muted">We never share your details. Walk-ins are always welcome.</span>
       </div>
     </form>
   );
 }
 
-const input =
-  "w-full bg-paper border border-line px-4 py-3 text-navy placeholder:text-muted/60 focus:outline-none focus:border-gilt";
-
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="flex flex-col gap-2">
-      <span className="label text-navy">{label}</span>
+      <span className="caps-sm">{label}</span>
       {children}
     </label>
   );

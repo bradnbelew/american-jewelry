@@ -34,7 +34,7 @@ export function RingScene({ metal, setting, carat, stoneTint = "white", classNam
   return (
     <div className={className}>
       <Canvas dpr={[1, 2]} camera={{ position: [0, 1.4, 4.2], fov: 32 }} gl={{ antialias: true }}>
-        <color attach="background" args={["#f6f2ea"]} />
+        <color attach="background" args={["#f7f5f0"]} />
         <ambientLight intensity={0.25} />
         <directionalLight position={[3, 5, 4]} intensity={1.4} />
         <directionalLight position={[-4, 2, -3]} intensity={0.6} />

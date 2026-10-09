@@ -58,7 +58,7 @@ export function productJsonLd(p: Piece) {
     "@type": "Product",
     name: p.name,
     url: `${SITE}/pieces/${p.handle}`,
-    description: manMade ? `${p.description} Set with man made (laboratory-grown) diamonds.` : p.description,
+    description: manMade ? `${p.description} Set with man-made (laboratory-grown) diamonds.` : p.description,
     brand: { "@type": "Brand", name: "American Jewelry" },
     material: p.metals.join(", "),
     ...(price !== null
