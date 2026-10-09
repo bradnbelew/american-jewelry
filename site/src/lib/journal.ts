@@ -87,7 +87,7 @@ export const ARTICLES: Article[] = [
       { h: "Setting" },
       { p: "Stones are set by hand under magnification. Prongs are shaped over the stone, the seat is checked for a level table, and small stones in a tail or a hidden halo are set one at a time. This is the part you can watch through the glass in Mt. Juliet." },
       { h: "Finishing and the mark" },
-      { p: "The ring is polished, the inside is engraved if you asked for it, and the AJ hallmark and tier mark are struck inside the shank. The certificate is filled in with the report number and the initials of the people who did each step. Then the ring is cleaned once more and put in the box." },
+      { p: "The ring is polished, the inside is engraved if you asked for it, and the AJ hallmark and the mark of its name are struck inside the shank. The certificate is filled in with the report number and the initials of the people who did each step. Then the ring is cleaned once more and put in the box." },
       { h: "How long" },
       { p: "About two weeks for a man-made center stone and about three for a natural one, which has to be found and reported first; a hidden halo or a birthstone adds a week. We tell you when it is cast and when it is finished." },
     ],

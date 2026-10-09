@@ -8,7 +8,7 @@ import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "The House",
-  description: "Why American Jewelry is a house and not a store: one designer, one bench in Tennessee, three tiers, one hallmark, and what we will and will not say about where things come from.",
+  description: "Why American Jewelry is a house and not a store: one designer, one bench in Tennessee, one hallmark, and what we will and will not say about where things come from.",
   alternates: { canonical: "/house" },
 };
 
@@ -53,7 +53,7 @@ export default function HousePage() {
               ["Drawn", "Every design begins as a drawing by our designer. A motif is drawn once, then worked across a ring, a band, a pendant, a bracelet and a signet, so a family of pieces shares one hand."],
               ["Modeled", "The drawing becomes a model: the proportions, the weight in the hand, the seat for each stone. For a commission you can turn it on screen and hold a printed wax before anything is cast."],
               ["Cast", "The model is cast in the metal you chose, solid 14k or 18k gold or platinum, karat-marked. Never plated, never hollow."],
-              ["Set and finished", "Stones are set by hand at our bench. The piece is cleaned, polished and struck inside with the AJ hallmark and its tier mark. In Mt. Juliet, you can watch through the glass."],
+              ["Set and finished", "Stones are set by hand at our bench. The piece is cleaned, polished and struck inside with the AJ hallmark and the mark of its name: a crown, a star or a line. In Mt. Juliet, you can watch through the glass."],
             ].map(([k, v], i) => (
               <li key={k} className={`md:col-span-6 ${i % 2 === 1 ? "md:col-start-7" : ""} flex gap-6 hair pt-6`}>
                 <span className="font-display text-[2rem] text-muted leading-none w-10 shrink-0">{i + 1}</span>
@@ -67,9 +67,9 @@ export default function HousePage() {
         </Section>
       </section>
 
-      {/* Three tiers */}
+      {/* The three names */}
       <Section className="pt-24 md:pt-36" reveal>
-        <h2 className="h-section text-[2rem] md:text-[2.75rem] mb-10 md:mb-14">One house, three doors</h2>
+        <h2 className="h-section text-[2rem] md:text-[2.75rem] mb-10 md:mb-14">What we make</h2>
         <div className="grid md:grid-cols-3 gap-8 md:gap-10">
           {TIERS.map((t) => (
             <Link key={t.slug} href={`/${t.slug}`} className="group flex flex-col gap-4">

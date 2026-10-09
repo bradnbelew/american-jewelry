@@ -51,9 +51,9 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Three tiers as a ledger: name, what it is, and one photograph each. */}
+      {/* The three names as a ledger: name, what it is, and one photograph each. */}
       <Section className="pt-24 md:pt-36" reveal>
-        <h2 className="h-section text-[2rem] md:text-[2.75rem] mb-10 md:mb-14">Three tiers. One house.</h2>
+        <h2 className="sr-only">Royal American, Americana and New American</h2>
         <ol className="hair">
           {TIERS.map((t) => (
             <li key={t.slug} className="border-b border-hair">

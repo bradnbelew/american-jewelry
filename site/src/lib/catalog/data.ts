@@ -106,7 +106,7 @@ export const COLLECTIONS: Collection[] = [
     name: "Bridal",
     intro: "Engagement and wedding, in natural or man-made diamond, in the same house settings.",
     story:
-      "The one place our tiers share designs. Choose the setting; then choose the stone: a natural diamond in Americana, or a man-made diamond in New American. Every ring is labeled plainly with which it is.",
+      "The one place Americana and New American share designs. Choose the setting; then choose the stone: a natural diamond in Americana, or a man-made diamond in New American. Every ring is labeled plainly with which it is.",
     crossTier: true,
   },
   {
