@@ -30,6 +30,11 @@ export const metadata: Metadata = {
   description:
     "American Jewelry designs, sets and finishes its own jewelry in Tennessee: one-of-one pieces, signature designs in natural diamond and solid gold, and man-made diamond pieces held to one published standard.",
   robots: process.env.NEXT_PUBLIC_SITE_LIVE === "true" ? undefined : { index: false, follow: false },
+  openGraph: {
+    siteName: "American Jewelry",
+    type: "website",
+    images: [{ url: "/photos/hero-box.jpg", width: 2400, height: 1854, alt: "Gold signet rings and a chain in a navy velvet box" }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

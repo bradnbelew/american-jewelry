@@ -52,7 +52,7 @@ async function TierPageContent({ params }: { params: Promise<{ tier: string }> }
           <Section className="pt-20 md:pt-28">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10 md:gap-x-8">
               {pieces.map((p) => (
-                <ProductTile key={p.handle} piece={p} eyebrow={`No. ${p.oneOfOne?.number}`} />
+                <ProductTile key={p.handle} piece={p} eyebrow="One of one · Registered" />
               ))}
             </div>
           </Section>

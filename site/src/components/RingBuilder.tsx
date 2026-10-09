@@ -50,7 +50,7 @@ export function RingBuilder() {
   return (
     <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-20 items-start">
       <div className="lg:sticky lg:top-32 flex flex-col gap-4">
-        <div className="relative aspect-square overflow-hidden bg-ivory">
+        <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-ivory">
           <RingViewer metal={metal} setting={setting} carat={carat} className="absolute inset-0" autoRotate={step === 1} />
         </div>
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 hair pt-4">
@@ -220,7 +220,7 @@ function StepBlock({ title, lede, children }: { title: string; lede: string; chi
 
 function Next({ onClick }: { onClick: () => void }) {
   return (
-    <button type="button" onClick={onClick} className="btn btn-outline self-start">
+    <button type="button" onClick={onClick} className="btn btn-outline w-full sm:w-auto sm:self-start">
       Continue
     </button>
   );
