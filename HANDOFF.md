@@ -49,7 +49,8 @@ American Jewelry (Brentwood + Mt. Juliet, Tennessee; 2,537 Google reviews; famil
 7. **No 3D-printed replica, no true-scale, no AR** for now (iJewel later).
 8. **No "vibe-coded" UI:** no bordered cards, chips, icons, gradients-as-decoration, rounded-everything, no line-drawing mockups. Controls have fixed heights and 1px borders in every state (`.btn .opt .pill .field`); nothing may shift when clicked.
 9. Logo work is **paused**; `components/Mark.tsx` and `app/icon.svg` hold the placeholder.
-10. **Builder:** low friction. Three visible choices; the rest decided by the house and available under one disclosure.
+10. **Builder:** low friction, compact. One label row per decision over one control (photographs, two stone tiles, swatches, dropdowns); the ring named and priced once; the rest under one disclosure.
+11. **Never count the tiers in public.** No "three tiers", "Tier I/II/III" or "three doors"; the names Royal American, Americana and New American stand alone. (The word "tier" stays in code and in this file only.)
 
 ## Known issues and gotchas
 
