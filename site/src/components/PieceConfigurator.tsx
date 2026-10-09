@@ -29,7 +29,7 @@ export function PieceConfigurator({ piece }: { piece: Piece }) {
         <span className="text-[0.8125rem] text-ink-2">
           {manMade ? "Man-made (laboratory-grown) diamond, D-F color, VVS clarity, IGI report" : version.stones ?? "Solid 14k or 18k gold, karat-marked"}
         </span>
-        <span className="text-[0.8125rem] text-muted">{piece.leadTime}</span>
+        <span className="text-[0.8125rem] text-muted">{piece.leadTime}{price !== null ? ". Price before sales tax." : ""}</span>
       </div>
 
       {piece.versions.length > 1 && (
