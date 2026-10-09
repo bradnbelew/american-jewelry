@@ -12,8 +12,6 @@ import { PIECE_PHOTOS } from "@/lib/catalog/photos";
 import { PIECE_TYPE_LABEL } from "@/lib/catalog/types";
 import { JsonLd, productJsonLd } from "@/lib/seo";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return PIECES.map((p) => ({ handle: p.handle }));
 }

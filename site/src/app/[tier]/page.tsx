@@ -10,8 +10,6 @@ import { TIERS, designsForTier, piecesForTier, piecesForDesign } from "@/lib/cat
 import { TIER_PHOTO } from "@/lib/catalog/photos";
 import type { TierSlug } from "@/lib/catalog/types";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return TIERS.map((t) => ({ tier: t.slug }));
 }

@@ -9,8 +9,6 @@ import { STORES, storeBySlug } from "@/lib/catalog/data";
 import { STORE_PHOTO } from "@/lib/catalog/photos";
 import { JsonLd, storeJsonLd } from "@/lib/seo";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return STORES.map((s) => ({ slug: s.slug }));
 }

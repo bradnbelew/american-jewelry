@@ -9,8 +9,6 @@ import { ProductTile } from "@/components/ProductTile";
 import { COLLECTIONS, collectionBySlug, piecesForCollection, tierBySlug } from "@/lib/catalog/data";
 import { COLLECTION_PHOTO } from "@/lib/catalog/photos";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return COLLECTIONS.map((c) => ({ slug: c.slug }));
 }
