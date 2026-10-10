@@ -1,61 +1,61 @@
 {
   "productMetafieldDefinitions": [
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "tier",
       "name": "Tier",
       "type": "single_line_text_field"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "design",
       "name": "Design",
       "type": "single_line_text_field"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "piece_type",
       "name": "Piece type",
       "type": "single_line_text_field"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "house_ref",
       "name": "House reference",
       "type": "single_line_text_field"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "lead_time",
       "name": "Lead time",
       "type": "single_line_text_field"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "made_to_order",
       "name": "Made to order",
       "type": "boolean"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "engravable",
       "name": "Engravable",
       "type": "boolean"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "sizes",
       "name": "Sizes offered",
       "type": "list.single_line_text_field"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "specs",
       "name": "Specifications",
       "type": "json"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "collections",
       "name": "House collections",
       "type": "list.single_line_text_field"
@@ -69,13 +69,13 @@
   ],
   "variantMetafieldDefinitions": [
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "stones",
       "name": "Stones",
       "type": "single_line_text_field"
     },
     {
-      "namespace": "aj",
+      "namespace": "house",
       "key": "origin",
       "name": "Stone origin",
       "type": "single_line_text_field"
@@ -136,13 +136,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "5.02 ct natural diamond, D, IF, GIA"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -169,49 +169,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Royal American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Royal American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Ring"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "RA 001"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Available now, by appointment"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Center\",\"value\":\"5.02 ct round brilliant, D, IF, GIA 2231…\"},{\"label\":\"Metal\",\"value\":\"Platinum 950\"},{\"label\":\"Registry\",\"value\":\"Royal American No. 001\"}]"
@@ -272,13 +272,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "12.40 ct natural sapphire, 6.10 ct tw natural diamonds"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -305,49 +305,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Royal American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Royal American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Necklace"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "RA 002"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Available now, by appointment"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Center\",\"value\":\"12.40 ct natural sapphire, unheated\"},{\"label\":\"Diamonds\",\"value\":\"6.10 ct tw, F–G, VVS\"},{\"label\":\"Registry\",\"value\":\"Royal American No. 002\"}]"
@@ -408,13 +408,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "14.8 ct tw natural diamonds"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -436,49 +436,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Royal American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Royal American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Bracelet"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "RA 003"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "In the workshop · Spring"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Diamonds\",\"value\":\"14.8 ct tw, 41 stones, E–F, VS1+\"},{\"label\":\"Metal\",\"value\":\"18k yellow gold\"},{\"label\":\"Registry\",\"value\":\"Royal American No. 003\"}]"
@@ -557,7 +557,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -584,7 +584,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -611,7 +611,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -638,7 +638,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -665,7 +665,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -692,13 +692,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -725,13 +725,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -758,13 +758,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -791,13 +791,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -824,13 +824,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -857,13 +857,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.62 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -890,13 +890,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.62 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -923,13 +923,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.62 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -956,13 +956,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.62 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -989,13 +989,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.62 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1022,61 +1022,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Shooting Star"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Ring"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 004"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"4\",\"4.5\",\"5\",\"5.5\",\"6\",\"6.5\",\"7\",\"7.5\",\"8\",\"8.5\",\"9\",\"10\",\"11\",\"12\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Band\",\"value\":\"2.1 mm, comfort fit\"},{\"label\":\"Star\",\"value\":\"9 mm across\"},{\"label\":\"Hallmark\",\"value\":\"AJ star, inside shank\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"family\"]"
@@ -1155,7 +1155,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1182,7 +1182,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1209,7 +1209,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1236,7 +1236,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1263,7 +1263,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1290,13 +1290,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1323,13 +1323,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1356,13 +1356,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1389,13 +1389,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1422,13 +1422,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1455,13 +1455,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.48 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1488,13 +1488,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.48 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1521,13 +1521,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.48 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1554,13 +1554,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.48 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1587,13 +1587,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.48 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1615,61 +1615,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Shooting Star"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Band"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 005"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"4\",\"4.5\",\"5\",\"5.5\",\"6\",\"6.5\",\"7\",\"7.5\",\"8\",\"8.5\",\"9\",\"10\",\"11\",\"12\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Band\",\"value\":\"3.0 mm flat, comfort fit\"},{\"label\":\"Hallmark\",\"value\":\"AJ star, inside shank\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"family\",\"the-stack\"]"
@@ -1745,7 +1745,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1772,7 +1772,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1799,7 +1799,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1826,7 +1826,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -1853,13 +1853,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1886,13 +1886,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1919,13 +1919,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1952,13 +1952,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -1985,13 +1985,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.40 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2018,13 +2018,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.40 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2051,13 +2051,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.40 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2084,13 +2084,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.40 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2117,55 +2117,55 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Shooting Star"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Pendant"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 006"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Star\",\"value\":\"11 mm across\"},{\"label\":\"Chain\",\"value\":\"18 in, 1.2 mm cable, same metal\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"family\"]"
@@ -2241,7 +2241,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2268,7 +2268,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2295,7 +2295,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2322,7 +2322,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2349,13 +2349,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2382,13 +2382,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2415,13 +2415,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2448,13 +2448,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2481,13 +2481,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.10 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2514,13 +2514,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.10 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2547,13 +2547,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.10 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2580,13 +2580,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.10 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2608,55 +2608,55 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Shooting Star"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Bracelet"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 007"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 4 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Length\",\"value\":\"6.5, 7 or 7.5 in\"},{\"label\":\"Clasp\",\"value\":\"Hidden box clasp with the AJ star\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"family\"]"
@@ -2732,7 +2732,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2759,7 +2759,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2786,7 +2786,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2813,7 +2813,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -2840,13 +2840,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2873,13 +2873,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2906,13 +2906,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2939,13 +2939,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -2972,13 +2972,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.55 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3005,13 +3005,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.55 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3038,13 +3038,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.55 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3071,13 +3071,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.55 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3099,61 +3099,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Shooting Star"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Signet ring"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 008"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 4 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Face\",\"value\":\"14 × 12 mm oval\"},{\"label\":\"Weight\",\"value\":\"about 14 g in 14k\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"signets\",\"family\"]"
@@ -3226,7 +3226,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -3253,7 +3253,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -3280,7 +3280,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -3307,13 +3307,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3340,13 +3340,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3373,13 +3373,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3406,13 +3406,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.70 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3439,13 +3439,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.70 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3472,13 +3472,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.70 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3500,55 +3500,55 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Shooting Star"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Dog tag"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 009"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Tag\",\"value\":\"38 × 22 mm, 2 mm solid\"},{\"label\":\"Chain\",\"value\":\"22 in, 2 mm ball chain, same metal\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"family\"]"
@@ -3621,7 +3621,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -3648,7 +3648,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -3675,7 +3675,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -3702,13 +3702,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3735,13 +3735,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3768,13 +3768,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3801,13 +3801,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.40 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3834,13 +3834,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.40 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3867,13 +3867,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.40 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -3900,49 +3900,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Prism"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Necklace"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 010"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 5 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Length\",\"value\":\"16, 18 or 20 in\"},{\"label\":\"Link\",\"value\":\"9 mm faceted, knife edge\"}]"
@@ -4015,7 +4015,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4042,7 +4042,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4069,7 +4069,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4096,13 +4096,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4129,13 +4129,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4162,13 +4162,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4195,13 +4195,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.30 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4228,13 +4228,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.30 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4261,13 +4261,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.30 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4289,49 +4289,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Prism"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Bracelet"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 011"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 4 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Length\",\"value\":\"6.5, 7 or 7.5 in\"},{\"label\":\"Clasp\",\"value\":\"Hidden, with the AJ star\"}]"
@@ -4407,7 +4407,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4434,7 +4434,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4461,7 +4461,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4488,7 +4488,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4515,13 +4515,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4548,13 +4548,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4581,13 +4581,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4614,13 +4614,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4647,13 +4647,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.60 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4680,13 +4680,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.60 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4713,13 +4713,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.60 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4746,13 +4746,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.60 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -4774,61 +4774,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Prism"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Signet ring"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 012"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 4 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Face\",\"value\":\"15 × 13 mm cushion\"},{\"label\":\"Weight\",\"value\":\"about 16 g in 14k\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"signets\",\"family\"]"
@@ -4907,7 +4907,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4934,7 +4934,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4961,7 +4961,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -4988,7 +4988,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -5015,7 +5015,7 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "none"
@@ -5042,13 +5042,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5075,13 +5075,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5108,13 +5108,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5141,13 +5141,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5174,13 +5174,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "One natural gemstone of your choosing"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5207,13 +5207,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.52 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5240,13 +5240,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.52 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5273,13 +5273,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.52 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5306,13 +5306,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.52 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5339,13 +5339,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.52 ct tw natural diamonds, F–G, VS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "natural"
@@ -5367,61 +5367,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "Americana"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Prism"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Band"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "AM 013"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"4\",\"4.5\",\"5\",\"5.5\",\"6\",\"6.5\",\"7\",\"7.5\",\"8\",\"8.5\",\"9\",\"10\",\"11\",\"12\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Band\",\"value\":\"2.6 mm knife edge, comfort fit\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"the-stack\"]"
@@ -5489,7 +5489,7 @@
             }
           ],
           "price": "3200.00",
-          "sku": "NA-014-MAN-MADE-14K-YELLOW",
+          "sku": "NA-014-100CT-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5497,13 +5497,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5522,7 +5522,7 @@
             }
           ],
           "price": "3200.00",
-          "sku": "NA-014-MAN-MADE-14K-WHITE",
+          "sku": "NA-014-100CT-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5530,13 +5530,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5555,7 +5555,7 @@
             }
           ],
           "price": "3200.00",
-          "sku": "NA-014-MAN-MADE-14K-ROSE",
+          "sku": "NA-014-100CT-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5563,13 +5563,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5588,7 +5588,7 @@
             }
           ],
           "price": "3200.00",
-          "sku": "NA-014-MAN-MADE-PLATINUM",
+          "sku": "NA-014-100CT-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5596,13 +5596,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5621,7 +5621,7 @@
             }
           ],
           "price": "4800.00",
-          "sku": "NA-014-MAN-MADE-14K-YELLOW",
+          "sku": "NA-014-150CT-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5629,13 +5629,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.50 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5654,7 +5654,7 @@
             }
           ],
           "price": "4800.00",
-          "sku": "NA-014-MAN-MADE-14K-WHITE",
+          "sku": "NA-014-150CT-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5662,13 +5662,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.50 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5687,7 +5687,7 @@
             }
           ],
           "price": "4800.00",
-          "sku": "NA-014-MAN-MADE-14K-ROSE",
+          "sku": "NA-014-150CT-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5695,13 +5695,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.50 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5720,7 +5720,7 @@
             }
           ],
           "price": "4800.00",
-          "sku": "NA-014-MAN-MADE-PLATINUM",
+          "sku": "NA-014-150CT-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5728,13 +5728,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.50 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5753,7 +5753,7 @@
             }
           ],
           "price": "6400.00",
-          "sku": "NA-014-MAN-MADE-14K-YELLOW",
+          "sku": "NA-014-200CT-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5761,13 +5761,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5786,7 +5786,7 @@
             }
           ],
           "price": "6400.00",
-          "sku": "NA-014-MAN-MADE-14K-WHITE",
+          "sku": "NA-014-200CT-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5794,13 +5794,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5819,7 +5819,7 @@
             }
           ],
           "price": "6400.00",
-          "sku": "NA-014-MAN-MADE-14K-ROSE",
+          "sku": "NA-014-200CT-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5827,13 +5827,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5852,7 +5852,7 @@
             }
           ],
           "price": "6400.00",
-          "sku": "NA-014-MAN-MADE-PLATINUM",
+          "sku": "NA-014-200CT-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -5860,13 +5860,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -5893,61 +5893,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Signal"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Solitaire"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 014"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 2 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"4\",\"4.5\",\"5\",\"5.5\",\"6\",\"6.5\",\"7\",\"7.5\",\"8\",\"8.5\",\"9\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Center\",\"value\":\"Round brilliant man-made diamond, D–F, VVS1–VVS2, Ideal cut, IGI report, laser inscribed\"},{\"label\":\"Band\",\"value\":\"1.8 mm knife edge\"},{\"label\":\"Hallmark\",\"value\":\"AJ line, inside shank\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"bridal\"]"
@@ -6015,7 +6015,7 @@
             }
           ],
           "price": "900.00",
-          "sku": "NA-015-MAN-MADE-14K-YELLOW",
+          "sku": "NA-015-100CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6023,13 +6023,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6048,7 +6048,7 @@
             }
           ],
           "price": "900.00",
-          "sku": "NA-015-MAN-MADE-14K-WHITE",
+          "sku": "NA-015-100CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6056,13 +6056,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6081,7 +6081,7 @@
             }
           ],
           "price": "900.00",
-          "sku": "NA-015-MAN-MADE-14K-ROSE",
+          "sku": "NA-015-100CTTW-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6089,13 +6089,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6114,7 +6114,7 @@
             }
           ],
           "price": "900.00",
-          "sku": "NA-015-MAN-MADE-PLATINUM",
+          "sku": "NA-015-100CTTW-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6122,13 +6122,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "1.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6147,7 +6147,7 @@
             }
           ],
           "price": "1900.00",
-          "sku": "NA-015-MAN-MADE-14K-YELLOW",
+          "sku": "NA-015-200CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6155,13 +6155,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6180,7 +6180,7 @@
             }
           ],
           "price": "1900.00",
-          "sku": "NA-015-MAN-MADE-14K-WHITE",
+          "sku": "NA-015-200CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6188,13 +6188,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6213,7 +6213,7 @@
             }
           ],
           "price": "1900.00",
-          "sku": "NA-015-MAN-MADE-14K-ROSE",
+          "sku": "NA-015-200CTTW-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6221,13 +6221,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6246,7 +6246,7 @@
             }
           ],
           "price": "1900.00",
-          "sku": "NA-015-MAN-MADE-PLATINUM",
+          "sku": "NA-015-200CTTW-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6254,13 +6254,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6279,7 +6279,7 @@
             }
           ],
           "price": "3400.00",
-          "sku": "NA-015-MAN-MADE-14K-YELLOW",
+          "sku": "NA-015-300CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6287,13 +6287,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "3.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6312,7 +6312,7 @@
             }
           ],
           "price": "3400.00",
-          "sku": "NA-015-MAN-MADE-14K-WHITE",
+          "sku": "NA-015-300CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6320,13 +6320,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "3.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6345,7 +6345,7 @@
             }
           ],
           "price": "3400.00",
-          "sku": "NA-015-MAN-MADE-14K-ROSE",
+          "sku": "NA-015-300CTTW-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6353,13 +6353,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "3.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6378,7 +6378,7 @@
             }
           ],
           "price": "3400.00",
-          "sku": "NA-015-MAN-MADE-PLATINUM",
+          "sku": "NA-015-300CTTW-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6386,13 +6386,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "3.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6414,49 +6414,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Signal"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Studs"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 015"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 2 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Stones\",\"value\":\"Matched pair, man-made diamonds, D–F, VVS\"},{\"label\":\"Backs\",\"value\":\"Screw backs, same metal\"}]"
@@ -6518,7 +6518,7 @@
             }
           ],
           "price": "3000.00",
-          "sku": "NA-016-MAN-MADE-14K-YELLOW",
+          "sku": "NA-016-500CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6526,13 +6526,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "5.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6551,7 +6551,7 @@
             }
           ],
           "price": "3000.00",
-          "sku": "NA-016-MAN-MADE-14K-WHITE",
+          "sku": "NA-016-500CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6559,13 +6559,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "5.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6584,7 +6584,7 @@
             }
           ],
           "price": "3000.00",
-          "sku": "NA-016-MAN-MADE-14K-ROSE",
+          "sku": "NA-016-500CTTW-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6592,13 +6592,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "5.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6617,7 +6617,7 @@
             }
           ],
           "price": "5200.00",
-          "sku": "NA-016-MAN-MADE-14K-YELLOW",
+          "sku": "NA-016-800CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6625,13 +6625,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "8.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6650,7 +6650,7 @@
             }
           ],
           "price": "5200.00",
-          "sku": "NA-016-MAN-MADE-14K-WHITE",
+          "sku": "NA-016-800CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6658,13 +6658,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "8.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6683,7 +6683,7 @@
             }
           ],
           "price": "5200.00",
-          "sku": "NA-016-MAN-MADE-14K-ROSE",
+          "sku": "NA-016-800CTTW-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6691,13 +6691,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "8.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6719,49 +6719,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Grid"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Tennis bracelet"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 016"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 2 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Length\",\"value\":\"6.5, 7 or 7.5 in\"},{\"label\":\"Clasp\",\"value\":\"Hidden box clasp with the AJ line, double safety\"}]"
@@ -6817,7 +6817,7 @@
             }
           ],
           "price": "8000.00",
-          "sku": "NA-017-MAN-MADE-14K-YELLOW",
+          "sku": "NA-017-1200CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6825,13 +6825,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "12.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6850,7 +6850,7 @@
             }
           ],
           "price": "8000.00",
-          "sku": "NA-017-MAN-MADE-14K-WHITE",
+          "sku": "NA-017-1200CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6858,13 +6858,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "12.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -6886,49 +6886,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Grid"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Tennis necklace"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 017"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Length\",\"value\":\"16 or 18 in\"},{\"label\":\"Stones\",\"value\":\"Calibrated 2.5 mm man-made diamonds, D–F, VVS\"}]"
@@ -6990,7 +6990,7 @@
             }
           ],
           "price": "1800.00",
-          "sku": "NA-018-MAN-MADE-14K-YELLOW",
+          "sku": "NA-018-200CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -6998,13 +6998,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7023,7 +7023,7 @@
             }
           ],
           "price": "1800.00",
-          "sku": "NA-018-MAN-MADE-14K-WHITE",
+          "sku": "NA-018-200CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7031,13 +7031,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7056,7 +7056,7 @@
             }
           ],
           "price": "1800.00",
-          "sku": "NA-018-MAN-MADE-14K-ROSE",
+          "sku": "NA-018-200CTTW-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7064,13 +7064,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7089,7 +7089,7 @@
             }
           ],
           "price": "1800.00",
-          "sku": "NA-018-MAN-MADE-PLATINUM",
+          "sku": "NA-018-200CTTW-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7097,13 +7097,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "2.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7125,61 +7125,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Grid"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Eternity band"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 018"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 2 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"4\",\"4.5\",\"5\",\"5.5\",\"6\",\"6.5\",\"7\",\"7.5\",\"8\",\"8.5\",\"9\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Band\",\"value\":\"2.4 mm\"},{\"label\":\"Note\",\"value\":\"Full eternity bands cannot be resized; we remake them\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"bridal\",\"the-stack\"]"
@@ -7238,7 +7238,7 @@
             }
           ],
           "price": "800.00",
-          "sku": "NA-019-MAN-MADE-14K-YELLOW",
+          "sku": "NA-019-075CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7246,13 +7246,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.75 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7271,7 +7271,7 @@
             }
           ],
           "price": "800.00",
-          "sku": "NA-019-MAN-MADE-14K-WHITE",
+          "sku": "NA-019-075CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7279,13 +7279,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.75 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7304,7 +7304,7 @@
             }
           ],
           "price": "800.00",
-          "sku": "NA-019-MAN-MADE-14K-ROSE",
+          "sku": "NA-019-075CTTW-14K-ROSE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7312,13 +7312,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.75 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7340,61 +7340,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Grid"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Stack band"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 019"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 2 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"4\",\"4.5\",\"5\",\"5.5\",\"6\",\"6.5\",\"7\",\"7.5\",\"8\",\"8.5\",\"9\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Band\",\"value\":\"1.6 mm\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"the-stack\"]"
@@ -7453,7 +7453,7 @@
             }
           ],
           "price": "1900.00",
-          "sku": "NA-020-MAN-MADE-14K-YELLOW",
+          "sku": "NA-020-050CT-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7461,13 +7461,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.50 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7486,7 +7486,7 @@
             }
           ],
           "price": "1900.00",
-          "sku": "NA-020-MAN-MADE-14K-WHITE",
+          "sku": "NA-020-050CT-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7494,13 +7494,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.50 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7519,7 +7519,7 @@
             }
           ],
           "price": "1900.00",
-          "sku": "NA-020-MAN-MADE-PLATINUM",
+          "sku": "NA-020-050CT-PLATINUM",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7527,13 +7527,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "0.50 ct man-made diamond, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7555,61 +7555,61 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Signal"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Signet ring"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 020"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "sizes",
           "type": "list.single_line_text_field",
           "value": "[\"8\",\"9\",\"10\",\"11\",\"12\",\"13\"]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Face\",\"value\":\"13 mm square, brushed\"},{\"label\":\"Weight\",\"value\":\"about 15 g in 14k\"}]"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "collections",
           "type": "list.single_line_text_field",
           "value": "[\"signets\"]"
@@ -7665,7 +7665,7 @@
             }
           ],
           "price": "7500.00",
-          "sku": "NA-021-MAN-MADE-14K-YELLOW",
+          "sku": "NA-021-1000CTTW-14K-YELLOW",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7673,13 +7673,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "10.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7698,7 +7698,7 @@
             }
           ],
           "price": "7500.00",
-          "sku": "NA-021-MAN-MADE-14K-WHITE",
+          "sku": "NA-021-1000CTTW-14K-WHITE",
           "inventoryPolicy": "CONTINUE",
           "inventoryItem": {
             "tracked": false,
@@ -7706,13 +7706,13 @@
           },
           "metafields": [
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "stones",
               "type": "single_line_text_field",
               "value": "10.00 ct tw man-made diamonds, D–F, VVS"
             },
             {
-              "namespace": "aj",
+              "namespace": "house",
               "key": "origin",
               "type": "single_line_text_field",
               "value": "man-made"
@@ -7734,49 +7734,49 @@
       ],
       "metafields": [
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "tier",
           "type": "single_line_text_field",
           "value": "New American"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "design",
           "type": "single_line_text_field",
           "value": "Grid"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "piece_type",
           "type": "single_line_text_field",
           "value": "Chain"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "house_ref",
           "type": "single_line_text_field",
           "value": "NA 021"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "lead_time",
           "type": "single_line_text_field",
           "value": "Made to order · about 3 weeks"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "made_to_order",
           "type": "boolean",
           "value": "true"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "engravable",
           "type": "boolean",
           "value": "false"
         },
         {
-          "namespace": "aj",
+          "namespace": "house",
           "key": "specs",
           "type": "json",
           "value": "[{\"label\":\"Length\",\"value\":\"20 or 22 in\"},{\"label\":\"Clasp\",\"value\":\"Double-locking box, AJ line\"}]"

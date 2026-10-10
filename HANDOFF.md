@@ -52,6 +52,14 @@ American Jewelry (Brentwood + Mt. Juliet, Tennessee; 2,537 Google reviews; famil
 10. **Builder:** low friction, compact. One label row per decision over one control (photographs, two stone tiles, swatches, dropdowns); the ring named and priced once; the rest under one disclosure.
 11. **Never count the tiers in public.** No "three tiers", "Tier I/II/III" or "three doors"; the names Royal American, Americana and New American stand alone. (The word "tier" stays in code and in this file only.)
 
+## Shopify (connected 2026-10-09)
+
+- **Store:** `e8d51b-f4.myshopify.com` ("American Jewelry", Basic plan, USD, owner bradnbelew@gmail.com). Online Store theme is unused; the Next.js site is the only storefront. Reach the Admin API through the **Shopify connector** in Claude (`setup.shopify.com/mcp`), not a token on disk. The connector refuses storefront-token creation and bulk mutations by policy; everything else works.
+- **Catalog in Shopify:** all 21 pieces imported with `productSet`, handle = catalog handle, options **Version × Metal**, size and engraving arrive as line-item attributes. Metafield namespace is `house` (two-letter namespaces are rejected): `tier`, `design`, `piece_type`, `house_ref`, `lead_time`, `made_to_order`, `engravable`, `sizes`, `specs`, `collections`, `versions` (JSON per version: stones, origin); variant `stones`/`origin` exist on the first five products only. `custom.model_source_embed` (URL) is the iJewel embed slot. Royal American one-of-ones are DRAFT, price 0, tag `price-on-request`. Active products are published to the Online Store publication; **publish them to the Headless publication too once that channel exists.**
+- **Source of truth stays the code.** `site/scripts/shopify-catalog.ts` regenerates the `productSet` inputs (`scripts/out/products.json`); re-run it and `productSet` by handle to update prices or copy. First photos are the stand-ins pulled from the live site.
+- **Site wiring:** `lib/shopify/client.ts` (Storefront + Admin fetchers), `lib/shopify/checkout.ts` (server action: Storefront `cartCreate` for pieces, Admin `draftOrderCreate` for builder rings). Env on Vercel: `SHOPIFY_STORE_DOMAIN`, `SHOPIFY_STOREFRONT_PRIVATE_TOKEN` (from the Headless channel; the owner must create it), optional `SHOPIFY_ADMIN_TOKEN` (draft orders only). With nothing set the bag's Checkout shows "not open yet".
+- **Still to do:** Headless channel + token → Vercel env → test one checkout end to end; collections in Shopify (Family, The Stack, Signets, Bridal) as manual collections; swap the catalog read to Shopify behind a `CatalogSource` once prices live there; webhooks → `revalidateTag`.
+
 ## Known issues and gotchas
 
 - Under `cacheComponents`, an unknown slug streams the not-found page with HTTP 200; `dynamicParams=false` is not allowed in this mode. Fix later with a known-slug check in `proxy.ts` or by turning cacheComponents off.
