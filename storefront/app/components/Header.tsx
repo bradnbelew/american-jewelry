@@ -1,123 +1,123 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router";
 
 import { useCart } from "~/lib/cart";
-import { CART_DRAWER_ID, SEARCH_DRAWER_ID, openDialogFromLinkClick } from "~/lib/cart-drawer";
-import type { StorefrontShop } from "~/lib/storefront-shop";
+import { CART_DRAWER_ID, openDialogFromLinkClick } from "~/lib/cart-drawer";
 
-import { MobileNav, MobileNavTrigger } from "./MobileNav";
+import { useSaved } from "./saved/SavedProvider";
 
-function cartCountLabel(count: number) {
-  return count === 1 ? "Cart (1 item)" : `Cart (${count} items)`;
-}
+export const NAV: { href: string; label: string }[] = [
+  { href: "/royal-american", label: "Royal American" },
+  { href: "/americana", label: "Americana" },
+  { href: "/new-american", label: "New American" },
+  { href: "/collections/bridal", label: "Bridal" },
+  { href: "/build/ring", label: "Build a ring" },
+  { href: "/house", label: "The House" },
+  { href: "/services", label: "Services" },
+  { href: "/stores", label: "Stores" },
+];
 
-function liveCartCountLabel(count: number) {
-  return count === 1 ? "1 item in cart" : `${count} items in cart`;
-}
-
-function displayCount(count: number) {
-  return count > 99 ? "99+" : String(count);
-}
-
-export function Header({ shopInfo }: { shopInfo: StorefrontShop }) {
+/** The wordmark line. Nothing above it. Eight names beneath it on desktop. */
+export function Header() {
+  const [open, setOpen] = useState(false);
   const totalQuantity = useCart((state) => state.data.totalQuantity);
-  const [failedLogoUrl, setFailedLogoUrl] = useState<string | null>(null);
-  const logo = shopInfo.logo;
+  const { count: saved, ready } = useSaved();
+  const location = useLocation();
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    // Close the menu on navigation without an effect-time state write on first render.
+    const id = requestAnimationFrame(() => setOpen(false));
+    return () => cancelAnimationFrame(id);
+  }, [location.pathname]);
 
   return (
-    <header className="border-border bg-surface sticky top-0 z-40 border-b">
-      <div
-        className="max-w-page px-margin mx-auto flex h-16 w-full items-center justify-between"
-        data-header-nav-group
-      >
-        <div className="flex min-w-0 flex-1 items-center gap-2 pe-3 md:max-w-48 md:flex-none md:pe-0">
-          <div className="-ms-2 hidden shrink-0 max-md:block" data-hamburger-wrapper>
-            <MobileNavTrigger />
+    <header className="sticky top-0 z-40 border-b border-hair bg-paper">
+      <div className="wrap">
+        <div className="grid h-[4.25rem] grid-cols-[auto_1fr_auto] items-center gap-3 md:h-20 md:grid-cols-[1fr_auto_1fr]">
+          <div className="flex items-center gap-5">
+            <button
+              type="button"
+              className="caps -ml-1 inline-flex h-10 w-14 items-center px-1 lg:hidden"
+              aria-expanded={open}
+              aria-controls="menu"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? "Close" : "Menu"}
+            </button>
+            <Link to="/stores" className="label hidden hover:text-ink lg:inline">
+              Brentwood and Mt. Juliet, Tennessee
+            </Link>
           </div>
+
           <Link
             to="/"
-            aria-label={shopInfo.name}
-            title={shopInfo.name}
-            className="text-on-surface focus-visible:outline-accent inline-flex max-w-48 min-w-0 items-center rounded-sm text-lg font-medium no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="font-display justify-self-center text-[1rem] uppercase tracking-[0.22em] whitespace-nowrap sm:text-[1.25rem] md:text-[1.625rem] md:tracking-[0.28em]"
+            aria-label="American Jewelry home"
           >
-            {logo && failedLogoUrl !== logo.url ? (
-              <img
-                src={logo.url}
-                alt={logo.altText ?? shopInfo.name}
-                width={logo.width ?? undefined}
-                height={logo.height ?? undefined}
-                className="h-auto max-h-10 w-auto max-w-full object-contain"
-                // An SSR image can fail before hydration attaches onError, so also check on mount.
-                ref={(img) => {
-                  if (img?.complete && img.naturalWidth === 0) setFailedLogoUrl(logo.url);
-                }}
-                onError={() => setFailedLogoUrl(logo.url)}
-              />
-            ) : (
-              <span className="line-clamp-2 leading-tight wrap-anywhere">{shopInfo.name}</span>
-            )}
+            American Jewelry
           </Link>
-        </div>
 
-        <nav
-          aria-label="Main navigation"
-          className="mx-8 hidden min-w-0 flex-1 items-center gap-8 overflow-x-auto md:flex"
-          data-desktop-nav
-        >
-          <Link
-            to="/collections"
-            className="text-on-surface focus-visible:outline-accent shrink-0 rounded-sm text-sm font-normal whitespace-nowrap no-underline hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition-opacity"
-          >
-            Collections
-          </Link>
-        </nav>
-
-        <div className="flex shrink-0 items-center gap-0">
-          <Link
-            to="/search"
-            className="button-icon focus-visible:outline-accent inline-flex h-11 w-11 cursor-pointer items-center justify-center gap-2 rounded font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition-[color,background-color,border-color,transform] motion-safe:active:scale-[0.97]"
-            aria-label="Search"
-            aria-controls={SEARCH_DRAWER_ID}
-            aria-haspopup="dialog"
-            data-testid="search-trigger"
-            onClick={(event) => openDialogFromLinkClick(event, SEARCH_DRAWER_ID)}
-          >
-            <img src="/icons/icon-search.svg" alt="" className="size-5" aria-hidden="true" />
-          </Link>
-          <Link
-            to="/account"
-            className="text-on-surface focus-visible:outline-accent inline-flex h-11 w-11 items-center justify-center rounded hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition-opacity"
-            aria-label="Account"
-          >
-            <img src="/icons/icon-user.svg" alt="" className="size-5" aria-hidden="true" />
-          </Link>
-          <Link
-            to="/cart"
-            className="text-on-surface focus-visible:outline-accent relative inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition motion-safe:active:scale-[0.97]"
-            aria-label={cartCountLabel(totalQuantity)}
-            aria-controls={CART_DRAWER_ID}
-            aria-haspopup="dialog"
-            data-testid="cart-trigger"
-            onClick={(event) => openDialogFromLinkClick(event, CART_DRAWER_ID)}
-          >
-            <span
-              className="relative inline-flex size-5 shrink-0 items-center justify-center"
-              aria-hidden="true"
+          <div className="flex items-center justify-end gap-6">
+            <Link to="/appointments" className="caps hidden hover:text-muted md:inline">
+              Appointment
+            </Link>
+            <Link to="/saved" className="caps hidden h-10 items-center gap-2 hover:text-muted sm:inline-flex" aria-label={`Saved, ${saved} items`}>
+              Saved
+              <span className="num inline-flex h-5 w-5 items-center justify-center text-[0.625rem] text-muted">{ready && saved > 0 ? saved : ""}</span>
+            </Link>
+            <Link
+              to="/bag"
+              className="caps inline-flex h-10 items-center gap-2 hover:text-muted"
+              aria-label={`Bag, ${totalQuantity} items`}
+              aria-controls={CART_DRAWER_ID}
+              aria-haspopup="dialog"
+              onClick={(event) => openDialogFromLinkClick(event, CART_DRAWER_ID)}
             >
-              <img src="/icons/icon-cart.svg" alt="" className="size-5" />
-              {totalQuantity > 0 ? (
-                <span className="bg-interactive text-interactive-text absolute end-0 top-0 flex h-5 min-w-5 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full px-1 text-xs font-medium">
-                  {displayCount(totalQuantity)}
-                </span>
-              ) : null}
-            </span>
-          </Link>
-          <span aria-live="polite" aria-atomic="true" className="sr-only">
-            {liveCartCountLabel(totalQuantity)}
-          </span>
+              Bag
+              <span className="num inline-flex h-5 w-5 items-center justify-center text-[0.625rem] text-muted">{totalQuantity > 0 ? totalQuantity : ""}</span>
+            </Link>
+          </div>
         </div>
+
+        <nav className="hidden h-11 items-center justify-center gap-9 border-t border-hair lg:flex" aria-label="Primary">
+          {NAV.map((l) => (
+            <NavLink
+              key={l.href}
+              to={l.href}
+              viewTransition
+              className={({ isActive }) =>
+                `caps-sm inline-flex h-full items-center border-b hover:border-ink ${isActive ? "border-ink" : "border-transparent"}`
+              }
+            >
+              {l.label}
+            </NavLink>
+          ))}
+        </nav>
       </div>
-      <MobileNav />
+
+      <div id="menu" hidden={!open} className="fixed inset-x-0 top-[4.25rem] bottom-0 overflow-y-auto bg-paper lg:hidden">
+        <nav className="flex flex-col px-4 py-6" aria-label="Mobile">
+          {NAV.map((l) => (
+            <Link key={l.href} to={l.href} className="font-display border-b border-hair py-3.5 text-3xl">
+              {l.label}
+            </Link>
+          ))}
+          <Link to="/saved" className="font-display border-b border-hair py-3.5 text-3xl sm:hidden">
+            Saved
+          </Link>
+          <Link to="/appointments" className="btn mt-8">
+            Book an appointment
+          </Link>
+          <p className="mt-8 text-sm text-muted">Brentwood and Mt. Juliet, Tennessee</p>
+        </nav>
+      </div>
     </header>
   );
 }

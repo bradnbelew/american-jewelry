@@ -9,6 +9,10 @@ export type Env = {
   PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID?: string;
   SESSION_SECRET?: string;
   SHOP_ID?: string;
+  /** "true" only on the custom domain; previews stay noindexed. */
+  PUBLIC_SITE_LIVE?: string;
+  /** Admin API token of the custom app with write_draft_orders; read only inside route actions. */
+  ADMIN_API_TOKEN?: string;
 };
 
 export const envContext = createContext<Env>();

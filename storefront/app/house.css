@@ -114,6 +114,12 @@ h3 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--muted);
+}
 .caps-sm {
   font-family: var(--font-sans);
   font-size: 0.625rem;
@@ -540,4 +546,16 @@ details.acc[open] > summary::after {
   .print\:hidden {
     display: none !important;
   }
+}
+
+/* The registry on velvet: hairlines and labels in paper, numerals in gold */
+.velvet .registry th,
+.velvet .registry td {
+  border-color: rgba(245, 242, 236, 0.2);
+}
+.velvet .registry th {
+  color: rgba(245, 242, 236, 0.6);
+}
+.velvet .label {
+  color: rgba(245, 242, 236, 0.7);
 }

@@ -3,6 +3,7 @@ import { ShopifyScripts } from "@shopify/hydrogen/react";
 import type { ReactNode } from "react";
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -13,11 +14,11 @@ import {
 } from "react-router";
 
 import { CartAnalyticsTracker, PageViewedTracker } from "~/components/AnalyticsTrackers";
-import { AnnouncementBar } from "~/components/AnnouncementBar";
 import { CartDrawer } from "~/components/CartDrawer";
 import { Footer } from "~/components/Footer";
 import { Header } from "~/components/Header";
-import { SearchDrawer } from "~/components/SearchDrawer";
+import { SavedProvider } from "~/components/saved/SavedProvider";
+import { PageTitle, Section } from "~/components/Section";
 import { CartProvider } from "~/lib/cart";
 import { cartHandlers } from "~/lib/cart-handlers";
 import { createRequestCustomerAccount, customerAccountContext } from "~/lib/customer-account";
@@ -25,13 +26,11 @@ import { envContext } from "~/lib/env";
 import { predictiveSearchHandlers } from "~/lib/predictive-search-handlers";
 import { loadRootLayout } from "~/lib/root-layout";
 import { routeTemplates } from "~/lib/route-templates";
+import { siteJsonLd } from "~/lib/seo";
 import { createEphemeralSessionManager } from "~/lib/session";
 import { analyticsConsent, resolveShopIdentity, storefrontConfig } from "~/lib/shop";
-import {
-  createRequestStorefrontClient,
-  storefrontClientContext,
-  storefrontRequestContext,
-} from "~/lib/storefront";
+import { isLive } from "~/lib/site";
+import { createRequestStorefrontClient, storefrontClientContext, storefrontRequestContext } from "~/lib/storefront";
 
 import type { Route } from "./+types/root";
 
@@ -42,19 +41,18 @@ export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 ];
 
+export const meta: Route.MetaFunction = ({ data }) => [
+  { name: "robots", content: data?.live ? "index, follow, max-image-preview:large" : "noindex, nofollow" },
+  { "script:ld+json": siteJsonLd() },
+];
+
 export const middleware: Route.MiddlewareFunction[] = [
   async ({ context, request }, next) => {
     const env = context.get(envContext);
-    const storefrontClient = createRequestStorefrontClient(
-      request,
-      env,
-      context.cache,
-      context.waitUntil,
-    );
+    const storefrontClient = createRequestStorefrontClient(request, env, context.cache, context.waitUntil);
     const requestContext = storefrontClient.requestContext;
     const customerAccount = await createRequestCustomerAccount(request, env, requestContext);
-    const sessionManager =
-      customerAccount?.customerAccount.sessionManager ?? createEphemeralSessionManager(request);
+    const sessionManager = customerAccount?.customerAccount.sessionManager ?? createEphemeralSessionManager(request);
 
     const shopifyRoute = handleShopifyRoutes({
       request,
@@ -62,9 +60,7 @@ export const middleware: Route.MiddlewareFunction[] = [
       sessionManager,
       storefrontClient,
       routeTemplates,
-      handlers: customerAccount
-        ? [cartHandlers, predictiveSearchHandlers, customerAccount.handlers]
-        : [cartHandlers, predictiveSearchHandlers],
+      handlers: customerAccount ? [cartHandlers, predictiveSearchHandlers, customerAccount.handlers] : [cartHandlers, predictiveSearchHandlers],
     });
 
     if (shopifyRoute) return shopifyRoute;
@@ -77,12 +73,7 @@ export const middleware: Route.MiddlewareFunction[] = [
     const sessionHeaders = new Headers((await sessionManager.commit?.()) ?? undefined);
     for (const [name, value] of sessionHeaders) response.headers.append(name, value);
     if (response.status === 404) {
-      const redirect = await handleShopifyRedirects({
-        request,
-        storefrontClient,
-        routeTemplates,
-      });
-
+      const redirect = await handleShopifyRedirects({ request, storefrontClient, routeTemplates });
       if (redirect) return redirect;
     }
 
@@ -94,22 +85,21 @@ export const middleware: Route.MiddlewareFunction[] = [
 export async function loader({ context, request }: Route.LoaderArgs) {
   const env = context.get(envContext);
   const storefrontClient = context.get(storefrontClientContext);
-  const [cartResult, layout] = await Promise.all([
-    cartHandlers.get({ storefrontClient, request }),
-    loadRootLayout(storefrontClient),
-  ]);
+  const [cartResult, layout] = await Promise.all([cartHandlers.get({ storefrontClient, request }), loadRootLayout(storefrontClient)]);
 
   return {
     cartData: cartResult.data,
     shopInfo: layout.shopInfo,
     shopIdentity: resolveShopIdentity(env, layout.shopId),
     currency: layout.currency,
+    live: isLive(env),
+    // Oxygen freezes the clock per request; the year is read once here, never in render.
+    year: new Date().getUTCFullYear(),
   };
 }
 
 export function Layout({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
-  // Absent when the root loader failed (error page only).
   const rootData = useRouteLoaderData<typeof loader>("root");
 
   return (
@@ -131,11 +121,8 @@ export function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="bg-surface text-on-surface font-body flex min-h-svh flex-col antialiased">
-        <a
-          href="#main-content"
-          className="focus-visible:bg-interactive focus-visible:text-interactive-text sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:start-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded focus-visible:px-4 focus-visible:py-2"
-        >
+      <body className="flex min-h-svh flex-col">
+        <a href="#main" className="skip">
           Skip to content
         </a>
         {children}
@@ -149,45 +136,41 @@ export function Layout({ children }: { children: ReactNode }) {
 export default function App({ loaderData }: Route.ComponentProps) {
   return (
     <CartProvider initialData={loaderData.cartData}>
-      <PageViewedTracker />
-      <CartAnalyticsTracker />
-      <AnnouncementBar />
-      <Header shopInfo={loaderData.shopInfo} />
-      <Outlet />
-      <Footer shopInfo={loaderData.shopInfo} />
-      <CartDrawer />
-      <SearchDrawer />
+      <SavedProvider>
+        <PageViewedTracker />
+        <CartAnalyticsTracker />
+        <Header />
+        <main id="main" className="flex-1">
+          <Outlet />
+        </main>
+        <Footer year={loaderData.year} />
+        <CartDrawer />
+      </SavedProvider>
     </CartProvider>
   );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404 ? "The requested page could not be found." : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
+  const notFound = isRouteErrorResponse(error) && error.status === 404;
+  const details = import.meta.env.DEV && error instanceof Error ? error.message : null;
 
   return (
-    <main
-      id="main-content"
-      tabIndex={-1}
-      className="max-w-page px-margin mx-auto w-full flex-1 py-12"
-    >
-      <h1 className="type-display text-on-surface">{message}</h1>
-      <p className="text-on-surface-secondary mt-4">{details}</p>
-      {stack ? (
-        <pre className="border-border mt-6 w-full overflow-x-auto rounded border p-4 text-sm">
-          <code>{stack}</code>
-        </pre>
-      ) : null}
+    <main id="main" className="flex-1">
+      <Section className="pt-24 pb-16 md:pt-32">
+        <PageTitle
+          title={notFound ? "That page is not here." : "Something went wrong."}
+          lede={notFound ? "It may have moved when the house did. Everything we make is a step away." : "Call either store and we will help directly."}
+        />
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Link to="/americana" className="btn">
+            The designs
+          </Link>
+          <Link to="/appointments" className="btn btn-outline">
+            Book an appointment
+          </Link>
+        </div>
+        {details ? <pre className="mx-auto mt-10 max-w-3xl overflow-x-auto text-xs text-muted">{details}</pre> : null}
+      </Section>
     </main>
   );
 }
