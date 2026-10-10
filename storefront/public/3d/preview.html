@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cast files preview</title>
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+  body{margin:0;background:#f5f2ec;color:#121212;font:14px/1.4 system-ui}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding:16px}
+  figure{margin:0;background:#e9e7e2}
+  model-viewer{width:100%;height:300px;background:#e9e7e2;--poster-color:#e9e7e2}
+  figcaption{padding:8px 10px}
+</style></head>
+<body><div class="grid" id="g"></div>
+<script>
+const pieces=["contour-band","engagement-ring-a","engagement-ring-b","hidden-halo-ring","patterned-band","plain-band","rope-edge-band","script-pendant","signet-ring","solitaire-ring","stack-band-a","stack-band-b","three-stone-flush-ring"];
+document.getElementById('g').innerHTML=pieces.map(p=>`<figure><model-viewer src="/3d/models/${p}.glb" environment-image="/3d/env/studio_small_09_1k.hdr" exposure="1.1" shadow-intensity="0.6" camera-controls auto-rotate alt="${p}"></model-viewer><figcaption>${p}</figcaption></figure>`).join('');
+</script></body></html>

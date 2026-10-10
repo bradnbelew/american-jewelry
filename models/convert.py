@@ -28,6 +28,8 @@ STL_DIR = ROOT / "stl"
 GLB_DIR = ROOT / "glb"
 GLTF_TRANSFORM = ROOT.parent / "storefront" / "node_modules" / ".bin" / ("gltf-transform.cmd" if sys.platform == "win32" else "gltf-transform")
 
+MAX_FACES = 140_000
+
 METAL_COLORS = {
     "metal": (1.0, 0.77, 0.34),  # yellow gold at default; the viewer swaps it
 }
@@ -72,6 +74,9 @@ def convert(handle_dir: Path, scale: float) -> Path | None:
         mesh = trimesh.load_mesh(stl, force="mesh")
         if scale != 1.0:
             mesh.apply_scale(scale)
+        # Cast files arrive at CAD resolution (up to 3M faces). Decimate to a web budget.
+        if len(mesh.faces) > MAX_FACES:
+            mesh = mesh.simplify_quadric_decimation(face_count=MAX_FACES)
         name, kind = material_name(stl.stem)
         mesh.visual = trimesh.visual.TextureVisuals(material=pbr(kind, name))
         mesh.metadata["name"] = name
@@ -95,7 +100,7 @@ def convert(handle_dir: Path, scale: float) -> Path | None:
     if GLTF_TRANSFORM.exists():
         tmp = out.with_suffix(".opt.glb")
         subprocess.run(
-            [str(GLTF_TRANSFORM), "optimize", str(out), str(tmp), "--compress", "meshopt", "--texture-compress", "webp"],
+            [str(GLTF_TRANSFORM), "optimize", str(out), str(tmp), "--compress", "draco", "--texture-compress", "webp"],
             check=False,
             capture_output=True,
         )

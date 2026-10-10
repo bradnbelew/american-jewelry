@@ -1,1 +1,54 @@
-{}
+{
+  "contour-band": {
+    "glb": "glb/contour-band.glb",
+    "embed": ""
+  },
+  "engagement-ring-a": {
+    "glb": "glb/engagement-ring-a.glb",
+    "embed": ""
+  },
+  "engagement-ring-b": {
+    "glb": "glb/engagement-ring-b.glb",
+    "embed": ""
+  },
+  "hidden-halo-ring": {
+    "glb": "glb/hidden-halo-ring.glb",
+    "embed": ""
+  },
+  "patterned-band": {
+    "glb": "glb/patterned-band.glb",
+    "embed": ""
+  },
+  "plain-band": {
+    "glb": "glb/plain-band.glb",
+    "embed": ""
+  },
+  "rope-edge-band": {
+    "glb": "glb/rope-edge-band.glb",
+    "embed": ""
+  },
+  "script-pendant": {
+    "glb": "glb/script-pendant.glb",
+    "embed": ""
+  },
+  "signet-ring": {
+    "glb": "glb/signet-ring.glb",
+    "embed": ""
+  },
+  "solitaire-ring": {
+    "glb": "glb/solitaire-ring.glb",
+    "embed": ""
+  },
+  "stack-band-a": {
+    "glb": "glb/stack-band-a.glb",
+    "embed": ""
+  },
+  "stack-band-b": {
+    "glb": "glb/stack-band-b.glb",
+    "embed": ""
+  },
+  "three-stone-flush-ring": {
+    "glb": "glb/three-stone-flush-ring.glb",
+    "embed": ""
+  }
+}
