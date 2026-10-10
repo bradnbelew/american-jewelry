@@ -244,4 +244,12 @@ export default [
       'react-hooks/rules-of-hooks': 'off',
     },
   },
+  {
+    // react-three-fiber JSX: geometry/material/position props are three.js, not DOM
+    files: ['app/components/three/**'],
+    rules: {
+      'react/no-unknown-property': 'off',
+      'react/no-array-index-key': 'off',
+    },
+  },
 ];
