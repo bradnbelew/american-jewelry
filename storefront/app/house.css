@@ -29,7 +29,7 @@
   --font-sans: 'Public Sans Variable', 'Public Sans', 'Franklin Gothic', system-ui, sans-serif;
 
   --ease-house: cubic-bezier(0.2, 0, 0, 1);
-  --section-y: 20vh;
+  --section-y: 12vh;
 }
 
 @theme inline {
@@ -68,7 +68,7 @@ body {
 
 @media (max-width: 767px) {
   :root {
-    --section-y: 12vh;
+    --section-y: 8vh;
   }
 }
 
@@ -394,11 +394,9 @@ details.acc > summary {
   justify-content: space-between;
   min-height: 3.25rem;
   padding: 0.5rem 0;
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 400;
 }
 details.acc > summary::-webkit-details-marker {
   display: none;
@@ -430,10 +428,8 @@ details.acc[open] > summary::after {
 .spec th {
   width: 9rem;
   font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 400;
   color: var(--muted);
 }
 

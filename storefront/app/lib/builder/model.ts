@@ -91,8 +91,8 @@ export const HAND_LABEL: Record<Hand, string> = { script: "House script", roman:
 
 /** The house line. Stones below it are not offered. */
 export const STONE_STANDARD: Record<Origin, { grade: string; report: string; tier: string; short: string }> = {
-  natural: { grade: "F–G color · VS1 clarity · Excellent cut", report: "GIA report, laser inscribed", tier: "Americana", short: "Natural diamond" },
-  "man-made": { grade: "D–F color · VVS1–VVS2 · Ideal cut", report: "IGI Laboratory Grown Diamond Report, laser inscribed", tier: "New American", short: "Man-made diamond" },
+  natural: { grade: "F–G color, VS1 clarity, Excellent cut", report: "GIA report, laser inscribed", tier: "Americana", short: "Natural diamond" },
+  "man-made": { grade: "D–F color, VVS1–VVS2, Ideal cut", report: "IGI Laboratory Grown Diamond Report, laser inscribed", tier: "New American", short: "Man-made diamond" },
 };
 
 export const BIRTHSTONES: { month: number; name: string; stone: string; hex: string }[] = [
@@ -117,7 +117,7 @@ export const stoneDiameterMm = (carat: number) => 6.5 * Math.cbrt(carat);
 export const sizeToInnerDiameterMm = (size: Size) => 11.63 + 0.8128 * parseFloat(size);
 
 export function ringName(c: RingConfig) {
-  return `${SETTING_LABEL[c.setting]} · ${c.carat.toFixed(2)} ct ${STONE_STANDARD[c.origin].short.toLowerCase()} · ${METAL_LABEL[c.metal]}`;
+  return `${SETTING_LABEL[c.setting]}, ${c.carat.toFixed(2)} ct ${STONE_STANDARD[c.origin].short.toLowerCase()}, ${METAL_LABEL[c.metal]}`;
 }
 
 export function leadTimeWeeks(c: RingConfig) {

@@ -202,7 +202,7 @@ export const PIECES: Piece[] = [
     oneOfOne: { number: "003", registered: true },
     versions: [{ key: "diamond", name: "Natural diamond", priceCents: null, stones: "14.8 ct tw natural diamonds", origin: "natural" }],
     metals: ["18k-yellow"],
-    leadTime: "In the workshop · Spring",
+    leadTime: "In the workshop, spring",
     madeToOrder: false,
     description: "Forty-one graduated natural diamonds in a river of hand-cut 18k gold links. Made once.",
     specs: [
@@ -225,7 +225,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose", "18k-yellow", "platinum"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "10", "11", "12"],
     engraving: true,
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description:
       "The star sits on the finger; the tail wraps a third of the way around the band in graduated settings.",
@@ -247,7 +247,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose", "18k-yellow", "platinum"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "10", "11", "12"],
     engraving: true,
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description: "A flat band with the star cut flush into its surface and the tail running on around the finger.",
     specs: [
@@ -266,7 +266,7 @@ export const PIECES: Piece[] = [
     versions: americanaVersions(1450, 1950, 3400, "0.40 ct tw natural diamonds, F–G, VS"),
     metals: ["14k-yellow", "14k-white", "14k-rose", "18k-yellow"],
     engraving: true,
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description: "The star hangs from its own tail; the chain runs through the last setting so the piece sits straight.",
     specs: [
@@ -284,7 +284,7 @@ export const PIECES: Piece[] = [
     pieceType: "bracelet",
     versions: americanaVersions(2800, 3600, 6900, "1.10 ct tw natural diamonds, F–G, VS"),
     metals: ["14k-yellow", "14k-white", "14k-rose", "18k-yellow"],
-    leadTime: "Made to order · about 4 weeks",
+    leadTime: "Made to order, about 4 weeks",
     madeToOrder: true,
     description: "Three stars in flight along a chain made link by link at the bench, each star with its own tail.",
     specs: [
@@ -304,7 +304,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "18k-yellow", "14k-white", "platinum"],
     sizes: ["6", "7", "8", "9", "10", "11", "12", "13"],
     engraving: true,
-    leadTime: "Made to order · about 4 weeks",
+    leadTime: "Made to order, about 4 weeks",
     madeToOrder: true,
     description: "A heavy oval signet with the star cut into its face and the tail chased down the shoulder.",
     specs: [
@@ -323,7 +323,7 @@ export const PIECES: Piece[] = [
     versions: americanaVersions(2400, 3100, 5200, "0.70 ct tw natural diamonds, F–G, VS"),
     metals: ["14k-yellow", "14k-white", "18k-yellow"],
     engraving: true,
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description: "A solid tag, 2 mm thick, with the star struck deep and the tail running off the edge.",
     specs: [
@@ -343,7 +343,7 @@ export const PIECES: Piece[] = [
     pieceType: "necklace",
     versions: americanaVersions(4200, 4900, 9800, "2.40 ct tw natural diamonds, F–G, VS"),
     metals: ["14k-yellow", "18k-yellow", "14k-white"],
-    leadTime: "Made to order · about 5 weeks",
+    leadTime: "Made to order, about 5 weeks",
     madeToOrder: true,
     description: "Faceted links that interlock edge to edge. Every link cast, cleaned and polished by hand.",
     specs: [
@@ -361,7 +361,7 @@ export const PIECES: Piece[] = [
     pieceType: "bracelet",
     versions: americanaVersions(2900, 3500, 6400, "1.30 ct tw natural diamonds, F–G, VS"),
     metals: ["14k-yellow", "18k-yellow", "14k-white"],
-    leadTime: "Made to order · about 4 weeks",
+    leadTime: "Made to order, about 4 weeks",
     madeToOrder: true,
     description: "The necklace link at the wrist, with a hidden clasp that disappears into the faceting.",
     specs: [
@@ -381,7 +381,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "18k-yellow", "14k-white", "platinum"],
     sizes: ["6", "7", "8", "9", "10", "11", "12", "13"],
     engraving: true,
-    leadTime: "Made to order · about 4 weeks",
+    leadTime: "Made to order, about 4 weeks",
     madeToOrder: true,
     description: "The whole face is one faceted field; the gemstone version sets a single stone at the center facet.",
     specs: [
@@ -401,7 +401,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose", "18k-yellow", "platinum"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "10", "11", "12"],
     engraving: true,
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description: "A knife-edge band faceted all the way around.",
     specs: [{ label: "Band", value: "2.6 mm knife edge, comfort fit" }],
@@ -425,7 +425,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose", "platinum"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9"],
     engraving: true,
-    leadTime: "Made to order · about 2 weeks",
+    leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description:
       "One man-made diamond, colorless and flawless to the loupe, on an open four-prong head. The same setting is available in Americana with a natural diamond.",
@@ -450,7 +450,7 @@ export const PIECES: Piece[] = [
       manMade("3.00 ct tw", 3400, "3.00 ct tw"),
     ],
     metals: ["14k-yellow", "14k-white", "14k-rose", "platinum"],
-    leadTime: "Made to order · about 2 weeks",
+    leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description: "The Signal head as a stud: open on four sides, the stone the whole story.",
     specs: [
@@ -469,7 +469,7 @@ export const PIECES: Piece[] = [
     family: "Tennis",
     versions: [manMade("5.00 ct tw", 3000, "5.00 ct tw"), manMade("8.00 ct tw", 5200, "8.00 ct tw")],
     metals: ["14k-yellow", "14k-white", "14k-rose"],
-    leadTime: "Made to order · about 2 weeks",
+    leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description: "Calibrated man-made diamonds set edge to edge in a square grid. No gaps, no gallery.",
     specs: [
@@ -488,7 +488,7 @@ export const PIECES: Piece[] = [
     family: "Tennis",
     versions: [manMade("12.00 ct tw", 8000, "12.00 ct tw")],
     metals: ["14k-yellow", "14k-white"],
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description: "The Grid line at the neck: one continuous field of light, 16 inches of it.",
     specs: [
@@ -508,7 +508,7 @@ export const PIECES: Piece[] = [
     versions: [manMade("2.00 ct tw", 1800, "2.00 ct tw")],
     metals: ["14k-yellow", "14k-white", "14k-rose", "platinum"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9"],
-    leadTime: "Made to order · about 2 weeks",
+    leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description: "Man-made diamonds all the way around, set in the Grid, with no visible metal between them.",
     specs: [
@@ -528,7 +528,7 @@ export const PIECES: Piece[] = [
     versions: [manMade("0.75 ct tw", 800, "0.75 ct tw")],
     metals: ["14k-yellow", "14k-white", "14k-rose"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9"],
-    leadTime: "Made to order · about 2 weeks",
+    leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description: "A half-set thin band, made to stack. Buy one; add another on the next anniversary.",
     specs: [{ label: "Band", value: "1.6 mm" }],
@@ -546,7 +546,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "platinum"],
     sizes: ["8", "9", "10", "11", "12", "13"],
     engraving: true,
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description: "A square signet with one man-made diamond flush at the center of a brushed face.",
     specs: [
@@ -565,7 +565,7 @@ export const PIECES: Piece[] = [
     family: "Men's",
     versions: [manMade("10.00 ct tw", 7500, "10.00 ct tw")],
     metals: ["14k-yellow", "14k-white"],
-    leadTime: "Made to order · about 3 weeks",
+    leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
     description: "The Grid at 20 inches with a heavier gauge and a double-locking clasp.",
     specs: [
