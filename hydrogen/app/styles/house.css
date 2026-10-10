@@ -1,0 +1,543 @@
+/*
+ * American Jewelry: the house system (remake, 2026-10).
+ * Paper ground, ink type, navy velvet for Royal American and the bag, gold for hairlines and numerals only.
+ * Display and text: Libre Caslon. Everything in caps, numbers, controls: Public Sans.
+ * Rules: one subject per screen; controls have fixed heights and 1px borders in every state; nothing shifts when clicked.
+ * See research/08-remake-design-direction.md §6.
+ */
+@import '@fontsource/libre-caslon-display/400.css';
+@import '@fontsource/libre-caslon-text/400.css';
+@import '@fontsource/libre-caslon-text/400-italic.css';
+@import '@fontsource/libre-caslon-text/700.css';
+@import '@fontsource-variable/public-sans';
+
+:root {
+  --paper: #f5f2ec;
+  --bone: #ece7dd;
+  --white: #ffffff;
+  --ink: #121212;
+  --ink-2: #3f3f3f;
+  --muted: #63676e;
+  --hair: #ddd8cf;
+  --navy: #16213a;
+  --navy-2: #1f2d4d;
+  --gold: #b08d57;
+  --stone: #e9e7e2;
+
+  --font-display: 'Libre Caslon Display', 'Big Caslon', 'Adobe Caslon Pro', Georgia, serif;
+  --font-text: 'Libre Caslon Text', 'Adobe Caslon Pro', Georgia, serif;
+  --font-sans: 'Public Sans Variable', 'Public Sans', 'Franklin Gothic', system-ui, sans-serif;
+
+  --ease-house: cubic-bezier(0.2, 0, 0, 1);
+  --section-y: 20vh;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-bone: var(--bone);
+  --color-white: var(--white);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-hair: var(--hair);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-gold: var(--gold);
+  --color-stone: var(--stone);
+  --font-display: var(--font-display);
+  --font-text: var(--font-text);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  color-scheme: light;
+  background: var(--paper);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: clip;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --section-y: 12vh;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------------- */
+/* Type roles                                                        */
+/* ---------------------------------------------------------------- */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-text {
+  font-family: var(--font-text);
+}
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.h-section {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.h-item {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+}
+.caps {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.caps-sm {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.lede {
+  font-family: var(--font-text);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.letter {
+  font-family: var(--font-text);
+  font-size: 1.1875rem; /* 19px */
+  line-height: 1.55;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+.letter p + p {
+  margin-top: 1.1em;
+}
+.measure {
+  max-width: 62ch;
+}
+.measure-display {
+  max-width: 34ch;
+}
+.num {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+.gold-numeral {
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-size: 1.5rem; /* gold is never set below 24px */
+  line-height: 1;
+}
+
+/* ---------------------------------------------------------------- */
+/* Controls: fixed heights, 1px borders in every state               */
+/* ---------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  white-space: nowrap;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.btn:hover {
+  background: var(--ink-2);
+  border-color: var(--ink-2);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-light {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.btn-light:hover {
+  background: var(--bone);
+  border-color: var(--bone);
+}
+
+.link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--ink);
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.link:hover {
+  color: var(--muted);
+  border-color: var(--muted);
+}
+.link-light {
+  color: var(--paper);
+  border-color: var(--paper);
+}
+.link-light:hover {
+  color: rgba(245, 242, 236, 0.75);
+  border-color: rgba(245, 242, 236, 0.75);
+}
+.link-quiet {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-color: var(--hair);
+  transition: text-decoration-color 0.18s ease;
+}
+.link-quiet:hover {
+  text-decoration-color: var(--ink);
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0 1rem;
+  border: 1px solid var(--hair);
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease;
+}
+.opt:hover {
+  border-color: var(--ink-2);
+}
+.opt[aria-pressed='true'],
+.opt[data-active='true'] {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.opt:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--hair);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  transition: border-color 0.15s ease;
+}
+.pill:hover {
+  border-color: var(--ink-2);
+}
+.pill[aria-pressed='true'] {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.pill:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.field {
+  width: 100%;
+  height: 3rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--hair);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+.field::placeholder {
+  color: var(--muted);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+textarea.field {
+  height: auto;
+  min-height: 7rem;
+  padding: 0.8rem 0.9rem;
+  resize: vertical;
+}
+select.field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23121212' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.5rem;
+}
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--hair);
+  background: var(--white);
+  transition: border-color 0.15s ease;
+}
+.swatch:hover {
+  border-color: var(--ink-2);
+}
+.swatch[aria-pressed='true'] {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.swatch:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.swatch-dot {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.12),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.quiet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.25rem;
+  padding: 0 0.25rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--hair);
+  transition: border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.quiet:hover,
+.quiet[aria-pressed='true'] {
+  border-color: var(--ink);
+}
+
+.hair {
+  border-top: 1px solid var(--hair);
+}
+.hair-gold {
+  border-top: 1px solid var(--gold);
+}
+
+/* Accordions without layout jump */
+details.acc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.25rem;
+  padding: 0.5rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+details.acc > summary::-webkit-details-marker {
+  display: none;
+}
+details.acc > summary::after {
+  content: '+';
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--muted);
+}
+details.acc[open] > summary::after {
+  content: '\2013';
+}
+
+/* Spec table: label : value, hairlines, nothing else */
+.spec {
+  width: 100%;
+  border-collapse: collapse;
+}
+.spec th,
+.spec td {
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--hair);
+  vertical-align: top;
+  text-align: left;
+  font-size: 0.875rem;
+}
+.spec th {
+  width: 9rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- */
+/* Layout                                                            */
+/* ---------------------------------------------------------------- */
+.wrap {
+  width: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+  padding-left: clamp(1rem, 4vw, 3.5rem);
+  padding-right: clamp(1rem, 4vw, 3.5rem);
+}
+.screen {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+.velvet {
+  background: var(--navy);
+  color: var(--paper);
+}
+.ground-stone {
+  background: var(--stone);
+}
+
+::selection {
+  background: var(--navy);
+  color: var(--paper);
+}
+
+/* ---------------------------------------------------------------- */
+/* Motion: opacity and 12px of travel; the ring is the only thing that moves more */
+/* ---------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .settle img {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    @keyframes settle {
+      from {
+        transform: scale(1.02);
+      }
+      to {
+        transform: none;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Type over photography always carries a shadow and sits on a real overlay */
+.on-photo {
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(0, 0, 0, 0.3);
+}
+.photo-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.55), rgba(18, 18, 18, 0) 55%);
+  pointer-events: none;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 60;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink);
+}
+.skip:focus {
+  top: 1rem;
+}
+
+@media print {
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+}
