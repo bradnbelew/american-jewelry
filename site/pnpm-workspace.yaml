@@ -1,4 +1,4 @@
-allowBuilds:
-  esbuild: set this to true or false
+﻿allowBuilds:
+  esbuild: false
   sharp: false
   unrs-resolver: false
