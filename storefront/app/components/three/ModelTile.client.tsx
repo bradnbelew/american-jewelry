@@ -28,7 +28,7 @@ export function ModelTileScene({ slug, metal = "yellow" }: { slug: string; metal
 const GOLD: Record<"yellow" | "white" | "rose", string> = { yellow: "#f3c56a", white: "#e8e8ea", rose: "#e7a98a" };
 
 function Piece({ slug, metal }: { slug: string; metal: "yellow" | "white" | "rose" }) {
-  const { scene } = useGLTF(glbUrl(slug), true);
+  const { scene } = useGLTF(glbUrl(slug), "/3d/draco/");
   useEffect(() => {
     scene.traverse((o) => {
       if ((o as THREE.Mesh).isMesh) {

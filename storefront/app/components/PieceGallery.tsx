@@ -8,7 +8,7 @@ import type { PieceModel } from "~/lib/models";
  * When the piece has a model, the first frame carries the "Turn it in 3D" control:
  * an iJewel embed if one exists, otherwise our own viewer on the cast file.
  */
-export function PieceGallery({ photos, title, model, metal }: { photos: string[]; title: string; model?: PieceModel; metal?: "yellow" | "white" | "rose" }) {
+export function PieceGallery({ photos, title, model, metal, open3d = false }: { photos: string[]; title: string; model?: PieceModel; metal?: "yellow" | "white" | "rose"; open3d?: boolean }) {
   const [first, ...rest] = photos;
   const poster = <Pic k={first} sizes="(min-width: 1024px) 55vw, 100vw" priority />;
 
@@ -17,7 +17,7 @@ export function PieceGallery({ photos, title, model, metal }: { photos: string[]
       {model?.embed ? (
         <IJewelEmbed src={model.embed} title={title} poster={poster} />
       ) : model?.glb ? (
-        <ModelTile slug={model.glb} title={title} poster={poster} metal={metal} />
+        <ModelTile slug={model.glb} title={title} poster={poster} metal={metal} initialOpen={open3d} />
       ) : (
         <div className="relative aspect-[4/5] overflow-hidden bg-white">{poster}</div>
       )}

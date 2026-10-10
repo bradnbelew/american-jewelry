@@ -14,10 +14,10 @@ import { breadcrumbJsonLd, pageMeta, productJsonLd } from "~/lib/seo";
 
 import type { Route } from "./+types/piece";
 
-export function loader({ params }: Route.LoaderArgs) {
+export function loader({ params, request }: Route.LoaderArgs) {
   const piece = pieceByHandle(params.handle);
   if (!piece) throw new Response("Not found", { status: 404 });
-  return { handle: piece.handle };
+  return { handle: piece.handle, open3d: new URL(request.url).searchParams.get("view") === "3d" };
 }
 
 export const meta: Route.MetaFunction = ({ data }) => {
@@ -89,7 +89,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
       <Section className="pt-6 md:pt-8">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <PieceGallery photos={PIECE_PHOTOS[piece.handle] ?? ["hero-box"]} title={piece.name} model={royal ? undefined : modelFor(piece.handle)} metal={metalTone(metal)} />
+            <PieceGallery photos={PIECE_PHOTOS[piece.handle] ?? ["hero-box"]} title={piece.name} model={royal ? undefined : modelFor(piece.handle)} metal={metalTone(metal)} open3d={loaderData.open3d} />
           </div>
 
           <div className="flex flex-col gap-8 lg:sticky lg:top-32 lg:col-span-5">

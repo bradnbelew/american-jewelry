@@ -6,8 +6,8 @@ import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
  */
 const Scene = lazy(() => import("./ModelTile.client").then((m) => ({ default: m.ModelTileScene })));
 
-export function ModelTile({ slug, title, poster, metal }: { slug: string; title: string; poster: ReactNode; metal?: "yellow" | "white" | "rose" }) {
-  const [open, setOpen] = useState(false);
+export function ModelTile({ slug, title, poster, metal, initialOpen = false }: { slug: string; title: string; poster: ReactNode; metal?: "yellow" | "white" | "rose"; initialOpen?: boolean }) {
+  const [open, setOpen] = useState(initialOpen);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
