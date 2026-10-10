@@ -287,6 +287,14 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
                 detail: `${name} · size ${c.size} · ${code}`,
                 priceCents: p.total * 100,
                 photo,
+                selection: {
+                  kind: "design",
+                  code,
+                  title: `${note.name} ring · ${name}`,
+                  priceCents: p.total * 100,
+                  size: String(c.size),
+                  ...(c.engraving ? { engraving: c.engraving } : {}),
+                },
               })
             }
           >

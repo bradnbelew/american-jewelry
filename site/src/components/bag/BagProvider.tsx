@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import type { BagSelection } from "@/lib/shopify/checkout";
 
 export interface BagItem {
   id: string; // handle + options
@@ -10,6 +11,7 @@ export interface BagItem {
   priceCents: number;
   photo: string; // PHOTO key
   qty: number;
+  selection?: BagSelection; // how to find this line in Shopify at checkout
 }
 
 interface BagState {

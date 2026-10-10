@@ -1,13 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { formatPrice } from "@/lib/catalog/data";
+import { startCheckout } from "@/lib/shopify/checkout";
 import { Pic } from "../Pic";
 import { useBag } from "./BagProvider";
 
 export function BagDrawer() {
   const { items, isOpen, closeBag, remove, totalCents } = useBag();
+  const [pending, start] = useTransition();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -15,6 +18,22 @@ export function BagDrawer() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen, closeBag]);
+
+  const checkout = () => {
+    setError(null);
+    const lines = items
+      .filter((it) => it.selection)
+      .map((it) => ({ selection: it.selection!, quantity: it.qty }));
+    if (lines.length !== items.length) {
+      setError("One of these pieces was saved before checkout opened. Remove it and add it again.");
+      return;
+    }
+    start(async () => {
+      const result = await startCheckout(lines);
+      if ("url" in result) window.location.assign(result.url);
+      else setError(result.error);
+    });
+  };
 
   return (
     <div className={`fixed inset-0 z-50 ${isOpen ? "" : "pointer-events-none"}`} aria-hidden={!isOpen}>
@@ -64,14 +83,18 @@ export function BagDrawer() {
             <span className="caps-sm text-muted">Subtotal</span>
             <span className="font-display text-2xl tabular-nums">{formatPrice(totalCents)}</span>
           </div>
-          <button type="button" className="btn" disabled={items.length === 0}>
-            Checkout
+          <button type="button" className="btn" disabled={items.length === 0 || pending} onClick={checkout}>
+            {pending ? "Opening checkout" : "Checkout"}
           </button>
           <Link href="/appointments" className="btn btn-outline" onClick={closeBag}>
             See it in store first
           </Link>
-          <p className="text-[0.75rem] text-muted leading-relaxed">
-            Preview. Checkout connects to Shopify at launch; your selections are saved in this browser.
+          <p className="text-[0.75rem] leading-relaxed min-h-[2.5rem]" role="status" aria-live="polite">
+            {error ? (
+              <span className="text-ink-2">{error}</span>
+            ) : (
+              <span className="text-muted">Secure checkout. Sales tax is added at checkout. Your selections are saved in this browser.</span>
+            )}
           </p>
         </div>
       </aside>

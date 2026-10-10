@@ -98,6 +98,14 @@ export function PieceConfigurator({ piece }: { piece: Piece }) {
                   detail,
                   priceCents: price,
                   photo: (PIECE_PHOTOS[piece.handle] ?? ["hero-box"])[0],
+                  selection: {
+                    kind: "piece",
+                    handle: piece.handle,
+                    version: version.name,
+                    metal: METAL_LABEL[metal],
+                    ...(size ? { size } : {}),
+                    ...(engrave ? { engraving: engrave } : {}),
+                  },
                 })
               }
             >
