@@ -1,0 +1,9 @@
+# Reference images stay out of git (competitor material is study-only).
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.avif
+!.gitignore
+!README.md
