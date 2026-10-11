@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import { Pic } from "~/components/Pic";
 import { useSaved } from "~/components/saved/SavedProvider";
-import type { View } from "~/components/three/ParametricRing";
+import type { View } from "~/components/three/ParametricRing.client";
 import { RingViewer } from "~/components/three/RingViewer";
 import { encodeCode } from "~/lib/builder/code";
 import { MARKET_AS_OF } from "~/lib/builder/market";

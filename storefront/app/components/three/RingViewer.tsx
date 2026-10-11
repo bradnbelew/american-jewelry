@@ -1,5 +1,5 @@
 import {lazy, Suspense, useEffect, useState} from 'react';
-import type {ParametricRingProps} from './ParametricRing';
+import type {ParametricRingProps} from './ParametricRing.client';
 
 /**
  * Client-only wrapper for the three.js ring. React Router renders on Oxygen's
@@ -7,7 +7,7 @@ import type {ParametricRingProps} from './ParametricRing';
  * The poster (children of the surrounding frame) stays in place until then.
  */
 const ParametricRing = lazy(() =>
-  import('./ParametricRing').then((m) => ({default: m.ParametricRing})),
+  import('./ParametricRing.client').then((m) => ({default: m.ParametricRing})),
 );
 
 export function RingViewer(props: ParametricRingProps) {
