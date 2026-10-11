@@ -1,7 +1,8 @@
 {
   "contour-band": {
     "glb": "glb/contour-band.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/NqJp-BdATnCznKDbMBnTZw/embedded",
+    "ijewel_id": "NqJp-BdATnCznKDbMBnTZw"
   },
   "engagement-ring-a": {
     "glb": "glb/engagement-ring-a.glb",
@@ -9,11 +10,13 @@
   },
   "engagement-ring-b": {
     "glb": "glb/engagement-ring-b.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/ATNEC5EfQMuZ7GYDLBTZaw/embedded",
+    "ijewel_id": "ATNEC5EfQMuZ7GYDLBTZaw"
   },
   "hidden-halo-ring": {
     "glb": "glb/hidden-halo-ring.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/StUGkKLoTAG72gaWkD0Qfg/embedded",
+    "ijewel_id": "StUGkKLoTAG72gaWkD0Qfg"
   },
   "patterned-band": {
     "glb": "glb/patterned-band.glb",
@@ -21,34 +24,42 @@
   },
   "plain-band": {
     "glb": "glb/plain-band.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/c9vbivNdTZWECoAZARCFUw/embedded",
+    "ijewel_id": "c9vbivNdTZWECoAZARCFUw"
   },
   "rope-edge-band": {
     "glb": "glb/rope-edge-band.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/bvhVYSQeSfqRiGJPnMWfcw/embedded",
+    "ijewel_id": "bvhVYSQeSfqRiGJPnMWfcw"
   },
   "script-pendant": {
     "glb": "glb/script-pendant.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/Wgn5rloUR-ubCdlUlQ5wQg/embedded",
+    "ijewel_id": "Wgn5rloUR-ubCdlUlQ5wQg"
   },
   "signet-ring": {
     "glb": "glb/signet-ring.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/G97isy-tSdKv1n1S6Clbbg/embedded",
+    "ijewel_id": "G97isy-tSdKv1n1S6Clbbg"
   },
   "solitaire-ring": {
     "glb": "glb/solitaire-ring.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/bhJ8UbclT06Y7QjtSnvbYA/embedded",
+    "ijewel_id": "bhJ8UbclT06Y7QjtSnvbYA"
   },
   "stack-band-a": {
     "glb": "glb/stack-band-a.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/fgSY2QMjQkarV0BRXQIqJg/embedded",
+    "ijewel_id": "fgSY2QMjQkarV0BRXQIqJg"
   },
   "stack-band-b": {
     "glb": "glb/stack-band-b.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/HeODzD9ARSGV1wOXsZtOTg/embedded",
+    "ijewel_id": "HeODzD9ARSGV1wOXsZtOTg"
   },
   "three-stone-flush-ring": {
     "glb": "glb/three-stone-flush-ring.glb",
-    "embed": ""
+    "embed": "https://ijewel3d.com/drive/files/QpiNYGImQ9i5me9nB2BwEQ/embedded",
+    "ijewel_id": "QpiNYGImQ9i5me9nB2BwEQ"
   }
 }
