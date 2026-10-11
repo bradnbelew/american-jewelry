@@ -52,7 +52,7 @@ const buttonClass =
   "rounded-button focus-visible:outline-accent inline-flex h-11 items-center justify-center px-5 text-sm font-medium no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition-[color,background-color,border-color,transform] motion-safe:active:scale-[0.97]";
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "Account · CORE" }];
+  return [{ title: "Account. American Jewelry" }];
 }
 
 export async function loader({ context, request }: Route.LoaderArgs) {

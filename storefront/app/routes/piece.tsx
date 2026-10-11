@@ -94,7 +94,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 
           <div className="flex flex-col gap-8 lg:sticky lg:top-32 lg:col-span-5">
             <div className="flex flex-col gap-3">
-              <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{royal ? piece.name.replace(/^No\. \d+ · /, "") : piece.name}</h1>
+              <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{piece.name}</h1>
               <p className="label">
                 Ref. {pieceRef(piece)}
                 {royal ? `, Royal American No. ${piece.oneOfOne?.number}` : `, ${tier.name}`}

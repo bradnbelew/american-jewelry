@@ -24,7 +24,7 @@ export interface PageMetaInput {
 
 /** Title, description, canonical, Open Graph. Robots is decided site-wide in root; `noindex` adds a page-level rule. */
 export function pageMeta(input: PageMetaInput, jsonLd: object[] = []): MetaDescriptor[] {
-  const title = input.title ? `${input.title} · ${SITE_NAME}` : `${SITE_NAME} · A house of fine jewelry in Tennessee`;
+  const title = input.title ? `${input.title}. ${SITE_NAME}` : `${SITE_NAME}. A house of fine jewelry in Tennessee`;
   const photo = PHOTO[input.image ?? "hero-box"];
   const url = `${SITE}${input.path}`;
   return [

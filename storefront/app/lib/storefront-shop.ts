@@ -103,7 +103,7 @@ export function getShopNameFromRootMatch(
   return nonEmpty(rootMatch?.loaderData?.shopInfo?.name) ?? FALLBACK_SHOP_NAME;
 }
 
-/** Formats a document title as `<page> · <shop name>`. */
+/** Formats a document title as `<page>. <shop name>`. */
 export function formatPageTitle(page: string, shopName: string): string {
-  return `${page} · ${shopName}`;
+  return `${page}. ${shopName}`;
 }

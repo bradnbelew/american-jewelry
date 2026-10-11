@@ -128,7 +128,7 @@ function RoyalAmerican() {
                 </Link>
                 <div className={`flex flex-col gap-4 md:col-span-4 md:pb-6 ${flip ? "md:order-1 md:col-start-1" : "md:col-start-9"}`}>
                   <span className="gold-numeral">No. {p.oneOfOne?.number}</span>
-                  <h2 className="h-display text-[2.5rem] md:text-[3.5rem]">{p.name.replace(/^No\. \d+ · /, "")}</h2>
+                  <h2 className="h-display text-[2.5rem] md:text-[3.5rem]">{p.name}</h2>
                   <p className="font-text text-paper/80">{p.versions[0].stones}</p>
                   <Link to={`/pieces/${p.handle}`} className="link link-light self-start">
                     The piece
@@ -157,7 +157,7 @@ function RoyalAmerican() {
                 <td className="num text-gold">{p.oneOfOne?.number}</td>
                 <td>
                   <Link to={`/pieces/${p.handle}`} className="font-display text-[1.125rem] hover:text-paper/70">
-                    {p.name.replace(/^No\. \d+ · /, "")}
+                    {p.name}
                   </Link>
                 </td>
                 <td className="font-text text-paper/80">{p.versions[0].stones}</td>

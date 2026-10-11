@@ -153,7 +153,7 @@ export const PIECES: Piece[] = [
   /* ---------------- Royal American: one of one ---------------- */
   {
     handle: "no-001-the-cumberland",
-    name: "No. 001 · The Cumberland",
+    name: "The Cumberland",
     tier: "royal-american",
     design: "royal",
     pieceType: "ring",
@@ -174,7 +174,7 @@ export const PIECES: Piece[] = [
   },
   {
     handle: "no-002-tennessee-star",
-    name: "No. 002 · Tennessee Star",
+    name: "Tennessee Star",
     tier: "royal-american",
     design: "royal",
     pieceType: "necklace",
@@ -195,7 +195,7 @@ export const PIECES: Piece[] = [
   },
   {
     handle: "no-003-the-harpeth",
-    name: "No. 003 · The Harpeth",
+    name: "The Harpeth",
     tier: "royal-american",
     design: "royal",
     pieceType: "bracelet",
@@ -428,7 +428,7 @@ export const PIECES: Piece[] = [
     leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description:
-      "One man-made diamond, colorless and flawless to the loupe, on an open four-prong head. The same setting is available in Americana with a natural diamond.",
+      "One man-made diamond, colorless, with no inclusion visible at ten-power magnification, on an open four-prong head. The same setting is available in Americana with a natural diamond.",
     specs: [
       { label: "Center", value: "Round brilliant man-made diamond, D–F, VVS1–VVS2, Ideal cut, IGI report, laser inscribed" },
       { label: "Band", value: "1.8 mm knife edge" },

@@ -15,6 +15,7 @@ const ROWS: [string, string, string][] = [
 ];
 
 const FAQ: [string, string][] = [
+  // house-lint: allow (the customer's own question; the answer never calls natural stones real)
   ["Is a man-made diamond a real diamond?", "It is a diamond: the same carbon crystal, hardness and optical properties as a mined one, grown in a laboratory instead of the earth. Under the FTC's jewelry guides it may not be called simply a diamond, so we call it a man-made diamond every time, and we do not call either kind real or fake."],
   ["Can anyone tell the difference?", "Not by eye and not with a jeweler's loupe. A gemological laboratory can, which is why every man-made diamond we sell at 0.30 ct and above carries an IGI report and a laser inscription."],
   ["Why two laboratories?", "GIA stopped issuing letter grades for laboratory-grown diamonds in October 2025. IGI still grades them with the full color and clarity scales, so a D to F, VVS promise is an IGI promise. Natural diamonds carry a GIA report."],

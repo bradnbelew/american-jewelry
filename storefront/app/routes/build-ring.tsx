@@ -111,7 +111,7 @@ function Settings() {
           </div>
           <div className="flex flex-col gap-4">
             <h2 className="h-section text-[1.75rem]">Where the price comes from</h2>
-            <p className="font-text text-ink-2">The metal at your size and width, the bench work the setting needs, and the stone at its set quality. Three lines, under the ring.</p>
+            <p className="font-text text-ink-2">The metal at your size and width, the bench work the setting needs, and the stone at its set quality. Three rows, under the ring.</p>
             <Link to="/appointments?build=ring" className="link self-start">
               See it in store first
             </Link>
