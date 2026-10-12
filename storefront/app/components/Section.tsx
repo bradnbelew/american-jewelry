@@ -70,7 +70,7 @@ export function SplitOpener({
           {lede && <p className="lede measure">{lede}</p>}
           {children}
         </div>
-        <div className={`settle relative aspect-[4/5] overflow-hidden bg-bone md:col-span-7 md:aspect-[5/4] ${side === "left" ? "md:order-1" : ""}`}>
+        <div className={`settle relative aspect-[4/5] overflow-hidden bg-bone md:col-span-7 md:aspect-[5/4] ${side === "left" ? "md:order-1 md:-ml-10" : "md:-mr-10"}`}>
           <Pic k={photo} priority sizes="(min-width: 768px) 58vw, 100vw" position={position} />
         </div>
       </div>
@@ -86,7 +86,7 @@ export function PhotoOpener({
   title,
   lede,
   children,
-  height = "h-[86vh] min-h-[560px] max-h-[1000px]",
+  height = "aspect-[4/5] md:aspect-auto md:h-[86vh] md:min-h-[560px] md:max-h-[1000px]",
 }: {
   photo: string;
   position?: string;
@@ -101,9 +101,9 @@ export function PhotoOpener({
       <Pic k={photo} priority sizes="100vw" position={position} />
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div className="on-photo mx-auto flex max-w-[96rem] flex-col items-start gap-5 px-4 pb-12 text-paper md:px-10 md:pb-20">
-          {eyebrow && <span className="label !text-paper/85">{eyebrow}</span>}
+          {eyebrow && <span className="label !text-paper">{eyebrow}</span>}
           <h1 className="h-display measure-display text-[2.75rem] md:text-[4.5rem] lg:text-[5.5rem]">{title}</h1>
-          {lede && <p className="lede max-w-xl !text-paper/90">{lede}</p>}
+          {lede && <p className="lede max-w-xl !text-paper">{lede}</p>}
           {children}
         </div>
       </div>

@@ -29,7 +29,7 @@ const LEGAL: [string, string][] = [
   ["/policies#accessibility", "Accessibility"],
 ];
 
-/** A sitemap in small Caslon, the two addresses, the legal line. Nothing promotional. */
+/** A sitemap in small Caslon, the two addresses, the legal line. Nothing promotional, no capture. */
 export function Footer({ year }: { year: number }) {
   return (
     <footer className="mt-32 border-t border-hair">
@@ -39,17 +39,6 @@ export function Footer({ year }: { year: number }) {
           <p className="font-text max-w-xs text-[0.9375rem] leading-relaxed text-ink-2">
             Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
           </p>
-          <form className="flex max-w-xs flex-col gap-2" action="/journal" method="get" aria-label="Letters from the bench">
-            <label htmlFor="footer-email" className="caps-sm text-muted">
-              Letters from the bench, a few times a year
-            </label>
-            <div className="flex gap-2">
-              <input id="footer-email" type="email" name="email" placeholder="Your email" className="field" autoComplete="email" />
-              <button type="submit" className="btn btn-outline shrink-0 px-4">
-                Join
-              </button>
-            </div>
-          </form>
         </div>
         <Col className="md:col-span-2" title="The House" links={HOUSE} />
         <Col className="md:col-span-2" title="Services" links={SERVICES} />

@@ -52,3 +52,10 @@ Format: date | decision | why | source
 ## 2026-10-11
 
 - 2026-10-11 | `docs/briefs/` is the source of truth for house canon; root `CLAUDE.md` imports `00-house-canon.md` | sessions kept forgetting the rules | this briefs build
+- 2026-10-11 | Home hero is the house's own hand frame (`hero-hand`); the box shot stays Royal American's | one image per page, the hand is a distinctive asset (research/17 §2) | P1 build
+- 2026-10-11 | The home bench slot shows a render of a bench cast file labeled as such until the bench loop is shot | no honest bench photograph exists; a borrowed bench would be a false fact | P1 build, docs/briefs/PHOTOS-TODO.md
+- 2026-10-11 | The House letter is one shared text (`app/lib/catalog/letter.ts`) shown as the home's last screen and on /house | the letter is said once; the home ends with the letter and the two addresses | P1 build
+- 2026-10-11 | "The stone is set" is built in code on the Signal design page: GSAP ScrollTrigger scrub over one pinned viewport, Lenis only on that page, poster first, poster only under reduced motion or without WebGL | the Blender clip can replace the code timeline later (research/14 §4.3) | P1 build
+- 2026-10-11 | Pointer-reactive light = the key directional light follows the pointer plus a 3 degree lean of the ring; no per-frame environment re-render; off on touch and under reduced motion | moves the fire in the refraction stone at no extra render pass | P1 build
+- 2026-10-11 | Footer carries no email capture | nothing in the canon or briefs asks for one; capture is a store tell | P1 build
+- 2026-10-11 | Photographs are served as WebP width variants (`scripts/photos.mjs`, `public/photos/w`) through `Pic`'s srcset | the single 2000px JPEG was every slot's LCP | P1 build

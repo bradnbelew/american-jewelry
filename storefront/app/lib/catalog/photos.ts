@@ -33,7 +33,7 @@ export const PIECE_PHOTOS: Record<string, string[]> = {
   "no-002-tennessee-star": ["tristar-charm", "names", "medallion"],
   "no-003-the-harpeth": ["paperclip-bracelet", "hero-box"],
   "shooting-star-ring": ["gem-stack-rings", "hero-hand", "script-ring"],
-  "shooting-star-band": ["hero-hand", "gem-stack-rings"],
+  "shooting-star-band": ["script-ring", "hero-hand"],
   "shooting-star-pendant": ["tristar-charm", "medallion", "names"],
   "shooting-star-bracelet": ["paperclip-bracelet", "hero-box"],
   "shooting-star-signet": ["signet-b", "hero-box"],
@@ -54,14 +54,14 @@ export const PIECE_PHOTOS: Record<string, string[]> = {
 
 export const TIER_PHOTO: Record<string, string> = {
   "royal-american": "hero-box",
-  americana: "hero-hand",
+  americana: "ring-radiant",
   "new-american": "ring-halo",
 };
 
 export const DESIGN_PHOTO: Record<string, string> = {
   "shooting-star": "tristar-charm",
   prism: "signet-b",
-  signal: "ring-halo",
+  signal: "ring-radiant",
   grid: "huggie-diamond",
 };
 

@@ -86,9 +86,11 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 | C39 | Outside figure dating | Brief: Baymard 2021 "6 of 7 luxury sites mediocre" | Outside research: that figure is from Baymard's 2024 benchmark; in 2021 most sites rated "Decent" and search was the weakest area | 2024 for "6 of 7"; 2021 for search (https://baymard.com/blog/2021-luxury-ecommerce-benchmark) |
 | C40 | Competitor list | brand-playbook / brief examples | Bremer Jewelry is in Peoria, Illinois, not Tennessee (outside research) | Drop Bremer |
 
+| C39 | Home word budget vs the letter | canon and 04: home 110-150 visible words | research/17 §1 and the 2026-10-11 build prompt: the House letter is the home's last screen; with it the home reads about 270 words | Briefs follow the prompt (letter stays); the family can cut the letter to 80 words or move it back to /house only |
+
 ## D. Things Claude should fix in code (not done in this run; app code was out of scope)
 
-- Remove "flawless to the loupe" (C7) and "a standard no store publishes" (C8) from `storefront/app/lib/catalog/data.ts`.
+- ~~Remove "flawless to the loupe" (C7) and "a standard no store publishes" (C8) from `storefront/app/lib/catalog/data.ts`.~~ Done 2026-10-11 (P0 and P1).
 - Replace middle dots in Royal American names in data.ts (C3).
 - Correct `FIGURES_AS_OF` in `storefront/app/lib/site.ts` to the real check date (C14).
 - Confirm `numeral: "I" | "II" | "III"` in data.ts never renders.

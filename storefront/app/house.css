@@ -518,7 +518,7 @@ details.acc[open] > summary::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(18, 18, 18, 0.55), rgba(18, 18, 18, 0) 55%);
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.65) 0%, rgba(18, 18, 18, 0.45) 35%, rgba(18, 18, 18, 0) 65%);
   pointer-events: none;
 }
 
@@ -554,4 +554,15 @@ details.acc[open] > summary::after {
 }
 .velvet .label {
   color: rgba(245, 242, 236, 0.7);
+}
+.velvet .lede {
+  color: rgba(245, 242, 236, 0.85);
+}
+.registry th,
+.registry td {
+  padding-right: 1.5rem;
+}
+.registry th:last-child,
+.registry td:last-child {
+  padding-right: 0;
 }

@@ -33,6 +33,9 @@ export default [
   route("bag", "routes/cart.tsx"),
   route("account", "routes/account.tsx"),
 
+  // Development only: 3D poster frames for scripts/posters.mjs (404 in production)
+  route("__poster/:kind/:slug", "routes/poster.tsx"),
+
   // Crawlers
   route("robots.txt", "routes/robots.ts"),
   route("sitemap.xml", "routes/sitemap.ts"),

@@ -4,6 +4,7 @@ import { Pic } from "~/components/Pic";
 import { Section, SplitOpener } from "~/components/Section";
 import { STORES } from "~/lib/catalog/data";
 import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
+import { LETTER, LETTER_SIGNATURE } from "~/lib/catalog/letter";
 
 import type { Route } from "./+types/house";
 
@@ -30,10 +31,10 @@ export default function HousePage() {
         <div className="grid gap-10 md:grid-cols-12 md:gap-16">
           <h2 className="h-section text-[2rem] md:col-span-4 md:text-[2.5rem]">A letter from the family</h2>
           <div className="letter md:col-span-8">
-            <p>For years we were what most jewelers are: a good store. We sold what the trade made, we repaired what came through the door, and people in Brentwood and Mt. Juliet were kind enough to tell each other about us.</p>
-            <p>The pieces people loved most were the ones we had drawn ourselves and made at our own bench. So we stopped being a store. Everything that carries our mark from now on is ours: drawn by one of us, cast, set and finished here, and entered in our books under the name of the person who wears it.</p>
-            <p>We are not the first American jewelry house. We would like to be the one that makes its own things, says plainly where they come from, and is still here for your grandchildren&apos;s repairs.</p>
-            <p className="font-display mt-2 text-[1.25rem] italic text-ink">The family, Brentwood and Mt. Juliet, Tennessee</p>
+            {LETTER.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+            <p className="font-text mt-2 text-[1.125rem] italic text-ink">{LETTER_SIGNATURE}</p>
           </div>
         </div>
       </Section>

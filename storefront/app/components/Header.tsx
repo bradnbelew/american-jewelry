@@ -51,9 +51,6 @@ export function Header() {
             >
               {open ? "Close" : "Menu"}
             </button>
-            <Link to="/stores" className="label hidden hover:text-ink lg:inline">
-              Brentwood and Mt. Juliet, Tennessee
-            </Link>
           </div>
 
           <Link
