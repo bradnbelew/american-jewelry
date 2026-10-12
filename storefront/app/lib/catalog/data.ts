@@ -163,7 +163,7 @@ export const PIECES: Piece[] = [
     leadTime: "Available now, by appointment",
     madeToOrder: false,
     description:
-      "A 5.02 carat D-color, internally flawless diamond held in a platinum setting cut like a riverbank: one side rises, the other falls away. Made once.",
+      "A 5.02 carat D-color, internally flawless diamond in a platinum setting cut like a riverbank.",
     specs: [
       { label: "Center", value: "5.02 ct round brilliant, D, IF, GIA 2231…" },
       { label: "Metal", value: "Platinum 950" },
@@ -184,7 +184,7 @@ export const PIECES: Piece[] = [
     leadTime: "Available now, by appointment",
     madeToOrder: false,
     description:
-      "A 12.40 carat Ceylon sapphire at the center of a five-point star of diamonds, on a platinum chain made link by link at the bench.",
+      "A 12.40 carat Ceylon sapphire at the center of a five-point star of diamonds, on a platinum chain.",
     specs: [
       { label: "Center", value: "12.40 ct natural sapphire, unheated" },
       { label: "Diamonds", value: "6.10 ct tw, F to G, VVS" },
@@ -204,7 +204,7 @@ export const PIECES: Piece[] = [
     metals: ["18k-yellow"],
     leadTime: "In the workshop, spring",
     madeToOrder: false,
-    description: "Forty-one graduated natural diamonds in a river of hand-cut 18k gold links. Made once.",
+    description: "Forty-one graduated natural diamonds in a river of 18k gold links, made once.",
     specs: [
       { label: "Diamonds", value: "14.8 ct tw, 41 stones, E–F, VS1+" },
       { label: "Metal", value: "18k yellow gold" },
@@ -232,7 +232,7 @@ export const PIECES: Piece[] = [
     specs: [
       { label: "Band", value: "2.1 mm, comfort fit" },
       { label: "Star", value: "9 mm across" },
-      { label: "Hallmark", value: "AJ star, inside shank" },
+      { label: "Hallmark", value: "Karat mark and the house mark, inside the shank" },
     ],
     collections: ["family"],
     art: "ring",
@@ -252,7 +252,7 @@ export const PIECES: Piece[] = [
     description: "A flat band with the star cut flush into its surface and the tail running on around the finger.",
     specs: [
       { label: "Band", value: "3.0 mm flat, comfort fit" },
-      { label: "Hallmark", value: "AJ star, inside shank" },
+      { label: "Hallmark", value: "Karat mark and the house mark, inside the shank" },
     ],
     collections: ["family", "the-stack"],
     art: "band",
@@ -286,7 +286,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose", "18k-yellow"],
     leadTime: "Made to order, about 4 weeks",
     madeToOrder: true,
-    description: "Three stars in flight along a chain made link by link at the bench, each star with its own tail.",
+    description: "Three stars in flight along a chain, each star with its own tail.",
     specs: [
       { label: "Length", value: "6.5, 7 or 7.5 in" },
       { label: "Clasp", value: "Hidden box clasp with the AJ star" },
@@ -345,7 +345,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "18k-yellow", "14k-white"],
     leadTime: "Made to order, about 5 weeks",
     madeToOrder: true,
-    description: "Faceted links that interlock edge to edge. Every link cast, cleaned and polished by hand.",
+    description: "Faceted links that interlock edge to edge, every link cast, cleaned and polished.",
     specs: [
       { label: "Length", value: "16, 18 or 20 in" },
       { label: "Link", value: "9 mm faceted, knife edge" },
@@ -428,11 +428,11 @@ export const PIECES: Piece[] = [
     leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description:
-      "One man-made diamond, colorless, with no inclusion visible at ten-power magnification, on an open four-prong head. The same setting is available in Americana with a natural diamond.",
+      "One man-made diamond on an open four-prong head; the same setting takes a natural diamond in Americana.",
     specs: [
       { label: "Center", value: "Round brilliant man-made diamond, D to F, VVS1 to VVS2, Ideal cut, IGI report, laser inscribed" },
       { label: "Band", value: "1.8 mm knife edge" },
-      { label: "Hallmark", value: "AJ line, inside shank" },
+      { label: "Hallmark", value: "Karat mark and the house mark, inside the shank" },
     ],
     collections: ["bridal"],
     art: "solitaire",

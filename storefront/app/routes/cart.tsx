@@ -1,76 +1,40 @@
-import { ShopPayButton } from "@shopify/hydrogen/react";
 import { useEffect } from "react";
 
 import { publishCartViewed } from "~/components/AnalyticsTrackers";
-import { CartLineItem } from "~/components/CartDrawer";
+import { CartLines, CartSummary } from "~/components/CartDrawer";
+import { Section } from "~/components/Section";
 import { useCart } from "~/lib/cart";
-import { formatPrice } from "~/lib/money";
-import { formatPageTitle, getShopNameFromRootMatch } from "~/lib/storefront-shop";
+import { pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/cart";
 
-export function meta({ matches }: Route.MetaArgs) {
-  return [{ title: formatPageTitle("Cart", getShopNameFromRootMatch(matches[0])) }];
-}
+export const meta: Route.MetaFunction = () => pageMeta({ title: "Your bag", description: "What you have chosen, and what arrives.", path: "/bag", noindex: true });
 
+/** The full-page bag: the drawer's contents on velvet, for the no-script path and the footer link. */
 export default function CartRoute() {
   const cart = useCart((state) => state.data);
-  const loading = useCart((state) => state.loading);
-  const lines = cart.lines.nodes;
 
   useEffect(() => {
     publishCartViewed(cart);
   }, [cart]);
 
   return (
-    <main
-      id="main-content"
-      tabIndex={-1}
-      className="max-w-page px-margin mx-auto w-full flex-1 py-12"
-    >
-      <h1 id="cart-page-title" tabIndex={-1} className="type-display text-on-surface mb-8">
-        Cart
-      </h1>
-      {loading ? <p className="text-on-surface-secondary">Loading cart…</p> : null}
-      {!loading && lines.length === 0 ? (
-        <div>
-          <p className="text-on-surface font-medium">Your cart is empty.</p>
-          <p className="text-on-surface-secondary mt-2 text-sm">
-            Looks like you haven&apos;t added anything to your cart yet.
-          </p>
-        </div>
-      ) : null}
-      {lines.length > 0 ? (
-        <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
-          <ul role="list" className="divide-border divide-y">
-            {lines.map((line) => (
-              <CartLineItem key={line.id} line={line} emptyCartFocusId="cart-page-title" />
-            ))}
-          </ul>
-          <aside className="border-border h-fit rounded border p-4" aria-label="Cart summary">
-            <div className="flex items-center justify-between">
-              <span className="text-on-surface text-sm font-medium">Estimated total</span>
-              <span className="text-on-surface text-base font-medium">
-                {formatPrice(cart.cost.totalAmount)}
-              </span>
-            </div>
-            <p className="text-on-surface-secondary mt-3 text-xs">
-              Taxes and shipping calculated at checkout
-            </p>
-            {cart.checkoutUrl ? (
-              <div className="mt-4 grid gap-3">
-                <ShopPayButton width="100%" borderRadius="8px" />
-                <a
-                  href={cart.checkoutUrl}
-                  className="rounded-button button-primary focus-visible:outline-accent inline-flex h-11 w-full items-center justify-center gap-2 px-4 text-sm font-medium no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition-[color,background-color,border-color,transform] motion-safe:active:scale-[0.97]"
-                >
-                  Checkout
-                </a>
-              </div>
-            ) : null}
+    <div className="velvet -mb-32 pb-32">
+      <Section className="pt-10 md:pt-16">
+        <h1 id="cart-page-title" tabIndex={-1} className="h-display text-[2.5rem] md:text-[3.5rem]">
+          Your bag
+        </h1>
+      </Section>
+      <Section className="pt-10">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <CartLines emptyCartFocusId="cart-page-title" />
+          </div>
+          <aside className="lg:col-span-4 lg:col-start-9" aria-label="What arrives">
+            <CartSummary />
           </aside>
         </div>
-      ) : null}
-    </main>
+      </Section>
+    </div>
   );
 }

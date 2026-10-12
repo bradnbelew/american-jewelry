@@ -6,18 +6,12 @@ export function formatPrice(money: MoneyV2, locale = DEFAULT_MONEY_LOCALE): stri
   return formatMoney(money, { locale }).toString();
 }
 
+/** The house price: round, no cents on a whole amount ("$3,200"). */
+export function formatPriceRound(money: MoneyV2, locale = DEFAULT_MONEY_LOCALE): string {
+  return formatMoney(money, { locale, withoutTrailingZeros: true }).toString();
+}
+
 export function compareMoney(a: MoneyV2 | null | undefined, b: MoneyV2 | null | undefined): number {
   if (!a || !b) return 0;
   return Number.parseFloat(a.amount) - Number.parseFloat(b.amount);
-}
-
-export function salePercent(
-  price: MoneyV2,
-  compareAtPrice: MoneyV2 | null | undefined,
-): number | null {
-  if (!compareAtPrice) return null;
-  const current = Number.parseFloat(price.amount);
-  const compare = Number.parseFloat(compareAtPrice.amount);
-  if (!Number.isFinite(current) || !Number.isFinite(compare) || compare <= current) return null;
-  return Math.round(((compare - current) / compare) * 100);
 }

@@ -40,6 +40,9 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 27. "The Star" as a separate icon motif from about $650 (Proposed in brand-playbook; not in catalog).
 28. Whether pre-owned Rolex gets a page and where (Proposed: discreet, outside the main nav).
 29. Calendar for appointments: Cal.com or Sesami.
+- **B21 Payments.** Shopify Payments (and with it Shop Pay) is not enabled on the store as of 2026-10-12 (`shop.paymentSettings.supportedDigitalWallets` is empty). The owner enables it in Shopify admin before launch; until then Checkout opens but cannot take a card.
+
+- **B22 Checkout behind the Online Store password.** `cart.checkoutUrl` points at `e8d51b-f4.myshopify.com/cart/c/...`, and the Online Store channel is password-protected ("Opening soon"), so the handoff lands on the password page (verified 2026-10-12). The owner either removes the Online Store password, or finishes the domain cutover so checkout runs on the custom checkout domain. No test order is possible until then.
 
 ## C. Source conflicts
 
@@ -87,6 +90,9 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 | C40 | Competitor list | brand-playbook / brief examples | Bremer Jewelry is in Peoria, Illinois, not Tennessee (outside research) | Drop Bremer |
 
 | C39 | Home word budget vs the letter | canon and 04: home 110-150 visible words | research/17 §1 and the 2026-10-11 build prompt: the House letter is the home's last screen; with it the home reads about 270 words | Briefs follow the prompt (letter stays); the family can cut the letter to 80 words or move it back to /house only |
+
+| C40 | Caps on text links | house.css `.link` is 11px tracked caps and dresses "The design", "The registry", "See it in store first" site-wide | canon: caps only on nav and buttons | Open for the designer: restyle `.link` as sentence-case label with the 1px rule, or extend the caps allowance to standalone text links |
+| C41 | Selected control ring | DESIGN.md: the border never thickens | product brief: selected = ink border + inset (reads as 2px) | Code follows the brief (`.opt[aria-pressed]` inset shadow); designer picks one |
 
 ## D. Things Claude should fix in code (not done in this run; app code was out of scope)
 

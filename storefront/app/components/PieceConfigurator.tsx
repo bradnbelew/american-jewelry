@@ -42,7 +42,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       <div className="flex flex-col gap-1.5">
         <span className="font-display num text-[1.75rem]">{price === null ? "Price on request" : formatPrice(price)}</span>
         <span className="font-text text-[0.9375rem] text-ink-2">
-          {manMade ? "Man-made (laboratory-grown) diamond, D to F, VVS, IGI report." : (version.stones ?? "Solid 14k or 18k gold, karat-marked.")}
+          {manMade ? "Man-made diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? "Solid 14k or 18k gold, karat-marked.")}
         </span>
         <span className="label">
           {piece.leadTime}

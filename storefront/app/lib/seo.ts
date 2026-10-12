@@ -183,6 +183,63 @@ export function productJsonLd(p: Piece, design?: Design) {
   return node;
 }
 
+/**
+ * Product markup from the Storefront API: real prices and currency per variant, the Shopify
+ * images, the man-made qualifier in the name. The catalog piece supplies the description.
+ */
+export function productJsonLdFromStorefront(
+  product: {
+    handle: string;
+    title: string;
+    media: { nodes: Array<{ __typename: string; image?: { url: string } | null }> };
+    priceRange: { minVariantPrice: { amount: string; currencyCode: string }; maxVariantPrice: { amount: string; currencyCode: string } };
+    options: Array<{ optionValues: Array<{ name: string }> }>;
+    selectedOrFirstAvailableVariant: { sku?: string | null; availableForSale: boolean } | null;
+  },
+  p?: Piece,
+  design?: Design,
+) {
+  const manMade = p?.versions.some((v) => v.origin === "man-made") ?? false;
+  const natural = p?.versions.some((v) => v.origin === "natural" && v.key === "diamond") ?? false;
+  const images = product.media.nodes.map((m) => m.image?.url).filter((u): u is string => !!u);
+  const offerCount = product.options.reduce((n, o) => n * Math.max(1, o.optionValues.length), 1);
+  const round = (a: string) => Number.parseFloat(a).toFixed(0);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${SITE}/pieces/${product.handle}#product`,
+    name: manMade ? `${product.title}, man-made diamond` : product.title,
+    sku: product.selectedOrFirstAvailableVariant?.sku ?? product.handle.toUpperCase(),
+    url: `${SITE}/pieces/${product.handle}`,
+    image: images.length ? images : (PIECE_PHOTOS[product.handle] ?? ["hero-box"]).map((k) => `${SITE}${PHOTO[k].src}`),
+    description: p
+      ? manMade
+        ? `${p.description} Set with man-made (laboratory-grown) diamonds, D to F color, VVS clarity, with an IGI Laboratory Grown Diamond Report.`
+        : p.description
+      : product.title,
+    brand: { "@type": "Brand", name: SITE_NAME },
+    manufacturer: { "@id": ORG_ID },
+    category: design ? `${design.name} design` : undefined,
+    material: p?.metals.map((m) => METAL_LABEL[m]),
+    additionalProperty: [
+      ...(manMade ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Man-made (laboratory-grown) diamond, IGI report, as grown" }] : []),
+      ...(natural ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Natural diamond, F to G color, VS1 clarity, GIA report" }] : []),
+      { "@type": "PropertyValue", name: "Made", value: "Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported." },
+    ],
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: product.priceRange.minVariantPrice.currencyCode,
+      lowPrice: round(product.priceRange.minVariantPrice.amount),
+      highPrice: round(product.priceRange.maxVariantPrice.amount),
+      offerCount,
+      availability: p?.madeToOrder ? "https://schema.org/MadeToOrder" : product.selectedOrFirstAvailableVariant?.availableForSale ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: { "@id": ORG_ID },
+      url: `${SITE}/pieces/${product.handle}`,
+    },
+  };
+}
+
 export function breadcrumbJsonLd(items: { name: string; href: string }[]) {
   return {
     "@context": "https://schema.org",

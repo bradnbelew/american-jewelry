@@ -307,7 +307,7 @@ h3 {
   border: 1px solid var(--hair);
   background: var(--white);
   color: var(--ink);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .field::placeholder {
   color: var(--muted);
