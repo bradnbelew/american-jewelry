@@ -141,7 +141,8 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
             <PieceGallery photos={PIECE_PHOTOS[handle] ?? ["hero-box"]} title={title} model={galleryModel} metal={metalTone(metal)} open3d={open3d} layout={layout === "c1" || layout === "c3" ? "stage" : layout === "c2" ? "stack" : "grid"} />
           </div>
 
-          <div className={`flex flex-col gap-8 lg:sticky lg:top-32 ${layout === "c1" || layout === "c3" ? "lg:order-1 lg:col-span-5" : layout === "c2" ? "lg:col-span-4" : "lg:col-span-5"}`}>
+          <div className={`flex flex-col gap-8 ${layout === "c1" || layout === "c3" ? "lg:order-1 lg:col-span-5" : layout === "c2" ? "lg:sticky lg:top-32 lg:col-span-4" : "lg:sticky lg:top-32 lg:col-span-5"}`}>
+            <div className={`flex flex-col gap-8 ${layout === "c1" || layout === "c3" ? "lg:sticky lg:top-32" : ""}`}>
             <div className="flex flex-col gap-3">
               <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{title}</h1>
               {piece && (
@@ -154,6 +155,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
             </div>
 
             {buyColumn}
+            </div>
 
             {piece && <Details piece={piece} />}
           </div>

@@ -18,6 +18,10 @@ html[data-type='a1'] {
   --font-display: 'Sorts Mill Goudy', 'Goudy Old Style', Georgia, serif;
   --font-text: 'Sorts Mill Goudy', 'Goudy Old Style', Georgia, serif;
 }
+html[data-type='a1'],
+html[data-type='a2'] {
+  font-variant-numeric: lining-nums; /* both faces default to old-style figures and ship `lnum`; the registry and the spec read lining (critic A1, A2) */
+}
 html[data-type='a1'] .h-display {
   letter-spacing: -0.005em;
   line-height: 1.02;
@@ -42,6 +46,10 @@ html[data-type='a2'] .letter {
   font-size: 1.25rem;
   line-height: 1.5;
 }
+html[data-type='a2'] .spec td,
+html[data-type='a2'] .font-text {
+  font-size: 1rem; /* Deepdene's x-height is small; 14px disappears (critic A3) */
+}
 
 /* a3 Newsreader: Production Type (2020, OFL), optical sizes 6 to 72, true italics. Editorial, not antique. */
 html[data-type='a3'] {
@@ -49,9 +57,8 @@ html[data-type='a3'] {
   --font-text: 'Newsreader Variable', Georgia, serif;
 }
 html[data-type='a3'] .h-display,
-html[data-type='a3'] .h-section,
-html[data-type='a3'] .h-item {
-  font-variation-settings: 'opsz' 72;
+html[data-type='a3'] .h-section {
+  font-variation-settings: 'opsz' 72; /* .h-item at 18px keeps optical sizing automatic (critic A7) */
   font-weight: 400;
   letter-spacing: -0.015em;
 }
@@ -65,6 +72,9 @@ html[data-type='a3'] .font-text {
 html[data-type='a4'] {
   --font-display: 'Besley Variable', 'Clarendon', Georgia, serif;
   --font-text: 'Newsreader Variable', Georgia, serif;
+}
+html[data-type='a4'] header .font-display.uppercase {
+  font-family: 'Libre Caslon Display', Georgia, serif; /* the placeholder wordmark is not part of the test (critic A8) */
 }
 html[data-type='a4'] .h-display {
   font-weight: 400;

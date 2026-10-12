@@ -41,6 +41,13 @@ export default function ExplorePage({ loaderData }: Route.ComponentProps) {
           </div>
         ))}
       </div>
+      <div className="mt-12 flex flex-col gap-4" aria-label="The palette on paper">
+        <h2 className="h-section text-[1.5rem]">The accent on paper</h2>
+        <p className="label">The registry numeral at 40px in this palette&apos;s text accent, then its hairline. On velvet the numerals stay gold in every palette.</p>
+        <p className="gold-numeral text-[2.5rem] leading-none">No. 003</p>
+        <div className="hair-gold border-t" />
+        <p className="num text-[1.5rem]">$3,200</p>
+      </div>
       <div className="mt-12 flex flex-wrap gap-3">
         <Link to="/" className="btn" reloadDocument>
           The home page

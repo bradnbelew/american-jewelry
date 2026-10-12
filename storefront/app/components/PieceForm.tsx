@@ -163,7 +163,7 @@ export function PieceForm({ product, piece, onMetal, phoneBar = false }: { produ
         </div>
       </form>
       {phoneBar ? (
-        <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-[1fr_auto] items-center gap-4 border-t border-hair bg-paper px-4 py-3 md:hidden" aria-label="Price and add to bag">
+        <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-[1fr_auto] items-center gap-4 bg-paper px-4 py-3 md:hidden" aria-label="Price and add to bag">
           <div className="flex min-w-0 flex-col">
             <span className="num text-[1.125rem] leading-tight">{priceText}</span>
             <span className="label truncate">{versionValue ?? ""}{metalValue ? `, ${metalValue}` : ""}</span>

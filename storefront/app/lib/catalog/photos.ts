@@ -42,7 +42,7 @@ export const PIECE_PHOTOS: Record<string, string[]> = {
   "prism-bracelet": ["paperclip-bracelet", "hero-box"],
   "prism-signet": ["signet-b", "hero-box"],
   "prism-band": ["gem-stack-rings", "hero-hand"],
-  "signal-solitaire": ["ring-halo", "ring-radiant", "hero-hand"],
+  "signal-solitaire": ["ring-halo", "hero-hand", "ring-radiant"],
   "signal-studs": ["bezel-studs", "trio-studs"],
   "grid-tennis-bracelet": ["huggie-diamond", "paperclip-bracelet"],
   "grid-tennis-necklace": ["huggie-baguette", "names"],

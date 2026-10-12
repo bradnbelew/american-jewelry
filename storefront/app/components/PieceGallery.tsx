@@ -45,7 +45,7 @@ export function PieceGallery({ photos, title, model, metal, open3d = false, layo
     <div className={`flex flex-col ${wide ? "gap-5 md:gap-8" : "gap-3 md:gap-5"}`}>
       <div className={wide ? "[&>div]:md:aspect-[4/3]" : ""}>{firstFrame}</div>
       {rest.map((k) => (
-        <div key={k} className="relative aspect-[4/5] overflow-hidden bg-white">
+        <div key={k} className={`relative overflow-hidden bg-white ${wide ? "aspect-[4/5] md:aspect-[4/3]" : "aspect-[4/5]"}`}>
           <Pic k={k} sizes={wide ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 55vw, 100vw"} />
         </div>
       ))}
