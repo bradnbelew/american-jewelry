@@ -59,8 +59,8 @@ export default function ArticlePage({ loaderData }: Route.ComponentProps) {
                 </ul>
               );
             return (
-              <div key={i} className="overflow-x-auto">
-                <table className="spec min-w-[560px] text-[0.9375rem]">
+              <div key={i}>
+                <table className="spec text-[0.9375rem]">
                   <thead>
                     <tr>
                       {b.table.head.map((h) => (

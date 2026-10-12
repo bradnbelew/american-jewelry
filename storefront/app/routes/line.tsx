@@ -27,7 +27,7 @@ const LINE: Record<TierSlug, string> = {
 /** The hand frame after the opener: one sentence on a full screen, then the hand. */
 const HAND: Record<Exclude<TierSlug, "royal-american">, { photo: string; sentence: string }> = {
   americana: { photo: "hero-hand", sentence: "Drawn to be worn every day and handed down." },
-  "new-american": { photo: "hero-hand", sentence: "The same designs, the same bench, a man-made stone." },
+  "new-american": { photo: "hero-hand", sentence: "Its own designs, the same bench, a man-made stone." },
 };
 
 export function loader({ request }: Route.LoaderArgs) {

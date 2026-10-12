@@ -10,7 +10,7 @@ const STEPS: [string, string][] = [
   ["Conversation", "An hour in the salon. What it is for, who it is for, what you already own."],
   ["Drawing", "Our designer draws it. Two or three directions, by hand, within a week. You keep the drawings."],
   ["Model", "A render you approve by email, and a wax you can hold. Changes are free until you approve."],
-  ["Casting and setting", "Cast in the metal you chose, set by hand, struck with the AJ mark."],
+  ["Casting and setting", "Cast in the metal you chose, set at the bench, marked inside."],
   ["Delivery", "Collected in store or delivered insured, with the numbered certificate and the drawing it came from."],
 ];
 

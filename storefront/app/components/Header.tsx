@@ -97,7 +97,7 @@ export function Header() {
               to={l.href}
               viewTransition
               className={({ isActive }) =>
-                `caps-sm inline-flex h-full items-center border-b hover:border-ink ${isActive ? "border-ink" : "border-transparent"}`
+                `caps inline-flex h-full items-center border-b hover:border-ink ${isActive ? "border-ink" : "border-transparent"}`
               }
             >
               {l.label}

@@ -54,7 +54,7 @@ export const DESIGNS: Design[] = [
     motif: "A five-point star with a trailing tail of graduated stones.",
     story:
       "The first design our designer drew for the house. The star is cut sharp; the tail falls away in a line of graduated settings that can hold diamonds, a single birthstone, or nothing at all.",
-    signature: "Sharp five-point star, graduated tail, the AJ star struck inside every shank.",
+    signature: "Sharp five-point star, graduated tail, the house mark inside every shank.",
   },
   {
     slug: "prism",

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
 @import "./house.css";
+@import "./explore.css";
 
 /* App-only CSS the frozen core (tokens.css) does not own.
  *

@@ -65,7 +65,7 @@ export default function HousePage() {
             <p>
               The names on this site are set in Caslon, the typeface the Dunlap broadside of the Declaration of Independence was printed in, in July 1776. The numbers and the controls are set in Public Sans, the United States government&apos;s own typeface, drawn from Franklin Gothic.
             </p>
-            <p>Both are free, both are American, and both were here long before we were. We did not need a typeface of our own. We needed the right ones.</p>
+            <p>One is English and printed the Declaration; the other is the government&apos;s own. Both are free, and both were here long before we were. We did not need a typeface of our own. We needed the right ones.</p>
             <Link to="/journal/what-designed-in-tennessee-means" className="link mt-2 inline-block">
               What the words mean
             </Link>

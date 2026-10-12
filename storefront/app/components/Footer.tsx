@@ -78,7 +78,7 @@ export function Footer({ year }: { year: number }) {
 function Col({ title, links, className = "" }: { title: string; links: [string, string][]; className?: string }) {
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
-      <span className="caps-sm text-muted">{title}</span>
+      <span className="label">{title}</span>
       {links.map(([href, label]) => (
         <Link key={href} to={href} className="font-text text-[0.9375rem] text-ink hover:text-muted">
           {label}

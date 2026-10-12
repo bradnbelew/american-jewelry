@@ -29,7 +29,7 @@ export function ProductTile({ piece, showLine = true, wide = false }: { piece: P
           {showLine ? `${tierBySlug(piece.tier).name}, ` : ""}
           {what}
         </span>
-        <span className="num text-[0.8125rem] text-ink-2">{price === null ? "Price on request" : `From ${formatPrice(price)}`}</span>
+        <span className="num text-[0.8125rem] text-ink-2">{price === null ? "Price on request" : piece.versions.length > 1 ? `From ${formatPrice(price)}` : formatPrice(price)}</span>
       </div>
     </Link>
   );
