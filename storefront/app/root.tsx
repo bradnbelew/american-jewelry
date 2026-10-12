@@ -15,6 +15,7 @@ import {
 
 import { CartAnalyticsTracker, PageViewedTracker } from "~/components/AnalyticsTrackers";
 import { CartDrawer } from "~/components/CartDrawer";
+import { SavedDrawer } from "~/components/saved/SavedDrawer";
 import { Footer } from "~/components/Footer";
 import { Header } from "~/components/Header";
 import { SavedProvider } from "~/components/saved/SavedProvider";
@@ -145,6 +146,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
         </main>
         <Footer year={loaderData.year} />
         <CartDrawer />
+        <SavedDrawer />
       </SavedProvider>
     </CartProvider>
   );
@@ -158,8 +160,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     <main id="main" className="flex-1">
       <Section className="pt-24 pb-16 md:pt-32">
         <PageTitle
-          title={notFound ? "That page is not here." : "Something went wrong."}
-          lede={notFound ? "It may have moved when the house did. Everything we make is a step away." : "Call either store and we will help directly."}
+          title={notFound ? "This page is not in the registry." : "Something went wrong."}
+          lede={notFound ? "It may have moved when the house did." : "Call either store and we will help directly."}
         />
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Link to="/americana" className="btn">

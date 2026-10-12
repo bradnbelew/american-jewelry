@@ -1,6 +1,7 @@
 export const CART_DRAWER_ID = "cart-drawer";
 export const MOBILE_NAV_DRAWER_ID = "mobile-nav-drawer";
 export const SEARCH_DRAWER_ID = "search-drawer";
+export const SAVED_DRAWER_ID = "saved-drawer";
 
 let openCartActionConfigured = false;
 let openCartActionRetryQueued = false;

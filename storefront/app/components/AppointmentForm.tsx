@@ -1,8 +1,9 @@
 import { useState, type ReactNode } from "react";
+import { Form, useNavigation } from "react-router";
 
 import { STORES } from "~/lib/catalog/data";
 
-const KINDS = [
+export const KINDS = [
   ["bridal", "Engagement or wedding"],
   ["viewing", "Private viewing, Royal American"],
   ["commission", "Commission a piece"],
@@ -11,58 +12,72 @@ const KINDS = [
   ["other", "Something else"],
 ] as const;
 
-const LABELS: Record<string, string> = { piece: "Piece", code: "Design code", build: "Builder", version: "Version", metal: "Metal", size: "Size", tier: "Tier" };
+export const KIND_LABEL: Record<string, string> = Object.fromEntries(KINDS);
+export const STORE_LABEL: Record<string, string> = { ...Object.fromEntries(STORES.map((s) => [s.slug, s.name])), virtual: "By video" };
 
-/** One form, four decisions. Sends nowhere until Resend is connected (phase 2). */
-export function AppointmentForm({ prefill }: { prefill: Record<string, string> }) {
-  const [sent, setSent] = useState(false);
-  const context = Object.entries(prefill)
-    .filter(([k]) => !["store", "kind"].includes(k))
-    .map(([k, v]) => `${LABELS[k] ?? k}: ${v}`)
-    .join(", ");
-  const defaultKind = prefill.kind ?? (prefill.tier === "royal-american" ? "viewing" : prefill.build || prefill.piece || prefill.code ? "fitting" : "bridal");
+/** Query params that ride along as hidden fields so the request arrives with the piece on the table. */
+export const CONTEXT_KEYS = ["piece", "code", "build", "version", "metal", "size", "tier"] as const;
+const LABELS: Record<string, string> = { piece: "Piece", code: "Design code", build: "Builder", version: "Version", metal: "Metal", size: "Size", tier: "Line" };
 
-  if (sent) {
+export type AppointmentResult = { sent: true; delivered: "email" | "webhook" | "log"; name: string; store: string; kind: string } | { sent: false; error: string } | undefined;
+
+/** One form, four decisions, two unchecked consents. The reply is a letter, not a receipt. */
+export function AppointmentForm({ prefill, result }: { prefill: Record<string, string>; result: AppointmentResult }) {
+  const navigation = useNavigation();
+  const pending = navigation.state !== "idle" && navigation.formMethod === "POST";
+  const [store, setStore] = useState(prefill.store && STORE_LABEL[prefill.store] ? prefill.store : "brentwood");
+  const defaultKind = prefill.kind && KIND_LABEL[prefill.kind] ? prefill.kind : prefill.tier === "royal-american" ? "viewing" : prefill.build || prefill.piece || prefill.code ? "fitting" : "bridal";
+  const [kind, setKind] = useState(defaultKind);
+  const context = CONTEXT_KEYS.filter((k) => prefill[k]).map((k) => `${LABELS[k]}: ${prefill[k]}`);
+
+  if (result?.sent) {
+    const first = result.name.split(/\s+/)[0];
+    const storeName = STORE_LABEL[result.store] ?? result.store;
     return (
-      <div className="flex min-h-[20rem] max-w-2xl flex-col gap-3 pt-10">
-        <p className="h-section text-[1.75rem] md:text-[2.25rem]">Thank you. We will confirm within one business day.</p>
-        <p className="font-text text-ink-2">If it is for today, call the store.</p>
+      <div className="letter flex min-h-[20rem] flex-col gap-5 pt-10">
+        <p>Dear {first},</p>
+        <p>
+          We have your request: {storeName}, {KIND_LABEL[result.kind]?.toLowerCase() ?? result.kind}. Someone from the house will write or call to set the hour. If it is for today, call the store and we will make room.
+        </p>
+        {result.delivered === "log" && <p className="label">Our booking system is not connected yet. If you do not hear from us within a few days, please call either store.</p>}
+        <p className="font-text italic">The family, Brentwood and Mt. Juliet, Tennessee</p>
       </div>
     );
   }
 
   return (
-    <form
-      className="grid gap-x-8 gap-y-6 pt-10 md:grid-cols-2"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
-    >
-      {context && (
+    <Form method="post" className="grid gap-x-8 gap-y-6 pt-10 md:grid-cols-2" aria-busy={pending}>
+      {CONTEXT_KEYS.map((k) => (prefill[k] ? <input key={k} type="hidden" name={k} value={prefill[k]} /> : null))}
+      {context.length > 0 && (
         <p className="font-text bg-bone px-4 py-3 text-[0.9375rem] text-ink-2 md:col-span-2">
-          We will have this ready: <span className="text-ink">{context}</span>
+          We will have this ready: <span className="text-ink">{context.join(", ")}</span>
         </p>
       )}
-      <Field label="Where">
-        <select id="store" name="store" defaultValue={prefill.store ?? "brentwood"} className="field">
-          {STORES.map((s) => (
-            <option key={s.slug} value={s.slug}>
-              {s.name}
-            </option>
+
+      <fieldset className="flex flex-col gap-3 md:col-span-2">
+        <legend className="mb-3 text-[0.8125rem] text-ink">Where</legend>
+        <div className="grid gap-2 sm:grid-cols-3">
+          {Object.entries(STORE_LABEL).map(([v, l]) => (
+            <label key={v} className="opt cursor-pointer" data-active={store === v ? "true" : "false"}>
+              <input type="radio" name="store" value={v} checked={store === v} onChange={() => setStore(v)} className="sr-only" />
+              <span>{l}</span>
+            </label>
           ))}
-          <option value="virtual">By video</option>
-        </select>
-      </Field>
-      <Field label="What for">
-        <select id="kind" name="kind" defaultValue={defaultKind} className="field">
+        </div>
+      </fieldset>
+
+      <fieldset className="flex flex-col gap-3 md:col-span-2">
+        <legend className="mb-3 text-[0.8125rem] text-ink">What for</legend>
+        <div className="grid gap-2 sm:grid-cols-2">
           {KINDS.map(([v, l]) => (
-            <option key={v} value={v}>
-              {l}
-            </option>
+            <label key={v} className="opt cursor-pointer" data-active={kind === v ? "true" : "false"}>
+              <input type="radio" name="kind" value={v} checked={kind === v} onChange={() => setKind(v)} className="sr-only" />
+              <span>{l}</span>
+            </label>
           ))}
-        </select>
-      </Field>
+        </div>
+      </fieldset>
+
       <Field label="Name">
         <input id="name" name="name" required className="field" autoComplete="name" />
       </Field>
@@ -75,13 +90,31 @@ export function AppointmentForm({ prefill }: { prefill: Record<string, string> }
       <Field label="Anything we should know" hint="optional">
         <input id="notes" name="notes" placeholder="A budget, a ring size, an heirloom you are bringing" className="field" />
       </Field>
+
+      <div className="flex flex-col gap-3 md:col-span-2">
+        <label className="flex items-start gap-3 text-[0.9375rem] text-ink-2">
+          <input type="checkbox" name="consentEmail" className="mt-1 h-4 w-4 accent-[var(--ink)]" />
+          <span>You may write to me by email about this request.</span>
+        </label>
+        <label className="flex items-start gap-3 text-[0.9375rem] text-ink-2">
+          <input type="checkbox" name="consentSms" className="mt-1 h-4 w-4 accent-[var(--ink)]" />
+          <span>You may text me about this request. Message rates may apply; reply STOP to end.</span>
+        </label>
+      </div>
+
+      {result && !result.sent ? (
+        <p className="font-text text-ink-2 md:col-span-2" role="alert">
+          {result.error}
+        </p>
+      ) : null}
+
       <div className="flex flex-wrap items-center gap-6 pt-2 md:col-span-2">
-        <button type="submit" className="btn">
+        <button type="submit" className="btn" disabled={pending}>
           Request the appointment
         </button>
         <span className="label">No cost, no obligation.</span>
       </div>
-    </form>
+    </Form>
   );
 }
 

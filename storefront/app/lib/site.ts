@@ -3,7 +3,7 @@ export const SITE = "https://americanjewelers.com";
 export const SITE_NAME = "American Jewelry";
 
 /** The month the public figures on the site (review counts) were last checked. */
-export const FIGURES_AS_OF = "October 2026";
+export const FIGURES_AS_OF = "August 26, 2026";
 
 /** Sitemap lastmod. Bump on content changes; Oxygen freezes Date.now() per request, so a constant is the honest value. */
 export const CONTENT_DATE = "2026-10-10";

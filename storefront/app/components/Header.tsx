@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
 import { useCart } from "~/lib/cart";
-import { CART_DRAWER_ID, openDialogFromLinkClick } from "~/lib/cart-drawer";
+import { CART_DRAWER_ID, SAVED_DRAWER_ID, openDialogFromLinkClick } from "~/lib/cart-drawer";
 
 import { useSaved } from "./saved/SavedProvider";
 
@@ -65,8 +65,15 @@ export function Header() {
             <Link to="/appointments" className="caps hidden hover:text-muted md:inline">
               Appointment
             </Link>
-            <Link to="/saved" className="caps hidden h-10 items-center gap-2 hover:text-muted sm:inline-flex" aria-label={`Saved, ${saved} items`}>
-              Saved
+            <Link
+              to="/saved"
+              className="caps hidden h-10 items-center gap-2 hover:text-muted sm:inline-flex"
+              aria-label={`Kept, ${saved} items`}
+              aria-controls={SAVED_DRAWER_ID}
+              aria-haspopup="dialog"
+              onClick={(event) => openDialogFromLinkClick(event, SAVED_DRAWER_ID)}
+            >
+              Kept
               <span className="num inline-flex h-5 w-5 items-center justify-center text-[0.625rem] text-muted">{ready && saved > 0 ? saved : ""}</span>
             </Link>
             <Link

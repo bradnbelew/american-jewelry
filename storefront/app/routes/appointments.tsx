@@ -1,6 +1,8 @@
-import { AppointmentForm } from "~/components/AppointmentForm";
+import { AppointmentForm, CONTEXT_KEYS, KIND_LABEL, STORE_LABEL } from "~/components/AppointmentForm";
 import { PageTitle, Section } from "~/components/Section";
+import { deliverAppointment } from "~/lib/appointments.server";
 import { STORES } from "~/lib/catalog/data";
+import { envContext } from "~/lib/env";
 import { pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/appointments";
@@ -18,14 +20,44 @@ export function loader({ request }: Route.LoaderArgs) {
   return { prefill };
 }
 
-export default function AppointmentsPage({ loaderData }: Route.ComponentProps) {
+/** Two clicks to a human. The request is delivered by appointments.server.ts; the reply is a letter. */
+export async function action({ request, context }: Route.ActionArgs) {
+  const form = await request.formData();
+  const get = (k: string) => String(form.get(k) ?? "").trim();
+  const name = get("name").slice(0, 120);
+  const contact = get("contact").slice(0, 160);
+  const store = get("store") || "brentwood";
+  const kind = get("kind") || "bridal";
+  if (!name || !contact) return { sent: false as const, error: "A name and a phone or email, so a person can reply." };
+  const ctx: Record<string, string> = {};
+  for (const k of CONTEXT_KEYS) {
+    const v = get(k);
+    if (v) ctx[k] = v.slice(0, 120);
+  }
+  const delivered = await deliverAppointment(context.get(envContext), {
+    store: STORE_LABEL[store] ?? store,
+    kind: KIND_LABEL[kind] ?? kind,
+    name,
+    contact,
+    when: get("when").slice(0, 200),
+    notes: get("notes").slice(0, 600),
+    consentEmail: form.get("consentEmail") === "on",
+    consentSms: form.get("consentSms") === "on",
+    context: ctx,
+    receivedAt: new Date().toISOString(),
+    page: request.headers.get("referer") ?? "/appointments",
+  });
+  return { sent: true as const, delivered, name, store, kind };
+}
+
+export default function AppointmentsPage({ loaderData, actionData }: Route.ComponentProps) {
   return (
     <>
       <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Come and see it in your hand." lede="An hour with a member of the house, in the salon, at the bench, or by video. Whatever you asked about is already on the table." />
+        <PageTitle title="Come and see it in your hand." lede="An hour with a member of the house, in the store, at the bench, or by video. Whatever you asked about is already on the table." />
       </Section>
       <Section width="text">
-        <AppointmentForm prefill={loaderData.prefill} />
+        <AppointmentForm prefill={loaderData.prefill} result={actionData} />
       </Section>
       <Section width="text" className="pt-16 pb-8 md:pt-20">
         <div className="grid gap-8 sm:grid-cols-2">

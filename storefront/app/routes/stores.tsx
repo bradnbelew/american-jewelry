@@ -2,9 +2,8 @@ import { Link } from "react-router";
 
 import { Pic } from "~/components/Pic";
 import { Section } from "~/components/Section";
-import { STORES, TOTAL_REVIEWS } from "~/lib/catalog/data";
+import { STORES } from "~/lib/catalog/data";
 import { breadcrumbJsonLd, pageMeta, storeJsonLd } from "~/lib/seo";
-import { FIGURES_AS_OF } from "~/lib/site";
 
 import type { Route } from "./+types/stores";
 
@@ -76,7 +75,7 @@ export default function StoresPage() {
 
       <Section screen width="text">
         <p className="font-text max-w-xl text-ink-2">
-          Walk in for cleaning, inspection and repairs. For bridal, a commission or a Royal American viewing, book an hour. {TOTAL_REVIEWS.toLocaleString()} Google reviews across the two stores, as of {FIGURES_AS_OF}.
+          Walk in for cleaning, inspection and repairs. For bridal, a commission or a Royal American viewing, book an hour.
         </p>
       </Section>
     </>

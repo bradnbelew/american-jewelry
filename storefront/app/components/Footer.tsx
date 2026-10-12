@@ -17,7 +17,7 @@ const SERVICES: [string, string][] = [
   ["/services", "Repair and restoration"],
   ["/care", "Lifetime care"],
   ["/natural-or-man-made", "Natural or man-made"],
-  ["/saved", "Saved"],
+  ["/saved", "Kept"],
 ];
 
 const LEGAL: [string, string][] = [

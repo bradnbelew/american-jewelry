@@ -27,7 +27,7 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 17. **"Do we grow our own diamonds?"** new-american-tier.html asks this from the user's words "we design, grow, and cast". If not, drop the idea.
 
 - **A16 Admin API token for builder draft orders.** Not provided. Until a custom app with `write_draft_orders` exists and its token is set as `ADMIN_API_TOKEN` on Oxygen, "Request this ring" routes to `/appointments` with the design code (2026-10-12).
-- **A17 Where appointment requests go.** The appointment form stores nothing yet (P4 decides the simplest reliable store and a named recipient).
+- **A17 Where appointment requests go.** Plumbing is built (Resend, or a webhook, or the Oxygen log). The owner must set `RESEND_API_KEY` + `APPOINTMENTS_TO` (and verify a sending domain for `APPOINTMENTS_FROM`) or `APPOINTMENTS_WEBHOOK_URL` on Oxygen, and name who receives the requests. Until then requests are only logged and the page tells the visitor to call if no one replies.
 
 ## B. Decisions the family must make
 

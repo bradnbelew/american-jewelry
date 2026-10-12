@@ -13,6 +13,11 @@ export type Env = {
   PUBLIC_SITE_LIVE?: string;
   /** Admin API token of the custom app with write_draft_orders; read only inside route actions. */
   ADMIN_API_TOKEN?: string;
+  /** Appointment delivery, in order of preference: Resend, a JSON webhook, else the Oxygen log. */
+  RESEND_API_KEY?: string;
+  APPOINTMENTS_TO?: string;
+  APPOINTMENTS_FROM?: string;
+  APPOINTMENTS_WEBHOOK_URL?: string;
 };
 
 export const envContext = createContext<Env>();
