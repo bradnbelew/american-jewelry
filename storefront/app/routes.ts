@@ -40,6 +40,8 @@ export default [
   // Crawlers
   route("robots.txt", "routes/robots.ts"),
   route("sitemap.xml", "routes/sitemap.ts"),
+  // Oxygen answers /sitemap.xml itself with a platform 404, so the same document is also served here (robots.txt points at it)
+  route("sitemap-pages.xml", "routes/sitemap.ts", { id: "sitemap-pages" }),
 
   route("*", "routes/catchall.tsx"),
 ] satisfies RouteConfig;

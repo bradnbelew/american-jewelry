@@ -8,7 +8,7 @@ import type { Route } from "./+types/house";
 
 export const meta: Route.MetaFunction = () =>
   pageMeta(
-    { title: "The House", description: "Why American Jewelry is a house and not a store: one designer, one bench in Tennessee, and what we will and will not say about where things come from.", path: "/house", image: "bench" },
+    { title: "The House", description: "Why American Jewelry is a house and not a store: one designer, one bench in Tennessee, and what we will and will not say about where things come from.", path: "/house", og: "pages/house", image: "bench" },
     [breadcrumbJsonLd([{ name: "The House", href: "/house" }])],
   );
 

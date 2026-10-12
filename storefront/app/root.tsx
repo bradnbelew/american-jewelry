@@ -36,15 +36,15 @@ import { createRequestStorefrontClient, storefrontClientContext, storefrontReque
 import type { Route } from "./+types/root";
 
 import appStylesHref from "./app.css?url";
+import caslonDisplayHref from "@fontsource/libre-caslon-display/files/libre-caslon-display-latin-400-normal.woff2?url";
+import caslonTextHref from "@fontsource/libre-caslon-text/files/libre-caslon-text-latin-400-normal.woff2?url";
 
 export const links: Route.LinksFunction = () => [
+  // The two faces every page paints first; the rest arrive through the stylesheet.
+  { rel: "preload", href: caslonDisplayHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+  { rel: "preload", href: caslonTextHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
   { rel: "stylesheet", href: appStylesHref },
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-];
-
-export const meta: Route.MetaFunction = ({ data }) => [
-  { name: "robots", content: data?.live ? "index, follow, max-image-preview:large" : "noindex, nofollow" },
-  { "script:ld+json": siteJsonLd() },
 ];
 
 export const middleware: Route.MiddlewareFunction[] = [
@@ -119,6 +119,9 @@ export function Layout({ children }: { children: ReactNode }) {
             routes={routeTemplates}
           />
         ) : null}
+        {/* Child routes replace the root meta, so the site-wide robots rule and the house graph live here. */}
+        <meta name="robots" content={rootData?.live ? "index, follow, max-image-preview:large" : "noindex, nofollow"} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd()) }} />
         <Meta />
         <Links />
       </head>

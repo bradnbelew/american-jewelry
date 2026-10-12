@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 import { Pic } from "~/components/Pic";
 import { PageTitle, Section } from "~/components/Section";
-import { pageMeta } from "~/lib/seo";
+import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/commission";
 
@@ -15,7 +15,7 @@ const STEPS: [string, string][] = [
 ];
 
 export const meta: Route.MetaFunction = () =>
-  pageMeta({ title: "Commission a piece", description: "How a custom piece is made at American Jewelry: conversation, drawing, model, casting, setting. About four to six weeks.", path: "/commission", image: "ring-halo" });
+  pageMeta({ title: "Commission a piece", description: "How a custom piece is made at American Jewelry: conversation, drawing, model, casting, setting. About four to six weeks.", path: "/commission", image: "ring-halo", og: "pages/journal" }, [breadcrumbJsonLd([{ name: "Commission a piece", href: "/commission" }])]);
 
 export default function CommissionPage() {
   return (

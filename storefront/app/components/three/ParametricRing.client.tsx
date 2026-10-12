@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ContactShadows, Environment, Lightformer, MeshRefractionMaterial, OrbitControls } from "@react-three/drei";
-import { useEffect, useMemo, useRef, type ComponentRef, type RefObject } from "react";
+import { useEffect, useMemo, useRef, useState, type ComponentRef, type RefObject } from "react";
 import * as THREE from "three";
 import { BIRTHSTONES, sizeToInnerDiameterMm, stoneDiameterMm, type RingConfig } from "~/lib/builder/model";
 import { bandThicknessMm } from "~/lib/builder/pricing";
@@ -50,11 +50,13 @@ export interface ParametricRingProps {
 export function ParametricRing({ config, view = "hero", autoRotate = false, className = "", onGroup, progressRef, interactive = true, pointerLight = true, onFirstFrame }: ParametricRingProps) {
   const pointer = useRef(new THREE.Vector2(0, 0));
   const pointerOn = useRef(false);
+  const [reduced, setReduced] = useState(false);
   useEffect(() => {
-    if (!pointerLight || typeof window === "undefined") return;
+    if (typeof window === "undefined") return;
     const coarse = window.matchMedia("(pointer: coarse)").matches;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    pointerOn.current = !coarse && !reduced;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setReduced(prefersReduced);
+    pointerOn.current = pointerLight && !coarse && !prefersReduced;
   }, [pointerLight]);
 
   return (
@@ -83,14 +85,14 @@ export function ParametricRing({ config, view = "hero", autoRotate = false, clas
           <Lightformer intensity={1.2} position={[0, 1, -6]} scale={[10, 4, 1]} color="#fff4e0" />
           <Lightformer intensity={0.8} position={[0, -1, 6]} scale={[10, 2, 1]} />
         </Environment>
-        <Rig view={view} autoRotate={autoRotate} interactive={interactive} />
+        <Rig view={view} autoRotate={autoRotate && !reduced} interactive={interactive} reduced={reduced} />
       </Canvas>
     </div>
   );
 }
 
-/** Eases the camera to the preset for the current step. */
-function Rig({ view, autoRotate, interactive }: { view: View; autoRotate: boolean; interactive: boolean }) {
+/** Eases the camera to the preset for the current step; under reduced motion it cuts. */
+function Rig({ view, autoRotate, interactive, reduced }: { view: View; autoRotate: boolean; interactive: boolean; reduced: boolean }) {
   const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
   const { camera } = useThree();
   const goal = useRef({ pos: new THREE.Vector3(...VIEWS[view].pos), target: new THREE.Vector3(...VIEWS[view].target), active: true });
@@ -103,7 +105,7 @@ function Rig({ view, autoRotate, interactive }: { view: View; autoRotate: boolea
 
   useFrame((_, dt) => {
     if (!goal.current.active || !controls.current) return;
-    const k = 1 - Math.pow(0.001, dt);
+    const k = reduced ? 1 : 1 - Math.pow(0.001, dt);
     camera.position.lerp(goal.current.pos, k);
     controls.current.target.lerp(goal.current.target, k);
     controls.current.update();

@@ -15,7 +15,7 @@ export const meta: Route.MetaFunction = () =>
   pageMeta({
     description:
       "American Jewelry designs, sets and finishes its own fine jewelry in Tennessee: one-of-one pieces, signature designs in gold and natural diamond, and man-made diamond pieces to one published standard. Brentwood and Mt. Juliet.",
-    path: "/",
+    path: "/", og: "pages/home",
   });
 
 /**

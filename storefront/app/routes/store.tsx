@@ -16,7 +16,7 @@ export function loader({ params }: Route.LoaderArgs) {
 export const meta: Route.MetaFunction = ({ data }) => {
   const s = storeBySlug(data?.slug ?? "")!;
   return pageMeta(
-    { title: `American Jewelry, ${s.city}, Tennessee`, description: `${s.address1}, ${s.city}, TN ${s.zip}. ${s.phone}. ${s.role}`, path: `/stores/${s.slug}`, image: s.photo },
+    { title: `American Jewelry, ${s.city}, Tennessee`, description: `${s.address1}, ${s.city}, TN ${s.zip}. ${s.phone}. ${s.role}`, path: `/stores/${s.slug}`, og: `stores/${s.slug}`, image: s.photo },
     [storeJsonLd(s), breadcrumbJsonLd([{ name: "Stores", href: "/stores" }, { name: s.name, href: `/stores/${s.slug}` }])],
   );
 };

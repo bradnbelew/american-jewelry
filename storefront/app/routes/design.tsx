@@ -22,7 +22,7 @@ export const meta: Route.MetaFunction = ({ data }) => {
   const d = designBySlug(data?.slug ?? "")!;
   const tier = tierBySlug(d.tier);
   return pageMeta(
-    { title: `${d.name}, a house design`, description: `${d.motif} ${d.story}`, path: `/designs/${d.slug}`, image: DESIGN_PHOTO[d.slug] },
+    { title: `${d.name}, a house design`, description: `${d.motif} ${d.story}`, path: `/designs/${d.slug}`, og: `designs/${d.slug}`, image: DESIGN_PHOTO[d.slug] },
     [
       breadcrumbJsonLd([
         { name: tier.name, href: `/${tier.slug}` },

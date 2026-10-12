@@ -20,6 +20,8 @@ export interface PageMetaInput {
   image?: string; // PHOTO key
   noindex?: boolean;
   type?: "website" | "article";
+  /** A generated card under public/og, e.g. "pieces/signal-solitaire" (scripts/og.mjs). */
+  og?: string;
 }
 
 /** Title, description, canonical, Open Graph. Robots is decided site-wide in root; `noindex` adds a page-level rule. */
@@ -36,9 +38,13 @@ export function pageMeta(input: PageMetaInput, jsonLd: object[] = []): MetaDescr
     { property: "og:title", content: title },
     { property: "og:description", content: input.description },
     { property: "og:url", content: url },
-    { property: "og:image", content: `${SITE}${photo.src}` },
-    { property: "og:image:alt", content: photo.alt },
+    { property: "og:image", content: input.og ? `${SITE}/og/${input.og}.jpg` : `${SITE}${photo.src}` },
+    { property: "og:image:alt", content: input.og ? title : photo.alt },
+    ...(input.og ? [{ property: "og:image:width", content: "1200" }, { property: "og:image:height", content: "630" }] : []),
     { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: input.description },
+    { name: "twitter:image", content: input.og ? `${SITE}/og/${input.og}.jpg` : `${SITE}${photo.src}` },
     ...(input.noindex ? [{ name: "robots", content: "noindex" }] : []),
     ...jsonLd.map((data) => ({ "script:ld+json": data })),
   ];

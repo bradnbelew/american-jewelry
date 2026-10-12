@@ -9,7 +9,7 @@ import type { Route } from "./+types/journal";
 
 export const meta: Route.MetaFunction = () =>
   pageMeta(
-    { title: "Journal", description: "Plain writing from American Jewelry about stones, making and the words we use: grading reports, ring size, how a ring is made, what Designed in Tennessee means.", path: "/journal" },
+    { title: "Journal", description: "Plain writing from American Jewelry about stones, making and the words we use: grading reports, ring size, how a ring is made, what Designed in Tennessee means.", path: "/journal", og: "pages/journal" },
     [breadcrumbJsonLd([{ name: "Journal", href: "/journal" }])],
   );
 

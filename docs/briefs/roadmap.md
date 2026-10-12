@@ -1,13 +1,13 @@
 # Roadmap
 
 Purpose: what happens Now, Next and Later, each item marked family or Claude.
-Last updated: 2026-10-11
+Last updated: 2026-10-12
 Sources: REMAKE-BLUEPRINT §7-§9; HANDOFF (remake section, "what the family still has to supply"); site/20-site-plan.md; marketing/12-launch-plan.md; open-questions.md.
 
 ## Now (this week or two)
 
 - [Claude] Phase 2 commerce: `/pieces/:handle` from the Storefront API, variant form (Version × Metal), size and engraving attributes, Shop Pay, one real test order.
-- [Claude] Fix `sitemap.xml` 404 on Oxygen; port JSON-LD per route and validate.
+- [Claude] Done 2026-10-12: sitemap served at `/sitemap-pages.xml` (Oxygen intercepts `/sitemap.xml`); JSON-LD on every route; robots + graph in the root head. Open: validate a product and a store page in the Rich Results Test once the domain is live.
 - [family] Answer the top open questions: hours, founding year, first names, line names, counsel review of the provenance line and "man-made diamond".
 - [family] Set `ADMIN_API_TOKEN` (write_draft_orders) and `SESSION_SECRET` in the Hydrogen environment; confirm Shopify Payments.
 - [family] Grant access: both Google Business Profiles, Search Console, GA4 (see `marketing/11-marketing-plan.md`).

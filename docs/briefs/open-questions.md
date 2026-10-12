@@ -97,6 +97,8 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 | C40 | Caps on text links | house.css `.link` is 11px tracked caps and dresses "The design", "The registry", "See it in store first" site-wide | canon: caps only on nav and buttons | Open for the designer: restyle `.link` as sentence-case label with the 1px rule, or extend the caps allowance to standalone text links |
 | C41 | Selected control ring | DESIGN.md: the border never thickens | product brief: selected = ink border + inset (reads as 2px) | Code follows the brief (`.opt[aria-pressed]` inset shadow); designer picks one |
 
+| C42 | /natural-or-man-made length | brief: 200 visible words, two tables | the page carries a four-question FAQ (431 words) that feeds the FAQ JSON-LD and answer engines | Open: keep the FAQ as a folded accordion under the tables, or move it to a journal entry |
+
 ## D. Things Claude should fix in code (not done in this run; app code was out of scope)
 
 - ~~Remove "flawless to the loupe" (C7) and "a standard no store publishes" (C8) from `storefront/app/lib/catalog/data.ts`.~~ Done 2026-10-11 (P0 and P1).

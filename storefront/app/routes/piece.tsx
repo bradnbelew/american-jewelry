@@ -51,7 +51,7 @@ export const meta: Route.MetaFunction = ({ data }) => {
   const design = p ? designBySlug(p.design) : undefined;
   const handle = data?.handle ?? "";
   return pageMeta(
-    { title: manMade ? `${name}, man-made diamond` : name, description: p?.description ?? "", path: `/pieces/${handle}`, image: (PIECE_PHOTOS[handle] ?? ["hero-box"])[0] },
+    { title: manMade ? `${name}, man-made diamond` : name, description: p?.description ?? "", path: `/pieces/${handle}`, og: `pieces/${handle}`, image: (PIECE_PHOTOS[handle] ?? ["hero-box"])[0] },
     [
       product ? productJsonLdFromStorefront(product, p, design) : p ? productJsonLd(p, design) : {},
       breadcrumbJsonLd([...(tier ? [{ name: tier.name, href: `/${tier.slug}` }] : []), ...(design ? [{ name: design.name, href: `/designs/${design.slug}` }] : []), { name, href: `/pieces/${handle}` }]),

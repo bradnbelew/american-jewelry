@@ -1,6 +1,6 @@
 import { Bounds, Center, Environment, PresentationControls, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 import { STUDIO_HDR, glbUrl } from "~/lib/models";
@@ -13,8 +13,11 @@ import { STUDIO_HDR, glbUrl } from "~/lib/models";
 export function ModelTileScene({ slug, metal = "yellow" }: { slug: string; metal?: "yellow" | "white" | "rose" }) {
   const pointer = useRef(new THREE.Vector2(0, 0));
   const pointerOn = useRef(false);
+  const [reduced, setReduced] = useState(false);
   useEffect(() => {
-    pointerOn.current = !window.matchMedia("(pointer: coarse)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setReduced(prefersReduced);
+    pointerOn.current = !window.matchMedia("(pointer: coarse)").matches && !prefersReduced;
   }, []);
   return (
     <div
@@ -31,7 +34,7 @@ export function ModelTileScene({ slug, metal = "yellow" }: { slug: string; metal
         <KeyLight pointer={pointer} />
         <Suspense fallback={null}>
           <Environment files={STUDIO_HDR} />
-          <PresentationControls global snap speed={1.2} polar={[-0.2, 0.5]} azimuth={[-1.2, 1.2]} rotation={[0.25, -0.6, 0]}>
+          <PresentationControls global snap={!reduced} speed={1.2} polar={[-0.2, 0.5]} azimuth={[-1.2, 1.2]} rotation={[0.25, -0.6, 0]}>
             <Bounds fit clip observe margin={1.15}>
               <Center>
                 <Piece slug={slug} metal={metal} />

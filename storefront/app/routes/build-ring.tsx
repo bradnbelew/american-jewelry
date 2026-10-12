@@ -15,7 +15,7 @@ export const meta: Route.MetaFunction = () =>
     {
       title: "Build a ring",
       description: "Three house settings, a natural or man-made diamond at a set quality, and the metal. Priced from its own geometry and made to order at our bench in Tennessee.",
-      path: "/build/ring",
+      path: "/build/ring", og: "pages/build-ring",
     },
     [breadcrumbJsonLd([{ name: "Bridal", href: "/collections/bridal" }, { name: "Build a ring", href: "/build/ring" }])],
   );

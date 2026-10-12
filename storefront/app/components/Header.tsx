@@ -114,7 +114,7 @@ export function Header() {
             </Link>
           ))}
           <Link to="/saved" className="font-display border-b border-hair py-3.5 text-3xl sm:hidden">
-            Saved
+            Kept
           </Link>
           <Link to="/appointments" className="btn mt-8">
             Book an appointment

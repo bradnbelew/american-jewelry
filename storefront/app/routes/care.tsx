@@ -1,12 +1,12 @@
 import { Link } from "react-router";
 
 import { PageTitle, Section } from "~/components/Section";
-import { pageMeta } from "~/lib/seo";
+import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/care";
 
 export const meta: Route.MetaFunction = () =>
-  pageMeta({ title: "Lifetime care", description: "Cleaning, prong checks, polishing, resizing and repair at American Jewelry's bench in Mt. Juliet, free for as long as you own the piece.", path: "/care" });
+  pageMeta({ title: "Lifetime care", description: "Cleaning, prong checks, polishing, resizing and repair at American Jewelry's bench in Mt. Juliet, free for as long as you own the piece.", path: "/care" }, [breadcrumbJsonLd([{ name: "Lifetime care", href: "/care" }])]);
 
 export default function CarePage() {
   return (

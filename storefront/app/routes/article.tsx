@@ -15,7 +15,7 @@ export function loader({ params }: Route.LoaderArgs) {
 
 export const meta: Route.MetaFunction = ({ data }) => {
   const a = articleBySlug(data?.slug ?? "")!;
-  return pageMeta({ title: a.title, description: a.summary, path: `/journal/${a.slug}`, image: a.photo, type: "article" }, [articleJsonLd(a), breadcrumbJsonLd([{ name: "Journal", href: "/journal" }, { name: a.title, href: `/journal/${a.slug}` }])]);
+  return pageMeta({ title: a.title, description: a.summary, path: `/journal/${a.slug}`, og: `journal/${a.slug}`, image: a.photo, type: "article" }, [articleJsonLd(a), breadcrumbJsonLd([{ name: "Journal", href: "/journal" }, { name: a.title, href: `/journal/${a.slug}` }])]);
 };
 
 const dateLabel = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });

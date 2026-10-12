@@ -31,7 +31,7 @@ const PRICES: [string, string][] = [
 
 export const meta: Route.MetaFunction = () =>
   pageMeta(
-    { title: "Services", description: "Jewelry repair at our own bench in Mt. Juliet, Tennessee: laser welding, retipping, stone setting, resizing, engraving, cleaning and appraisals. Quoted before any work begins.", path: "/services", image: "bench" },
+    { title: "Services", description: "Jewelry repair at our own bench in Mt. Juliet, Tennessee: laser welding, retipping, stone setting, resizing, engraving, cleaning and appraisals. Quoted before any work begins.", path: "/services", og: "pages/services", image: "bench" },
     [breadcrumbJsonLd([{ name: "Services", href: "/services" }]), servicesJsonLd(SERVICES)],
   );
 

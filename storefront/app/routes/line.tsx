@@ -39,7 +39,7 @@ export function loader({ request }: Route.LoaderArgs) {
 export const meta: Route.MetaFunction = ({ data }) => {
   const tier = TIERS.find((t) => t.slug === data?.slug)!;
   return pageMeta(
-    { title: tier.name, description: `${tier.tagline} ${tier.stones}`, path: `/${tier.slug}`, image: TIER_PHOTO[tier.slug] },
+    { title: tier.name, description: `${tier.tagline} ${tier.stones}`, path: `/${tier.slug}`, og: `lines/${tier.slug}`, image: TIER_PHOTO[tier.slug] },
     [breadcrumbJsonLd([{ name: tier.name, href: `/${tier.slug}` }]), itemListJsonLd(tier.name, piecesForTier(tier.slug))],
   );
 };

@@ -3,7 +3,7 @@ import { PageTitle, Section } from "~/components/Section";
 import { deliverAppointment } from "~/lib/appointments.server";
 import { STORES } from "~/lib/catalog/data";
 import { envContext } from "~/lib/env";
-import { pageMeta } from "~/lib/seo";
+import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/appointments";
 
@@ -11,8 +11,8 @@ export const meta: Route.MetaFunction = () =>
   pageMeta({
     title: "Book an appointment",
     description: "An hour with a member of the house in Brentwood or Mt. Juliet, Tennessee, or by video. Bridal, private viewings, commissions, fittings, care and repair.",
-    path: "/appointments",
-  });
+    path: "/appointments", og: "pages/appointments",
+  }, [breadcrumbJsonLd([{ name: "Book an appointment", href: "/appointments" }])]);
 
 export function loader({ request }: Route.LoaderArgs) {
   const prefill: Record<string, string> = {};

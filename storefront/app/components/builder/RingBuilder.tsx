@@ -279,7 +279,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
           </Link>
           <div className="grid grid-cols-3 gap-2 text-[0.75rem]">
             <button type="button" className="quiet" aria-pressed={saved} onClick={() => toggle({ id: savedId, href: `/design/${code}`, name: `${note.name} ring`, detail: name, photo })}>
-              {saved ? "Saved" : "Save"}
+              {saved ? "Kept" : "Keep"}
             </button>
             <button type="button" className="quiet" onClick={() => copy(`${origin}/design/${code}`, "share")}>
               {copied === "share" ? "Copied" : "Copy link"}

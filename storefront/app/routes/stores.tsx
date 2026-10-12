@@ -12,7 +12,7 @@ export const meta: Route.MetaFunction = () =>
     {
       title: "Stores in Brentwood and Mt. Juliet, Tennessee",
       description: "American Jewelry has two stores in Middle Tennessee: Franklin Road in Brentwood and Providence Marketplace in Mt. Juliet. Hours, phone numbers and appointments.",
-      path: "/stores",
+      path: "/stores", og: "pages/stores",
     },
     [breadcrumbJsonLd([{ name: "Stores", href: "/stores" }]), ...STORES.map(storeJsonLd)],
   );
