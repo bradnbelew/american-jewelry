@@ -23,6 +23,7 @@ export const LAYOUT_CANDIDATES = {
   c0: "Vertical gallery, sticky buy column (current)",
   c1: "The stage: one object centered, words beside it",
   c2: "The scroll: one frame per view, sticky details, phone bar",
+  c3: "The stage with the bar: c1 on desktop, the c2 phone bar at phone widths",
 } as const;
 
 export type TypeKey = keyof typeof TYPE_CANDIDATES;

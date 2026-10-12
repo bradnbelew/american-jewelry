@@ -125,3 +125,10 @@ html[data-palette='b3'] .hair-gold {
 html[data-palette='b3'] .velvet {
   --navy: #1d2437;
 }
+
+/* On velvet the numerals stay true gold (5.2:1 on navy); the darkened accents are for paper only. */
+html[data-palette='b1'] .velvet,
+html[data-palette='b2'] .velvet,
+html[data-palette='b3'] .velvet {
+  --gold: #b08d57;
+}

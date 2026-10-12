@@ -109,7 +109,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
         void navigate(pieceUrl(product, result.selectedOptions, result.selectedVariant?.product?.handle, new URLSearchParams(location.search)), { replace: true, preventScrollReset: true });
       }}
     >
-      <PieceForm product={product} piece={piece} onMetal={setMetal} phoneBar={layout === "c2"} />
+      <PieceForm product={product} piece={piece} onMetal={setMetal} phoneBar={layout === "c2" || layout === "c3"} />
     </ProductProvider>
   ) : piece ? (
     <PieceConfigurator piece={piece} onMetal={setMetal} />
@@ -135,13 +135,13 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
         </nav>
       </Section>
 
-      <Section className={`pt-6 md:pt-8 ${layout === "c2" ? "pb-24 md:pb-0" : ""}`}>
+      <Section className={`pt-6 md:pt-8 ${layout === "c2" || layout === "c3" ? "pb-24 md:pb-0" : ""}`}>
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className={layout === "c1" ? "lg:order-2 lg:col-span-7" : layout === "c2" ? "lg:col-span-8" : "lg:col-span-7"}>
-            <PieceGallery photos={PIECE_PHOTOS[handle] ?? ["hero-box"]} title={title} model={galleryModel} metal={metalTone(metal)} open3d={open3d} layout={layout === "c1" ? "stage" : layout === "c2" ? "stack" : "grid"} />
+          <div className={layout === "c1" || layout === "c3" ? "lg:order-2 lg:col-span-7" : layout === "c2" ? "lg:col-span-8" : "lg:col-span-7"}>
+            <PieceGallery photos={PIECE_PHOTOS[handle] ?? ["hero-box"]} title={title} model={galleryModel} metal={metalTone(metal)} open3d={open3d} layout={layout === "c1" || layout === "c3" ? "stage" : layout === "c2" ? "stack" : "grid"} />
           </div>
 
-          <div className={`flex flex-col gap-8 lg:sticky lg:top-32 ${layout === "c1" ? "lg:order-1 lg:col-span-5" : layout === "c2" ? "lg:col-span-4" : "lg:col-span-5"}`}>
+          <div className={`flex flex-col gap-8 lg:sticky lg:top-32 ${layout === "c1" || layout === "c3" ? "lg:order-1 lg:col-span-5" : layout === "c2" ? "lg:col-span-4" : "lg:col-span-5"}`}>
             <div className="flex flex-col gap-3">
               <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{title}</h1>
               {piece && (

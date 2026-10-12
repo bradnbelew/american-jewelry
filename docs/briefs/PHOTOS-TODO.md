@@ -30,3 +30,4 @@ Rule: house photographs first (storefront/public/photos), then renders of the ho
 - No bench photograph or loop exists; the home bench slot shows a cast-file render labeled as such until it is shot (decision 2026-10-11).
 - No storefront exteriors. No hallmark exists to photograph (logo paused).
 - No license-clear third-party photographs are in use.
+- No hand frame exists for Signal Solitaire (or any New American piece); its second product frame is a stone macro, so research/14 §5 "hand second" cannot be met by layout alone (exploration C, 2026-10-11).
