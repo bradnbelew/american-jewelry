@@ -2,7 +2,6 @@ import { handleShopifyRedirects, handleShopifyRoutes } from "@shopify/hydrogen";
 import { ShopifyScripts } from "@shopify/hydrogen/react";
 import type { ReactNode } from "react";
 import {
-  data,
   isRouteErrorResponse,
   Link,
   Links,
@@ -28,7 +27,6 @@ import { envContext } from "~/lib/env";
 import { predictiveSearchHandlers } from "~/lib/predictive-search-handlers";
 import { loadRootLayout } from "~/lib/root-layout";
 import { routeTemplates } from "~/lib/route-templates";
-import { exploreCookie, isDefaultExplore, readExplore } from "~/lib/explore";
 import { siteJsonLd } from "~/lib/seo";
 import { createEphemeralSessionManager } from "~/lib/session";
 import { analyticsConsent, resolveShopIdentity, storefrontConfig } from "~/lib/shop";
@@ -89,21 +87,15 @@ export async function loader({ context, request }: Route.LoaderArgs) {
   const env = context.get(envContext);
   const storefrontClient = context.get(storefrontClientContext);
   const [cartResult, layout] = await Promise.all([cartHandlers.get({ storefrontClient, request }), loadRootLayout(storefrontClient)]);
-  const { explore, fromUrl } = readExplore(request);
-
-  return data(
-    {
-      cartData: cartResult.data,
-      shopInfo: layout.shopInfo,
-      shopIdentity: resolveShopIdentity(env, layout.shopId),
-      currency: layout.currency,
-      live: isLive(env),
-      explore,
-      // Oxygen freezes the clock per request; the year is read once here, never in render.
-      year: new Date().getUTCFullYear(),
-    },
-    fromUrl ? { headers: { "Set-Cookie": exploreCookie(explore) } } : undefined,
-  );
+  return {
+    cartData: cartResult.data,
+    shopInfo: layout.shopInfo,
+    shopIdentity: resolveShopIdentity(env, layout.shopId),
+    currency: layout.currency,
+    live: isLive(env),
+    // Oxygen freezes the clock per request; the year is read once here, never in render.
+    year: new Date().getUTCFullYear(),
+  };
 }
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -111,7 +103,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const rootData = useRouteLoaderData<typeof loader>("root");
 
   return (
-    <html lang="en" data-type={rootData && !isDefaultExplore(rootData.explore) ? rootData.explore.t : undefined} data-palette={rootData && !isDefaultExplore(rootData.explore) ? rootData.explore.p : undefined}>
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

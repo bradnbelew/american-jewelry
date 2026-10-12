@@ -34,9 +34,6 @@ export default [
   route("bag", "routes/cart.tsx"),
   route("account", "routes/account.tsx"),
 
-  // Rework explorations (type / palette / product layout), owner-only switchboard, noindex
-  route("__explore", "routes/explore.tsx"),
-
   // Development only: 3D poster frames for scripts/posters.mjs (404 in production)
   route("__poster/:kind/:slug", "routes/poster.tsx"),
 

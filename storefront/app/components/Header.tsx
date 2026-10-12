@@ -44,7 +44,7 @@ export function Header() {
           <div className="flex items-center gap-5">
             <button
               type="button"
-              className="caps -ml-1 inline-flex h-10 w-14 items-center px-1 lg:hidden"
+              className="caps -ml-1 inline-flex h-11 w-14 items-center px-1 lg:hidden"
               aria-expanded={open}
               aria-controls="menu"
               onClick={() => setOpen((v) => !v)}

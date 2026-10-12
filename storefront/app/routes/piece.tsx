@@ -1,6 +1,6 @@
 import { getSelectedProductOptions } from "@shopify/hydrogen";
 import { useState } from "react";
-import { Link, useLocation, useNavigate, useRouteLoaderData } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import { PieceConfigurator, metalTone } from "~/components/PieceConfigurator";
 import { PieceForm } from "~/components/PieceForm";
@@ -16,7 +16,6 @@ import { PIECE_OPTION_NAMES, PIECE_QUERY, type PieceProduct } from "~/lib/piece-
 import { ProductProvider, metalKeyFromLabel, pieceUrl } from "~/lib/product";
 import { breadcrumbJsonLd, pageMeta, productJsonLd, productJsonLdFromStorefront } from "~/lib/seo";
 import { storefrontClientContext } from "~/lib/storefront";
-import type { loader as rootLoader } from "../root";
 
 import type { Route } from "./+types/piece";
 
@@ -89,8 +88,6 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const piece = pieceByHandle(handle);
   const navigate = useNavigate();
   const location = useLocation();
-  const rootData = useRouteLoaderData<typeof rootLoader>("root");
-  const layout = rootData?.explore.v ?? "c0";
   const initialMetal = product ? (metalKeyFromLabel(product.selectedOrFirstAvailableVariant?.selectedOptions.find((o) => o.name === "Metal")?.value ?? "") ?? piece?.metals[0] ?? "14k-yellow") : (piece?.metals[0] ?? "14k-yellow");
   const [metal, setMetal] = useState<Metal>(initialMetal);
 
@@ -109,7 +106,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
         void navigate(pieceUrl(product, result.selectedOptions, result.selectedVariant?.product?.handle, new URLSearchParams(location.search)), { replace: true, preventScrollReset: true });
       }}
     >
-      <PieceForm product={product} piece={piece} onMetal={setMetal} phoneBar={layout === "c2" || layout === "c3"} />
+      <PieceForm product={product} piece={piece} onMetal={setMetal} />
     </ProductProvider>
   ) : piece ? (
     <PieceConfigurator piece={piece} onMetal={setMetal} />
@@ -135,14 +132,13 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
         </nav>
       </Section>
 
-      <Section className={`pt-6 md:pt-8 ${layout === "c2" || layout === "c3" ? "pb-24 md:pb-0" : ""}`}>
+      <Section className="pt-6 md:pt-8">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className={layout === "c1" || layout === "c3" ? "lg:order-2 lg:col-span-7" : layout === "c2" ? "lg:col-span-8" : "lg:col-span-7"}>
-            <PieceGallery photos={PIECE_PHOTOS[handle] ?? ["hero-box"]} title={title} model={galleryModel} metal={metalTone(metal)} open3d={open3d} layout={layout === "c1" || layout === "c3" ? "stage" : layout === "c2" ? "stack" : "grid"} />
+          <div className="lg:col-span-7">
+            <PieceGallery photos={PIECE_PHOTOS[handle] ?? ["hero-box"]} title={title} model={galleryModel} metal={metalTone(metal)} open3d={open3d} />
           </div>
 
-          <div className={`flex flex-col gap-8 ${layout === "c1" || layout === "c3" ? "lg:order-1 lg:col-span-5" : layout === "c2" ? "lg:sticky lg:top-32 lg:col-span-4" : "lg:sticky lg:top-32 lg:col-span-5"}`}>
-            <div className={`flex flex-col gap-8 ${layout === "c1" || layout === "c3" ? "lg:sticky lg:top-32" : ""}`}>
+          <div className="flex flex-col gap-8 lg:sticky lg:top-32 lg:col-span-5">
             <div className="flex flex-col gap-3">
               <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{title}</h1>
               {piece && (
@@ -155,7 +151,6 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
             </div>
 
             {buyColumn}
-            </div>
 
             {piece && <Details piece={piece} />}
           </div>

@@ -13,13 +13,9 @@
     "typecheck": "react-router typegen && tsc && node scripts/gql-check.mjs --fail-on-warn"
   },
   "dependencies": {
-    "@fontsource-variable/besley": "^5.3.0",
-    "@fontsource-variable/newsreader": "^5.3.0",
     "@fontsource-variable/public-sans": "^5.3.0",
     "@fontsource/libre-caslon-display": "^5.3.0",
     "@fontsource/libre-caslon-text": "^5.3.0",
-    "@fontsource/linden-hill": "^5.3.0",
-    "@fontsource/sorts-mill-goudy": "^5.3.0",
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",

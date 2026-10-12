@@ -9,10 +9,11 @@ Rule: house photographs first (storefront/public/photos), then renders of the ho
 | Slot | Stand-in today | Source | Must become |
 |---|---|---|---|
 | Home hero | `hero-hand` (house photo, 2000x875) | american.jewelry hero | `hand`: the family's hand, daylight, one Signal or Shooting Star ring |
-| Home, design of the season | `tristar-charm` (house product photo) | american.jewelry | `macro` of the Shooting Star at 2:1 |
+| Home, design of the season | `tristar-charm` (house product photo of a tri-star charm, not a Shooting Star; council home 2026-10-12 I6) | american.jewelry | `macro` of the Shooting Star at 2.2:1 |
 | Home, the lines (hover) | `hero-box`, `hero-hand`, `ring-halo` | american.jewelry | one `34` packshot per line |
-| Home, Build a ring | `ring-halo` (house photo of a halo ring, not a Signal) | american.jewelry | `poster` render of the Signal ring, same camera as the R3F "set" preset |
-| Home, the bench | **render** of the bench's own cast file `solitaire-ring.glb` (`/3d/posters/solitaire-ring.webp`) | models/ pipeline, 2026-10-10 | the 12-second bench loop (laser, polishing wheel, natural sound, poster frame) and one bench still |
+| Home, Build a ring | **render** `/3d/posters/ring-signal.webp`, captioned "Signal, as the builder draws it." (since 2026-10-12) | ParametricRing | a photograph of a finished Signal ring at 4:3 on the stone ground |
+| Home, the bench | **removed from the home 2026-10-12** until it can be shown honestly | n/a | the 12-second bench loop (laser, polishing wheel, natural sound, poster frame) and one bench still; the screen returns when it exists and the family confirms the fact (C1) |
+| Home, the registry | none (type on velvet) | n/a | optional: one photograph of No. 001 on the navy box for the registry screen |
 | Royal American hero | `hero-box` | american.jewelry | `34` of a Royal American piece on navy |
 | Americana hero | `hero-hand` | american.jewelry | `34` of a Shooting Star ring |
 | New American hero | `ring-halo` | american.jewelry | `34` of a Signal solitaire |

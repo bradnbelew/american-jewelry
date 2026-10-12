@@ -105,3 +105,7 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 - Replace middle dots in Royal American names in data.ts (C3).
 - Correct `FIGURES_AS_OF` in `storefront/app/lib/site.ts` to the real check date (C14).
 - Confirm `numeral: "I" | "II" | "III"` in data.ts never renders.
+- Standalone links (`.link`, `.link-light`) are about 23px tall; WCAG 2.5.8 is met (24px with spacing), the house's 44px floor is not. Fix in house.css site-wide, not per page (council home 2026-10-12, P7).
+- The shared opener headline is 88px at 1440 and 72px at 768, above every reference house (76 and 68). Keep as the one place display size is earned, or set 76/68 in `PhotoOpener`; decide once for every opener (council home 2026-10-12, band).
+- The lines list's hover photo (opacity only) may read as a "hover image swap"; decide whether the canon's ban covers it (council home 2026-10-12, note).
+- "Tennessee Star" is not a place name; the canon says Royal American pieces carry a Tennessee place name (council home 2026-10-12, note).

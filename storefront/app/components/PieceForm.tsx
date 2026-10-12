@@ -25,8 +25,7 @@ const METAL_SWATCH: Record<Metal, string> = {
  * are variant options (GET links, so they work before JavaScript), size and engraving ride
  * along as line attributes. Nothing shifts when a choice changes.
  */
-export function PieceForm({ product, piece, onMetal, phoneBar = false }: { product: PieceProduct; piece: Piece | undefined; onMetal?: (m: Metal) => void; phoneBar?: boolean }) {
-  const formId = `buy-${product.handle}`;
+export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; piece: Piece | undefined; onMetal?: (m: Metal) => void }) {
   const { options, selectedVariant, register, formProps, errors, pending } = useProductForm();
   const location = useLocation();
   const base = useMemo(() => new URLSearchParams(location.search), [location.search]);
@@ -141,7 +140,7 @@ export function PieceForm({ product, piece, onMetal, phoneBar = false }: { produ
         </div>
       )}
 
-      <form id={formId} {...formProps({ beforeSubmit: () => openCartDrawer() })} className="flex flex-col gap-3 pt-1">
+      <form {...formProps({ beforeSubmit: () => openCartDrawer() })} className="flex flex-col gap-3 pt-1">
         <input type="hidden" {...register("merchandiseId", {})} />
         <input type="hidden" {...register("quantity", { value: 1 })} />
         {size ? <input type="hidden" {...register("attributeValue", { key: "Size", value: size })} /> : null}
@@ -162,17 +161,6 @@ export function PieceForm({ product, piece, onMetal, phoneBar = false }: { produ
           <SaveButton item={{ id: product.handle, href: `/pieces/${product.handle}`, name: product.title, detail: versionValue ?? "", photo }} />
         </div>
       </form>
-      {phoneBar ? (
-        <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-[1fr_auto] items-center gap-4 bg-paper px-4 py-3 md:hidden" aria-label="Price and add to bag">
-          <div className="flex min-w-0 flex-col">
-            <span className="num text-[1.125rem] leading-tight">{priceText}</span>
-            <span className="label truncate">{versionValue ?? ""}{metalValue ? `, ${metalValue}` : ""}</span>
-          </div>
-          <button type="submit" form={formId} className="btn" disabled={!addable || pending}>
-            Add to bag
-          </button>
-        </div>
-      ) : null}
     </div>
   );
 }

@@ -1,3 +1,5 @@
+> **Withdrawn 2026-10-12.** The owner asked to undo the explorations. The flags, the `/__explore` switchboard, `explore.css`, the candidate fonts and the product-layout variants were removed from the code; the canon's type, palette and product layout stand. This folder is kept as the record of what was tried and why (see also `critic-findings.md`).
+
 # The three rework explorations (A type, B palette, C product layout)
 
 Built 2026-10-11 under `docs/briefs/HANDOFF-rework-instructions.md` §3. Nothing here is a token yet. The canon, `DESIGN.md` and `house.css` are untouched; every candidate lives behind a flag in `storefront/app/explore.css`, `storefront/app/lib/explore.ts` and the layout branches in `storefront/app/routes/piece.tsx`. The owner decides; §4 of the instructions then moves the chosen values into the guides.
