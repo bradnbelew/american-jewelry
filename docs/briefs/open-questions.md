@@ -26,6 +26,9 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 16. **Vendor inventory:** how much stays in the cases, and how it leaves (brand-playbook proposes quietly, no clearance).
 17. **"Do we grow our own diamonds?"** new-american-tier.html asks this from the user's words "we design, grow, and cast". If not, drop the idea.
 
+- **A16 Admin API token for builder draft orders.** Not provided. Until a custom app with `write_draft_orders` exists and its token is set as `ADMIN_API_TOKEN` on Oxygen, "Request this ring" routes to `/appointments` with the design code (2026-10-12).
+- **A17 Where appointment requests go.** The appointment form stores nothing yet (P4 decides the simplest reliable store and a named recipient).
+
 ## B. Decisions the family must make
 
 18. Final line names; whether "New American" stands (alternates on the board: Foundry, Filament).

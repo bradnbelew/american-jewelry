@@ -14,6 +14,7 @@ export default [
   // The builder
   route("build/ring", "routes/build-ring.tsx"),
   route("design/:code", "routes/design-code.tsx"),
+  route("design/:code/certificate", "routes/certificate.tsx"),
 
   // Places and people
   route("stores", "routes/stores.tsx"),

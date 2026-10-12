@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link } from "react-router";
+import { Form, Link } from "react-router";
 
 import { RingViewer } from "~/components/three/RingViewer";
 import { BIRTHSTONES, HAND_LABEL, METAL_LABEL, PROFILE_LABEL, PRONG_LABEL, STONE_STANDARD, leadTimeWeeks, type RingConfig } from "~/lib/builder/model";
@@ -16,15 +16,16 @@ export function DesignView({ config: c, code, hint }: { config: RingConfig; code
     ...(c.setting === "shooting-star" ? [["Tail", `${c.tail === "long" ? "Five" : "Three"} stones${c.birthstone ? `, ${BIRTHSTONES[c.birthstone - 1].stone}` : ""}`] as [string, string]] : []),
     ["Stone", `${c.carat.toFixed(2)} ct ${STONE_STANDARD[c.origin].short.toLowerCase()}, ${STONE_STANDARD[c.origin].grade}`],
     ["Metal", `${METAL_LABEL[c.metal]}, size ${c.size}`],
-    ...(c.engraving ? [["Engraving", `“${c.engraving}”, ${HAND_LABEL[c.hand].toLowerCase()}`] as [string, string]] : []),
+    ...(c.engraving ? [["Engraving", `"${c.engraving}", ${HAND_LABEL[c.hand].toLowerCase()}`] as [string, string]] : []),
     ["Lead time", `About ${leadTimeWeeks(c)} weeks`],
   ];
+  const encoded = encodeURIComponent(code);
   return (
     <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
       <div className="relative aspect-square overflow-hidden bg-stone">
         <RingViewer config={c} view="review" autoRotate className="absolute inset-0" />
       </div>
-      <div className="flex flex-col gap-7">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           <span className="label">{STONE_STANDARD[c.origin].tier}</span>
           <h2 className="font-display text-[1.75rem] leading-snug">{note.name}</h2>
@@ -40,28 +41,41 @@ export function DesignView({ config: c, code, hint }: { config: RingConfig; code
             ))}
             <tr>
               <th scope="row">Code</th>
-              <td className="font-display text-[1.125rem] tracking-[0.06em]">{code}</td>
+              <td className="num text-[1rem] tracking-[0.06em]">{code}</td>
             </tr>
             {!hint && (
               <tr>
                 <th scope="row">Price</th>
-                <td className="font-display num text-[1.5rem]">{usd(p.total)}</td>
+                <td className="num text-[1.5rem]">{usd(p.total)}</td>
               </tr>
             )}
           </tbody>
         </table>
+        {!hint && <p className="label">Made to order, about {leadTimeWeeks(c)} weeks. Price before sales tax.</p>}
         <div className="flex flex-col gap-3">
           {hint ? (
-            <Link to={`/appointments?build=ring&code=${encodeURIComponent(code)}`} className="btn">
+            <Link to={`/appointments?build=ring&code=${encoded}`} className="btn">
               See it in the store
             </Link>
           ) : (
             <>
-              <Link to={`/build/ring?code=${encodeURIComponent(code)}`} className="btn">
-                Make it mine
-              </Link>
-              <Link to={`/appointments?build=ring&code=${encodeURIComponent(code)}`} className="btn btn-outline">
-                See it in store first
+              <Form method="post" action={`/design/${encoded}`}>
+                <input type="hidden" name="intent" value="request" />
+                <input type="hidden" name="code" value={code} />
+                <button type="submit" className="btn w-full">
+                  Request this ring
+                </button>
+              </Form>
+              <div className="grid grid-cols-2 gap-3">
+                <Link to={`/build/ring?code=${encoded}`} className="btn btn-outline">
+                  Make it mine
+                </Link>
+                <Link to={`/appointments?build=ring&code=${encoded}`} className="btn btn-outline">
+                  See it in store
+                </Link>
+              </div>
+              <Link to={`/design/${encoded}/certificate`} className="link-quiet self-start text-[0.875rem]">
+                The certificate of making
               </Link>
             </>
           )}

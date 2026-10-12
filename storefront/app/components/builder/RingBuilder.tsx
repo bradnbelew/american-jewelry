@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState, type ReactNode } from "react";
-import { Link } from "react-router";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Form, Link } from "react-router";
 
 import { Pic } from "~/components/Pic";
 import { useSaved } from "~/components/saved/SavedProvider";
@@ -71,13 +71,21 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
   const [copied, setCopied] = useState<string | null>(null);
   const { has, toggle, ready } = useSaved();
 
+  const engraveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const set = useCallback(<K extends keyof RingConfig>(k: K, v: RingConfig[K]) => {
     setC((prev) => normalize({ ...prev, [k]: v }));
     const next = VIEW_FOR[k];
-    if (next) {
-      setView(next);
-      setIdle(false);
+    if (!next) return;
+    setIdle(false);
+    if (k === "engraving") {
+      if (engraveTimer.current) clearTimeout(engraveTimer.current);
+      engraveTimer.current = setTimeout(() => setView(next), 400);
+      return;
     }
+    setView(next);
+  }, []);
+  useEffect(() => () => {
+    if (engraveTimer.current) clearTimeout(engraveTimer.current);
   }, []);
 
   const p = useMemo(() => price(c), [c]);
@@ -190,7 +198,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
             <input value={c.engraving} onChange={(e) => set("engraving", e.target.value.slice(0, 20))} placeholder="Engraving, up to 20 characters" className="field font-display !h-12 text-[1rem]" aria-label="Engraving" />
           </div>
           <div className="flex min-h-7 items-center justify-between gap-4">
-            <p className="label">{c.width >= 2.4 ? "This width wears a little tighter; we usually size up a half." : "We size in store, free, and resize once at no charge."}</p>
+            <p className="label">{c.width >= 2.4 ? "This width wears a little tighter; we usually size up a half." : "We size in store and resize once at no charge."}</p>
             {c.engraving && (
               <div className="flex shrink-0 gap-1" role="radiogroup" aria-label="Engraving hand">
                 {HANDS.map((h) => (
@@ -259,8 +267,15 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
         </details>
 
         <div className="flex flex-col gap-3">
-          <Link to={`/appointments?build=ring&code=${encodeURIComponent(code)}`} className="btn">
-            See it in store
+          <Form method="post" action={`/design/${encodeURIComponent(code)}`}>
+            <input type="hidden" name="intent" value="request" />
+            <input type="hidden" name="code" value={code} />
+            <button type="submit" className="btn w-full">
+              Request this ring
+            </button>
+          </Form>
+          <Link to={`/appointments?build=ring&code=${encodeURIComponent(code)}`} className="btn btn-outline">
+            See it in store first
           </Link>
           <div className="grid grid-cols-3 gap-2 text-[0.75rem]">
             <button type="button" className="quiet" aria-pressed={saved} onClick={() => toggle({ id: savedId, href: `/design/${code}`, name: `${note.name} ring`, detail: name, photo })}>
@@ -280,10 +295,12 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
                 {copied === "code" ? "Copied" : code}
               </button>
             </span>
-            <span>Bring it to either store.</span>
+            <Link to={`/design/${encodeURIComponent(code)}/certificate`} className="link-quiet text-ink">
+              The certificate
+            </Link>
           </div>
           <p className="label leading-relaxed">
-            {c.origin === "man-made" ? "Man-made (laboratory-grown) diamond, as grown, not mined." : "Natural diamond with a GIA report; any treatment is disclosed before purchase."} Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
+            {c.origin === "man-made" ? "Man-made diamond (laboratory-grown), as grown, not mined." : "Natural diamond with a GIA report; any treatment is disclosed before purchase."} Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
           </p>
         </div>
       </div>
