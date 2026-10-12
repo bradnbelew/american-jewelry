@@ -1,0 +1,529 @@
+{
+ "url": "https://www.jessicamccormack.com/products/1-51ct-east-west-oval-diamond-button-back-ring",
+ "kind": "pdp",
+ "slug": "jessicamccormack-pdp",
+ "ref": true,
+ "measuredAt": "2026-10-12T22:48:16.498Z",
+ "widths": {
+  "390": {
+   "text": {
+    "words": 83,
+    "sentences": 3,
+    "sentenceP50": 35,
+    "sentenceP90": 35,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 390,
+   "vh": 844,
+   "pageViewports": 1,
+   "type": {
+    "families": [
+     {
+      "v": "Bellefair Regular",
+      "share": 0.79
+     },
+     {
+      "v": "ABC Diatype Mono",
+      "share": 0.21
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 3,
+    "sizes": [
+     {
+      "v": 16,
+      "share": 0.79
+     },
+     {
+      "v": 12,
+      "share": 0.195
+     },
+     {
+      "v": 11,
+      "share": 0.015
+     }
+    ],
+    "displayMax": 16,
+    "h1": {
+     "size": 16,
+     "chars": 46,
+     "lines": 1,
+     "family": "Bellefair Regular",
+     "weight": 400,
+     "track": 0
+    },
+    "bodySize": 16,
+    "bodyLeading": 1.3,
+    "measureCpl": {
+     "p50": 40,
+     "p90": 40,
+     "max": 40
+    },
+    "smallest": 11,
+    "capsBlocks": 0,
+    "capsShareOfBlocks": 0,
+    "capsSizes": [],
+    "capsTrackP50": null,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 11,
+    "textBlocks": 3,
+    "images": 2,
+    "controls": 1,
+    "elements": 5,
+    "imageShare": 0.93
+   },
+   "spacing": {
+    "gapP50": 14,
+    "gapP90": 14,
+    "gapMax": 14,
+    "sectionGapVh": 0.02,
+    "distinctGaps": 1,
+    "alignmentAxes": 3
+   },
+   "images": {
+    "count": 4,
+    "fullBleed": 4,
+    "ratios": [
+     0.75,
+     0.75,
+     0.75,
+     0.75
+    ],
+    "firstAbove": {
+     "ratio": 0.75,
+     "w": 390,
+     "h": 520,
+     "top": 60
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#ffffff",
+    "groundHsl": {
+     "h": 0,
+     "s": 0,
+     "l": 1
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f6f6",
+      "share": 0.77,
+      "h": 0,
+      "s": 0,
+      "l": 0.96
+     },
+     {
+      "hex": "#ffffff",
+      "share": 0.1,
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     {
+      "hex": "#f7f7f7",
+      "share": 0.09,
+      "h": 0,
+      "s": 0,
+      "l": 0.97
+     },
+     {
+      "hex": "#000000",
+      "share": 0.04,
+      "h": 0,
+      "s": 0,
+      "l": 0
+     }
+    ],
+    "textColors": 1,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 2,
+    "heights": [
+     41,
+     43
+    ],
+    "radiusMax": 0,
+    "capsShare": 0,
+    "under44": 1
+   },
+   "commerce": {
+    "price": {
+     "text": "£36,000",
+     "size": 11,
+     "top": 817,
+     "aboveFold": true
+    },
+    "cta": {
+     "text": "Make an Enquiry",
+     "h": 41,
+     "top": 844,
+     "aboveFold": false,
+     "radius": 0
+    },
+    "priceToCta": 16
+   },
+   "nav": {
+    "visibleLinks": 1
+   },
+   "status": 200
+  },
+  "768": {
+   "text": {
+    "words": 83,
+    "sentences": 3,
+    "sentenceP50": 35,
+    "sentenceP90": 35,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 768,
+   "vh": 1024,
+   "pageViewports": 1,
+   "type": {
+    "families": [
+     {
+      "v": "Bellefair Regular",
+      "share": 0.79
+     },
+     {
+      "v": "ABC Diatype Mono",
+      "share": 0.21
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 3,
+    "sizes": [
+     {
+      "v": 16,
+      "share": 0.79
+     },
+     {
+      "v": 12,
+      "share": 0.195
+     },
+     {
+      "v": 11,
+      "share": 0.015
+     }
+    ],
+    "displayMax": 16,
+    "h1": {
+     "size": 16,
+     "chars": 46,
+     "lines": 1,
+     "family": "Bellefair Regular",
+     "weight": 400,
+     "track": 0
+    },
+    "bodySize": 16,
+    "bodyLeading": 1.3,
+    "measureCpl": {
+     "p50": 61,
+     "p90": 61,
+     "max": 61
+    },
+    "smallest": 11,
+    "capsBlocks": 0,
+    "capsShareOfBlocks": 0,
+    "capsSizes": [],
+    "capsTrackP50": null,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 11,
+    "textBlocks": 3,
+    "images": 1,
+    "controls": 1,
+    "elements": 4,
+    "imageShare": 0.94
+   },
+   "spacing": {
+    "gapP50": 14,
+    "gapP90": 14,
+    "gapMax": 14,
+    "sectionGapVh": 0.01,
+    "distinctGaps": 1,
+    "alignmentAxes": 4
+   },
+   "images": {
+    "count": 4,
+    "fullBleed": 4,
+    "ratios": [
+     0.75,
+     0.75,
+     0.75,
+     0.75
+    ],
+    "firstAbove": {
+     "ratio": 0.75,
+     "w": 768,
+     "h": 1024,
+     "top": 60
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#ffffff",
+    "groundHsl": {
+     "h": 0,
+     "s": 0,
+     "l": 1
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f6f6",
+      "share": 0.84,
+      "h": 0,
+      "s": 0,
+      "l": 0.96
+     },
+     {
+      "hex": "#f7f7f7",
+      "share": 0.08,
+      "h": 0,
+      "s": 0,
+      "l": 0.97
+     },
+     {
+      "hex": "#ffffff",
+      "share": 0.06,
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     {
+      "hex": "#000000",
+      "share": 0.02,
+      "h": 0,
+      "s": 0,
+      "l": 0
+     }
+    ],
+    "textColors": 1,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 2,
+    "heights": [
+     41,
+     43
+    ],
+    "radiusMax": 0,
+    "capsShare": 0,
+    "under44": 1
+   },
+   "commerce": {
+    "price": {
+     "text": "£36,000",
+     "size": 11,
+     "top": 997,
+     "aboveFold": true
+    },
+    "cta": {
+     "text": "Make an Enquiry",
+     "h": 41,
+     "top": 1024,
+     "aboveFold": false,
+     "radius": 0
+    },
+    "priceToCta": 16
+   },
+   "nav": {
+    "visibleLinks": 1
+   },
+   "status": 200
+  },
+  "1440": {
+   "text": {
+    "words": 83,
+    "sentences": 3,
+    "sentenceP50": 32,
+    "sentenceP90": 38,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 1440,
+   "vh": 900,
+   "pageViewports": 1,
+   "type": {
+    "families": [
+     {
+      "v": "Bellefair Regular",
+      "share": 0.79
+     },
+     {
+      "v": "ABC Diatype Mono",
+      "share": 0.21
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 3,
+    "sizes": [
+     {
+      "v": 16,
+      "share": 0.694
+     },
+     {
+      "v": 12,
+      "share": 0.21
+     },
+     {
+      "v": 20,
+      "share": 0.096
+     }
+    ],
+    "displayMax": 20,
+    "h1": {
+     "size": 20,
+     "chars": 46,
+     "lines": 2,
+     "family": "Bellefair Regular",
+     "weight": 400,
+     "track": 0
+    },
+    "bodySize": 16,
+    "bodyLeading": 1.3,
+    "measureCpl": {
+     "p50": 40,
+     "p90": 40,
+     "max": 40
+    },
+    "smallest": 12,
+    "capsBlocks": 0,
+    "capsShareOfBlocks": 0,
+    "capsSizes": [],
+    "capsTrackP50": null,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 70,
+    "textBlocks": 12,
+    "images": 2,
+    "controls": 2,
+    "elements": 15,
+    "imageShare": 0.52
+   },
+   "spacing": {
+    "gapP50": 140,
+    "gapP90": 140,
+    "gapMax": 140,
+    "sectionGapVh": 0.16,
+    "distinctGaps": 2,
+    "alignmentAxes": 5
+   },
+   "images": {
+    "count": 5,
+    "fullBleed": 0,
+    "ratios": [
+     0.75,
+     0.75,
+     0.75,
+     0.75,
+     0.75
+    ],
+    "firstAbove": {
+     "ratio": 0.75,
+     "w": 720,
+     "h": 960,
+     "top": 0
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#ffffff",
+    "groundHsl": {
+     "h": 0,
+     "s": 0,
+     "l": 1
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f6f6",
+      "share": 0.97,
+      "h": 0,
+      "s": 0,
+      "l": 0.96
+     },
+     {
+      "hex": "#ffffff",
+      "share": 0.01,
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     {
+      "hex": "#f7f7f7",
+      "share": 0.01,
+      "h": 0,
+      "s": 0,
+      "l": 0.97
+     },
+     {
+      "hex": "#000000",
+      "share": 0,
+      "h": 0,
+      "s": 0,
+      "l": 0
+     }
+    ],
+    "textColors": 1,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 2,
+    "heights": [
+     41,
+     43
+    ],
+    "radiusMax": 0,
+    "capsShare": 0,
+    "under44": 1
+   },
+   "commerce": {
+    "price": {
+     "text": "£36,000",
+     "size": 12,
+     "top": 198,
+     "aboveFold": true
+    },
+    "cta": {
+     "text": "Make an Enquiry",
+     "h": 41,
+     "top": 513,
+     "aboveFold": true,
+     "radius": 0
+    },
+    "priceToCta": 303
+   },
+   "nav": {
+    "visibleLinks": 7
+   },
+   "status": 200
+  }
+ }
+}

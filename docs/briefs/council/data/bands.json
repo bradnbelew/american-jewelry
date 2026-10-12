@@ -1,0 +1,2148 @@
+{
+ "builtAt": "2026-10-12T22:53:46.871Z",
+ "sources": [
+  {
+   "slug": "aesop-home",
+   "url": "https://www.aesop.com/us/",
+   "kind": "home",
+   "ok": 0
+  },
+  {
+   "slug": "anitako-home",
+   "url": "https://www.anitako.com/",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "anitako-pdp",
+   "url": "https://www.anitako.com/products/wide-diamond-band-with-emerald-cut-emerald-center-copy-1",
+   "kind": "pdp",
+   "ok": 3
+  },
+  {
+   "slug": "cartier-home",
+   "url": "https://www.cartier.com/en-us/",
+   "kind": "home",
+   "ok": 0
+  },
+  {
+   "slug": "cartier-pdp",
+   "url": "https://www.cartier.com/en-us/jewelry/rings/love/love-ring-classic-model--CRB4084600.html",
+   "kind": "pdp",
+   "ok": 3
+  },
+  {
+   "slug": "foundrae-home",
+   "url": "https://foundrae.com/",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "foundrae-pdp",
+   "url": "https://foundrae.com/products/personalized-true-love-custom-oval-gemstone-cigar-band-blue-ceramic-blue-sapphire-yellow-gold",
+   "kind": "pdp",
+   "ok": 3
+  },
+  {
+   "slug": "hemmerle-home",
+   "url": "https://www.hemmerle.com/",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "hermes-home",
+   "url": "https://www.hermes.com/us/en/",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "jessicamccormack-home",
+   "url": "https://www.jessicamccormack.com/",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "jessicamccormack-pdp",
+   "url": "https://www.jessicamccormack.com/products/1-51ct-east-west-oval-diamond-button-back-ring",
+   "kind": "pdp",
+   "ok": 3
+  },
+  {
+   "slug": "leica-home",
+   "url": "https://leica-camera.com/en-US",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "rolex-home",
+   "url": "https://www.rolex.com/en-us",
+   "kind": "home",
+   "ok": 0
+  },
+  {
+   "slug": "rolex-pdp",
+   "url": "https://www.rolex.com/en-us/watches/datejust/m278288rbr-0041",
+   "kind": "pdp",
+   "ok": 3
+  },
+  {
+   "slug": "sophiebillebrahe-home",
+   "url": "https://www.sophiebillebrahe.com/",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "tiffany-home",
+   "url": "https://www.tiffany.com/",
+   "kind": "home",
+   "ok": 0
+  },
+  {
+   "slug": "vca-home",
+   "url": "https://www.vancleefarpels.com/us/en.html",
+   "kind": "home",
+   "ok": 3
+  },
+  {
+   "slug": "yurman-home",
+   "url": "https://www.davidyurman.com/",
+   "kind": "home",
+   "ok": 3
+  }
+ ],
+ "bands": {
+  "all": {
+   "390": {
+    "type.h1.size": {
+     "n": 5,
+     "min": 16,
+     "p25": 16,
+     "median": 18,
+     "p75": 18,
+     "max": 32
+    },
+    "type.displayMax": {
+     "n": 13,
+     "min": 12,
+     "p25": 18,
+     "median": 22,
+     "p75": 32,
+     "max": 44
+    },
+    "type.bodySize": {
+     "n": 11,
+     "min": 12,
+     "p25": 15,
+     "median": 16,
+     "p75": 18,
+     "max": 20
+    },
+    "type.bodyLeading": {
+     "n": 11,
+     "min": 1.2,
+     "p25": 1.25,
+     "median": 1.5,
+     "p75": 1.6,
+     "max": 1.8
+    },
+    "type.measureCpl.p50": {
+     "n": 11,
+     "min": 27,
+     "p25": 36,
+     "median": 37,
+     "p75": 39.5,
+     "max": 45
+    },
+    "type.measureCpl.max": {
+     "n": 11,
+     "min": 27,
+     "p25": 40.5,
+     "median": 43,
+     "p75": 47,
+     "max": 60
+    },
+    "type.familyCount": {
+     "n": 14,
+     "min": 1,
+     "p25": 1,
+     "median": 2,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 14,
+     "min": 1,
+     "p25": 4.25,
+     "median": 6.5,
+     "p75": 7.75,
+     "max": 12
+    },
+    "type.smallest": {
+     "n": 13,
+     "min": 8.9,
+     "p25": 10,
+     "median": 11,
+     "p75": 12,
+     "max": 13.2
+    },
+    "type.capsShareOfBlocks": {
+     "n": 14,
+     "min": 0,
+     "p25": 0.07,
+     "median": 0.47,
+     "p75": 0.59,
+     "max": 0.96
+    },
+    "type.capsTrackP50": {
+     "n": 12,
+     "min": 0,
+     "p25": 0,
+     "median": 0.05,
+     "p75": 0.1,
+     "max": 0.3
+    },
+    "fold.words": {
+     "n": 14,
+     "min": 0,
+     "p25": 11.75,
+     "median": 19.5,
+     "p75": 35.75,
+     "max": 79
+    },
+    "fold.elements": {
+     "n": 14,
+     "min": 0,
+     "p25": 6,
+     "median": 10,
+     "p75": 20.5,
+     "max": 29
+    },
+    "fold.imageShare": {
+     "n": 14,
+     "min": 0,
+     "p25": 0.63,
+     "median": 0.95,
+     "p75": 1,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 13,
+     "min": 14,
+     "p25": 20,
+     "median": 26,
+     "p75": 31,
+     "max": 60
+    },
+    "spacing.sectionGapVh": {
+     "n": 13,
+     "min": 0.02,
+     "p25": 0.09,
+     "median": 0.13,
+     "p75": 0.16,
+     "max": 0.8
+    },
+    "spacing.alignmentAxes": {
+     "n": 14,
+     "min": 1,
+     "p25": 7.5,
+     "median": 13.5,
+     "p75": 22.5,
+     "max": 80
+    },
+    "images.count": {
+     "n": 14,
+     "min": 0,
+     "p25": 6,
+     "median": 13.5,
+     "p75": 33,
+     "max": 90
+    },
+    "surfaces.boxed": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 9
+    },
+    "surfaces.rounded": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0.5,
+     "p75": 4,
+     "max": 64
+    },
+    "surfaces.shadowed": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 1,
+     "max": 4
+    },
+    "color.textColors": {
+     "n": 14,
+     "min": 1,
+     "p25": 2,
+     "median": 4,
+     "p75": 5,
+     "max": 9
+    },
+    "controls.radiusMax": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 50,
+     "max": 9999
+    },
+    "controls.under44": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0.5,
+     "p75": 2.75,
+     "max": 13
+    },
+    "nav.visibleLinks": {
+     "n": 14,
+     "min": 0,
+     "p25": 1,
+     "median": 2,
+     "p75": 3.75,
+     "max": 4
+    },
+    "text.words": {
+     "n": 14,
+     "min": 3,
+     "p25": 127.75,
+     "median": 235,
+     "p75": 273.5,
+     "max": 1559
+    },
+    "text.sentenceP50": {
+     "n": 14,
+     "min": 3,
+     "p25": 18.25,
+     "median": 26,
+     "p75": 38,
+     "max": 227
+    },
+    "pageViewports": {
+     "n": 13,
+     "min": 1,
+     "p25": 1,
+     "median": 5,
+     "p75": 6.2,
+     "max": 18.6
+    }
+   },
+   "768": {
+    "type.h1.size": {
+     "n": 5,
+     "min": 16,
+     "p25": 18,
+     "median": 18,
+     "p75": 32,
+     "max": 32
+    },
+    "type.displayMax": {
+     "n": 13,
+     "min": 12,
+     "p25": 18,
+     "median": 22.4,
+     "p75": 34,
+     "max": 68
+    },
+    "type.bodySize": {
+     "n": 11,
+     "min": 12,
+     "p25": 15,
+     "median": 16,
+     "p75": 18.1,
+     "max": 32
+    },
+    "type.bodyLeading": {
+     "n": 11,
+     "min": 1.2,
+     "p25": 1.25,
+     "median": 1.5,
+     "p75": 1.6,
+     "max": 1.8
+    },
+    "type.measureCpl.p50": {
+     "n": 11,
+     "min": 26,
+     "p25": 39.5,
+     "median": 51,
+     "p75": 63.5,
+     "max": 82
+    },
+    "type.measureCpl.max": {
+     "n": 11,
+     "min": 35,
+     "p25": 46,
+     "median": 58,
+     "p75": 78.5,
+     "max": 90
+    },
+    "type.familyCount": {
+     "n": 14,
+     "min": 1,
+     "p25": 1,
+     "median": 2,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 14,
+     "min": 1,
+     "p25": 4,
+     "median": 6,
+     "p75": 7.75,
+     "max": 11
+    },
+    "type.smallest": {
+     "n": 13,
+     "min": 8.9,
+     "p25": 10,
+     "median": 11,
+     "p75": 12,
+     "max": 13.2
+    },
+    "type.capsShareOfBlocks": {
+     "n": 14,
+     "min": 0,
+     "p25": 0.07,
+     "median": 0.47,
+     "p75": 0.59,
+     "max": 0.97
+    },
+    "type.capsTrackP50": {
+     "n": 12,
+     "min": 0,
+     "p25": 0,
+     "median": 0.05,
+     "p75": 0.1,
+     "max": 0.3
+    },
+    "fold.words": {
+     "n": 14,
+     "min": 0,
+     "p25": 11.25,
+     "median": 20.5,
+     "p75": 38.75,
+     "max": 198
+    },
+    "fold.elements": {
+     "n": 14,
+     "min": 0,
+     "p25": 5.25,
+     "median": 13,
+     "p75": 22.5,
+     "max": 78
+    },
+    "fold.imageShare": {
+     "n": 14,
+     "min": 0,
+     "p25": 0.43,
+     "median": 0.84,
+     "p75": 1,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 13,
+     "min": 12,
+     "p25": 24,
+     "median": 31,
+     "p75": 37,
+     "max": 60
+    },
+    "spacing.sectionGapVh": {
+     "n": 13,
+     "min": 0.01,
+     "p25": 0.08,
+     "median": 0.12,
+     "p75": 0.17,
+     "max": 0.68
+    },
+    "spacing.alignmentAxes": {
+     "n": 14,
+     "min": 1,
+     "p25": 8,
+     "median": 21,
+     "p75": 29.25,
+     "max": 74
+    },
+    "images.count": {
+     "n": 14,
+     "min": 0,
+     "p25": 6,
+     "median": 13.5,
+     "p75": 33,
+     "max": 80
+    },
+    "surfaces.boxed": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 9
+    },
+    "surfaces.rounded": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 4,
+     "max": 69
+    },
+    "surfaces.shadowed": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 1,
+     "max": 4
+    },
+    "color.textColors": {
+     "n": 14,
+     "min": 1,
+     "p25": 2,
+     "median": 4,
+     "p75": 5,
+     "max": 9
+    },
+    "controls.radiusMax": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 50,
+     "max": 9999
+    },
+    "controls.under44": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 2.75,
+     "max": 12
+    },
+    "nav.visibleLinks": {
+     "n": 14,
+     "min": 0,
+     "p25": 1,
+     "median": 2.5,
+     "p75": 4,
+     "max": 14
+    },
+    "text.words": {
+     "n": 14,
+     "min": 3,
+     "p25": 127.75,
+     "median": 238.5,
+     "p75": 335.5,
+     "max": 1530
+    },
+    "text.sentenceP50": {
+     "n": 14,
+     "min": 3,
+     "p25": 18.25,
+     "median": 26,
+     "p75": 38,
+     "max": 338
+    },
+    "pageViewports": {
+     "n": 13,
+     "min": 1,
+     "p25": 1,
+     "median": 4.7,
+     "p75": 6.2,
+     "max": 16.3
+    }
+   },
+   "1440": {
+    "type.h1.size": {
+     "n": 5,
+     "min": 18,
+     "p25": 20,
+     "median": 22,
+     "p75": 38,
+     "max": 40
+    },
+    "type.displayMax": {
+     "n": 13,
+     "min": 12,
+     "p25": 20,
+     "median": 24.5,
+     "p75": 40,
+     "max": 76
+    },
+    "type.bodySize": {
+     "n": 11,
+     "min": 12,
+     "p25": 16,
+     "median": 16,
+     "p75": 18.6,
+     "max": 38
+    },
+    "type.bodyLeading": {
+     "n": 11,
+     "min": 1.2,
+     "p25": 1.25,
+     "median": 1.5,
+     "p75": 1.6,
+     "max": 1.9
+    },
+    "type.measureCpl.p50": {
+     "n": 11,
+     "min": 40,
+     "p25": 49,
+     "median": 54,
+     "p75": 58.5,
+     "max": 86
+    },
+    "type.measureCpl.max": {
+     "n": 11,
+     "min": 40,
+     "p25": 52.5,
+     "median": 60,
+     "p75": 66.5,
+     "max": 110
+    },
+    "type.familyCount": {
+     "n": 14,
+     "min": 1,
+     "p25": 1,
+     "median": 2,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 14,
+     "min": 2,
+     "p25": 4,
+     "median": 5.5,
+     "p75": 8.75,
+     "max": 11
+    },
+    "type.smallest": {
+     "n": 13,
+     "min": 9,
+     "p25": 10,
+     "median": 12,
+     "p75": 12,
+     "max": 14
+    },
+    "type.capsShareOfBlocks": {
+     "n": 14,
+     "min": 0,
+     "p25": 0.21,
+     "median": 0.51,
+     "p75": 0.59,
+     "max": 0.97
+    },
+    "type.capsTrackP50": {
+     "n": 13,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0.1,
+     "max": 0.3
+    },
+    "fold.words": {
+     "n": 14,
+     "min": 0,
+     "p25": 13.25,
+     "median": 27.5,
+     "p75": 44,
+     "max": 282
+    },
+    "fold.elements": {
+     "n": 14,
+     "min": 0,
+     "p25": 7.75,
+     "median": 15,
+     "p75": 20.75,
+     "max": 27
+    },
+    "fold.imageShare": {
+     "n": 14,
+     "min": 0,
+     "p25": 0.43,
+     "median": 0.8,
+     "p75": 0.95,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 13,
+     "min": 14,
+     "p25": 30,
+     "median": 50,
+     "p75": 64,
+     "max": 140
+    },
+    "spacing.sectionGapVh": {
+     "n": 13,
+     "min": 0.07,
+     "p25": 0.11,
+     "median": 0.19,
+     "p75": 0.25,
+     "max": 0.77
+    },
+    "spacing.alignmentAxes": {
+     "n": 14,
+     "min": 1,
+     "p25": 8.5,
+     "median": 21.5,
+     "p75": 29.25,
+     "max": 84
+    },
+    "images.count": {
+     "n": 14,
+     "min": 5,
+     "p25": 6.75,
+     "median": 15.5,
+     "p75": 31.5,
+     "max": 93
+    },
+    "surfaces.boxed": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 15
+    },
+    "surfaces.rounded": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 4,
+     "max": 72
+    },
+    "surfaces.shadowed": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 1,
+     "max": 4
+    },
+    "color.textColors": {
+     "n": 14,
+     "min": 1,
+     "p25": 2,
+     "median": 4,
+     "p75": 5,
+     "max": 9
+    },
+    "controls.radiusMax": {
+     "n": 14,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 40,
+     "max": 9999
+    },
+    "controls.under44": {
+     "n": 14,
+     "min": 0,
+     "p25": 1,
+     "median": 2,
+     "p75": 2.75,
+     "max": 12
+    },
+    "nav.visibleLinks": {
+     "n": 14,
+     "min": 0,
+     "p25": 4,
+     "median": 6.5,
+     "p75": 9.75,
+     "max": 14
+    },
+    "text.words": {
+     "n": 14,
+     "min": 4,
+     "p25": 127.75,
+     "median": 239,
+     "p75": 337,
+     "max": 1589
+    },
+    "text.sentenceP50": {
+     "n": 14,
+     "min": 4,
+     "p25": 18,
+     "median": 26,
+     "p75": 37.25,
+     "max": 338
+    },
+    "pageViewports": {
+     "n": 13,
+     "min": 1,
+     "p25": 1,
+     "median": 5.1,
+     "p75": 6.5,
+     "max": 17.6
+    }
+   }
+  },
+  "home": {
+   "390": {
+    "type.displayMax": {
+     "n": 8,
+     "min": 12,
+     "p25": 25.25,
+     "median": 31,
+     "p75": 34.5,
+     "max": 44
+    },
+    "type.bodySize": {
+     "n": 7,
+     "min": 12,
+     "p25": 14,
+     "median": 16,
+     "p75": 18,
+     "max": 20
+    },
+    "type.bodyLeading": {
+     "n": 7,
+     "min": 1.2,
+     "p25": 1.2,
+     "median": 1.4,
+     "p75": 1.6,
+     "max": 1.8
+    },
+    "type.measureCpl.p50": {
+     "n": 7,
+     "min": 27,
+     "p25": 36,
+     "median": 37,
+     "p75": 38.5,
+     "max": 44
+    },
+    "type.measureCpl.max": {
+     "n": 7,
+     "min": 27,
+     "p25": 39.5,
+     "median": 41,
+     "p75": 49,
+     "max": 60
+    },
+    "type.familyCount": {
+     "n": 9,
+     "min": 1,
+     "p25": 1,
+     "median": 1,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 9,
+     "min": 1,
+     "p25": 5,
+     "median": 6,
+     "p75": 7,
+     "max": 12
+    },
+    "type.smallest": {
+     "n": 9,
+     "min": 9,
+     "p25": 10,
+     "median": 12,
+     "p75": 12,
+     "max": 13.2
+    },
+    "type.capsShareOfBlocks": {
+     "n": 9,
+     "min": 0,
+     "p25": 0.15,
+     "median": 0.48,
+     "p75": 0.67,
+     "max": 0.96
+    },
+    "type.capsTrackP50": {
+     "n": 8,
+     "min": 0,
+     "p25": 0,
+     "median": 0.1,
+     "p75": 0.1,
+     "max": 0.3
+    },
+    "fold.words": {
+     "n": 9,
+     "min": 0,
+     "p25": 8,
+     "median": 18,
+     "p75": 20,
+     "max": 79
+    },
+    "fold.elements": {
+     "n": 9,
+     "min": 0,
+     "p25": 5,
+     "median": 10,
+     "p75": 15,
+     "max": 29
+    },
+    "fold.imageShare": {
+     "n": 9,
+     "min": 0,
+     "p25": 0.58,
+     "median": 0.94,
+     "p75": 1,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 8,
+     "min": 16,
+     "p25": 20,
+     "median": 27.5,
+     "p75": 37.75,
+     "max": 60
+    },
+    "spacing.sectionGapVh": {
+     "n": 8,
+     "min": 0.08,
+     "p25": 0.09,
+     "median": 0.12,
+     "p75": 0.16,
+     "max": 0.17
+    },
+    "spacing.alignmentAxes": {
+     "n": 9,
+     "min": 1,
+     "p25": 7,
+     "median": 19,
+     "p75": 27,
+     "max": 80
+    },
+    "images.count": {
+     "n": 9,
+     "min": 0,
+     "p25": 11,
+     "median": 14,
+     "p75": 37,
+     "max": 90
+    },
+    "surfaces.boxed": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 9
+    },
+    "surfaces.rounded": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 4,
+     "max": 64
+    },
+    "surfaces.shadowed": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 4
+    },
+    "color.textColors": {
+     "n": 9,
+     "min": 1,
+     "p25": 2,
+     "median": 4,
+     "p75": 5,
+     "max": 7
+    },
+    "controls.radiusMax": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 50,
+     "max": 9999
+    },
+    "controls.under44": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 2,
+     "max": 4
+    },
+    "nav.visibleLinks": {
+     "n": 9,
+     "min": 0,
+     "p25": 1,
+     "median": 2,
+     "p75": 3,
+     "max": 4
+    },
+    "text.words": {
+     "n": 9,
+     "min": 3,
+     "p25": 190,
+     "median": 234,
+     "p75": 241,
+     "max": 1559
+    },
+    "text.sentenceP50": {
+     "n": 9,
+     "min": 3,
+     "p25": 12,
+     "median": 25,
+     "p75": 39,
+     "max": 227
+    },
+    "pageViewports": {
+     "n": 9,
+     "min": 1,
+     "p25": 1,
+     "median": 5,
+     "p75": 6.2,
+     "max": 15.3
+    }
+   },
+   "768": {
+    "type.displayMax": {
+     "n": 8,
+     "min": 12,
+     "p25": 25.25,
+     "median": 33,
+     "p75": 42.25,
+     "max": 68
+    },
+    "type.bodySize": {
+     "n": 7,
+     "min": 12,
+     "p25": 14,
+     "median": 18,
+     "p75": 19,
+     "max": 32
+    },
+    "type.bodyLeading": {
+     "n": 7,
+     "min": 1.2,
+     "p25": 1.2,
+     "median": 1.5,
+     "p75": 1.6,
+     "max": 1.8
+    },
+    "type.measureCpl.p50": {
+     "n": 7,
+     "min": 39,
+     "p25": 42,
+     "median": 51,
+     "p75": 61.5,
+     "max": 72
+    },
+    "type.measureCpl.max": {
+     "n": 7,
+     "min": 41,
+     "p25": 50.5,
+     "median": 58,
+     "p75": 79,
+     "max": 90
+    },
+    "type.familyCount": {
+     "n": 9,
+     "min": 1,
+     "p25": 1,
+     "median": 1,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 9,
+     "min": 1,
+     "p25": 4,
+     "median": 5,
+     "p75": 7,
+     "max": 11
+    },
+    "type.smallest": {
+     "n": 9,
+     "min": 10,
+     "p25": 10,
+     "median": 12,
+     "p75": 12,
+     "max": 13.2
+    },
+    "type.capsShareOfBlocks": {
+     "n": 9,
+     "min": 0,
+     "p25": 0.15,
+     "median": 0.49,
+     "p75": 0.67,
+     "max": 0.97
+    },
+    "type.capsTrackP50": {
+     "n": 8,
+     "min": 0,
+     "p25": 0,
+     "median": 0.1,
+     "p75": 0.1,
+     "max": 0.3
+    },
+    "fold.words": {
+     "n": 9,
+     "min": 0,
+     "p25": 8,
+     "median": 19,
+     "p75": 32,
+     "max": 198
+    },
+    "fold.elements": {
+     "n": 9,
+     "min": 0,
+     "p25": 5,
+     "median": 14,
+     "p75": 21,
+     "max": 78
+    },
+    "fold.imageShare": {
+     "n": 9,
+     "min": 0,
+     "p25": 0.3,
+     "median": 0.65,
+     "p75": 1,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 8,
+     "min": 12,
+     "p25": 28.5,
+     "median": 34.5,
+     "p75": 44,
+     "max": 60
+    },
+    "spacing.sectionGapVh": {
+     "n": 8,
+     "min": 0.07,
+     "p25": 0.09,
+     "median": 0.11,
+     "p75": 0.17,
+     "max": 0.45
+    },
+    "spacing.alignmentAxes": {
+     "n": 9,
+     "min": 1,
+     "p25": 8,
+     "median": 24,
+     "p75": 35,
+     "max": 74
+    },
+    "images.count": {
+     "n": 9,
+     "min": 0,
+     "p25": 10,
+     "median": 14,
+     "p75": 36,
+     "max": 80
+    },
+    "surfaces.boxed": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 9
+    },
+    "surfaces.rounded": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 4,
+     "max": 69
+    },
+    "surfaces.shadowed": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 4
+    },
+    "color.textColors": {
+     "n": 9,
+     "min": 1,
+     "p25": 2,
+     "median": 4,
+     "p75": 5,
+     "max": 7
+    },
+    "controls.radiusMax": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 50,
+     "max": 9999
+    },
+    "controls.under44": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 3,
+     "max": 12
+    },
+    "nav.visibleLinks": {
+     "n": 9,
+     "min": 0,
+     "p25": 1,
+     "median": 2,
+     "p75": 3,
+     "max": 5
+    },
+    "text.words": {
+     "n": 9,
+     "min": 3,
+     "p25": 190,
+     "median": 236,
+     "p75": 328,
+     "max": 1530
+    },
+    "text.sentenceP50": {
+     "n": 9,
+     "min": 3,
+     "p25": 12,
+     "median": 25,
+     "p75": 39,
+     "max": 338
+    },
+    "pageViewports": {
+     "n": 9,
+     "min": 1,
+     "p25": 1,
+     "median": 4.7,
+     "p75": 6.2,
+     "max": 12.4
+    }
+   },
+   "1440": {
+    "type.displayMax": {
+     "n": 8,
+     "min": 12,
+     "p25": 22.75,
+     "median": 37,
+     "p75": 49.75,
+     "max": 76
+    },
+    "type.bodySize": {
+     "n": 7,
+     "min": 12,
+     "p25": 15,
+     "median": 18,
+     "p75": 19,
+     "max": 38
+    },
+    "type.bodyLeading": {
+     "n": 7,
+     "min": 1.2,
+     "p25": 1.2,
+     "median": 1.5,
+     "p75": 1.6,
+     "max": 1.9
+    },
+    "type.measureCpl.p50": {
+     "n": 7,
+     "min": 49,
+     "p25": 53.5,
+     "median": 57,
+     "p75": 66,
+     "max": 86
+    },
+    "type.measureCpl.max": {
+     "n": 7,
+     "min": 53,
+     "p25": 58.5,
+     "median": 63,
+     "p75": 71,
+     "max": 110
+    },
+    "type.familyCount": {
+     "n": 9,
+     "min": 1,
+     "p25": 1,
+     "median": 2,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 9,
+     "min": 2,
+     "p25": 4,
+     "median": 5,
+     "p75": 9,
+     "max": 11
+    },
+    "type.smallest": {
+     "n": 9,
+     "min": 9,
+     "p25": 11,
+     "median": 12,
+     "p75": 12,
+     "max": 14
+    },
+    "type.capsShareOfBlocks": {
+     "n": 9,
+     "min": 0.06,
+     "p25": 0.38,
+     "median": 0.51,
+     "p75": 0.67,
+     "max": 0.97
+    },
+    "type.capsTrackP50": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0.1,
+     "p75": 0.1,
+     "max": 0.3
+    },
+    "fold.words": {
+     "n": 9,
+     "min": 0,
+     "p25": 8,
+     "median": 14,
+     "p75": 26,
+     "max": 45
+    },
+    "fold.elements": {
+     "n": 9,
+     "min": 0,
+     "p25": 7,
+     "median": 10,
+     "p75": 17,
+     "max": 24
+    },
+    "fold.imageShare": {
+     "n": 9,
+     "min": 0,
+     "p25": 0.67,
+     "median": 0.95,
+     "p75": 0.95,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 8,
+     "min": 16,
+     "p25": 38.25,
+     "median": 50,
+     "p75": 64,
+     "max": 90
+    },
+    "spacing.sectionGapVh": {
+     "n": 8,
+     "min": 0.09,
+     "p25": 0.11,
+     "median": 0.16,
+     "p75": 0.24,
+     "max": 0.44
+    },
+    "spacing.alignmentAxes": {
+     "n": 9,
+     "min": 1,
+     "p25": 8,
+     "median": 22,
+     "p75": 37,
+     "max": 84
+    },
+    "images.count": {
+     "n": 9,
+     "min": 5,
+     "p25": 13,
+     "median": 17,
+     "p75": 34,
+     "max": 93
+    },
+    "surfaces.boxed": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 15
+    },
+    "surfaces.rounded": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 4,
+     "max": 72
+    },
+    "surfaces.shadowed": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0,
+     "max": 4
+    },
+    "color.textColors": {
+     "n": 9,
+     "min": 1,
+     "p25": 2,
+     "median": 4,
+     "p75": 5,
+     "max": 7
+    },
+    "controls.radiusMax": {
+     "n": 9,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 50,
+     "max": 9999
+    },
+    "controls.under44": {
+     "n": 9,
+     "min": 0,
+     "p25": 1,
+     "median": 2,
+     "p75": 3,
+     "max": 12
+    },
+    "nav.visibleLinks": {
+     "n": 9,
+     "min": 0,
+     "p25": 2,
+     "median": 6,
+     "p75": 9,
+     "max": 13
+    },
+    "text.words": {
+     "n": 9,
+     "min": 4,
+     "p25": 190,
+     "median": 236,
+     "p75": 334,
+     "max": 1589
+    },
+    "text.sentenceP50": {
+     "n": 9,
+     "min": 4,
+     "p25": 11,
+     "median": 25,
+     "p75": 39,
+     "max": 338
+    },
+    "pageViewports": {
+     "n": 9,
+     "min": 1,
+     "p25": 1,
+     "median": 5.1,
+     "p75": 6.1,
+     "max": 16.1
+    }
+   }
+  },
+  "pdp": {
+   "390": {
+    "type.h1.size": {
+     "n": 3,
+     "min": 16,
+     "p25": 17,
+     "median": 18,
+     "p75": 18,
+     "max": 18
+    },
+    "type.displayMax": {
+     "n": 5,
+     "min": 16,
+     "p25": 18,
+     "median": 18,
+     "p75": 20,
+     "max": 22
+    },
+    "type.bodySize": {
+     "n": 4,
+     "min": 16,
+     "p25": 16,
+     "median": 16,
+     "p75": 16.5,
+     "max": 18
+    },
+    "type.bodyLeading": {
+     "n": 4,
+     "min": 1.3,
+     "p25": 1.45,
+     "median": 1.5,
+     "p75": 1.52,
+     "max": 1.6
+    },
+    "type.measureCpl.p50": {
+     "n": 4,
+     "min": 34,
+     "p25": 36.25,
+     "median": 38.5,
+     "p75": 41.25,
+     "max": 45
+    },
+    "type.measureCpl.max": {
+     "n": 4,
+     "min": 40,
+     "p25": 42.25,
+     "median": 44,
+     "p75": 46,
+     "max": 49
+    },
+    "type.familyCount": {
+     "n": 5,
+     "min": 1,
+     "p25": 2,
+     "median": 2,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 5,
+     "min": 3,
+     "p25": 4,
+     "median": 7,
+     "p75": 8,
+     "max": 9
+    },
+    "type.smallest": {
+     "n": 4,
+     "min": 8.9,
+     "p25": 8.97,
+     "median": 10,
+     "p75": 11.25,
+     "max": 12
+    },
+    "type.capsShareOfBlocks": {
+     "n": 5,
+     "min": 0,
+     "p25": 0.02,
+     "median": 0.46,
+     "p75": 0.52,
+     "max": 0.61
+    },
+    "type.capsTrackP50": {
+     "n": 4,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0.03,
+     "max": 0.1
+    },
+    "fold.words": {
+     "n": 5,
+     "min": 11,
+     "p25": 29,
+     "median": 38,
+     "p75": 44,
+     "max": 79
+    },
+    "fold.elements": {
+     "n": 5,
+     "min": 5,
+     "p25": 10,
+     "median": 19,
+     "p75": 22,
+     "max": 26
+    },
+    "fold.imageShare": {
+     "n": 5,
+     "min": 0.46,
+     "p25": 0.93,
+     "median": 1,
+     "p75": 1,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 5,
+     "min": 14,
+     "p25": 24,
+     "median": 26,
+     "p75": 29,
+     "max": 31
+    },
+    "spacing.sectionGapVh": {
+     "n": 5,
+     "min": 0.02,
+     "p25": 0.09,
+     "median": 0.15,
+     "p75": 0.33,
+     "max": 0.8
+    },
+    "spacing.alignmentAxes": {
+     "n": 5,
+     "min": 3,
+     "p25": 9,
+     "median": 9,
+     "p75": 15,
+     "max": 23
+    },
+    "images.count": {
+     "n": 5,
+     "min": 4,
+     "p25": 5,
+     "median": 9,
+     "p75": 19,
+     "max": 39
+    },
+    "surfaces.boxed": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 1,
+     "max": 1
+    },
+    "surfaces.rounded": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 4,
+     "max": 6
+    },
+    "surfaces.shadowed": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 1,
+     "max": 3
+    },
+    "color.textColors": {
+     "n": 5,
+     "min": 1,
+     "p25": 3,
+     "median": 4,
+     "p75": 6,
+     "max": 9
+    },
+    "controls.radiusMax": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 10,
+     "p75": 50,
+     "max": 100
+    },
+    "controls.under44": {
+     "n": 5,
+     "min": 0,
+     "p25": 1,
+     "median": 1,
+     "p75": 4,
+     "max": 13
+    },
+    "nav.visibleLinks": {
+     "n": 5,
+     "min": 1,
+     "p25": 1,
+     "median": 2,
+     "p75": 4,
+     "max": 4
+    },
+    "text.words": {
+     "n": 5,
+     "min": 72,
+     "p25": 83,
+     "median": 242,
+     "p75": 676,
+     "max": 723
+    },
+    "text.sentenceP50": {
+     "n": 5,
+     "min": 19,
+     "p25": 23,
+     "median": 27,
+     "p75": 35,
+     "max": 53
+    },
+    "pageViewports": {
+     "n": 4,
+     "min": 1,
+     "p25": 1.97,
+     "median": 3.95,
+     "p75": 8.85,
+     "max": 18.6
+    }
+   },
+   "768": {
+    "type.h1.size": {
+     "n": 3,
+     "min": 16,
+     "p25": 17,
+     "median": 18,
+     "p75": 18,
+     "max": 18
+    },
+    "type.displayMax": {
+     "n": 5,
+     "min": 16,
+     "p25": 18,
+     "median": 18,
+     "p75": 18,
+     "max": 22.4
+    },
+    "type.bodySize": {
+     "n": 4,
+     "min": 16,
+     "p25": 16,
+     "median": 16,
+     "p75": 16.55,
+     "max": 18.2
+    },
+    "type.bodyLeading": {
+     "n": 4,
+     "min": 1.3,
+     "p25": 1.45,
+     "median": 1.5,
+     "p75": 1.52,
+     "max": 1.6
+    },
+    "type.measureCpl.p50": {
+     "n": 4,
+     "min": 26,
+     "p25": 32,
+     "median": 47.5,
+     "p75": 66.25,
+     "max": 82
+    },
+    "type.measureCpl.max": {
+     "n": 4,
+     "min": 35,
+     "p25": 44.75,
+     "median": 54.5,
+     "p75": 67,
+     "max": 85
+    },
+    "type.familyCount": {
+     "n": 5,
+     "min": 1,
+     "p25": 2,
+     "median": 2,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 5,
+     "min": 3,
+     "p25": 4,
+     "median": 7,
+     "p75": 8,
+     "max": 9
+    },
+    "type.smallest": {
+     "n": 4,
+     "min": 8.9,
+     "p25": 9.72,
+     "median": 10.5,
+     "p75": 11.25,
+     "max": 12
+    },
+    "type.capsShareOfBlocks": {
+     "n": 5,
+     "min": 0,
+     "p25": 0.02,
+     "median": 0.46,
+     "p75": 0.52,
+     "max": 0.61
+    },
+    "type.capsTrackP50": {
+     "n": 4,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0.03,
+     "max": 0.1
+    },
+    "fold.words": {
+     "n": 5,
+     "min": 11,
+     "p25": 12,
+     "median": 28,
+     "p75": 41,
+     "max": 121
+    },
+    "fold.elements": {
+     "n": 5,
+     "min": 4,
+     "p25": 6,
+     "median": 12,
+     "p75": 23,
+     "max": 31
+    },
+    "fold.imageShare": {
+     "n": 5,
+     "min": 0.4,
+     "p25": 0.75,
+     "median": 0.94,
+     "p75": 1,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 5,
+     "min": 14,
+     "p25": 22,
+     "median": 29,
+     "p75": 31,
+     "max": 32
+    },
+    "spacing.sectionGapVh": {
+     "n": 5,
+     "min": 0.01,
+     "p25": 0.08,
+     "median": 0.12,
+     "p75": 0.26,
+     "max": 0.68
+    },
+    "spacing.alignmentAxes": {
+     "n": 5,
+     "min": 4,
+     "p25": 8,
+     "median": 13,
+     "p75": 22,
+     "max": 22
+    },
+    "images.count": {
+     "n": 5,
+     "min": 4,
+     "p25": 5,
+     "median": 9,
+     "p75": 20,
+     "max": 39
+    },
+    "surfaces.boxed": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 1,
+     "max": 1
+    },
+    "surfaces.rounded": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 4,
+     "max": 6
+    },
+    "surfaces.shadowed": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 1,
+     "max": 2
+    },
+    "color.textColors": {
+     "n": 5,
+     "min": 1,
+     "p25": 3,
+     "median": 4,
+     "p75": 6,
+     "max": 9
+    },
+    "controls.radiusMax": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 10,
+     "p75": 50,
+     "max": 100
+    },
+    "controls.under44": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 1,
+     "max": 9
+    },
+    "nav.visibleLinks": {
+     "n": 5,
+     "min": 1,
+     "p25": 1,
+     "median": 4,
+     "p75": 5,
+     "max": 14
+    },
+    "text.words": {
+     "n": 5,
+     "min": 72,
+     "p25": 83,
+     "median": 242,
+     "p75": 676,
+     "max": 726
+    },
+    "text.sentenceP50": {
+     "n": 5,
+     "min": 19,
+     "p25": 23,
+     "median": 27,
+     "p75": 35,
+     "max": 53
+    },
+    "pageViewports": {
+     "n": 4,
+     "min": 1,
+     "p25": 2.05,
+     "median": 3.85,
+     "p75": 8.05,
+     "max": 16.3
+    }
+   },
+   "1440": {
+    "type.h1.size": {
+     "n": 3,
+     "min": 18,
+     "p25": 19,
+     "median": 20,
+     "p75": 21,
+     "max": 22
+    },
+    "type.displayMax": {
+     "n": 5,
+     "min": 18,
+     "p25": 20,
+     "median": 20,
+     "p75": 22,
+     "max": 24.5
+    },
+    "type.bodySize": {
+     "n": 4,
+     "min": 16,
+     "p25": 16,
+     "median": 16,
+     "p75": 16.8,
+     "max": 19.2
+    },
+    "type.bodyLeading": {
+     "n": 4,
+     "min": 1.3,
+     "p25": 1.45,
+     "median": 1.5,
+     "p75": 1.52,
+     "max": 1.6
+    },
+    "type.measureCpl.p50": {
+     "n": 4,
+     "min": 40,
+     "p25": 44.5,
+     "median": 47.5,
+     "p75": 51,
+     "max": 57
+    },
+    "type.measureCpl.max": {
+     "n": 4,
+     "min": 40,
+     "p25": 48.25,
+     "median": 51.5,
+     "p75": 54.25,
+     "max": 61
+    },
+    "type.familyCount": {
+     "n": 5,
+     "min": 1,
+     "p25": 2,
+     "median": 2,
+     "p75": 2,
+     "max": 3
+    },
+    "type.sizesUsed": {
+     "n": 5,
+     "min": 3,
+     "p25": 4,
+     "median": 6,
+     "p75": 8,
+     "max": 9
+    },
+    "type.smallest": {
+     "n": 4,
+     "min": 10,
+     "p25": 10,
+     "median": 11,
+     "p75": 12,
+     "max": 12
+    },
+    "type.capsShareOfBlocks": {
+     "n": 5,
+     "min": 0,
+     "p25": 0.02,
+     "median": 0.46,
+     "p75": 0.52,
+     "max": 0.62
+    },
+    "type.capsTrackP50": {
+     "n": 4,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 0.03,
+     "max": 0.1
+    },
+    "fold.words": {
+     "n": 5,
+     "min": 38,
+     "p25": 41,
+     "median": 70,
+     "p75": 121,
+     "max": 282
+    },
+    "fold.elements": {
+     "n": 5,
+     "min": 15,
+     "p25": 15,
+     "median": 22,
+     "p75": 23,
+     "max": 27
+    },
+    "fold.imageShare": {
+     "n": 5,
+     "min": 0.34,
+     "p25": 0.41,
+     "median": 0.43,
+     "p75": 0.52,
+     "max": 1
+    },
+    "spacing.gapP50": {
+     "n": 5,
+     "min": 14,
+     "p25": 24,
+     "median": 32,
+     "p75": 79,
+     "max": 140
+    },
+    "spacing.sectionGapVh": {
+     "n": 5,
+     "min": 0.07,
+     "p25": 0.16,
+     "median": 0.21,
+     "p75": 0.29,
+     "max": 0.77
+    },
+    "spacing.alignmentAxes": {
+     "n": 5,
+     "min": 5,
+     "p25": 10,
+     "median": 14,
+     "p75": 22,
+     "max": 24
+    },
+    "images.count": {
+     "n": 5,
+     "min": 5,
+     "p25": 5,
+     "median": 9,
+     "p75": 20,
+     "max": 39
+    },
+    "surfaces.boxed": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 1,
+     "max": 1
+    },
+    "surfaces.rounded": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 4,
+     "max": 6
+    },
+    "surfaces.shadowed": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 1,
+     "p75": 1,
+     "max": 2
+    },
+    "color.textColors": {
+     "n": 5,
+     "min": 1,
+     "p25": 3,
+     "median": 4,
+     "p75": 6,
+     "max": 9
+    },
+    "controls.radiusMax": {
+     "n": 5,
+     "min": 0,
+     "p25": 0,
+     "median": 0,
+     "p75": 10,
+     "max": 100
+    },
+    "controls.under44": {
+     "n": 5,
+     "min": 0,
+     "p25": 1,
+     "median": 1,
+     "p75": 2,
+     "max": 9
+    },
+    "nav.visibleLinks": {
+     "n": 5,
+     "min": 4,
+     "p25": 6,
+     "median": 7,
+     "p75": 10,
+     "max": 14
+    },
+    "text.words": {
+     "n": 5,
+     "min": 78,
+     "p25": 83,
+     "median": 242,
+     "p75": 653,
+     "max": 726
+    },
+    "text.sentenceP50": {
+     "n": 5,
+     "min": 18,
+     "p25": 23,
+     "median": 27,
+     "p75": 32,
+     "max": 59
+    },
+    "pageViewports": {
+     "n": 4,
+     "min": 1,
+     "p25": 1.9,
+     "median": 4.35,
+     "p75": 9.28,
+     "max": 17.6
+    }
+   }
+  }
+ },
+ "pdpAboveFold": {
+  "390": {
+   "n": 5,
+   "price": 4,
+   "cta": 2
+  },
+  "768": {
+   "n": 5,
+   "price": 4,
+   "cta": 2
+  },
+  "1440": {
+   "n": 5,
+   "price": 4,
+   "cta": 3
+  }
+ }
+}

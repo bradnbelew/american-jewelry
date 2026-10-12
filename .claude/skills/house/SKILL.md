@@ -1,6 +1,6 @@
 ---
 name: house
-description: Build or revise any screen, component or copy of the American Jewelry storefront the way the house works. Use for every American Jewelry UI, layout, motion or copy task, including "make this section", "redo the product page", "write the hero", "fix the builder". Loads the canon, DESIGN.md and the page brief; plans before code; builds with house.css tokens only; self-verifies with screenshots at 390/768/1440, the house lint and the house-critic agent before saying done.
+description: Build or revise any screen, component or copy of the American Jewelry storefront the way the house works. Use for every American Jewelry UI, layout, motion or copy task, including "make this section", "redo the product page", "write the hero", "fix the builder". Loads the canon, DESIGN.md and the page brief; plans before code; builds with house.css tokens only; self-verifies with screenshots at 390/768/1440, the house lint and the house-critic agent, and passes a finished page through the /council before saying done.
 ---
 
 # House: how a section gets built
@@ -39,8 +39,9 @@ When the owner asks for options, build two or three real variants as separate ro
 2. `npm run lint:house` in `storefront/` (the house lexicon and AI-tell lint). Fix every error; justify every warning in the reply.
 3. Screenshots of the section at 390, 768 and 1440 wide (see HANDOFF.md for the headless Edge flags and the pane's resize event gotcha). Compare each against the sketch and the brief's DONE WHEN line; list the differences and fix them before showing the owner.
 4. Check for horizontal overflow at 390 via `document.documentElement.scrollWidth > innerWidth` in the pane, not by eye.
-5. Run the `house-critic` agent on the screenshots plus the brief (Agent tool, `subagent_type: "house-critic"`). Fix what it finds or say why not.
-6. Reply with: what was built, the three screenshots, the lint result, the critic's open items, and the exact files touched. Stage explicit paths only; never `git add -A`.
+5. While building, use the `house-critic` agent for quick reads of a section (Agent tool, `subagent_type: "house-critic"`). Fix what it finds or say why not.
+6. When a whole page is finished, run `/council` on it (`.claude/skills/council/SKILL.md`): the measuring script against the reference houses, then the house-council agent on Sonnet. A page is not done until its verdict is **APPROVED** (zero Blockers).
+7. Reply with: what was built, the three screenshots, the lint result, the council verdict (or the critic's open items for a section), and the exact files touched. Stage explicit paths only; never `git add -A`.
 
 ## 5. Feedback grammar you should expect, and should ask for
 

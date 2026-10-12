@@ -1,0 +1,18 @@
+{
+ "url": "https://www.aesop.com/us/",
+ "kind": "home",
+ "slug": "aesop-home",
+ "ref": true,
+ "measuredAt": "2026-10-12T22:51:20.088Z",
+ "widths": {
+  "390": {
+   "error": "blocked (403) Just a moment..."
+  },
+  "768": {
+   "error": "blocked (403) Just a moment..."
+  },
+  "1440": {
+   "error": "blocked (403) Just a moment..."
+  }
+ }
+}

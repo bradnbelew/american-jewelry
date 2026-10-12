@@ -1,0 +1,18 @@
+{
+ "url": "https://www.cartier.com/en-us/",
+ "kind": "home",
+ "slug": "cartier-home",
+ "ref": true,
+ "measuredAt": "2026-10-12T22:46:00.746Z",
+ "widths": {
+  "390": {
+   "error": "blocked (403) Access Denied"
+  },
+  "768": {
+   "error": "blocked (403) Access Denied"
+  },
+  "1440": {
+   "error": "blocked (403) Access Denied"
+  }
+ }
+}

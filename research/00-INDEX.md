@@ -2,7 +2,7 @@
 
 One line per file so a session can find the right one without reading 900 KB. Research is upstream of decisions: read it when deciding, not when building. Decisions live in `docs/briefs/decisions.md` and `docs/REMAKE-BLUEPRINT.md`; rules in `docs/briefs/00-house-canon.md` and `DESIGN.md`; the method in `research/16`.
 
-Last updated: 2026-10-11.
+Last updated: 2026-10-12.
 
 | # | File | What it answers | Read when |
 |---|---|---|---|
@@ -24,5 +24,6 @@ Last updated: 2026-10-11.
 | 16 | `16-claude-code-house-method.md` | The files and the loop for building with Claude Code: canon, DESIGN.md, house skill, house-critic, house-lint, briefs, feedback grammar, tools, first lint run | Every build session (skim §1 and §3) |
 | 17 | `17-design-arsenal-romance-distinctiveness.md` | The design-only compendium: the mechanics of romance, distinctive assets as a system, teachers and courses, brand/emotion/editorial books, galleries with "look for", craft repos and tools, the flows that must feel like a house, ranked house-only ideas, a 30-day practice | When a screen feels flat or generic; when learning design |
 | 18 | `18-evidence-articles-and-house-stories.md` | The reference shelf: peer-reviewed findings mapped to each house rule (first impressions, aesthetics, trust, luxury signaling, the user-design backfire that governs the builder's framing, pricing), industry data sources, how the houses built their myths (De Beers, Patek, Tiffany, Cartier, VCA, Winston), web-craft essays, films, and the customer tests to run (VisAWI-S, five-second, five-user, hide-the-name) | Justifying a rule; writing about diamonds; testing a pass |
+| 19 | `19-council-evidence-and-house-measurements.md` | Primary sources read for the council (Baymard luxury 2021 and product pages 2026, in-scale images, Brun 2013 luxury homepages, NN/g scrolling 2018, Butterick, WCAG 2.2) with the rule each backs; what the reference houses measure (bands), and the Rolex and Cartier hand measurements | Writing or arguing a council rubric rule; deciding whether a departure from the houses is deliberate |
 
 Captures (`research/shots/`) are gitignored competitor material. Older HTML boards in `docs/` (brand-playbook, website-blueprint, marks) predate the remake and lose to the briefs on any conflict.

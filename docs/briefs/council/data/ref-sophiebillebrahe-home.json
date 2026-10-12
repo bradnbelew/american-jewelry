@@ -1,0 +1,501 @@
+{
+ "url": "https://www.sophiebillebrahe.com/",
+ "kind": "home",
+ "slug": "sophiebillebrahe-home",
+ "ref": true,
+ "measuredAt": "2026-10-12T22:50:33.432Z",
+ "widths": {
+  "390": {
+   "text": {
+    "words": 190,
+    "sentences": 9,
+    "sentenceP50": 18,
+    "sentenceP90": 51,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 390,
+   "vh": 844,
+   "pageViewports": 1,
+   "type": {
+    "families": [
+     {
+      "v": "elza",
+      "share": 1
+     }
+    ],
+    "familyCount": 1,
+    "sizesUsed": 3,
+    "sizes": [
+     {
+      "v": 12,
+      "share": 0.899
+     },
+     {
+      "v": 16,
+      "share": 0.058
+     },
+     {
+      "v": 17,
+      "share": 0.044
+     }
+    ],
+    "displayMax": 17,
+    "h1": null,
+    "bodySize": 12,
+    "bodyLeading": 1.6,
+    "measureCpl": {
+     "p50": 35,
+     "p90": 60,
+     "max": 60
+    },
+    "smallest": 12,
+    "capsBlocks": 4,
+    "capsShareOfBlocks": 0.15,
+    "capsSizes": [
+     12
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 79,
+    "textBlocks": 6,
+    "images": 1,
+    "controls": 3,
+    "elements": 10,
+    "imageShare": 0.58
+   },
+   "spacing": {
+    "gapP50": 16,
+    "gapP90": 136,
+    "gapMax": 377,
+    "sectionGapVh": 0.16,
+    "distinctGaps": 10,
+    "alignmentAxes": 12
+   },
+   "images": {
+    "count": 11,
+    "fullBleed": 4,
+    "ratios": [
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     2,
+     0.8,
+     0.8
+    ],
+    "firstAbove": {
+     "ratio": 0.8,
+     "w": 390,
+     "h": 488,
+     "top": 132
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 3,
+    "pills": 3,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#ffffff",
+    "groundHsl": {
+     "h": 0,
+     "s": 0,
+     "l": 1
+    },
+    "backgrounds": [
+     {
+      "hex": "#ffffff",
+      "share": 0.98,
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     {
+      "hex": "#000000",
+      "share": 0.02,
+      "h": 0,
+      "s": 0,
+      "l": 0
+     }
+    ],
+    "textColors": 4,
+    "chromaticText": [],
+    "lowContrast": [
+     {
+      "text": "1000 Madison Avenue, 2nd floor",
+      "size": 16,
+      "color": "#8c8c8c",
+      "ratio": 3.36
+     },
+     {
+      "text": "Hovedvagtsgade 8, 2nd floor",
+      "size": 16,
+      "color": "#8c8c8c",
+      "ratio": 3.36
+     }
+    ],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 4,
+    "heights": [
+     44,
+     51,
+     52
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.25,
+    "under44": 0
+   },
+   "commerce": {
+    "price": null,
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 0
+   },
+   "status": 200
+  },
+  "768": {
+   "text": {
+    "words": 190,
+    "sentences": 9,
+    "sentenceP50": 18,
+    "sentenceP90": 51,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 768,
+   "vh": 1024,
+   "pageViewports": 1,
+   "type": {
+    "families": [
+     {
+      "v": "elza",
+      "share": 1
+     }
+    ],
+    "familyCount": 1,
+    "sizesUsed": 3,
+    "sizes": [
+     {
+      "v": 12,
+      "share": 0.899
+     },
+     {
+      "v": 16,
+      "share": 0.058
+     },
+     {
+      "v": 17,
+      "share": 0.044
+     }
+    ],
+    "displayMax": 17,
+    "h1": null,
+    "bodySize": 12,
+    "bodyLeading": 1.6,
+    "measureCpl": {
+     "p50": 40,
+     "p90": 58,
+     "max": 58
+    },
+    "smallest": 12,
+    "capsBlocks": 4,
+    "capsShareOfBlocks": 0.15,
+    "capsSizes": [
+     12
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 79,
+    "textBlocks": 6,
+    "images": 8,
+    "controls": 19,
+    "elements": 29,
+    "imageShare": 0.3
+   },
+   "spacing": {
+    "gapP50": 12,
+    "gapP90": 458,
+    "gapMax": 653,
+    "sectionGapVh": 0.45,
+    "distinctGaps": 7,
+    "alignmentAxes": 20
+   },
+   "images": {
+    "count": 13,
+    "fullBleed": 0,
+    "ratios": [
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     2,
+     0.8
+    ],
+    "firstAbove": {
+     "ratio": 0.8,
+     "w": 274,
+     "h": 343,
+     "top": 251
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 2,
+    "pills": 2,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#ffffff",
+    "groundHsl": {
+     "h": 0,
+     "s": 0,
+     "l": 1
+    },
+    "backgrounds": [
+     {
+      "hex": "#ffffff",
+      "share": 0.99,
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     {
+      "hex": "#000000",
+      "share": 0.01,
+      "h": 0,
+      "s": 0,
+      "l": 0
+     }
+    ],
+    "textColors": 4,
+    "chromaticText": [],
+    "lowContrast": [
+     {
+      "text": "1000 Madison Avenue, 2nd floor",
+      "size": 16,
+      "color": "#8c8c8c",
+      "ratio": 3.36
+     },
+     {
+      "text": "Hovedvagtsgade 8, 2nd floor",
+      "size": 16,
+      "color": "#8c8c8c",
+      "ratio": 3.36
+     }
+    ],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 20,
+    "heights": [
+     22,
+     26,
+     33,
+     38,
+     44,
+     51,
+     58,
+     77
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.05,
+    "under44": 12
+   },
+   "commerce": {
+    "price": null,
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 2
+   },
+   "status": 200
+  },
+  "1440": {
+   "text": {
+    "words": 190,
+    "sentences": 9,
+    "sentenceP50": 18,
+    "sentenceP90": 51,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 1440,
+   "vh": 900,
+   "pageViewports": 1,
+   "type": {
+    "families": [
+     {
+      "v": "elza",
+      "share": 1
+     }
+    ],
+    "familyCount": 1,
+    "sizesUsed": 3,
+    "sizes": [
+     {
+      "v": 12,
+      "share": 0.899
+     },
+     {
+      "v": 16,
+      "share": 0.058
+     },
+     {
+      "v": 17,
+      "share": 0.044
+     }
+    ],
+    "displayMax": 16,
+    "h1": null,
+    "bodySize": 12,
+    "bodyLeading": 1.6,
+    "measureCpl": {
+     "p50": 49,
+     "p90": 60,
+     "max": 60
+    },
+    "smallest": 12,
+    "capsBlocks": 4,
+    "capsShareOfBlocks": 0.15,
+    "capsSizes": [
+     12
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 45,
+    "textBlocks": 3,
+    "images": 2,
+    "controls": 16,
+    "elements": 17,
+    "imageShare": 0.67
+   },
+   "spacing": {
+    "gapP50": 16,
+    "gapP90": 396,
+    "gapMax": 487,
+    "sectionGapVh": 0.44,
+    "distinctGaps": 8,
+    "alignmentAxes": 21
+   },
+   "images": {
+    "count": 13,
+    "fullBleed": 0,
+    "ratios": [
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     2,
+     0.8
+    ],
+    "firstAbove": {
+     "ratio": 0.8,
+     "w": 610,
+     "h": 763,
+     "top": 192
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 2,
+    "pills": 2,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#ffffff",
+    "groundHsl": {
+     "h": 0,
+     "s": 0,
+     "l": 1
+    },
+    "backgrounds": [
+     {
+      "hex": "#ffffff",
+      "share": 0.99,
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     {
+      "hex": "#000000",
+      "share": 0.01,
+      "h": 0,
+      "s": 0,
+      "l": 0
+     }
+    ],
+    "textColors": 4,
+    "chromaticText": [],
+    "lowContrast": [
+     {
+      "text": "1000 Madison Avenue, 2nd floor",
+      "size": 16,
+      "color": "#8c8c8c",
+      "ratio": 3.36
+     },
+     {
+      "text": "Hovedvagtsgade 8, 2nd floor",
+      "size": 16,
+      "color": "#8c8c8c",
+      "ratio": 3.36
+     }
+    ],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 20,
+    "heights": [
+     22,
+     26,
+     33,
+     38,
+     51,
+     58,
+     61,
+     77
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.05,
+    "under44": 12
+   },
+   "commerce": {
+    "price": null,
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 2
+   },
+   "status": 200
+  }
+ }
+}

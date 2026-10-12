@@ -1,0 +1,18 @@
+{
+ "url": "https://www.tiffany.com/",
+ "kind": "home",
+ "slug": "tiffany-home",
+ "ref": true,
+ "measuredAt": "2026-10-12T22:46:49.091Z",
+ "widths": {
+  "390": {
+   "error": "blocked (403) Access Denied"
+  },
+  "768": {
+   "error": "blocked (403) Access Denied"
+  },
+  "1440": {
+   "error": "blocked (403) Access Denied"
+  }
+ }
+}
