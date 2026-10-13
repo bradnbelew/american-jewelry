@@ -1,13 +1,12 @@
 import { Link } from "react-router";
 
 import { Pic } from "~/components/Pic";
-import { TileGrid } from "~/components/ProductTile";
+import { PieceLedger } from "~/components/Catalog";
 import { Section } from "~/components/Section";
 import { StoneIsSet } from "~/components/three/StoneIsSet";
 import { DEFAULT_CONFIG, SETTINGS, normalize, type SettingKey } from "~/lib/builder/model";
-import { SETTING_PHOTO } from "~/lib/builder/notes";
 import { designBySlug, piecesForDesign, tierBySlug } from "~/lib/catalog/data";
-import { DESIGN_PHOTO, PIECE_PHOTOS } from "~/lib/catalog/photos";
+import { DESIGN_PHOTO } from "~/lib/catalog/photos";
 import { breadcrumbJsonLd, itemListJsonLd, pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/design";
@@ -47,7 +46,6 @@ export default function DesignPage({ loaderData }: Route.ComponentProps) {
   const pieces = piecesForDesign(d.slug);
   const drawable = (SETTINGS as readonly string[]).includes(d.slug) ? (d.slug as SettingKey) : null;
   const assembled = drawable && ASSEMBLED.includes(drawable) ? drawable : null;
-  const features = pieces.slice(0, 3);
 
   return (
     <>
@@ -66,45 +64,37 @@ export default function DesignPage({ loaderData }: Route.ComponentProps) {
           <StoneIsSet config={normalize({ ...DEFAULT_CONFIG, setting: assembled })} poster={`/3d/posters/ring-${assembled}.webp`} alt={`The ${d.name} ring, assembled: band, head, stone and four claws`} />
         </Section>
       ) : (
-        <Section className="pt-12 md:pt-20">
-          <div className="settle relative aspect-[4/5] overflow-hidden bg-stone md:aspect-[5/4] lg:aspect-[2/1]">
-            <Pic k={drawable ? SETTING_PHOTO[drawable] : DESIGN_PHOTO[d.slug]} sizes="100vw" position="50% 45%" priority />
-          </div>
-        </Section>
+        <div className="settle relative mt-12 aspect-[4/5] overflow-hidden md:mt-20 md:aspect-[2.2/1]">
+          <Pic k={DESIGN_PHOTO[d.slug]} sizes="100vw" position="50% 50%" priority />
+        </div>
       )}
 
-      {features.map((p, i) => {
-        const photo = (PIECE_PHOTOS[p.handle] ?? ["hero-box"])[0];
-        const spec = p.specs[i === 2 ? 1 : 0];
-        const caption = i === 0 ? d.signature : (spec?.value ?? p.description);
-        const label = i === 0 ? "The design" : (spec?.label ?? "The detail");
-        const render = i === 0 && assembled ? `/3d/posters/ring-${assembled}.webp` : null;
-        const flip = i % 2 === 1;
-        return (
-          <Section key={p.handle} screen>
-            <div className="grid items-start gap-8 md:grid-cols-12 md:gap-12">
-              <div className={`settle relative aspect-[4/5] overflow-hidden ${render ? "bg-stone" : "bg-white"} md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}>
-                {render ? <img src={render} alt={`The ${d.name} head, rendered from the house drawing`} width={1200} height={960} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" /> : <Pic k={photo} sizes="(min-width: 768px) 58vw, 100vw" />}
-              </div>
-              <div className={`flex flex-col gap-3 md:col-span-4 ${flip ? "md:order-1 md:col-start-1" : "md:col-start-9"}`}>
-                <span className="label">{label}</span>
-                <p className="font-text text-[1.125rem] text-ink-2">{caption}</p>
-              </div>
-            </div>
-          </Section>
-        );
-      })}
+      {/* A line: the signature of the design, alone. */}
+      <Section screen width="text">
+        <div className="grid gap-6 md:grid-cols-12 md:gap-10">
+          <span className="label md:col-span-3">The signature</span>
+          <p className="h-section text-[1.75rem] md:col-span-9 md:text-[2.5rem]">{d.signature}</p>
+        </div>
+      </Section>
 
+      {/* The ledger: every piece in the design, one photograph per row. */}
       <Section className="pb-8">
-        <h2 className="h-section mb-12 text-[2rem] md:text-[2.5rem]">Every {d.name} piece</h2>
-        <TileGrid pieces={pieces} showLine={false} />
-        <p className="label mt-10">Price before sales tax.</p>
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-10">
+          <div className="flex flex-col gap-4 lg:col-span-4">
+            <h2 className="h-section text-[2rem] md:text-[2.5rem]">Every {d.name} piece</h2>
+            <p className="font-text text-ink-2">{d.story}</p>
+          </div>
+          <div className="lg:col-span-8">
+            {pieces.length > 0 ? <PieceLedger pieces={pieces} /> : <p className="font-text text-ink-2">No {d.name} piece is listed yet.</p>}
+            <p className="label mt-6">Price before sales tax.</p>
+          </div>
+        </div>
       </Section>
 
       <Section screen width="text">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <p className="font-text max-w-xl text-[1.0625rem] text-ink-2">
-            {drawable ? `Every ${d.name} setting takes a natural or a man-made stone. The name on the box follows the stone.` : d.story}
+            {drawable ? `Every ${d.name} setting takes a natural or a man-made stone. The name on the box follows the stone.` : `${d.name} belongs to ${tier.name}.`}
           </p>
           {drawable ? (
             <Link to={`/build/ring?setting=${drawable}`} className="btn">

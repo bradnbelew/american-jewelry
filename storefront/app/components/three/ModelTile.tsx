@@ -12,7 +12,7 @@ export function ModelTile({ slug, title, poster, metal, initialOpen = false }: {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="relative aspect-[4/5] overflow-hidden bg-stone">
+    <div className="relative aspect-[4/5] overflow-hidden bg-paper">
       {open && mounted ? (
         <div className="absolute inset-0" aria-label={`${title}, three-dimensional view. Drag to turn.`} role="img">
           <Suspense fallback={<div className="caps-sm absolute inset-0 flex items-center justify-center text-muted">Preparing the piece</div>}>
@@ -22,7 +22,7 @@ export function ModelTile({ slug, title, poster, metal, initialOpen = false }: {
       ) : (
         poster
       )}
-      <button type="button" className={`absolute bottom-4 left-4 ${open ? "btn btn-outline bg-stone" : "btn btn-light"}`} onClick={() => setOpen((v) => !v)}>
+      <button type="button" className={`absolute bottom-4 left-4 ${open ? "btn btn-outline bg-paper" : "btn btn-light"}`} onClick={() => setOpen((v) => !v)}>
         {open ? "Photograph" : "Turn it in 3D"}
       </button>
     </div>

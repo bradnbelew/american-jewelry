@@ -1,10 +1,12 @@
 import { Link } from "react-router";
 
+import { PieceLedger } from "~/components/Catalog";
 import { Pic } from "~/components/Pic";
-import { TileGrid } from "~/components/ProductTile";
-import { Section, SplitOpener } from "~/components/Section";
+import { PhotoOpener, Plate, Section } from "~/components/Section";
+import { VIEWING } from "~/components/three/viewing/pieces";
+import { ViewingFrame } from "~/components/three/viewing/Viewing";
 import { TIERS, designsForTier, piecesForDesign, piecesForTier } from "~/lib/catalog/data";
-import { DESIGN_PHOTO, PIECE_PHOTOS, TIER_PHOTO } from "~/lib/catalog/photos";
+import { TIER_PHOTO } from "~/lib/catalog/photos";
 import type { TierSlug } from "~/lib/catalog/types";
 import { breadcrumbJsonLd, itemListJsonLd, pageMeta } from "~/lib/seo";
 
@@ -24,10 +26,11 @@ const LINE: Record<TierSlug, string> = {
   "new-american": "Man-made diamonds to one published standard, set by the same hands.",
 };
 
-/** The hand frame after the opener: one sentence on a full screen, then the hand. */
-const HAND: Record<Exclude<TierSlug, "royal-american">, { photo: string; sentence: string }> = {
-  americana: { photo: "hero-hand", sentence: "Drawn to be worn every day and handed down." },
-  "new-american": { photo: "hero-hand", sentence: "Its own designs, the same bench, a man-made stone." },
+/** Where the opener's subject sits in the frame, so the words find empty ground. */
+const POSITION: Record<TierSlug, string> = {
+  "royal-american": "62% 50%",
+  americana: "60% 50%",
+  "new-american": "75% 50%",
 };
 
 export function loader({ request }: Route.LoaderArgs) {
@@ -44,54 +47,67 @@ export const meta: Route.MetaFunction = ({ data }) => {
   );
 };
 
-/** Americana and New American: opener, the hand, one photographic band per design with its pieces, the standard, the bridal sentence. */
+/**
+ * Americana: opener (the ring on green leather) / ledger (the pieces, by design) / beside (the hand) / line (bridal).
+ * New American: opener (Signal on limestone) / ledger (the standard) / ledger (the pieces, by design) / plate (the hand) / line (bridal).
+ * No two screens share a composition. docs/briefs/site/pages/line.md; 22-art-direction §5.
+ */
 export default function LinePage({ loaderData }: Route.ComponentProps) {
   const slug = loaderData.slug;
   const tier = TIERS.find((t) => t.slug === slug)!;
   if (slug === "royal-american") return <RoyalAmerican />;
   const designs = designsForTier(slug);
-  const hand = HAND[slug];
+  const newAmerican = slug === "new-american";
 
   return (
     <>
-      <SplitOpener eyebrow={STANDARD[slug]} title={tier.name} lede={LINE[slug]} photo={TIER_PHOTO[slug]} position="50% 40%" />
+      <PhotoOpener photo={TIER_PHOTO[slug]} position={POSITION[slug]} eyebrow={STANDARD[slug]} title={tier.name} lede={LINE[slug]} height="aspect-[4/5] md:aspect-auto md:h-[78vh] md:min-h-[520px] md:max-h-[900px]" />
 
+      {newAmerican && <Standard />}
+
+      {/* The pieces, by design: each design's name set large, its pieces as a ledger beneath. */}
       <Section screen>
-        <div className="grid items-start gap-8 md:grid-cols-12 md:gap-10">
-          <p className="h-section text-[1.75rem] md:col-span-4 md:text-[2.25rem]">{hand.sentence}</p>
-          <div className="settle relative aspect-[4/5] overflow-hidden bg-bone md:col-span-8 md:aspect-[2/1]">
-            <Pic k={hand.photo} sizes="(min-width: 768px) 66vw, 100vw" position="70% 50%" />
-          </div>
+        <div className="flex flex-col gap-20 md:gap-28">
+          {designs.map((d) => {
+            const pieces = piecesForDesign(d.slug);
+            return (
+              <section key={d.slug} aria-labelledby={`design-${d.slug}`} className="grid gap-8 lg:grid-cols-12 lg:gap-x-10">
+                <div className="flex flex-col gap-4 lg:col-span-4 lg:sticky lg:top-36 lg:self-start">
+                  <h2 id={`design-${d.slug}`} className="h-display text-[2.5rem] md:text-[3.5rem]">
+                    {d.name}
+                  </h2>
+                  <p className="lede">{d.motif}</p>
+                  <Link to={`/designs/${d.slug}`} viewTransition className="link self-start">
+                    The {d.name} design
+                  </Link>
+                </div>
+                <div className="lg:col-span-8">
+                  {pieces.length > 0 ? <PieceLedger pieces={pieces} /> : <p className="font-text text-ink-2">No {d.name} piece is listed yet.</p>}
+                </div>
+              </section>
+            );
+          })}
         </div>
+        <p className="label mt-10">Price before sales tax.</p>
       </Section>
 
-      {designs.map((d) => {
-        const pieces = piecesForDesign(d.slug);
-        return (
-          <section key={d.slug} aria-labelledby={`design-${d.slug}`}>
-            <Link to={`/designs/${d.slug}`} viewTransition className="group block">
-              <div className="settle relative aspect-[4/5] overflow-hidden bg-bone md:aspect-[2/1]">
-                <Pic k={DESIGN_PHOTO[d.slug]} sizes="100vw" position="50% 45%" />
-              </div>
-              <div className="mx-auto grid max-w-[96rem] gap-3 px-4 pt-8 md:grid-cols-12 md:gap-10 md:px-10 md:pt-10">
-                <h2 id={`design-${d.slug}`} className="h-display text-[2.5rem] group-hover:text-muted md:col-span-6 md:text-[4rem]">
-                  {d.name}
-                </h2>
-                <p className="lede md:col-span-5 md:col-start-8 md:pt-3">{d.motif}</p>
-              </div>
-            </Link>
-            <Section className="pt-10 pb-6 md:pt-16">
-              <TileGrid pieces={pieces} showLine={false} />
-            </Section>
-          </section>
-        );
-      })}
-
-      <Section>
-        <p className="label">Price before sales tax.</p>
-      </Section>
-
-      {slug === "new-american" && <Standard />}
+      {newAmerican ? (
+        <Plate photo="comp-signal-hand" position="55% 45%" caption="Signal Solitaire, on the hand. Platinum, one man-made diamond (laboratory-grown)." />
+      ) : (
+        <Section>
+          <div className="grid items-start gap-8 md:grid-cols-12 md:gap-10">
+            <div className="settle relative aspect-[4/5] overflow-hidden md:col-span-8 md:-ml-10 md:aspect-[4/3]">
+              <Pic k="comp-home-hand" tall="comp-home-hand-tall" sizes="(min-width: 768px) 66vw, 100vw" position="62% 45%" />
+            </div>
+            <div className="flex flex-col gap-5 md:col-span-4 md:pt-2">
+              <p className="h-section text-[1.75rem] md:text-[2.25rem]">Drawn to be worn every day and handed down.</p>
+              <Link to="/jewelry?line=americana" className="link self-start">
+                Every Americana piece
+              </Link>
+            </div>
+          </div>
+        </Section>
+      )}
 
       <Section screen width="text">
         <div className="flex flex-wrap items-center justify-between gap-6">
@@ -116,7 +132,7 @@ function Standard() {
     ["Made", "Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported."],
   ];
   return (
-    <Section screen width="text">
+    <Section screen width="text" id="standard">
       <div className="grid gap-8 md:grid-cols-12 md:gap-16">
         <h2 className="h-section text-[2rem] md:col-span-4 md:text-[2.5rem]">The New American Standard</h2>
         <table className="spec md:col-span-7 md:col-start-6">
@@ -134,45 +150,46 @@ function Standard() {
   );
 }
 
-/** Navy ground, each piece a chapter, the registry instead of a grid. */
+/**
+ * Royal American, on velvet throughout: opener (the piece on its tray) / viewing (The Cumberland in the light,
+ * the live room, its frame dissolved into the navy) / ledger (the registry) / line (by appointment).
+ */
 function RoyalAmerican() {
   const pieces = piecesForTier("royal-american");
+  const cumberland = VIEWING["no-001-the-cumberland"];
   return (
     <div className="velvet -mb-32 pb-32">
-      <SplitOpener eyebrow={STANDARD["royal-american"]} title="Royal American" lede={LINE["royal-american"]} photo={TIER_PHOTO["royal-american"]} position="50% 45%" />
+      <PhotoOpener photo={TIER_PHOTO["royal-american"]} position={POSITION["royal-american"]} eyebrow={STANDARD["royal-american"]} title="Royal American" lede={LINE["royal-american"]} height="aspect-[4/5] md:aspect-auto md:h-[78vh] md:min-h-[520px] md:max-h-[900px]" />
 
-      <div className="flex flex-col gap-24 pt-24 md:gap-40 md:pt-40">
-        {pieces.map((p, i) => {
-          const photos = PIECE_PHOTOS[p.handle] ?? ["hero-box"];
-          const flip = i % 2 === 1;
-          return (
-            <Section key={p.handle}>
-              <article className="grid items-start gap-8 md:grid-cols-12 md:gap-12">
-                <Link to={`/pieces/${p.handle}`} viewTransition className={`settle relative block aspect-[4/5] overflow-hidden bg-navy-2 md:col-span-7 md:aspect-[5/4] ${flip ? "md:order-2 md:col-start-6" : ""}`}>
-                  <Pic k={photos[0]} sizes="(min-width: 768px) 58vw, 100vw" priority={i === 0} />
-                </Link>
-                <div className={`flex min-w-0 flex-col gap-4 md:col-span-5 lg:col-span-4 ${flip ? "md:order-1 md:col-start-1" : "md:col-start-8 lg:col-start-9"}`}>
-                  <span className="gold-numeral">No. {p.oneOfOne?.number}</span>
-                  <h2 className="h-display text-[2.5rem] lg:text-[3.5rem]">{p.name}</h2>
-                  <p className="font-text text-paper/80">{p.versions[0].stones}</p>
-                  <Link to={`/pieces/${p.handle}`} className="link link-light self-start">
-                    The piece
-                  </Link>
-                </div>
-              </article>
-            </Section>
-          );
-        })}
-      </div>
+      <Section screen>
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-16">
+          <ViewingFrame
+            spec={cumberland}
+            poster="/3d/posters/viewing-cumberland.webp"
+            posterTall="/3d/posters/viewing-cumberland-tall.webp"
+            alt="The Cumberland, Royal American No. 001, on navy velvet under one light"
+            className="aspect-[4/5] md:aspect-[4/3] lg:col-span-8 lg:-ml-10"
+          />
+          <div className="flex flex-col gap-5 lg:col-span-4 lg:self-end lg:pb-10">
+            <span className="label">In the light</span>
+            <h2 className="h-section text-[2rem] md:text-[2.5rem]">The Cumberland, as we draw it.</h2>
+            <p className="lede">No. 001. The light in your hand: move the pointer, or tilt the phone, and the stone answers.</p>
+          </div>
+        </div>
+      </Section>
 
       <Section screen width="text">
         <h2 className="h-section mb-8 text-[2rem] md:text-[2.5rem]">The registry</h2>
         <table className="spec registry">
           <thead>
             <tr>
-              <th scope="col" className="w-[6rem]">No.</th>
+              <th scope="col" className="w-[6rem]">
+                No.
+              </th>
               <th scope="col">Piece</th>
-              <th scope="col">Stones</th>
+              <th scope="col" className="hidden md:table-cell">
+                Stones
+              </th>
               <th scope="col">State</th>
             </tr>
           </thead>
@@ -187,16 +204,22 @@ function RoyalAmerican() {
                     {p.name}
                   </Link>
                 </td>
-                <td className="font-text text-paper/80">{p.versions[0].stones}</td>
+                <td className="font-text hidden text-paper/80 md:table-cell">{p.versions[0].stones}</td>
                 <td className="font-text text-paper/80">{p.leadTime}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <p className="font-text mt-8 max-w-xl text-paper/80">Numbered in the order it was finished. Entered with its owner, its drawing and the reports on its stones. Never made again.</p>
-        <Link to="/appointments?tier=royal-american" className="btn btn-light mt-8">
-          Request a private viewing
-        </Link>
+      </Section>
+
+      <Section className="pb-8" width="text">
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <p className="h-section max-w-[24ch] text-[1.75rem] md:text-[2.25rem]">Shown by appointment, in the store.</p>
+          <Link to="/appointments?tier=royal-american" className="btn btn-light">
+            Request a private viewing
+          </Link>
+        </div>
       </Section>
     </div>
   );

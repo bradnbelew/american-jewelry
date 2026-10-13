@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import { Section, SplitOpener } from "~/components/Section";
+import { PhotoOpener, Section } from "~/components/Section";
 import { LETTER, LETTER_SIGNATURE } from "~/lib/catalog/letter";
 import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
 
@@ -24,7 +24,7 @@ const MAKING: [string, string][] = [
 export default function HousePage() {
   return (
     <>
-      <SplitOpener title="The House" lede="A store sells what vendors make. A house draws its own designs, makes them, marks them, and stands behind them for life." photo="bench" />
+      <PhotoOpener photo="comp-bench-hands" position="50% 40%" title="The House" lede="A store sells what vendors make. A house draws its own designs, makes them, marks them, and stands behind them for life." height="aspect-[4/5] md:aspect-auto md:h-[72vh] md:min-h-[480px] md:max-h-[860px]" />
 
       <Section screen width="text">
         <div className="grid gap-10 md:grid-cols-12 md:gap-16">
@@ -33,17 +33,14 @@ export default function HousePage() {
             {LETTER.map((p) => (
               <p key={p.slice(0, 24)}>{p}</p>
             ))}
-            <p className="font-text mt-2 text-[1.125rem] italic text-ink">{LETTER_SIGNATURE}</p>
+            <p className="font-text mt-2 text-[1.125rem] text-ink">{LETTER_SIGNATURE}</p>
           </div>
         </div>
       </Section>
 
-      <Section screen>
+      <Section screen id="making">
         <div className="grid items-start gap-10 md:grid-cols-12 md:gap-12">
-          <div className="relative aspect-[4/5] overflow-hidden bg-stone md:col-span-5">
-            <img src="/3d/posters/solitaire-ring.webp" alt="A cast file from the bench, rendered before casting" width={1200} height={1500} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-          </div>
-          <div className="flex flex-col gap-10 md:col-span-6 md:col-start-7">
+          <div className="flex flex-col gap-10 md:col-span-7">
             <h2 className="h-section text-[2rem] md:text-[2.75rem]">How a piece is made here</h2>
             <ol className="flex flex-col divide-y divide-hair border-y border-hair">
               {MAKING.map(([k, v]) => (
@@ -63,9 +60,9 @@ export default function HousePage() {
           <h2 className="h-section text-[2rem] md:col-span-4 md:text-[2.5rem]">The type</h2>
           <div className="letter md:col-span-8 !text-[1.0625rem]">
             <p>
-              The names on this site are set in Caslon, the typeface the Dunlap broadside of the Declaration of Independence was printed in, in July 1776. The numbers and the controls are set in Public Sans, the United States government&apos;s own typeface, drawn from Franklin Gothic.
+              The names and the reading on this site are set in Source Serif, drawn at Adobe in California after the eighteenth-century types of Pierre-Simon Fournier. The numbers and the controls are set in Public Sans, the United States government&apos;s own typeface, drawn from Franklin Gothic.
             </p>
-            <p>One is English and printed the Declaration; the other is the government&apos;s own. Both are free, and both were here long before we were. We did not need a typeface of our own. We needed the right ones.</p>
+            <p>Both are open typefaces, anyone's to use, and both were made to be read rather than noticed. We did not need a typeface of our own. We needed the right ones.</p>
             <Link to="/journal/what-designed-in-tennessee-means" className="link mt-2 inline-block">
               What the words mean
             </Link>

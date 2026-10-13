@@ -7,6 +7,7 @@ import { formatPriceRound } from "~/lib/money";
 import { bagLineHasStones, bagLineLeadTime, bagLineName } from "~/lib/product";
 
 import { publishCartViewed } from "./AnalyticsTrackers";
+import { Pic } from "./Pic";
 
 /*
  * The bag. Navy velvet, the only other navy surface besides Royal American. Each line carries the
@@ -199,6 +200,9 @@ export function CartSummary() {
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-1.5">
         <span className="label">What arrives</span>
+        <span className="dissolve relative block aspect-[4/3] overflow-hidden">
+          <Pic k="comp-the-box" sizes="(min-width: 1024px) 30vw, 100vw" />
+        </span>
         <p className="font-text text-[0.9375rem] text-paper/85">
           {leadTimes.length > 0 ? `${leadTimes.join(". ")}. ` : ""}
           In the navy box, with its card{anyStones ? " and the report on its stones" : ""}. Insured, signature required, or collected in either store.

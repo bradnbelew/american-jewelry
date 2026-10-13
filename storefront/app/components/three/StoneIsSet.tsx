@@ -26,7 +26,7 @@ export function StoneIsSet({ config, poster, alt }: { config: RingConfig; poster
 
   return (
     <div ref={pinRef} className="flex items-center justify-center md:min-h-[calc(100svh-5rem)]">
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-stone md:aspect-[5/4] md:h-[calc(100svh-7rem)] md:w-auto md:max-w-full" aria-label="The stone is set: the house ring assembling" role="img">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-paper md:aspect-[5/4] md:h-[calc(100svh-7rem)] md:w-auto md:max-w-full" aria-label="The stone is set: the house ring assembling" role="img">
         {mode === "scene" && (
           <Suspense fallback={null}>
             <Scene config={config} pinRef={pinRef} onFirstFrame={() => setReady(true)} />

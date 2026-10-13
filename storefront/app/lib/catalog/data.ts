@@ -232,7 +232,7 @@ export const PIECES: Piece[] = [
     specs: [
       { label: "Band", value: "2.1 mm, comfort fit" },
       { label: "Star", value: "9 mm across" },
-      { label: "Hallmark", value: "Karat mark and the house mark, inside the shank" },
+      { label: "Hallmark", value: "Karat mark, inside the shank" },
     ],
     collections: ["family"],
     art: "ring",
@@ -252,7 +252,7 @@ export const PIECES: Piece[] = [
     description: "A flat band with the star cut flush into its surface and the tail running on around the finger.",
     specs: [
       { label: "Band", value: "3.0 mm flat, comfort fit" },
-      { label: "Hallmark", value: "Karat mark and the house mark, inside the shank" },
+      { label: "Hallmark", value: "Karat mark, inside the shank" },
     ],
     collections: ["family", "the-stack"],
     art: "band",
@@ -432,7 +432,7 @@ export const PIECES: Piece[] = [
     specs: [
       { label: "Center", value: "Round brilliant man-made diamond, D to F, VVS1 to VVS2, Ideal cut, IGI report, laser inscribed" },
       { label: "Band", value: "1.8 mm knife edge" },
-      { label: "Hallmark", value: "Karat mark and the house mark, inside the shank" },
+      { label: "Hallmark", value: "Karat mark, inside the shank" },
     ],
     collections: ["bridal"],
     art: "solitaire",

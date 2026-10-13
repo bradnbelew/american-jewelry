@@ -29,7 +29,7 @@ const VIEWS: Record<View, { pos: [number, number, number]; target: [number, numb
 };
 
 /** The 3D ground token (house.css --stone). */
-const STONE = "#e9e7e2";
+const STONE = "#f6f5f2";
 
 export interface ParametricRingProps {
   config: RingConfig;

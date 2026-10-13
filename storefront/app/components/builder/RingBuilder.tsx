@@ -109,7 +109,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
   return (
     <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
       <div className="flex flex-col gap-4 lg:sticky lg:top-32 lg:col-span-7">
-        <div className="relative aspect-[4/3] overflow-hidden bg-stone sm:aspect-square lg:aspect-[5/4]">
+        <div className="relative aspect-[4/3] overflow-hidden bg-paper sm:aspect-square lg:aspect-[5/4]">
           <RingViewer config={c} view={view} autoRotate={idle} className="absolute inset-0" />
         </div>
         <details className="acc">
@@ -147,7 +147,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
           <div className="grid grid-cols-3 gap-2" role="radiogroup" aria-label="Setting">
             {SETTINGS.map((s) => (
               <button key={s} type="button" role="radio" aria-checked={c.setting === s} className="opt !min-h-0 !flex-col !items-stretch !gap-0 !p-1" aria-pressed={c.setting === s} onClick={() => set("setting", s)} title={DESIGN_NOTES[s].name}>
-                <span className="relative block aspect-[5/4] overflow-hidden bg-bone">
+                <span className="relative block aspect-[5/4] overflow-hidden bg-paper">
                   <Pic k={SETTING_PHOTO[s]} sizes="(min-width: 1024px) 11vw, 30vw" />
                 </span>
                 <span className="flex h-7 items-center justify-center text-[0.75rem] leading-none">{DESIGN_NOTES[s].name}</span>

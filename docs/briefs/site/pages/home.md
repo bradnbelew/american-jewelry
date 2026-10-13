@@ -6,25 +6,25 @@ Sources: REMAKE-BLUEPRINT §6; research/08 page blueprint (home) and §5b; store
 
 ```
 SECTION: Home, header (all routes)
-JOB: Say the name and give eight plain ways in, nothing else
+JOB: Say the name and open eight plain doors, each a panel of names (Decided 2026-10-13; `app/lib/nav.ts`)
 ONE SUBJECT: the wordmark    NEXT ACTION: a line or design link (secondary: Appointment)
 SKETCH: TODO
-LAYOUT: >=1024 centered wordmark, text nav on one line, utility right: Appointment, Saved, Bag | <768 menu, wordmark, bag
-CONTENT: nav items TODO (research/06 and 08 say eight; research/01 and 05 say seven; open-questions C27). Utility: Appointment, Saved, Bag
+LAYOUT: >=1024 Search left, centered wordmark, utility right: Appointment, Kept, Bag, Account; beneath, one row of eight names, each opening a full-width paper panel (columns of links, one photograph at most, one sentence at most) | <1024 Menu, wordmark, Bag; the menu is the same panels as accordions with a search field above
+CONTENT: Jewelry (by kind, by design, collections), Bridal (engagement, wedding bands, before you choose), Royal American (the registry, by appointment), Americana and New American (designs, pieces, collections or the standard), Services (at the bench, made for you, appointments), Stores (the two addresses, a visit), The House (the letter, journal, the small print). Utility: Search, Appointment, Kept, Bag, Account
 TYPE: wordmark placeholder (logo paused); nav .caps 11px 0.08em (caps allowed on nav)
 SPACING: TODO
 CONTROLS: text links only; no icons except bag count (research/10: four 1px SVGs max)
 MOTION: none; the wordmark persists through the 300ms page crossfade
 STATES: focus-visible gold ring; current page underlined with --ink 1px
-TAKE: TODO    LEAVE: promo bar, mega-menu with promo tiles, hamburger-only desktop nav
-DON'T: announcement strip, shipping banner, search bar for now
+TAKE: Cartier and Van Cleef panels (columns of names, one picture)    LEAVE: promo bar, promo tiles in a panel, hamburger-only desktop nav
+DON'T: announcement strip, shipping banner, a search field in the bar itself (Search opens a sheet)
 DONE WHEN: one line at 1440 with no wrap; no horizontal overflow at 390
 ```
 
 ```
 SECTION: Home, hero
 JOB: Say what the house is in one frame
-ONE SUBJECT: one photograph (a piece on the navy box)    NEXT ACTION: "The designs" (secondary: none)
+ONE SUBJECT: one photograph (the hand in window light; the comp until the shoot)    NEXT ACTION: "The designs" (secondary: none)
 SKETCH: TODO
 LAYOUT: >=1024 PhotoOpener full-bleed, words lower left on overlay | <768 4:5 crop, words below the fold line on overlay
 CONTENT: label "Brentwood and Mt. Juliet, Tennessee"; headline "An American house of fine jewelry."; button "The designs" (built; about 20 words)

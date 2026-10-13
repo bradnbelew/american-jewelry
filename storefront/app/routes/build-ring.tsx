@@ -38,7 +38,7 @@ export function HydrateFallback() {
       <Opener />
       <Section>
         <div className="grid gap-10 lg:grid-cols-12">
-          <div className="aspect-[4/3] bg-stone sm:aspect-square lg:col-span-7 lg:aspect-[5/4]" aria-busy="true" />
+          <div className="aspect-[4/3] bg-paper sm:aspect-square lg:col-span-7 lg:aspect-[5/4]" aria-busy="true" />
         </div>
       </Section>
       <Settings />

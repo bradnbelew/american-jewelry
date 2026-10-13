@@ -40,7 +40,7 @@ export default function Poster({ loaderData }: Route.ComponentProps) {
     );
   }
   return (
-    <div id="poster" className={`relative mx-auto w-[1200px] bg-stone ${kind === "ring" ? "aspect-[5/4]" : "aspect-[4/5]"}`} data-ready="0">
+    <div id="poster" className={`relative mx-auto w-[1200px] bg-paper ${kind === "ring" ? "aspect-[5/4]" : "aspect-[4/5]"}`} data-ready="0">
       <Suspense fallback={null}>
         {kind === "ring" ? (
           <Ring

@@ -22,6 +22,8 @@ import { listenPointer, tilt } from "./tilt";
 export interface ViewingSceneProps {
   spec: ViewingSpec;
   metal?: RingConfig["metal"];
+  /** the selected version's carat, so the stone drawn is the stone priced */
+  carat?: number;
   /** false while the frame is off screen: nothing draws */
   active: boolean;
   /** the camera moves in on the stone */
@@ -62,7 +64,7 @@ function damp(current: number, target: number, rate: number, dt: number) {
   return current + (target - current) * (1 - Math.exp(-rate * dt));
 }
 
-function Room({ spec, metal, closer = false, offset = 0, lift = 0, onFirstFrame }: ViewingSceneProps) {
+function Room({ spec, metal, carat, closer = false, offset = 0, lift = 0, onFirstFrame }: ViewingSceneProps) {
   const { camera, size, scene } = useThree();
   const lining = LININGS[spec.lining];
   const reduced = useMemo(() => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, []);
@@ -173,7 +175,7 @@ function Room({ spec, metal, closer = false, offset = 0, lift = 0, onFirstFrame 
       <group position={[0, GROUND, 0]}>
         <group ref={turn} rotation-y={-0.55}>
           {spec.jewel.kind === "ring" ? (
-            <Ring partial={{ ...spec.jewel.config, ...(metal ? { metal } : {}) }} carat={spec.jewel.carat} env={env} onStoneHeight={(y) => void (stoneHeight.current = y)} />
+            <Ring partial={{ ...spec.jewel.config, ...(metal ? { metal } : {}) }} carat={carat ?? spec.jewel.carat} env={env} onStoneHeight={(y) => void (stoneHeight.current = y)} />
           ) : (
             <Eternity metal={metal ?? spec.jewel.metal} count={spec.jewel.stones} env={env} onStoneHeight={(y) => void (stoneHeight.current = y)} />
           )}

@@ -1,6 +1,21 @@
 # American Jewelry — handoff
 
-_Updated 2026-10-12 after the launch pass (P0–P5 on Hydrogen/Oxygen). Read this whole file before touching anything._
+_Updated 2026-10-13 after the finishing session (type, art direction, navigation, browsing, the viewing, the mockup's comps). Read this whole file before touching anything._
+
+## LAUNCH BLOCKER (2026-10-13): AI comps are on the mockup
+
+The owner allowed the generated layout comps on the private mockup ("use the ai images for now, as we are just making a mockup"). They are `storefront/public/photos/comp-*.webp`, keyed `comp-*` in `app/lib/catalog/photos.ts`, and every one is listed in `docs/briefs/PHOTOS-TODO.md` under "AI comps in use". **None may be live when `PUBLIC_SITE_LIVE=true` is set.** Before the flag flips: replace each `comp-*` entry with the house photograph, delete the files, and run `npm run lint:house`. The canon's no-AI-imagery rule is unchanged for the public site; the council records I8 as a Note citing decisions.md 2026-10-13 while the site is private.
+
+## Finishing session 2026-10-13 (what changed, in one place)
+
+- **Type:** Source Serif 4 Variable (`@fontsource-variable/source-serif-4/opsz.css`, one 122 KB latin file preloaded from `root.tsx`) for names, headlines and reading text; Public Sans for UI and numbers; Libre Caslon retired (owner: "too scripty"); no italics loaded. `scripts/og.mjs` uses the static `@fontsource/source-serif-4` woff (devDependency, satori cannot read woff2); cards regenerated.
+- **Ground:** paper #F6F5F2; bone and stone tokens removed from `house.css` and `DESIGN.md`. Photographs sit on the paper (`.float` multiplies a white packshot; `PHOTO[k].float`), are shown whole (`PHOTO[k].contain` on the product first frame), bleed, or sit on navy (`.dissolve`). The builder's ring poster was re-shot on the paper (`node scripts/ring-poster.mjs signal`, dev server required); `ParametricRing` and `ModelTile` draw on the paper.
+- **Header:** `components/Header.tsx` + `lib/nav.ts`: eight names with full-width panels (hover intent 90 ms, click opens, second click goes to the page, Escape and outside clicks close, focus leaving the header closes), Search sheet (`components/SearchDialog.tsx`, local catalog, Enter goes to `/search`), utility Search / Appointment / Kept / Bag / Account, phone menu of accordions with a search field. The old `NAV` array is gone; the footer keeps its own lists.
+- **Browsing:** `lib/catalog/browse.ts` (kinds, filters, sort, search), `components/Catalog.tsx` (`Browse`, `PieceIndex`, `PieceLedger`, `PieceCard`, `KindsRow`), routes `/jewelry`, `/jewelry/:category`, `/designs`, `/collections`, `/search` (noindex, robots disallow). Filters are a GET form; with JavaScript each change submits itself (`useSubmit`, replace, no scroll reset). `ProductTile.tsx` and `TileGrid` are deleted.
+- **Pages recomposed** from the art direction's screen types so no two screens on a page match: home, the three line pages, product, design, collection, stores, house, services, the bag's "What arrives". `Section.tsx` gained `Plate`, `LineScreen`, and `PhotoOpener` takes `tall` (an art-directed phone source through `<picture>` in `Pic`). Opener headlines are 68 / 76 px.
+- **The viewing:** home variants removed; `PieceGallery` shows "See it in the light" by default on pieces with a `VIEWING` entry except Royal American, only when `useWebGL()` is true (reduced motion hides it); the room draws the selected version's carat (`ViewingRoom carat`, parsed from the Version label in `piece.tsx`) and says "Shown larger than life. The stone is about N mm across." when looking closer; `.link` is a 44 px control site-wide. The live velvet viewing is the second screen of `/royal-american` (4:3, `.viewing-fade` with `closest-side`).
+- **Verification:** `npm run typecheck`, `npm run lint:house` (0 errors), `node scripts/council/measure.mjs check ...` on home, line-americana and pdp-signal-solitaire, screenshots at 390 / 768 / 1440 with no horizontal overflow, council verdicts in `docs/briefs/council/verdicts/*-2026-10-13.md`.
+- **Owner's open items:** B32 (the eight names and Account before Customer Accounts), B33 (the four kinds, price bands, a date per piece for "newest"), B34 (the comps), plus the ones carried: payments (B21), the Online Store password (B22), the photography, hours, names.
 
 ## The remake on Hydrogen / Oxygen (2026-10-10) — READ THIS FIRST
 

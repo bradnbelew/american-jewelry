@@ -30,7 +30,7 @@ export function ModelTileScene({ slug, metal = "yellow" }: { slug: string; metal
       onPointerLeave={() => pointer.current.set(0, 0)}
     >
       <Canvas dpr={[1, 2]} camera={{ position: [0, 18, 46], fov: 28 }} gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}>
-        <color attach="background" args={["#e9e7e2"]} />
+        <color attach="background" args={["#f6f5f2"]} />
         <KeyLight pointer={pointer} />
         <Suspense fallback={null}>
           <Environment files={STUDIO_HDR} />

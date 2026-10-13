@@ -26,7 +26,7 @@ export default function JournalPage() {
 
       <Section>
         <Link to={`/journal/${first.slug}`} viewTransition className="group grid items-end gap-8 md:grid-cols-12 md:gap-12">
-          <div className="settle relative aspect-[4/3] overflow-hidden bg-bone md:col-span-7 md:aspect-[3/2]">
+          <div className="settle relative aspect-[4/3] overflow-hidden bg-paper md:col-span-7 md:aspect-[3/2]">
             <Pic k={first.photo} sizes="(min-width: 768px) 58vw, 100vw" priority />
           </div>
           <div className="flex flex-col gap-4 md:col-span-5 md:pb-4">

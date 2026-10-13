@@ -24,7 +24,7 @@ export default function CommissionPage() {
         <PageTitle title="Commission a piece" lede="Something that exists nowhere yet, made here. About four to six weeks from the first conversation. A deposit of a third begins the drawings, refundable until you approve the render." />
       </Section>
       <Section>
-        <div className="settle relative aspect-[4/3] overflow-hidden bg-bone md:aspect-[2.4/1]">
+        <div className="settle relative aspect-[4/3] overflow-hidden bg-paper md:aspect-[2.4/1]">
           <Pic k="ring-halo" sizes="100vw" priority />
         </div>
       </Section>

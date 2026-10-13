@@ -36,7 +36,7 @@ export default function ArticlePage({ loaderData }: Route.ComponentProps) {
         </div>
       </Section>
       <Section className="pt-10 md:pt-14" width="text">
-        <div className="settle relative aspect-[16/9] overflow-hidden bg-bone">
+        <div className="settle relative aspect-[16/9] overflow-hidden bg-paper">
           <Pic k={a.photo} sizes="(min-width: 1024px) 1024px, 100vw" priority />
         </div>
       </Section>

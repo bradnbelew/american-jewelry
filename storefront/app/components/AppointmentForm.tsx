@@ -49,7 +49,7 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
     <Form method="post" className="grid gap-x-8 gap-y-6 pt-10 md:grid-cols-2" aria-busy={pending}>
       {CONTEXT_KEYS.map((k) => (prefill[k] ? <input key={k} type="hidden" name={k} value={prefill[k]} /> : null))}
       {context.length > 0 && (
-        <p className="font-text bg-bone px-4 py-3 text-[0.9375rem] text-ink-2 md:col-span-2">
+        <p className="font-text bg-paper px-4 py-3 text-[0.9375rem] text-ink-2 md:col-span-2">
           We will have this ready: <span className="text-ink">{context.join(", ")}</span>
         </p>
       )}

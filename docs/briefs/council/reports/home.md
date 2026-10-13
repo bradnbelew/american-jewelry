@@ -1,13 +1,13 @@
 # Measured: home
 
 http://localhost:3030/  
-Measured 2026-10-12T23:51 against 14 reference pages (home band). Bands are the reference range: min, middle half (p25 to p75), max. "Edge" means inside the range but outside the middle half; "outside" means beyond every reference.
+Measured 2026-10-13T06:22 against 14 reference pages (home band). Bands are the reference range: min, middle half (p25 to p75), max. "Edge" means inside the range but outside the middle half; "outside" means beyond every reference.
 
 ## House rules (fixed numbers; a failure here is a Blocker)
 
 | Rule | 390 | 768 | 1440 |
 |---|---|---|---|
-| At most three faces (canon: two serifs and one sans) | pass (3) | pass (3) | pass (3) |
+| At most three faces (canon: two serifs and one sans) | pass (2) | pass (2) | pass (2) |
 | Nothing below 11px | pass (11) | pass (11) | pass (11) |
 | No prose line over 80 characters (DESIGN.md measure 62ch) | pass (38) | pass (62) | pass (62) |
 | No shadows | pass (0) | pass (0) | pass (0) |
@@ -25,8 +25,8 @@ Measured 2026-10-12T23:51 against 14 reference pages (home band). Bands are the 
 | Measure | Width | Ours | Houses min | Middle half | Max | Read |
 |---|---|---|---|---|---|---|
 | Largest type in the first viewport (px) | 390 | 44 | 12 | 25.25 to 34.5 | 44 | edge |
-| Largest type in the first viewport (px) | 768 | 72 | 12 | 25.25 to 42.25 | 68 | **outside** |
-| Largest type in the first viewport (px) | 1440 | 88 | 12 | 22.75 to 49.75 | 76 | **outside** |
+| Largest type in the first viewport (px) | 768 | 68 | 12 | 25.25 to 42.25 | 68 | edge |
+| Largest type in the first viewport (px) | 1440 | 76 | 12 | 22.75 to 49.75 | 76 | edge |
 | Body size, median of prose (px) | 390 | 18 | 12 | 14 to 18 | 20 | inside |
 | Body size, median of prose (px) | 768 | 19 | 12 | 14 to 19 | 32 | inside |
 | Body size, median of prose (px) | 1440 | 18 | 12 | 15 to 19 | 38 | inside |
@@ -39,18 +39,18 @@ Measured 2026-10-12T23:51 against 14 reference pages (home band). Bands are the 
 | Measure, longest line (chars) | 390 | 38 | 27 | 39.5 to 49 | 60 | edge |
 | Measure, longest line (chars) | 768 | 62 | 41 | 50.5 to 79 | 90 | inside |
 | Measure, longest line (chars) | 1440 | 62 | 53 | 58.5 to 71 | 110 | inside |
-| Typefaces in use | 390 | 3 | 1 | 1 to 2 | 3 | edge |
-| Typefaces in use | 768 | 3 | 1 | 1 to 2 | 3 | edge |
-| Typefaces in use | 1440 | 3 | 1 | 1 to 2 | 3 | edge |
+| Typefaces in use | 390 | 2 | 1 | 1 to 2 | 3 | inside |
+| Typefaces in use | 768 | 2 | 1 | 1 to 2 | 3 | inside |
+| Typefaces in use | 1440 | 2 | 1 | 1 to 2 | 3 | inside |
 | Distinct type sizes | 390 | 10 | 1 | 5 to 7 | 12 | edge |
-| Distinct type sizes | 768 | 10 | 1 | 4 to 7 | 11 | edge |
-| Distinct type sizes | 1440 | 11 | 2 | 4 to 9 | 11 | edge |
+| Distinct type sizes | 768 | 9 | 1 | 4 to 7 | 11 | edge |
+| Distinct type sizes | 1440 | 10 | 2 | 4 to 9 | 11 | edge |
 | Smallest type (px) | 390 | 11 | 9 | 10 to 12 | 13.2 | inside |
 | Smallest type (px) | 768 | 11 | 10 | 10 to 12 | 13.2 | inside |
 | Smallest type (px) | 1440 | 11 | 9 | 11 to 12 | 14 | inside |
-| Share of text blocks in caps | 390 | 0.14 | 0 | 0.15 to 0.67 | 0.96 | edge |
-| Share of text blocks in caps | 768 | 0.14 | 0 | 0.15 to 0.67 | 0.97 | edge |
-| Share of text blocks in caps | 1440 | 0.14 | 0.06 | 0.38 to 0.67 | 0.97 | edge |
+| Share of text blocks in caps | 390 | 0.13 | 0 | 0.15 to 0.67 | 0.96 | edge |
+| Share of text blocks in caps | 768 | 0.13 | 0 | 0.15 to 0.67 | 0.97 | edge |
+| Share of text blocks in caps | 1440 | 0.13 | 0.06 | 0.38 to 0.67 | 0.97 | edge |
 | Caps tracking (em) | 390 | 0.1 | 0 | 0 to 0.1 | 0.3 | inside |
 | Caps tracking (em) | 768 | 0.1 | 0 | 0 to 0.1 | 0.3 | inside |
 | Caps tracking (em) | 1440 | 0.1 | 0 | 0 to 0.1 | 0.3 | inside |
@@ -63,18 +63,18 @@ Measured 2026-10-12T23:51 against 14 reference pages (home band). Bands are the 
 | Image share of the first viewport | 390 | 0.58 | 0 | 0.58 to 1 | 1 | inside |
 | Image share of the first viewport | 768 | 0.86 | 0 | 0.3 to 1 | 1 | inside |
 | Image share of the first viewport | 1440 | 0.86 | 0 | 0.67 to 0.95 | 1 | inside |
-| Typical gap between blocks (px) | 390 | 24 | 16 | 20 to 37.75 | 60 | inside |
-| Typical gap between blocks (px) | 768 | 73 | 12 | 28.5 to 44 | 60 | **outside** |
-| Typical gap between blocks (px) | 1440 | 28 | 16 | 38.25 to 64 | 90 | edge |
+| Typical gap between blocks (px) | 390 | 31 | 16 | 20 to 37.75 | 60 | inside |
+| Typical gap between blocks (px) | 768 | 61 | 12 | 28.5 to 44 | 60 | **outside** |
+| Typical gap between blocks (px) | 1440 | 105 | 16 | 38.25 to 64 | 90 | **outside** |
 | Section gap (share of viewport height) | 390 | 0.16 | 0.08 | 0.09 to 0.16 | 0.17 | inside |
-| Section gap (share of viewport height) | 768 | 0.25 | 0.07 | 0.09 to 0.17 | 0.45 | edge |
+| Section gap (share of viewport height) | 768 | 0.24 | 0.07 | 0.09 to 0.17 | 0.45 | edge |
 | Section gap (share of viewport height) | 1440 | 0.24 | 0.09 | 0.11 to 0.24 | 0.44 | inside |
-| Distinct left edges (alignment axes) | 390 | 2 | 1 | 7 to 27 | 80 | edge |
-| Distinct left edges (alignment axes) | 768 | 8 | 1 | 8 to 35 | 74 | inside |
-| Distinct left edges (alignment axes) | 1440 | 10 | 1 | 8 to 37 | 84 | inside |
-| Large images on the page | 390 | 3 | 0 | 11 to 37 | 90 | edge |
-| Large images on the page | 768 | 3 | 0 | 10 to 36 | 80 | edge |
-| Large images on the page | 1440 | 6 | 5 | 13 to 34 | 93 | edge |
+| Distinct left edges (alignment axes) | 390 | 4 | 1 | 7 to 27 | 80 | edge |
+| Distinct left edges (alignment axes) | 768 | 11 | 1 | 8 to 35 | 74 | inside |
+| Distinct left edges (alignment axes) | 1440 | 14 | 1 | 8 to 37 | 84 | inside |
+| Large images on the page | 390 | 4 | 0 | 11 to 37 | 90 | edge |
+| Large images on the page | 768 | 4 | 0 | 10 to 36 | 80 | edge |
+| Large images on the page | 1440 | 7 | 5 | 13 to 34 | 93 | edge |
 | Boxed containers (4-side borders) | 390 | 0 | 0 | 0 to 0 | 9 | inside |
 | Boxed containers (4-side borders) | 768 | 0 | 0 | 0 to 0 | 9 | inside |
 | Boxed containers (4-side borders) | 1440 | 0 | 0 | 0 to 0 | 15 | inside |
@@ -94,25 +94,25 @@ Measured 2026-10-12T23:51 against 14 reference pages (home band). Bands are the 
 | Controls under 44px tall | 768 | 0 | 0 | 0 to 3 | 12 | inside |
 | Controls under 44px tall | 1440 | 0 | 0 | 1 to 3 | 12 | edge |
 | Visible header links | 390 | 3 | 0 | 1 to 3 | 4 | inside |
-| Visible header links | 768 | 5 | 0 | 1 to 3 | 5 | edge |
-| Visible header links | 1440 | 12 | 0 | 2 to 9 | 13 | edge |
-| Words on the page (body) | 390 | 185 | 3 | 190 to 241 | 1559 | edge |
-| Words on the page (body) | 768 | 185 | 3 | 190 to 328 | 1530 | edge |
-| Words on the page (body) | 1440 | 185 | 4 | 190 to 334 | 1589 | edge |
+| Visible header links | 768 | 6 | 0 | 1 to 3 | 5 | **outside** |
+| Visible header links | 1440 | 14 | 0 | 2 to 9 | 13 | **outside** |
+| Words on the page (body) | 390 | 190 | 3 | 190 to 241 | 1559 | inside |
+| Words on the page (body) | 768 | 190 | 3 | 190 to 328 | 1530 | inside |
+| Words on the page (body) | 1440 | 190 | 4 | 190 to 334 | 1589 | inside |
 | Sentence length, median words | 390 | 6 | 3 | 12 to 39 | 227 | edge |
 | Sentence length, median words | 768 | 6 | 3 | 12 to 39 | 338 | edge |
 | Sentence length, median words | 1440 | 6 | 4 | 11 to 39 | 338 | edge |
-| Page length (viewports) | 390 | 6.2 | 1 | 1 to 6.2 | 15.3 | inside |
-| Page length (viewports) | 768 | 4.9 | 1 | 1 to 6.2 | 12.4 | inside |
-| Page length (viewports) | 1440 | 5.6 | 1 | 1 to 6.1 | 16.1 | inside |
+| Page length (viewports) | 390 | 7 | 1 | 1 to 6.2 | 15.3 | edge |
+| Page length (viewports) | 768 | 5.7 | 1 | 1 to 6.2 | 12.4 | inside |
+| Page length (viewports) | 1440 | 6.1 | 1 | 1 to 6.1 | 16.1 | inside |
 
 ## Facts for the reviewer (1440)
 
-- Typefaces by share of characters: Libre Caslon Text 59%, Public Sans Variable 23%, Libre Caslon Display 18%.
-- Type sizes by share: 18px 24%, 19px 18%, 13px 13%, 17px 9%, 11px 9%, 15px 9%, 64px 5%, 48px 4%, 32px 4%, 88px 3%.
-- Ground #f5f2ec (hue 40, saturation 0.31, lightness 0.94); largest backgrounds #16213a 54%, #ffffff 24%, #e9e7e2 13%, #f5f2ec 6%, #ece7dd 3%, #121212 0%.
-- Control heights: 48, 50px; caps on 67% of controls.
-- Image ratios, first twelve: 1.86, 1, 1, 1, 2.2, 1.33.
+- Typefaces by share of characters: Source Serif 4 Variable 74%, Public Sans Variable 26%.
+- Type sizes by share: 18px 19%, 19px 18%, 13px 14%, 11px 10%, 17px 9%, 15px 9%, 48px 7%, 24px 6%, 64px 5%, 76px 3%.
+- Ground #f6f5f2 (hue 45, saturation 0.18, lightness 0.96); largest backgrounds #16213a 92%, #f6f5f2 8%, #121212 0%.
+- Control heights: 44, 48, 50px; caps on 92% of controls.
+- Image ratios, first twelve: 1.86, 1.33, 1.33, 1.33, 2.2, 1.33, 1.33.
 - Text blocks on photographs: 0.
 
 Screenshots: docs/briefs/council/shots/home__390.png, __768.png, __1440.png (first viewport).

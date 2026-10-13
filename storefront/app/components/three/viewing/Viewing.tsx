@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { stoneDiameterMm } from "~/lib/builder/model";
 import type { RingConfig } from "~/lib/builder/model";
 
 import type { ViewingSpec } from "./pieces";
@@ -20,7 +21,8 @@ const Scene = lazy(() =>
   import("./ViewingScene.client").then((m) => ({ default: m.ViewingScene })),
 );
 
-function useWebGL() {
+/** True once the browser has WebGL and the visitor has not asked for reduced motion (then the room is never offered). */
+export function useWebGL() {
   const [ok, setOk] = useState(false);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -147,12 +149,15 @@ export function ViewingFrame({
 export function ViewingRoom({
   spec,
   metal,
+  carat,
   title,
   open,
   onClose,
 }: {
   spec: ViewingSpec;
   metal?: RingConfig["metal"];
+  /** the selected version's carat; the stone drawn is the stone priced */
+  carat?: number;
   title: string;
   open: boolean;
   onClose: () => void;
@@ -161,6 +166,8 @@ export function ViewingRoom({
   const [closer, setCloser] = useState(false);
   const [ready, setReady] = useState(false);
   const gl = useWebGL();
+  const ct = carat ?? (spec.jewel.kind === "ring" ? spec.jewel.carat : undefined);
+  const stoneMm = ct ? stoneDiameterMm(ct).toFixed(1) : null;
 
   useEffect(() => {
     const d = dialog.current;
@@ -185,6 +192,7 @@ export function ViewingRoom({
           <Scene
             spec={spec}
             metal={metal}
+            carat={carat}
             active={open}
             closer={closer}
             onFirstFrame={() => setReady(true)}
@@ -216,12 +224,17 @@ export function ViewingRoom({
         </button>
       </div>
       <div className="wrap pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-4 pb-8 md:flex-row md:items-end md:justify-between md:pb-10">
-        <p
-          className={`font-text max-w-[30ch] text-[1.125rem] italic text-paper transition-opacity duration-500 ${closer && spec.grade ? "opacity-100" : "opacity-0"}`}
+        <div
+          className={`flex max-w-[34ch] flex-col gap-2 transition-opacity duration-500 ${closer && spec.grade ? "opacity-100" : "opacity-0"}`}
           aria-live="polite"
         >
-          {closer ? spec.grade : ""}
-        </p>
+          <p className="font-text text-[1.125rem] text-paper">{closer ? spec.grade : ""}</p>
+          {closer && stoneMm ? (
+            <p className="label !text-paper/80">
+              Shown larger than life. The stone is about {stoneMm} mm across.
+            </p>
+          ) : null}
+        </div>
         <div className="pointer-events-auto flex flex-wrap items-center gap-6">
           <TiltControl />
           <button

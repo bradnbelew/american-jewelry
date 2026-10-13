@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 
-import { Section, SplitOpener } from "~/components/Section";
+import { Section } from "~/components/Section";
+import { Pic } from "~/components/Pic";
 import { STORES } from "~/lib/catalog/data";
 import { breadcrumbJsonLd, pageMeta, servicesJsonLd } from "~/lib/seo";
 
@@ -38,11 +39,20 @@ export const meta: Route.MetaFunction = () =>
 export default function ServicesPage() {
   return (
     <>
-      <SplitOpener title="Services" lede="A house that makes its own pieces looks after everyone else's too. Every service is quoted before any work begins, at a bench you can watch." photo="bench">
-        <Link to="/appointments?kind=care" className="btn self-start">
-          Book a care visit
-        </Link>
-      </SplitOpener>
+      <Section className="pt-10 md:pt-16">
+        <div className="grid items-end gap-8 md:grid-cols-12 md:gap-10">
+          <div className="flex flex-col gap-6 md:col-span-5">
+            <h1 className="h-display measure-display text-[3rem] md:text-[4.25rem] lg:text-[4.75rem]">Services</h1>
+            <p className="lede measure">A house that makes its own pieces looks after everyone else&apos;s too. Every service is quoted before any work begins, at a bench you can watch.</p>
+            <Link to="/appointments?kind=care" className="btn self-start">
+              Book a care visit
+            </Link>
+          </div>
+          <div className="settle relative aspect-[4/5] overflow-hidden md:col-span-7 md:-mr-10 md:aspect-[4/3]">
+            <Pic k="comp-bench-hands" priority sizes="(min-width: 768px) 58vw, 100vw" position="50% 40%" />
+          </div>
+        </div>
+      </Section>
 
       <Section screen width="text">
         <div className="flex flex-col gap-14">

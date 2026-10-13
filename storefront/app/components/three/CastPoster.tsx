@@ -9,7 +9,7 @@ export function CastPoster({ slug, caption, interactive = true }: { slug: string
   const poster = <img src={`/3d/posters/${slug}.webp`} alt={caption} width={1200} height={1500} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />;
   return (
     <figure className="flex flex-col gap-3">
-      {interactive ? <ModelTile slug={slug} title={caption} poster={poster} /> : <div className="relative aspect-[4/5] overflow-hidden bg-stone">{poster}</div>}
+      {interactive ? <ModelTile slug={slug} title={caption} poster={poster} /> : <div className="relative aspect-[4/5] overflow-hidden bg-paper">{poster}</div>}
       <figcaption className="label">{caption}</figcaption>
     </figure>
   );

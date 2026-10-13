@@ -1,6 +1,6 @@
 // Generates the width variants that <Pic> serves in its srcset.
 // usage: node scripts/photos.mjs   (from storefront/)
-// Reads public/photos/*.jpg, writes public/photos/w/<key>-<width>.webp for each width
+// Reads public/photos/*.jpg|png|webp, writes public/photos/w/<key>-<width>.webp for each width
 // in WIDTHS that does not exceed the source. Re-run after adding a photograph.
 import fs from "node:fs";
 import path from "node:path";
@@ -11,10 +11,10 @@ const src = path.resolve("public/photos");
 const out = path.join(src, "w");
 fs.mkdirSync(out, { recursive: true });
 
-const files = fs.readdirSync(src).filter((f) => /\.(jpe?g|png)$/i.test(f));
+const files = fs.readdirSync(src).filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
 let made = 0;
 for (const f of files) {
-  const key = f.replace(/\.(jpe?g|png)$/i, "");
+  const key = f.replace(/\.(jpe?g|png|webp)$/i, "");
   const meta = await sharp(path.join(src, f)).metadata();
   for (const w of WIDTHS) {
     if (w > (meta.width ?? 0)) continue;

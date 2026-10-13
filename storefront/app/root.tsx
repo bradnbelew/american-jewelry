@@ -36,13 +36,11 @@ import { createRequestStorefrontClient, storefrontClientContext, storefrontReque
 import type { Route } from "./+types/root";
 
 import appStylesHref from "./app.css?url";
-import caslonDisplayHref from "@fontsource/libre-caslon-display/files/libre-caslon-display-latin-400-normal.woff2?url";
-import caslonTextHref from "@fontsource/libre-caslon-text/files/libre-caslon-text-latin-400-normal.woff2?url";
+import serifHref from "@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-normal.woff2?url";
 
 export const links: Route.LinksFunction = () => [
-  // The two faces every page paints first; the rest arrive through the stylesheet.
-  { rel: "preload", href: caslonDisplayHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
-  { rel: "preload", href: caslonTextHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+  // The one serif every page paints first (names, headlines and reading text); Public Sans arrives through the stylesheet.
+  { rel: "preload", href: serifHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
   { rel: "stylesheet", href: appStylesHref },
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 ];

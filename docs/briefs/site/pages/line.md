@@ -26,7 +26,7 @@ SECTION: Line page, designs and pieces
 JOB: Route to a design by name, then show its pieces
 ONE SUBJECT: one design band at a time    NEXT ACTION: a design page or a piece
 SKETCH: TODO
-LAYOUT: >=1024 each design as a full-width photographic band with its name, then an asymmetric 2 + 1 grid of pieces | <768 single column
+LAYOUT (Decided 2026-10-13): >=1024 each design's name and motif 4 cols left (sticky), its pieces as a ledger 8 cols right: one photograph per row, name, what it is, price aligned right | <1024 name, then the ledger; no tile rows
 CONTENT: design names with one-line motif; cards 4 lines ≤12 words: name / spec line in words (no middle dots) / price or "From $" / nothing else
 TYPE: design names .h-section 28px / 36px; card name .h-item; spec .label; price .num
 SPACING: TODO
@@ -77,7 +77,7 @@ SECTION: Royal American, opener and chapters (/royal-american)
 JOB: Present each one-of-one as a chapter on velvet
 ONE SUBJECT: one piece per chapter    NEXT ACTION: "Request a private viewing" (once)
 SKETCH: TODO
-LAYOUT: >=1024 navy ground (.velvet), PhotoOpener full-bleed, then chapters 7/5 alternating sides | <768 single column
+LAYOUT (Decided 2026-10-13): navy ground (.velvet); opener full-bleed (the piece on its tray), then the viewing (The Cumberland live, 4:3, frame dissolved, words 4 cols right), then the registry ledger, then one line with "Request a private viewing" | <768 single column
 CONTENT: label "One of one. Price on request."; name; each chapter: name without registry prefix, one sentence, "Price on request". Pieces are stand-ins (open-questions A13)
 TYPE: names .h-display 40px / 56px on paper color; labels .velvet .label
 SPACING: TODO

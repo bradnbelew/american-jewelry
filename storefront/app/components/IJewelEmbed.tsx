@@ -13,7 +13,7 @@ export function IJewelEmbed({ src, title, poster }: { src: string | null | undef
   if (!src) return <>{poster}</>;
 
   return (
-    <div className="relative aspect-[4/5] overflow-hidden bg-stone">
+    <div className="relative aspect-[4/5] overflow-hidden bg-paper">
       {open ? (
         <iframe
           src={src}

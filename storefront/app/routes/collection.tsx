@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 
 import { Pic } from "~/components/Pic";
-import { TileGrid } from "~/components/ProductTile";
-import { Section, SplitOpener } from "~/components/Section";
+import { PieceIndex } from "~/components/Catalog";
+import { PhotoOpener, Section } from "~/components/Section";
 import { SETTINGS } from "~/lib/builder/model";
-import { DESIGN_NOTES, SETTING_PHOTO } from "~/lib/builder/notes";
+import { DESIGN_NOTES } from "~/lib/builder/notes";
 import { collectionBySlug, piecesForCollection } from "~/lib/catalog/data";
 import { COLLECTION_PHOTO } from "~/lib/catalog/photos";
 import { breadcrumbJsonLd, itemListJsonLd, pageMeta } from "~/lib/seo";
@@ -32,13 +32,26 @@ export default function CollectionPage({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <SplitOpener eyebrow="A collection" title={c.name} lede={c.intro} photo={COLLECTION_PHOTO[c.slug]}>
-        {bridal && (
-          <Link to="/build/ring" className="btn self-start">
+      {bridal ? (
+        <PhotoOpener photo={COLLECTION_PHOTO[c.slug]} position="60% 45%" eyebrow="A collection" title={c.name} lede={c.intro} height="aspect-[4/5] md:aspect-auto md:h-[72vh] md:min-h-[480px] md:max-h-[860px]">
+          <Link to="/build/ring" className="btn btn-light mt-1">
             Build a ring
           </Link>
-        )}
-      </SplitOpener>
+        </PhotoOpener>
+      ) : (
+        <Section className="pt-10 md:pt-16">
+          <div className="grid gap-8 md:grid-cols-12 md:gap-10">
+            <div className="flex flex-col gap-4 md:col-span-7">
+              <span className="label">A collection</span>
+              <h1 className="h-display text-[3rem] md:text-[4.5rem]">{c.name}</h1>
+              <p className="lede measure">{c.intro}</p>
+            </div>
+            <div className="settle relative aspect-[4/5] overflow-hidden md:col-span-4 md:col-start-9">
+              <Pic k={COLLECTION_PHOTO[c.slug]} sizes="(min-width: 768px) 33vw, 100vw" priority />
+            </div>
+          </div>
+        </Section>
+      )}
 
       <Section screen width="text">
         <div className="grid gap-10 md:grid-cols-12 md:gap-12">
@@ -53,29 +66,32 @@ export default function CollectionPage({ loaderData }: Route.ComponentProps) {
 
       {bridal && (
         <Section className="pb-8">
-          <h2 className="h-section mb-10 text-[2rem] md:text-[2.5rem]">Three settings</h2>
-          <ul className="grid grid-cols-3 gap-4 md:gap-8">
-            {SETTINGS.map((s) => (
-              <li key={s}>
-                <Link to={`/build/ring?setting=${s}`} className="group flex flex-col gap-3">
-                  <span className="settle relative block aspect-[4/5] overflow-hidden bg-white">
-                    <Pic k={SETTING_PHOTO[s]} sizes="30vw" />
-                  </span>
-                  <span className="h-item text-[1.25rem] group-hover:text-muted md:text-[1.5rem]">{DESIGN_NOTES[s].name}</span>
-                  <span className="font-text hidden text-[0.9375rem] text-muted sm:block">{DESIGN_NOTES[s].line}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-10">
+            <h2 className="h-section text-[2rem] md:text-[2.5rem] lg:col-span-4">The settings</h2>
+            <ol className="border-t border-hair lg:col-span-8">
+              {SETTINGS.map((s) => (
+                <li key={s} className="border-b border-hair">
+                  <Link to={`/build/ring?setting=${s}`} className="group grid items-baseline gap-x-8 gap-y-1 py-5 md:grid-cols-[12rem_1fr_auto]">
+                    <span className="h-item text-[1.5rem] group-hover:text-muted md:text-[1.75rem]">{DESIGN_NOTES[s].name}</span>
+                    <span className="font-text text-[1.0625rem] text-ink-2">{DESIGN_NOTES[s].line}</span>
+                    <span className="link">Build on {DESIGN_NOTES[s].name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
         </Section>
       )}
 
       <Section screen>
-        <div className="mb-12 flex items-end justify-between gap-6">
-          <h2 className="h-section text-[2rem] md:text-[2.5rem]">{bridal ? "Bands and settings" : `The ${c.name} pieces`}</h2>
-          <span className="num label">{pieces.length}</span>
+        <div className="mb-12 flex items-baseline justify-between gap-6 border-b border-hair pb-3">
+          <h2 className="h-section text-[2rem] md:text-[2.5rem]">{bridal ? "Rings and bands" : `The ${c.name} pieces`}</h2>
+          <span className="label">
+            <span className="num text-ink">{pieces.length}</span> {pieces.length === 1 ? "piece" : "pieces"}
+          </span>
         </div>
-        <TileGrid pieces={pieces} />
+        {pieces.length > 0 ? <PieceIndex pieces={pieces} showLine /> : <p className="font-text text-ink-2">Nothing is listed in {c.name} yet.</p>}
+        <p className="label mt-10">Price before sales tax.</p>
       </Section>
     </>
   );

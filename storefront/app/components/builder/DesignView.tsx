@@ -22,7 +22,7 @@ export function DesignView({ config: c, code, hint }: { config: RingConfig; code
   const encoded = encodeURIComponent(code);
   return (
     <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-      <div className="relative aspect-square overflow-hidden bg-stone">
+      <div className="relative aspect-square overflow-hidden bg-paper">
         <RingViewer config={c} view="review" autoRotate className="absolute inset-0" />
       </div>
       <div className="flex flex-col gap-6">

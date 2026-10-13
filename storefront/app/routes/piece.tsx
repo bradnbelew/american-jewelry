@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { PieceConfigurator, metalTone } from "~/components/PieceConfigurator";
 import { PieceForm } from "~/components/PieceForm";
 import { PieceGallery } from "~/components/PieceGallery";
-import { ProductTile } from "~/components/ProductTile";
+import { PieceLedger } from "~/components/Catalog";
 import { Section } from "~/components/Section";
 import { viewingFor } from "~/components/three/viewing/pieces";
 import { STORES, designBySlug, pieceByHandle, pieceRef, piecesForDesign, tierBySlug } from "~/lib/catalog/data";
@@ -99,8 +99,12 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const embed = product?.modelEmbed?.value ?? undefined;
   const model = royal ? undefined : (modelFor(handle) ?? (embed ? { embed } : undefined));
   const galleryModel = model && embed ? { ...model, embed } : model;
-  // Council variant (2026-10-12): ?viewing=light gives stone pieces "See it in the light" in place of the 3D turn.
-  const viewingSpec = new URLSearchParams(location.search).get("viewing") === "light" ? viewingFor(handle) : undefined;
+  // "See it in the light": the default on pieces with a stone, behind the first photograph (council 2026-10-13).
+  // Royal American is seen in the light on its own page, not here. The stone drawn is the selected version's carat.
+  const viewingSpec = royal ? undefined : viewingFor(handle);
+  const versionLabel = product?.selectedOrFirstAvailableVariant?.selectedOptions.find((o) => o.name === "Version")?.value ?? piece?.versions[0]?.name ?? "";
+  const caratMatch = /(\d+(?:\.\d+)?)\s*ct/.exec(versionLabel) ?? /(\d+(?:\.\d+)?)\s*ct/.exec(piece?.versions.find((v) => v.name === versionLabel)?.stones ?? "");
+  const carat = caratMatch ? Number(caratMatch[1]) : undefined;
 
   const buyColumn = product ? (
     <ProductProvider
@@ -137,14 +141,14 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 
       <Section className="pt-6 md:pt-8">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 lg:-ml-10">
             <PieceGallery
               photos={PIECE_PHOTOS[handle] ?? ["hero-box"]}
               title={title}
               model={galleryModel}
               metal={metalTone(metal)}
               open3d={open3d}
-              viewing={viewingSpec ? { spec: viewingSpec, metal } : undefined}
+              viewing={viewingSpec ? { spec: viewingSpec, metal, carat } : undefined}
             />
           </div>
 
@@ -169,7 +173,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 
       {piece && (
         <Section screen width="text">
-          <p className="h-display measure-display mx-auto text-center text-[2rem] md:text-[3rem] lg:text-[3.5rem]">
+          <p className="h-section measure-display text-[1.75rem] md:text-[2.5rem] lg:text-[3rem]">
             {madeOf(piece).map((part, i) => (
               <span key={i}>
                 {part.text}
@@ -222,7 +226,7 @@ function Details({ piece }: { piece: Piece }) {
       <div>
         <details className="acc border-b border-hair">
           <summary>{manMade ? "The stone and its report" : "The stones"}</summary>
-          <div className="font-text flex flex-col gap-3 pb-5 text-[0.9375rem] text-ink-2">
+          <div className="font-text flex flex-col gap-3 pb-6 text-[1rem] text-ink-2">
             {manMade ? (
               <>
                 <p>D to F color, VVS1 or VVS2, Ideal cut. Growth method and any post-growth treatment are printed on the IGI report. Not mined.</p>
@@ -244,8 +248,8 @@ function Details({ piece }: { piece: Piece }) {
         </details>
         <details className="acc border-b border-hair">
           <summary>Care and warranty</summary>
-          <p className="font-text pb-5 text-[0.9375rem] text-ink-2">
-            Cleaning and inspection at either store, at no charge, for life. Defects in materials and workmanship covered for the original owner. The center stone is insured separately. Terms on the{" "}
+          <p className="font-text pb-6 text-[1rem] text-ink-2">
+            Cleaning and inspection at either store, at no charge, for life. Defects in materials and workmanship covered for the original owner. The center stone is not covered; insure it separately. Terms on the{" "}
             <Link to="/policies#warranty" className="link-quiet">
               policies page
             </Link>
@@ -254,13 +258,13 @@ function Details({ piece }: { piece: Piece }) {
         </details>
         <details className="acc border-b border-hair">
           <summary>Delivery and returns</summary>
-          <p className="font-text pb-5 text-[0.9375rem] text-ink-2">
+          <p className="font-text pb-6 text-[1rem] text-ink-2">
             Insured, signature required, in the house box, or collected in either store. Ready-to-ship pieces may be returned within 30 days. Made-to-order, engraved and sized pieces are exchangeable once the design is approved.
           </p>
         </details>
         <details className="acc border-b border-hair">
           <summary>A question about this piece</summary>
-          <p className="font-text pb-5 text-[0.9375rem] text-ink-2">
+          <p className="font-text pb-6 text-[1rem] text-ink-2">
             Call Mt. Juliet at{" "}
             <a href={`tel:${salon.phone.replace(/\D/g, "")}`} className="link-quiet num">
               {salon.phone}
@@ -277,21 +281,22 @@ function Details({ piece }: { piece: Piece }) {
   );
 }
 
+/** The siblings in the design, as a ledger of names: one photograph per row, the price aligned. */
 function Siblings({ piece, designSlug, designName }: { piece: Piece; designSlug: string; designName: string }) {
   const siblings = piecesForDesign(piece.design).filter((p) => p.handle !== piece.handle).slice(0, 4);
   if (siblings.length === 0) return null;
   return (
     <Section className="pb-8">
-      <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
-        <h2 className="h-section text-[1.75rem] md:text-[2.25rem]">Complete the set</h2>
-        <Link to={`/designs/${designSlug}`} className="link">
-          The {designName} design
-        </Link>
-      </div>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:gap-x-10 lg:max-w-4xl">
-        {siblings.map((p) => (
-          <ProductTile key={p.handle} piece={p} showLine={false} />
-        ))}
+      <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-10">
+        <div className="flex flex-col gap-3 lg:col-span-4">
+          <h2 className="h-section text-[1.75rem] md:text-[2.25rem]">Complete the set</h2>
+          <Link to={`/designs/${designSlug}`} className="link self-start">
+            The {designName} design
+          </Link>
+        </div>
+        <div className="lg:col-span-8">
+          <PieceLedger pieces={siblings} />
+        </div>
       </div>
     </Section>
   );

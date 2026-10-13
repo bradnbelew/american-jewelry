@@ -7,9 +7,14 @@ export default [
   route("royal-american", "routes/line.tsx", { id: "line-royal" }),
   route("americana", "routes/line.tsx", { id: "line-americana" }),
   route("new-american", "routes/line.tsx", { id: "line-new" }),
+  route("jewelry", "routes/jewelry.tsx", { id: "jewelry" }),
+  route("jewelry/:category", "routes/jewelry.tsx", { id: "jewelry-category" }),
+  route("designs", "routes/designs.tsx"),
   route("designs/:slug", "routes/design.tsx"),
+  route("collections", "routes/collections.tsx"),
   route("collections/:slug", "routes/collection.tsx"),
   route("pieces/:handle", "routes/piece.tsx"),
+  route("search", "routes/search.tsx"),
 
   // The builder
   route("build/ring", "routes/build-ring.tsx"),

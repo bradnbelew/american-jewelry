@@ -1,6 +1,6 @@
 // Open Graph cards, generated at build time (Oxygen cannot run resvg).
 // usage: node scripts/og.mjs [--force]   (from storefront/)
-// Writes public/og/<kind>/<slug>.jpg at 1200x630: paper ground, the name in Caslon, the photograph
+// Writes public/og/<kind>/<slug>.jpg at 1200x630: paper ground, the name in Source Serif, the photograph
 // at the right for pieces, designs, lines and stores; the wordmark alone for the house pages.
 import fs from "node:fs";
 import path from "node:path";
@@ -16,10 +16,9 @@ const { PHOTO, PIECE_PHOTOS, DESIGN_PHOTO, TIER_PHOTO } = await import("../app/l
 const { ARTICLES } = await import("../app/lib/journal.ts");
 
 const fontDir = (pkg) => path.dirname(require.resolve(`${pkg}/package.json`));
-const caslonDisplay = fs.readFileSync(path.join(fontDir("@fontsource/libre-caslon-display"), "files/libre-caslon-display-latin-400-normal.woff"));
-const caslonText = fs.readFileSync(path.join(fontDir("@fontsource/libre-caslon-text"), "files/libre-caslon-text-latin-400-normal.woff"));
+const serif = fs.readFileSync(path.join(fontDir("@fontsource/source-serif-4"), "files/source-serif-4-latin-400-normal.woff"));
 
-const PAPER = "#F5F2EC", INK = "#121212", INK2 = "#3F3F3F", MUTED = "#63676E";
+const PAPER = "#F6F5F2", INK = "#121212", INK2 = "#3F3F3F", MUTED = "#63676E";
 const out = path.resolve("public/og");
 
 async function photoDataUri(key) {
@@ -37,15 +36,15 @@ function card({ label, title, line, photo }) {
   const left = h(
     "div",
     { style: { display: "flex", flexDirection: "column", justifyContent: "space-between", width: photo ? 600 : 1200, height: 630, padding: "56px 64px", background: PAPER, color: INK } },
-    h("div", { style: { display: "flex", fontFamily: "Caslon Display", fontSize: 22, letterSpacing: "0.26em", textTransform: "uppercase" } }, "American Jewelry"),
+    h("div", { style: { display: "flex", fontFamily: "Serif", fontSize: 22, letterSpacing: "0.26em", textTransform: "uppercase" } }, "American Jewelry"),
     h(
       "div",
       { style: { display: "flex", flexDirection: "column", gap: 18 } },
-      label ? h("div", { style: { display: "flex", fontFamily: "Caslon Text", fontSize: 22, color: MUTED } }, label) : null,
-      h("div", { style: { display: "flex", fontFamily: "Caslon Display", fontSize: title.length > 26 ? 56 : 68, lineHeight: 1.02, letterSpacing: "-0.01em" } }, title),
-      line ? h("div", { style: { display: "flex", fontFamily: "Caslon Text", fontSize: 24, color: INK2, lineHeight: 1.4 } }, line) : null,
+      label ? h("div", { style: { display: "flex", fontFamily: "Serif", fontSize: 22, color: MUTED } }, label) : null,
+      h("div", { style: { display: "flex", fontFamily: "Serif", fontSize: title.length > 26 ? 56 : 68, lineHeight: 1.02, letterSpacing: "-0.01em" } }, title),
+      line ? h("div", { style: { display: "flex", fontFamily: "Serif", fontSize: 24, color: INK2, lineHeight: 1.4 } }, line) : null,
     ),
-    h("div", { style: { display: "flex", fontFamily: "Caslon Text", fontSize: 18, color: MUTED } }, "Brentwood and Mt. Juliet, Tennessee"),
+    h("div", { style: { display: "flex", fontFamily: "Serif", fontSize: 18, color: MUTED } }, "Brentwood and Mt. Juliet, Tennessee"),
   );
   const right = photo ? h("img", { src: photo, width: 600, height: 630, style: { objectFit: "cover", width: 600, height: 630 } }) : null;
   return h("div", { style: { display: "flex", width: 1200, height: 630, background: PAPER } }, left, right);
@@ -57,8 +56,7 @@ async function render(file, props) {
     width: 1200,
     height: 630,
     fonts: [
-      { name: "Caslon Display", data: caslonDisplay, weight: 400, style: "normal" },
-      { name: "Caslon Text", data: caslonText, weight: 400, style: "normal" },
+      { name: "Serif", data: serif, weight: 400, style: "normal" },
     ],
   });
   const png = new Resvg(svg, { fitTo: { mode: "width", value: 1200 } }).render().asPng();

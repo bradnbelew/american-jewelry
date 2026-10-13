@@ -1,40 +1,40 @@
 # Visual identity
 
 Purpose: type, palette tokens, photography, motion, layout principles, the AI-tell lint list, and the logo's status. Tokens are the real ones in `storefront/app/house.css`.
-Last updated: 2026-10-11
+Last updated: 2026-10-13
 Sources: storefront/app/house.css; REMAKE-BLUEPRINT §2; HANDOFF remake section and rules 6, 8, 9; research/08 §1d-§1e, §3, §6; research/10 (AI-tell list); research/11 §3-§5; docs/brand-playbook.html part two.
 
-## Type (Decided, Typeface A; family may still choose B Fraunces or C Adobe Caslon)
+## Type (Decided 2026-10-13: Source Serif 4 and Public Sans; Libre Caslon retired, owner: "too scripty")
 
 | Role | Token / class | Spec in house.css |
 |---|---|---|
-| Names, headlines | `--font-display` Libre Caslon Display 400; `.h-display` | line-height 0.98, tracking -0.01em, balance |
-| Section heads | `.h-section` | line-height 1.05, tracking -0.005em |
+| Names, headlines | `--font-display` Source Serif 4 Variable 400 (optical size follows the font size); `.h-display` | line-height 0.98, tracking -0.015em, balance, lining figures |
+| Section heads | `.h-section` | line-height 1.05, tracking -0.01em |
 | Item heads | `.h-item` | line-height 1.15 |
-| The letter, journal, product sentence | `--font-text` Libre Caslon Text; `.letter` 19px/1.55, max 62ch; `.lede` 18px/1.55 ink-2 | |
+| The letter, journal, product sentence | `--font-text` Source Serif 4 Variable (the same file at text sizes); `.letter` 19px/1.55, max 62ch; `.lede` 18px/1.55 ink-2 | lining figures |
 | UI, numbers, controls | `--font-sans` Public Sans Variable; body 15px/1.6 | |
 | Labels | `.label` 13px Public Sans 400, muted, **sentence case** | |
 | Caps (nav and buttons only) | `.caps` 11px 500 tracking 0.08em; `.caps-sm` 10px | |
-| Numerals | `.num` tabular; `.gold-numeral` Caslon Display in gold at 24px, never smaller | |
+| Numerals | `.num` lining tabular; `.gold-numeral` the serif in gold at 24px, never smaller | |
 | Measures | `.measure` 62ch; `.measure-display` 34ch | |
 
-Rules: no bold in display; no third family; one italic word per heading at most (research/11, Proposed); headings sentence case.
+Rules: no bold in display; no third family; no italics (the italic files are not loaded); headings sentence case. One serif file is preloaded; Public Sans arrives through the stylesheet.
 
 ## Palette (Decided; house.css `:root`)
 
 | Token | Hex | Use |
 |---|---|---|
-| `--paper` | #F5F2EC | page ground |
-| `--bone` | #ECE7DD | frames behind photographs, registry rows |
-| `--white` | #FFFFFF | product photography ground and control fills only |
+| `--paper` | #F6F5F2 | page ground, and the ground behind every photograph and render (2026-10-13; the less yellow paper, R minus B = 4) |
+| `--white` | #FFFFFF | control fills only |
 | `--ink` | #121212 | all type |
 | `--ink-2` | #3F3F3F | secondary type, lede |
 | `--muted` | #63676E | tertiary type, labels; the lightest text allowed (4.9:1 on paper) |
 | `--hair` | #DDD8CF | 1px rules inside tables and lists; control borders |
 | `--navy` | #16213A | Royal American ground and the bag only; `.velvet` |
 | `--navy-2` | #1F2D4D | photo frames on navy |
-| `--gold` | #B08D57 | hairlines, registry numerals, focus ring; type only at 24px and up (2.7:1), never body text or a fill |
-| `--stone` | #E9E7E2 | 3D canvas and gallery ground |
+| `--gold` | #B08D57 | hairlines, registry numerals, focus ring; type only at 24px and up (2.8:1 on paper, 5.2:1 on navy), never body text or a fill |
+
+Retired 2026-10-13: `--bone` #ECE7DD and `--stone` #E9E7E2 (near-miss edges against the paper were the "boxes"). A photograph sits on exactly the page ground (`.float` multiplies a white packshot onto the paper), bleeds to the page edge, or sits on navy (`.dissolve` fades a velvet photograph into the band). Each line's color is its photographic ground: navy velvet, deep green leather, pale limestone.
 
 No other hue anywhere. Photography carries the color. `::selection` is navy on paper.
 
@@ -47,10 +47,12 @@ No other hue anywhere. Photography carries the color. `::selection` is navy on p
 - One subject per screen on home, line, design and house pages. Words beside the subject, never on top of a product.
 - `.wrap` max 96rem, side padding clamp(1rem, 4vw, 3.5rem). `.screen` padding `--section-y`: 12vh desktop, 8vh under 768px. (research/08 proposed 20vh/12vh; the code tightened it on 2026-10-10, git 3b75a26.)
 - Asymmetric splits 7/5 or 8/4, image bleeding to one edge. Pacing alternates image-left, image-right, full-bleed, text-only; never the same twice in a row.
-- No bordered-card grammar, no chips, no icon rows, no value-prop trios, no 8-up grids (at most one row of three, once, on line pages), no carousels, no hover image swap.
+- No bordered-card grammar, no chips, no icon rows, no value-prop trios, no equal tile rows (a line's pieces are a ledger; the index is three across with the middle column set lower), no carousels, no hover image swap.
+- No two screens of a page share a composition: opener, plate, beside, line, ledger, velvet, viewing (`site/22-art-direction.md` §5).
 - Hairlines only inside tables and lists.
 - Text over photography only with `.on-photo` plus a real overlay (`.photo-overlay`) and a contrast check.
-- Footer: sitemap in small Caslon, two addresses, legal line.
+- Footer: sitemap in the small serif, two addresses, legal line.
+- Navigation (2026-10-13): one row of eight names (Jewelry, Bridal, Royal American, Americana, New American, Services, Stores, The House), each a full-width paper panel of plain links in columns (by kind, by design, collections, the registry, services, the two addresses), one photograph at most, one sentence at most, never a promotion. Utility: Search, Appointment, Kept, Bag, Account. The phone menu is the same panels as accordions with a search field above. `app/lib/nav.ts` is the one source.
 - Centered quiet openers only on appointments, policies, natural-or-man-made and 404.
 
 ## Photography (Decided direction; shoot not done)
@@ -85,7 +87,7 @@ Fail the screen if any of these appear:
 7. Three cards with icons; pulsing pills; a thick colored card border; purple gradients; Inter.
 8. SVG ornaments, flourishes, dividers.
 9. Hover-distorted images, cursor followers, animated grain, depth of field or chromatic aberration above 0.01 in the canvas, bloom without a threshold.
-10. Rotating hero banners, autoplay wallpaper video, mega-menus with promo tiles.
+10. Rotating hero banners, autoplay wallpaper video, promo tiles inside a menu (depth in a menu is not the tell; the tiles are).
 11. Icon libraries (Lucide, Phosphor), Lottie mascots.
 12. Letter-spaced split headlines as decoration.
 

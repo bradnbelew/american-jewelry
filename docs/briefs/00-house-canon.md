@@ -1,7 +1,7 @@
 # American Jewelry: house canon
 
 Purpose: the one page every session loads. If a task touches American Jewelry copy, design, code or strategy, these rules apply.
-Last updated: 2026-10-11
+Last updated: 2026-10-13
 Sources: memory notes (family business, remake, Shopify), HANDOFF.md rules, docs/REMAKE-BLUEPRINT.md, house.css, research/04, 08, 10. Full detail in `docs/briefs/`.
 Precedence: newest dated family/user decision > REMAKE-BLUEPRINT > briefs > research > old HTML boards. Never resolve a conflict silently: log it in `docs/briefs/open-questions.md`.
 
@@ -40,7 +40,7 @@ A house, not a store: drawn by one designer, set and finished at our own bench, 
 
 ## Never do
 
-Discounts, sales, coupons, percent-off, "free" or percent banners, countdowns, urgency, popups, promo bars, financing banners, reviews on product pages, review counts anywhere but one dated line on store pages, carousels, For Her / For Him, value-prop trios, icon rows, bordered-card grammar, chips, badges, line drawings, decorative gradients, hover image swaps, 8-up grids, repeated intro blocks, stock or AI imagery, model faces who are not the family, text on photos without a real overlay, low-contrast text (muted #63676E is the lightest allowed), anything that shifts when clicked, scroll-jacking or pins longer than one viewport, chat bubbles, "Shop now". Never jared.com.
+Discounts, sales, coupons, percent-off, "free" or percent banners, countdowns, urgency, popups, promo bars, financing banners, reviews on product pages, review counts anywhere but one dated line on store pages, carousels, For Her / For Him, value-prop trios, icon rows, bordered-card grammar, chips, badges, line drawings, decorative gradients, hover image swaps, 8-up grids, equal tile rows, repeated intro blocks, promo tiles in a menu, stock or AI imagery (the private mockup may carry the owner's generated comps until the shoot, 2026-10-13; none ships live), model faces who are not the family, text on photos without a real overlay, low-contrast text (muted #63676E is the lightest allowed), anything that shifts when clicked, scroll-jacking or pins longer than one viewport, chat bubbles, "Shop now". Never jared.com.
 
 ## Voice in ten lines
 
@@ -57,9 +57,10 @@ Discounts, sales, coupons, percent-off, "free" or percent banners, countdowns, u
 
 ## Visual tokens (storefront/app/house.css)
 
-- Type: Libre Caslon Display (names, headlines), Libre Caslon Text (letter, journal, product sentence), Public Sans (UI, numbers, controls). `.label` is sentence case; caps (`.caps`, 11px, 0.08em) only on nav and buttons.
-- Palette: paper #F5F2EC, bone #ECE7DD, ink #121212, ink-2 #3F3F3F, muted #63676E, hair #DDD8CF, navy #16213A (Royal American and the bag only), gold #B08D57 (hairlines and numerals at 24px+ only), stone #E9E7E2 (3D ground), white only behind product photography. No other hue.
-- Layout: one subject per screen; asymmetric 7/5 or 8/4 splits; `--section-y` 12vh / 8vh; hairlines only in tables and lists; photography carries the color.
+- Type: Source Serif 4 (one variable file, optical sizes: names and headlines at the large end, the letter, journal and product sentence at the text end; lining figures), Public Sans (UI, numbers, controls). Libre Caslon retired 2026-10-13 (owner: "too scripty"). `.label` is sentence case; caps (`.caps`, 11px, 0.08em) only on nav and buttons. No italics.
+- Palette: paper #F6F5F2 (the neutral paper, 2026-10-13), ink #121212, ink-2 #3F3F3F, muted #63676E, hair #DDD8CF, navy #16213A (Royal American and the bag only), gold #B08D57 (hairlines and numerals at 24px+ only). Bone and stone are retired. Photographs sit on the page's own ground (a packshot on white floats with `.float`), bleed to the edge, or sit on navy: no near-miss edges, no tile. Each line's color lives in its photographic ground (navy velvet, deep green leather, pale limestone), never in CSS. White only in control fills.
+- Layout: one subject per screen; no two screens of a page share a composition (the screen types: opener, plate, beside, line, ledger, velvet, viewing; `site/22-art-direction.md`); asymmetric 7/5 or 8/4 splits; `--section-y` 12vh / 8vh; hairlines only in tables and lists; photography carries the color.
+- Navigation: one row of eight names, each opening a full-width panel of plain links by kind, design, line, collection, service and place, at most one photograph, never a promotion (2026-10-13). Search, Appointment, Kept, Bag, Account in the utility row. The phone menu carries the same depth.
 - Controls: fixed heights (`.btn` 48px, `.opt` 52px, `.field` 48px), 1px borders in every state, color and border change only; gold focus ring.
 - Motion: opacity plus 12px travel, sparingly (not every section); photos settle from 1.02; `--ease-house: cubic-bezier(0.2, 0, 0, 1)`; 300ms crossfade between pages; the ring is the only thing that moves more; full reduced-motion fallback.
 - AI-tell lint (research/10): no tracked caps eyebrows, no middle-dot meta strings, no "→" links, no 01/02/03 markers, no fade-up everywhere, no icon cards, no ornaments.

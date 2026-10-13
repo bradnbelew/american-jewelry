@@ -1,8 +1,23 @@
 # Photographs: what stands in, and what each slot must become
 
 Purpose: every image slot on the site that is not yet the house's own photograph of the thing it shows, with its current stand-in and the shot that replaces it (research/14 §5 shot list, §6 photographer brief).
-Last updated: 2026-10-11
-Rule: house photographs first (storefront/public/photos), then renders of the house's own cast files (storefront/public/3d), then iJewel embeds, then a license-clear comparable only if a slot is still empty. No other brand's imagery, no AI images, no model faces.
+Last updated: 2026-10-13
+Rule: house photographs first (storefront/public/photos), then renders of the house's own cast files (storefront/public/3d), then iJewel embeds, then a license-clear comparable only if a slot is still empty. No other brand's imagery, no model faces. **Exception, 2026-10-13, mockup only:** the owner allowed the generated comps (`comp-*` keys in `photos.ts`) on the private mockup; every one is listed below as "AI comp, replace before launch" and none may ship when `PUBLIC_SITE_LIVE` turns on (HANDOFF launch blocker).
+
+## AI comps in use (mockup only; replace before launch)
+
+| Key | File | Where it shows | The photograph that replaces it (refs/comps/PROMPTS.md) |
+|---|---|---|---|
+| `comp-home-hand`, `comp-home-hand-tall` | C01 | home opener (desk and phone), Americana beside | C01 home-hand: the family's hand on linen, Shooting Star ring |
+| `comp-americana-ground` | C05 | Americana opener, home design of the season, Shooting Star first frame, Jewelry and Americana panels | C05 americana-ground: the ring on green leather |
+| `comp-new-american-opener` | C06 | New American opener, Signal design plate, New American panel | C06 new-american-opener: Signal on limestone |
+| `comp-cumberland-velvet` | C03 | Royal American opener, home registry band, The Cumberland first frame, Royal American panel | C03 cumberland-velvet (the real No. 001 on its tray) |
+| `comp-signal-packshot` | C07 | Signal Solitaire first frame (contain, on the paper) | C07 signal-packshot-paper |
+| `comp-signal-hand` | C08 | Signal Solitaire second frame, New American plate, Bridal opener and panel | C08 signal-hand (the comp shows six prongs; Signal has four) |
+| `comp-the-box` | C13 | the bag's "What arrives" | C13 the-box |
+| `comp-bench-hands` | C14 | House opener, Services opener, Services and House panels | C14 bench-hands (or the real bench, which is photographed, never mocked) |
+
+Also to re-shoot: `ring-signal.webp` (the builder's render, now on the paper) stays a render until a Signal ring is photographed.
 
 ## Stand-ins in use (all the house's own photography from american.jewelry unless noted)
 
