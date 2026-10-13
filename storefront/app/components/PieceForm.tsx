@@ -122,7 +122,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
       {(piece?.sizes || piece?.engraving) && (
         <div className={`grid gap-4 ${piece?.sizes && piece?.engraving ? "grid-cols-[minmax(0,2fr)_minmax(0,3fr)]" : "grid-cols-1"}`}>
           {piece?.sizes && (
-            <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet">Help</Link>}>
+            <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet inline-flex min-h-11 items-center">Sizing help</Link>}>
               <select id={`size-${product.handle}`} className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
                 {piece.sizes.map((s) => (
                   <option key={s} value={s}>

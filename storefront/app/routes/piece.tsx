@@ -122,16 +122,16 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <Section className="pt-6 md:pt-8">
-        <nav className="label flex flex-wrap gap-x-2" aria-label="Breadcrumb">
+        <nav className="label flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
           {tier && (
-            <Link to={`/${tier.slug}`} className="hover:text-ink">
+            <Link to={`/${tier.slug}`} className="inline-flex min-h-11 items-center hover:text-ink">
               {tier.name}
             </Link>
           )}
           {design && (
             <>
               <span aria-hidden>/</span>
-              <Link to={`/designs/${design.slug}`} className="hover:text-ink">
+              <Link to={`/designs/${design.slug}`} className="inline-flex min-h-11 items-center hover:text-ink">
                 {design.name}
               </Link>
             </>
@@ -249,7 +249,7 @@ function Details({ piece }: { piece: Piece }) {
         <details className="acc border-b border-hair">
           <summary>Care and warranty</summary>
           <p className="font-text pb-6 text-[1rem] text-ink-2">
-            Cleaning and inspection at either store, at no charge, for life. Defects in materials and workmanship covered for the original owner. The center stone is not covered; insure it separately. Terms on the{" "}
+            Cleaning and inspection at either store, at no charge, for life. Defects in materials and workmanship covered for the life of the piece. The center stone is not covered; insure it separately. Terms on the{" "}
             <Link to="/policies#warranty" className="link-quiet">
               policies page
             </Link>

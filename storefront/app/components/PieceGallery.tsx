@@ -68,11 +68,14 @@ export function PieceGallery({
       )}
       {rest.length > 1 && (
         <div className="grid grid-cols-2 gap-4 md:gap-6">
-          {rest.slice(1).map((k) => (
-            <div key={k} className="relative aspect-[4/5] overflow-hidden">
-              <Pic k={k} sizes="(min-width: 1024px) 27vw, 50vw" />
-            </div>
-          ))}
+          {rest.slice(1).map((k, i, all) => {
+            const alone = all.length % 2 === 1 && i === all.length - 1;
+            return (
+              <div key={k} className={`relative overflow-hidden ${alone ? "col-span-2 aspect-[4/5] md:aspect-[4/3]" : "aspect-[4/5]"}`}>
+                <Pic k={k} sizes={alone ? "(min-width: 1024px) 55vw, 100vw" : "(min-width: 1024px) 27vw, 50vw"} />
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

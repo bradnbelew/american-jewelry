@@ -54,7 +54,7 @@ export function Footer({ year }: { year: number }) {
                 <br />
                 {s.city}, {s.state} {s.zip}
                 <br />
-                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="num hover:text-ink">
+                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="num inline-flex min-h-11 items-center hover:text-ink">
                   {s.phone}
                 </a>
               </address>
@@ -81,7 +81,7 @@ function Col({ title, links, className = "" }: { title: string; links: [string, 
     <div className={`flex flex-col ${className}`}>
       <span className="label mb-2">{title}</span>
       {links.map(([href, label]) => (
-        <Link key={href} to={href} className="font-text inline-flex min-h-10 items-center self-start text-[0.9375rem] text-ink hover:text-muted">
+        <Link key={href} to={href} className="font-text inline-flex min-h-11 items-center self-start text-[0.9375rem] text-ink hover:text-muted">
           {label}
         </Link>
       ))}

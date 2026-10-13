@@ -217,7 +217,7 @@ export function ViewingRoom({
         </p>
         <button
           type="button"
-          className="link link-light pointer-events-auto"
+          className="link link-light pointer-events-auto min-w-11 justify-center"
           onClick={onClose}
         >
           Close
@@ -225,7 +225,7 @@ export function ViewingRoom({
       </div>
       <div className="wrap pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-4 pb-8 md:flex-row md:items-end md:justify-between md:pb-10">
         <div
-          className={`flex max-w-[34ch] flex-col gap-2 transition-opacity duration-500 ${closer && spec.grade ? "opacity-100" : "opacity-0"}`}
+          className={`flex max-w-[40ch] flex-col gap-2 transition-opacity duration-500 ${closer && spec.grade ? "opacity-100" : "opacity-0"}`}
           aria-live="polite"
         >
           <p className="font-text text-[1.125rem] text-paper">{closer ? spec.grade : ""}</p>

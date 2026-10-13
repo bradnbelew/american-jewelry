@@ -63,7 +63,7 @@ function Opener() {
     <Section className="pt-12 pb-10 md:pt-20 md:pb-14">
       <div className="flex max-w-3xl flex-col gap-5">
         <h1 className="h-display text-[3rem] md:text-[4.5rem]">Build a ring</h1>
-        <p className="lede measure">Three settings we drew. The stone, the metal and the fit are yours. The rest is decided the way we would decide it.</p>
+        <p className="lede measure">The stone, the metal and the fit are yours. The rest is decided the way we would decide it.</p>
       </div>
     </Section>
   );
