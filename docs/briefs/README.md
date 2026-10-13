@@ -8,7 +8,7 @@ Sources: HANDOFF.md, docs/REMAKE-BLUEPRINT.md, docs/*.html, research/01 to 11, t
 
 1. `00-house-canon.md` loads in every session through the root `CLAUDE.md`. If you read nothing else, it keeps you inside the rules.
 2. For copy: `company/04-voice-and-lexicon.md`, then `company/06-claims-and-compliance.md`.
-3. For design or code: `company/05-visual-identity.md`, `site/20-site-plan.md`, then the page brief in `site/pages/`.
+3. For design or code: `company/05-visual-identity.md`, `site/22-art-direction.md`, `site/20-site-plan.md`, then the page brief in `site/pages/`.
 4. For strategy: `company/02-ideals.md`, `marketing/10-positioning.md`, `marketing/11-marketing-plan.md`.
 5. Before claiming any fact about the business: `company/01-who-we-are.md` and `open-questions.md`.
 
@@ -28,6 +28,7 @@ marketing/11-marketing-plan.md  channels and their jobs (all Proposed)
 marketing/12-launch-plan.md  sequence to cutover; what the family supplies
 site/20-site-plan.md         stack, routes, phases, current state
 site/21-section-brief-template.md  the template for any screen
+site/22-art-direction.md     color pairs, where images go, the screen types, page recipes (Proposed 2026-10-13)
 site/pages/*.md              one brief per page
 refs/README.md               how to store reference screenshots
 decisions.md                 dated decision log

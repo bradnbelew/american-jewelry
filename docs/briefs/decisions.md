@@ -89,3 +89,8 @@ Format: date | decision | why | source
 - 2026-10-12 | "Build a ring" on the home shows the Signal render captioned as the builder's drawing, not a photograph of another ring | honesty of images (council I6) | home rework
 - 2026-10-12 | The home carries only the letter's last paragraph and links to the whole letter on /house | home budget 110-150 words (open-questions C39) | home rework
 - 2026-10-12 | Owner direction: the site "feels like a Shopify store: boxes, cream colors"; explore a dark "viewing room" system instead (each line a lined room with one light, one piece at a time, tilt or pointer moves the light, paper only as a card). Prototype only in `mockups/viewing/`; canon tokens and the storefront are unchanged until the owner chooses | owner, chat 2026-10-12; research/17 §1 (withholding, light, the object as protagonist) | viewing prototype
+- 2026-10-13 | The viewing: none on the home (council ruling (a)); "See it in the light" on product pages with a stone once the room's 44px Blocker and Shoulds clear; the live registry viewing moves to the Royal American line page | council verdicts 2026-10-13 (viewing-placement) | council
+- 2026-10-13 | Owner: "make the main font for all the text better too. its too scripty". Libre Caslon Text is retired for running text; the replacement is chosen in the finishing session and recorded here | owner, chat | finishing session
+- 2026-10-13 | Owner hands the open decisions to the finishing session ("use its recommendations for anything left undone or undecided"), within the canon and /house | owner, chat | finishing session
+- 2026-10-13 | Generated comps (docs/briefs/refs/comps) guide layout and the shoot only; they are not deployed (canon: no AI imagery; council I8) | canon | comps
+

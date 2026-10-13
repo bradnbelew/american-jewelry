@@ -8,3 +8,6 @@ docs/_*.svg
 research/shots/houses/
 research/shots/pass3/
 site/*.png
+
+# layout comps (mock images), never committed or deployed
+storefront/public/comps/

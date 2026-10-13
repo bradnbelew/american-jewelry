@@ -595,8 +595,8 @@ details.acc[open] > summary::after {
 
 /* A viewing frame inside a section dissolves into the lining around it: no edge, no box */
 .viewing-fade {
-  -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 52%, #000 58%, transparent 100%);
-  mask-image: radial-gradient(ellipse 72% 68% at 50% 52%, #000 58%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
 }
 
 /* The overlay under the words at the foot of the viewing room (the photo-overlay rule, for a render) */
