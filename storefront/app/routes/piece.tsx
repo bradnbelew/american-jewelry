@@ -7,6 +7,7 @@ import { PieceForm } from "~/components/PieceForm";
 import { PieceGallery } from "~/components/PieceGallery";
 import { ProductTile } from "~/components/ProductTile";
 import { Section } from "~/components/Section";
+import { viewingFor } from "~/components/three/viewing/pieces";
 import { STORES, designBySlug, pieceByHandle, pieceRef, piecesForDesign, tierBySlug } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Metal, Piece } from "~/lib/catalog/types";
@@ -98,6 +99,8 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const embed = product?.modelEmbed?.value ?? undefined;
   const model = royal ? undefined : (modelFor(handle) ?? (embed ? { embed } : undefined));
   const galleryModel = model && embed ? { ...model, embed } : model;
+  // Council variant (2026-10-12): ?viewing=light gives stone pieces "See it in the light" in place of the 3D turn.
+  const viewingSpec = new URLSearchParams(location.search).get("viewing") === "light" ? viewingFor(handle) : undefined;
 
   const buyColumn = product ? (
     <ProductProvider
@@ -135,7 +138,14 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
       <Section className="pt-6 md:pt-8">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <PieceGallery photos={PIECE_PHOTOS[handle] ?? ["hero-box"]} title={title} model={galleryModel} metal={metalTone(metal)} open3d={open3d} />
+            <PieceGallery
+              photos={PIECE_PHOTOS[handle] ?? ["hero-box"]}
+              title={title}
+              model={galleryModel}
+              metal={metalTone(metal)}
+              open3d={open3d}
+              viewing={viewingSpec ? { spec: viewingSpec, metal } : undefined}
+            />
           </div>
 
           <div className="flex flex-col gap-8 lg:sticky lg:top-32 lg:col-span-5">
@@ -215,7 +225,7 @@ function Details({ piece }: { piece: Piece }) {
           <div className="font-text flex flex-col gap-3 pb-5 text-[0.9375rem] text-ink-2">
             {manMade ? (
               <>
-                <p>D to F color, VVS1 or VVS2, Ideal cut, grown by chemical vapor deposition and sold as grown. Not mined.</p>
+                <p>D to F color, VVS1 or VVS2, Ideal cut. Growth method and any post-growth treatment are printed on the IGI report. Not mined.</p>
                 <p>
                   Stones from 0.30 ct carry an IGI report, laser inscribed on the girdle, verifiable at{" "}
                   <a href="https://www.igi.org/verify-your-report/" className="link-quiet" target="_blank" rel="noreferrer">

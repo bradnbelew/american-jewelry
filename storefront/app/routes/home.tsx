@@ -1,6 +1,8 @@
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 import { Pic } from "~/components/Pic";
+import { VIEWING } from "~/components/three/viewing/pieces";
+import { ViewingFrame } from "~/components/three/viewing/Viewing";
 import { PhotoOpener, Section } from "~/components/Section";
 import { PIECES, STORES, TIERS, designBySlug } from "~/lib/catalog/data";
 import { LETTER, LETTER_SIGNATURE } from "~/lib/catalog/letter";
@@ -24,15 +26,36 @@ export const meta: Route.MetaFunction = () =>
 export default function Home() {
   const featured = designBySlug("shooting-star")!;
   const registry = PIECES.filter((p) => p.oneOfOne);
+  // Variants for the council (2026-10-12): where "the viewing" belongs on the home, if anywhere.
+  // none (default): no live 3D on the home. ?viewing=registry: the registry on velvet becomes the viewing.
+  // ?viewing=hero: the viewing replaces the hand as the first screen.
+  const [params] = useSearchParams();
+  const variant = params.get("viewing");
+  const cumberland = VIEWING["no-001-the-cumberland"];
 
   return (
     <>
       {/* 1. The hand: the family's own daylight frame. */}
-      <PhotoOpener photo="hero-hand" position="70% 40%" eyebrow="Brentwood and Mt. Juliet, Tennessee" title="An American house of fine jewelry.">
-        <Link to="/americana" className="btn btn-light mt-1">
-          The designs
-        </Link>
-      </PhotoOpener>
+      {variant === "hero" ? (
+        <section className="photo-overlay relative h-[100svh] max-h-[1000px] min-h-[560px] overflow-hidden bg-navy md:h-[86vh]">
+          <ViewingFrame spec={cumberland} poster="/3d/posters/viewing-hero.webp" posterTall="/3d/posters/viewing-hero-tall.webp" alt="The Cumberland, Royal American No. 001, on navy velvet under one light" offset={0.17} lift={0.55} eager fill />
+          <div className="absolute inset-x-0 bottom-0 z-10">
+            <div className="on-photo mx-auto flex max-w-[96rem] flex-col items-start gap-5 px-4 pb-12 text-paper md:px-10 md:pb-20">
+              <span className="label !text-paper">Brentwood and Mt. Juliet, Tennessee</span>
+              <h1 className="h-display measure-display text-[2.75rem] md:text-[4.5rem] lg:text-[5.5rem]">An American house of fine jewelry.</h1>
+              <Link to="/americana" className="btn btn-light mt-1">
+                The designs
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <PhotoOpener photo="hero-hand" position="70% 40%" eyebrow="Brentwood and Mt. Juliet, Tennessee" title="An American house of fine jewelry.">
+          <Link to="/americana" className="btn btn-light mt-1">
+            The designs
+          </Link>
+        </PhotoOpener>
+      )}
 
       {/* 2. The names, set as type. Never counted. */}
       <Section screen>
@@ -72,6 +95,39 @@ export default function Home() {
       </Section>
 
       {/* 4. The registry: Royal American by number, on the velvet it owns. */}
+      {variant === "registry" ? (
+        <section className="velvet">
+          <div className="wrap screen grid gap-8 lg:grid-cols-12 lg:gap-x-16 lg:gap-y-10">
+            <div className="flex flex-col gap-5 lg:col-span-5 lg:self-end">
+              <span className="label">Royal American</span>
+              <h2 className="h-section text-[2.25rem] md:text-[3rem]">The registry</h2>
+              <p className="lede">Each piece is made once, given a number and named for a place in Tennessee.</p>
+            </div>
+            <ViewingFrame
+              spec={cumberland}
+              poster="/3d/posters/viewing-cumberland.webp"
+              posterTall="/3d/posters/viewing-cumberland-tall.webp"
+              alt="The Cumberland, Royal American No. 001, on navy velvet under one light"
+              className="aspect-[4/5] md:aspect-[5/4] lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1"
+            />
+            <div className="flex flex-col gap-6 lg:col-span-5">
+              <ol>
+                {registry.map((p) => (
+                  <li key={p.handle} className="border-b border-paper/20 first:border-t">
+                    <Link to={`/pieces/${p.handle}`} className="group grid grid-cols-[6.5rem_1fr] items-baseline gap-x-6 py-5">
+                      <span className="gold-numeral whitespace-nowrap" style={{ fontSize: "1.5rem" }}>No. {p.oneOfOne?.number}</span>
+                      <span className="h-section text-[1.5rem] group-hover:text-paper/70">{p.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+              <Link to="/royal-american" className="link link-light self-start">
+                Every piece in the registry
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : (
       <section className="velvet">
         <div className="wrap screen grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="flex flex-col gap-5 lg:col-span-4">
@@ -94,6 +150,7 @@ export default function Home() {
           </ol>
         </div>
       </section>
+      )}
 
       {/* 5. Build a ring: the Signal ring as the builder draws it, on the stone ground. */}
       <Section screen>

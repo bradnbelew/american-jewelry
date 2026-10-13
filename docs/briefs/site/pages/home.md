@@ -122,3 +122,32 @@ TAKE: TODO    LEAVE: map embeds on home; review stars
 DON'T: review count on home (research/08 §1d.4)
 DONE WHEN: both addresses visible together at 1440x900
 ```
+
+```
+SECTION: Home, the registry in the light (Proposed 2026-10-12; council variant /?viewing=registry)
+JOB: Show one Royal American piece the way the salon shows it: alone, on navy velvet, under one light
+ONE SUBJECT: The Cumberland in the light    NEXT ACTION: "Every piece in the registry"
+SKETCH: owner direction 2026-10-12 ("a hair more regular, not an abstract website"); prototype in mockups/viewing
+LAYOUT: >=1024 label, title and sentence 5 cols left over the registry list, the viewing 7 cols right at 5:4 | <768 title, the viewing at 4:5, the list, the link
+CONTENT: "Royal American" / "The registry" / "Each piece is made once, given a number and named for a place in Tennessee." / No. 001 to 003 / "Every piece in the registry" (all existing words; nothing added)
+TYPE: .label; .h-section 36px / 48px; .lede; .gold-numeral 24px; names .h-section 24px
+SPACING: section .screen on .velvet; list rows py 20px
+CONTROLS: "Tilt to see the fire" (.btn-light) on touch screens only, after the light is up
+MOTION: the light comes up once (1.6 s) when the frame first opens; the pointer or the phone's tilt moves the light and turns the ring a few degrees; nothing else moves; reduced motion shows the poster
+STATES: poster in the server HTML; the room draws only while on screen; no WebGL = the poster
+TAKE: mockups/viewing (the light, the velvet, the fire)    LEAVE: full-page dark rooms, one-piece-at-a-time browsing on the home
+DON'T: a price; a second piece; text over the render
+DONE WHEN: the poster is the first paint of the section; no layout shift when the room takes over; council APPROVED
+```
+
+```
+SECTION: Home, hero as the viewing (Proposed 2026-10-12; council variant /?viewing=hero, for comparison)
+JOB: Open the home on the viewing instead of the hand
+ONE SUBJECT: The Cumberland in the light    NEXT ACTION: "The designs"
+LAYOUT: as the hero above, the photograph replaced by the viewing (ring right of the words on desktop, raised above them on phone)
+CONTENT: unchanged hero words
+MOTION: as the registry in the light; the poster is the LCP
+DON'T: anything the hero brief forbids
+DONE WHEN: council ruling recorded against council P14 (3D never the hero) and I3 (the photograph owns the home's first viewport)
+```
+

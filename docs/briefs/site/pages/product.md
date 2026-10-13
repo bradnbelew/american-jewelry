@@ -71,3 +71,19 @@ TAKE: VCA's sibling row (research/06)    LEAVE: "You may also like"
 DON'T: cross-line recommendations that cascade a design down a line
 DONE WHEN: hidden cleanly when empty
 ```
+
+```
+SECTION: Product page, "See it in the light" (Proposed 2026-10-12; council variant ?viewing=light on pieces with a stone)
+JOB: Let a stone be seen the way it is seen at the counter: dark room, one light, the light in the visitor's hand
+ONE SUBJECT: the stone    NEXT ACTION: back to the page ("Close")
+LAYOUT: the first photograph stays the first frame; "See it in the light" (.btn-light) bottom left of it replaces "Turn it in 3D" on pieces with a stone | the room opens over the page as a full-screen dialog on ink: the piece centered, title top left, "Close" top right, "Look closer" and (touch only) "Tilt to see the fire" bottom right, the grade bottom left when looking closer
+CONTENT: "{title}, in the light"; "Close"; "Look closer" / "Step back"; the grade line from the stone standard (no new claims)
+TYPE: title Caslon Text 17px paper; links .link-light; grade Caslon Text 18px italic paper
+CONTROLS: native dialog (Escape closes, focus returns); links 44px
+MOTION: the light comes up once; the camera moves in on "Look closer"; reduced motion = no room (the photograph stays)
+STATES: "Bringing out the piece" until the first frame; no WebGL = a sentence that says so; the chosen metal carries into the room
+TAKE: mockups/viewing    LEAVE: the dark room as the page itself
+DON'T: put the price or the action inside the room; open it automatically
+DONE WHEN: gallery and buy column unchanged in the first viewport; council APPROVED
+```
+

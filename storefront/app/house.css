@@ -306,6 +306,7 @@ h3 {
   height: 3rem;
   padding: 0 0.9rem;
   border: 1px solid var(--hair);
+  border-radius: 0;
   background: var(--white);
   color: var(--ink);
   font-size: 1rem;
@@ -578,4 +579,27 @@ details.acc[open] > summary::after {
 .registry th:last-child,
 .registry td:last-child {
   padding-right: 0;
+}
+
+/* The phone and tablet buy bar must not cover the footer's last lines */
+@media (max-width: 1023px) {
+  body:has(.buy-bar) footer {
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* "See it in the light": the viewing room over the product page */
+.viewing-room::backdrop {
+  background: var(--ink);
+}
+
+/* A viewing frame inside a section dissolves into the lining around it: no edge, no box */
+.viewing-fade {
+  -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 52%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 68% at 50% 52%, #000 58%, transparent 100%);
+}
+
+/* The overlay under the words at the foot of the viewing room (the photo-overlay rule, for a render) */
+.viewing-foot {
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.88) 0%, rgba(18, 18, 18, 0.6) 45%, rgba(18, 18, 18, 0) 100%);
 }

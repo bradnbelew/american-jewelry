@@ -76,12 +76,12 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
                 const content: ReactNode = isMetal ? (
                   <>
                     <span className="swatch-dot" style={{ background: metalKey ? METAL_SWATCH[metalKey] : "#ccc" }} />
-                    <span className="label absolute -bottom-5 left-1/2 w-max -translate-x-1/2 text-[0.6875rem]">{value.name.replace(" gold", "")}</span>
+                    <span className="label absolute -bottom-5 left-1/2 w-max -translate-x-1/2 text-[0.8125rem]">{value.name.replace(" gold", "")}</span>
                   </>
                 ) : (
                   <>
                     <span>{value.name}</span>
-                    {!value.available ? <span className="label text-[0.6875rem]">Sold out</span> : null}
+                    {!value.available ? <span className="label text-[0.8125rem]">Sold out</span> : null}
                   </>
                 );
                 if (!value.exists) {
@@ -145,7 +145,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
         <input type="hidden" {...register("quantity", { value: 1 })} />
         {size ? <input type="hidden" {...register("attributeValue", { key: "Size", value: size })} /> : null}
         {engrave ? <input type="hidden" {...register("attributeValue", { key: "Engraving", value: engrave })} /> : null}
-        <button {...register("addToCart", {})} className="btn" disabled={!addable || pending} aria-busy={pending}>
+        <button {...register("addToCart", {})} id={`add-${product.handle}`} className="btn" disabled={!addable || pending} aria-busy={pending}>
           {selectedVariant ? (addable ? "Add to bag" : "Not available") : "Choose the version"}
         </button>
         {firstError ? (
@@ -161,6 +161,25 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
           <SaveButton item={{ id: product.handle, href: `/pieces/${product.handle}`, name: product.title, detail: versionValue ?? "", photo }} />
         </div>
       </form>
+
+      {/* Below 1024 the photograph fills the first screen, so the price and the action stay with it (council P1). */}
+      <div className="buy-bar fixed inset-x-0 bottom-0 z-30 border-t border-hair bg-paper lg:hidden">
+        <div className="wrap flex h-[4.5rem] items-center justify-between gap-4">
+          <span className="num text-[1.25rem] leading-none">{priceText}</span>
+          <button
+            type="button"
+            className="btn"
+            disabled={pending}
+            onClick={() => {
+              const real = document.getElementById(`add-${product.handle}`) as HTMLButtonElement | null;
+              if (real && !real.disabled) real.click();
+              else real?.closest("form")?.scrollIntoView({ behavior: "smooth", block: "center" });
+            }}
+          >
+            {addable && selectedVariant ? "Add to bag" : "Choose the version"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

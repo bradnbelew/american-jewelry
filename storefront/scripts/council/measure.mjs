@@ -341,9 +341,12 @@ async function measureUrl(url, { kind, slug, ref }) {
       const ctx = await browser.createBrowserContext();
       const page = await ctx.newPage();
       await page.setViewport({ width: w, height: h, deviceScaleFactor: 1 });
+      // MEASURE_REDUCED=1 measures the first paint of a page whose 3D starts in the first viewport:
+      // the viewing honours reduced motion and stays on its poster.
+      if (process.env.MEASURE_REDUCED) await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
       let status = null;
       try {
-        const res = await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
+        const res = await page.goto(url, { waitUntil: "networkidle2", timeout: Number(process.env.MEASURE_TIMEOUT ?? 60000) });
         status = res?.status() ?? null;
       } catch (e) {
         out.widths[w] = { error: String(e.message).slice(0, 120) };
