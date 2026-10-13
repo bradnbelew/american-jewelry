@@ -36,7 +36,7 @@ export const VIEWING: Record<string, ViewingSpec> = {
   },
   "signal-solitaire": {
     lining: "counter",
-    grade: "Man-made diamond (laboratory-grown), D to F color, VVS: inclusions very difficult to see at 10x. IGI.",
+    grade: "Man-made diamond (laboratory-grown), D to F, VVS, IGI report, as grown.",
     jewel: { kind: "ring", carat: 1.5, config: { setting: "signal", metal: "platinum", origin: "man-made", profile: "knife", width: 1.8 } },
   },
   "shooting-star-ring": {

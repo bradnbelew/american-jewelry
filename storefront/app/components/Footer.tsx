@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { STORES } from "~/lib/catalog/data";
 
 const HOUSE: [string, string][] = [
+  ["/jewelry", "Jewelry"],
   ["/royal-american", "Royal American"],
   ["/americana", "Americana"],
   ["/new-american", "New American"],
@@ -29,7 +30,7 @@ const LEGAL: [string, string][] = [
   ["/policies#accessibility", "Accessibility"],
 ];
 
-/** A sitemap in small Caslon, the two addresses, the legal line. Nothing promotional, no capture. */
+/** A sitemap in the small serif, the two addresses, the legal line. Nothing promotional, no capture. */
 export function Footer({ year }: { year: number }) {
   return (
     <footer className="mt-32 border-t border-hair">
