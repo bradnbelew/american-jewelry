@@ -5,7 +5,7 @@ import { PhotoOpener, Section } from "~/components/Section";
 import { CATEGORIES } from "~/lib/catalog/browse";
 import { PIECES, STORES, TIERS, designBySlug } from "~/lib/catalog/data";
 import { LETTER } from "~/lib/catalog/letter";
-import { DESIGN_PHOTO, TIER_PHOTO } from "~/lib/catalog/photos";
+import { DESIGN_PHOTO } from "~/lib/catalog/photos";
 import { pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/home";
@@ -45,10 +45,7 @@ export default function Home() {
             <li key={t.slug} className="border-b border-hair first:border-t">
               <Link to={`/${t.slug}`} viewTransition className="group relative grid items-center gap-x-8 gap-y-3 py-8 md:grid-cols-12 md:py-10">
                 <span className="h-display text-[2.5rem] group-hover:text-muted md:col-span-6 md:text-[3rem] lg:text-[4rem]">{t.name}</span>
-                <span className="font-text text-[1.0625rem] text-ink-2 md:col-span-4">{t.tagline}</span>
-                <span className="absolute right-0 top-1/2 hidden aspect-[4/3] w-[14vw] max-w-[13rem] -translate-y-1/2 overflow-hidden opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:block">
-                  <Pic k={TIER_PHOTO[t.slug]} sizes="16vw" />
-                </span>
+                <span className="lede md:col-span-5">{t.tagline}</span>
               </Link>
             </li>
           ))}
@@ -66,7 +63,7 @@ export default function Home() {
               <span className="label">The design of the season</span>
               <h2 className="h-display text-[2.5rem] group-hover:text-muted md:text-[3rem] lg:text-[4rem]">{featured.name}</h2>
             </div>
-            <div className="flex flex-col gap-5 md:col-span-5 md:col-start-8 md:self-end md:pb-3">
+            <div className="flex flex-col gap-6 md:col-span-5 md:col-start-8 md:self-end md:pb-3">
               <p className="lede">{featured.motif}</p>
               <span className="link self-start">The {featured.name} design</span>
             </div>
@@ -77,7 +74,7 @@ export default function Home() {
       {/* 4. Velvet: Royal American by number, on the velvet it owns, with the piece on its tray. */}
       <section className="velvet">
         <div className="wrap screen grid gap-10 lg:grid-cols-12 lg:gap-x-16 lg:gap-y-10">
-          <div className="flex flex-col gap-5 lg:col-span-5 lg:self-end">
+          <div className="flex flex-col gap-6 lg:col-span-5 lg:self-end">
             <span className="label">Royal American</span>
             <h2 className="h-section text-[2.25rem] md:text-[3rem]">The registry</h2>
             <p className="lede">Each piece is made once, given a number and named for a place in Tennessee.</p>
@@ -89,7 +86,7 @@ export default function Home() {
             <ol>
               {registry.map((p) => (
                 <li key={p.handle} className="border-b border-paper/20 first:border-t">
-                  <Link to={`/pieces/${p.handle}`} className="group grid grid-cols-[6.5rem_1fr] items-baseline gap-x-6 py-5">
+                  <Link to={`/pieces/${p.handle}`} className="group grid grid-cols-[6.5rem_1fr] items-baseline gap-x-6 py-6">
                     <span className="gold-numeral whitespace-nowrap">No. {p.oneOfOne?.number}</span>
                     <span className="h-section text-[1.5rem] group-hover:text-paper/70">{p.name}</span>
                   </Link>
@@ -107,11 +104,11 @@ export default function Home() {
       <Section screen>
         <div className="grid gap-8 md:grid-cols-12 md:gap-10">
           <h2 className="label md:col-span-3">The index</h2>
-          <nav aria-label="By kind" className="flex flex-wrap gap-x-12 gap-y-4 md:col-span-9">
+          <nav aria-label="By kind" className="flex flex-wrap gap-x-10 gap-y-4 md:col-span-9">
             {CATEGORIES.map((c) => {
               const n = PIECES.filter((p) => c.types.includes(p.pieceType)).length;
               return (
-                <Link key={c.slug} to={`/jewelry/${c.slug}`} viewTransition className="group inline-flex items-baseline gap-3">
+                <Link key={c.slug} to={`/jewelry/${c.slug}`} viewTransition className="group inline-flex min-h-11 items-baseline gap-3">
                   <span className="h-display text-[2.25rem] group-hover:text-muted md:text-[3rem]">{c.name}</span>
                   <span className="num label">{n}</span>
                 </Link>
@@ -127,15 +124,15 @@ export default function Home() {
       {/* 6. Beside: the Signal ring as the builder draws it, on the paper. */}
       <Section className="pb-[var(--section-y)]">
         <div className="grid items-start gap-10 md:grid-cols-12">
-          <figure className="md:col-span-7 md:-ml-10">
-            <div className="settle relative aspect-[4/3] overflow-hidden">
-              <img src="/3d/posters/ring-signal.webp" alt="The Signal solitaire as the ring builder draws it" width={1200} height={960} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+          <figure className="md:col-span-7">
+            <div className="settle relative aspect-[4/3] overflow-hidden md:-ml-10">
+              <img src="/3d/posters/ring-signal.webp" alt="The Signal solitaire as the ring builder draws it" width={1200} height={960} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-contain" />
             </div>
             <figcaption className="label mt-3">Signal, as the builder draws it.</figcaption>
           </figure>
-          <div className="flex flex-col gap-6 md:col-span-4 md:col-start-9">
+          <div className="flex flex-col gap-6 md:col-span-5 md:col-start-8">
             <h2 className="h-section text-[2.25rem] md:text-[3rem]">Build a ring.</h2>
-            <p className="lede">Three settings we drew. The stone, the metal and the fit are yours.</p>
+            <p className="lede">Three settings we drew. The rest is yours.</p>
             <Link to="/build/ring?setting=signal" className="btn self-start">
               Build on Signal
             </Link>

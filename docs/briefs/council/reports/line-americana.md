@@ -1,7 +1,7 @@
 # Measured: line-americana
 
 http://localhost:3030/americana  
-Measured 2026-10-13T06:23 against 14 reference pages (all band). Bands are the reference range: min, middle half (p25 to p75), max. "Edge" means inside the range but outside the middle half; "outside" means beyond every reference.
+Measured 2026-10-13T06:34 against 14 reference pages (all band). Bands are the reference range: min, middle half (p25 to p75), max. "Edge" means inside the range but outside the middle half; "outside" means beyond every reference.
 
 ## House rules (fixed numbers; a failure here is a Blocker)
 
@@ -63,15 +63,15 @@ Measured 2026-10-13T06:23 against 14 reference pages (all band). Bands are the r
 | Elements in the first viewport | 390 | 7 | 0 | 6 to 20.5 | 29 | inside |
 | Elements in the first viewport | 768 | 5 | 0 | 5.25 to 22.5 | 78 | edge |
 | Elements in the first viewport | 1440 | 4 | 0 | 7.75 to 20.75 | 27 | edge |
-| Image share of the first viewport | 390 | 0.58 | 0 | 0.63 to 1 | 1 | edge |
+| Image share of the first viewport | 390 | 0.62 | 0 | 0.63 to 1 | 1 | edge |
 | Image share of the first viewport | 768 | 0.78 | 0 | 0.43 to 1 | 1 | inside |
 | Image share of the first viewport | 1440 | 0.78 | 0 | 0.43 to 0.95 | 1 | inside |
 | Typical gap between blocks (px) | 390 | 32 | 14 | 20 to 31 | 60 | edge |
-| Typical gap between blocks (px) | 768 | 41 | 12 | 24 to 37 | 60 | edge |
-| Typical gap between blocks (px) | 1440 | 41 | 14 | 30 to 64 | 140 | inside |
+| Typical gap between blocks (px) | 768 | 49 | 12 | 24 to 37 | 60 | edge |
+| Typical gap between blocks (px) | 1440 | 49 | 14 | 30 to 64 | 140 | inside |
 | Section gap (share of viewport height) | 390 | 0.08 | 0.02 | 0.09 to 0.16 | 0.8 | edge |
 | Section gap (share of viewport height) | 768 | 0.12 | 0.01 | 0.08 to 0.17 | 0.68 | inside |
-| Section gap (share of viewport height) | 1440 | 0.15 | 0.07 | 0.11 to 0.25 | 0.77 | inside |
+| Section gap (share of viewport height) | 1440 | 0.16 | 0.07 | 0.11 to 0.25 | 0.77 | inside |
 | Distinct left edges (alignment axes) | 390 | 3 | 1 | 7.5 to 22.5 | 80 | edge |
 | Distinct left edges (alignment axes) | 768 | 5 | 1 | 8 to 29.25 | 74 | edge |
 | Distinct left edges (alignment axes) | 1440 | 7 | 1 | 8.5 to 29.25 | 84 | edge |
@@ -97,26 +97,26 @@ Measured 2026-10-13T06:23 against 14 reference pages (all band). Bands are the r
 | Controls under 44px tall | 768 | 0 | 0 | 0 to 2.75 | 12 | inside |
 | Controls under 44px tall | 1440 | 0 | 0 | 1 to 2.75 | 12 | edge |
 | Visible header links | 390 | 3 | 0 | 1 to 3.75 | 4 | inside |
-| Visible header links | 768 | 6 | 0 | 1 to 4 | 14 | edge |
+| Visible header links | 768 | 4 | 0 | 1 to 4 | 14 | inside |
 | Visible header links | 1440 | 14 | 0 | 4 to 9.75 | 14 | edge |
-| Words on the page (body) | 390 | 190 | 3 | 127.75 to 273.5 | 1559 | inside |
-| Words on the page (body) | 768 | 190 | 3 | 127.75 to 335.5 | 1530 | inside |
-| Words on the page (body) | 1440 | 190 | 4 | 127.75 to 337 | 1589 | inside |
-| Sentence length, median words | 390 | 12 | 3 | 18.25 to 38 | 227 | edge |
-| Sentence length, median words | 768 | 12 | 3 | 18.25 to 38 | 338 | edge |
-| Sentence length, median words | 1440 | 12 | 4 | 18 to 37.25 | 338 | edge |
-| Page length (viewports) | 390 | 5.5 | 1 | 1 to 6.2 | 18.6 | inside |
-| Page length (viewports) | 768 | 4.6 | 1 | 1 to 6.2 | 16.3 | inside |
-| Page length (viewports) | 1440 | 4.8 | 1 | 1 to 6.5 | 17.6 | inside |
+| Words on the page (body) | 390 | 218 | 3 | 127.75 to 273.5 | 1559 | inside |
+| Words on the page (body) | 768 | 218 | 3 | 127.75 to 335.5 | 1530 | inside |
+| Words on the page (body) | 1440 | 218 | 4 | 127.75 to 337 | 1589 | inside |
+| Sentence length, median words | 390 | 7 | 3 | 18.25 to 38 | 227 | edge |
+| Sentence length, median words | 768 | 7 | 3 | 18.25 to 38 | 338 | edge |
+| Sentence length, median words | 1440 | 7 | 4 | 18 to 37.25 | 338 | edge |
+| Page length (viewports) | 390 | 5.9 | 1 | 1 to 6.2 | 18.6 | inside |
+| Page length (viewports) | 768 | 4.7 | 1 | 1 to 6.2 | 16.3 | inside |
+| Page length (viewports) | 1440 | 5 | 1 | 1 to 6.5 | 17.6 | inside |
 
 ## Facts for the reviewer (1440)
 
-- Typefaces by share of characters: Public Sans Variable 53%, Source Serif 4 Variable 47%.
-- Type sizes by share: 13px 36%, 18px 18%, 24px 16%, 16px 10%, 17px 8%, 11px 6%, 36px 4%, 56px 2%, 15px 1%, 76px 1%.
-- Ground #f6f5f2 (hue 45, saturation 0.18, lightness 0.96); largest backgrounds #16213a 84%, #f6f5f2 16%, #121212 1%.
+- Typefaces by share of characters: Public Sans Variable 57%, Source Serif 4 Variable 43%.
+- Type sizes by share: 13px 41%, 18px 16%, 24px 14%, 16px 9%, 17px 7%, 11px 6%, 36px 3%, 56px 1%, 15px 1%, 76px 1%.
+- Ground #f6f5f2 (hue 45, saturation 0.18, lightness 0.96); largest backgrounds #121212 84%, #f6f5f2 16%.
 - Control heights: 44, 48, 50px; caps on 91% of controls.
 - Image ratios, first twelve: 2.05, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.33.
-- Price "From $1,900" at 16px, top 957px.
+- Price "From $1,900" at 16px, top 961px.
 - Text blocks on photographs: 0.
 
 Screenshots: docs/briefs/council/shots/line-americana__390.png, __768.png, __1440.png (first viewport).

@@ -88,7 +88,7 @@ export const NAV: NavPanel[] = [
       },
     ],
     photo: { key: "comp-signal-hand", caption: "Signal Solitaire", href: "/pieces/signal-solitaire", position: "60% 45%" },
-    line: "Every setting takes a natural or a man-made stone. The name on the box follows the stone.",
+    line: "Choose the setting, then the stone. Each ring is labeled plainly with which it is.",
   },
   {
     label: "Royal American",

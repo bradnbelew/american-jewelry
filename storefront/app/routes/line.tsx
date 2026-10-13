@@ -61,13 +61,13 @@ export default function LinePage({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <PhotoOpener photo={TIER_PHOTO[slug]} position={POSITION[slug]} eyebrow={STANDARD[slug]} title={tier.name} lede={LINE[slug]} height="aspect-[4/5] md:aspect-auto md:h-[78vh] md:min-h-[520px] md:max-h-[900px]" />
+      <PhotoOpener photo={TIER_PHOTO[slug]} position={POSITION[slug]} eyebrow={STANDARD[slug]} title={tier.name} lede={LINE[slug]} height="aspect-[3/4] md:aspect-auto md:h-[78vh] md:min-h-[520px] md:max-h-[900px]" />
 
       {newAmerican && <Standard />}
 
       {/* The pieces, by design: each design's name set large, its pieces as a ledger beneath. */}
       <Section screen>
-        <div className="flex flex-col gap-20 md:gap-28">
+        <div className="flex flex-col gap-24 md:gap-32">
           {designs.map((d) => {
             const pieces = piecesForDesign(d.slug);
             return (
@@ -99,7 +99,7 @@ export default function LinePage({ loaderData }: Route.ComponentProps) {
             <div className="settle relative aspect-[4/5] overflow-hidden md:col-span-8 md:-ml-10 md:aspect-[4/3]">
               <Pic k="comp-home-hand" tall="comp-home-hand-tall" sizes="(min-width: 768px) 66vw, 100vw" position="62% 45%" />
             </div>
-            <div className="flex flex-col gap-5 md:col-span-4 md:pt-2">
+            <div className="flex flex-col gap-6 md:col-span-4 md:pt-2">
               <p className="h-section text-[1.75rem] md:text-[2.25rem]">Drawn to be worn every day and handed down.</p>
               <Link to="/jewelry?line=americana" className="link self-start">
                 Every Americana piece

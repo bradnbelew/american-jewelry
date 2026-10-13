@@ -103,10 +103,10 @@ export function PhotoOpener({
   height?: string;
 }) {
   return (
-    <section className={`photo-overlay relative ${height} overflow-hidden bg-navy`}>
+    <section className={`photo-overlay relative ${height} overflow-hidden bg-ink`}>
       <Pic k={photo} tall={tall} priority sizes="100vw" position={position} />
       <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="on-photo mx-auto flex max-w-[96rem] flex-col items-start gap-5 px-4 pb-12 text-paper md:px-10 md:pb-20">
+        <div className="on-photo mx-auto flex max-w-[96rem] flex-col items-start gap-6 px-4 pb-8 text-paper md:px-10 md:pb-16">
           {eyebrow && <span className="label !text-paper">{eyebrow}</span>}
           <h1 className="h-display measure-display text-[2.75rem] md:text-[4.25rem] lg:text-[4.75rem]">{title}</h1>
           {lede && <p className="lede max-w-xl !text-paper">{lede}</p>}

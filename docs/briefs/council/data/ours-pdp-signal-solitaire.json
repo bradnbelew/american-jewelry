@@ -3,29 +3,29 @@
  "kind": "pdp",
  "slug": "pdp-signal-solitaire",
  "ref": false,
- "measuredAt": "2026-10-13T06:23:25.588Z",
+ "measuredAt": "2026-10-13T06:34:09.597Z",
  "widths": {
   "390": {
    "text": {
-    "words": 216,
-    "sentences": 11,
-    "sentenceP50": 15,
+    "words": 229,
+    "sentences": 14,
+    "sentenceP50": 9,
     "sentenceP90": 41,
     "exclamations": 0,
     "emDashes": 0
    },
    "vw": 390,
    "vh": 844,
-   "pageViewports": 5.6,
+   "pageViewports": 5.8,
    "type": {
     "families": [
      {
       "v": "Source Serif 4 Variable",
-      "share": 0.661
+      "share": 0.623
      },
      {
       "v": "Public Sans Variable",
-      "share": 0.339
+      "share": 0.377
      }
     ],
     "familyCount": 2,
@@ -33,39 +33,39 @@
     "sizes": [
      {
       "v": 16,
-      "share": 0.382
+      "share": 0.36
      },
      {
       "v": 13,
-      "share": 0.209
+      "share": 0.254
      },
      {
       "v": 28,
-      "share": 0.111
+      "share": 0.105
      },
      {
       "v": 17,
-      "share": 0.088
+      "share": 0.083
      },
      {
       "v": 15,
-      "share": 0.078
+      "share": 0.073
      },
      {
       "v": 11,
-      "share": 0.064
+      "share": 0.06
      },
      {
       "v": 20,
-      "share": 0.032
+      "share": 0.03
      },
      {
       "v": 14,
-      "share": 0.018
+      "share": 0.017
      },
      {
       "v": 36,
-      "share": 0.014
+      "share": 0.013
      },
      {
       "v": 32,
@@ -110,7 +110,7 @@
     "gapP90": 64,
     "gapMax": 107,
     "sectionGapVh": 0.08,
-    "distinctGaps": 14,
+    "distinctGaps": 13,
     "alignmentAxes": 11
    },
    "images": {
@@ -204,25 +204,25 @@
   },
   "768": {
    "text": {
-    "words": 216,
-    "sentences": 11,
-    "sentenceP50": 15,
+    "words": 229,
+    "sentences": 14,
+    "sentenceP50": 9,
     "sentenceP90": 41,
     "exclamations": 0,
     "emDashes": 0
    },
    "vw": 768,
    "vh": 1024,
-   "pageViewports": 4.8,
+   "pageViewports": 4.9,
    "type": {
     "families": [
      {
       "v": "Source Serif 4 Variable",
-      "share": 0.661
+      "share": 0.623
      },
      {
       "v": "Public Sans Variable",
-      "share": 0.339
+      "share": 0.377
      }
     ],
     "familyCount": 2,
@@ -230,43 +230,43 @@
     "sizes": [
      {
       "v": 16,
-      "share": 0.395
+      "share": 0.372
      },
      {
       "v": 13,
-      "share": 0.209
+      "share": 0.254
      },
      {
       "v": 40,
-      "share": 0.097
+      "share": 0.092
      },
      {
       "v": 17,
-      "share": 0.088
+      "share": 0.083
      },
      {
       "v": 15,
-      "share": 0.065
+      "share": 0.061
      },
      {
       "v": 11,
-      "share": 0.064
+      "share": 0.06
      },
      {
       "v": 24,
-      "share": 0.026
+      "share": 0.025
      },
      {
       "v": 14,
-      "share": 0.018
+      "share": 0.017
      },
      {
       "v": 36,
-      "share": 0.014
+      "share": 0.013
      },
      {
       "v": 44,
-      "share": 0.014
+      "share": 0.013
      }
     ],
     "displayMax": 24,
@@ -298,7 +298,7 @@
     "words": 13,
     "textBlocks": 6,
     "images": 1,
-    "controls": 5,
+    "controls": 4,
     "elements": 9,
     "imageShare": 0.75
    },
@@ -369,7 +369,7 @@
     "textOnPhoto": 0
    },
    "controls": {
-    "count": 16,
+    "count": 15,
     "heights": [
      44,
      48,
@@ -377,7 +377,7 @@
      52
     ],
     "radiusMax": 0,
-    "capsShare": 0.44,
+    "capsShare": 0.4,
     "under44": 0
    },
    "commerce": {
@@ -397,31 +397,31 @@
     "priceToCta": -34
    },
    "nav": {
-    "visibleLinks": 8
+    "visibleLinks": 6
    },
    "status": 200
   },
   "1440": {
    "text": {
-    "words": 212,
-    "sentences": 11,
-    "sentenceP50": 15,
+    "words": 225,
+    "sentences": 14,
+    "sentenceP50": 9,
     "sentenceP90": 41,
     "exclamations": 0,
     "emDashes": 0
    },
    "vw": 1440,
    "vh": 900,
-   "pageViewports": 4.1,
+   "pageViewports": 4.2,
    "type": {
     "families": [
      {
       "v": "Source Serif 4 Variable",
-      "share": 0.67
+      "share": 0.632
      },
      {
       "v": "Public Sans Variable",
-      "share": 0.33
+      "share": 0.368
      }
     ],
     "familyCount": 2,
@@ -429,43 +429,43 @@
     "sizes": [
      {
       "v": 16,
-      "share": 0.401
+      "share": 0.377
      },
      {
       "v": 13,
-      "share": 0.212
+      "share": 0.258
      },
      {
       "v": 48,
-      "share": 0.099
+      "share": 0.093
      },
      {
       "v": 17,
-      "share": 0.089
+      "share": 0.084
      },
      {
       "v": 15,
-      "share": 0.066
+      "share": 0.062
      },
      {
       "v": 11,
-      "share": 0.056
+      "share": 0.053
      },
      {
       "v": 24,
-      "share": 0.027
+      "share": 0.025
      },
      {
       "v": 14,
-      "share": 0.018
+      "share": 0.017
      },
      {
       "v": 36,
-      "share": 0.014
+      "share": 0.013
      },
      {
       "v": 44,
-      "share": 0.014
+      "share": 0.013
      }
     ],
     "displayMax": 44,
@@ -502,7 +502,7 @@
     "imageShare": 0.43
    },
    "spacing": {
-    "gapP50": 41,
+    "gapP50": 49,
     "gapP90": 172,
     "gapMax": 172,
     "sectionGapVh": 0.19,

@@ -5,6 +5,7 @@ import { CATEGORIES, SORTS, activeCount, applyQuery, filterGroups, readQuery, wh
 import { formatPrice, startingPrice } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Piece } from "~/lib/catalog/types";
+import { METAL_LABEL, PIECE_TYPE_LABEL } from "~/lib/catalog/types";
 
 import { Pic } from "./Pic";
 import { Section } from "./Section";
@@ -48,7 +49,14 @@ export function PieceIndex({ pieces, showLine = false }: { pieces: Piece[]; show
   );
 }
 
-/** A line's pieces as a ledger: one row per piece, one photograph per row, names and prices aligned. */
+/** The row's second line in a ledger: the piece's own facts (what it is, which metals), never the line's refrain. */
+export const pieceLine = (p: Piece) => {
+  const metals = Array.from(new Set(p.metals.map((m) => METAL_LABEL[m].replace(/^1[48]k /, "").toLowerCase())));
+  const list = metals.length === 1 ? metals[0] : metals.length === 2 ? `${metals[0]} or ${metals[1]}` : `${metals.slice(0, -1).join(", ")} or ${metals[metals.length - 1]}`;
+  return `${PIECE_TYPE_LABEL[p.pieceType]}. ${list.charAt(0).toUpperCase()}${list.slice(1)}.`;
+};
+
+/** A line's pieces as a ledger: one row per piece, one photograph per row, names and prices on one line. */
 export function PieceLedger({ pieces, showLine = false }: { pieces: Piece[]; showLine?: boolean }) {
   return (
     <ol className="border-t border-hair">
@@ -56,18 +64,18 @@ export function PieceLedger({ pieces, showLine = false }: { pieces: Piece[]; sho
         const key = (PIECE_PHOTOS[p.handle] ?? ["hero-box"])[0];
         return (
           <li key={p.handle} className="border-b border-hair">
-            <Link to={`/pieces/${p.handle}`} viewTransition className="group grid grid-cols-[5rem_1fr_auto] items-center gap-x-5 py-4 md:grid-cols-[7.5rem_1fr_auto] md:gap-x-8 md:py-5">
+            <Link to={`/pieces/${p.handle}`} viewTransition className="group grid grid-cols-[5rem_1fr_auto] items-start gap-x-6 py-4 md:grid-cols-[7.5rem_1fr_auto] md:gap-x-8 md:py-6">
               <span className="relative block aspect-square overflow-hidden">
                 <Pic k={key} sizes="120px" />
               </span>
-              <span className="flex min-w-0 flex-col gap-0.5">
-                <span className="h-item text-[1.25rem] group-hover:text-muted md:text-[1.5rem]">{p.name}</span>
+              <span className="flex min-w-0 flex-col gap-1 pt-1">
+                <span className="h-item text-[1.25rem] leading-none group-hover:text-muted md:text-[1.5rem]">{p.name}</span>
                 <span className="label">
                   {showLine ? `${p.tier === "royal-american" ? "Royal American" : p.tier === "americana" ? "Americana" : "New American"}. ` : ""}
-                  {whatItIs(p)}
+                  {pieceLine(p)}
                 </span>
               </span>
-              <span className="num self-start pt-1 text-right text-[0.9375rem] text-ink-2 md:text-[1rem]">{priceLine(p)}</span>
+              <span className="num pt-1 text-right text-[0.9375rem] leading-none text-ink-2 md:text-[1rem]">{priceLine(p)}</span>
             </Link>
           </li>
         );

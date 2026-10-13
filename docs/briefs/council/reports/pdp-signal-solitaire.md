@@ -1,7 +1,7 @@
 # Measured: pdp-signal-solitaire
 
 http://localhost:3030/pieces/signal-solitaire  
-Measured 2026-10-13T06:23 against 14 reference pages (pdp band). Bands are the reference range: min, middle half (p25 to p75), max. "Edge" means inside the range but outside the middle half; "outside" means beyond every reference.
+Measured 2026-10-13T06:34 against 14 reference pages (pdp band). Bands are the reference range: min, middle half (p25 to p75), max. "Edge" means inside the range but outside the middle half; "outside" means beyond every reference.
 
 ## House rules (fixed numbers; a failure here is a Blocker)
 
@@ -69,7 +69,7 @@ Measured 2026-10-13T06:23 against 14 reference pages (pdp band). Bands are the r
 | Image share of the first viewport | 1440 | 0.43 | 0.34 | 0.41 to 0.52 | 1 | inside |
 | Typical gap between blocks (px) | 390 | 24 | 14 | 24 to 29 | 31 | inside |
 | Typical gap between blocks (px) | 768 | 32 | 14 | 22 to 31 | 32 | edge |
-| Typical gap between blocks (px) | 1440 | 41 | 14 | 24 to 79 | 140 | inside |
+| Typical gap between blocks (px) | 1440 | 49 | 14 | 24 to 79 | 140 | inside |
 | Section gap (share of viewport height) | 390 | 0.08 | 0.02 | 0.09 to 0.33 | 0.8 | edge |
 | Section gap (share of viewport height) | 768 | 0.09 | 0.01 | 0.08 to 0.26 | 0.68 | inside |
 | Section gap (share of viewport height) | 1440 | 0.19 | 0.07 | 0.16 to 0.29 | 0.77 | inside |
@@ -98,22 +98,22 @@ Measured 2026-10-13T06:23 against 14 reference pages (pdp band). Bands are the r
 | Controls under 44px tall | 768 | 0 | 0 | 0 to 1 | 9 | inside |
 | Controls under 44px tall | 1440 | 0 | 0 | 1 to 2 | 9 | edge |
 | Visible header links | 390 | 5 | 1 | 1 to 4 | 4 | **outside** |
-| Visible header links | 768 | 8 | 1 | 1 to 5 | 14 | edge |
+| Visible header links | 768 | 6 | 1 | 1 to 5 | 14 | edge |
 | Visible header links | 1440 | 16 | 4 | 6 to 10 | 14 | **outside** |
-| Words on the page (body) | 390 | 216 | 72 | 83 to 676 | 723 | inside |
-| Words on the page (body) | 768 | 216 | 72 | 83 to 676 | 726 | inside |
-| Words on the page (body) | 1440 | 212 | 78 | 83 to 653 | 726 | inside |
-| Sentence length, median words | 390 | 15 | 19 | 23 to 35 | 53 | **outside** |
-| Sentence length, median words | 768 | 15 | 19 | 23 to 35 | 53 | **outside** |
-| Sentence length, median words | 1440 | 15 | 18 | 23 to 32 | 59 | **outside** |
-| Page length (viewports) | 390 | 5.6 | 1 | 1.97 to 8.85 | 18.6 | inside |
-| Page length (viewports) | 768 | 4.8 | 1 | 2.05 to 8.05 | 16.3 | inside |
-| Page length (viewports) | 1440 | 4.1 | 1 | 1.9 to 9.28 | 17.6 | inside |
+| Words on the page (body) | 390 | 229 | 72 | 83 to 676 | 723 | inside |
+| Words on the page (body) | 768 | 229 | 72 | 83 to 676 | 726 | inside |
+| Words on the page (body) | 1440 | 225 | 78 | 83 to 653 | 726 | inside |
+| Sentence length, median words | 390 | 9 | 19 | 23 to 35 | 53 | **outside** |
+| Sentence length, median words | 768 | 9 | 19 | 23 to 35 | 53 | **outside** |
+| Sentence length, median words | 1440 | 9 | 18 | 23 to 32 | 59 | **outside** |
+| Page length (viewports) | 390 | 5.8 | 1 | 1.97 to 8.85 | 18.6 | inside |
+| Page length (viewports) | 768 | 4.9 | 1 | 2.05 to 8.05 | 16.3 | inside |
+| Page length (viewports) | 1440 | 4.2 | 1 | 1.9 to 9.28 | 17.6 | inside |
 
 ## Facts for the reviewer (1440)
 
-- Typefaces by share of characters: Source Serif 4 Variable 67%, Public Sans Variable 33%.
-- Type sizes by share: 16px 40%, 13px 21%, 48px 10%, 17px 9%, 15px 7%, 11px 6%, 24px 3%, 14px 2%, 36px 1%, 44px 1%.
+- Typefaces by share of characters: Source Serif 4 Variable 63%, Public Sans Variable 37%.
+- Type sizes by share: 16px 38%, 13px 26%, 48px 9%, 17px 8%, 15px 6%, 11px 5%, 24px 3%, 14px 2%, 36px 1%, 44px 1%.
 - Ground #f6f5f2 (hue 45, saturation 0.18, lightness 0.96); largest backgrounds #f6f5f2 70%, #ffffff 21%, #121212 9%.
 - Control heights: 44, 48, 50, 52px; caps on 59% of controls.
 - Image ratios, first twelve: 0.8, 1.33, 0.8, 1, 1.

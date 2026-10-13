@@ -46,7 +46,7 @@ export function Footer({ year }: { year: number }) {
         <div className="grid gap-8 sm:grid-cols-2 md:col-span-4">
           {STORES.map((s) => (
             <div key={s.slug} className="flex flex-col gap-1 text-sm leading-relaxed">
-              <Link to={`/stores/${s.slug}`} className="font-display text-lg hover:text-muted">
+              <Link to={`/stores/${s.slug}`} className="font-display inline-flex min-h-11 items-center self-start text-lg hover:text-muted">
                 {s.name}
               </Link>
               <address className="font-text not-italic text-ink-2">
@@ -63,10 +63,10 @@ export function Footer({ year }: { year: number }) {
         </div>
       </div>
       <div className="border-t border-hair">
-        <div className="wrap flex flex-wrap gap-x-8 gap-y-2 py-5 text-[0.75rem] text-muted">
+        <div className="wrap flex flex-wrap items-center gap-x-8 py-2 text-[0.8125rem] text-muted">
           <span>© {year} American Jewelry</span>
           {LEGAL.map(([href, label]) => (
-            <Link key={href} to={href} className="hover:text-ink">
+            <Link key={href} to={href} className="inline-flex min-h-11 items-center hover:text-ink">
               {label}
             </Link>
           ))}
@@ -78,10 +78,10 @@ export function Footer({ year }: { year: number }) {
 
 function Col({ title, links, className = "" }: { title: string; links: [string, string][]; className?: string }) {
   return (
-    <div className={`flex flex-col gap-3 ${className}`}>
-      <span className="label">{title}</span>
+    <div className={`flex flex-col ${className}`}>
+      <span className="label mb-2">{title}</span>
       {links.map(([href, label]) => (
-        <Link key={href} to={href} className="font-text text-[0.9375rem] text-ink hover:text-muted">
+        <Link key={href} to={href} className="font-text inline-flex min-h-10 items-center self-start text-[0.9375rem] text-ink hover:text-muted">
           {label}
         </Link>
       ))}

@@ -98,17 +98,17 @@ export function Header() {
             <button type="button" className="caps -ml-1 inline-flex h-11 w-14 items-center px-1 lg:hidden" aria-expanded={menu} aria-controls="menu" onClick={() => setMenu((v) => !v)}>
               {menu ? "Close" : "Menu"}
             </button>
-            <button type="button" className="caps hidden h-11 items-center hover:text-muted md:inline-flex" aria-haspopup="dialog" aria-expanded={search} onClick={() => setSearch(true)}>
+            <button type="button" className="caps hidden h-11 items-center hover:text-muted lg:inline-flex" aria-haspopup="dialog" aria-expanded={search} onClick={() => setSearch(true)}>
               Search
             </button>
           </div>
 
-          <Link to="/" className="font-display justify-self-center text-[1rem] uppercase tracking-[0.22em] whitespace-nowrap sm:text-[1.25rem] md:text-[1.5rem] md:tracking-[0.28em]" aria-label="American Jewelry home">
+          <Link to="/" className="font-display inline-flex h-11 items-center justify-self-center text-[1rem] uppercase tracking-[0.22em] whitespace-nowrap sm:text-[1.25rem] md:text-[1.5rem] md:tracking-[0.28em]" aria-label="American Jewelry home">
             American Jewelry
           </Link>
 
           <div className="flex items-center justify-end gap-5 md:gap-6">
-            <Link to="/appointments" className="caps hidden h-11 items-center hover:text-muted md:inline-flex">
+            <Link to="/appointments" className="caps hidden h-11 items-center hover:text-muted lg:inline-flex">
               Appointment
             </Link>
             <Link
@@ -120,7 +120,7 @@ export function Header() {
               onClick={(event) => openDialogFromLinkClick(event, SAVED_DRAWER_ID)}
             >
               Kept
-              <span className="num inline-flex h-5 w-4 items-center justify-center text-[0.625rem] text-muted">{ready && saved > 0 ? saved : ""}</span>
+              <span className="num inline-flex h-5 w-5 items-center justify-center text-[0.8125rem] text-muted">{ready && saved > 0 ? saved : ""}</span>
             </Link>
             <Link
               to="/bag"
@@ -131,7 +131,7 @@ export function Header() {
               onClick={(event) => openDialogFromLinkClick(event, CART_DRAWER_ID)}
             >
               Bag
-              <span className="num inline-flex h-5 w-4 items-center justify-center text-[0.625rem] text-muted">{totalQuantity > 0 ? totalQuantity : ""}</span>
+              <span className="num inline-flex h-5 w-5 items-center justify-center text-[0.8125rem] text-muted">{totalQuantity > 0 ? totalQuantity : ""}</span>
             </Link>
             <Link to="/account" className="caps hidden h-11 items-center hover:text-muted lg:inline-flex">
               Account

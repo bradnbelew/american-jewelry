@@ -23,21 +23,21 @@ Also to re-shoot: `ring-signal.webp` (the builder's render, now on the paper) st
 
 | Slot | Stand-in today | Source | Must become |
 |---|---|---|---|
-| Home hero | `hero-hand` (house photo, 2000x875) | american.jewelry hero | `hand`: the family's hand, daylight, one Signal or Shooting Star ring |
-| Home, design of the season | `tristar-charm` (house product photo of a tri-star charm, not a Shooting Star; council home 2026-10-12 I6) | american.jewelry | `macro` of the Shooting Star at 2.2:1 |
-| Home, the lines (hover) | `hero-box`, `hero-hand`, `ring-halo` | american.jewelry | one `34` packshot per line |
-| Home, Build a ring | **render** `/3d/posters/ring-signal.webp`, captioned "Signal, as the builder draws it." (since 2026-10-12) | ParametricRing | a photograph of a finished Signal ring at 4:3 on the stone ground |
+| Home hero | `comp-home-hand` / `comp-home-hand-tall` (AI comp, 2026-10-13) | generated | `hand`: the family's hand, daylight, one Signal or Shooting Star ring |
+| Home, design of the season | `comp-americana-ground` (AI comp, 2026-10-13) cropped to 2.2:1 | generated | `macro` of the Shooting Star at 2.2:1 |
+| Home, the lines | no photograph since 2026-10-13 (the hover frames repeated the plate and the registry band, council I5) | n/a | none needed |
+| Home, Build a ring | **render** `/3d/posters/ring-signal.webp` on the paper, shown whole, captioned "Signal, as the builder draws it." | ParametricRing | a photograph of a finished Signal ring at 4:3 on the paper |
 | Home, the bench | **removed from the home 2026-10-12** until it can be shown honestly | n/a | the 12-second bench loop (laser, polishing wheel, natural sound, poster frame) and one bench still; the screen returns when it exists and the family confirms the fact (C1) |
-| Home, the registry | none (type on velvet) | n/a | optional: one photograph of No. 001 on the navy box for the registry screen |
-| Royal American hero | `hero-box` | american.jewelry | `34` of a Royal American piece on navy |
-| Americana hero | `hero-hand` | american.jewelry | `34` of a Shooting Star ring |
-| New American hero | `ring-halo` | american.jewelry | `34` of a Signal solitaire |
-| Line pages, the hand frame | `hero-hand` (same frame on both lines) | american.jewelry | one `hand` frame per line, different pieces |
+| Home, the registry | `comp-cumberland-velvet` (AI comp, 2026-10-13), dissolved into the navy | generated | No. 001 on its navy tray, one lamp |
+| Royal American hero | `comp-cumberland-velvet` (AI comp) | generated | `34` of a Royal American piece on navy |
+| Americana hero | `comp-americana-ground` (AI comp) | generated | `34` of a Shooting Star ring on green leather |
+| New American hero | `comp-new-american-opener` (AI comp) | generated | `34` of a Signal solitaire on limestone |
+| Line pages, the hand frame | Americana `comp-home-hand` (beside), New American `comp-signal-hand` (plate); AI comps | generated | one `hand` frame per line, different pieces |
 | Design bands (Shooting Star, Prism, Signal, Grid) | `tristar-charm`, `signet-b`, `ring-halo`, `huggie-diamond` | american.jewelry | `macro` per design |
 | Design page, the stone is set (Signal) | **render**: `/3d/posters/ring-signal.webp` from the house renderer, "set" camera | ParametricRing, 2026-10-11 | the Blender-authored clip and its poster (research/14 §4.3) |
 | Design page, three parts | first product photo of three pieces | american.jewelry | `macro` of the star, the tail, the hallmark |
 | House, how a piece is made (four frames) | product photos | american.jewelry | drawing, CAD screen, casting tree, setting at the bench |
-| House and Services opener | `bench` (a grading chart with a loupe, not the bench) | american.jewelry | the bench, wide, daylight |
+| House and Services opener | `comp-bench-hands` (AI comp) | generated | the real bench, wide, daylight; hands only |
 | Stores | `box-peach`, `bench` | american.jewelry | exterior, counter, bench, two staff frames (named only with consent) |
 | Product pages | 1 to 3 product photos per piece | american.jewelry | `34`, `profile`, `top`, `macro`, `hallmark`, `hand` per piece |
 
