@@ -16,8 +16,8 @@ export const KIND_LABEL: Record<string, string> = Object.fromEntries(KINDS);
 export const STORE_LABEL: Record<string, string> = { ...Object.fromEntries(STORES.map((s) => [s.slug, s.name])), virtual: "By video" };
 
 /** Query params that ride along as hidden fields so the request arrives with the piece on the table. */
-export const CONTEXT_KEYS = ["piece", "pieces", "code", "build", "version", "metal", "size", "tier"] as const;
-const LABELS: Record<string, string> = { piece: "Piece", pieces: "Shortlist", code: "Design code", build: "Builder", version: "Version", metal: "Metal", size: "Size", tier: "Line" };
+export const CONTEXT_KEYS = ["piece", "pieces", "code", "build", "version", "metal", "size", "engraving", "tier"] as const;
+const LABELS: Record<string, string> = { piece: "Piece", pieces: "Shortlist", code: "Design code", build: "Builder", version: "Version", metal: "Metal", size: "Size", engraving: "Engraving", tier: "Line" };
 
 export type AppointmentResult = { sent: true; delivered: "email" | "webhook" | "log"; name: string; store: string; kind: string } | { sent: false; error: string } | undefined;
 

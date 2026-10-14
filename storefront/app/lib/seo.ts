@@ -79,7 +79,7 @@ export function siteJsonLd() {
         name: SITE_NAME,
         url: `${SITE}/`,
         logo: `${SITE}/favicon.svg`,
-        image: `${SITE}${PHOTO["hero-box"].src}`,
+        image: `${SITE}${PHOTO["comp-home-hand"].src}`,
         description:
           "American Jewelry is a family jeweler in Brentwood and Mt. Juliet, Tennessee, with shops visible to customers at both stores and in-house casting. Original designs in gold, natural and lab-grown diamonds, plus Royal American high jewelry.",
         slogan: "Designed in Tennessee. Set and finished in our workshop.",
@@ -119,7 +119,6 @@ export function storeJsonLd(s: Store) {
     alternateName: `American Jewelry ${s.name}`,
     url: `${SITE}/stores/${s.slug}`,
     telephone: telephoneE164(s.phone),
-    image: `${SITE}${PHOTO[s.photo].src}`,
     address: postal(s),
     geo: { "@type": "GeoCoordinates", latitude: s.lat, longitude: s.lng },
     hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.mapQuery)}`,
@@ -138,9 +137,10 @@ export function storeJsonLd(s: Store) {
 
 /** Product markup; a man-made piece says so in its name. */
 export function productJsonLd(p: Piece, design?: Design) {
+  if (p.concept || p.oneOfOne) return { "@context": "https://schema.org", "@type": "CreativeWork", name: `${p.name}, design concept`, description: p.description, url: `${SITE}/pieces/${p.handle}` };
   const manMade = p.versions.some((v) => v.origin === "man-made");
   const natural = p.versions.some((v) => v.origin === "natural" && v.key === "diamond");
-  const images = (PIECE_PHOTOS[p.handle] ?? ["hero-box"]).map((k) => `${SITE}${PHOTO[k].src}`);
+  const images = (PIECE_PHOTOS[p.handle] ?? []).filter((k) => !PHOTO[k].cell).map((k) => `${SITE}${PHOTO[k].src}`);
   const node: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -148,7 +148,7 @@ export function productJsonLd(p: Piece, design?: Design) {
     name: manMade ? `${p.name}, lab-grown diamond` : p.name,
     sku: p.handle.toUpperCase(),
     url: `${SITE}/pieces/${p.handle}`,
-    image: images,
+    ...(images.length ? {image: images} : {}),
     description: manMade
       ? `${p.description} Set with lab-grown (laboratory-grown) diamonds, D-F color, VVS clarity, with an IGI Laboratory Grown Diamond Report.`
       : p.description,
@@ -160,7 +160,6 @@ export function productJsonLd(p: Piece, design?: Design) {
       ...(manMade ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Lab-grown diamond (laboratory-grown). Growth method and treatments: refer to the individual report." }] : []),
       ...(natural ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Natural diamond. Refer to the individual stone specification and report." }] : []),
       { "@type": "PropertyValue", name: "Made", value: "Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported." },
-      ...(p.oneOfOne ? [{ "@type": "PropertyValue", name: "Edition", value: `One of one, Royal American No. ${p.oneOfOne.number}` }] : []),
     ],
   };
   // The local catalog is a preview, not a verified purchasable offer.
@@ -194,7 +193,7 @@ export function productJsonLdFromStorefront(
     name: manMade ? `${product.title}, lab-grown diamond` : product.title,
     sku: product.selectedOrFirstAvailableVariant?.sku ?? product.handle.toUpperCase(),
     url: `${SITE}/pieces/${product.handle}`,
-    image: images.length ? images : (PIECE_PHOTOS[product.handle] ?? ["hero-box"]).map((k) => `${SITE}${PHOTO[k].src}`),
+    image: images.length ? images : (PIECE_PHOTOS[product.handle] ?? ["hero-box"]).filter((k) => !PHOTO[k].cell).map((k) => `${SITE}${PHOTO[k].src}`),
     description: p
       ? manMade
         ? `${p.description} Set with lab-grown (laboratory-grown) diamonds, D to F color, VVS clarity, with an IGI Laboratory Grown Diamond Report.`

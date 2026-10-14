@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Form, Link, useLocation } from "react-router";
 
 import { searchCatalog, searchSuggestion } from "~/lib/catalog/browse";
+import { DESIGNS } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 
 import { Pic } from "./Pic";
@@ -54,7 +55,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
         <Form method="get" action="/search" className="flex items-end gap-4" onSubmit={() => onClose()}>
           <label className="flex min-w-0 flex-1 flex-col gap-2">
             <span className="label">Search</span>
-            <input ref={input} name="q" value={q} onChange={(e) => setQ(e.target.value)} className="field font-text text-[1.125rem]" placeholder="A piece, a design, a stone, a store" autoComplete="off" aria-controls="search-results" />
+            <input ref={input} name="q" value={q} onChange={(e) => setQ(e.target.value)} className="field font-text text-[1.125rem]" placeholder="Search jewelry, styles or collections" autoComplete="off" aria-controls="search-results" />
           </label>
           <button type="submit" className="btn btn-outline">
             Search
@@ -85,9 +86,9 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
           )}
           {!q.trim() && (
             <div className="grid gap-x-10 gap-y-6 pt-6 md:grid-cols-3">
-              <Column title="By kind" links={[["/jewelry/rings", "Rings"], ["/jewelry/necklaces", "Necklaces"], ["/jewelry/earrings", "Earrings"], ["/jewelry/bracelets", "Bracelets"]]} />
-              <Column title="By design" links={[["/designs/shooting-star", "Shooting Star"], ["/designs/prism", "Prism"], ["/designs/signal", "Signal"], ["/designs/grid", "Grid"]]} />
-              <Column title="Often looked for" links={[["/royal-american", "High Jewelry · Royal American"], ["/new-american", "Lab-grown diamonds"], ["/build/ring", "Build a ring"], ["/stores", "Stores and hours"]]} />
+              <Column title="By type" links={[["/jewelry/rings", "Rings"], ["/jewelry/necklaces", "Necklaces"], ["/jewelry/earrings", "Earrings"], ["/jewelry/bracelets", "Bracelets"]]} />
+              <Column title="By style" links={DESIGNS.map((d) => [`/designs/${d.slug}`, d.name])} />
+              <Column title="Often looked for" links={[["/royal-american", "High Jewelry"], ["/new-american", "Lab-grown diamonds"], ["/build/ring", "Build a ring"], ["/stores", "Stores and hours"]]} />
             </div>
           )}
         </div>

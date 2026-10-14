@@ -1,49 +1,37 @@
-# Photographs: what stands in, and what each slot must become
+# Photography and concept-design register
 
-Purpose: every image slot on the site that is not yet the house's own photograph of the thing it shows, with its current stand-in and the shot that replaces it (research/14 §5 shot list, §6 photographer brief).
-Last updated: 2026-10-13
-Rule: house photographs first (storefront/public/photos), then renders of the house's own cast files (storefront/public/3d), then iJewel embeds, then a license-clear comparable only if a slot is still empty. No other brand's imagery, no model faces. **Exception, 2026-10-13, mockup only:** the owner allowed the generated comps (`comp-*` keys in `photos.ts`) on the private mockup; every one is listed below as "AI comp, replace before launch" and none may ship when `PUBLIC_SITE_LIVE` turns on (HANDOFF launch blocker).
+Updated 13 October 2026 for the single-house mockup. This register supersedes the earlier placeholder map; current slot assignments are in `storefront/app/lib/catalog/photos.ts`.
 
-## AI comps in use (mockup only; replace before launch)
+The owner expressly authorized generated photography and new design proposals for this working mockup. These images are visual concepts, not evidence of actual inventory, production, gemstone identity, weight or provenance. Replace generated images with photographs of approved actual pieces before enabling `PUBLIC_SITE_LIVE` on the final customer domain.
 
-| Key | File | Where it shows | The photograph that replaces it (refs/comps/PROMPTS.md) |
-|---|---|---|---|
-| `comp-home-hand`, `comp-home-hand-tall` | C01 | home opener (desk and phone), Americana beside | C01 home-hand: the family's hand on linen, Shooting Star ring |
-| `comp-americana-ground` | C05 | Americana opener, home design of the season, Shooting Star first frame, Jewelry and Americana panels | C05 americana-ground: the ring on green leather |
-| `comp-new-american-opener` | C06 | New American opener, Signal design plate, New American panel | C06 new-american-opener: Signal on limestone |
-| `comp-cumberland-velvet` | C03 | Royal American opener, home registry band, The Cumberland first frame, Royal American panel | C03 cumberland-velvet (the real No. 001 on its tray) |
-| `comp-signal-packshot` | C07 | Signal Solitaire first frame (contain, on the paper) | C07 signal-packshot-paper |
-| `comp-signal-hand` | C08 | Signal Solitaire second frame, New American plate, Bridal opener and panel | C08 signal-hand (the comp shows six prongs; Signal has four) |
-| `comp-the-box` | C13 | the bag's "What arrives" | C13 the-box |
-| `comp-bench-hands` | C14 | House opener, Services opener, Services and House panels | C14 bench-hands (or the real bench, which is photographed, never mocked) |
+## Existing signature families
 
-Also to re-shoot: `ring-signal.webp` (the builder's render, now on the paper) stays a render until a Signal ring is photographed.
+| Asset | Content and use | Replacement requirement |
+|---|---|---|
+| comp-shooting-star-family.webp | Six concept forms: ring, band, pendant, bracelet, signet, dog tag. Individual cells are displayed through clipped SVG viewports. | Photograph the actual corresponding forms; confirm details of every version. |
+| comp-shooting-star-object.webp | New, separately generated main ring view. Gold star plus exactly five graduated diamonds. Supersedes the ring cell. | Photograph the approved Shooting Star ring. |
+| comp-prism-family.webp | Necklace, bracelet, signet, band; one cell per form. | Actual Prism product photographs. |
+| comp-new-american-family.webp | Signal studs/signet; Grid bracelet, necklace, eternity band, stack band, chain. | Actual pieces, with stone origin and individual specifications confirmed. |
+| comp-signal-packshot.webp | Four-prong Signal solitaire; supersedes the plate's smaller ring image. | Actual Signal ring. |
+| comp-royal-family.webp | Three illustrative registry objects; no verified stock or reports. | Photograph actual Royal pieces and confirm each report and availability. |
+| comp-prism-campaign.webp | Concept photograph of faceted gold Prism links on green leather. | Actual Prism campaign photograph. |
 
-## Stand-ins in use (all the house's own photography from american.jewelry unless noted)
+The contact plates are unchanged raster files; `Pic` uses a clipped SVG viewport for each object. Open Graph cards render the same view, not a contact sheet described as one product. Alternate photographs of unrelated existing jewelry have been removed from product galleries.
 
-| Slot | Stand-in today | Source | Must become |
-|---|---|---|---|
-| Home hero | `comp-home-hand` / `comp-home-hand-tall` (AI comp, 2026-10-13) | generated | `hand`: the family's hand, daylight, one Signal or Shooting Star ring |
-| Home, design of the season | `comp-americana-ground` (AI comp, 2026-10-13) cropped to 2.2:1 | generated | `macro` of the Shooting Star at 2.2:1 |
-| Home, the lines | no photograph since 2026-10-13 (the hover frames repeated the plate and the registry band, council I5) | n/a | none needed |
-| Home, Build a ring | **render** `/3d/posters/ring-signal.webp` on the paper, shown whole, captioned "Signal, as the builder draws it." | ParametricRing | a photograph of a finished Signal ring at 4:3 on the paper |
-| Home, the bench | **removed from the home 2026-10-12** until it can be shown honestly | n/a | the 12-second bench loop (laser, polishing wheel, natural sound, poster frame) and one bench still; the screen returns when it exists and the family confirms the fact (C1) |
-| Home, the registry | `comp-cumberland-velvet` (AI comp, 2026-10-13), dissolved into the navy | generated | No. 001 on its navy tray, one lamp |
-| Royal American hero | `comp-cumberland-velvet` (AI comp) | generated | `34` of a Royal American piece on navy |
-| Americana hero | `comp-americana-ground` (AI comp) | generated | `34` of a Shooting Star ring on green leather |
-| New American hero | `comp-new-american-opener` (AI comp) | generated | `34` of a Signal solitaire on limestone |
-| Line pages, the hand frame | Americana `comp-home-hand` (beside), New American `comp-signal-hand` (plate); AI comps | generated | one `hand` frame per line, different pieces |
-| Design bands (Shooting Star, Prism, Signal, Grid) | `tristar-charm`, `signet-b`, `ring-halo`, `huggie-diamond` | american.jewelry | `macro` per design |
-| Design page, the stone is set (Signal) | **render**: `/3d/posters/ring-signal.webp` from the house renderer, "set" camera | ParametricRing, 2026-10-11 | the Blender-authored clip and its poster (research/14 §4.3) |
-| Design page, three parts | first product photo of three pieces | american.jewelry | `macro` of the star, the tail, the hallmark |
-| House, how a piece is made (four frames) | product photos | american.jewelry | drawing, CAD screen, casting tree, setting at the bench |
-| House and Services opener | `comp-bench-hands` (AI comp) | generated | the real bench, wide, daylight; hands only |
-| Stores | `box-peach`, `bench` | american.jewelry | exterior, counter, bench, two staff frames (named only with consent) |
-| Product pages | 1 to 3 product photos per piece | american.jewelry | `34`, `profile`, `top`, `macro`, `hallmark`, `hand` per piece |
+## New proposed styles
 
-## Open
+Meridian, Ribbon, Horizon and Petal were created as owner-authorized design proposals for this mockup. Do not attribute them to the owner's brother, who designs the existing house pieces. Each has a ring, pendant and pair of earrings (Horizon Huggies).
 
-- No bench photograph or loop exists; the home bench slot shows a cast-file render labeled as such until it is shot (decision 2026-10-11).
-- No storefront exteriors. No hallmark exists to photograph (logo paused).
-- No license-clear third-party photographs are in use.
-- No hand frame exists for Signal Solitaire (or any New American piece); its second product frame is a stone macro, so research/14 §5 "hand second" cannot be met by layout alone (exploration C, 2026-10-11).
+Each style has `campaign-<style>-family.webp` plus individual `campaign-<style>-ring.webp`, `campaign-<style>-pendant.webp`, and `campaign-<style>-earrings.webp`. The family photographs establish the shared form; individual images show the selected product clearly. Their catalog entries use `concept: true`, no prices, no size or production promises, no Shopify lookup and no purchase button. Structured data uses CreativeWork. Availability requires an actual design consultation.
+
+## Campaign set
+
+The 24 selected campaign images are integrated. Reproducible prompts, dimensions, alt text and responsive paths are archived in `docs/briefs/campaign-manifest.json`; full-resolution PNG masters remain in the design delivery. Home uses `campaign-06-shooting-star-hero-final` and art-directed phone `campaign-09-shooting-star-hero-mobile`. Family uses `campaign-07-family-collection-editorial` with Shooting Star, Meridian and Petal together. Ribbon adds `campaign-08-ribbon-worn-editorial` to its ring gallery. Shooting Star detail, Signal hand/light study and Royal velvet populate the corresponding design, collection and product pages. The selected Cumberland has six prongs and supersedes its contact-plate cell. Check Shooting Star's five diamonds and Signal's four prongs when replacing images. All slots are listed in `photos.ts`; original tracked photographs are retained in Git.
+
+## Remaining launch photography
+
+- Real worn views and profile/top views for every approved piece. Never fill these slots with a different object merely to meet an image-count rule.
+- Actual store exteriors/interiors and customer-visible shops. Store pages currently use direct contact details, with no fake shop portrait or unconfirmed opening hours.
+- Real workshop process, named people with consent, packaging and any real hallmark. The logo remains paused.
+- Existing `comp-the-box` and `comp-bench-hands` are generated placeholders on legacy supporting pages. Old house photography remains on journal/supporting content only where relevant.
+- Confirm every product material, stone specification, price, lead time, warranty and return policy before a public sale. A picture is not supporting evidence for a claim.

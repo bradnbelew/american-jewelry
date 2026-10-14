@@ -24,6 +24,7 @@ export interface Tier {
 }
 
 export interface Design {
+  concept?: boolean;
   slug: string;
   name: string;
   tier: TierSlug;
@@ -62,6 +63,7 @@ export interface Version {
 export type Metal = "14k-yellow" | "14k-white" | "14k-rose" | "18k-yellow" | "platinum";
 
 export interface Piece {
+  concept?: boolean;
   handle: string;
   name: string;
   tier: TierSlug;

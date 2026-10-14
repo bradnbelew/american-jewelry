@@ -53,5 +53,5 @@ jobs:
             throw new Error('Unexpected Oxygen deployment URL');
           }
           console.log(`Oxygen deployment: ${url.origin}`);
-          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `[Open the Hydrogen preview](${url.origin}/preview)\n`);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `[Open American Jewelry](${url.origin}/)\n`);
           NODE

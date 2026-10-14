@@ -33,7 +33,7 @@ const LEGAL: [string, string][] = [
 /** A sitemap in the small serif, the two addresses, the legal line. Nothing promotional, no capture. */
 export function Footer({ year }: { year: number }) {
   return (
-    <footer className="mt-32 border-t border-hair">
+    <footer className="house-footer border-t border-hair">
       <div className="wrap grid gap-12 py-16 md:grid-cols-12">
         <div className="flex flex-col gap-5 md:col-span-4">
           <span className="font-display text-xl uppercase tracking-[0.28em]">American Jewelry</span>

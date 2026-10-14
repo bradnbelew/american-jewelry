@@ -22,7 +22,7 @@ for (const [name, path] of Object.entries({
   writeFileSync(resolve(cache, `${name}.mjs`), js);
 }
 const load = (name) => import(pathToFileURL(resolve(cache, `${name}.mjs`)).href);
-const { PIECES, pieceByHandle } = await load("data");
+const { PIECES, DESIGNS, COLLECTIONS, pieceByHandle, piecesForCollection } = await load("data");
 const { readQuery, applyQuery, searchCatalog, searchSuggestion, stonesOf, matchingVersion } = await load("browse");
 const { readDesign, designCookie } = await load("design-preview");
 const { sizeIsReady, explicitSize } = await load("piece-selection");
@@ -71,11 +71,11 @@ check("Price order uses the filtered version consistently", () => {
   );
 });
 check("Invalid filters and inherited property names are rejected", () => assert.deepEqual(query("stone=toString&sort=surprise").stone, []));
-check("Preview mode survives the cookie", () =>
-  assert.equal(readDesign(new Request("https://example.com/jewelry", { headers: { Cookie: "aj_design=working" } }), false), "working"),
+check("Retired preview cookie cannot change the storefront", () =>
+  assert.equal(readDesign(new Request("https://example.com/jewelry", { headers: { Cookie: "aj_design=working" } }), false), "classic"),
 );
-check("Explicit picker selection wins over the cookie", () =>
-  assert.equal(readDesign(new Request("https://example.com/?preview=company", { headers: { Cookie: "aj_design=working" } }), false), "company"),
+check("Retired preview URLs cannot change the storefront", () =>
+  assert.equal(readDesign(new Request("https://example.com/?preview=company", { headers: { Cookie: "aj_design=working" } }), false), "classic"),
 );
 check("Public live mode ignores the query and cookie", () => {
   const request = new Request("https://example.com/?preview=light", { headers: { Cookie: "aj_design=working" } });
@@ -94,4 +94,23 @@ check("Only a deliberate valid size URL can preselect a size", () => {
   assert.equal(explicitSize(["6", "7"], "6"), "6");
 });
 check("Un-sized products need no size selection", () => assert.equal(sizeIsReady(undefined, ""), true));
+check("Expanded catalog has eight styles, eight populated edits and 33 pieces", () => {
+ assert.equal(DESIGNS.length, 8); assert.equal(COLLECTIONS.length, 8); assert.equal(PIECES.length, 33);
+ for (const collection of COLLECTIONS) assert(piecesForCollection(collection.slug).length > 1);
+});
+check("Family is a cross-style curation including original and proposed designs", () => {
+ const styles = new Set(piecesForCollection("family").map(p => p.design));
+ for (const name of ["shooting-star", "prism", "meridian", "petal"]) assert(styles.has(name));
+});
+check("Proposed designs have no prices, production promises or existing-product classification", () => {
+ const concepts = applyQuery(PIECES, query("production=concept"));
+ assert.equal(concepts.length, 12);
+ for (const p of concepts) { assert(p.concept); assert.equal(p.madeToOrder, false); assert(p.versions.every(v => v.priceCents === null)); }
+ assert(applyQuery(PIECES, query("production=collection")).every(p => !p.concept && !p.oneOfOne));
+ assert(applyQuery(concepts, query("price=on-request")).length === 0);
+});
+check("New styles are searchable and filterable without changing the existing catalog", () => {
+ assert.equal(applyQuery(PIECES, query("design=meridian")).length, 3);
+ assert(searchCatalog("horizon huggies").some(h => h.piece?.handle === "horizon-earrings"));
+});
 console.log(`\n${count} shopping regression checks passed.`);

@@ -29,6 +29,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const local = pieceByHandle(params.handle);
   const open3d = url.searchParams.get("view") === "3d";
+  if (local?.concept || local?.oneOfOne) return { handle: params.handle, open3d: false, product: null };
   let product: PieceProduct | null = null;
   try {
     const sf = context.get(storefrontClientContext);
@@ -106,7 +107,9 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const caratMatch = /(\d+(?:\.\d+)?)\s*ct/.exec(versionLabel) ?? /(\d+(?:\.\d+)?)\s*ct/.exec(piece?.versions.find((v) => v.name === versionLabel)?.stones ?? "");
   const carat = caratMatch ? Number(caratMatch[1]) : undefined;
 
-  const buyColumn = product ? (
+  const buyColumn = piece?.concept ? (
+    <div className="concept-enquiry"><p className="label">Design concept</p><p className="font-text">A proposed design for the house. Materials, dimensions and price are confirmed through a design consultation.</p><Link className="btn" to={`/appointments?piece=${piece.handle}`}>Discuss this design</Link></div>
+  ) : product ? (
     <ProductProvider
       product={product}
       onSelect={(result) => {
@@ -121,7 +124,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <Section className="pt-6 md:pt-8">
+      <Section className="pdp-breadcrumb pt-3 md:pt-4">
         <nav className="label flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
           {tier && (
             <Link to={`/${tier.slug}`} className="inline-flex min-h-11 items-center hover:text-ink">
@@ -141,10 +144,11 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 
       <Section className="pt-6 md:pt-8">
         <div className="piece-layout grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7 lg:-ml-10">
+          <div className="lg:col-span-7">
             <PieceGallery
               photos={PIECE_PHOTOS[handle] ?? ["hero-box"]}
               title={title}
+              caption="Concept photograph. Confirm the details of your chosen version with the house."
               model={galleryModel}
               metal={metalTone(metal)}
               open3d={open3d}
@@ -152,26 +156,27 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
             />
           </div>
 
-          <div className="flex flex-col gap-8 lg:sticky lg:top-32 lg:col-span-5">
+          <div className="pdp-buy flex flex-col gap-6 lg:sticky lg:top-32 lg:col-span-5">
             <div className="flex flex-col gap-3">
               <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{title}</h1>
-              {piece && (
+              {piece && !piece.concept && (
                 <p className="label">
                   Ref. {pieceRef(piece)}
                   {royal ? `, Royal American No. ${piece.oneOfOne?.number}` : tier ? `, ${tier.name}` : ""}
                 </p>
               )}
-              {piece && <p className="font-text text-[1.0625rem] text-ink-2">{piece.description}</p>}
+              {piece && <p className="font-text text-base text-ink-2">{piece.description}</p>}
             </div>
 
             {buyColumn}
 
-            {piece && <Details piece={piece} />}
+            {piece && !piece.concept && <Details piece={piece} />}
+            {piece?.concept && <table className="spec"><tbody>{piece.specs.map((s) => <tr key={s.label}><th scope="row">{s.label}</th><td>{s.value}</td></tr>)}</tbody></table>}
           </div>
         </div>
       </Section>
 
-      {piece && (
+      {piece && !piece.concept && !royal && (
         <Section screen width="text">
           <p className="h-section measure-display text-[1.75rem] md:text-[2.5rem] lg:text-[3rem]">
             {madeOf(piece).map((part, i) => (
@@ -190,7 +195,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
           <div className="grid gap-8 md:grid-cols-2 md:gap-16">
             <h2 className="h-section text-[1.75rem] md:text-[2rem]">One of one</h2>
             <div className="font-text flex flex-col gap-4 text-ink-2">
-              <p>Made once, numbered, and entered in the house registry under the name of its owner. Never made again.</p>
+              <p>Proposed as a single creation, with its own entry in the house registry. Availability and final details are confirmed by inquiry.</p>
               <Link to="/royal-american" className="link self-start">
                 The registry
               </Link>
@@ -206,6 +211,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 function Details({ piece }: { piece: Piece }) {
   const manMade = piece.versions.some((v) => v.origin === "man-made");
   const salon = STORES[1];
+  if (piece.oneOfOne) return <div className="font-text flex flex-col gap-5"><p>This registry entry is an illustrative design concept. Availability, stone weights, origin, treatment and reports must be confirmed with the house.</p><Link to={`/appointments?piece=${piece.handle}`} className="link self-start">Ask about this piece</Link></div>;
   return (
     <>
       <table className="spec">
@@ -216,10 +222,6 @@ function Details({ piece }: { piece: Piece }) {
               <td className="font-text">{s.value}</td>
             </tr>
           ))}
-          <tr>
-            <th scope="row">Made</th>
-            <td className="font-text">Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.</td>
-          </tr>
         </tbody>
       </table>
 

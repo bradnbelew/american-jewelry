@@ -9,10 +9,10 @@ import { METAL_LABEL, PIECE_TYPE_LABEL } from "~/lib/catalog/types";
 
 import { Pic } from "./Pic";
 import { Section } from "./Section";
-import { useDesign } from "./DesignPreview";
 
 /** The price line on a card or a row: fixed, "From $" when the stone varies, "Price on request" for one-of-ones. */
 export const priceLine = (p: Piece, q?: BrowseQuery) => {
+  if (p.concept) return "Design concept";
   const price = q ? matchingVersion(p, q)?.priceCents ?? null : startingPrice(p);
   const count = q ? matchingVersions(p, q).length : p.versions.length;
   return price === null ? "Price on request" : count > 1 ? `From ${formatPrice(price)}` : formatPrice(price);
@@ -28,15 +28,15 @@ export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px
   if (metal) selected.set("Metal", METAL_LABEL[metal]);
   return (
     <Link to={`/pieces/${piece.handle}${selected.size ? `?${selected}` : ''}`} viewTransition className="group flex min-w-0 flex-col gap-3">
-      <span className="settle relative block aspect-[4/5] overflow-hidden">
+      <span className={`piece-card-image relative block aspect-[4/5] overflow-hidden ${piece.oneOfOne ? "is-royal" : ""}`}>
         <Pic k={key} sizes={sizes} priority={priority} />
       </span>
-      <span className="flex min-w-0 flex-col gap-0.5">
+      <span className="piece-card-copy flex min-w-0 flex-col gap-0.5">
         <span className="h-item text-[1.125rem] group-hover:text-muted md:text-[1.25rem]">{piece.name}</span>
-        <span className="label">
+        {!piece.concept && <span className="label">
           {showLine ? `${piece.tier === "royal-american" ? "Royal American" : piece.tier === "americana" ? "Americana" : "New American"}. ` : ""}
           {version ? version.origin === "man-made" ? "Lab-grown diamond" : version.name : whatItIs(piece)}
-        </span>
+        </span>}
         <span className="num text-[0.9375rem] text-ink-2">{priceLine(piece, query)}</span>
       </span>
     </Link>
@@ -65,32 +65,7 @@ export const pieceLine = (p: Piece) => {
 
 /** A line's pieces as a ledger: one row per piece, one photograph per row, names and prices on one line. */
 export function PieceLedger({ pieces, showLine = false }: { pieces: Piece[]; showLine?: boolean }) {
-  const mode = useDesign();
-  if (mode !== "classic") return <PieceIndex pieces={pieces} showLine={showLine} />;
-  return (
-    <ol className="border-t border-hair">
-      {pieces.map((p) => {
-        const key = (PIECE_PHOTOS[p.handle] ?? ["hero-box"])[0];
-        return (
-          <li key={p.handle} className="border-b border-hair">
-            <Link to={`/pieces/${p.handle}`} viewTransition className="group grid grid-cols-[5rem_1fr_auto] items-start gap-x-6 py-4 md:grid-cols-[7.5rem_1fr_auto] md:gap-x-8 md:py-6">
-              <span className="relative block aspect-square overflow-hidden">
-                <Pic k={key} sizes="120px" />
-              </span>
-              <span className="flex min-w-0 flex-col gap-1 pt-1">
-                <span className="h-item text-[1.25rem] leading-none group-hover:text-muted md:text-[1.5rem]">{p.name}</span>
-                <span className="label">
-                  {showLine ? `${p.tier === "royal-american" ? "Royal American" : p.tier === "americana" ? "Americana" : "New American"}. ` : ""}
-                  {pieceLine(p)}
-                </span>
-              </span>
-              <span className="num pt-1 text-right text-[0.9375rem] leading-none text-ink-2 md:text-[1rem]">{priceLine(p)}</span>
-            </Link>
-          </li>
-        );
-      })}
-    </ol>
-  );
+  return <PieceIndex pieces={pieces} showLine={showLine} />;
 }
 
 /** The kinds, as a row of names with their counts: the index of the house. */
@@ -144,7 +119,7 @@ export function Browse({
 
   return (
     <>
-      <Section className="pt-10 md:pt-16">
+      <Section className="browse-heading">
         <div className="grid gap-6 md:grid-cols-12 md:gap-10">
           <div className="flex flex-col gap-4 md:col-span-7">
             <h1 className="h-display text-[3rem] md:text-[4.5rem]">{title}</h1>
@@ -158,7 +133,7 @@ export function Browse({
 
       {children}
 
-      <Section className="pt-10 md:pt-14">
+      <Section className="browse-layout">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-10">
           <aside className="lg:col-span-3" aria-label="Filter and sort">
             <details className="lg:hidden" key={params.toString()}>
@@ -198,7 +173,7 @@ export function Browse({
                 </Link>
               </Empty>
             ) : (
-              <PieceIndex pieces={pieces} query={q} showLine={!q.line.length && !hide.includes("line")} />
+              <PieceIndex pieces={pieces} query={q} showLine={false} />
             )}
           </div>
         </div>
@@ -223,7 +198,7 @@ function Empty({ line, children }: { line: string; children?: ReactNode }) {
 function Filters({ groups, q, active, clearHref, submit, mobile = false, base = [] }: { groups: FilterGroup[]; q: ReturnType<typeof readQuery>; active: number; clearHref: string; submit: (form: HTMLFormElement) => void; mobile?: boolean; base?: Piece[] }) {
   const [count, setCount] = useState(() => applyQuery(base, q).length);
   return (
-    <Form method="get" preventScrollReset replace className="flex flex-col gap-5" onChange={(e) => {
+    <Form method="get" preventScrollReset={!mobile} replace className="flex flex-col gap-5" onChange={(e) => {
       if (mobile) { const next = new URLSearchParams(); new FormData(e.currentTarget).forEach((v, k) => { if (typeof v === 'string') next.append(k, v); }); setCount(applyQuery(base, readQuery(next)).length); }
       else submit(e.currentTarget);
     }}>

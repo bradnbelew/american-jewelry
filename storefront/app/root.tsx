@@ -19,7 +19,6 @@ import { CartDrawer } from "~/components/CartDrawer";
 import { SavedDrawer } from "~/components/saved/SavedDrawer";
 import { Footer } from "~/components/Footer";
 import { Header } from "~/components/Header";
-import { DesignPicker } from "~/components/DesignPreview";
 import { readDesign, designCookie } from "~/lib/design-preview";
 import { SavedProvider } from "~/components/saved/SavedProvider";
 import { PageTitle, Section } from "~/components/Section";
@@ -146,7 +145,6 @@ export default function App({ loaderData }: Route.ComponentProps) {
         <PageViewedTracker />
         <CartAnalyticsTracker />
         <Header />
-        <DesignPicker />
         <main id="main" className="flex-1">
           <Outlet />
         </main>

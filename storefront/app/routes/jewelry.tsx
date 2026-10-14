@@ -17,7 +17,7 @@ export const meta: Route.MetaFunction = ({ data }) => {
   return pageMeta(
     {
       title: c ? c.name : "Jewelry",
-      description: c ? `${c.name} by American Jewelry: ${c.line} Natural and lab-grown diamond, solid gold. Designed in Tennessee.` : "Every piece American Jewelry makes, by kind, design, line and stone. Designed in Tennessee, set and finished in our workshop.",
+      description: c ? `${c.name} in the American Jewelry catalog: ${c.line} Explore house pieces and clearly identified design proposals.` : "Explore the American Jewelry catalog by type, style and material. House pieces and new design proposals, clearly identified.",
       path: c ? `/jewelry/${c.slug}` : "/jewelry",
       image: "comp-americana-ground",
     },
@@ -28,6 +28,6 @@ export const meta: Route.MetaFunction = ({ data }) => {
 export default function JewelryPage({ loaderData }: Route.ComponentProps) {
   const c = categoryBySlug(loaderData.category ?? undefined);
   const base = c ? piecesForCategory(c.slug) : PIECES;
-  return <Browse title={c ? c.name : "Jewelry"} line={c ? c.line : "Every piece the house makes, in one index. By kind, by design, by line, by stone."} base={base} kind={c?.slug} emptyLine={c ? `No ${c.name.toLowerCase()} are listed yet. The bench is drawing them.` : "Nothing is listed yet."} />;
+  return <Browse title={c ? c.name : "Jewelry"} line={undefined} base={base} kind={c?.slug} emptyLine={c ? `No ${c.name.toLowerCase()} are listed yet. The bench is drawing them.` : "Nothing is listed yet."} />;
 }
 

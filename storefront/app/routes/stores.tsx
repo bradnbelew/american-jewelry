@@ -1,76 +1,12 @@
 import { Link } from "react-router";
-
-import { Section } from "~/components/Section";
 import { STORES } from "~/lib/catalog/data";
 import { breadcrumbJsonLd, pageMeta, storeJsonLd } from "~/lib/seo";
-
 import type { Route } from "./+types/stores";
-
-export const meta: Route.MetaFunction = () =>
-  pageMeta(
-    {
-      title: "Stores in Brentwood and Mt. Juliet, Tennessee",
-      description: "American Jewelry has two stores in Middle Tennessee: Franklin Road in Brentwood and Providence Marketplace in Mt. Juliet. Hours, phone numbers and appointments.",
-      path: "/stores", og: "pages/stores",
-    },
-    [breadcrumbJsonLd([{ name: "Stores", href: "/stores" }]), ...STORES.map(storeJsonLd)],
-  );
-
+export const meta: Route.MetaFunction = () => pageMeta({title:"Visit the house | Brentwood and Mt. Juliet", description:"Visit American Jewelry in Brentwood or Mt. Juliet, Tennessee. Store addresses, phone numbers and private appointments.",path:"/stores",og:"pages/stores"}, [breadcrumbJsonLd([{name:"Stores",href:"/stores"}]), ...STORES.map(storeJsonLd)]);
 export default function StoresPage() {
-  return (
-    <>
-      <Section className="pt-12 pb-12 md:pt-20 md:pb-16">
-        <div className="flex max-w-3xl flex-col gap-5">
-          <h1 className="h-display text-[3rem] md:text-[4.5rem]">Two stores. Two working shops.</h1>
-          <p className="lede measure">Both our Brentwood and Mt. Juliet stores have shops visible to customers. We cast in-house. Call, get directions or arrange a visit.</p>
-        </div>
-      </Section>
-
-      {/* A ledger: both stores, side by side, every fact in a row. */}
-      <Section screen>
-        <div className="grid gap-16 md:grid-cols-2 md:gap-10 lg:gap-20">
-          {STORES.map((s) => (
-            <article key={s.slug} className="flex flex-col gap-6">
-              <Link to={`/stores/${s.slug}`} className="group flex flex-col gap-2">
-                <h2 className="h-section text-[2.5rem] group-hover:text-muted md:text-[3.25rem]">{s.name}</h2>
-                <span className="label">{s.role}</span>
-              </Link>
-              <address className="font-text not-italic text-ink-2">
-                {s.address1}
-                <br />
-                {s.city}, {s.state} {s.zip}
-                <br />
-                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="link-quiet num">
-                  {s.phone}
-                </a>
-              </address>
-              <table className="spec max-w-sm">
-                <tbody>
-                  {s.hours.map((h) => (
-                    <tr key={h.days}>
-                      <th scope="row">{h.days}</th>
-                      <td className="num">{h.open}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              {!s.hoursConfirmed && <p className="label">Hours are provisional; call before a long drive.</p>}
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Link to={`/appointments?store=${s.slug}`} className="btn">
-                  Book {s.name}
-                </Link>
-                <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.mapQuery)}`} target="_blank" rel="noreferrer" className="btn btn-outline">Directions</a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <Section screen width="text">
-        <p className="font-text max-w-xl text-ink-2">
-          Walk in for cleaning, inspection and repairs. For bridal, a commission or a Royal American viewing, book an hour.
-        </p>
-      </Section>
-    </>
-  );
+ return <>
+   <header className="stores-heading house-wrap"><p className="label">Brentwood and Mt. Juliet, Tennessee</p><h1>Visit the house.</h1><p>See the designs in person. Try a piece, consider a stone, or begin something of your own.</p></header>
+   <section className="stores-grid house-wrap" aria-label="Our stores">{STORES.map((s) => <article key={s.slug}><h2><Link to={`/stores/${s.slug}`}>{s.name}</Link></h2><address>{s.address1}<br />{s.city}, {s.state} {s.zip}</address><a className="store-phone" href={`tel:${s.phone.replace(/\D/g,"")}`}>{s.phone}</a><p className="label">{s.hoursConfirmed ? s.hours.map((h) => `${h.days}: ${h.open}`).join(". ") : "Call for current opening hours and availability of a particular piece."}</p><div className="store-actions"><Link to={`/appointments?store=${s.slug}`} className="btn">Arrange a visit</Link><a className="link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.mapQuery)}`} target="_blank" rel="noreferrer">Directions</a></div></article>)}</section>
+   <section className="house-essay house-wrap"><h2>Jewelry, seen closely.</h2><div><p>Both stores have working shops visible to customers. Bring a piece for cleaning, inspection or repair, or arrange a private viewing of Royal American.</p><Link to="/services" className="link">Care and services</Link></div></section>
+ </>;
 }

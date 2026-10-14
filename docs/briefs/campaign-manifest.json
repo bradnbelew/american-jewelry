@@ -1,0 +1,830 @@
+{
+  "generatedWith": "Built-in image_gen",
+  "status": "Selected generated concept imagery for the working mockup; not evidence of manufactured products",
+  "designs": [
+    {
+      "slug": "meridian",
+      "name": "Meridian",
+      "motif": "An open oval in polished gold, interrupted by an emerald-cut green stone.",
+      "construction": "A softly squared elongated oval frame of substantial polished 18k yellow gold, intentionally open at its lower right. A single small vertical emerald-cut vivid green emerald sits in a smooth gold bezel across that interruption. The asymmetry and visible negative space are essential. Neither a circle nor an infinity knot.",
+      "pieces": [
+        {
+          "kind": "ring",
+          "name": "Meridian Open Ring",
+          "description": "A sculptural open oval of gold with a green emerald-cut stone.",
+          "collections": [
+            "family",
+            "everyday",
+            "statement"
+          ]
+        },
+        {
+          "kind": "pendant",
+          "name": "Meridian Pendant",
+          "description": "An open gold oval, finished with a green emerald-cut stone.",
+          "collections": [
+            "family",
+            "everyday",
+            "gifts"
+          ]
+        },
+        {
+          "kind": "earrings",
+          "name": "Meridian Earrings",
+          "description": "Paired open gold ovals with green emerald-cut accents.",
+          "collections": [
+            "family",
+            "statement",
+            "gifts"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ribbon",
+      "name": "Ribbon",
+      "motif": "One broad gold ribbon folds back on itself, ending in a line of diamonds.",
+      "construction": "One continuous broad flattened ribbon of polished 18k yellow gold makes a single asymmetric folded return like a short softly curved sculptural pleat. There is a visible slit of negative space between the fold and its return. One tapered terminal has a short neatly pavé-set line of round white diamonds; the other terminal is plain gold. It is not a bow, knot, letter, infinity symbol, or interlocking chain.",
+      "pieces": [
+        {
+          "kind": "ring",
+          "name": "Ribbon Fold Ring",
+          "description": "A folded gold ribbon with a short diamond-set edge.",
+          "collections": [
+            "bridal",
+            "statement",
+            "gifts"
+          ]
+        },
+        {
+          "kind": "pendant",
+          "name": "Ribbon Pendant",
+          "description": "A single fold of gold, tipped with diamonds.",
+          "collections": [
+            "everyday",
+            "statement",
+            "gifts"
+          ]
+        },
+        {
+          "kind": "earrings",
+          "name": "Ribbon Earrings",
+          "description": "Sculptural gold folds with diamond-set tips.",
+          "collections": [
+            "bridal",
+            "statement",
+            "gifts"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "horizon",
+      "name": "Horizon",
+      "motif": "Two gold lines meet a bridge of three baguette diamonds.",
+      "construction": "Two parallel gently rounded horizontal rails of substantial polished 18k yellow gold, separated by a narrow continuous dark negative-space channel. Toward the right end a short vertical bridge of exactly three vertically oriented baguette-cut white diamonds side by side joins the rails. Wide calm horizontal proportion, asymmetric three-stone interruption, no screw heads, no logos, no repeated nail or knot.",
+      "pieces": [
+        {
+          "kind": "ring",
+          "name": "Horizon Band",
+          "description": "Twin gold rails with a bridge of baguette diamonds.",
+          "collections": [
+            "bridal",
+            "the-stack",
+            "everyday"
+          ]
+        },
+        {
+          "kind": "pendant",
+          "name": "Horizon Bar Pendant",
+          "description": "Two gold lines, joined by three baguette diamonds.",
+          "collections": [
+            "everyday",
+            "gifts",
+            "statement"
+          ]
+        },
+        {
+          "kind": "earrings",
+          "name": "Horizon Huggies",
+          "description": "Small double-rail gold hoops with baguette-diamond bridges.",
+          "collections": [
+            "bridal",
+            "everyday",
+            "gifts"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "petal",
+      "name": "Petal",
+      "motif": "Three curved gold petals gather around a blue sapphire.",
+      "construction": "An original asymmetric three-petal sculptural flower: exactly three broad almond-like 18k yellow gold petals rotate gently around a small off-center round faceted deep-blue sapphire in a fine smooth gold bezel. Petals are three-dimensional concave folded gold with softly brushed inner surfaces and polished rims; uneven lengths, asymmetry and open small gaps make it modern. No four-leaf clover outline, no milgrain border, no five-petal daisy, no copying another house motif.",
+      "pieces": [
+        {
+          "kind": "ring",
+          "name": "Petal Sapphire Ring",
+          "description": "Three curved gold petals around a blue sapphire.",
+          "collections": [
+            "family",
+            "statement",
+            "gifts"
+          ]
+        },
+        {
+          "kind": "pendant",
+          "name": "Petal Pendant",
+          "description": "A small sculptural gold flower with a sapphire center.",
+          "collections": [
+            "family",
+            "everyday",
+            "gifts"
+          ]
+        },
+        {
+          "kind": "earrings",
+          "name": "Petal Earrings",
+          "description": "Gold petals with deep-blue sapphire centers.",
+          "collections": [
+            "family",
+            "bridal",
+            "gifts"
+          ]
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "key": "02-shooting-star-detail",
+      "label": "Shooting Star detail",
+      "use": "Americana and Shooting Star design pages",
+      "alt": "Yellow-gold Shooting Star ring with five graduated diamonds on forest-green silk",
+      "prompt": "Use case: product-mockup. Create a single extraordinary fine-jewelry macro editorial photograph for a designer-house website, landscape 3:2, highest available native resolution. The reference is the exact object to preserve: one slender polished yellow-gold ring with a solid five-point gold star and exactly five graduated round white diamonds forming an asymmetric tail. Show the entire star, all five stones, their delicate gold settings, and enough of the curved shank to understand the ring. Do not add stones, change the design, or turn it into a pendant. Compose the star and jeweled tail along a descending diagonal through the center of the frame; the ring occupies roughly 70 percent of the image width, with breathing room. The ring rests on finely textured deep forest-green silk, a darker quieter version of the reference leather, with one barely visible fold receding behind it. Close grazing daylight, luminous gold-edge reflections, physically convincing transparent stone facets with deep internal contrast; focus-stacked jewelry detail but softly receding fabric, real optical photography rather than illustration or plastic render. Refined color, no oversaturation, no blown white metal edges, no fake starbursts, no floating jewels, no colored gemstones, no text or watermark. This is an editorial close study of the same ring used in the hand campaign.",
+      "src": "/photos/campaign-02-shooting-star-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 291356,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-02-shooting-star-detail-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-02-shooting-star-detail-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-02-shooting-star-detail-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "comp-americana-ground.webp"
+      ]
+    },
+    {
+      "key": "03-signal-bridal-hand",
+      "label": "Signal worn",
+      "use": "Bridal and Signal product gallery",
+      "alt": "Four-prong platinum Signal solitaire on a hand against blue-gray silk",
+      "prompt": "Use case: photorealistic-natural. Create a fine-jewelry bridal editorial photograph, portrait 4:5, highest available native resolution. Use the reference image as the exact Signal solitaire design: polished platinum slim plain band, one round brilliant diamond held by EXACTLY FOUR prongs at diagonal corners, raised open basket, discreet small round bezel-set diamond below the center in the gallery. Preserve the ring, no halo, no pavé, no extra bands, no six-prong substitution. Scene: a natural adult woman's hand wearing this ring, relaxed fingers gently curved over the edge of a deep blue-gray silk sleeve. Crop from wrist to fingertips without face or body; immaculate short natural nails, warm human skin with pores and real fine creases. The ring sits in the middle upper third, prominent yet realistically about 8 mm center-stone diameter relative to the finger, with the four claws readable. Soft directional window light from the side and controlled dark reflection give platinum clean luminous edges, diamond true transparent faceting rather than white glitter. Composition is sculptural, calm, intimate, high-fashion jewelry editorial; muted midnight-blue fabric and cool gray backdrop balance natural skin. Ring and adjacent finger in pin-sharp focus, gentle optical falloff elsewhere. No flowers, wedding props, extra jewelry, logos, words, watermark, plastic skin, impossible fingers, exaggerated huge gem, fake sparkle, or CGI aesthetic.",
+      "src": "/photos/campaign-03-signal-bridal-hand.webp",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 244640,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-03-signal-bridal-hand-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-03-signal-bridal-hand-800.webp",
+          "width": 800
+        }
+      ],
+      "referenceFiles": [
+        "comp-signal-packshot.webp"
+      ]
+    },
+    {
+      "key": "04-signal-light-study",
+      "label": "Signal light study",
+      "use": "New American and Signal feature",
+      "alt": "Four-prong platinum solitaire in directional light on a cool-gray surface",
+      "prompt": "Use case: product-mockup. Create a photographic light study of the EXACT platinum Signal solitaire in the reference, landscape 16:9, highest available native resolution. Invariants: one round brilliant diamond, exactly FOUR prongs, slim plain polished platinum shank, open raised basket with discreet small bezel-set gallery diamond, no halo or pavé and no extra gems. Show this complete ring lying at a slight three-quarter angle on a smooth cool gray brushed metal surface. A single narrow broad-edged band of natural daylight grazes the surface and catches the diamond and rim of the ring; the far background falls into deep blue-gray shadow. Place the ring in the right-center, its complete silhouette occupying about 40 percent of frame width, with left 35 percent calm negative space and no props. Jewel as an authored sculpture: platinum curves defined by precise reflection cards, diamond optically credible and transparent with dark/light facet contrast and very restrained spectral fire. Real macro studio photography with focus-stacked object and soft background; crisp subtle contact shadow, no hovering. Sophisticated blue-gray tonal world compatible with the bridal hand image. Avoid the usual ring-on-marble-plinth scene, generic jewelry ad graphics, volumetric beams, bokeh sparkles, text, logos, dramatic smoke, abstract rendered shards, blown whites and CGI material appearance.",
+      "src": "/photos/campaign-04-signal-light-study.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 166502,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-04-signal-light-study-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-04-signal-light-study-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-04-signal-light-study-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/photos/w/campaign-04-signal-light-study-1600.webp",
+          "width": 1600
+        }
+      ],
+      "referenceFiles": [
+        "comp-signal-packshot.webp"
+      ]
+    },
+    {
+      "key": "05-royal-american-velvet",
+      "label": "Royal American",
+      "use": "High Jewelry / Royal American opener",
+      "alt": "Six-prong platinum solitaire in a midnight-navy velvet tray",
+      "prompt": "Use case: product-mockup. Create one exceptional high-jewelry editorial photograph, landscape 16:9, highest available native resolution. Reference is the object to preserve: The Cumberland solitaire concept, one large round brilliant diamond in a six-prong polished PLATINUM mount with a plain gently tapered band. Preserve its six-prong construction and stone shape; the metal must read cool platinum, not yellow gold. Compose an intimate close study of the ring nestled in a deep midnight-navy velvet jeweler's presentation tray. Ring on right half, full diamond and curved front band visible, approximately 45 percent of frame width. Left third has uninterrupted softly lit dark navy velvet for white HTML copy. A low understated fold runs diagonally in the foreground; no visible box logo, lid, secondary jewelry or props. One large soft side light plus narrow reflection cards produces remarkable detail in the diamond, a few believable internal flashes, sculptural polished platinum, contact shadows and tactile short-pile velvet. Deep blacks retain subtle navy color and fabric detail. Controlled museum-quality product photography: rich quiet atmosphere, exact faceting, strong but delicate highlights, carefully calibrated exposure, no artificial glowing stone or sparkling starbursts. Not a rendering, not a generic ecommerce packshot, no gradient void, fog, dust effects, words, typography, watermarks or ornamental graphics.",
+      "src": "/photos/campaign-05-royal-american-velvet.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 231356,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-05-royal-american-velvet-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-05-royal-american-velvet-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-05-royal-american-velvet-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/photos/w/campaign-05-royal-american-velvet-1600.webp",
+          "width": 1600
+        }
+      ],
+      "referenceFiles": [
+        "comp-cumberland-velvet.webp"
+      ]
+    },
+    {
+      "key": "meridian-family",
+      "label": "Meridian design family",
+      "use": "Meridian style page and style discovery",
+      "alt": "Meridian ring, pendant and matching earrings on a pale gray surface",
+      "prompt": "Use case: product-mockup. Generate one extremely refined photographic campaign still life of an ORIGINAL proposed designer-jewelry family named Meridian, for American Jewelry's working website mockup. No image references. The essential unifying design language is: A softly squared elongated oval frame of substantial polished 18k yellow gold, intentionally open at its lower right. A single small vertical emerald-cut vivid green emerald sits in a smooth gold bezel across that interruption. The asymmetry and visible negative space are essential. Neither a circle nor an infinity knot. Show exactly three matching product designs: one ring at the left, one pendant on a very fine yellow-gold cable chain in the center, and one complete pair of earrings at the right. Translate the identical design motif faithfully across all three types, with proportion adjusted to wearability. No additional jewelry. Each object must be fully visible, separated with generous space, no overlap, no excessive chain coils. Fine jewelry with believable weight, clasp/chain connections, ring shank, earring construction. Arrange them as an intentional editorial still life on one continuous smooth cool very-pale-gray surface with subtle contact shadows, photographed slightly from above. Landscape 3:2, highest available native resolution. One large diffused side light plus black reflection cards to draw precise edges; lustrous rich but not orange gold, optically convincing gemstones, crisp fine craft, restrained contrast, meticulous medium-format macro photography. The finished objects are the focus, with nothing else in frame. No text, logo, labels, borders, diagram, collage panels, typography, watermark, sparkle effects, floating pieces, decorative props, marbling, paper textures or CGI aesthetic.",
+      "src": "/photos/campaign-meridian-family.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 107004,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-meridian-family-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-meridian-family-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-meridian-family-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": []
+    },
+    {
+      "key": "ribbon-family",
+      "label": "Ribbon design family",
+      "use": "Ribbon style page and style discovery",
+      "alt": "Ribbon ring, pendant and matching earrings on a pale gray surface",
+      "prompt": "Use case: product-mockup. Generate one extremely refined photographic campaign still life of an ORIGINAL proposed designer-jewelry family named Ribbon, for American Jewelry's working website mockup. No image references. The essential unifying design language is: One continuous broad flattened ribbon of polished 18k yellow gold makes a single asymmetric folded return like a short softly curved sculptural pleat. There is a visible slit of negative space between the fold and its return. One tapered terminal has a short neatly pavé-set line of round white diamonds; the other terminal is plain gold. It is not a bow, knot, letter, infinity symbol, or interlocking chain. Show exactly three matching product designs: one ring at the left, one pendant on a very fine yellow-gold cable chain in the center, and one complete pair of earrings at the right. Translate the identical design motif faithfully across all three types, with proportion adjusted to wearability. No additional jewelry. Each object must be fully visible, separated with generous space, no overlap, no excessive chain coils. Fine jewelry with believable weight, clasp/chain connections, ring shank, earring construction. Arrange them as an intentional editorial still life on one continuous smooth cool very-pale-gray surface with subtle contact shadows, photographed slightly from above. Landscape 3:2, highest available native resolution. One large diffused side light plus black reflection cards to draw precise edges; lustrous rich but not orange gold, optically convincing gemstones, crisp fine craft, restrained contrast, meticulous medium-format macro photography. The finished objects are the focus, with nothing else in frame. No text, logo, labels, borders, diagram, collage panels, typography, watermark, sparkle effects, floating pieces, decorative props, marbling, paper textures or CGI aesthetic.",
+      "src": "/photos/campaign-ribbon-family.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 110186,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-ribbon-family-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-family-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-family-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": []
+    },
+    {
+      "key": "horizon-family",
+      "label": "Horizon design family",
+      "use": "Horizon style page and style discovery",
+      "alt": "Horizon ring, pendant and matching earrings on a pale gray surface",
+      "prompt": "Use case: product-mockup. Generate one extremely refined photographic campaign still life of an ORIGINAL proposed designer-jewelry family named Horizon, for American Jewelry's working website mockup. No image references. The essential unifying design language is: Two parallel gently rounded horizontal rails of substantial polished 18k yellow gold, separated by a narrow continuous dark negative-space channel. Toward the right end a short vertical bridge of exactly three vertically oriented baguette-cut white diamonds side by side joins the rails. Wide calm horizontal proportion, asymmetric three-stone interruption, no screw heads, no logos, no repeated nail or knot. Show exactly three matching product designs: one ring at the left, one pendant on a very fine yellow-gold cable chain in the center, and one complete pair of earrings at the right. Translate the identical design motif faithfully across all three types, with proportion adjusted to wearability. No additional jewelry. Each object must be fully visible, separated with generous space, no overlap, no excessive chain coils. Fine jewelry with believable weight, clasp/chain connections, ring shank, earring construction. Arrange them as an intentional editorial still life on one continuous smooth cool very-pale-gray surface with subtle contact shadows, photographed slightly from above. Landscape 3:2, highest available native resolution. One large diffused side light plus black reflection cards to draw precise edges; lustrous rich but not orange gold, optically convincing gemstones, crisp fine craft, restrained contrast, meticulous medium-format macro photography. The finished objects are the focus, with nothing else in frame. No text, logo, labels, borders, diagram, collage panels, typography, watermark, sparkle effects, floating pieces, decorative props, marbling, paper textures or CGI aesthetic.",
+      "src": "/photos/campaign-horizon-family.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 91062,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-horizon-family-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-horizon-family-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-horizon-family-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": []
+    },
+    {
+      "key": "petal-family",
+      "label": "Petal design family",
+      "use": "Petal style page and style discovery",
+      "alt": "Petal ring, pendant and matching earrings on a pale gray surface",
+      "prompt": "Use case: product-mockup. Generate one extremely refined photographic campaign still life of an ORIGINAL proposed designer-jewelry family named Petal, for American Jewelry's working website mockup. No image references. The essential unifying design language is: An original asymmetric three-petal sculptural flower: exactly three broad almond-like 18k yellow gold petals rotate gently around a small off-center round faceted deep-blue sapphire in a fine smooth gold bezel. Petals are three-dimensional concave folded gold with softly brushed inner surfaces and polished rims; uneven lengths, asymmetry and open small gaps make it modern. No four-leaf clover outline, no milgrain border, no five-petal daisy, no copying another house motif. Show exactly three matching product designs: one ring at the left, one pendant on a very fine yellow-gold cable chain in the center, and one complete pair of earrings at the right. Translate the identical design motif faithfully across all three types, with proportion adjusted to wearability. No additional jewelry. Each object must be fully visible, separated with generous space, no overlap, no excessive chain coils. Fine jewelry with believable weight, clasp/chain connections, ring shank, earring construction. Arrange them as an intentional editorial still life on one continuous smooth cool very-pale-gray surface with subtle contact shadows, photographed slightly from above. Landscape 3:2, highest available native resolution. One large diffused side light plus black reflection cards to draw precise edges; lustrous rich but not orange gold, optically convincing gemstones, crisp fine craft, restrained contrast, meticulous medium-format macro photography. The finished objects are the focus, with nothing else in frame. No text, logo, labels, borders, diagram, collage panels, typography, watermark, sparkle effects, floating pieces, decorative props, marbling, paper textures or CGI aesthetic.",
+      "src": "/photos/campaign-petal-family.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 122982,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-petal-family-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-petal-family-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-petal-family-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": []
+    },
+    {
+      "key": "meridian-ring",
+      "label": "Meridian Open Ring",
+      "use": "Meridian product card and primary gallery",
+      "alt": "Meridian Open Ring, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the single ring shown at the LEFT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Meridian Open Ring. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The complete ring including its shank occupies 65 percent of image width and is fully in frame. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-meridian-ring.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 121260,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-meridian-ring-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-meridian-ring-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-meridian-ring-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-73a16d36-48ba-431d-9b6f-a2b79eb14d36.png"
+      ]
+    },
+    {
+      "key": "meridian-pendant",
+      "label": "Meridian Pendant",
+      "use": "Meridian product card and primary gallery",
+      "alt": "Meridian Pendant, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the pendant and its fine chain shown at the CENTER of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Meridian Pendant. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pendant occupies 40 percent of image width; its fine chain forms a clean symmetrical open V continuing to the top edge, never tangled. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-meridian-pendant.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 104138,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-meridian-pendant-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-meridian-pendant-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-meridian-pendant-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-73a16d36-48ba-431d-9b6f-a2b79eb14d36.png"
+      ]
+    },
+    {
+      "key": "meridian-earrings",
+      "label": "Meridian Earrings",
+      "use": "Meridian product card and primary gallery",
+      "alt": "Meridian Earrings, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the complete pair of earrings shown at the RIGHT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Meridian Earrings. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pair occupies 65 percent of image width; both pieces separated, same scale, front motif visible. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-meridian-earrings.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 117394,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-meridian-earrings-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-meridian-earrings-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-meridian-earrings-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-73a16d36-48ba-431d-9b6f-a2b79eb14d36.png"
+      ]
+    },
+    {
+      "key": "ribbon-ring",
+      "label": "Ribbon Fold Ring",
+      "use": "Ribbon product card and primary gallery",
+      "alt": "Ribbon Fold Ring, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the single ring shown at the LEFT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Ribbon Fold Ring. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The complete ring including its shank occupies 65 percent of image width and is fully in frame. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-ribbon-ring.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 145798,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-ribbon-ring-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-ring-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-ring-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-61f1206c-a5bc-453a-a94d-2f293bd4a7f2.png"
+      ]
+    },
+    {
+      "key": "ribbon-pendant",
+      "label": "Ribbon Pendant",
+      "use": "Ribbon product card and primary gallery",
+      "alt": "Ribbon Pendant, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the pendant and its fine chain shown at the CENTER of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Ribbon Pendant. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pendant occupies 40 percent of image width; its fine chain forms a clean symmetrical open V continuing to the top edge, never tangled. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-ribbon-pendant.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 138584,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-ribbon-pendant-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-pendant-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-pendant-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-61f1206c-a5bc-453a-a94d-2f293bd4a7f2.png"
+      ]
+    },
+    {
+      "key": "ribbon-earrings",
+      "label": "Ribbon Earrings",
+      "use": "Ribbon product card and primary gallery",
+      "alt": "Ribbon Earrings, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the complete pair of earrings shown at the RIGHT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Ribbon Earrings. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pair occupies 65 percent of image width; both pieces separated, same scale, front motif visible. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-ribbon-earrings.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 149908,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-ribbon-earrings-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-earrings-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-ribbon-earrings-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-61f1206c-a5bc-453a-a94d-2f293bd4a7f2.png"
+      ]
+    },
+    {
+      "key": "horizon-ring",
+      "label": "Horizon Band",
+      "use": "Horizon product card and primary gallery",
+      "alt": "Horizon Band, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the single ring shown at the LEFT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Horizon Band. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The complete ring including its shank occupies 65 percent of image width and is fully in frame. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-horizon-ring.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 133752,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-horizon-ring-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-horizon-ring-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-horizon-ring-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-23413626-8a4b-45c5-93fa-6d35f93264ee.png"
+      ]
+    },
+    {
+      "key": "horizon-pendant",
+      "label": "Horizon Bar Pendant",
+      "use": "Horizon product card and primary gallery",
+      "alt": "Horizon Bar Pendant, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the pendant and its fine chain shown at the CENTER of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Horizon Bar Pendant. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pendant occupies 40 percent of image width; its fine chain forms a clean symmetrical open V continuing to the top edge, never tangled. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-horizon-pendant.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 95040,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-horizon-pendant-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-horizon-pendant-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-horizon-pendant-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-23413626-8a4b-45c5-93fa-6d35f93264ee.png"
+      ]
+    },
+    {
+      "key": "horizon-earrings",
+      "label": "Horizon Huggies",
+      "use": "Horizon product card and primary gallery",
+      "alt": "Horizon Huggies, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the complete pair of earrings shown at the RIGHT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Horizon Huggies. Do not print the name. Preserve the small double-rail hinged HOOP/HUGGIE form, not stud earrings. Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pair occupies 65 percent of image width; both pieces separated, same scale, front motif visible. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-horizon-earrings.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 145970,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-horizon-earrings-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-horizon-earrings-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-horizon-earrings-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-23413626-8a4b-45c5-93fa-6d35f93264ee.png"
+      ]
+    },
+    {
+      "key": "petal-ring",
+      "label": "Petal Sapphire Ring",
+      "use": "Petal product card and primary gallery",
+      "alt": "Petal Sapphire Ring, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the single ring shown at the LEFT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Petal Sapphire Ring. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The complete ring including its shank occupies 65 percent of image width and is fully in frame. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-petal-ring.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 172750,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-petal-ring-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-petal-ring-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-petal-ring-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-405b9a7f-07b0-4ddb-8299-6b69138db6d1.png"
+      ]
+    },
+    {
+      "key": "petal-pendant",
+      "label": "Petal Pendant",
+      "use": "Petal product card and primary gallery",
+      "alt": "Petal Pendant, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the pendant and its fine chain shown at the CENTER of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Petal Pendant. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pendant occupies 40 percent of image width; its fine chain forms a clean symmetrical open V continuing to the top edge, never tangled. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-petal-pendant.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 132678,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-petal-pendant-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-petal-pendant-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-petal-pendant-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-405b9a7f-07b0-4ddb-8299-6b69138db6d1.png"
+      ]
+    },
+    {
+      "key": "petal-earrings",
+      "label": "Petal Earrings",
+      "use": "Petal product card and primary gallery",
+      "alt": "Petal Earrings, proposed yellow-gold jewelry design on a pale gray surface",
+      "prompt": "Use case: precise-object-edit. The input image is the strict reference for a proposed jewelry design family. Produce ONE individual catalog photograph of ONLY the complete pair of earrings shown at the RIGHT of the reference. Remove all other jewelry from the scene. Keep the selected jewelry design EXACTLY the same: same silhouette, proportions, stone shapes, number of stones, gold finish, construction, and details. Product name for context only: Petal Earrings. Do not print the name.  Rephotograph the selected product larger, centered on the same smooth very pale cool-gray studio surface with a soft real contact shadow. Three-quarter camera angle showing the front motif clearly and enough depth to understand its construction. The pair occupies 65 percent of image width; both pieces separated, same scale, front motif visible. Square 1:1 composition, highest available native resolution. Premium medium-format macro product photography, controlled gold reflections, physically plausible brilliant gemstone facets, sharp object, clean understated background. No labels, text, logos, watermark, borders, props, glow, illustration or new design details.",
+      "src": "/photos/campaign-petal-earrings.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 158020,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-petal-earrings-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-petal-earrings-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-petal-earrings-1200.webp",
+          "width": 1200
+        }
+      ],
+      "referenceFiles": [
+        "exec-405b9a7f-07b0-4ddb-8299-6b69138db6d1.png"
+      ]
+    },
+    {
+      "key": "06-shooting-star-hero-final",
+      "label": "Shooting Star — desktop hero",
+      "use": "Home and Americana desktop opener; text on left",
+      "alt": "Hand wearing a yellow-gold Shooting Star ring on forest-green silk",
+      "prompt": "Use case: photorealistic-natural. Create a single exceptional wide website campaign photograph, landscape 16:9, highest native resolution. The input is the strict design reference for the ONE ring to photograph on a real hand. Keep the solid five-point yellow gold star and all FIVE graduated diamonds visible, exactly as in the reference; do not simplify the tail to four stones. Photograph a graceful natural adult woman's hand diagonally from the wrist at top right to relaxed fingertips at lower middle, resting on very dark forest-green silk. Close enough that the star-and-five-stone motif is large and clearly readable in the right-center of the frame, ring correctly fitted to ring finger, scale of approximately 20 mm across the complete motif. Ring and knuckle occupy about a quarter of the frame width. Leftmost third is quiet dark green fabric for white website text, but add no text. Human skin naturally warm with pores, short nude nails, no extra fingers or jewelry. Medium-format editorial photography, a large soft directional daylight source, deep controlled shadows in the fabric and excellent gold reflection shaping. Precise jewelry focus, authentic skin, subtle optical falloff. This is a designer-jewelry campaign, intimate and confident. No cosmetic ad retouching, no excessive sparkle, no flat beige background, no props, no logo, no writing, no collage. The ring design and FIVE diamonds must match the reference.",
+      "src": "/photos/campaign-06-shooting-star-hero-final.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 271062,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-06-shooting-star-hero-final-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-06-shooting-star-hero-final-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-06-shooting-star-hero-final-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/photos/w/campaign-06-shooting-star-hero-final-1600.webp",
+          "width": 1600
+        }
+      ],
+      "referenceFiles": [
+        "exec-fb20a7c5-cc8d-49fb-9384-229f3737aca2.png"
+      ]
+    },
+    {
+      "key": "07-family-collection-editorial",
+      "label": "Family — three styles",
+      "use": "Family collection opener; demonstrates cross-style curation",
+      "alt": "Meridian ring, Petal pendant and Shooting Star ring together on navy velvet",
+      "prompt": "Use case: product-mockup. Create one exquisitely art-directed editorial still life for the FAMILY cross-style collection of American Jewelry. Landscape 16:9, highest native resolution. Inputs are strict references for THREE different but complementary jewelry styles: 1 Meridian gold and green emerald ring; 2 Petal three-gold-petal blue sapphire pendant; 3 Shooting Star gold ring with five graduated diamonds. Show exactly these three pieces together in one shallow midnight-navy velvet jewelry tray, no dividers. Meridian ring toward upper left; Petal pendant on its fine gold cable chain draped in one elegant curve toward the center-right; Shooting Star ring near lower center. Preserve each distinct silhouette and every major construction detail. Two rings and one pendant; no earrings or extra stones. This image visually explains that one collection can bring different styles together, with gold and small gemstone accents as their common language. Camera almost overhead, sophisticated spacious asymmetric composition, pieces occupy center two-thirds; clean dark navy margins. Low soft window light reveals true gold and gemstone color, exquisite sharp product detail and tactile short-pile velvet, beautiful controlled shadows, no flat-lay social media clutter. No hands, labels, logos, papers, candles, flowers, typography, rendered diagrams, fake glow or glitter.",
+      "src": "/photos/campaign-07-family-collection-editorial.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 371874,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-07-family-collection-editorial-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-07-family-collection-editorial-800.webp",
+          "width": 800
+        },
+        {
+          "src": "/photos/w/campaign-07-family-collection-editorial-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/photos/w/campaign-07-family-collection-editorial-1600.webp",
+          "width": 1600
+        }
+      ],
+      "referenceFiles": [
+        "exec-2f2e442a-3ae0-45e9-8d19-32d299a6ba68.png",
+        "exec-c32af60e-ebb2-434c-8835-32bd21ce9c50.png",
+        "exec-fb20a7c5-cc8d-49fb-9384-229f3737aca2.png"
+      ]
+    },
+    {
+      "key": "08-ribbon-worn-editorial",
+      "label": "Ribbon worn",
+      "use": "Ribbon, Statement and product detail",
+      "alt": "Hand wearing a sculptural gold Ribbon Fold Ring",
+      "prompt": "Use case: photorealistic-natural. Create one designer-jewelry editorial campaign photograph, portrait 4:5 at the highest native resolution. The reference is the EXACT Ribbon Fold Ring to preserve: sculptural polished yellow-gold wide folded ribbon ring, long negative-space slit, one pointed return tipped with four graduated white diamonds; preserve all contours. Photograph this one ring worn on the middle finger of a graceful natural adult woman's hand. Hand rests loosely across the opposite forearm, framed only from wrist to fingertips and a small segment of forearm, no face. Backdrop and sleeve are deep forest-green matte silk; warm natural skin, short nude nails, visible pores and fine creases. Ring is large enough to appreciate the folded gold surface but correct realistic scale, around 18 mm motif height on finger. Confident sculptural diagonal composition, ring in the upper center third with calm fabric at the bottom. Medium-format portrait macro photography, one large side daylight source and carefully shaped gold reflections, jewel sharply focused, natural falloff elsewhere, deep green and warm gold with realistic skin. No other rings, bracelets, props, words, logo, plastic retouching, glitter or artificial render look.",
+      "src": "/photos/campaign-08-ribbon-worn-editorial.webp",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 263840,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-08-ribbon-worn-editorial-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-08-ribbon-worn-editorial-800.webp",
+          "width": 800
+        }
+      ],
+      "referenceFiles": [
+        "exec-262d27b6-a8c3-45e3-896d-6f6c644712bf.png"
+      ]
+    },
+    {
+      "key": "09-shooting-star-hero-mobile",
+      "label": "Shooting Star — mobile hero",
+      "use": "Mobile opener; text in lower dark fabric",
+      "alt": "Hand wearing the Shooting Star ring, vertically composed on forest-green silk",
+      "prompt": "Use case: precise-object-edit. Recompose this exact campaign photograph as one vertical 2:3 mobile website hero, at the highest native resolution. Preserve the identical natural hand, skin tone, forest-green silk, lighting and exact Shooting Star ring: solid yellow-gold five-point star plus all FIVE graduated round diamonds, no ring redesign. Show the wrist entering from upper right, the ring clearly in the central upper half, with relaxed fingers ending above the bottom fifth. Extend the deep forest-green silk naturally so the lowest 22 percent of the image is quiet dark fabric suitable for white HTML text. No text in image. The hand must be anatomically plausible with no extra fingers and short natural nude nails. Keep jewelry tack sharp, honest skin pores, deep green textile texture, controlled gold highlights, no extra jewelry, no background objects, no graphic overlays. This should be the portrait composition from the very same photographic shoot, not a new design or unrelated styling.",
+      "src": "/photos/campaign-09-shooting-star-hero-mobile.webp",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 311242,
+      "variants": [
+        {
+          "src": "/photos/w/campaign-09-shooting-star-hero-mobile-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/photos/w/campaign-09-shooting-star-hero-mobile-800.webp",
+          "width": 800
+        }
+      ],
+      "referenceFiles": [
+        "exec-58fa75e6-59bd-4c33-ade6-163c5e0fe162.png"
+      ]
+    }
+  ]
+}

@@ -24,8 +24,18 @@ const out = path.resolve("public/og");
 async function photoDataUri(key) {
   const p = PHOTO[key];
   if (!p) return null;
+  if (p.cell) {
+    // Compose the same clipped SVG viewport used by Pic; never show a whole contact plate as one product.
+    const [columns, rows, column, row] = p.cell;
+    const width = p.w / columns, height = p.h / rows;
+    const source = await sharp(path.resolve("public" + p.src)).png().toBuffer();
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="630" viewBox="0 0 600 630"><rect width="600" height="630" fill="${PAPER}"/><svg width="600" height="630" viewBox="${column * width} ${row * height} ${width} ${height}" preserveAspectRatio="xMidYMid meet"><clipPath id="cell"><rect x="${column * width}" y="${row * height}" width="${width}" height="${height}"/></clipPath><image width="${p.w}" height="${p.h}" clip-path="url(#cell)" xlink:href="data:image/png;base64,${source.toString("base64")}"/></svg></svg>`;
+    const rendered = new Resvg(svg).render().asPng();
+    const jpg = await sharp(rendered).jpeg({quality:82}).toBuffer();
+    return `data:image/jpeg;base64,${jpg.toString("base64")}`;
+  }
   // resvg decodes JPEG and PNG, not WebP: resize the original to the card's right half with sharp
-  const buf = await sharp(path.resolve("public" + p.src)).resize(600, 630, { fit: "cover", position: "attention" }).jpeg({ quality: 82 }).toBuffer();
+  const buf = await sharp(path.resolve("public" + p.src)).resize(600, 630, { fit: p.contain ? "contain" : "cover", position: "attention", background:PAPER }).jpeg({ quality: 82 }).toBuffer();
   return `data:image/jpeg;base64,${buf.toString("base64")}`;
 }
 
@@ -66,20 +76,20 @@ async function render(file, props) {
 }
 
 const jobs = [];
-jobs.push(["pages/home", { title: "An American house of fine jewelry.", photo: await photoDataUri("hero-hand") }]);
-jobs.push(["pages/house", { label: "The House", title: "Drawn by one designer. Set and finished at our bench.", photo: await photoDataUri("bench") }]);
-jobs.push(["pages/stores", { label: "Two stores", title: "Brentwood and Mt. Juliet, Tennessee", photo: await photoDataUri("box-peach") }]);
-jobs.push(["pages/build-ring", { label: "Build a ring", title: "Three settings we drew. The stone, the metal and the fit are yours.", photo: await photoDataUri("ring-halo") }]);
+jobs.push(["pages/home", { title: "An American house of fine jewelry.", photo: await photoDataUri("comp-home-hand") }]);
+jobs.push(["pages/house", { label: "The House", title: "A family house. A singular point of view.", photo: await photoDataUri("comp-prism-campaign") }]);
+jobs.push(["pages/stores", { label: "Visit the house", title: "Brentwood and Mt. Juliet, Tennessee", photo: null }]);
+jobs.push(["pages/build-ring", { label: "Build a ring", title: "Begin with a setting.", photo: await photoDataUri("comp-signal-packshot") }]);
 jobs.push(["pages/services", { label: "Services", title: "A bench that looks after everyone's jewelry.", photo: await photoDataUri("bench") }]);
 jobs.push(["pages/journal", { label: "Journal", title: "Plain answers from the bench.", photo: null }]);
-jobs.push(["pages/appointments", { label: "Appointments", title: "Come and see it in your hand.", photo: await photoDataUri("hero-hand") }]);
+jobs.push(["pages/appointments", { label: "Appointments", title: "Come and see it in your hand.", photo: await photoDataUri("comp-home-hand") }]);
 for (const t of TIERS) jobs.push([`lines/${t.slug}`, { label: t.slug === "royal-american" ? "High Jewelry" : t.tagline, title: t.name, photo: await photoDataUri(TIER_PHOTO[t.slug]) }]);
-for (const d of DESIGNS) jobs.push([`designs/${d.slug}`, { label: "A house design", title: d.name, line: d.motif, photo: await photoDataUri(DESIGN_PHOTO[d.slug]) }]);
-for (const s of STORES) jobs.push([`stores/${s.slug}`, { label: `${s.address1}, ${s.city}`, title: `American Jewelry, ${s.name}`, photo: await photoDataUri(s.photo) }]);
+for (const d of DESIGNS) jobs.push([`designs/${d.slug}`, { label: d.concept ? "Proposed design" : "A house design", title: d.name, line: d.motif, photo: await photoDataUri(DESIGN_PHOTO[d.slug]) }]);
+for (const s of STORES) jobs.push([`stores/${s.slug}`, { label: `${s.address1}, ${s.city}`, title: `American Jewelry, ${s.name}`, photo: null }]);
 for (const p of PIECES) {
   const manMade = p.versions.some((v) => v.origin === "man-made");
   const price = startingPrice(p);
-  jobs.push([`pieces/${p.handle}`, { label: p.oneOfOne ? "One of one" : manMade ? "Lab-grown diamond" : "Natural diamond and solid gold", title: p.name, line: price === null ? "Price on request" : `From ${formatPrice(price)}`, photo: await photoDataUri((PIECE_PHOTOS[p.handle] ?? ["hero-box"])[0]) }]);
+  jobs.push([`pieces/${p.handle}`, { label: p.concept ? "Proposed design" : p.oneOfOne ? "Registry concept" : manMade ? "Lab-grown diamond" : "Gold and natural gemstones", title: p.name, line: p.concept ? "Design consultation" : price === null ? "Price on request" : `From ${formatPrice(price)}`, photo: await photoDataUri((PIECE_PHOTOS[p.handle] ?? ["hero-box"])[0]) }]);
 }
 for (const a of ARTICLES) jobs.push([`journal/${a.slug}`, { label: "Journal", title: a.title, photo: await photoDataUri(a.photo) }]);
 

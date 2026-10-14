@@ -47,6 +47,42 @@ export const tierBySlug = (slug: TierSlug) => TIERS.find((t) => t.slug === slug)
 /* ------------------------------------------------------------------ */
 
 export const DESIGNS: Design[] = [
+{
+  "concept": true,
+  "slug": "meridian",
+  "name": "Meridian",
+  "tier": "americana",
+  "motif": "An open oval in polished gold, interrupted by an emerald-cut green stone.",
+  "story": "An open oval in polished gold, interrupted by an emerald-cut green stone. A proposed family of rings, pendants and earrings.",
+  "signature": "An open oval in polished gold, interrupted by an emerald-cut green stone."
+},
+{
+  "concept": true,
+  "slug": "ribbon",
+  "name": "Ribbon",
+  "tier": "americana",
+  "motif": "One broad gold ribbon folds back on itself, ending in a line of diamonds.",
+  "story": "One broad gold ribbon folds back on itself, ending in a line of diamonds. A proposed family of rings, pendants and earrings.",
+  "signature": "One broad gold ribbon folds back on itself, ending in a line of diamonds."
+},
+{
+  "concept": true,
+  "slug": "horizon",
+  "name": "Horizon",
+  "tier": "americana",
+  "motif": "Two gold lines meet a bridge of three baguette diamonds.",
+  "story": "Two gold lines meet a bridge of three baguette diamonds. A proposed family of rings, pendants and earrings.",
+  "signature": "Two gold lines meet a bridge of three baguette diamonds."
+},
+{
+  "concept": true,
+  "slug": "petal",
+  "name": "Petal",
+  "tier": "americana",
+  "motif": "Three curved gold petals gather around a blue sapphire.",
+  "story": "Three curved gold petals gather around a blue sapphire. A proposed family of rings, pendants and earrings.",
+  "signature": "Three curved gold petals gather around a blue sapphire."
+},
   {
     slug: "shooting-star",
     name: "Shooting Star",
@@ -85,6 +121,8 @@ export const DESIGNS: Design[] = [
   },
 ];
 
+DESIGNS.sort((a, b) => Number(!!a.concept) - Number(!!b.concept));
+
 export const designBySlug = (slug: string) => DESIGNS.find((d) => d.slug === slug);
 export const designsForTier = (tier: TierSlug) => DESIGNS.filter((d) => d.tier === tier);
 
@@ -94,37 +132,61 @@ export const designsForTier = (tier: TierSlug) => DESIGNS.filter((d) => d.tier =
 
 export const COLLECTIONS: Collection[] = [
   {
-    slug: "family",
-    name: "Family",
-    intro: "The house designs, set with the birthstones of the people you love.",
-    story:
-      "Every Americana motif is drawn with a place for a stone that is yours. A Shooting Star's tail can hold a child's birthstone; a Prism signet can carry a parent's. Family pieces are made to order with engraving available.",
-    crossTier: false,
+    "slug": "family",
+    "name": "Family",
+    "intro": "For the people you carry with you.",
+    "story": "Shooting Star, Prism, Meridian and Petal bring personal meaning to a shared family of forms. Ask the house about birthstones and engraving.",
+    "crossTier": true
   },
   {
-    slug: "bridal",
-    name: "Bridal",
-    intro: "Engagement and wedding, in natural or lab-grown diamond, in the same house settings.",
-    story:
-      "The one place Americana and New American share designs. Choose the setting; then choose the stone: a natural diamond in Americana, or a lab-grown diamond in New American. Every ring is labeled plainly with which it is.",
-    crossTier: true,
+    "slug": "bridal",
+    "name": "Bridal",
+    "intro": "Rings for a promise. Jewelry for the day.",
+    "story": "Explore engagement settings, wedding bands and a few finishing touches. Proposed designs are identified on each piece.",
+    "crossTier": true
   },
   {
-    slug: "signets",
-    name: "Signets",
-    intro: "The oldest form of personal jewelry, in every house motif.",
-    story:
-      "A signet is the piece a house is judged on. Ours are heavy, hand-finished, and engraved on request with a monogram, a crest, or the AJ seal.",
-    crossTier: false,
+    "slug": "signets",
+    "name": "Signets",
+    "intro": "A personal mark, in gold.",
+    "story": "Three interpretations of a familiar form: Shooting Star, Prism and Signal.",
+    "crossTier": true
   },
   {
-    slug: "the-stack",
-    name: "The Stack",
-    intro: "Bands made to be worn in multiples and collected over years.",
-    story:
-      "Thin bands in gold, gemstone and diamond versions, sized to sit flush against one another. Start with one.",
-    crossTier: true,
+    "slug": "the-stack",
+    "name": "The Stack",
+    "intro": "One band. Then another.",
+    "story": "Narrow bands and contrasting surfaces, collected into your own combination. Confirm the fit of your chosen pieces with the house.",
+    "crossTier": true
   },
+  {
+    "slug": "everyday",
+    "name": "Every Day",
+    "intro": "The pieces you reach for first.",
+    "story": "Pendants, bands and earrings with enough character to wear on their own.",
+    "crossTier": true
+  },
+  {
+    "slug": "statement",
+    "name": "Statement Pieces",
+    "intro": "A little more presence.",
+    "story": "Sculptural forms, substantial links and expressive color.",
+    "crossTier": true
+  },
+  {
+    "slug": "gifts",
+    "name": "Gifts",
+    "intro": "Chosen with someone in mind.",
+    "story": "Discover pendants, earrings and personal pieces across the house designs.",
+    "crossTier": true
+  },
+  {
+    "slug": "color",
+    "name": "In Color",
+    "intro": "Green, blue, and the stone that means something to you.",
+    "story": "Birthstone versions of Shooting Star and Prism meet proposed emerald Meridian and sapphire Petal designs.",
+    "crossTier": true
+  }
 ];
 
 export const collectionBySlug = (slug: string) => COLLECTIONS.find((c) => c.slug === slug);
@@ -150,6 +212,528 @@ const manMade = (name: string, price: number, spec: string): Version => ({
 });
 
 export const PIECES: Piece[] = [
+{
+  "concept": true,
+  "handle": "meridian-ring",
+  "name": "Meridian Open Ring",
+  "tier": "americana",
+  "design": "meridian",
+  "pieceType": "ring",
+  "versions": [
+    {
+      "key": "gemstone",
+      "name": "Colored gemstone concept",
+      "priceCents": null,
+      "stones": "Proposed emerald",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "A sculptural open oval of gold with a green emerald-cut stone.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Emerald proposed"
+    }
+  ],
+  "collections": [
+    "family",
+    "everyday",
+    "statement",
+    "color"
+  ],
+  "art": "ring"
+},
+{
+  "concept": true,
+  "handle": "meridian-pendant",
+  "name": "Meridian Pendant",
+  "tier": "americana",
+  "design": "meridian",
+  "pieceType": "pendant",
+  "versions": [
+    {
+      "key": "gemstone",
+      "name": "Colored gemstone concept",
+      "priceCents": null,
+      "stones": "Proposed emerald",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "An open gold oval, finished with a green emerald-cut stone.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Emerald proposed"
+    }
+  ],
+  "collections": [
+    "family",
+    "everyday",
+    "gifts",
+    "color"
+  ],
+  "art": "pendant"
+},
+{
+  "concept": true,
+  "handle": "meridian-earrings",
+  "name": "Meridian Earrings",
+  "tier": "americana",
+  "design": "meridian",
+  "pieceType": "earrings",
+  "versions": [
+    {
+      "key": "gemstone",
+      "name": "Colored gemstone concept",
+      "priceCents": null,
+      "stones": "Proposed emerald",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "Paired open gold ovals with green emerald-cut accents.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Emerald proposed"
+    }
+  ],
+  "collections": [
+    "family",
+    "statement",
+    "gifts",
+    "color"
+  ],
+  "art": "studs"
+},
+{
+  "concept": true,
+  "handle": "ribbon-ring",
+  "name": "Ribbon Fold Ring",
+  "tier": "americana",
+  "design": "ribbon",
+  "pieceType": "ring",
+  "versions": [
+    {
+      "key": "diamond",
+      "name": "Diamond concept",
+      "priceCents": null,
+      "stones": "Proposed natural diamonds",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "A folded gold ribbon with a short diamond-set edge.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Natural diamonds proposed"
+    }
+  ],
+  "collections": [
+    "bridal",
+    "statement",
+    "gifts"
+  ],
+  "art": "ring"
+},
+{
+  "concept": true,
+  "handle": "ribbon-pendant",
+  "name": "Ribbon Pendant",
+  "tier": "americana",
+  "design": "ribbon",
+  "pieceType": "pendant",
+  "versions": [
+    {
+      "key": "diamond",
+      "name": "Diamond concept",
+      "priceCents": null,
+      "stones": "Proposed natural diamonds",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "A single fold of gold, tipped with diamonds.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Natural diamonds proposed"
+    }
+  ],
+  "collections": [
+    "everyday",
+    "statement",
+    "gifts"
+  ],
+  "art": "pendant"
+},
+{
+  "concept": true,
+  "handle": "ribbon-earrings",
+  "name": "Ribbon Earrings",
+  "tier": "americana",
+  "design": "ribbon",
+  "pieceType": "earrings",
+  "versions": [
+    {
+      "key": "diamond",
+      "name": "Diamond concept",
+      "priceCents": null,
+      "stones": "Proposed natural diamonds",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "Sculptural gold folds with diamond-set tips.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Natural diamonds proposed"
+    }
+  ],
+  "collections": [
+    "bridal",
+    "statement",
+    "gifts"
+  ],
+  "art": "studs"
+},
+{
+  "concept": true,
+  "handle": "horizon-ring",
+  "name": "Horizon Band",
+  "tier": "americana",
+  "design": "horizon",
+  "pieceType": "ring",
+  "versions": [
+    {
+      "key": "diamond",
+      "name": "Diamond concept",
+      "priceCents": null,
+      "stones": "Proposed natural diamonds",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "Twin gold rails with a bridge of baguette diamonds.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Natural diamonds proposed"
+    }
+  ],
+  "collections": [
+    "bridal",
+    "the-stack",
+    "everyday"
+  ],
+  "art": "ring"
+},
+{
+  "concept": true,
+  "handle": "horizon-pendant",
+  "name": "Horizon Bar Pendant",
+  "tier": "americana",
+  "design": "horizon",
+  "pieceType": "pendant",
+  "versions": [
+    {
+      "key": "diamond",
+      "name": "Diamond concept",
+      "priceCents": null,
+      "stones": "Proposed natural diamonds",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "Two gold lines, joined by three baguette diamonds.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Natural diamonds proposed"
+    }
+  ],
+  "collections": [
+    "everyday",
+    "gifts",
+    "statement"
+  ],
+  "art": "pendant"
+},
+{
+  "concept": true,
+  "handle": "horizon-earrings",
+  "name": "Horizon Huggies",
+  "tier": "americana",
+  "design": "horizon",
+  "pieceType": "earrings",
+  "versions": [
+    {
+      "key": "diamond",
+      "name": "Diamond concept",
+      "priceCents": null,
+      "stones": "Proposed natural diamonds",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "Small double-rail gold hoops with baguette-diamond bridges.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Natural diamonds proposed"
+    }
+  ],
+  "collections": [
+    "bridal",
+    "everyday",
+    "gifts"
+  ],
+  "art": "studs"
+},
+{
+  "concept": true,
+  "handle": "petal-ring",
+  "name": "Petal Sapphire Ring",
+  "tier": "americana",
+  "design": "petal",
+  "pieceType": "ring",
+  "versions": [
+    {
+      "key": "gemstone",
+      "name": "Colored gemstone concept",
+      "priceCents": null,
+      "stones": "Proposed blue sapphire",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "Three curved gold petals around a blue sapphire.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Blue sapphire proposed"
+    }
+  ],
+  "collections": [
+    "family",
+    "statement",
+    "gifts",
+    "color"
+  ],
+  "art": "ring"
+},
+{
+  "concept": true,
+  "handle": "petal-pendant",
+  "name": "Petal Pendant",
+  "tier": "americana",
+  "design": "petal",
+  "pieceType": "pendant",
+  "versions": [
+    {
+      "key": "gemstone",
+      "name": "Colored gemstone concept",
+      "priceCents": null,
+      "stones": "Proposed blue sapphire",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "A small sculptural gold flower with a sapphire center.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Blue sapphire proposed"
+    }
+  ],
+  "collections": [
+    "family",
+    "everyday",
+    "gifts",
+    "color"
+  ],
+  "art": "pendant"
+},
+{
+  "concept": true,
+  "handle": "petal-earrings",
+  "name": "Petal Earrings",
+  "tier": "americana",
+  "design": "petal",
+  "pieceType": "earrings",
+  "versions": [
+    {
+      "key": "gemstone",
+      "name": "Colored gemstone concept",
+      "priceCents": null,
+      "stones": "Proposed blue sapphire",
+      "origin": "natural"
+    }
+  ],
+  "metals": [
+    "18k-yellow"
+  ],
+  "leadTime": "Design proposal; production details to be confirmed",
+  "madeToOrder": false,
+  "description": "Gold petals with deep-blue sapphire centers.",
+  "specs": [
+    {
+      "label": "Design",
+      "value": "Proposed design; not an available product"
+    },
+    {
+      "label": "Metal",
+      "value": "18k yellow gold proposed"
+    },
+    {
+      "label": "Stone",
+      "value": "Blue sapphire proposed"
+    }
+  ],
+  "collections": [
+    "family",
+    "bridal",
+    "gifts",
+    "color"
+  ],
+  "art": "studs"
+},
   /* ---------------- Royal American: one of one ---------------- */
   {
     handle: "no-001-the-cumberland",
@@ -157,13 +741,13 @@ export const PIECES: Piece[] = [
     tier: "royal-american",
     design: "royal",
     pieceType: "ring",
-    oneOfOne: { number: "001", registered: true },
-    versions: [{ key: "diamond", name: "Natural diamond", priceCents: null, stones: "5.02 ct natural diamond, D, IF, GIA", origin: "natural" }],
+    oneOfOne: { number: "001", registered: false },
+    versions: [{ key: "diamond", name: "Natural diamond", priceCents: null, stones: "Illustrative: 5.02 ct natural diamond; individual report unconfirmed", origin: "natural" }],
     metals: ["platinum"],
     leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
     description:
-      "A 5.02 carat D-color, internally flawless diamond in a platinum setting cut like a riverbank.",
+      "A round brilliant in sculpted platinum. A Royal American registry concept.",
     specs: [
       { label: "Center", value: "Illustrative specification: 5.02 ct round brilliant, D, IF. Actual report to be confirmed." },
       { label: "Metal", value: "Platinum 950" },
@@ -178,16 +762,16 @@ export const PIECES: Piece[] = [
     tier: "royal-american",
     design: "royal",
     pieceType: "necklace",
-    oneOfOne: { number: "002", registered: true },
-    versions: [{ key: "diamond", name: "Sapphire and diamond", priceCents: null, stones: "12.40 ct natural sapphire, 6.10 ct tw natural diamonds", origin: "natural" }],
+    oneOfOne: { number: "002", registered: false },
+    versions: [{ key: "diamond", name: "Sapphire and diamond", priceCents: null, stones: "Illustrative: 12.40 ct sapphire and 6.10 ct tw natural diamonds", origin: "natural" }],
     metals: ["platinum"],
     leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
     description:
-      "A 12.40 carat Ceylon sapphire at the center of a five-point star of diamonds, on a platinum chain.",
+      "A blue sapphire at the center of a five-point diamond star. A Royal American registry concept.",
     specs: [
-      { label: "Center", value: "12.40 ct natural sapphire, unheated" },
-      { label: "Diamonds", value: "6.10 ct tw, F to G, VVS" },
+      { label: "Center", value: "Illustrative: 12.40 ct sapphire. Origin and treatment unconfirmed." },
+      { label: "Diamonds", value: "Illustrative: 6.10 ct tw diamonds. Individual reports unconfirmed." },
       { label: "Registry", value: "Royal American No. 002" },
     ],
     collections: [],
@@ -199,14 +783,14 @@ export const PIECES: Piece[] = [
     tier: "royal-american",
     design: "royal",
     pieceType: "bracelet",
-    oneOfOne: { number: "003", registered: true },
-    versions: [{ key: "diamond", name: "Natural diamond", priceCents: null, stones: "14.8 ct tw natural diamonds", origin: "natural" }],
+    oneOfOne: { number: "003", registered: false },
+    versions: [{ key: "diamond", name: "Natural diamond", priceCents: null, stones: "Illustrative: 14.8 ct tw natural diamonds", origin: "natural" }],
     metals: ["18k-yellow"],
     leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
-    description: "Forty-one graduated natural diamonds in a river of 18k gold links, made once.",
+    description: "Graduated diamonds in a flowing line of gold. A Royal American registry concept.",
     specs: [
-      { label: "Diamonds", value: "14.8 ct tw, 41 stones, E–F, VS1+" },
+      { label: "Diamonds", value: "Illustrative: 14.8 ct tw diamonds. Count and grading unconfirmed." },
       { label: "Metal", value: "18k yellow gold" },
       { label: "Registry", value: "Royal American No. 003" },
     ],
@@ -576,6 +1160,58 @@ export const PIECES: Piece[] = [
     art: "tennis",
   },
 ];
+
+// Preserve the established product reference sequence; proposals follow existing pieces.
+PIECES.sort((a, b) => Number(!!a.concept) - Number(!!b.concept));
+const curatedEdits: Record<string, string[]> = {
+  "family": [
+    "shooting-star-ring",
+    "shooting-star-band",
+    "shooting-star-pendant",
+    "shooting-star-bracelet",
+    "shooting-star-signet",
+    "shooting-star-dog-tag",
+    "prism-necklace",
+    "prism-bracelet",
+    "prism-signet",
+    "prism-band"
+  ],
+  "everyday": [
+    "shooting-star-ring",
+    "shooting-star-pendant",
+    "prism-band",
+    "signal-studs",
+    "grid-stack-band"
+  ],
+  "statement": [
+    "prism-necklace",
+    "prism-bracelet",
+    "prism-signet",
+    "grid-tennis-necklace",
+    "grid-tennis-chain"
+  ],
+  "gifts": [
+    "shooting-star-pendant",
+    "shooting-star-bracelet",
+    "prism-necklace",
+    "signal-studs"
+  ],
+  "color": [
+    "shooting-star-ring",
+    "shooting-star-band",
+    "shooting-star-pendant",
+    "shooting-star-bracelet",
+    "shooting-star-signet",
+    "shooting-star-dog-tag",
+    "prism-necklace",
+    "prism-bracelet",
+    "prism-signet",
+    "prism-band"
+  ]
+};
+for (const [collection, handles] of Object.entries(curatedEdits)) {
+  for (const piece of PIECES) if (handles.includes(piece.handle) && !piece.collections.includes(collection)) piece.collections.push(collection);
+}
 
 export const pieceByHandle = (handle: string) => PIECES.find((p) => p.handle === handle);
 

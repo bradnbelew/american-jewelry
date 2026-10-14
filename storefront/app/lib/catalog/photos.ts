@@ -6,7 +6,8 @@
  * `comp-*` keys are generated layout comps the owner allowed for the private mockup only (decisions 2026-10-13);
  * every one is listed in docs/briefs/PHOTOS-TODO.md and must be replaced by a photograph before SITE_LIVE.
  */
-export const PHOTO: Record<string, { src: string; alt: string; w: number; h: number; float?: boolean; contain?: boolean }> = {
+export type HousePhoto = { src: string; alt: string; w: number; h: number; float?: boolean; contain?: boolean; cell?: [columns: number, rows: number, column: number, row: number]; concept?: boolean; raw?: boolean };
+export const PHOTO: Record<string, HousePhoto> = {
   "hero-box": { src: "/photos/hero-box.jpg", alt: "Gold signet rings and a chain in a navy velvet box", w: 2400, h: 1854, float: true },
   "hero-hand": { src: "/photos/hero-hand.jpg", alt: "A hand wearing stacked gold and diamond rings", w: 2000, h: 875 },
   names: { src: "/photos/names.jpg", alt: "Gold name necklaces on white linen", w: 2000, h: 875, float: true },
@@ -42,29 +43,7 @@ export const PHOTO: Record<string, { src: string; alt: string; w: number; h: num
   "comp-bench-hands": { src: "/photos/comp-bench-hands.webp", alt: "A jeweler's hands at the bench, setting a stone in a ring held in a clamp", w: 1536, h: 1024 },
 };
 
-export const PIECE_PHOTOS: Record<string, string[]> = {
-  "no-001-the-cumberland": ["comp-cumberland-velvet", "ring-radiant", "ring-halo"],
-  "no-002-tennessee-star": ["tristar-charm", "names", "medallion"],
-  "no-003-the-harpeth": ["paperclip-bracelet", "hero-box"],
-  "shooting-star-ring": ["gem-stack-rings", "comp-home-hand", "comp-americana-ground"],
-  "shooting-star-band": ["script-ring", "hero-hand"],
-  "shooting-star-pendant": ["tristar-charm", "medallion", "names"],
-  "shooting-star-bracelet": ["paperclip-bracelet", "hero-box"],
-  "shooting-star-signet": ["signet-b", "hero-box"],
-  "shooting-star-dog-tag": ["medallion", "cross"],
-  "prism-necklace": ["initial-necklace", "names", "name-cohen"],
-  "prism-bracelet": ["paperclip-bracelet", "hero-box"],
-  "prism-signet": ["signet-b", "hero-box"],
-  "prism-band": ["script-ring", "hero-hand"],
-  "signal-solitaire": ["comp-signal-packshot", "comp-signal-hand", "ring-halo"],
-  "signal-studs": ["bezel-studs", "trio-studs"],
-  "grid-tennis-bracelet": ["huggie-diamond", "paperclip-bracelet"],
-  "grid-tennis-necklace": ["huggie-baguette", "names"],
-  "grid-eternity-band": ["huggie-diamond", "hero-hand"],
-  "grid-stack-band": ["gem-stack-rings", "hero-hand"],
-  "signal-mens-signet": ["signet-b", "hero-box"],
-  "grid-tennis-chain": ["paperclip-bracelet", "cross"],
-};
+export const PIECE_PHOTOS: Record<string, string[]> = {};
 
 export const TIER_PHOTO: Record<string, string> = {
   "royal-american": "comp-cumberland-velvet",
@@ -92,3 +71,95 @@ export const STORE_PHOTO: Record<string, string> = {
 };
 
 export const photosFor = (handle: string) => (PIECE_PHOTOS[handle] ?? ["hero-box"]).map((k) => PHOTO[k]);
+
+// Generated concept plates, 13 October 2026. Each cell shows one catalog form.
+// Pic uses an SVG viewport over the unchanged raster plate. No schematic substitutes.
+// Keep these out of public launch until the actual house objects have been photographed.
+const plates = [
+  {name: "shooting-star", columns: 3, rows: 2, w: 1536, h: 1024, handles: ["shooting-star-ring", "shooting-star-band", "shooting-star-pendant", "shooting-star-bracelet", "shooting-star-signet", "shooting-star-dog-tag"]},
+  {name: "prism", columns: 2, rows: 2, w: 1254, h: 1254, handles: ["prism-necklace", "prism-bracelet", "prism-signet", "prism-band"]},
+  {name: "new-american", columns: 3, rows: 3, w: 1254, h: 1254, handles: ["signal-solitaire", "signal-studs", "signal-mens-signet", "grid-tennis-bracelet", "grid-tennis-necklace", "grid-eternity-band", "grid-stack-band", "grid-tennis-chain"]},
+  {name: "royal", columns: 2, rows: 2, w: 1254, h: 1254, handles: ["no-001-the-cumberland", "no-002-tennessee-star", "no-003-the-harpeth"]},
+];
+for (const plate of plates) {
+  plate.handles.forEach((handle, i) => {
+    const key = `comp-object-${handle}`;
+    PHOTO[key] = {src: `/photos/comp-${plate.name}-family.webp`, alt: `${handle.replace(/^no-\d+-/, "").replace(/-/g, " ")}, concept product photograph`, w: plate.w, h: plate.h, cell: [plate.columns, plate.rows, i % plate.columns, Math.floor(i / plate.columns)], contain: true, concept: true, raw: true};
+    PIECE_PHOTOS[handle] = [key];
+  });
+}
+// Selected campaign delivery, 13 October 2026. Full prompts: docs/briefs/campaign-manifest.json.
+PHOTO["campaign-02-shooting-star-detail"] = {"src":"/photos/campaign-02-shooting-star-detail.webp","alt":"Yellow-gold Shooting Star ring with five graduated diamonds on forest-green silk","w":1536,"h":1024,"concept":true};
+PHOTO["campaign-03-signal-bridal-hand"] = {"src":"/photos/campaign-03-signal-bridal-hand.webp","alt":"Four-prong platinum Signal solitaire on a hand against blue-gray silk","w":1122,"h":1402,"concept":true};
+PHOTO["campaign-04-signal-light-study"] = {"src":"/photos/campaign-04-signal-light-study.webp","alt":"Four-prong platinum solitaire in directional light on a cool-gray surface","w":1672,"h":941,"concept":true};
+PHOTO["campaign-05-royal-american-velvet"] = {"src":"/photos/campaign-05-royal-american-velvet.webp","alt":"Six-prong platinum solitaire in a midnight-navy velvet tray","w":1672,"h":941,"concept":true};
+PHOTO["campaign-meridian-family"] = {"src":"/photos/campaign-meridian-family.webp","alt":"Meridian ring, pendant and matching earrings on a pale gray surface","w":1536,"h":1024,"concept":true};
+PHOTO["campaign-ribbon-family"] = {"src":"/photos/campaign-ribbon-family.webp","alt":"Ribbon ring, pendant and matching earrings on a pale gray surface","w":1536,"h":1024,"concept":true};
+PHOTO["campaign-horizon-family"] = {"src":"/photos/campaign-horizon-family.webp","alt":"Horizon ring, pendant and matching earrings on a pale gray surface","w":1536,"h":1024,"concept":true};
+PHOTO["campaign-petal-family"] = {"src":"/photos/campaign-petal-family.webp","alt":"Petal ring, pendant and matching earrings on a pale gray surface","w":1536,"h":1024,"concept":true};
+PHOTO["campaign-meridian-ring"] = {"src":"/photos/campaign-meridian-ring.webp","alt":"Meridian Open Ring, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-meridian-ring"] = PHOTO["campaign-meridian-ring"];
+PIECE_PHOTOS["meridian-ring"] = ["comp-object-meridian-ring"];
+PHOTO["campaign-meridian-pendant"] = {"src":"/photos/campaign-meridian-pendant.webp","alt":"Meridian Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-meridian-pendant"] = PHOTO["campaign-meridian-pendant"];
+PIECE_PHOTOS["meridian-pendant"] = ["comp-object-meridian-pendant"];
+PHOTO["campaign-meridian-earrings"] = {"src":"/photos/campaign-meridian-earrings.webp","alt":"Meridian Earrings, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-meridian-earrings"] = PHOTO["campaign-meridian-earrings"];
+PIECE_PHOTOS["meridian-earrings"] = ["comp-object-meridian-earrings"];
+PHOTO["campaign-ribbon-ring"] = {"src":"/photos/campaign-ribbon-ring.webp","alt":"Ribbon Fold Ring, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-ribbon-ring"] = PHOTO["campaign-ribbon-ring"];
+PIECE_PHOTOS["ribbon-ring"] = ["comp-object-ribbon-ring"];
+PHOTO["campaign-ribbon-pendant"] = {"src":"/photos/campaign-ribbon-pendant.webp","alt":"Ribbon Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-ribbon-pendant"] = PHOTO["campaign-ribbon-pendant"];
+PIECE_PHOTOS["ribbon-pendant"] = ["comp-object-ribbon-pendant"];
+PHOTO["campaign-ribbon-earrings"] = {"src":"/photos/campaign-ribbon-earrings.webp","alt":"Ribbon Earrings, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-ribbon-earrings"] = PHOTO["campaign-ribbon-earrings"];
+PIECE_PHOTOS["ribbon-earrings"] = ["comp-object-ribbon-earrings"];
+PHOTO["campaign-horizon-ring"] = {"src":"/photos/campaign-horizon-ring.webp","alt":"Horizon Band, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-horizon-ring"] = PHOTO["campaign-horizon-ring"];
+PIECE_PHOTOS["horizon-ring"] = ["comp-object-horizon-ring"];
+PHOTO["campaign-horizon-pendant"] = {"src":"/photos/campaign-horizon-pendant.webp","alt":"Horizon Bar Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-horizon-pendant"] = PHOTO["campaign-horizon-pendant"];
+PIECE_PHOTOS["horizon-pendant"] = ["comp-object-horizon-pendant"];
+PHOTO["campaign-horizon-earrings"] = {"src":"/photos/campaign-horizon-earrings.webp","alt":"Horizon Huggies, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-horizon-earrings"] = PHOTO["campaign-horizon-earrings"];
+PIECE_PHOTOS["horizon-earrings"] = ["comp-object-horizon-earrings"];
+PHOTO["campaign-petal-ring"] = {"src":"/photos/campaign-petal-ring.webp","alt":"Petal Sapphire Ring, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-petal-ring"] = PHOTO["campaign-petal-ring"];
+PIECE_PHOTOS["petal-ring"] = ["comp-object-petal-ring"];
+PHOTO["campaign-petal-pendant"] = {"src":"/photos/campaign-petal-pendant.webp","alt":"Petal Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-petal-pendant"] = PHOTO["campaign-petal-pendant"];
+PIECE_PHOTOS["petal-pendant"] = ["comp-object-petal-pendant"];
+PHOTO["campaign-petal-earrings"] = {"src":"/photos/campaign-petal-earrings.webp","alt":"Petal Earrings, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["comp-object-petal-earrings"] = PHOTO["campaign-petal-earrings"];
+PIECE_PHOTOS["petal-earrings"] = ["comp-object-petal-earrings"];
+PHOTO["campaign-06-shooting-star-hero-final"] = {"src":"/photos/campaign-06-shooting-star-hero-final.webp","alt":"Hand wearing a yellow-gold Shooting Star ring on forest-green silk","w":1672,"h":941,"concept":true};
+PHOTO["campaign-07-family-collection-editorial"] = {"src":"/photos/campaign-07-family-collection-editorial.webp","alt":"Meridian ring, Petal pendant and Shooting Star ring together on navy velvet","w":1672,"h":941,"concept":true};
+PHOTO["campaign-08-ribbon-worn-editorial"] = {"src":"/photos/campaign-08-ribbon-worn-editorial.webp","alt":"Hand wearing a sculptural gold Ribbon Fold Ring","w":1122,"h":1402,"concept":true};
+PHOTO["campaign-09-shooting-star-hero-mobile"] = {"src":"/photos/campaign-09-shooting-star-hero-mobile.webp","alt":"Hand wearing the Shooting Star ring, vertically composed on forest-green silk","w":1024,"h":1536,"concept":true};
+
+// Stable keys keep supporting pages on the selected photography.
+PHOTO['comp-home-hand'] = PHOTO['campaign-06-shooting-star-hero-final'];
+PHOTO['comp-home-hand-tall'] = PHOTO['campaign-09-shooting-star-hero-mobile'];
+PHOTO['comp-americana-ground'] = PHOTO['campaign-02-shooting-star-detail'];
+PHOTO['comp-cumberland-velvet'] = PHOTO['campaign-05-royal-american-velvet'];
+PHOTO['comp-new-american-opener'] = PHOTO['campaign-04-signal-light-study'];
+PHOTO['comp-signal-hand'] = PHOTO['campaign-03-signal-bridal-hand'];
+PHOTO['comp-object-no-001-the-cumberland'] = {...PHOTO['comp-cumberland-velvet'],contain:true};
+PHOTO['comp-object-shooting-star-ring'] = {src:'/photos/comp-shooting-star-object.webp',alt:'Shooting Star ring with a gold star and five graduated diamonds, concept photograph',w:1254,h:1254,contain:true,concept:true};
+PHOTO['comp-prism-campaign'] = {src:'/photos/comp-prism-campaign.webp',alt:'Faceted gold Prism links curving across dark green leather, concept photograph',w:1536,h:1024,concept:true};
+PIECE_PHOTOS['shooting-star-ring'] = ['comp-object-shooting-star-ring','comp-home-hand','comp-americana-ground'];
+PIECE_PHOTOS['signal-solitaire'] = ['comp-signal-packshot','comp-signal-hand','comp-new-american-opener'];
+PIECE_PHOTOS['ribbon-ring'].push('campaign-08-ribbon-worn-editorial');
+DESIGN_PHOTO.prism = 'comp-prism-campaign';
+DESIGN_PHOTO.grid = 'comp-object-grid-tennis-bracelet';
+for (const design of ['meridian','ribbon','horizon','petal']) DESIGN_PHOTO[design] = 'campaign-'+design+'-family';
+PHOTO['campaign-07-family-collection-editorial'].contain = true;
+COLLECTION_PHOTO.family = 'campaign-07-family-collection-editorial';
+COLLECTION_PHOTO.bridal = 'comp-signal-hand';
+COLLECTION_PHOTO.signets = 'comp-object-prism-signet';
+COLLECTION_PHOTO['the-stack'] = 'comp-object-grid-stack-band';
+COLLECTION_PHOTO.everyday = 'comp-object-meridian-pendant';
+COLLECTION_PHOTO.statement = 'campaign-08-ribbon-worn-editorial';
+COLLECTION_PHOTO.gifts = 'comp-object-shooting-star-pendant';
+COLLECTION_PHOTO.color = 'comp-object-petal-ring';

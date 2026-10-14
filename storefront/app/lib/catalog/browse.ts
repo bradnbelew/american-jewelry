@@ -20,7 +20,7 @@ export interface Category {
 export const CATEGORIES: Category[] = [
   { slug: "rings", name: "Rings", line: "Solitaires, bands, signets and the rings of every house design.", types: ["ring", "band", "signet", "solitaire", "eternity-band", "stack-band"] },
   { slug: "necklaces", name: "Necklaces", line: "Pendants, chains and tennis necklaces.", types: ["pendant", "necklace", "tennis-necklace", "chain", "dog-tag"] },
-  { slug: "earrings", name: "Earrings", line: "Studs in every house stone.", types: ["earrings", "studs"] },
+  { slug: "earrings", name: "Earrings", line: "Studs, hoops and sculptural earrings across the house designs.", types: ["earrings", "studs"] },
   { slug: "bracelets", name: "Bracelets", line: "Link bracelets and tennis bracelets.", types: ["bracelet", "tennis-bracelet"] },
 ];
 
@@ -50,10 +50,11 @@ export const stonesOf = (p: Piece): StoneKey[] => {
 
 /** The tile's second line: what the piece is, in the house's words. */
 export const whatItIs = (p: Piece) => {
+  if (p.concept) return "Proposed design";
   const s = stonesOf(p);
-  if (p.oneOfOne) return `${s.includes("birthstone") ? "Gemstone and natural diamond" : "Natural diamond"} · One of one`;
+  if (p.oneOfOne) return `${s.includes("birthstone") ? "Gemstone and natural diamond" : "Natural diamond"}`;
   if (s.includes("man-made")) return "Lab-grown diamond";
-  if (s.includes("natural") && s.includes("gold")) return "Gold, birthstone or natural diamond";
+  if (s.includes("natural") && s.includes("gold")) return "Gold, gemstone or natural diamond";
   if (s.includes("natural")) return "Natural diamond";
   return "Solid gold";
 };
@@ -80,7 +81,7 @@ export interface BrowseQuery {
   price: string[];
   line: TierSlug[];
   design: string[];
-  production: ("one-of-one" | "collection")[];
+  production: ("one-of-one" | "collection" | "concept")[];
   sort: SortKey;
 }
 
@@ -99,7 +100,7 @@ export function readQuery(params: URLSearchParams): BrowseQuery {
     price: all("price").filter((p) => PRICE_BANDS.some((b) => b.key === p)),
     line: all("line").filter(isTier),
     design: all("design").filter((d) => !!designBySlug(d)),
-    production: [...new Set([...all("production"), ...all("stone").filter((s) => s === "one-of-one")])].filter((s): s is "one-of-one" | "collection" => s === "one-of-one" || s === "collection"),
+    production: [...new Set([...all("production"), ...all("stone").filter((s) => s === "one-of-one")])].filter((s): s is "one-of-one" | "collection" | "concept" => s === "one-of-one" || s === "collection" || s === "concept"),
     sort: isSort(sort) ? sort : "house",
   };
 }
@@ -108,6 +109,7 @@ export const activeCount = (q: BrowseQuery) => q.metal.length + q.stone.length +
 
 /** Stone and price must match the SAME version, never two different variants of a piece. */
 export function matchingVersions(p: Piece, q: BrowseQuery): Version[] {
+  if (p.concept && q.price.length) return [];
   return p.versions.filter((v) => {
     if (q.stone.length && !q.stone.some((s) => stonesForVersion(v).includes(s))) return false;
     return !q.price.length || q.price.some((key) => {
@@ -125,12 +127,17 @@ export function matchingVersion(p: Piece, q: BrowseQuery): Version | undefined {
 export function applyQuery(pieces: Piece[], q: BrowseQuery): Piece[] {
   let out = pieces.filter((p) => {
     if (q.metal.length && !q.metal.some((m) => p.metals.includes(m))) return false;
-    if (q.production.length && !q.production.includes(p.oneOfOne ? "one-of-one" : "collection")) return false;
+    if (q.production.length && !q.production.includes(p.concept ? "concept" : p.oneOfOne ? "one-of-one" : "collection")) return false;
     if (q.line.length && !q.line.includes(p.tier)) return false;
     if (q.design.length && !q.design.includes(p.design)) return false;
     return matchingVersions(p, q).length > 0;
   });
   const priceOf = (p: Piece) => matchingVersion(p, q)?.priceCents ?? Number.POSITIVE_INFINITY;
+  if (q.sort === "house") {
+    const opening = ["shooting-star-ring", "prism-necklace", "meridian-ring", "signal-solitaire", "petal-ring", "ribbon-pendant", "horizon-earrings", "grid-tennis-bracelet"];
+    const rank = (p: Piece) => opening.includes(p.handle) ? opening.indexOf(p.handle) : p.oneOfOne ? 1000 : 100;
+    out = [...out].sort((a, b) => rank(a) - rank(b));
+  }
   if (q.sort === "price-asc") out = [...out].sort((a, b) => priceOf(a) - priceOf(b));
   else if (q.sort === "price-desc") out = [...out].sort((a, b) => (matchingVersion(b, q)?.priceCents ?? -1) - (matchingVersion(a, q)?.priceCents ?? -1));
   else if (q.sort === "name") out = [...out].sort((a, b) => a.name.localeCompare(b.name));
@@ -154,10 +161,10 @@ export function filterGroups(base: Piece[], q: BrowseQuery, hide: FilterGroup["k
   const groups: FilterGroup[] = [
     { key: "line", label: "Line", options: TIERS.map((t) => ({ value: t.slug, label: t.name, count: countWith("line", t.slug) })) },
     { key: "stone", label: "Stone", options: (Object.keys(STONE_LABEL) as StoneKey[]).map((s) => ({ value: s, label: STONE_LABEL[s], count: countWith("stone", s) })) },
-    { key: "production", label: "Collection or one of one", options: [{value:"one-of-one", label:"One of one", count:countWith("production","one-of-one")}, {value:"collection", label:"Collection piece", count:countWith("production","collection")}] },
+    { key: "production", label: "Edition", options: [{value:"one-of-one", label:"One of one", count:countWith("production","one-of-one")}, {value:"collection", label:"Collection piece", count:countWith("production","collection")}, {value:"concept", label:"Design concept", count:countWith("production","concept")}] },
     { key: "metal", label: "Metal", options: METALS.map((m) => ({ value: m, label: METAL_LABEL[m], count: countWith("metal", m) })) },
     { key: "price", label: "Price", options: PRICE_BANDS.map((b) => ({ value: b.key, label: b.label, count: countWith("price", b.key) })) },
-    { key: "design", label: "Design", options: DESIGNS.map((d) => ({ value: d.slug, label: d.name, count: countWith("design", d.slug) })) },
+    { key: "design", label: "Style", options: DESIGNS.map((d) => ({ value: d.slug, label: d.name, count: countWith("design", d.slug) })) },
   ];
   return groups.filter((g) => !hide.includes(g.key)).map((g) => ({ ...g, options: g.options.filter((o) => o.count > 0 || (q[g.key] as string[]).includes(o.value)) })).filter((g) => g.options.length > 1 || (q[g.key] as string[]).length > 0);
 }
@@ -242,7 +249,7 @@ export function searchCatalog(query: string, limit = 12): SearchHit[] {
   }
   for (const t of TIERS) {
     const s = score(`${t.name} line ${t.slug === 'royal-american' ? 'high jewelry registry' : ''} ${t.tagline} ${t.stones}`);
-    if (s) hits.push({ hit: { kind: "line", name: t.slug === 'royal-american' ? 'High Jewelry · Royal American' : t.name, href: `/${t.slug}`, line: t.tagline }, s: s + 1 });
+    if (s) hits.push({ hit: { kind: "line", name: t.slug === 'royal-american' ? 'High Jewelry / Royal American' : t.name, href: `/${t.slug}`, line: t.tagline }, s: s + 1 });
   }
   for (const c of COLLECTIONS) {
     const s = score(`${c.name} collection ${c.intro}`);

@@ -28,7 +28,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
   const [version, setVersion] = useState<Version>(() => piece.versions.find((v) => v.name === params.get('Version')) ?? piece.versions[0]);
   const [metal, setMetalState] = useState<Metal>(() => piece.metals.find((m) => METAL_LABEL[m] === params.get('Metal')) ?? piece.metals[0]);
   const [size, setSize] = useState(() => explicitSize(piece.sizes, params.get("size")));
-  const [engrave, setEngrave] = useState("");
+  const [engrave, setEngrave] = useState(() => (params.get("engraving") ?? "").slice(0, 20));
   const setMetal = (m: Metal) => {
     setMetalState(m);
     onMetal?.(m);
@@ -36,21 +36,26 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
 
   const price = version.priceCents;
   const manMade = version.origin === "man-made";
-  const query = new URLSearchParams({ piece: piece.handle, version: version.key, metal, ...(size ? { size } : {}) }).toString();
+  const query = new URLSearchParams({ piece: piece.handle, version: version.key, metal, ...(size ? { size } : {}), ...(engrave ? {engraving: engrave} : {}) }).toString();
   const photo = (PIECE_PHOTOS[piece.handle] ?? ["hero-box"])[0];
-  const savedQuery = new URLSearchParams({Version:version.name, Metal:METAL_LABEL[metal], ...(size ? {size} : {})});
+  const savedQuery = new URLSearchParams({Version:version.name, Metal:METAL_LABEL[metal], ...(size ? {size} : {}), ...(engrave ? {engraving: engrave} : {})});
 
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-1.5">
         <span className="font-display num text-[1.75rem]">{price === null ? "Price on request" : formatPrice(price)}</span>
-        <span className="font-text text-[0.9375rem] text-ink-2">
+        <span className="font-text text-base text-ink-2">
           {manMade ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? "Solid 14k or 18k gold, karat-marked.")}
         </span>
         <span className="label">
           {piece.leadTime}
           {price !== null ? ". Price before sales tax." : ""}
         </span>
+      </div>
+
+      <Link to={`/appointments?${query}`} className="btn hidden lg:inline-flex">Request a viewing</Link>
+      <div className="buy-bar fixed inset-x-0 bottom-0 z-30 border-t border-hair bg-paper lg:hidden">
+        <div className="wrap flex items-center justify-between gap-4 py-3"><span className="num">{price === null ? "Price on request" : formatPrice(price)}</span><Link to={`/appointments?${query}`} className="btn">Request a viewing</Link></div>
       </div>
 
       {piece.versions.length > 1 && (

@@ -10,7 +10,7 @@ import { SearchDialog } from "./SearchDialog";
 import { useSaved } from "./saved/SavedProvider";
 
 /**
- * The header: the wordmark line with search and the utilities, then one row of eight names,
+ * The header: the wordmark line with search and the utilities, then five primary destinations,
  * each opening a full-width panel of plain links (by kind, by design, by line, by place).
  * No promotion in a panel, one photograph at most. The phone carries the same depth as a menu
  * of accordions. The current section is marked with the 1px rule under its name.
@@ -51,9 +51,9 @@ export function Header() {
   }, [location.pathname, location.search]);
 
   useEffect(() => {
-    if (!panel) return;
+    if (!panel && !menu) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setPanel(null);
+      if (e.key === "Escape") { setPanel(null); setMenu(false); }
     };
     const onDown = (e: PointerEvent) => {
       if (header.current && !header.current.contains(e.target as Node)) setPanel(null);
@@ -64,14 +64,15 @@ export function Header() {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("pointerdown", onDown);
     };
-  }, [panel]);
+  }, [panel, menu]);
 
   const current = (p: NavPanel) => {
     const path = location.pathname;
-    if (p.href === "/jewelry") return path.startsWith("/jewelry") || path.startsWith("/designs") || (path.startsWith("/collections") && !path.endsWith("/bridal")) || path.startsWith("/pieces");
+    if (p.href === "/jewelry") return path.startsWith("/jewelry") || path.startsWith("/designs") || path.startsWith("/pieces");
+    if (p.href === "/collections") return path.startsWith("/collections") && !path.endsWith("/bridal");
     if (p.href === "/collections/bridal") return path === "/collections/bridal" || path.startsWith("/build");
     if (p.href === "/services") return ["/services", "/commission", "/care"].includes(path);
-    if (p.href === "/house") return path === "/house" || path.startsWith("/journal") || path === "/policies" || path === "/natural-or-man-made";
+    if (p.href === "/house") return path === "/house" || path.startsWith("/stores") || ["/services", "/commission", "/care", "/appointments"].includes(path) || path.startsWith("/journal") || path === "/policies" || path === "/natural-or-man-made";
     return path === p.href || path.startsWith(`${p.href}/`);
   };
   const open = NAV.find((p) => p.label === panel) ?? null;
@@ -79,7 +80,7 @@ export function Header() {
   return (
     <header
       ref={header}
-      className="sticky top-0 z-40 border-b border-hair bg-paper"
+      className="house-header sticky top-0 z-40 border-b border-hair bg-paper"
       onMouseLeave={() => {
         if (panel) closeSoon();
       }}
@@ -103,8 +104,8 @@ export function Header() {
           </Link>
 
           <div className="flex items-center justify-end gap-5 md:gap-6">
-            <Link to="/appointments" className="caps hidden h-11 items-center hover:text-muted lg:inline-flex">
-              Appointment
+            <Link to="/stores" className="caps hidden h-11 items-center hover:text-muted lg:inline-flex">
+              Visit us
             </Link>
             <Link
               to="/saved"
@@ -143,6 +144,7 @@ export function Header() {
               aria-expanded={panel === p.label}
               aria-controls={`panel-${p.label.replace(/\s+/g, "-").toLowerCase()}`}
               data-current={current(p) ? "true" : undefined}
+              onMouseEnter={() => { clearTimer(); timer.current = window.setTimeout(() => setPanel(p.label), 140); }}
               onClick={() => {
                 clearTimer();
                 setPanel((current) => current === p.label ? null : p.label);
@@ -188,7 +190,7 @@ function Panel({ panel }: { panel: NavPanel }) {
         ))}
         {panel.line && <p className="font-text col-span-full mt-2 max-w-[60ch] text-[0.9375rem] text-ink-2">{panel.line}</p>}
         <Link to={panel.href} className="link col-span-full self-start justify-self-start">
-          {panel.label === "The House" ? "The House" : `All of ${panel.label}`}
+          {panel.label === "The House" ? "Meet the house" : panel.label === "Bridal" ? "Explore bridal" : `Explore ${panel.label.toLowerCase()}`}
         </Link>
       </div>
       {panel.photo && (
@@ -203,7 +205,7 @@ function Panel({ panel }: { panel: NavPanel }) {
   );
 }
 
-/** The phone menu: search, then the eight names as accordions with the same links, then the utilities. */
+/** The phone menu carries the same five destinations and utility links. */
 function MobileMenu({ saved }: { saved: number }) {
   return (
     <nav className="flex flex-col px-4 pt-4 pb-10" aria-label="Menu">
@@ -218,7 +220,7 @@ function MobileMenu({ saved }: { saved: number }) {
           <summary>{p.label}</summary>
           <div className="flex flex-col gap-6 pb-6">
             <Link to={p.href} className="link self-start">
-              {p.label === "The House" ? "The House" : `All of ${p.label}`}
+              {p.label === "The House" ? "Meet the house" : p.label === "Bridal" ? "Explore bridal" : `Explore ${p.label.toLowerCase()}`}
             </Link>
             {p.columns.map((c) => (
               <div key={c.title} className="flex flex-col">
