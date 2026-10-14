@@ -51,7 +51,7 @@ export function DesignView({ config: c, code, hint }: { config: RingConfig; code
             )}
           </tbody>
         </table>
-        {!hint && <p className="label">Made to order, about {leadTimeWeeks(c)} weeks. Price before sales tax.</p>}
+        {!hint && <p className="label">Price before sales tax.</p>}
         <div className="flex flex-col gap-3">
           {hint ? (
             <Link to={`/appointments?build=ring&code=${encoded}`} className="btn">
@@ -66,16 +66,16 @@ export function DesignView({ config: c, code, hint }: { config: RingConfig; code
                   Request this ring
                 </button>
               </Form>
-              <div className="grid grid-cols-2 gap-3">
-                <Link to={`/build/ring?code=${encoded}`} className="btn btn-outline">
-                  Make it mine
+              <div className="flex flex-wrap justify-between gap-6">
+                <Link to={`/build/ring?code=${encoded}`} className="link inline-flex min-h-11 items-center">
+                  Edit design
                 </Link>
-                <Link to={`/appointments?build=ring&code=${encoded}`} className="btn btn-outline">
+                <Link to={`/appointments?build=ring&code=${encoded}`} className="link inline-flex min-h-11 items-center">
                   See it in store
                 </Link>
               </div>
               <Link to={`/design/${encoded}/certificate`} className="link-quiet self-start text-[0.875rem]">
-                The certificate of making
+                Certificate
               </Link>
             </>
           )}

@@ -1,4 +1,4 @@
-import { Link, redirect } from "react-router";
+import { redirect } from "react-router";
 
 import { DesignView } from "~/components/builder/DesignView";
 import { PageTitle, Section } from "~/components/Section";
@@ -76,22 +76,12 @@ export default function DesignCodePage({ loaderData }: Route.ComponentProps) {
     <>
       <Section className="pt-16 pb-10 md:pt-24 md:pb-14">
         <PageTitle
-          title={hint ? "A ring for you" : ringName(config)}
-          lede={hint ? "A shared ring design." : "Bring this design code to either store."}
+          title={hint ? "A ring for you" : "Your ring"}
         />
       </Section>
       <Section>
         <DesignView config={config} code={code} hint={hint} />
       </Section>
-      {!hint && (
-        <Section className="pt-16 pb-8" width="text">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <Link to={`/build/ring?code=${encodeURIComponent(code)}`} className="link">
-              Open in the builder
-            </Link>
-          </div>
-        </Section>
-      )}
     </>
   );
 }
