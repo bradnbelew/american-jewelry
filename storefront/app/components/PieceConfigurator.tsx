@@ -41,10 +41,10 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
   const savedQuery = new URLSearchParams({Version:version.name, Metal:METAL_LABEL[metal], ...(size ? {size} : {}), ...(engrave ? {engraving: engrave} : {})});
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="piece-choice-form flex flex-col gap-6">
       <div className="flex flex-col gap-1.5">
-        <span className="font-display num text-[1.75rem]">{price === null ? "Price on request" : formatPrice(price)}</span>
-        <span className="font-text text-base text-ink-2">
+        <span className="font-display num text-[1.75rem] leading-none">{price === null ? "Price on request" : formatPrice(price)}</span>
+        <span className="piece-stone-description font-text text-base text-ink-2">
           {manMade ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? "Solid 14k or 18k gold, karat-marked.")}
         </span>
         <span className="label">
@@ -53,16 +53,15 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
         </span>
       </div>
 
-      <Link to={`/appointments?${query}`} className="btn hidden lg:inline-flex">Request a viewing</Link>
       <div className="buy-bar fixed inset-x-0 bottom-0 z-30 border-t border-hair bg-paper lg:hidden">
         <div className="wrap flex items-center justify-between gap-4 py-3"><span className="num">{price === null ? "Price on request" : formatPrice(price)}</span><Link to={`/appointments?${query}`} className="btn">Request a viewing</Link></div>
       </div>
 
       {piece.versions.length > 1 && (
-        <Field label="Version">
-          <div className="flex flex-col gap-2">
+        <Field label="Stone">
+          <div className="grid grid-cols-3 gap-2">
             {piece.versions.map((v) => (
-              <button key={v.key + v.name} type="button" className="opt" aria-pressed={v === version} onClick={() => setVersion(v)}>
+              <button key={v.key + v.name} type="button" className="opt flex-col justify-center text-center" aria-pressed={v === version} onClick={() => setVersion(v)}>
                 <span>{v.name}</span>
                 <span className="num text-[0.8125rem] text-ink-2">{v.priceCents === null ? "On request" : formatPrice(v.priceCents)}</span>
               </button>
@@ -71,17 +70,17 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
         </Field>
       )}
 
-      <Field label="Metal" hint={METAL_LABEL[metal]}>
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Metal">
+      <Field label="Metal">
+        <div className="metal-options" role="group" aria-label="Metal">
           {piece.metals.map((m) => (
-            <button key={m} type="button" aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="swatch" aria-pressed={m === metal} onClick={() => setMetal(m)}>
-              <span className="swatch-dot" style={{ background: METAL_SWATCH[m] }} />
+            <button key={m} type="button" aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="metal-option" aria-pressed={m === metal} onClick={() => setMetal(m)}>
+              <span className="swatch-dot" style={{ background: METAL_SWATCH[m] }} /><span>{METAL_LABEL[m].replace(" gold", "")}</span>
             </button>
           ))}
         </div>
       </Field>
 
-      {piece.sizes && (
+      <div className="piece-size-engraving">{piece.sizes && (
         <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet">Sizing help</Link>}>
           <select id={`size-${piece.handle}`} className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
             <option value="" disabled>Choose your size</option>
@@ -95,27 +94,24 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       )}
 
       {piece.engraving && (
-        <Field label="Engraving" hint="20 characters, included">
+        <details className="engraving-option" open={Boolean(params.get("engraving"))}><summary>Add engraving <span className="label">Optional</span></summary><Field label="Engraving" hint="20 characters">
           <input id={`engrave-${piece.handle}`} value={engrave} onChange={(e) => setEngrave(e.target.value.slice(0, 20))} placeholder="Initials, a date, a word" className="field font-display text-lg" />
-        </Field>
+        </Field></details>
       )}
 
-      <div className="flex flex-col gap-3 pt-1">
+      </div><div className="flex flex-col gap-3 pt-1">
         {price === null ? (
           <Link to={`/appointments?${query}`} className="btn">
             Request a private viewing
           </Link>
         ) : (
           <>
-            <button type="button" className="btn" disabled title="This local preview has no connected Shopify product">
-              Checkout unavailable in this preview
-            </button>
-            <p className="label">Catalog price shown for review. Confirm the configuration and current price with the store.</p>
-            <div className="grid grid-cols-2 gap-3">
-              <Link to={`/appointments?${query}`} className="btn btn-outline">
-                See it in store
+            <p className="label">Contact the store to confirm price and availability.</p>
+            <div className="flex items-center gap-6">
+              <Link to={`/appointments?${query}`} className="btn flex-1">
+                Request a viewing
               </Link>
-              <SaveButton item={{ id: piece.handle, href: `/pieces/${piece.handle}?${savedQuery}`, name: piece.name, detail: [version.name, METAL_LABEL[metal], size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
+              <SaveButton className="quiet-save" item={{ id: piece.handle, href: `/pieces/${piece.handle}?${savedQuery}`, name: piece.name, detail: [version.name, METAL_LABEL[metal], size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
             </div>
           </>
         )}

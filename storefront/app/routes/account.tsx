@@ -49,7 +49,7 @@ const ACCOUNT_QUERY = gql(`
 const dateFormat = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeZone: "UTC" });
 
 const buttonClass =
-  "rounded-button focus-visible:outline-accent inline-flex h-11 items-center justify-center px-5 text-sm font-medium no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition-[color,background-color,border-color,transform] motion-safe:active:scale-[0.97]";
+  "btn";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Account. American Jewelry" }];
@@ -88,37 +88,33 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 
 export default function AccountRoute({ loaderData }: Route.ComponentProps) {
   return (
-    <main
-      id="main-content"
-      tabIndex={-1}
-      className="max-w-page px-margin mx-auto w-full flex-1 py-12"
+    <div
+      className="account-page house-wrap"
     >
       <h1 className="type-display text-on-surface mb-8">Account</h1>
       {loaderData.status === "unavailable" ? <Unavailable /> : null}
       {loaderData.status === "signed-out" ? <SignIn loginFailed={loaderData.loginFailed} /> : null}
       {loaderData.status === "error" ? (
         <>
-          <p role="alert" className="border-border bg-surface-secondary rounded border p-4">
+          <p role="alert" className="mb-6 text-ink-2">
             {loaderData.message}
           </p>
           <LogoutForm />
         </>
       ) : null}
       {loaderData.status === "signed-in" ? <Customer customer={loaderData.customer} /> : null}
-    </main>
+    </div>
   );
 }
 
 function Unavailable() {
   return (
-    <section className="border-border rounded border p-8" aria-labelledby="unavailable-heading">
+    <section className="account-state" aria-labelledby="unavailable-heading">
       <h2 id="unavailable-heading" className="type-heading-md text-on-surface mb-3">
-        Customer Accounts aren&apos;t set up
+        Account unavailable
       </h2>
       <p className="text-on-surface-secondary max-w-xl">
-        Customer Accounts need a real store, <code>SHOP_ID</code>,{" "}
-        <code>PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID</code>, <code>SESSION_SECRET</code>, and HTTPS
-        (use <code>npm run dev:https</code> locally).
+        Please contact <a href="/stores" className="link">either store</a> for help with your order.
       </p>
     </section>
   );
@@ -126,13 +122,10 @@ function Unavailable() {
 
 function SignIn({ loginFailed }: { loginFailed: boolean }) {
   return (
-    <section className="border-border rounded border p-8" aria-labelledby="sign-in-heading">
-      <h2 id="sign-in-heading" className="type-heading-md text-on-surface mb-3">
-        Sign in
-      </h2>
+    <section className="account-state" aria-label="Sign in">
       <p className="text-on-surface-secondary mb-6 max-w-xl">Sign in to see your orders.</p>
       {loginFailed ? (
-        <p role="alert" className="border-border bg-surface-secondary mb-6 rounded border p-4">
+        <p role="alert" className="mb-6 text-ink-2">
           We couldn&apos;t sign you in. Try again.
         </p>
       ) : null}
@@ -190,7 +183,7 @@ function Orders({ orders }: { orders: Customer["orders"] }) {
         <div>
           <p className="text-on-surface font-medium">You haven&apos;t placed any orders yet.</p>
           <Link to="/collections" className={`button-primary mt-6 ${buttonClass}`}>
-            Start shopping
+            Browse jewelry
           </Link>
         </div>
       ) : (
@@ -213,7 +206,7 @@ function Orders({ orders }: { orders: Customer["orders"] }) {
               <span className="text-on-surface-secondary text-sm">
                 {formatStatus(order.financialStatus)}
               </span>
-              <span className="text-on-surface ms-auto font-medium">
+              <span className="num text-on-surface ms-auto font-medium">
                 {formatPrice(order.totalPrice)}
               </span>
             </li>

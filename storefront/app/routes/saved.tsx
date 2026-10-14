@@ -17,8 +17,8 @@ export default function SavedPage() {
   return (
     <>
       <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Kept" lede="Pieces and ring designs you set aside. Bring the list to either store; call ahead to confirm availability." />
-        {root && !root.live && <div className="mt-6 text-center"><Link className="btn btn-outline" to={`/compare?${shortlist}`}>Compare up to three pieces</Link></div>}
+        <PageTitle title="Kept" lede="Your saved pieces and ring designs." />
+        {root && !root.live && items.length > 1 && <div className="mt-6"><Link className="btn btn-outline" to={`/compare?${shortlist}`}>Compare pieces</Link></div>}
       </Section>
       <Section className="pb-8">
         <SavedList />

@@ -21,7 +21,7 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
   const others = hits.filter((h) => !h.piece);
   return (
     <>
-      <Section className="pt-10 md:pt-16">
+      <Section className="utility-heading">
         <div className="flex max-w-3xl flex-col gap-6">
           <h1 className="h-display text-[3rem] md:text-[4.5rem]">Search</h1>
           <Form method="get" className="flex gap-3">
@@ -40,10 +40,10 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
 
       {q && hits.length === 0 && (
         <Section screen>
-          <p className="h-section max-w-[28ch] text-[1.75rem] md:text-[2.25rem]">Nothing in the house answers to that.</p>
+          <p className="h-section max-w-[28ch] text-[1.75rem] md:text-[2.25rem]">No matching pieces.</p>
           {suggestion && <p className="mt-6"><Link className="link" to={`/search?q=${encodeURIComponent(suggestion)}`}>Did you mean {suggestion}?</Link></p>}
           <Link to="/jewelry" className="link mt-6">
-            Every piece in the house
+            Browse jewelry
           </Link>
         </Section>
       )}

@@ -175,8 +175,8 @@ export function CartLines({ emptyCartFocusId }: { emptyCartFocusId: string }) {
     return (
       <div className="flex h-full flex-col items-start justify-center gap-5">
         <p className="font-display text-[1.5rem]">Your bag is empty.</p>
-        <Link to="/americana" className="link link-light" onClick={() => closeCartDrawer()}>
-          The designs
+        <Link to="/jewelry" className="link link-light" onClick={() => closeCartDrawer()}>
+          Browse jewelry
         </Link>
       </div>
     );
@@ -214,9 +214,6 @@ export function CartSummary() {
           <a href={cart.checkoutUrl} className="btn btn-light" aria-disabled={isPending} onClick={(event) => { if (isPending) event.preventDefault(); }}>
             {isPending ? "Updating total…" : "Checkout"}
           </a>
-          <Link to="/appointments" className="link link-light self-start" onClick={() => closeCartDrawer()}>
-            See it in store first
-          </Link>
         </div>
       ) : null}
       <details className="border-t border-paper/20 pt-3">

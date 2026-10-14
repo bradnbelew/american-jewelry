@@ -82,12 +82,12 @@ export const meta: Route.MetaFunction = () =>
 export default function PoliciesPage() {
   return (
     <>
-      <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Policies" lede="The terms, in plain words. Draft terms for launch, to be reviewed by counsel before they apply to a sale." />
+      <Section width="text" className="pt-16 pb-12 md:pt-24 md:pb-16">
+        <PageTitle title="Policies" lede="Draft terms for launch. Subject to review before they apply to a sale." />
       </Section>
       <Section width="text" className="pb-8">
         <div className="grid gap-10 md:grid-cols-12">
-          <nav className="flex flex-col gap-2 self-start text-[0.875rem] md:sticky md:top-32 md:col-span-3" aria-label="Sections">
+          <nav className="policy-index flex flex-col gap-2 self-start text-[0.875rem] md:sticky md:top-32 md:col-span-3" aria-label="Sections">
             {SECTIONS.map((s) => (
               <a key={s.id} href={`#${s.id}`} className="text-ink-2 hover:text-ink">
                 {s.title}

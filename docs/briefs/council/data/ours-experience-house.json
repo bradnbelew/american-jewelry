@@ -1,0 +1,489 @@
+{
+ "url": "http://127.0.0.1:3032/house",
+ "kind": "page",
+ "slug": "experience-house",
+ "ref": false,
+ "measuredAt": "2026-10-14T04:48:50.332Z",
+ "widths": {
+  "390": {
+   "text": {
+    "words": 86,
+    "sentences": 8,
+    "sentenceP50": 10,
+    "sentenceP90": 22,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 390,
+   "vh": 844,
+   "pageViewports": 2.9,
+   "type": {
+    "families": [
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.793
+     },
+     {
+      "v": "Public Sans Variable",
+      "share": 0.207
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 8,
+    "sizes": [
+     {
+      "v": 18,
+      "share": 0.669
+     },
+     {
+      "v": 13,
+      "share": 0.094
+     },
+     {
+      "v": 11,
+      "share": 0.083
+     },
+     {
+      "v": 28,
+      "share": 0.053
+     },
+     {
+      "v": 24,
+      "share": 0.037
+     },
+     {
+      "v": 15,
+      "share": 0.03
+     },
+     {
+      "v": 44,
+      "share": 0.018
+     },
+     {
+      "v": 32,
+      "share": 0.016
+     }
+    ],
+    "displayMax": 44,
+    "h1": {
+     "size": 44,
+     "chars": 9,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": 18,
+    "bodyLeading": 1.6,
+    "measureCpl": {
+     "p50": 33,
+     "p90": 35,
+     "max": 35
+    },
+    "smallest": 11,
+    "capsBlocks": 2,
+    "capsShareOfBlocks": 0.13,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 31,
+    "textBlocks": 4,
+    "images": 1,
+    "controls": 2,
+    "elements": 5,
+    "imageShare": 0.43
+   },
+   "spacing": {
+    "gapP50": 24,
+    "gapP90": 80,
+    "gapMax": 131,
+    "sectionGapVh": 0.09,
+    "distinctGaps": 7,
+    "alignmentAxes": 3
+   },
+   "images": {
+    "count": 1,
+    "fullBleed": 1,
+    "ratios": [
+     1.08
+    ],
+    "firstAbove": {
+     "ratio": 1.08,
+     "w": 390,
+     "h": 360,
+     "top": 213
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f5f2",
+      "share": 1,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 2,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 2,
+    "heights": [
+     44,
+     50
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.5,
+    "under44": 0
+   },
+   "commerce": {
+    "price": null,
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 3
+   },
+   "status": 200
+  },
+  "768": {
+   "text": {
+    "words": 86,
+    "sentences": 8,
+    "sentenceP50": 10,
+    "sentenceP90": 22,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 768,
+   "vh": 1024,
+   "pageViewports": 2.3,
+   "type": {
+    "families": [
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.793
+     },
+     {
+      "v": "Public Sans Variable",
+      "share": 0.207
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 8,
+    "sizes": [
+     {
+      "v": 18,
+      "share": 0.669
+     },
+     {
+      "v": 13,
+      "share": 0.094
+     },
+     {
+      "v": 11,
+      "share": 0.083
+     },
+     {
+      "v": 32,
+      "share": 0.053
+     },
+     {
+      "v": 24,
+      "share": 0.037
+     },
+     {
+      "v": 15,
+      "share": 0.03
+     },
+     {
+      "v": 48,
+      "share": 0.018
+     },
+     {
+      "v": 40,
+      "share": 0.016
+     }
+    ],
+    "displayMax": 48,
+    "h1": {
+     "size": 48,
+     "chars": 9,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": 18,
+    "bodyLeading": 1.6,
+    "measureCpl": {
+     "p50": 43,
+     "p90": 43,
+     "max": 43
+    },
+    "smallest": 11,
+    "capsBlocks": 2,
+    "capsShareOfBlocks": 0.13,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 31,
+    "textBlocks": 4,
+    "images": 1,
+    "controls": 2,
+    "elements": 5,
+    "imageShare": 0.51
+   },
+   "spacing": {
+    "gapP50": 64,
+    "gapP90": 175,
+    "gapMax": 175,
+    "sectionGapVh": 0.17,
+    "distinctGaps": 6,
+    "alignmentAxes": 4
+   },
+   "images": {
+    "count": 1,
+    "fullBleed": 1,
+    "ratios": [
+     1.48
+    ],
+    "firstAbove": {
+     "ratio": 1.48,
+     "w": 768,
+     "h": 520,
+     "top": 277
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f5f2",
+      "share": 1,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 2,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 2,
+    "heights": [
+     44,
+     50
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.5,
+    "under44": 0
+   },
+   "commerce": {
+    "price": null,
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 4
+   },
+   "status": 200
+  },
+  "1440": {
+   "text": {
+    "words": 86,
+    "sentences": 8,
+    "sentenceP50": 10,
+    "sentenceP90": 22,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 1440,
+   "vh": 900,
+   "pageViewports": 2.4,
+   "type": {
+    "families": [
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.793
+     },
+     {
+      "v": "Public Sans Variable",
+      "share": 0.207
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 8,
+    "sizes": [
+     {
+      "v": 18,
+      "share": 0.669
+     },
+     {
+      "v": 13,
+      "share": 0.094
+     },
+     {
+      "v": 11,
+      "share": 0.083
+     },
+     {
+      "v": 32,
+      "share": 0.053
+     },
+     {
+      "v": 24,
+      "share": 0.037
+     },
+     {
+      "v": 15,
+      "share": 0.03
+     },
+     {
+      "v": 64,
+      "share": 0.018
+     },
+     {
+      "v": 40,
+      "share": 0.016
+     }
+    ],
+    "displayMax": 64,
+    "h1": {
+     "size": 64,
+     "chars": 9,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": 18,
+    "bodyLeading": 1.6,
+    "measureCpl": {
+     "p50": 50,
+     "p90": 50,
+     "max": 50
+    },
+    "smallest": 11,
+    "capsBlocks": 2,
+    "capsShareOfBlocks": 0.13,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 2,
+    "textBlocks": 1,
+    "images": 1,
+    "controls": 7,
+    "elements": 2,
+    "imageShare": 0.58
+   },
+   "spacing": {
+    "gapP50": 96,
+    "gapP90": 220,
+    "gapMax": 220,
+    "sectionGapVh": 0.24,
+    "distinctGaps": 4,
+    "alignmentAxes": 5
+   },
+   "images": {
+    "count": 1,
+    "fullBleed": 1,
+    "ratios": [
+     2.77
+    ],
+    "firstAbove": {
+     "ratio": 2.77,
+     "w": 1440,
+     "h": 520,
+     "top": 339
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f5f2",
+      "share": 1,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 2,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 7,
+    "heights": [
+     44,
+     50
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.86,
+    "under44": 0
+   },
+   "commerce": {
+    "price": null,
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 11
+   },
+   "status": 200
+  }
+ }
+}

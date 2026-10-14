@@ -32,12 +32,12 @@ export const meta: Route.MetaFunction = () =>
 export default function StonesPage() {
   return (
     <>
-      <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Natural or lab-grown?" lede="We sell both. Here is the whole comparison, without a side." />
+      <Section width="text" className="pt-16 pb-12 md:pt-24 md:pb-16">
+        <PageTitle title="Natural or lab-grown?"  />
       </Section>
       <Section width="text">
         <div>
-          <table className="spec">
+          <table className="spec stone-comparison">
             <thead>
               <tr>
                 <th scope="col" />
@@ -61,7 +61,7 @@ export default function StonesPage() {
           </table>
         </div>
       </Section>
-      <Section screen width="text">
+      <Section screen width="text" className="stone-links">
         <div className="grid gap-10 md:grid-cols-2">
           <div className="flex flex-col gap-3">
             <h2 className="h-item text-[1.25rem]">The stone from the earth</h2>
@@ -80,16 +80,16 @@ export default function StonesPage() {
         </div>
       </Section>
       <Section className="pb-8" width="text">
-        <h2 className="h-section mb-8 text-[1.75rem] md:text-[2.25rem]">Questions we are asked</h2>
-        <dl className="flex flex-col">
+        <h2 className="h-section mb-8 text-[1.75rem] md:text-[2.25rem]">Questions</h2>
+        <div className="flex flex-col">
           {FAQ.map(([q, a]) => (
-            <div key={q} className="grid gap-3 border-t border-hair py-7 md:grid-cols-12 md:gap-10">
-              <dt className="h-item text-[1.25rem] md:col-span-5">{q}</dt>
-              <dd className="font-text text-ink-2 md:col-span-7">{a}</dd>
-            </div>
+            <details key={q} className="acc border-t border-hair">
+              <summary className="h-item text-[1.25rem]">{q}</summary>
+              <p className="font-text max-w-[62ch] pb-6 text-ink-2">{a}</p>
+            </details>
           ))}
-        </dl>
-        <p className="label mt-12 leading-relaxed">
+        </div>
+        <p className="label mt-12 max-w-[70ch] leading-relaxed">
           On this site, lab-grown diamond means a laboratory-grown diamond. Lab-grown diamonds are not mined. The growth method and any post-growth treatment are stated on each piece. We make no claims about the resale value of either kind of stone.
         </p>
       </Section>

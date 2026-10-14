@@ -107,13 +107,13 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
   const photo = SETTING_PHOTO[c.setting];
 
   return (
-    <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
+    <div className="ring-builder grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
       <div className="flex flex-col gap-4 lg:sticky lg:top-32 lg:col-span-7">
         <div className="relative aspect-[4/3] overflow-hidden bg-paper sm:aspect-square lg:aspect-[5/4]">
           <RingViewer config={c} view={view} autoRotate={idle} className="absolute inset-0" />
         </div>
         <details className="acc">
-          <summary className="label h-6 !min-h-0 !justify-start gap-2 !py-0 !font-normal !tracking-normal !normal-case">Where the price comes from</summary>
+          <summary className="label min-h-11 !justify-start gap-2 !py-0 !font-normal !tracking-normal !normal-case">Price breakdown</summary>
           <dl className="num grid max-w-lg grid-cols-[1fr_auto] gap-x-6 gap-y-1 pt-3 pb-1 text-[0.8125rem] text-ink-2">
             <dt className="font-text">
               Metal, {p.grams.toFixed(1)} g {METAL_LABEL[c.metal]}
@@ -177,10 +177,11 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
         </Row>
 
         <Row label="Metal" value={METAL_LABEL[c.metal]}>
-          <div className="flex gap-2" role="radiogroup" aria-label="Metal">
+          <div className="metal-options" role="radiogroup" aria-label="Metal">
             {METALS.map((m) => (
-              <button key={m} type="button" role="radio" aria-checked={c.metal === m} aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="swatch" aria-pressed={c.metal === m} onClick={() => set("metal", m)}>
+              <button key={m} type="button" role="radio" aria-checked={c.metal === m} aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="metal-option" aria-pressed={c.metal === m} onClick={() => set("metal", m)}>
                 <span className="swatch-dot" style={{ background: METAL_SWATCH[m] }} />
+                <span>{METAL_LABEL[m].replace(" gold","")}</span>
               </button>
             ))}
           </div>
@@ -212,9 +213,8 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
         </Row>
 
         <details className="acc hair">
-          <summary>The jeweler&apos;s adjustments</summary>
+          <summary>Fine details</summary>
           <div className="flex flex-col gap-5 pt-1 pb-5">
-            <p className="label">Set the way we would set them for this design. Change them if you have a preference.</p>
             {c.setting !== "prism" && (
               <Field label="Band profile">
                 {PROFILES.map((x) => (
@@ -274,18 +274,15 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
               Request this ring
             </button>
           </Form>
-          <Link to={`/appointments?build=ring&code=${encodeURIComponent(code)}`} className="btn btn-outline">
-            See it in store first
+          <Link to={`/appointments?build=ring&code=${encodeURIComponent(code)}`} className="link self-start">
+            See it in store
           </Link>
-          <div className="grid grid-cols-3 gap-2 text-[0.75rem]">
+          <div className="grid grid-cols-2 gap-2 text-[0.75rem]">
             <button type="button" className="quiet" aria-pressed={saved} onClick={() => toggle({ id: savedId, href: `/design/${code}`, name: `${note.name} ring`, detail: name, photo })}>
               {saved ? "Kept" : "Keep"}
             </button>
             <button type="button" className="quiet" onClick={() => copy(`${origin}/design/${code}`, "share")}>
               {copied === "share" ? "Copied" : "Copy link"}
-            </button>
-            <button type="button" className="quiet" onClick={() => copy(`${origin}/design/${code}?hint=1`, "hint")}>
-              {copied === "hint" ? "Copied" : "Send a hint"}
             </button>
           </div>
           <div className="flex items-baseline justify-between gap-3 pt-1 text-[0.75rem] text-muted">
@@ -295,8 +292,8 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
                 {copied === "code" ? "Copied" : code}
               </button>
             </span>
-            <Link to={`/design/${encodeURIComponent(code)}/certificate`} className="link-quiet text-ink">
-              The certificate
+            <Link to={`/design/${encodeURIComponent(code)}`} className="link-quiet text-ink">
+              Review design
             </Link>
           </div>
           <p className="label leading-relaxed">
@@ -335,9 +332,9 @@ function Toggle({ on, label, hint, onClick }: { on: boolean; label: string; hint
     <button type="button" className="opt !h-12 !min-h-0 text-[0.8125rem]" aria-pressed={on} onClick={onClick}>
       <span className="flex flex-col leading-tight">
         <span>{label}</span>
-        <span className="text-[0.6875rem] text-muted">{hint}</span>
+        <span className="text-[0.8125rem] text-muted">{hint}</span>
       </span>
-      <span className="w-6 text-right text-[0.6875rem] text-muted">{on ? "On" : "Off"}</span>
+      <span className="w-6 text-right text-[0.8125rem] text-muted">{on ? "On" : "Off"}</span>
     </button>
   );
 }

@@ -20,24 +20,24 @@ export default function JournalPage() {
   const [first, ...rest] = ARTICLES;
   return (
     <>
-      <Section className="pt-12 pb-12 md:pt-20 md:pb-16">
+      <Section className="utility-heading">
         <h1 className="h-display text-[3rem] md:text-[4.5rem]">Journal</h1>
       </Section>
 
       <Section>
-        <Link to={`/journal/${first.slug}`} viewTransition className="group grid items-end gap-8 md:grid-cols-12 md:gap-12">
-          <div className="settle relative aspect-[4/3] overflow-hidden bg-paper md:col-span-7 md:aspect-[3/2]">
+        <Link to={`/journal/${first.slug}`} viewTransition className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="settle relative aspect-[4/3] overflow-hidden bg-paper lg:col-span-7 md:aspect-[3/2]">
             <Pic k={first.photo} sizes="(min-width: 768px) 58vw, 100vw" priority />
           </div>
-          <div className="flex flex-col gap-4 md:col-span-5 md:pb-4">
+          <div className="flex flex-col gap-4 lg:col-span-5">
             <span className="label">{dateLabel(first.published)}</span>
-            <h2 className="h-section text-[2rem] group-hover:text-muted md:text-[2.75rem]">{first.title}</h2>
+            <h2 className="h-section text-[2rem] group-hover:text-muted lg:text-[2.75rem]">{first.title}</h2>
             <p className="font-text text-ink-2">{first.summary}</p>
           </div>
         </Link>
       </Section>
 
-      <Section screen width="text">
+      <Section screen>
         <ul className="flex flex-col">
           {rest.map((a) => (
             <li key={a.slug} className="border-t border-hair">
@@ -45,7 +45,7 @@ export default function JournalPage() {
                 <span className="label md:col-span-3">{dateLabel(a.published)}</span>
                 <span className="flex flex-col gap-1 md:col-span-9">
                   <span className="h-item text-[1.5rem] group-hover:text-muted">{a.title}</span>
-                  <span className="font-text text-[0.9375rem] text-ink-2">{a.summary}</span>
+                  <span className="font-text text-ink-2">{a.summary}</span>
                 </span>
               </Link>
             </li>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigation, useSearchParams } from "react-router";
-import { PieceCard, priceLine } from "~/components/Catalog";
+import { PieceCard } from "~/components/Catalog";
 import { Section } from "~/components/Section";
 import { PIECES, pieceByHandle } from "~/lib/catalog/data";
 import { whatItIs } from "~/lib/catalog/browse";
@@ -30,12 +30,11 @@ export default function ComparePage() {
   const appointment = new URLSearchParams({ kind: "fitting", pieces: selected.map((p) => p.handle).join(",") });
   return (
     <Section className="py-12">
-      <p className="label">A preview of the in-store conversation</p>
-      <h1 className="h-display mt-4 text-4xl md:text-6xl">Set out three pieces.</h1>
+      <h1 className="h-display text-[36px] md:text-[48px]">Compare pieces</h1>
       <p className="lede mt-6 max-w-2xl">
-        Compare the form, the material and the starting price. Choose up to three, then bring your shortlist into an appointment request.
+        Choose up to three pieces.
       </p>
-      <div className="compare-tray mt-10 grid gap-8 md:grid-cols-3">
+      <div className="compare-scroll" role="region" aria-label="Piece comparison" tabIndex={0}><div className="compare-tray mt-10 grid gap-8 md:grid-cols-3">
         {pieces.map((p, i) => (
           <section key={i}>
             <label className="mb-6 block">
@@ -77,27 +76,23 @@ export default function ComparePage() {
                     <dd>{p.metals.map((m) => METAL_LABEL[m]).join(", ")}</dd>
                   </div>
                   <div>
-                    <dt className="label">Price</dt>
-                    <dd>{priceLine(p)}</dd>
-                  </div>
-                  <div>
                     <dt className="label">Timing</dt>
                     <dd>{p.leadTime}</dd>
                   </div>
                 </dl>
               </>
             ) : (
-              <div className="flex aspect-square items-center justify-center border border-hair text-muted">A place for your next choice.</div>
+              <div className="hidden h-28 md:block" aria-hidden="true" />
             )}
           </section>
         ))}
-      </div>
+      </div></div>
       {selected.length > 0 && (
         <div className="mt-10 flex flex-wrap items-center gap-5 border-t border-hair pt-6">
           <Link className="btn" to={`/appointments?${appointment}`}>
             Ask to see these pieces
           </Link>
-          <p className="label">Availability is confirmed by the store. This opens a request; it does not book a visit.</p>
+          <p className="label">The store will confirm availability and a time.</p>
         </div>
       )}
     </Section>

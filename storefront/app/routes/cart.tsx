@@ -19,7 +19,7 @@ export default function CartRoute() {
   }, [cart]);
 
   return (
-    <div className="velvet -mb-32 pb-32">
+    <div className="velvet pb-16">
       <Section className="pt-10 md:pt-16">
         <h1 id="cart-page-title" tabIndex={-1} className="h-display text-[2.5rem] md:text-[3.5rem]">
           Your bag

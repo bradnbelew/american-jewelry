@@ -11,7 +11,6 @@ import { viewingFor } from "~/components/three/viewing/pieces";
 import { STORES, designBySlug, pieceByHandle, pieceRef, piecesForDesign, tierBySlug } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Metal, Piece } from "~/lib/catalog/types";
-import { METAL_LABEL, PIECE_TYPE_LABEL } from "~/lib/catalog/types";
 import { modelFor } from "~/lib/models";
 import { PIECE_OPTION_NAMES, PIECE_QUERY, type PieceProduct } from "~/lib/piece-query";
 import { ProductProvider, metalKeyFromLabel, pieceUrl } from "~/lib/product";
@@ -61,30 +60,6 @@ export const meta: Route.MetaFunction = ({ data }) => {
   );
 };
 
-/** One sentence that says what the piece is made of, the material words carried in ink. */
-function madeOf(p: Piece): { text: string; key?: boolean }[] {
-  const metals = Array.from(new Set(p.metals.map((m) => METAL_LABEL[m].replace(/1[48]k /, "").toLowerCase())));
-  const metalText = metals.length === 1 ? METAL_LABEL[p.metals[0]] : metals.length === 2 ? `${metals[0]} or ${metals[1]}` : `${metals.slice(0, -1).join(", ")} or ${metals[metals.length - 1]}`;
-  const manMade = p.versions.some((v) => v.origin === "man-made");
-  const natural = p.versions.some((v) => v.key === "diamond" && v.origin === "natural");
-  const gem = p.versions.some((v) => v.key === "gemstone");
-  const single = p.pieceType === "solitaire" || p.pieceType === "signet";
-  const stone = p.oneOfOne
-    ? (p.versions[0].stones ?? "").toLowerCase()
-    : manMade
-      ? single ? "one lab-grown diamond" : "lab-grown diamonds"
-      : natural && gem
-        ? "a birthstone or natural diamonds"
-        : natural
-          ? single ? "a natural diamond" : "natural diamonds"
-          : "";
-  const type = PIECE_TYPE_LABEL[p.pieceType].toLowerCase();
-  const parts: { text: string; key?: boolean }[] = [{ text: `${/^[aeiou]/.test(type) ? "An" : "A"} ${type} in ` }, { text: metalText, key: true }];
-  if (stone) parts.push({ text: ", set with " }, { text: stone, key: true });
-  parts.push({ text: ", finished at our bench." });
-  return parts;
-}
-
 export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const { product, handle, open3d } = loaderData;
   const piece = pieceByHandle(handle);
@@ -108,7 +83,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const carat = caratMatch ? Number(caratMatch[1]) : undefined;
 
   const buyColumn = piece?.concept ? (
-    <div className="concept-enquiry"><p className="label">Design concept</p><p className="font-text">A proposed design for the house. Materials, dimensions and price are confirmed through a design consultation.</p><Link className="btn" to={`/appointments?piece=${piece.handle}`}>Discuss this design</Link></div>
+    <div className="concept-enquiry"><p className="label">Design concept</p><p className="font-text">Materials, dimensions and price confirmed at consultation.</p><Link className="btn" to={`/appointments?piece=${piece.handle}`}>Discuss this design</Link></div>
   ) : product ? (
     <ProductProvider
       product={product}
@@ -142,13 +117,17 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
         </nav>
       </Section>
 
-      <Section className="pt-6 md:pt-8">
-        <div className="piece-layout grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
+      <Section className="pdp-main">
+        <div className="piece-layout">
+          <div className="pdp-heading">
+            <h1>{title}</h1>
+            {piece && !piece.concept && <p className="label">Ref. {pieceRef(piece)}{royal ? `, Royal American No. ${piece.oneOfOne?.number}` : tier ? `, ${tier.name}` : ""}</p>}
+          </div>
+          <div className="pdp-gallery">
             <PieceGallery
               photos={PIECE_PHOTOS[handle] ?? ["hero-box"]}
               title={title}
-              caption="Concept photograph. Confirm the details of your chosen version with the house."
+              caption="Concept photograph. Confirm details with the house."
               model={galleryModel}
               metal={metalTone(metal)}
               open3d={open3d}
@@ -156,37 +135,15 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
             />
           </div>
 
-          <div className="pdp-buy flex flex-col gap-6 lg:sticky lg:top-32 lg:col-span-5">
-            <div className="flex flex-col gap-3">
-              <h1 className="h-section text-[2.25rem] md:text-[2.75rem]">{title}</h1>
-              {piece && !piece.concept && (
-                <p className="label">
-                  Ref. {pieceRef(piece)}
-                  {royal ? `, Royal American No. ${piece.oneOfOne?.number}` : tier ? `, ${tier.name}` : ""}
-                </p>
-              )}
-              {piece && <p className="font-text text-base text-ink-2">{piece.description}</p>}
-            </div>
-
+          <div className="pdp-buy flex flex-col gap-6">
             {buyColumn}
 
+            {piece && <p className="pdp-description">{piece.description}</p>}
             {piece && !piece.concept && <Details piece={piece} />}
             {piece?.concept && <table className="spec"><tbody>{piece.specs.map((s) => <tr key={s.label}><th scope="row">{s.label}</th><td>{s.value}</td></tr>)}</tbody></table>}
           </div>
         </div>
       </Section>
-
-      {piece && !piece.concept && !royal && (
-        <Section screen width="text">
-          <p className="h-section measure-display text-[1.75rem] md:text-[2.5rem] lg:text-[3rem]">
-            {madeOf(piece).map((part, i) => (
-              <span key={i}>
-                {part.text}
-              </span>
-            ))}
-          </p>
-        </Section>
-      )}
 
       {piece && design && <Siblings piece={piece} designSlug={design.slug} designName={design.name} />}
 
@@ -288,18 +245,14 @@ function Siblings({ piece, designSlug, designName }: { piece: Piece; designSlug:
   const siblings = piecesForDesign(piece.design).filter((p) => p.handle !== piece.handle).slice(0, 4);
   if (siblings.length === 0) return null;
   return (
-    <Section className="pb-8">
-      <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-10">
-        <div className="flex flex-col gap-3 lg:col-span-4">
+    <Section className="related-pieces">
+        <div className="house-heading">
           <h2 className="h-section text-[1.75rem] md:text-[2.25rem]">More in this design</h2>
           <Link to={`/designs/${designSlug}`} className="link self-start">
             The {designName} design
           </Link>
         </div>
-        <div className="lg:col-span-8">
           <PieceLedger pieces={siblings} />
-        </div>
-      </div>
     </Section>
   );
 }

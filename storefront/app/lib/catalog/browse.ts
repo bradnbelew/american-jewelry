@@ -68,7 +68,7 @@ export const PRICE_BANDS: { key: string; label: string; min: number; max: number
 ];
 
 export const SORTS: { key: SortKey; label: string }[] = [
-  { key: "house", label: "House order" },
+  { key: "house", label: "Featured" },
   { key: "price-asc", label: "Price, low to high" },
   { key: "price-desc", label: "Price, high to low" },
   { key: "name", label: "Name" },
@@ -166,7 +166,7 @@ export function filterGroups(base: Piece[], q: BrowseQuery, hide: FilterGroup["k
     { key: "price", label: "Price", options: PRICE_BANDS.map((b) => ({ value: b.key, label: b.label, count: countWith("price", b.key) })) },
     { key: "design", label: "Style", options: DESIGNS.map((d) => ({ value: d.slug, label: d.name, count: countWith("design", d.slug) })) },
   ];
-  return groups.filter((g) => !hide.includes(g.key)).map((g) => ({ ...g, options: g.options.filter((o) => o.count > 0 || (q[g.key] as string[]).includes(o.value)) })).filter((g) => g.options.length > 1 || (q[g.key] as string[]).length > 0);
+  return groups.sort((a,b) => ["design","metal","stone","price","production","line"].indexOf(a.key) - ["design","metal","stone","price","production","line"].indexOf(b.key)).filter((g) => !hide.includes(g.key)).map((g) => ({ ...g, options: g.options.filter((o) => o.count > 0 || (q[g.key] as string[]).includes(o.value)) })).filter((g) => g.options.length > 1 || (q[g.key] as string[]).length > 0);
 }
 
 /* ------------------------------------------------------------------ */

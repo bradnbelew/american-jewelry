@@ -11,11 +11,8 @@ export function SavedList() {
       <div className="hair flex max-w-xl flex-col gap-4 pt-10">
         <p className="text-ink-2">Nothing saved yet.</p>
         <div className="flex flex-wrap gap-3">
-          <Link to="/americana" className="btn">
-            The designs
-          </Link>
-          <Link to="/build/ring" className="btn btn-outline">
-            Build a ring
+          <Link to="/jewelry" className="btn">
+            Browse jewelry
           </Link>
         </div>
       </div>
@@ -33,7 +30,7 @@ export function SavedList() {
               {it.name}
             </Link>
             <span className="text-[0.8125rem] text-ink-2">{it.detail}</span>
-            <button type="button" onClick={() => remove(it.id)} className="caps-sm mt-1 h-6 self-start text-muted hover:text-ink">
+            <button type="button" onClick={() => remove(it.id)} className="caps-sm mt-1 min-h-11 self-start text-muted hover:text-ink">
               Remove
             </button>
           </div>

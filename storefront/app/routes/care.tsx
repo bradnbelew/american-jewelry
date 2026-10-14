@@ -11,14 +11,14 @@ export const meta: Route.MetaFunction = () =>
 export default function CarePage() {
   return (
     <>
-      <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Lifetime care" lede="Bring your jewelry in for assessment. We can discuss cleaning, inspection, resizing and repair, including the right care for its stones and setting." />
+      <Section width="text" className="pt-16 pb-12 md:pt-24 md:pb-16">
+        <PageTitle title="Lifetime care" lede="Cleaning, inspection, resizing and repair at either store." />
       </Section>
       <Section width="text">
         <div className="grid gap-10 md:grid-cols-3">
           {[
-            ["Clean and check", "Cleaning methods depend on the stones and setting. Ask us to inspect the piece and recommend suitable care."],
-            ["Resize", "We assess the design before recommending a new size. Some settings, including full eternity bands, may need to be remade. Ask for timing and a quote."],
+            ["Clean and check", "We inspect the stones and setting before recommending care."],
+            ["Resize", "Some designs, including full eternity bands, need remaking. We’ll assess the fit and quote first."],
             ["Repair", "Retipping, re-shanking, chains, clasps, stones and laser welding through our in-house bench."],
           ].map(([k, v]) => (
             <div key={k} className="flex flex-col gap-2">
@@ -32,7 +32,7 @@ export default function CarePage() {
         <div className="flex max-w-2xl flex-col gap-3">
           <h2 className="h-item text-[1.25rem]">Sizing</h2>
           <p className="font-text text-ink-2">
-            Fingers change size with the weather and the hour. Come in and we size you properly, free. If you must measure at home, use a ring that already fits and measure its inside diameter in millimeters. Bands over 4 mm usually need a half size up.
+            Visit either store for a fitting. Bring a ring that fits if you have one.
           </p>
           <Link to="/appointments?kind=care" className="link self-start">
             Book a care visit

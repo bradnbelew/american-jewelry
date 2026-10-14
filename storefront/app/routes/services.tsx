@@ -8,12 +8,12 @@ import { breadcrumbJsonLd, pageMeta, servicesJsonLd } from "~/lib/seo";
 import type { Route } from "./+types/services";
 
 const SERVICES: { slug: string; name: string; what: string; how: string; where: string }[] = [
-  { slug: "repair", name: "Repair and restoration", what: "Retipping, re-shanking, chain and clasp repair, lost stones, laser welding next to stones that cannot take a torch.", how: "Quoted under the loupe before anything begins.", where: "Contact either store to arrange an assessment." },
-  { slug: "resizing", name: "Resizing", what: "Sized up or down at the bench, the join finished so it disappears. Full eternity bands are remade.", how: "Timing, suitability and any charge are confirmed after assessment.", where: "Contact either store to discuss the work." },
-  { slug: "engraving", name: "Engraving", what: "Initials, a date, a line, in the house script or Roman capitals. Monograms on signets by hand.", how: "Included on pieces we make. Quoted on others.", where: "Either store." },
-  { slug: "cleaning", name: "Cleaning and inspection", what: "Ultrasonic and steam, a loupe over every setting, prongs tightened.", how: "Walk in. Fifteen minutes, no charge, for life.", where: "Either store." },
+  { slug: "repair", name: "Repair and restoration", what: "Retipping, re-shanking, chain and clasp repair, stone replacement and laser welding.", how: "Quoted under the loupe before anything begins.", where: "Contact either store to arrange an assessment." },
+  { slug: "resizing", name: "Resizing", what: "Ring sizing and assessment. Full eternity bands may need remaking.", how: "Timing, suitability and any charge are confirmed after assessment.", where: "Contact either store to discuss the work." },
+  { slug: "engraving", name: "Engraving", what: "Initials, dates and personal inscriptions.", how: "Included on pieces we make. Quoted on others.", where: "Either store." },
+  { slug: "cleaning", name: "Cleaning and inspection", what: "Cleaning and setting checks suited to your jewelry.", how: "Contact us for suitable care.", where: "Either store." },
   { slug: "appraisal", name: "Appraisal", what: "A written insurance appraisal with photographs, metal and stone details and report numbers.", how: "By appointment. From $149 per item.", where: "Either store." },
-  { slug: "custom", name: "Custom and heirloom work", what: "A grandmother's diamond reset in a house design. A family sapphire at the center of a signet.", how: "Drawings within a week; a model you can hold before anything is cast.", where: "Brentwood, by appointment." },
+  { slug: "custom", name: "Custom and heirloom work", what: "A grandmother's diamond reset in a house design. A family sapphire at the center of a signet.", how: "Discuss a design and review the CAD before approval.", where: "By appointment." },
 ];
 
 /** Prices carried from the old site's published list; the family confirms before launch. */
@@ -40,21 +40,21 @@ export default function ServicesPage() {
   return (
     <>
       <Section className="pt-10 md:pt-16">
-        <div className="grid items-end gap-8 md:grid-cols-12 md:gap-10">
+        <div className="grid items-center gap-8 md:grid-cols-12 md:gap-16">
           <div className="flex flex-col gap-6 md:col-span-5">
-            <h1 className="h-display measure-display text-[3rem] md:text-[4.25rem] lg:text-[4.75rem]">Services</h1>
-            <p className="lede measure">A house that makes its own pieces looks after everyone else&apos;s too. Every service is quoted before any work begins, at a bench you can watch.</p>
+            <h1 className="h-display measure-display text-[44px] md:text-[64px]">Services</h1>
+            <p className="lede measure">Repair, resizing, engraving and care. Quoted before work begins.</p>
             <Link to="/appointments?kind=care" className="btn self-start">
               Book a care visit
             </Link>
           </div>
-          <div className="settle relative aspect-[4/5] overflow-hidden md:col-span-7 md:-mr-10 md:aspect-[4/3]">
+          <div className="settle relative aspect-[4/5] overflow-hidden md:col-span-7 md:aspect-[4/3]">
             <Pic k="comp-bench-hands" priority sizes="(min-width: 768px) 58vw, 100vw" position="50% 40%" />
           </div>
         </div>
       </Section>
 
-      <Section screen width="text">
+      <Section screen className="service-content">
         <div className="flex flex-col gap-14">
           {SERVICES.map((s) => (
             <article key={s.slug} id={s.slug} className="grid gap-4 md:grid-cols-12 md:gap-10">
@@ -70,9 +70,9 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      <Section className="pb-8" width="text">
+      <Section className="service-content pb-8">
         <div className="grid gap-10 md:grid-cols-12 md:gap-16">
-          <h2 className="h-section text-[1.75rem] md:col-span-4 md:text-[2rem]">While you wait</h2>
+          <h2 className="h-section text-[1.75rem] md:col-span-4 md:text-[2rem]">Service prices</h2>
           <table className="spec md:col-span-7 md:col-start-6">
             <tbody>
               {PRICES.map(([k, v]) => (

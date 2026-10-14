@@ -7,7 +7,7 @@ export const KINDS = [
   ["bridal", "Engagement or wedding"],
   ["viewing", "Private viewing, Royal American"],
   ["commission", "Commission a piece"],
-  ["fitting", "Fitting for a piece or a design code"],
+  ["fitting", "Fitting"],
   ["care", "Care, resizing or repair"],
   ["other", "Something else"],
 ] as const;
@@ -45,7 +45,7 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
   }
 
   return (
-    <Form method="post" className="grid gap-x-8 gap-y-6 pt-10 md:grid-cols-2" aria-busy={pending}>
+    <Form method="post" className="appointment-form grid gap-x-8 gap-y-6 md:grid-cols-2" aria-busy={pending}>
       {CONTEXT_KEYS.map((k) => (prefill[k] ? <input key={k} type="hidden" name={k} value={prefill[k]} /> : null))}
       {context.length > 0 && (
         <p className="font-text bg-paper px-4 py-3 text-[0.9375rem] text-ink-2 md:col-span-2">
@@ -55,9 +55,9 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
 
       <fieldset className="flex flex-col gap-3 md:col-span-2">
         <legend className="mb-3 text-[0.8125rem] text-ink">Where</legend>
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-2">
           {Object.entries(STORE_LABEL).map(([v, l]) => (
-            <label key={v} className="opt cursor-pointer" data-active={store === v ? "true" : "false"}>
+            <label key={v} className="opt cursor-pointer !px-3" data-active={store === v ? "true" : "false"}>
               <input type="radio" name="store" value={v} checked={store === v} onChange={() => setStore(v)} className="sr-only" />
               <span>{l}</span>
             </label>
@@ -65,17 +65,12 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
         </div>
       </fieldset>
 
-      <fieldset className="flex flex-col gap-3 md:col-span-2">
-        <legend className="mb-3 text-[0.8125rem] text-ink">What for</legend>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {KINDS.map(([v, l]) => (
-            <label key={v} className="opt cursor-pointer" data-active={kind === v ? "true" : "false"}>
-              <input type="radio" name="kind" value={v} checked={kind === v} onChange={() => setKind(v)} className="sr-only" />
-              <span>{l}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
+      <label className="flex flex-col gap-2 md:col-span-2">
+        <span className="text-[0.8125rem] text-ink">What for</span>
+        <select name="kind" className="field" value={kind} onChange={event => setKind(event.target.value)}>
+          {KINDS.map(([value,label]) => <option key={value} value={value}>{label}</option>)}
+        </select>
+      </label>
 
       <Field label="Name">
         <input id="name" name="name" required className="field" autoComplete="name" />
@@ -83,19 +78,19 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
       <Field label="Phone or email">
         <input id="contact" name="contact" required className="field" autoComplete="tel" />
       </Field>
-      <Field label="When suits you">
+      <Field label="Preferred time">
         <input id="when" name="when" placeholder="Saturday morning, any weekday after 4" className="field" />
       </Field>
-      <Field label="Anything we should know" hint="optional">
+      <Field label="Notes" hint="optional">
         <input id="notes" name="notes" placeholder="A budget, a ring size, an heirloom you are bringing" className="field" />
       </Field>
 
       <div className="flex flex-col gap-3 md:col-span-2">
-        <label className="flex items-start gap-3 text-[0.9375rem] text-ink-2">
+        <label className="flex min-h-11 items-start gap-3 text-[0.9375rem] text-ink-2">
           <input type="checkbox" name="consentEmail" className="mt-1 h-4 w-4 accent-[var(--ink)]" />
           <span>You may write to me by email about this request.</span>
         </label>
-        <label className="flex items-start gap-3 text-[0.9375rem] text-ink-2">
+        <label className="flex min-h-11 items-start gap-3 text-[0.9375rem] text-ink-2">
           <input type="checkbox" name="consentSms" className="mt-1 h-4 w-4 accent-[var(--ink)]" />
           <span>You may text me about this request. Message rates may apply; reply STOP to end.</span>
         </label>
@@ -109,9 +104,8 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
 
       <div className="flex flex-wrap items-center gap-6 pt-2 md:col-span-2">
         <button type="submit" className="btn" disabled={pending}>
-          Request the appointment
+          Request a visit
         </button>
-        <span className="label">No cost, no obligation.</span>
       </div>
     </Form>
   );

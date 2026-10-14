@@ -346,7 +346,7 @@ async function measureUrl(url, { kind, slug, ref }) {
       if (process.env.MEASURE_REDUCED) await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
       let status = null;
       try {
-        const res = await page.goto(url, { waitUntil: "networkidle2", timeout: Number(process.env.MEASURE_TIMEOUT ?? 60000) });
+        const res = await page.goto(url, { waitUntil: process.env.MEASURE_WAIT_UNTIL ?? "networkidle2", timeout: Number(process.env.MEASURE_TIMEOUT ?? 60000) });
         status = res?.status() ?? null;
       } catch (e) {
         out.widths[w] = { error: String(e.message).slice(0, 120) };

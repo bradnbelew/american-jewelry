@@ -188,10 +188,9 @@ function Panel({ panel }: { panel: NavPanel }) {
             ))}
           </div>
         ))}
-        {panel.line && <p className="font-text col-span-full mt-2 max-w-[60ch] text-[0.9375rem] text-ink-2">{panel.line}</p>}
-        <Link to={panel.href} className="link col-span-full self-start justify-self-start">
+        {!panel.columns.some(c => c.links.some(l => l.href === panel.href)) && <Link to={panel.href} className="link col-span-full self-start justify-self-start">
           {panel.label === "The House" ? "Meet the house" : panel.label === "Bridal" ? "Explore bridal" : `Explore ${panel.label.toLowerCase()}`}
-        </Link>
+        </Link>}
       </div>
       {panel.photo && (
         <Link to={panel.photo.href} className="group col-span-4 flex flex-col gap-3">

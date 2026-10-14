@@ -76,9 +76,8 @@ export default function DesignCodePage({ loaderData }: Route.ComponentProps) {
     <>
       <Section className="pt-16 pb-10 md:pt-24 md:pb-14">
         <PageTitle
-          eyebrow={hint ? "Someone has a ring in mind" : "A ring in the making"}
-          title={hint ? "A hint, from someone who knows you." : ringName(config)}
-          lede={hint ? "This is the ring they built for you. Its price is theirs to know." : "Built in the ring builder. Bring the code to either store, or make it yours."}
+          title={hint ? "A ring for you" : ringName(config)}
+          lede={hint ? "A shared ring design." : "Bring this design code to either store."}
         />
       </Section>
       <Section>
@@ -87,7 +86,6 @@ export default function DesignCodePage({ loaderData }: Route.ComponentProps) {
       {!hint && (
         <Section className="pt-16 pb-8" width="text">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <span className="font-text text-ink-2">Want to change something?</span>
             <Link to={`/build/ring?code=${encodeURIComponent(code)}`} className="link">
               Open in the builder
             </Link>

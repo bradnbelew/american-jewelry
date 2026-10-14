@@ -53,15 +53,15 @@ export async function action({ request, context }: Route.ActionArgs) {
 export default function AppointmentsPage({ loaderData, actionData }: Route.ComponentProps) {
   return (
     <>
-      <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Come and see it in your hand." lede="Tell us what you would like to explore. We will confirm a time, the location and the availability of any pieces you request." />
+      <Section width="text" className="pt-16 pb-12 md:pt-24 md:pb-16">
+        <PageTitle title="Request a visit" lede="We’ll confirm the time and availability of your chosen pieces." />
       </Section>
       <Section width="text">
         <AppointmentForm prefill={loaderData.prefill} result={actionData} />
       </Section>
       <Section width="text" className="pt-16 pb-8 md:pt-20">
         <div className="grid gap-8 sm:grid-cols-2">
-          <p className="font-text text-ink-2">Same-day visits are welcome. Call the store you are nearest.</p>
+          <p className="font-text text-ink-2">For a visit today, call the store.</p>
           <div className="flex flex-col gap-3">
             {STORES.map((s) => (
               <p key={s.slug} className="font-text text-ink-2">

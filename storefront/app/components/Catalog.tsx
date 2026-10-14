@@ -1,7 +1,7 @@
-import { useState, type ReactNode } from "react";
-import { Form, Link, useLocation, useSearchParams, useSubmit } from "react-router";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { Form, Link, useLocation, useNavigation, useSearchParams, useSubmit } from "react-router";
 
-import { CATEGORIES, SORTS, activeCount, applyQuery, filterGroups, readQuery, whatItIs, matchingVersion, matchingVersions, type BrowseQuery, type FilterGroup } from "~/lib/catalog/browse";
+import { CATEGORIES, SORTS, activeCount, applyQuery, filterGroups, readQuery, matchingVersion, matchingVersions, type BrowseQuery, type FilterGroup } from "~/lib/catalog/browse";
 import { formatPrice, startingPrice } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Piece } from "~/lib/catalog/types";
@@ -33,9 +33,9 @@ export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px
       </span>
       <span className="piece-card-copy flex min-w-0 flex-col gap-0.5">
         <span className="h-item text-[1.125rem] group-hover:text-muted md:text-[1.25rem]">{piece.name}</span>
-        {!piece.concept && <span className="label">
+        {!piece.concept && (showLine || version || piece.tier === "new-american") && <span className="label">
           {showLine ? `${piece.tier === "royal-american" ? "Royal American" : piece.tier === "americana" ? "Americana" : "New American"}. ` : ""}
-          {version ? version.origin === "man-made" ? "Lab-grown diamond" : version.name : whatItIs(piece)}
+          {version ? version.origin === "man-made" ? "Lab-grown diamond" : version.name : piece.tier === "new-american" ? "Lab-grown diamond" : ""}
         </span>}
         <span className="num text-[0.9375rem] text-ink-2">{priceLine(piece, query)}</span>
       </span>
@@ -43,7 +43,7 @@ export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px
   );
 }
 
-/** The index grid: three across on a desk, two in the hand, the middle column set lower so no row reads as a row of tiles. */
+/** Aligned product rows: three across on desktop and two on phone. */
 export function PieceIndex({ pieces, showLine = false, query }: { pieces: Piece[]; showLine?: boolean; query?: BrowseQuery }) {
   return (
     <ul className="piece-grid grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-8 lg:grid-cols-3 lg:gap-y-14">
@@ -70,12 +70,15 @@ export function PieceLedger({ pieces, showLine = false }: { pieces: Piece[]; sho
 
 /** The kinds, as a row of names with their counts: the index of the house. */
 export function KindsRow({ current, pieces }: { current?: string; pieces?: Piece[] }) {
+  const [params] = useSearchParams();
+  const query = params.size ? "?" + params : "";
   return (
-    <nav aria-label="By kind" className="flex flex-wrap gap-x-8 gap-y-2">
+    <nav aria-label="By kind" className="browse-kinds">
+      <Link to={"/jewelry"+query} className={`inline-flex min-h-11 items-baseline border-b ${!current ? "border-ink" : "border-transparent hover:border-hair"}`} aria-current={!current ? "page" : undefined}><span className="h-item">All</span></Link>
       {CATEGORIES.map((c) => {
         const n = (pieces ?? []).filter((p) => c.types.includes(p.pieceType)).length;
         return (
-          <Link key={c.slug} to={`/jewelry/${c.slug}`} className={`inline-flex min-h-11 items-baseline gap-2 border-b ${current === c.slug ? "border-ink" : "border-transparent hover:border-hair"}`} aria-current={current === c.slug ? "page" : undefined}>
+          <Link key={c.slug} to={`/jewelry/${c.slug}${query}`} className={`inline-flex min-h-11 items-baseline gap-2 border-b ${current === c.slug ? "border-ink" : "border-transparent hover:border-hair"}`} aria-current={current === c.slug ? "page" : undefined}>
             <span className="h-item text-[1.25rem] md:text-[1.5rem]">{c.name}</span>
             {pieces && <span className="num label">{n}</span>}
           </Link>
@@ -85,157 +88,92 @@ export function KindsRow({ current, pieces }: { current?: string; pieces?: Piece
   );
 }
 
-/**
- * A browse page: the name, one sentence, the kinds, then the filters beside the index.
- * Filters are a GET form (they work before JavaScript); with JavaScript each change submits itself.
- * Built for a catalog of thousands; honest when there are twenty-one.
- */
-export function Browse({
-  title,
-  line,
-  base,
-  kind,
-  hide = [],
-  children,
-  emptyLine = "Nothing is listed here yet.",
-}: {
-  title: string;
-  line?: string;
-  base: Piece[];
-  /** the current category, to mark it in the kinds row */
-  kind?: string;
-  hide?: FilterGroup["key"][];
-  /** what comes before the index (an opener, a plate) */
-  children?: ReactNode;
-  emptyLine?: string;
+/** Every browse surface shares the same reversible filter and sorting model. */
+export function Browse({title, base, kind, hide = [], children, emptyLine}: {
+  title:string; line?:string; base:Piece[]; kind?:string; hide?:FilterGroup["key"][]; children?:ReactNode; emptyLine?:string;
+}) {
+  return <>
+    <Section className="browse-heading"><div className="browse-title-row"><h1>{title}</h1><KindsRow current={kind} /></div></Section>
+    {children}
+    <Section className="browse-layout"><ProductResults base={base} hide={hide} emptyLine={emptyLine} /></Section>
+  </>;
+}
+
+export function ProductResults({base, hide = [], emptyLine = "No pieces match these filters."}: {
+  base:Piece[]; hide?:FilterGroup["key"][]; emptyLine?:string;
 }) {
   const [params] = useSearchParams();
-  const q = readQuery(params);
+  const selectedQuery = readQuery(params);
+  const hasPrices = base.some(piece => !piece.concept && piece.versions.some(version => version.priceCents !== null));
+  const sorts = hasPrices ? SORTS : SORTS.filter(sort => !sort.key.startsWith("price"));
+  const q: BrowseQuery = {...selectedQuery, sort: sorts.some(sort => sort.key === selectedQuery.sort) ? selectedQuery.sort : "house"};
   const pieces = applyQuery(base, q);
-  const groups = filterGroups(base, q, hide);
   const active = activeCount(q);
+  const navigation = useNavigation();
   const submit = useSubmit();
-  const clearHref = useLocation().pathname;
-
-  return (
-    <>
-      <Section className="browse-heading">
-        <div className="grid gap-6 md:grid-cols-12 md:gap-10">
-          <div className="flex flex-col gap-4 md:col-span-7">
-            <h1 className="h-display text-[3rem] md:text-[4.5rem]">{title}</h1>
-            {line && <p className="lede measure">{line}</p>}
-          </div>
-          <div className="md:col-span-5 md:self-end md:justify-self-end">
-            <KindsRow current={kind} />
-          </div>
-        </div>
-      </Section>
-
-      {children}
-
-      <Section className="browse-layout">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-10">
-          <aside className="lg:col-span-3" aria-label="Filter and sort">
-            <details className="lg:hidden" key={params.toString()}>
-              <summary className="caps inline-flex h-11 cursor-pointer list-none items-center gap-2 border-b border-ink">
-                Filter and sort{active > 0 ? <span className="num">({active})</span> : null}
-              </summary>
-              <div className="mobile-filters">
-                <Filters groups={groups} q={q} active={active} clearHref={clearHref} submit={() => undefined} mobile base={base} />
-              </div>
-            </details>
-            <div className="hidden lg:sticky lg:top-36 lg:block">
-              <Filters key={params.toString()} groups={groups} q={q} active={active} clearHref={clearHref} submit={(form) => submit(form, { method: "get", preventScrollReset: true, replace: true })} />
-            </div>
-          </aside>
-
-          <div className="lg:col-span-9">
-            {active > 0 && <div className="filter-chips" aria-label="Selected filters">{groups.flatMap((g) => g.options.filter((o) => (q[g.key] as string[]).includes(o.value)).map((o) => {
-              const next = new URLSearchParams(params);
-              next.delete(g.key);
-              (q[g.key] as string[]).filter((value) => value !== o.value).forEach((value) => next.append(g.key, value));
-              if (g.key === 'production') { next.delete('stone'); q.stone.forEach((s) => next.append('stone', s)); }
-              return <Link key={`${g.key}-${o.value}`} to={`${clearHref}?${next}`} preventScrollReset aria-label={`Remove ${o.label} filter`}>{o.label} <span aria-hidden="true">×</span></Link>;
-            }))}<Link to={clearHref} preventScrollReset>Clear all</Link></div>}
-            <div className="mb-8 flex items-baseline justify-between gap-6 border-b border-hair pb-3">
-              <p className="label">
-                <span className="num text-ink">{pieces.length}</span> {pieces.length === 1 ? "piece" : "pieces"}
-                {active > 0 && base.length !== pieces.length ? <span className="num"> of {base.length}</span> : null}
-              </p>
-              <p className="label">Price before sales tax.</p>
-            </div>
-            {base.length === 0 ? (
-              <Empty line={emptyLine} />
-            ) : pieces.length === 0 ? (
-              <Empty line="No piece matches these choices.">
-                <Link to={clearHref} className="link">
-                  Clear the filters
-                </Link>
-              </Empty>
-            ) : (
-              <PieceIndex pieces={pieces} query={q} showLine={false} />
-            )}
-          </div>
-        </div>
-      </Section>
-    </>
-  );
-}
-
-function Empty({ line, children }: { line: string; children?: ReactNode }) {
-  return (
-    <div className="flex min-h-[40vh] flex-col items-start justify-center gap-6">
-      <p className="h-section max-w-[28ch] text-[1.75rem] md:text-[2.25rem]">{line}</p>
-      {children ?? (
-        <Link to="/jewelry" className="link">
-          Every piece in the house
-        </Link>
-      )}
-    </div>
-  );
-}
-
-function Filters({ groups, q, active, clearHref, submit, mobile = false, base = [] }: { groups: FilterGroup[]; q: ReturnType<typeof readQuery>; active: number; clearHref: string; submit: (form: HTMLFormElement) => void; mobile?: boolean; base?: Piece[] }) {
-  const [count, setCount] = useState(() => applyQuery(base, q).length);
-  return (
-    <Form method="get" preventScrollReset={!mobile} replace className="flex flex-col gap-5" onChange={(e) => {
-      if (mobile) { const next = new URLSearchParams(); new FormData(e.currentTarget).forEach((v, k) => { if (typeof v === 'string') next.append(k, v); }); setCount(applyQuery(base, readQuery(next)).length); }
-      else submit(e.currentTarget);
-    }}>
-      <label className="flex flex-col gap-2">
-        <span className="label">Sort</span>
-        <select name="sort" defaultValue={q.sort} className="field" aria-label="Sort">
-          {SORTS.map((s) => (
-            <option key={s.key} value={s.key}>
-              {s.label}
-            </option>
-          ))}
-        </select>
-      </label>
-      {groups.map((g) => (
-        <details key={g.key} className="border-t border-hair" open={mobile ? undefined : true}>
-          <summary className="label py-3">{g.label}{q[g.key].length ? ` (${q[g.key].length})` : ''}</summary>
-          <fieldset><legend className="sr-only">{g.label}</legend>
-          {g.options.map((o) => (
-            <label key={o.value} className="check">
-              <input type="checkbox" name={g.key} value={o.value} defaultChecked={(q[g.key] as string[]).includes(o.value)} />
-              <span className="flex-1">{o.label}</span>
-              <span className="num label">{o.count}</span>
-            </label>
-          ))}
-          </fieldset>
-        </details>
-      ))}
-      <div className="filter-actions flex items-center gap-6 border-t border-hair pt-4">
-        <button type="submit" className="btn btn-outline">
-          {mobile ? `Show ${count} ${count === 1 ? 'piece' : 'pieces'}` : 'Apply'}
-        </button>
-        {active > 0 && (
-          <Link to={clearHref} className="link" preventScrollReset>
-            Clear
-          </Link>
-        )}
+  const pathname = useLocation().pathname;
+  const dialog = useRef<HTMLDialogElement>(null);
+  const [open, setOpen] = useState(false);
+  const id = useId();
+  const titleId = id + "-filter-title";
+  const groups = filterGroups(base, q, hide);
+  const close = () => { dialog.current?.close(); setOpen(false); };
+  useEffect(() => { close(); }, [params.toString(), pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [open]);
+  const clearParams = new URLSearchParams();
+  if (q.sort !== "house") clearParams.set("sort",q.sort);
+  const clearHref = pathname + (clearParams.size ? "?" + clearParams : "");
+  return <div className="product-results" aria-busy={navigation.state !== "idle"}>
+    <div className="results-toolbar">
+      <p className="label" role="status">{pieces.length} {pieces.length === 1 ? "piece" : "pieces"}</p>
+      <div className="results-controls">
+        <Form method="get" onChange={e => submit(e.currentTarget,{method:"get",preventScrollReset:true,replace:true})}>
+          {[...params].filter(([key]) => key !== "sort").map(([key,value],i) => <input key={key+i} type="hidden" name={key} value={value} />)}
+          <label className="sort-control"><span>Sort</span><select name="sort" aria-label="Sort pieces" value={q.sort} onChange={() => undefined}>{sorts.map(sort => <option key={sort.key} value={sort.key}>{sort.label}</option>)}</select></label>
+          <noscript><button type="submit" className="link">Sort pieces</button></noscript>
+        </Form>
+        {groups.length > 0 && <button type="button" className="filter-trigger" aria-haspopup="dialog" onClick={() => { setOpen(true); dialog.current?.showModal(); }}>Filter{active ? " ("+active+")" : ""}<span aria-hidden="true">+</span></button>}
       </div>
-    </Form>
-  );
+    </div>
+    {active > 0 && <div className="filter-chips" aria-label="Selected filters">{groups.flatMap(g => g.options.filter(o => (q[g.key] as string[]).includes(o.value)).map(o => {
+      const next = new URLSearchParams(params);
+      next.delete(g.key);
+      (q[g.key] as string[]).filter(value => value !== o.value).forEach(value => next.append(g.key,value));
+      return <Link key={g.key+o.value} to={pathname+(next.size ? "?"+next : "")} preventScrollReset replace aria-label={"Remove "+o.label+" filter"}>{o.label}<span aria-hidden="true">×</span></Link>;
+    }))}<Link to={clearHref} preventScrollReset replace>Clear all</Link></div>}
+    {pieces.length ? <PieceIndex pieces={pieces} query={q} /> : <div className="browse-empty"><p>{emptyLine}</p><Link className="link" to={clearHref} preventScrollReset>Clear filters</Link></div>}
+    <dialog ref={dialog} className="filter-dialog" aria-labelledby={titleId} onClose={() => setOpen(false)} onClick={e => { if(e.target === e.currentTarget) close(); }}>
+      <div className="filter-dialog-shell">
+        <div className="filter-dialog-heading"><h2 id={titleId}>Filter</h2><button type="button" onClick={close}>Close</button></div>
+        {open && <FilterForm key={params.toString()} base={base} hide={hide} q={q} close={close} />}
+      </div>
+    </dialog>
+    <noscript><details><summary>Filter pieces</summary><FilterForm base={base} hide={hide} q={q} close={() => undefined} /></details></noscript>
+  </div>;
+}
+
+function FilterForm({base,hide,q,close}: {base:Piece[]; hide:FilterGroup["key"][]; q:BrowseQuery; close:()=>void}) {
+  const [draft,setDraft] = useState(q);
+  const empty = readQuery(new URLSearchParams());
+  const groups = filterGroups(base,empty,hide);
+  const count = applyQuery(base,draft).length;
+  const toggle = (key:FilterGroup["key"],value:string) => setDraft(previous => ({...previous,[key]:(previous[key] as string[]).includes(value) ? (previous[key] as string[]).filter(v => v!==value) : [...previous[key],value]}));
+  return <Form method="get" preventScrollReset replace className="filter-form" onSubmit={close}>
+    <input type="hidden" name="sort" value={q.sort} />
+    {(["design","metal","stone","price","production","line"] as FilterGroup["key"][]).filter(key => !groups.some(group => group.key === key)).flatMap(key => (draft[key] as string[]).map(value => <input key={key+value} type="hidden" name={key} value={value} />))}
+    <div className="filter-dialog-options">{groups.map((group,index) => <details key={group.key} open={index === 0 || draft[group.key].length > 0}>
+      <summary>{group.label}{draft[group.key].length ? " ("+draft[group.key].length+")" : ""}</summary>
+      <fieldset><legend className="sr-only">{group.label}</legend>{group.options.map(option => {
+        const selected = (draft[group.key] as string[]).includes(option.value);
+        const n = applyQuery(base,{...draft,[group.key]:[option.value]}).length;
+        return <label key={option.value} className="check"><input type="checkbox" name={group.key} value={option.value} checked={selected} disabled={!selected && n===0} onChange={() => toggle(group.key,option.value)} /><span>{option.label}</span><span className="label num">{n}</span></label>;
+      })}</fieldset>
+    </details>)}</div>
+    <div className="filter-dialog-actions"><button type="button" className="link" onClick={() => setDraft({...empty,sort:q.sort})}>Clear all</button><button className="btn" type="submit">Show {count} {count===1 ? "piece" : "pieces"}</button></div>
+  </Form>;
 }

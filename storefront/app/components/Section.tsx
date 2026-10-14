@@ -19,11 +19,11 @@ export function Section({
   reveal?: boolean;
   screen?: boolean;
 }) {
-  const max = width === "wide" ? "max-w-[96rem]" : width === "text" ? "max-w-5xl" : "max-w-3xl";
+  const max = width === "wide" ? "max-w-[1440px]" : width === "text" ? "max-w-5xl" : "max-w-3xl";
   return (
     <section
       id={id}
-      className={`mx-auto w-full ${max} px-4 md:px-10 ${id ? "scroll-mt-28" : ""} ${reveal ? "reveal" : ""} ${screen ? "screen" : ""} ${className}`}
+      className={`house-section mx-auto w-full ${max} px-4 md:px-10 ${id ? "scroll-mt-28" : ""} ${reveal ? "reveal" : ""} ${screen ? "screen" : ""} ${className}`}
     >
       {children}
     </section>
@@ -33,7 +33,7 @@ export function Section({
 /** Centered title. Only where the message itself is the page: appointments, policies, 404. */
 export function PageTitle({ eyebrow, title, lede }: { eyebrow?: string; title: string; lede?: string }) {
   return (
-    <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
+    <div className="page-title">
       {eyebrow && <span className="label">{eyebrow}</span>}
       <h1 className="h-display text-[2.75rem] md:text-[4.25rem]">{title}</h1>
       {lede && <p className="lede max-w-2xl">{lede}</p>}

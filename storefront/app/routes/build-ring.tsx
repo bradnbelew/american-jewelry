@@ -60,10 +60,10 @@ export default function BuildRingPage({ loaderData }: Route.ComponentProps) {
 
 function Opener() {
   return (
-    <Section className="pt-12 pb-10 md:pt-20 md:pb-14">
+    <Section className="utility-heading">
       <div className="flex max-w-3xl flex-col gap-5">
         <h1 className="h-display text-[3rem] md:text-[4.5rem]">Build a ring</h1>
-        <p className="lede measure">The stone, the metal and the fit are yours. The rest is decided the way we would decide it.</p>
+
       </div>
     </Section>
   );
@@ -73,7 +73,7 @@ function Settings() {
   return (
     <>
       <Section screen width="text">
-        <h2 className="h-section mb-12 text-[2rem] md:text-[2.75rem]">The three settings</h2>
+        <h2 className="h-section mb-12 text-[2rem] md:text-[2.75rem]">The settings</h2>
         <div className="flex flex-col gap-16">
           {SETTINGS.map((s) => {
             const n = DESIGN_NOTES[s];
@@ -87,7 +87,6 @@ function Settings() {
                     {n.name}
                     <span className="font-text mt-1 block text-[1.125rem] italic text-ink-2">{n.line}</span>
                   </h3>
-                  <p className="font-text measure text-ink-2">{n.why}</p>
                   <Link to={`/build/ring?setting=${s}`} className="link mt-2 self-start">
                     Build on {n.name}
                   </Link>
@@ -111,7 +110,7 @@ function Settings() {
           </div>
           <div className="flex flex-col gap-4">
             <h2 className="h-section text-[1.75rem]">Where the price comes from</h2>
-            <p className="font-text text-ink-2">The metal at your size and width, the bench work the setting needs, and the stone at its set quality. Three rows, under the ring.</p>
+            <p className="font-text text-ink-2">Metal, setting and stone. See the price breakdown beneath your ring.</p>
             <Link to="/appointments?build=ring" className="link self-start">
               See it in store first
             </Link>
