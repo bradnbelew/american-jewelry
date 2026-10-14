@@ -26,7 +26,7 @@ const METAL_SWATCH: Record<Metal, string> = {
  * are variant options (GET links, so they work before JavaScript), size and engraving ride
  * along as line attributes. Nothing shifts when a choice changes.
  */
-export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; piece: Piece | undefined; onMetal?: (m: Metal) => void }) {
+export function PieceForm({ product, piece, onMetal, onSelectionQuery }: { product: PieceProduct; piece: Piece | undefined; onMetal?: (m: Metal) => void; onSelectionQuery?: (query: URLSearchParams) => void }) {
   const { options, selectedVariant, register, formProps, errors, pending } = useProductForm();
   const location = useLocation();
   const base = useMemo(() => new URLSearchParams(location.search), [location.search]);
@@ -115,6 +115,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
                     title={label}
                     data-available={value.available ? "true" : "false"}
                     onClick={linkClick(() => {
+                      onSelectionQuery?.(savedParams);
                       registered.onClick();
                       if (metalKey) onMetal?.(metalKey);
                     })}

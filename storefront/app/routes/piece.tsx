@@ -1,5 +1,5 @@
 import { getSelectedProductOptions } from "@shopify/hydrogen";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 
 import { PieceConfigurator, metalTone } from "~/components/PieceConfigurator";
@@ -66,6 +66,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const piece = pieceByHandle(handle);
   const navigate = useNavigate();
   const location = useLocation();
+  const selectionQuery = useRef<URLSearchParams | null>(null);
   const requestedMetal = new URLSearchParams(location.search).get("Metal");
   const initialMetal = product ? (metalKeyFromLabel(product.selectedOrFirstAvailableVariant?.selectedOptions.find((o) => o.name === "Metal")?.value ?? "") ?? piece?.metals[0] ?? "14k-yellow") : (piece?.metals.find((m) => METAL_LABEL[m] === requestedMetal) ?? piece?.metals[0] ?? "14k-yellow");
   const [metal, setMetal] = useState<Metal>(initialMetal);
@@ -93,10 +94,12 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
     <ProductProvider
       product={product}
       onSelect={(result) => {
-        void navigate(pieceUrl(product, result.selectedOptions, result.selectedVariant?.product?.handle, new URLSearchParams(location.search)), { replace: true, preventScrollReset: true });
+        const query = selectionQuery.current ?? new URLSearchParams(location.search);
+        selectionQuery.current = null;
+        void navigate(pieceUrl(product, result.selectedOptions, result.selectedVariant?.product?.handle, query), { replace: true, preventScrollReset: true });
       }}
     >
-      <PieceForm key={handle} product={product} piece={piece} onMetal={setMetal} />
+      <PieceForm key={handle} product={product} piece={piece} onMetal={setMetal} onSelectionQuery={(query) => { selectionQuery.current = query; }} />
     </ProductProvider>
   ) : piece ? (
     <PieceConfigurator key={`${handle}:${location.search}`} piece={piece} onMetal={setMetal} />
