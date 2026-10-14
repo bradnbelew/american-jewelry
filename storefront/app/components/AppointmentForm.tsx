@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Form, useNavigation } from "react-router";
 
-import { STORES } from "~/lib/catalog/data";
+import { STORES, TIERS, pieceByHandle } from "~/lib/catalog/data";
 
 export const KINDS = [
   ["bridal", "Engagement or wedding"],
@@ -28,7 +28,12 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
   const [store, setStore] = useState(prefill.store && STORE_LABEL[prefill.store] ? prefill.store : "brentwood");
   const defaultKind = prefill.kind && KIND_LABEL[prefill.kind] ? prefill.kind : prefill.tier === "royal-american" ? "viewing" : prefill.build || prefill.piece || prefill.code ? "fitting" : "bridal";
   const [kind, setKind] = useState(defaultKind);
-  const context = CONTEXT_KEYS.filter((k) => prefill[k]).map((k) => `${LABELS[k]}: ${prefill[k]}`);
+  const context = CONTEXT_KEYS.filter((k) => prefill[k]).map((k) => {
+    const value = prefill[k];
+    if (k === "tier") return TIERS.find((line) => line.slug === value)?.name ?? value;
+    if (k === "piece") return pieceByHandle(value)?.name ?? value;
+    return `${LABELS[k]}: ${value}`;
+  });
 
   if (result?.sent) {
     const first = result.name.split(/\s+/)[0];
@@ -49,7 +54,7 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
       {CONTEXT_KEYS.map((k) => (prefill[k] ? <input key={k} type="hidden" name={k} value={prefill[k]} /> : null))}
       {context.length > 0 && (
         <p className="font-text bg-paper px-4 py-3 text-[0.9375rem] text-ink-2 md:col-span-2">
-          Your request includes: <span className="text-ink">{context.join(", ")}</span>
+          Your selection: <span className="text-ink">{context.join(", ")}</span>
         </p>
       )}
 

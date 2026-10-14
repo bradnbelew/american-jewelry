@@ -20,7 +20,7 @@ export const NAV: NavPanel[] = [
   {title:"With the house",links:[{href:"/appointments?kind=bridal",label:"Arrange a fitting"},{href:"/natural-or-man-made",label:"Natural or lab-grown?"},{href:"/care#sizing",label:"Find your size"}]},
  ]},
  {label:"Royal American",href:"/royal-american",columns:[
-  {title:"Royal American",links:[{href:"/royal-american",label:"The registry"},{href:"/pieces/no-001-the-cumberland",label:"The Cumberland"},{href:"/pieces/no-002-tennessee-star",label:"Tennessee Star"},{href:"/pieces/no-003-the-harpeth",label:"The Harpeth"}]},
+  {title:"Royal American",links:[{href:"/royal-american",label:"The collection"},{href:"/pieces/no-001-the-cumberland",label:"The Cumberland"},{href:"/pieces/no-002-tennessee-star",label:"Tennessee Star"},{href:"/pieces/no-003-the-harpeth",label:"The Harpeth"}]},
   {title:"By appointment",links:[{href:"/appointments?tier=royal-american",label:"Private viewing"},{href:"/commission",label:"Commission a piece"}]},
  ],photo:{key:"comp-cumberland-velvet",caption:"Royal American",href:"/royal-american"}},
  {label:"The House",href:"/house",columns:[

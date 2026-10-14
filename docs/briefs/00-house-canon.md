@@ -96,3 +96,7 @@ Discounts, sales, coupons, percent-off, "free" or percent banners, countdowns, u
 ## 14 October 2026 — three encompassing jewelry lines
 
 Owner direction supersedes earlier mixed-line catalog treatments. Americana (gold, gemstones, natural diamonds), New American (lab-grown diamonds), Royal American (one of one) are the foundation of shopping. Royal objects appear in their own registry and dedicated piece pages, never mixed into ordinary shopping, recommendations, bridal or comparison. Collections may span styles; their product results remain in a single clearly selected line. Bridal first offers Americana and New American with explicit diamond-origin labels. Keep all concept/availability disclosures truthful.
+
+## 14 October 2026 — Royal American collection, later owner direction
+
+The owner rejects the numbered registry presentation. Present Royal American as a clean photographic collection with visible, named pieces and one private-viewing invitation. Remove the number selector and call its navigation destination “The collection.” Existing product handles and internal references need not change. The collection may use paper around navy photographs rather than a full navy page; retain its one-of-one isolation. See `site/pages/royal-american.md`. Potential 3D ideas are deferred.

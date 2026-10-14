@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { KindsRow, ProductResults } from "~/components/Catalog";
-import { Campaign, RoyalPreview, VisitInvitation } from "~/components/HouseExperience";
+import { Campaign, VisitInvitation } from "~/components/HouseExperience";
+import { RoyalCollection } from "~/components/RoyalCollection";
 import { LineNav } from "~/components/HouseLines";
 import { TIERS, piecesForTier } from "~/lib/catalog/data";
 import { TIER_PHOTO } from "~/lib/catalog/photos";
@@ -20,7 +21,7 @@ export const meta: Route.MetaFunction = ({data}) => {
 export default function LinePage({loaderData}: Route.ComponentProps) {
   const slug = loaderData.slug;
   const tier = TIERS.find((t) => t.slug === slug)!;
-  if (slug === "royal-american") return <><div className="house-wrap"><LineNav current={slug} /></div><RoyalPreview full /><VisitInvitation /></>;
+  if (slug === "royal-american") return <><div className="house-wrap royal-line-nav"><LineNav current={slug} /></div><RoyalCollection /></>;
   const lab = slug === "new-american";
   return <>
     <div className="house-wrap"><LineNav current={slug} /></div>

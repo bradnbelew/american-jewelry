@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-10-12T22:53:46.871Z",
+ "builtAt": "2026-10-14T13:49:08.014Z",
  "sources": [
   {
    "slug": "aesop-home",
@@ -98,6 +98,12 @@
    "ok": 0
   },
   {
+   "slug": "vca-classic-high-jewelry",
+   "url": "https://www.vancleefarpels.com/us/en/collections/high-jewelry/classic-high-jewelry.html",
+   "kind": "line",
+   "ok": 3
+  },
+  {
    "slug": "vca-home",
    "url": "https://www.vancleefarpels.com/us/en.html",
    "kind": "home",
@@ -122,119 +128,119 @@
      "max": 32
     },
     "type.displayMax": {
-     "n": 13,
+     "n": 14,
      "min": 12,
      "p25": 18,
-     "median": 22,
-     "p75": 32,
+     "median": 25,
+     "p75": 31.5,
      "max": 44
     },
     "type.bodySize": {
-     "n": 11,
+     "n": 12,
      "min": 12,
-     "p25": 15,
+     "p25": 15.5,
      "median": 16,
      "p75": 18,
      "max": 20
     },
     "type.bodyLeading": {
-     "n": 11,
+     "n": 12,
      "min": 1.2,
-     "p25": 1.25,
+     "p25": 1.27,
      "median": 1.5,
      "p75": 1.6,
      "max": 1.8
     },
     "type.measureCpl.p50": {
-     "n": 11,
+     "n": 12,
      "min": 27,
-     "p25": 36,
+     "p25": 34.75,
      "median": 37,
-     "p75": 39.5,
+     "p75": 39.25,
      "max": 45
     },
     "type.measureCpl.max": {
-     "n": 11,
+     "n": 12,
      "min": 27,
-     "p25": 40.5,
-     "median": 43,
-     "p75": 47,
+     "p25": 39.5,
+     "median": 42,
+     "p75": 46,
      "max": 60
     },
     "type.familyCount": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 1,
      "median": 2,
-     "p75": 2,
+     "p75": 2.5,
      "max": 3
     },
     "type.sizesUsed": {
-     "n": 14,
+     "n": 15,
      "min": 1,
-     "p25": 4.25,
-     "median": 6.5,
-     "p75": 7.75,
+     "p25": 4.5,
+     "median": 6,
+     "p75": 7.5,
      "max": 12
     },
     "type.smallest": {
-     "n": 13,
+     "n": 14,
      "min": 8.9,
      "p25": 10,
-     "median": 11,
+     "median": 11.5,
      "p75": 12,
      "max": 13.2
     },
     "type.capsShareOfBlocks": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0.07,
-     "median": 0.47,
-     "p75": 0.59,
+     "median": 0.46,
+     "p75": 0.56,
      "max": 0.96
     },
     "type.capsTrackP50": {
-     "n": 12,
+     "n": 13,
      "min": 0,
      "p25": 0,
-     "median": 0.05,
+     "median": 0.1,
      "p75": 0.1,
      "max": 0.3
     },
     "fold.words": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 11.75,
-     "median": 19.5,
-     "p75": 35.75,
+     "p25": 12.5,
+     "median": 20,
+     "p75": 41,
      "max": 79
     },
     "fold.elements": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 6,
+     "p25": 5.5,
      "median": 10,
-     "p75": 20.5,
+     "p75": 20,
      "max": 29
     },
     "fold.imageShare": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 0.63,
-     "median": 0.95,
+     "p25": 0.52,
+     "median": 0.94,
      "p75": 1,
      "max": 1
     },
     "spacing.gapP50": {
-     "n": 13,
+     "n": 14,
      "min": 14,
-     "p25": 20,
-     "median": 26,
-     "p75": 31,
+     "p25": 21,
+     "median": 27.5,
+     "p75": 35.5,
      "max": 60
     },
     "spacing.sectionGapVh": {
-     "n": 13,
+     "n": 14,
      "min": 0.02,
      "p25": 0.09,
      "median": 0.13,
@@ -242,23 +248,23 @@
      "max": 0.8
     },
     "spacing.alignmentAxes": {
-     "n": 14,
+     "n": 15,
      "min": 1,
-     "p25": 7.5,
-     "median": 13.5,
-     "p75": 22.5,
+     "p25": 8,
+     "median": 15,
+     "p75": 22,
      "max": 80
     },
     "images.count": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 6,
-     "median": 13.5,
-     "p75": 33,
+     "p25": 7,
+     "median": 14,
+     "p75": 38,
      "max": 90
     },
     "surfaces.boxed": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -266,15 +272,15 @@
      "max": 9
     },
     "surfaces.rounded": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
-     "median": 0.5,
+     "median": 0,
      "p75": 4,
      "max": 64
     },
     "surfaces.shadowed": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -282,7 +288,7 @@
      "max": 4
     },
     "color.textColors": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 2,
      "median": 4,
@@ -290,7 +296,7 @@
      "max": 9
     },
     "controls.radiusMax": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -298,43 +304,43 @@
      "max": 9999
     },
     "controls.under44": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
-     "median": 0.5,
-     "p75": 2.75,
+     "median": 1,
+     "p75": 2.5,
      "max": 13
     },
     "nav.visibleLinks": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 1,
      "median": 2,
-     "p75": 3.75,
+     "p75": 3.5,
      "max": 4
     },
     "text.words": {
-     "n": 14,
+     "n": 15,
      "min": 3,
-     "p25": 127.75,
-     "median": 235,
-     "p75": 273.5,
+     "p25": 148.5,
+     "median": 236,
+     "p75": 376.5,
      "max": 1559
     },
     "text.sentenceP50": {
-     "n": 14,
+     "n": 15,
      "min": 3,
-     "p25": 18.25,
-     "median": 26,
-     "p75": 38,
+     "p25": 17.5,
+     "median": 25,
+     "p75": 37,
      "max": 227
     },
     "pageViewports": {
-     "n": 13,
+     "n": 14,
      "min": 1,
      "p25": 1,
-     "median": 5,
-     "p75": 6.2,
+     "median": 3.65,
+     "p75": 6.05,
      "max": 18.6
     }
    },
@@ -348,119 +354,119 @@
      "max": 32
     },
     "type.displayMax": {
-     "n": 13,
+     "n": 14,
      "min": 12,
      "p25": 18,
-     "median": 22.4,
-     "p75": 34,
+     "median": 25.2,
+     "p75": 34.75,
      "max": 68
     },
     "type.bodySize": {
-     "n": 11,
+     "n": 12,
      "min": 12,
-     "p25": 15,
-     "median": 16,
-     "p75": 18.1,
+     "p25": 15.5,
+     "median": 17,
+     "p75": 18.65,
      "max": 32
     },
     "type.bodyLeading": {
-     "n": 11,
+     "n": 12,
      "min": 1.2,
-     "p25": 1.25,
+     "p25": 1.27,
      "median": 1.5,
      "p75": 1.6,
      "max": 1.8
     },
     "type.measureCpl.p50": {
-     "n": 11,
+     "n": 12,
      "min": 26,
-     "p25": 39.5,
-     "median": 51,
-     "p75": 63.5,
+     "p25": 39.75,
+     "median": 48,
+     "p75": 62.25,
      "max": 82
     },
     "type.measureCpl.max": {
-     "n": 11,
+     "n": 12,
      "min": 35,
-     "p25": 46,
-     "median": 58,
-     "p75": 78.5,
+     "p25": 44.75,
+     "median": 57.5,
+     "p75": 75.25,
      "max": 90
     },
     "type.familyCount": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 1,
      "median": 2,
-     "p75": 2,
+     "p75": 2.5,
      "max": 3
     },
     "type.sizesUsed": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 4,
-     "median": 6,
-     "p75": 7.75,
+     "median": 5,
+     "p75": 7.5,
      "max": 11
     },
     "type.smallest": {
-     "n": 13,
+     "n": 14,
      "min": 8.9,
      "p25": 10,
-     "median": 11,
+     "median": 11.5,
      "p75": 12,
      "max": 13.2
     },
     "type.capsShareOfBlocks": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0.07,
-     "median": 0.47,
-     "p75": 0.59,
+     "median": 0.46,
+     "p75": 0.56,
      "max": 0.97
     },
     "type.capsTrackP50": {
-     "n": 12,
+     "n": 13,
      "min": 0,
      "p25": 0,
-     "median": 0.05,
+     "median": 0.1,
      "p75": 0.1,
      "max": 0.3
     },
     "fold.words": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 11.25,
-     "median": 20.5,
-     "p75": 38.75,
+     "p25": 11.5,
+     "median": 22,
+     "p75": 49.5,
      "max": 198
     },
     "fold.elements": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 5.25,
-     "median": 13,
-     "p75": 22.5,
+     "p25": 5.5,
+     "median": 12,
+     "p75": 22,
      "max": 78
     },
     "fold.imageShare": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 0.43,
-     "median": 0.84,
+     "p25": 0.35,
+     "median": 0.75,
      "p75": 1,
      "max": 1
     },
     "spacing.gapP50": {
-     "n": 13,
+     "n": 14,
      "min": 12,
-     "p25": 24,
-     "median": 31,
-     "p75": 37,
-     "max": 60
+     "p25": 25.25,
+     "median": 31.5,
+     "p75": 39.25,
+     "max": 70
     },
     "spacing.sectionGapVh": {
-     "n": 13,
+     "n": 14,
      "min": 0.01,
      "p25": 0.08,
      "median": 0.12,
@@ -468,23 +474,23 @@
      "max": 0.68
     },
     "spacing.alignmentAxes": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 8,
-     "median": 21,
-     "p75": 29.25,
+     "median": 22,
+     "p75": 27.5,
      "max": 74
     },
     "images.count": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 6,
-     "median": 13.5,
-     "p75": 33,
+     "p25": 7,
+     "median": 14,
+     "p75": 37.5,
      "max": 80
     },
     "surfaces.boxed": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -492,7 +498,7 @@
      "max": 9
     },
     "surfaces.rounded": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 1,
@@ -500,7 +506,7 @@
      "max": 69
     },
     "surfaces.shadowed": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -508,7 +514,7 @@
      "max": 4
     },
     "color.textColors": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 2,
      "median": 4,
@@ -516,7 +522,7 @@
      "max": 9
     },
     "controls.radiusMax": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -524,42 +530,42 @@
      "max": 9999
     },
     "controls.under44": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 1,
-     "p75": 2.75,
+     "p75": 3,
      "max": 12
     },
     "nav.visibleLinks": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 1,
-     "median": 2.5,
+     "median": 3,
      "p75": 4,
      "max": 14
     },
     "text.words": {
-     "n": 14,
+     "n": 15,
      "min": 3,
-     "p25": 127.75,
-     "median": 238.5,
-     "p75": 335.5,
+     "p25": 148.5,
+     "median": 241,
+     "p75": 403.5,
      "max": 1530
     },
     "text.sentenceP50": {
-     "n": 14,
+     "n": 15,
      "min": 3,
-     "p25": 18.25,
-     "median": 26,
-     "p75": 38,
+     "p25": 17.5,
+     "median": 25,
+     "p75": 37,
      "max": 338
     },
     "pageViewports": {
-     "n": 13,
+     "n": 14,
      "min": 1,
      "p25": 1,
-     "median": 4.7,
+     "median": 3.55,
      "p75": 6.2,
      "max": 16.3
     }
@@ -574,143 +580,143 @@
      "max": 40
     },
     "type.displayMax": {
-     "n": 13,
+     "n": 14,
      "min": 12,
      "p25": 20,
-     "median": 24.5,
-     "p75": 40,
+     "median": 24.75,
+     "p75": 43.75,
      "max": 76
     },
     "type.bodySize": {
-     "n": 11,
+     "n": 12,
      "min": 12,
      "p25": 16,
-     "median": 16,
-     "p75": 18.6,
+     "median": 17,
+     "p75": 19.4,
      "max": 38
     },
     "type.bodyLeading": {
-     "n": 11,
+     "n": 12,
      "min": 1.2,
-     "p25": 1.25,
+     "p25": 1.27,
      "median": 1.5,
      "p75": 1.6,
      "max": 1.9
     },
     "type.measureCpl.p50": {
-     "n": 11,
+     "n": 12,
      "min": 40,
      "p25": 49,
-     "median": 54,
-     "p75": 58.5,
+     "median": 55.5,
+     "p75": 62,
      "max": 86
     },
     "type.measureCpl.max": {
-     "n": 11,
+     "n": 12,
      "min": 40,
-     "p25": 52.5,
-     "median": 60,
-     "p75": 66.5,
+     "p25": 52.75,
+     "median": 60.5,
+     "p75": 68.5,
      "max": 110
     },
     "type.familyCount": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 1,
      "median": 2,
-     "p75": 2,
+     "p75": 2.5,
      "max": 3
     },
     "type.sizesUsed": {
-     "n": 14,
+     "n": 15,
      "min": 2,
      "p25": 4,
-     "median": 5.5,
-     "p75": 8.75,
+     "median": 5,
+     "p75": 8.5,
      "max": 11
     },
     "type.smallest": {
-     "n": 13,
+     "n": 14,
      "min": 9,
-     "p25": 10,
+     "p25": 10.25,
      "median": 12,
      "p75": 12,
      "max": 14
     },
     "type.capsShareOfBlocks": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 0.21,
-     "median": 0.51,
-     "p75": 0.59,
+     "p25": 0.12,
+     "median": 0.5,
+     "p75": 0.57,
      "max": 0.97
     },
     "type.capsTrackP50": {
-     "n": 13,
+     "n": 14,
      "min": 0,
      "p25": 0,
-     "median": 0,
+     "median": 0.05,
      "p75": 0.1,
      "max": 0.3
     },
     "fold.words": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 13.25,
-     "median": 27.5,
-     "p75": 44,
+     "p25": 13.5,
+     "median": 29,
+     "p75": 51.5,
      "max": 282
     },
     "fold.elements": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 7.75,
+     "p25": 7,
      "median": 15,
-     "p75": 20.75,
+     "p75": 19.5,
      "max": 27
     },
     "fold.imageShare": {
-     "n": 14,
+     "n": 15,
      "min": 0,
-     "p25": 0.43,
-     "median": 0.8,
+     "p25": 0.42,
+     "median": 0.67,
      "p75": 0.95,
      "max": 1
     },
     "spacing.gapP50": {
-     "n": 13,
+     "n": 14,
      "min": 14,
-     "p25": 30,
+     "p25": 30.5,
      "median": 50,
      "p75": 64,
      "max": 140
     },
     "spacing.sectionGapVh": {
-     "n": 13,
+     "n": 14,
      "min": 0.07,
-     "p25": 0.11,
-     "median": 0.19,
-     "p75": 0.25,
+     "p25": 0.12,
+     "median": 0.17,
+     "p75": 0.24,
      "max": 0.77
     },
     "spacing.alignmentAxes": {
-     "n": 14,
+     "n": 15,
      "min": 1,
-     "p25": 8.5,
-     "median": 21.5,
-     "p75": 29.25,
+     "p25": 9,
+     "median": 22,
+     "p75": 27.5,
      "max": 84
     },
     "images.count": {
-     "n": 14,
+     "n": 15,
      "min": 5,
-     "p25": 6.75,
-     "median": 15.5,
-     "p75": 31.5,
+     "p25": 7.5,
+     "median": 17,
+     "p75": 36.5,
      "max": 93
     },
     "surfaces.boxed": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -718,7 +724,7 @@
      "max": 15
     },
     "surfaces.rounded": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 1,
@@ -726,7 +732,7 @@
      "max": 72
     },
     "surfaces.shadowed": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
@@ -734,7 +740,7 @@
      "max": 4
     },
     "color.textColors": {
-     "n": 14,
+     "n": 15,
      "min": 1,
      "p25": 2,
      "median": 4,
@@ -742,51 +748,51 @@
      "max": 9
     },
     "controls.radiusMax": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 0,
      "median": 0,
-     "p75": 40,
+     "p75": 30,
      "max": 9999
     },
     "controls.under44": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 1,
      "median": 2,
-     "p75": 2.75,
+     "p75": 3.5,
      "max": 12
     },
     "nav.visibleLinks": {
-     "n": 14,
+     "n": 15,
      "min": 0,
      "p25": 4,
-     "median": 6.5,
-     "p75": 9.75,
+     "median": 6,
+     "p75": 9.5,
      "max": 14
     },
     "text.words": {
-     "n": 14,
+     "n": 15,
      "min": 4,
-     "p25": 127.75,
-     "median": 239,
-     "p75": 337,
+     "p25": 148.5,
+     "median": 242,
+     "p75": 403.5,
      "max": 1589
     },
     "text.sentenceP50": {
-     "n": 14,
+     "n": 15,
      "min": 4,
-     "p25": 18,
-     "median": 26,
-     "p75": 37.25,
+     "p25": 17.5,
+     "median": 25,
+     "p75": 35.5,
      "max": 338
     },
     "pageViewports": {
-     "n": 13,
+     "n": 14,
      "min": 1,
      "p25": 1,
-     "median": 5.1,
-     "p75": 6.5,
+     "median": 3.65,
+     "p75": 6.4,
      "max": 17.6
     }
    }

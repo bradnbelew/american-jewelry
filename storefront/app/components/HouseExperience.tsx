@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { DESIGNS, STORES, tierBySlug, pieceByHandle, piecesForDesign, piecesForTier } from "~/lib/catalog/data";
+import { DESIGNS, STORES, tierBySlug, pieceByHandle, piecesForDesign } from "~/lib/catalog/data";
 import { SHOP_LINES, type ShopLine } from "~/lib/catalog/lines";
 import { DESIGN_PHOTO, PIECE_PHOTOS } from "~/lib/catalog/photos";
 import { priceLine } from "./Catalog";
@@ -54,20 +54,8 @@ export function SignatureCabinet({initial = "shooting-star"}: {initial?: string}
     <p className="concept-note">Concept photographs. Confirm final details with the house.</p>
   </section>;
 }
-export function RoyalPreview({full = false}: {full?: boolean}) {
-  const pieces = piecesForTier("royal-american");
-  const [index, setIndex] = useState(0);
-  const piece = pieces[index];
-  if (!full) return <section className="royal-invitation"><div className="royal-invitation-image"><Pic k="comp-cumberland-velvet" /></div><div className="royal-invitation-copy"><p className="label">One of one</p><h2>Royal American</h2><Link className="campaign-link" to="/royal-american">Enter the collection</Link></div></section>;
-  return <section className={`royal-room ${full ? "royal-room-full" : ""}`} aria-label="Royal American high jewelry">
-    <div className="royal-display house-wrap">
-      <div className="royal-room-heading"><p className="label">One of one</p>{full ? <h1>Royal American</h1> : <h2>Royal American</h2>}</div>
-      <div className="royal-object"><Pic k={PIECE_PHOTOS[piece.handle][0]} /></div>
-      <div className="royal-description"><h3>{piece.name}</h3><p>{index === 0 ? "A round brilliant held in a sculpted platinum setting." : index === 1 ? "A blue sapphire at the heart of a diamond star." : "Graduated diamonds in a flowing line of gold."}</p><Link className="campaign-link" to={`/pieces/${piece.handle}`}>Discover the piece</Link></div>
-      <div className="royal-list" role="group" aria-label="Choose a registry concept">{pieces.map((p, i) => <button type="button" key={p.handle} onClick={() => setIndex(i)} aria-pressed={index === i}><span className="royal-entry-number">{p.oneOfOne?.number}</span><span>{p.name}</span></button>)}</div>
-    </div>
-    <div className="royal-foot house-wrap"><p>Registry concepts shown. Availability and individual stone reports by inquiry.</p><Link className="campaign-link" to={full ? "/appointments?tier=royal-american" : "/royal-american"}>{full ? "Arrange a private viewing" : "Enter Royal American"}</Link></div>
-  </section>;
+export function RoyalPreview() {
+  return <section className="royal-invitation"><div className="royal-invitation-image"><Pic k="comp-cumberland-velvet" /></div><div className="royal-invitation-copy"><p className="label">One of one</p><h2>Royal American</h2><Link className="campaign-link" to="/royal-american">Enter the collection</Link></div></section>;
 }
 export function BridalPortrait() {
   return <section className="bridal-portrait house-wrap">

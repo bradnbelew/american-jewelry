@@ -2,7 +2,7 @@
   { "slug": "rolex-home", "kind": "home", "url": "https://www.rolex.com/en-us", "why": "Product centered on a pale ground; the discipline research/06 and the rework brief cite" },
   { "slug": "rolex-pdp", "kind": "pdp", "url": "https://www.rolex.com/en-us/watches/datejust/m126200-0020", "why": "Title block left, object centered; the C-layout reference" },
   { "slug": "cartier-home", "kind": "home", "url": "https://www.cartier.com/en-us/", "why": "The house the canon measures itself against" },
-  { "slug": "cartier-pdp", "kind": "pdp", "url": "https://www.cartier.com/en-us/jewelry/rings/love-ring-B4084600.html", "why": "Sticky buy box (rework brief §3 C)" },
+  { "slug": "cartier-pdp", "kind": "pdp", "url": "https://www.cartier.com/en-us/jewelry/rings/love-ring-B4084600.html", "why": "Sticky buy box (rework brief Â§3 C)" },
   { "slug": "vca-home", "kind": "home", "url": "https://www.vancleefarpels.com/us/en.html", "why": "Sticky buy box; the motif house" },
   { "slug": "tiffany-home", "kind": "home", "url": "https://www.tiffany.com/", "why": "The American house lineage (research/13)" },
   { "slug": "hermes-home", "kind": "home", "url": "https://www.hermes.com/us/en/", "why": "Vertical gallery, sticky details" },
@@ -16,5 +16,6 @@
   { "slug": "sophiebillebrahe-home", "kind": "home", "url": "https://www.sophiebillebrahe.com/", "why": "Named-piece archive (research/17 naming); restrained grid" },
   { "slug": "hemmerle-home", "kind": "home", "url": "https://www.hemmerle.com/", "why": "Family house, four generations; research/17 week-1 list" },
   { "slug": "aesop-home", "kind": "home", "url": "https://www.aesop.com/us/", "why": "Words and spacing as identity; research/17 week-1 list" },
-  { "slug": "leica-home", "kind": "home", "url": "https://leica-camera.com/en-US", "why": "Object as subject, exact copy; research/17 week-1 list" }
+  { "slug": "leica-home", "kind": "home", "url": "https://leica-camera.com/en-US", "why": "Object as subject, exact copy; research/17 week-1 list" },
+  {"slug": "vca-classic-high-jewelry", "kind": "line", "url": "https://www.vancleefarpels.com/us/en/collections/high-jewelry/classic-high-jewelry.html", "why": "Owner reference for Royal American, 14 October 2026: centered introduction, large photographs and quiet spacing"}
 ]

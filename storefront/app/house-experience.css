@@ -14,7 +14,7 @@
 .campaign-line { max-width:40ch; font-family:var(--font-text); font-size:18px; line-height:1.55; }
 .campaign-link { display:inline-flex; align-items:center; min-height:44px; color:inherit; font-size:13px; border-bottom:1px solid currentColor; width:fit-content; padding-block:8px; }
 .campaign-link:hover { opacity:.75; }
-.campaign-link:focus-visible, .signature-tabs button:focus-visible, .signature-forms button:focus-visible, .royal-list button:focus-visible { outline:2px solid var(--gold); outline-offset:5px; }
+.campaign-link:focus-visible, .signature-tabs button:focus-visible, .signature-forms button:focus-visible { outline:2px solid var(--gold); outline-offset:5px; }
 .signature-cabinet { padding-top:var(--house-space); padding-bottom:var(--house-space); }
 .signature-tabs { display:flex; flex-wrap:wrap; gap:8px 32px; margin-bottom:32px; }
 .signature-tabs button { font-family:var(--font-sans); font-size:14px; color:var(--muted); min-height:44px; border-bottom:1px solid transparent; cursor:pointer; }
@@ -45,22 +45,6 @@
 .collection-edit h3 { font-size:32px; line-height:1.12; margin-block:24px 8px; }
 .collection-edit p { font-family:var(--font-text); font-size:18px; line-height:1.55; min-height:3.1em; max-width:30ch; }
 .collection-edit .link { margin-top:16px; }
-.royal-room { background:#101c30; color:var(--paper); padding-block:64px 48px; overflow:hidden; }
-.royal-room .label { color:#c8cbd0; }
-.royal-display { display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); grid-template-rows:auto 1fr auto; column-gap:64px; }
-.royal-room-heading { grid-column:1; grid-row:1; align-self:end; padding-top:40px; }
-.royal-room-heading h1, .royal-room-heading h2 { font-size:56px; line-height:1.08; letter-spacing:-.025em; margin-top:16px; max-width:10ch; }
-.royal-description { grid-column:1; grid-row:2; padding-top:40px; }
-.royal-description h3 { font-size:32px; line-height:1.12; margin-bottom:16px; }
-.royal-description > p { font-family:var(--font-text); font-size:18px; max-width:28ch; color:#d7d9dd; }
-.royal-description .campaign-link { margin-top:16px; }
-.royal-object { grid-column:2; grid-row:1/3; position:relative; aspect-ratio:16/9; align-self:center; overflow:hidden; }
-.royal-list { grid-column:2; display:flex; gap:24px; margin-top:24px; }
-.royal-list button { flex:1; display:flex; flex-direction:column; gap:8px; text-align:left; padding-block:8px 16px; border-bottom:1px solid transparent; color:#b1b7c1; cursor:pointer; font-family:var(--font-display); font-size:18px; line-height:1.3; }
-.royal-list button[aria-pressed="true"] { border-color:#a5916d; color:#fff; }
-.royal-entry-number { font-size:13px; font-family:var(--font-sans); font-variant-numeric:lining-nums tabular-nums; }
-.royal-foot { display:flex; align-items:center; justify-content:space-between; gap:32px; margin-top:40px; }
-.royal-foot > p { font-size:13px; color:#bfc4cd; max-width:58ch; }
 .bridal-portrait { display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:center; gap:64px; padding-block:var(--house-space); }
 .bridal-image { width:100%; aspect-ratio:4/5; max-height:640px; position:relative; overflow:hidden; }
 .bridal-copy h2 { font-size:44px; line-height:1.12; letter-spacing:-.02em; margin-block:16px 24px; max-width:12ch; }
@@ -276,19 +260,12 @@
 @media (max-width:1023px) {
  :root { --house-gutter:32px; --house-space:64px; }
  .house-campaign { min-height:500px; height:min(760px,calc(100svh - 68px)); }
- .signature-room, .royal-display, .bridal-portrait, .collection-heading, .house-essay { column-gap:32px; }
+ .signature-room, .bridal-portrait, .collection-heading, .house-essay { column-gap:32px; }
  .signature-object-image { height:300px; }
  .signature-story h3 { font-size:28px; }
  .signature-detail { aspect-ratio:1; }
  .signature-forms { gap:4px; }
  .signature-object-caption { flex-direction:column; gap:4px; align-items:center; }
- .royal-room-heading { padding-top:0; }
- .royal-room-heading h1, .royal-room-heading h2 { font-size:44px; }
- .royal-description { padding-top:32px; }
- .royal-description h3 { font-size:28px; }
- .royal-list { gap:16px; }
- .royal-list button { font-size:16px; }
- .royal-object { aspect-ratio:16/9; }
  .collection-edit-grid { gap:24px; }
  .collection-edit h3 { font-size:28px; }
  .collection-edit p { font-size:16px; }
@@ -341,18 +318,6 @@
  .collection-edit h3 { font-size:24px; margin-top:16px; }
  .collection-edit p { font-size:16px; min-height:3.1em; }
  .collection-edit .link { margin-top:8px; }
- .royal-room { padding-block:48px 32px; }
- .royal-display { grid-template-columns:minmax(0,1fr); gap:0; }
- .royal-room-heading, .royal-object, .royal-description, .royal-list { grid-column:1; grid-row:auto; }
- .royal-room-heading h1, .royal-room-heading h2 { font-size:44px; max-width:none; margin-top:8px; }
- .royal-object { aspect-ratio:16/9; width:100%; margin-block:24px; }
- .royal-description { padding:0; }
- .royal-description h3 { font-size:28px; margin-bottom:8px; }
- .royal-description > p { max-width:32ch; }
- .royal-list { margin-top:24px; gap:16px; }
- .royal-list button { font-size:16px; }
- .royal-foot { flex-direction:column-reverse; align-items:flex-start; gap:24px; margin-top:24px; }
- .royal-foot > p { font-size:13px; }
  .bridal-portrait { grid-template-columns:minmax(0,1fr); gap:24px; }
  .bridal-image { width:100%; aspect-ratio:4/5; max-height:480px; }
  .bridal-copy h2 { font-size:36px; max-width:15ch; margin-block:8px 16px; }
@@ -518,4 +483,48 @@
 @media(max-width:599px) {
  .builder-heading { padding-bottom:32px; }
  .ring-builder .builder-summary { gap:16px; }
+}
+
+/* Royal American: an open gallery, with the jewelry carrying the color. */
+.royal-line-nav .line-nav { justify-content:center; }
+.royal-intro { text-align:center; padding-block:48px 40px; }
+.royal-intro h1 { font-family:var(--font-display); font-size:56px; line-height:1.08; letter-spacing:-.025em; }
+.royal-intro > p { margin-top:12px; font-size:15px; color:var(--ink-2); }
+.royal-gallery { max-width:1296px; display:grid; grid-template-columns:minmax(0,6fr) minmax(0,5fr); column-gap:96px; row-gap:96px; align-items:start; }
+.royal-work { min-width:0; }
+.royal-work-feature { grid-column:1/-1; }
+.royal-work:last-child { padding-top:128px; }
+.royal-work > a { display:block; }
+.royal-work-image { position:relative; aspect-ratio:1; overflow:hidden; background:var(--navy); }
+.royal-work-feature .royal-work-image { aspect-ratio:2; }
+.royal-work-caption { padding-top:16px; }
+.royal-work-caption h2 { font-family:var(--font-display); font-size:28px; line-height:1.15; letter-spacing:-.015em; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:6px; text-decoration-color:transparent; transition:text-decoration-color 180ms ease; }
+.royal-work-caption p { margin-top:8px; font-size:14px; color:var(--ink-2); }
+.royal-work > a:hover h2 { text-decoration-color:currentColor; }
+.royal-work > a:focus-visible { outline:2px solid var(--gold); outline-offset:6px; }
+.royal-viewing { text-align:center; padding-block:96px; }
+.royal-viewing h2 { font-family:var(--font-display); font-size:40px; line-height:1.12; letter-spacing:-.02em; }
+.royal-viewing > p:not(.royal-disclosure) { margin-top:16px; font-size:16px; }
+.royal-viewing .campaign-link { margin-top:24px; }
+.royal-viewing .royal-disclosure { font-size:13px; line-height:1.5; color:var(--muted); margin:48px auto 0; max-width:56ch; }
+@media (max-width:1023px) {
+ .royal-gallery { column-gap:40px; row-gap:64px; }
+ .royal-work:last-child { padding-top:96px; }
+ .royal-intro h1 { font-size:48px; }
+ .royal-work-caption h2 { font-size:26px; }
+ .royal-viewing { padding-block:64px; }
+}
+@media (max-width:767px) {
+ .royal-line-nav .line-nav { justify-content:flex-start; }
+ .royal-intro { padding-block:32px; }
+ .royal-intro h1 { font-size:40px; }
+ .royal-intro > p { margin-top:8px; font-size:14px; }
+ .royal-gallery { grid-template-columns:minmax(0,1fr); row-gap:48px; }
+ .royal-work-feature .royal-work-image { aspect-ratio:1; }
+ .royal-work:last-child { padding-top:0; }
+ .royal-work-caption h2 { font-size:26px; }
+ .royal-viewing { padding-block:64px; }
+ .royal-viewing h2 { font-size:32px; }
+ .royal-viewing > p:not(.royal-disclosure) { margin:16px auto 0; max-width:30ch; }
+ .royal-viewing .royal-disclosure { margin-top:40px; }
 }
