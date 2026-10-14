@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Form, Link, useLocation, useSearchParams, useSubmit } from "react-router";
 
-import { CATEGORIES, SORTS, activeCount, applyQuery, filterGroups, readQuery, whatItIs, type FilterGroup } from "~/lib/catalog/browse";
+import { CATEGORIES, SORTS, activeCount, applyQuery, filterGroups, readQuery, whatItIs, matchingVersion, matchingVersions, type BrowseQuery, type FilterGroup } from "~/lib/catalog/browse";
 import { formatPrice, startingPrice } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Piece } from "~/lib/catalog/types";
@@ -9,18 +9,25 @@ import { METAL_LABEL, PIECE_TYPE_LABEL } from "~/lib/catalog/types";
 
 import { Pic } from "./Pic";
 import { Section } from "./Section";
+import { useDesign } from "./DesignPreview";
 
 /** The price line on a card or a row: fixed, "From $" when the stone varies, "Price on request" for one-of-ones. */
-export const priceLine = (p: Piece) => {
-  const price = startingPrice(p);
-  return price === null ? "Price on request" : p.versions.length > 1 ? `From ${formatPrice(price)}` : formatPrice(price);
+export const priceLine = (p: Piece, q?: BrowseQuery) => {
+  const price = q ? matchingVersion(p, q)?.priceCents ?? null : startingPrice(p);
+  const count = q ? matchingVersions(p, q).length : p.versions.length;
+  return price === null ? "Price on request" : count > 1 ? `From ${formatPrice(price)}` : formatPrice(price);
 };
 
 /** One piece in the index: the photograph on the page's ground, the name, what it is, the price. Nothing else. */
-export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px) 28vw, 50vw", priority = false }: { piece: Piece; showLine?: boolean; sizes?: string; priority?: boolean }) {
+export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px) 28vw, 50vw", priority = false, query }: { piece: Piece; showLine?: boolean; sizes?: string; priority?: boolean; query?: BrowseQuery }) {
   const key = (PIECE_PHOTOS[piece.handle] ?? ["hero-box"])[0];
+  const version = query && (query.stone.length || query.price.length) ? matchingVersion(piece, query) : undefined;
+  const selected = new URLSearchParams();
+  if (version) selected.set("Version", version.name);
+  const metal = query?.metal.find((m) => piece.metals.includes(m));
+  if (metal) selected.set("Metal", METAL_LABEL[metal]);
   return (
-    <Link to={`/pieces/${piece.handle}`} viewTransition className="group flex min-w-0 flex-col gap-3">
+    <Link to={`/pieces/${piece.handle}${selected.size ? `?${selected}` : ''}`} viewTransition className="group flex min-w-0 flex-col gap-3">
       <span className="settle relative block aspect-[4/5] overflow-hidden">
         <Pic k={key} sizes={sizes} priority={priority} />
       </span>
@@ -28,21 +35,21 @@ export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px
         <span className="h-item text-[1.125rem] group-hover:text-muted md:text-[1.25rem]">{piece.name}</span>
         <span className="label">
           {showLine ? `${piece.tier === "royal-american" ? "Royal American" : piece.tier === "americana" ? "Americana" : "New American"}. ` : ""}
-          {whatItIs(piece)}
+          {version ? version.origin === "man-made" ? "Lab-grown diamond" : version.name : whatItIs(piece)}
         </span>
-        <span className="num text-[0.9375rem] text-ink-2">{priceLine(piece)}</span>
+        <span className="num text-[0.9375rem] text-ink-2">{priceLine(piece, query)}</span>
       </span>
     </Link>
   );
 }
 
 /** The index grid: three across on a desk, two in the hand, the middle column set lower so no row reads as a row of tiles. */
-export function PieceIndex({ pieces, showLine = false }: { pieces: Piece[]; showLine?: boolean }) {
+export function PieceIndex({ pieces, showLine = false, query }: { pieces: Piece[]; showLine?: boolean; query?: BrowseQuery }) {
   return (
-    <ul className="grid grid-cols-2 gap-x-6 gap-y-12 md:gap-x-10 lg:grid-cols-3 lg:gap-y-16 [&>li:nth-child(2n)]:pt-10 lg:[&>li:nth-child(2n)]:pt-0 lg:[&>li:nth-child(3n+2)]:pt-16">
+    <ul className="piece-grid grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-8 lg:grid-cols-3 lg:gap-y-14">
       {pieces.map((p, i) => (
         <li key={p.handle}>
-          <PieceCard piece={p} showLine={showLine} priority={i < 3} />
+          <PieceCard piece={p} showLine={showLine} priority={i < 3} query={query} />
         </li>
       ))}
     </ul>
@@ -58,6 +65,8 @@ export const pieceLine = (p: Piece) => {
 
 /** A line's pieces as a ledger: one row per piece, one photograph per row, names and prices on one line. */
 export function PieceLedger({ pieces, showLine = false }: { pieces: Piece[]; showLine?: boolean }) {
+  const mode = useDesign();
+  if (mode !== "classic") return <PieceIndex pieces={pieces} showLine={showLine} />;
   return (
     <ol className="border-t border-hair">
       {pieces.map((p) => {
@@ -152,20 +161,27 @@ export function Browse({
       <Section className="pt-10 md:pt-14">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-10">
           <aside className="lg:col-span-3" aria-label="Filter and sort">
-            <details className="lg:hidden" open={active > 0 || q.sort !== "house" ? true : undefined}>
+            <details className="lg:hidden" key={params.toString()}>
               <summary className="caps inline-flex h-11 cursor-pointer list-none items-center gap-2 border-b border-ink">
                 Filter and sort{active > 0 ? <span className="num">({active})</span> : null}
               </summary>
-              <div className="pt-4">
-                <Filters groups={groups} q={q} active={active} clearHref={clearHref} submit={() => undefined} />
+              <div className="mobile-filters">
+                <Filters groups={groups} q={q} active={active} clearHref={clearHref} submit={() => undefined} mobile base={base} />
               </div>
             </details>
             <div className="hidden lg:sticky lg:top-36 lg:block">
-              <Filters groups={groups} q={q} active={active} clearHref={clearHref} submit={(form) => submit(form, { method: "get", preventScrollReset: true, replace: true })} />
+              <Filters key={params.toString()} groups={groups} q={q} active={active} clearHref={clearHref} submit={(form) => submit(form, { method: "get", preventScrollReset: true, replace: true })} />
             </div>
           </aside>
 
           <div className="lg:col-span-9">
+            {active > 0 && <div className="filter-chips" aria-label="Selected filters">{groups.flatMap((g) => g.options.filter((o) => (q[g.key] as string[]).includes(o.value)).map((o) => {
+              const next = new URLSearchParams(params);
+              next.delete(g.key);
+              (q[g.key] as string[]).filter((value) => value !== o.value).forEach((value) => next.append(g.key, value));
+              if (g.key === 'production') { next.delete('stone'); q.stone.forEach((s) => next.append('stone', s)); }
+              return <Link key={`${g.key}-${o.value}`} to={`${clearHref}?${next}`} preventScrollReset aria-label={`Remove ${o.label} filter`}>{o.label} <span aria-hidden="true">×</span></Link>;
+            }))}<Link to={clearHref} preventScrollReset>Clear all</Link></div>}
             <div className="mb-8 flex items-baseline justify-between gap-6 border-b border-hair pb-3">
               <p className="label">
                 <span className="num text-ink">{pieces.length}</span> {pieces.length === 1 ? "piece" : "pieces"}
@@ -182,7 +198,7 @@ export function Browse({
                 </Link>
               </Empty>
             ) : (
-              <PieceIndex pieces={pieces} showLine={!q.line.length && !hide.includes("line")} />
+              <PieceIndex pieces={pieces} query={q} showLine={!q.line.length && !hide.includes("line")} />
             )}
           </div>
         </div>
@@ -204,9 +220,13 @@ function Empty({ line, children }: { line: string; children?: ReactNode }) {
   );
 }
 
-function Filters({ groups, q, active, clearHref, submit }: { groups: FilterGroup[]; q: ReturnType<typeof readQuery>; active: number; clearHref: string; submit: (form: HTMLFormElement) => void }) {
+function Filters({ groups, q, active, clearHref, submit, mobile = false, base = [] }: { groups: FilterGroup[]; q: ReturnType<typeof readQuery>; active: number; clearHref: string; submit: (form: HTMLFormElement) => void; mobile?: boolean; base?: Piece[] }) {
+  const [count, setCount] = useState(() => applyQuery(base, q).length);
   return (
-    <Form method="get" preventScrollReset replace className="flex flex-col gap-8" onChange={(e) => submit(e.currentTarget)}>
+    <Form method="get" preventScrollReset replace className="flex flex-col gap-5" onChange={(e) => {
+      if (mobile) { const next = new URLSearchParams(); new FormData(e.currentTarget).forEach((v, k) => { if (typeof v === 'string') next.append(k, v); }); setCount(applyQuery(base, readQuery(next)).length); }
+      else submit(e.currentTarget);
+    }}>
       <label className="flex flex-col gap-2">
         <span className="label">Sort</span>
         <select name="sort" defaultValue={q.sort} className="field" aria-label="Sort">
@@ -218,9 +238,9 @@ function Filters({ groups, q, active, clearHref, submit }: { groups: FilterGroup
         </select>
       </label>
       {groups.map((g) => (
-        <fieldset key={g.key} className="flex flex-col border-t border-hair pt-4">
-          <legend className="label float-left mb-1">{g.label}</legend>
-          <div className="clear-both" />
+        <details key={g.key} className="border-t border-hair" open={mobile ? undefined : true}>
+          <summary className="label py-3">{g.label}{q[g.key].length ? ` (${q[g.key].length})` : ''}</summary>
+          <fieldset><legend className="sr-only">{g.label}</legend>
           {g.options.map((o) => (
             <label key={o.value} className="check">
               <input type="checkbox" name={g.key} value={o.value} defaultChecked={(q[g.key] as string[]).includes(o.value)} />
@@ -228,11 +248,12 @@ function Filters({ groups, q, active, clearHref, submit }: { groups: FilterGroup
               <span className="num label">{o.count}</span>
             </label>
           ))}
-        </fieldset>
+          </fieldset>
+        </details>
       ))}
-      <div className="flex items-center gap-6 border-t border-hair pt-4">
+      <div className="filter-actions flex items-center gap-6 border-t border-hair pt-4">
         <button type="submit" className="btn btn-outline">
-          Apply
+          {mobile ? `Show ${count} ${count === 1 ? 'piece' : 'pieces'}` : 'Apply'}
         </button>
         {active > 0 && (
           <Link to={clearHref} className="link" preventScrollReset>

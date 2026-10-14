@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import { DirectionHome } from "~/components/DesignDirections";
+import { useDesign } from "~/components/DesignPreview";
 
 import { Pic } from "~/components/Pic";
 import { PhotoOpener, Section } from "~/components/Section";
@@ -13,7 +15,7 @@ import type { Route } from "./+types/home";
 export const meta: Route.MetaFunction = () =>
   pageMeta({
     description:
-      "American Jewelry designs, sets and finishes its own fine jewelry in Tennessee: one-of-one pieces, signature designs in gold and natural diamond, and man-made diamond pieces to one published standard. Brentwood and Mt. Juliet.",
+      "Family jewelry stores in Brentwood and Mt. Juliet, Tennessee. Discover original designs in gold, natural and lab-grown diamonds, Royal American high jewelry, custom design and repairs.",
     path: "/", og: "pages/home",
   });
 
@@ -25,8 +27,10 @@ export const meta: Route.MetaFunction = () =>
  * docs/briefs/site/pages/home.md.
  */
 export default function Home() {
+  const mode = useDesign();
   const featured = designBySlug("shooting-star")!;
   const registry = PIECES.filter((p) => p.oneOfOne);
+  if (mode !== "classic") return <DirectionHome mode={mode} />;
 
   return (
     <>
@@ -145,7 +149,7 @@ export default function Home() {
         <div className="flex flex-col gap-6">
           <p className="letter">{LETTER[LETTER.length - 1]}</p>
           <Link to="/house" className="link self-start">
-            The whole letter
+            Meet American Jewelry
           </Link>
         </div>
       </Section>

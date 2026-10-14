@@ -2,6 +2,7 @@ import { handleShopifyRedirects, handleShopifyRoutes } from "@shopify/hydrogen";
 import { ShopifyScripts } from "@shopify/hydrogen/react";
 import type { ReactNode } from "react";
 import {
+  data,
   isRouteErrorResponse,
   Link,
   Links,
@@ -18,6 +19,8 @@ import { CartDrawer } from "~/components/CartDrawer";
 import { SavedDrawer } from "~/components/saved/SavedDrawer";
 import { Footer } from "~/components/Footer";
 import { Header } from "~/components/Header";
+import { DesignPicker } from "~/components/DesignPreview";
+import { readDesign, designCookie } from "~/lib/design-preview";
 import { SavedProvider } from "~/components/saved/SavedProvider";
 import { PageTitle, Section } from "~/components/Section";
 import { CartProvider } from "~/lib/cart";
@@ -85,15 +88,17 @@ export async function loader({ context, request }: Route.LoaderArgs) {
   const env = context.get(envContext);
   const storefrontClient = context.get(storefrontClientContext);
   const [cartResult, layout] = await Promise.all([cartHandlers.get({ storefrontClient, request }), loadRootLayout(storefrontClient)]);
-  return {
+  const design = readDesign(request, isLive(env));
+  return data({
     cartData: cartResult.data,
     shopInfo: layout.shopInfo,
     shopIdentity: resolveShopIdentity(env, layout.shopId),
     currency: layout.currency,
     live: isLive(env),
+    design,
     // Oxygen freezes the clock per request; the year is read once here, never in render.
     year: new Date().getUTCFullYear(),
-  };
+  }, { headers: designCookie(request, design, isLive(env)) });
 }
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -122,7 +127,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex min-h-svh flex-col">
+      <body className="flex min-h-svh flex-col" data-design={rootData?.design ?? "classic"}>
         <a href="#main" className="skip">
           Skip to content
         </a>
@@ -141,6 +146,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
         <PageViewedTracker />
         <CartAnalyticsTracker />
         <Header />
+        <DesignPicker />
         <main id="main" className="flex-1">
           <Outlet />
         </main>

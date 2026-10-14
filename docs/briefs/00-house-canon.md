@@ -5,11 +5,22 @@ Last updated: 2026-10-13
 Sources: memory notes (family business, remake, Shopify), HANDOFF.md rules, docs/REMAKE-BLUEPRINT.md, house.css, research/04, 08, 10. Full detail in `docs/briefs/`.
 Precedence: newest dated family/user decision > REMAKE-BLUEPRINT > briefs > research > old HTML boards. Never resolve a conflict silently: log it in `docs/briefs/open-questions.md`.
 
-## Who we are
+## Latest owner direction: Astra implementation, 2026-10-13
+
+This later instruction supersedes conflicting rules below and the withdrawn exploration decision of October 12. The owner explicitly authorized implementation of the Astra audit and broad creative exploration, with major heroes and layouts offered as selectable previews.
+
+- **Lab-grown diamond** is approved for customer copy, search, SEO and answer-oriented content. **Laboratory-grown diamond** and **man-made diamond** remain valid synonyms. Always identify the origin; the older requirement to say only “man-made” is retired. Internal `man-made` keys, product options and existing URLs remain stable.
+- **High Jewelry** is the navigation/search discovery label. The line is still **Royal American**, at `/royal-american`.
+- Functional shopping fixes apply to the original and preview designs. An explicit size choice, aligned product rows, useful filter chips, accessible gallery controls and visual product families take precedence over aesthetic bans that impede buying.
+- Major creative alternatives are private, selectable directions: Refined original, The Working Jeweler, In Good Company, In Full Light. Their color, type hierarchy, diagrams and compositions may depart from the old tokens. They are not a selected public redesign. See `refs/design-preview-plan.md`.
+- The picker, comparison tray and preview desk are hidden/404 when `PUBLIC_SITE_LIVE=true`. The original is the public/default direction. Private previews remain noindexed.
+- Keep the factual standards. No invented heritage, people, testimonials, scarcity or process evidence. A motif study is visibly labeled a concept, never the brother's original drawing. Both locations have shops visible to customers, and casting is in-house (owner confirmed during this implementation). Hours, Royal inventory/reports and final policies still require confirmation.
+
+## Who we are (established facts)
 
 - The user's family business: two stores in Tennessee. Brentwood, 157 Franklin Rd. Mt. Juliet, 401 S Mt Juliet Rd Ste 165 (Providence Marketplace).
 - Since 2026-10-08: repositioning from a local family jeweler into an American house of fine jewelry ("the Cartier of America").
-- The user's brother designs every piece. An in-house bench does repair, laser welding, retipping, stone setting, engraving.
+- The user's brother designs every piece. Both stores have shops visible to customers. Casting is in-house. Workshop services include repair, laser welding, retipping, stone setting and engraving. The owner confirmed both visible shops and in-house casting on 2026-10-13; “behind glass” is not established.
 - 2,537 Google reviews (5.0 Brentwood, 4.9 Mt. Juliet, as of 2026-08-26). CAD custom work (consult, CAD by email, approve, 4 to 6 weeks), heirloom resets, appraisal, lifetime warranty, pre-owned Rolex by appointment (NOT an authorized dealer).
 - Treat it as a brick-and-mortar luxury local business, not ecommerce-first. The biggest leak is local search and location pages.
 
@@ -28,7 +39,7 @@ A house, not a store: drawn by one designer, set and finished at our own bench, 
 
 ## Hard rules
 
-- Say "**man-made diamond**", hyphenated, directly before "diamond", same type, every time, with "(laboratory-grown)" and the IGI report on spec lines. Never "lab-grown" as the house term. Never unqualified "diamond" for a man-made stone; never "real", "genuine" or "natural" for it; never "real" for natural as a contrast.
+- Say **lab-grown diamond**, **laboratory-grown diamond** or **man-made diamond**, with the qualifier clearly attached. Lab-grown is approved for discovery and customer wording. Never imply that a laboratory-grown stone is mined, and do not use “real” or “genuine” to disparage either origin.
 - NO "Made in America", "Made in USA", "Made in Tennessee" or any variant. NO "handmade", "hand-made", "handcrafted".
 - The provenance line, exactly: "Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported."
 - "Hand-set" and "hand-finished" only for operations confirmed manual.
@@ -36,7 +47,7 @@ A house, not a store: drawn by one designer, set and finished at our own bench, 
 - Set qualities at set sizes. No stone inventory, no stone browsing. Natural F-G, VS1, GIA. Man-made D-F, VVS1-VVS2, IGI.
 - No true scale, no AR, no 3D-printed replica for now.
 - The logo is PAUSED. Placeholder mark only (`Mark.tsx`, `icon.svg`). Do not design marks.
-- Do not invent facts. Founding year, owners, staff and bench names, hours, financing partner, bench location: UNKNOWN. Write TODO and log it.
+- Do not invent facts. Founding year, owners, staff and bench names, hours and financing partner: UNKNOWN. Write TODO and log it. Both locations have customer-visible shops; casting is in-house, but its specific location has not been stated.
 
 ## Never do
 

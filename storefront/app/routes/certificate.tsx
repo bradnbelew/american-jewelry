@@ -37,7 +37,7 @@ export default function CertificatePage({ loaderData }: Route.ComponentProps) {
     ["Center stone", `${c.carat.toFixed(2)} ct round brilliant, ${stoneDiameterMm(c.carat).toFixed(1)} mm, ${std.short.toLowerCase()}.`],
     ["Grade", `${std.grade}.`],
     ["Report", `${std.report}. No. ________`],
-    ["Origin", c.origin === "man-made" ? "Man-made diamond (laboratory-grown). Growth method and any post-growth treatment are printed on the IGI report. Not mined." : "Natural, mined. Treatment, if any, stated on the report."],
+    ["Origin", c.origin === "man-made" ? "Lab-grown diamond (laboratory-grown). Growth method and any post-growth treatment are printed on the IGI report. Not mined." : "Natural, mined. Treatment, if any, stated on the report."],
     ["Metal", `${METAL_LABEL[c.metal]}, about ${metalGrams(c).toFixed(1)} g, karat-marked.`],
     ["Size", c.size],
     ...(c.engraving ? ([["Engraving", `"${c.engraving}", ${HAND_LABEL[c.hand].toLowerCase()}.`]] as [string, string][]) : []),

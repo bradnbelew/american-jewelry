@@ -8,8 +8,8 @@ import { breadcrumbJsonLd, pageMeta, servicesJsonLd } from "~/lib/seo";
 import type { Route } from "./+types/services";
 
 const SERVICES: { slug: string; name: string; what: string; how: string; where: string }[] = [
-  { slug: "repair", name: "Repair and restoration", what: "Retipping, re-shanking, chain and clasp repair, lost stones, laser welding next to stones that cannot take a torch.", how: "Quoted under the loupe before anything begins.", where: "The bench in Mt. Juliet; Brentwood takes pieces in." },
-  { slug: "resizing", name: "Resizing", what: "Sized up or down at the bench, the join finished so it disappears. Full eternity bands are remade.", how: "While you wait when the bench is free. One free resize within 60 days on rings we made.", where: "Mt. Juliet, or taken in at Brentwood." },
+  { slug: "repair", name: "Repair and restoration", what: "Retipping, re-shanking, chain and clasp repair, lost stones, laser welding next to stones that cannot take a torch.", how: "Quoted under the loupe before anything begins.", where: "Contact either store to arrange an assessment." },
+  { slug: "resizing", name: "Resizing", what: "Sized up or down at the bench, the join finished so it disappears. Full eternity bands are remade.", how: "Timing, suitability and any charge are confirmed after assessment.", where: "Contact either store to discuss the work." },
   { slug: "engraving", name: "Engraving", what: "Initials, a date, a line, in the house script or Roman capitals. Monograms on signets by hand.", how: "Included on pieces we make. Quoted on others.", where: "Either store." },
   { slug: "cleaning", name: "Cleaning and inspection", what: "Ultrasonic and steam, a loupe over every setting, prongs tightened.", how: "Walk in. Fifteen minutes, no charge, for life.", where: "Either store." },
   { slug: "appraisal", name: "Appraisal", what: "A written insurance appraisal with photographs, metal and stone details and report numbers.", how: "By appointment. From $149 per item.", where: "Either store." },
@@ -32,7 +32,7 @@ const PRICES: [string, string][] = [
 
 export const meta: Route.MetaFunction = () =>
   pageMeta(
-    { title: "Services", description: "Jewelry repair at our own bench in Mt. Juliet, Tennessee: laser welding, retipping, stone setting, resizing, engraving, cleaning and appraisals. Quoted before any work begins.", path: "/services", og: "pages/services", image: "bench" },
+    { title: "Services", description: "Jewelry repair with American Jewelry in Brentwood and Mt. Juliet, Tennessee: laser welding, retipping, stone setting, resizing, engraving, cleaning and appraisals. Quoted before any work begins.", path: "/services", og: "pages/services", image: "bench" },
     [breadcrumbJsonLd([{ name: "Services", href: "/services" }]), servicesJsonLd(SERVICES)],
   );
 

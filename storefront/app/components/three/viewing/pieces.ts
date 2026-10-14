@@ -36,7 +36,7 @@ export const VIEWING: Record<string, ViewingSpec> = {
   },
   "signal-solitaire": {
     lining: "counter",
-    grade: "Man-made diamond (laboratory-grown), D to F, VVS, IGI report, as grown.",
+    grade: "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report.",
     jewel: { kind: "ring", carat: 1.5, config: { setting: "signal", metal: "platinum", origin: "man-made", profile: "knife", width: 1.8 } },
   },
   "shooting-star-ring": {
@@ -46,7 +46,7 @@ export const VIEWING: Record<string, ViewingSpec> = {
   },
   "grid-eternity-band": {
     lining: "counter",
-    grade: "Man-made diamonds (laboratory-grown), D to F color, VVS. IGI.",
+    grade: "Lab-grown diamonds (laboratory-grown), D to F color, VVS. IGI.",
     jewel: { kind: "eternity", metal: "14k-white", stones: 26 },
   },
 };

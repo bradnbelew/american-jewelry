@@ -12,7 +12,7 @@ export const TIERS: Tier[] = [
     tagline: "One of one. Never made again.",
     stones: "Natural diamonds and gemstones of exceptional character.",
     intro:
-      "Pieces made once and never again. Each begins as a drawing, is cut from the finest stones we can find, and is entered in the house registry under the name of the person who will wear it. There is one, and it is yours.",
+      "Royal American is our high jewelry collection: one-of-one designs, numbered in the registry and named for Tennessee places. Arrange a viewing to discuss the piece, its stones and its details.",
     pricing: "on-request",
     hallmark: "crown",
   },
@@ -20,7 +20,7 @@ export const TIERS: Tier[] = [
     slug: "americana",
     name: "Americana",
     numeral: "II",
-    tagline: "Natural diamonds. Our own designs.",
+    tagline: "Gold, gemstone and natural diamond.",
     stones: "Natural diamonds, solid gold, and family gemstones.",
     intro:
       "The signature designs of the house, drawn in Tennessee and worked in solid gold, birthstone and natural diamond. These are the pieces a family keeps: worn every day, handed down, and recognized across a room.",
@@ -31,10 +31,10 @@ export const TIERS: Tier[] = [
     slug: "new-american",
     name: "New American",
     numeral: "III",
-    tagline: "Man-made diamonds. The same hands.",
-    stones: "Man-made diamonds, D to F color, VVS clarity, every one.",
+    tagline: "Lab-grown diamonds. The same hands.",
+    stones: "Lab-grown diamonds, D to F color, VVS clarity, every one.",
     intro:
-      "Man-made diamonds to one published standard: D to F, VVS, Ideal cut, an IGI report on every center stone. Set by the same hands that set everything else we make.",
+      "Lab-grown diamonds to one published standard: D to F, VVS, Ideal cut, an IGI report on every center stone. Set by the same hands that set everything else we make.",
     pricing: "listed",
     hallmark: "line",
   },
@@ -53,7 +53,7 @@ export const DESIGNS: Design[] = [
     tier: "americana",
     motif: "A five-point star with a trailing tail of graduated stones.",
     story:
-      "The first design our designer drew for the house. The star is cut sharp; the tail falls away in a line of graduated settings that can hold diamonds, a single birthstone, or nothing at all.",
+      "The star is cut sharp; the tail falls away in a line of graduated settings that can hold diamonds, a single birthstone, or nothing at all.",
     signature: "Sharp five-point star, graduated tail, the house mark inside every shank.",
   },
   {
@@ -98,15 +98,15 @@ export const COLLECTIONS: Collection[] = [
     name: "Family",
     intro: "The house designs, set with the birthstones of the people you love.",
     story:
-      "Every Americana motif is drawn with a place for a stone that is yours. A Shooting Star's tail can hold a child's birthstone; a Prism signet can carry a parent's. Family pieces are made to order and engraved by hand.",
+      "Every Americana motif is drawn with a place for a stone that is yours. A Shooting Star's tail can hold a child's birthstone; a Prism signet can carry a parent's. Family pieces are made to order with engraving available.",
     crossTier: false,
   },
   {
     slug: "bridal",
     name: "Bridal",
-    intro: "Engagement and wedding, in natural or man-made diamond, in the same house settings.",
+    intro: "Engagement and wedding, in natural or lab-grown diamond, in the same house settings.",
     story:
-      "The one place Americana and New American share designs. Choose the setting; then choose the stone: a natural diamond in Americana, or a man-made diamond in New American. Every ring is labeled plainly with which it is.",
+      "The one place Americana and New American share designs. Choose the setting; then choose the stone: a natural diamond in Americana, or a lab-grown diamond in New American. Every ring is labeled plainly with which it is.",
     crossTier: true,
   },
   {
@@ -145,7 +145,7 @@ const manMade = (name: string, price: number, spec: string): Version => ({
   key: "man-made",
   name,
   priceCents: usd(price),
-  stones: `${spec} man-made diamond${spec.includes("tw") || spec.includes("stones") ? "s" : ""} (laboratory-grown), D to F, VVS, IGI report`,
+  stones: `${spec} lab-grown diamond${spec.includes("tw") || spec.includes("stones") ? "s" : ""} (laboratory-grown), D to F, VVS, IGI report`,
   origin: "man-made",
 });
 
@@ -160,12 +160,12 @@ export const PIECES: Piece[] = [
     oneOfOne: { number: "001", registered: true },
     versions: [{ key: "diamond", name: "Natural diamond", priceCents: null, stones: "5.02 ct natural diamond, D, IF, GIA", origin: "natural" }],
     metals: ["platinum"],
-    leadTime: "Available now, by appointment",
+    leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
     description:
       "A 5.02 carat D-color, internally flawless diamond in a platinum setting cut like a riverbank.",
     specs: [
-      { label: "Center", value: "5.02 ct round brilliant, D, IF, GIA 2231…" },
+      { label: "Center", value: "Illustrative specification: 5.02 ct round brilliant, D, IF. Actual report to be confirmed." },
       { label: "Metal", value: "Platinum 950" },
       { label: "Registry", value: "Royal American No. 001" },
     ],
@@ -181,7 +181,7 @@ export const PIECES: Piece[] = [
     oneOfOne: { number: "002", registered: true },
     versions: [{ key: "diamond", name: "Sapphire and diamond", priceCents: null, stones: "12.40 ct natural sapphire, 6.10 ct tw natural diamonds", origin: "natural" }],
     metals: ["platinum"],
-    leadTime: "Available now, by appointment",
+    leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
     description:
       "A 12.40 carat Ceylon sapphire at the center of a five-point star of diamonds, on a platinum chain.",
@@ -202,7 +202,7 @@ export const PIECES: Piece[] = [
     oneOfOne: { number: "003", registered: true },
     versions: [{ key: "diamond", name: "Natural diamond", priceCents: null, stones: "14.8 ct tw natural diamonds", origin: "natural" }],
     metals: ["18k-yellow"],
-    leadTime: "In the workshop, spring",
+    leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
     description: "Forty-one graduated natural diamonds in a river of 18k gold links, made once.",
     specs: [
@@ -428,9 +428,9 @@ export const PIECES: Piece[] = [
     leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
     description:
-      "One man-made diamond on an open four-prong head; the same setting takes a natural diamond in Americana.",
+      "One lab-grown diamond on an open four-prong head; the same setting takes a natural diamond in Americana.",
     specs: [
-      { label: "Center", value: "Round brilliant man-made diamond, D to F, VVS1 to VVS2, Ideal cut, IGI report, laser inscribed" },
+      { label: "Center", value: "Round brilliant lab-grown diamond, D to F, VVS1 to VVS2, Ideal cut, IGI report, laser inscribed" },
       { label: "Band", value: "1.8 mm knife edge" },
       { label: "Hallmark", value: "Karat mark, inside the shank" },
     ],
@@ -454,7 +454,7 @@ export const PIECES: Piece[] = [
     madeToOrder: true,
     description: "The Signal head as a stud: open on four sides, the stone the whole story.",
     specs: [
-      { label: "Stones", value: "Matched pair, man-made diamonds, D to F, VVS" },
+      { label: "Stones", value: "Matched pair, lab-grown diamonds, D to F, VVS" },
       { label: "Backs", value: "Screw backs, same metal" },
     ],
     collections: [],
@@ -471,7 +471,7 @@ export const PIECES: Piece[] = [
     metals: ["14k-yellow", "14k-white", "14k-rose"],
     leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
-    description: "Calibrated man-made diamonds set edge to edge in a square grid. No gaps, no gallery.",
+    description: "Calibrated lab-grown diamonds set edge to edge in a square grid. No gaps, no gallery.",
     specs: [
       { label: "Length", value: "6.5, 7 or 7.5 in" },
       { label: "Clasp", value: "Hidden box clasp with the AJ line, double safety" },
@@ -493,7 +493,7 @@ export const PIECES: Piece[] = [
     description: "The Grid line at the neck: one continuous field of light, 16 inches of it.",
     specs: [
       { label: "Length", value: "16 or 18 in" },
-      { label: "Stones", value: "Calibrated 2.5 mm man-made diamonds, D to F, VVS" },
+      { label: "Stones", value: "Calibrated 2.5 mm lab-grown diamonds, D to F, VVS" },
     ],
     collections: [],
     art: "tennis",
@@ -510,7 +510,7 @@ export const PIECES: Piece[] = [
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9"],
     leadTime: "Made to order, about 2 weeks",
     madeToOrder: true,
-    description: "Man-made diamonds all the way around, set in the Grid, with no visible metal between them.",
+    description: "Lab-grown diamonds all the way around, set in the Grid, with no visible metal between them.",
     specs: [
       { label: "Band", value: "2.4 mm" },
       { label: "Note", value: "Full eternity bands cannot be resized; we remake them" },
@@ -548,7 +548,7 @@ export const PIECES: Piece[] = [
     engraving: true,
     leadTime: "Made to order, about 3 weeks",
     madeToOrder: true,
-    description: "A square signet with one man-made diamond flush at the center of a brushed face.",
+    description: "A square signet with one lab-grown diamond flush at the center of a brushed face.",
     specs: [
       { label: "Face", value: "13 mm square, brushed" },
       { label: "Weight", value: "about 15 g in 14k" },
@@ -609,7 +609,7 @@ export const STORES: Store[] = [
     phone: "(615) 457-2089",
     rating: 5.0,
     reviews: 995,
-    role: "The salon. Royal American and bridal, by appointment.",
+    role: "Fine jewelry and a working shop visible to customers.",
     hours: [
       { days: "Monday - Friday", open: "10 am - 6 pm" },
       { days: "Saturday", open: "10 am - 5 pm" },
@@ -622,8 +622,8 @@ export const STORES: Store[] = [
     photo: "box-peach",
     place: "On Franklin Road in Brentwood.",
     expect:
-      "The salon. A quiet room, a table, and whatever you asked about already laid out: a Royal American piece, three bridal settings with both stones to compare, or the drawings for a commission. Allow an hour.",
-    services: ["Private viewing room", "Bridal fittings", "Custom commissions", "Engraving", "Appraisals"],
+      "Our Brentwood shop is visible to customers. Tell us what you would like to see when you arrange your visit. We can discuss bridal settings, a commission or a Royal American viewing and confirm what is available.",
+    services: ["Private viewing appointments", "Bridal fittings", "Custom commissions", "Engraving", "Appraisals"],
   },
   {
     slug: "mt-juliet",
@@ -635,7 +635,7 @@ export const STORES: Store[] = [
     phone: "(615) 754-6046",
     rating: 4.9,
     reviews: 1542,
-    role: "The workshop. Casting, setting, repair and lifetime care.",
+    role: "Fine jewelry and a working shop visible to customers.",
     hours: [
       { days: "Monday - Friday", open: "10 am - 6 pm" },
       { days: "Saturday", open: "10 am - 5 pm" },
@@ -648,8 +648,8 @@ export const STORES: Store[] = [
     photo: "bench",
     place: "Suite 165 at Providence Marketplace, off South Mt. Juliet Road.",
     expect:
-      "The workshop. The bench is behind glass, so you can watch a prong being retipped or a stone being set while you wait. Bring the piece; most cleaning and inspection happens on the spot.",
-    services: ["Workbench behind glass", "Lifetime cleaning and prong checks", "Resizing and repair", "Watch service", "Appraisals"],
+      "Our Mt. Juliet shop is visible to customers. Bring your piece or your ideas. Contact the store to discuss a repair, cleaning, a new design or an appointment; we will confirm the service and timing.",
+    services: ["Cleaning and inspection", "Resizing and repair", "Watch service", "Appraisals"],
   },
 ];
 

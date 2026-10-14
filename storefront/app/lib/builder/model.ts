@@ -92,7 +92,7 @@ export const HAND_LABEL: Record<Hand, string> = { script: "House script", roman:
 /** The house line. Stones below it are not offered. */
 export const STONE_STANDARD: Record<Origin, { grade: string; report: string; tier: string; short: string }> = {
   natural: { grade: "F to G color, VS1 clarity, Excellent cut", report: "GIA report, laser inscribed", tier: "Americana", short: "Natural diamond" },
-  "man-made": { grade: "D to F color, VVS1 to VVS2, Ideal cut", report: "IGI Laboratory Grown Diamond Report, laser inscribed", tier: "New American", short: "Man-made diamond" },
+  "man-made": { grade: "D to F color, VVS1 to VVS2, Ideal cut", report: "IGI Laboratory Grown Diamond Report, laser inscribed", tier: "New American", short: "Lab-grown diamond" },
 };
 
 export const BIRTHSTONES: { month: number; name: string; stone: string; hex: string }[] = [

@@ -52,7 +52,7 @@ export const meta: Route.MetaFunction = ({ data }) => {
   const design = p ? designBySlug(p.design) : undefined;
   const handle = data?.handle ?? "";
   return pageMeta(
-    { title: manMade ? `${name}, man-made diamond` : name, description: p?.description ?? "", path: `/pieces/${handle}`, og: `pieces/${handle}`, image: (PIECE_PHOTOS[handle] ?? ["hero-box"])[0] },
+    { title: manMade ? `${name}, lab-grown diamond` : name, description: p?.description ?? "", path: `/pieces/${handle}`, og: `pieces/${handle}`, image: (PIECE_PHOTOS[handle] ?? ["hero-box"])[0] },
     [
       product ? productJsonLdFromStorefront(product, p, design) : p ? productJsonLd(p, design) : {},
       breadcrumbJsonLd([...(tier ? [{ name: tier.name, href: `/${tier.slug}` }] : []), ...(design ? [{ name: design.name, href: `/designs/${design.slug}` }] : []), { name, href: `/pieces/${handle}` }]),
@@ -71,7 +71,7 @@ function madeOf(p: Piece): { text: string; key?: boolean }[] {
   const stone = p.oneOfOne
     ? (p.versions[0].stones ?? "").toLowerCase()
     : manMade
-      ? single ? "one man\u2011made diamond" : "man\u2011made diamonds"
+      ? single ? "one lab-grown diamond" : "lab-grown diamonds"
       : natural && gem
         ? "a birthstone or natural diamonds"
         : natural
@@ -113,10 +113,10 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
         void navigate(pieceUrl(product, result.selectedOptions, result.selectedVariant?.product?.handle, new URLSearchParams(location.search)), { replace: true, preventScrollReset: true });
       }}
     >
-      <PieceForm product={product} piece={piece} onMetal={setMetal} />
+      <PieceForm key={handle} product={product} piece={piece} onMetal={setMetal} />
     </ProductProvider>
   ) : piece ? (
-    <PieceConfigurator piece={piece} onMetal={setMetal} />
+    <PieceConfigurator key={handle} piece={piece} onMetal={setMetal} />
   ) : null;
 
   return (
@@ -140,7 +140,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
       </Section>
 
       <Section className="pt-6 md:pt-8">
-        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="piece-layout grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7 lg:-ml-10">
             <PieceGallery
               photos={PIECE_PHOTOS[handle] ?? ["hero-box"]}
@@ -259,7 +259,7 @@ function Details({ piece }: { piece: Piece }) {
         <details className="acc border-b border-hair">
           <summary>Delivery and returns</summary>
           <p className="font-text pb-6 text-[1rem] text-ink-2">
-            Insured, signature required, in the house box, or collected in either store. Ready-to-ship pieces may be returned within 30 days. Made-to-order, engraved and sized pieces are exchangeable once the design is approved.
+            Insured, signature required, in the house box, or collected in either store. Confirm the return and exchange terms for your selected configuration before ordering. See the policies page or contact the store.
           </p>
         </details>
         <details className="acc border-b border-hair">
@@ -269,7 +269,7 @@ function Details({ piece }: { piece: Piece }) {
             <a href={`tel:${salon.phone.replace(/\D/g, "")}`} className="link-quiet num">
               {salon.phone}
             </a>{" "}
-            and ask for the bench, or{" "}
+            to discuss the piece, or{" "}
             <Link to={`/appointments?piece=${piece.handle}`} className="link-quiet">
               book an hour
             </Link>
@@ -289,7 +289,7 @@ function Siblings({ piece, designSlug, designName }: { piece: Piece; designSlug:
     <Section className="pb-8">
       <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-10">
         <div className="flex flex-col gap-3 lg:col-span-4">
-          <h2 className="h-section text-[1.75rem] md:text-[2.25rem]">Complete the set</h2>
+          <h2 className="h-section text-[1.75rem] md:text-[2.25rem]">More in this design</h2>
           <Link to={`/designs/${designSlug}`} className="link self-start">
             The {designName} design
           </Link>

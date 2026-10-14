@@ -51,7 +51,7 @@ const SECTIONS: { id: string; title: string; body: string[] }[] = [
     id: "disclosures",
     title: "Diamond and metal disclosures",
     body: [
-      "On this site, man-made diamond means a laboratory-grown diamond: grown in a laboratory rather than mined, with the same chemical composition, crystal structure and physical properties as a natural diamond. Each is identified as such on its listing, tag, receipt and certificate, with its growth method and any post-growth treatment. Natural diamond means a mined diamond; any treatment is disclosed before purchase.",
+      "On this site, lab-grown diamond means a laboratory-grown diamond: grown in a laboratory rather than mined, with the same chemical composition, crystal structure and physical properties as a natural diamond. Each is identified as such on its listing, tag, receipt and certificate, with its growth method and any post-growth treatment. Natural diamond means a mined diamond; any treatment is disclosed before purchase.",
       "All gold is solid and karat-marked. White gold is rhodium-plated, which wears and is re-applied as maintenance. Pieces are designed in Tennessee and set and finished in our workshop; diamonds and gold are imported. We make no claims about the resale or investment value of any stone.",
       "Pre-owned Rolex watches are authenticated by our watchmaker. American Jewelry is an independent jeweler and is not affiliated with or authorized by Rolex SA.",
     ],

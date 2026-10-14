@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import { DirectionLine } from "~/components/DesignDirections";
+import { useDesign } from "~/components/DesignPreview";
 
 import { PieceLedger } from "~/components/Catalog";
 import { Pic } from "~/components/Pic";
@@ -16,14 +18,14 @@ import type { Route } from "./+types/line";
 const STANDARD: Record<TierSlug, string> = {
   "royal-american": "One of one. Price on request.",
   americana: "Natural diamonds, F to G, VS1, GIA.",
-  "new-american": "Man-made diamonds (laboratory-grown), D to F, VVS, IGI.",
+  "new-american": "Lab-grown diamonds (laboratory-grown), D to F, VVS, IGI.",
 };
 
 /** One sentence under the name, at most sixteen words. */
 const LINE: Record<TierSlug, string> = {
   "royal-american": "Made once, numbered, and entered in the house registry under the name of its owner.",
   americana: "The designs of the house, in solid gold, birthstone and natural diamond.",
-  "new-american": "Man-made diamonds to one published standard, set by the same hands.",
+  "new-american": "Lab-grown diamonds to one published standard, set by the same hands.",
 };
 
 /** Where the opener's subject sits in the frame, so the words find empty ground. */
@@ -42,7 +44,7 @@ export function loader({ request }: Route.LoaderArgs) {
 export const meta: Route.MetaFunction = ({ data }) => {
   const tier = TIERS.find((t) => t.slug === data?.slug)!;
   return pageMeta(
-    { title: tier.name, description: `${tier.tagline} ${tier.stones}`, path: `/${tier.slug}`, og: `lines/${tier.slug}`, image: TIER_PHOTO[tier.slug] },
+    { title: tier.slug === "royal-american" ? "High Jewelry | Royal American" : tier.slug === "new-american" ? "Lab-Grown Diamond Jewelry | New American" : tier.name, description: `${tier.tagline} ${tier.stones}`, path: `/${tier.slug}`, og: `lines/${tier.slug}`, image: TIER_PHOTO[tier.slug] },
     [breadcrumbJsonLd([{ name: tier.name, href: `/${tier.slug}` }]), itemListJsonLd(tier.name, piecesForTier(tier.slug))],
   );
 };
@@ -53,8 +55,10 @@ export const meta: Route.MetaFunction = ({ data }) => {
  * No two screens share a composition. docs/briefs/site/pages/line.md; 22-art-direction §5.
  */
 export default function LinePage({ loaderData }: Route.ComponentProps) {
+  const mode = useDesign();
   const slug = loaderData.slug;
   const tier = TIERS.find((t) => t.slug === slug)!;
+  if (mode !== "classic") return <DirectionLine slug={slug} mode={mode} />;
   if (slug === "royal-american") return <RoyalAmerican />;
   const designs = designsForTier(slug);
   const newAmerican = slug === "new-american";
@@ -92,7 +96,7 @@ export default function LinePage({ loaderData }: Route.ComponentProps) {
       </Section>
 
       {newAmerican ? (
-        <Plate photo="comp-signal-hand" position="55% 45%" caption="Signal Solitaire, on the hand. Platinum, one man-made diamond (laboratory-grown)." />
+        <Plate photo="comp-signal-hand" position="55% 45%" caption="Signal Solitaire, on the hand. Platinum, one lab-grown diamond (laboratory-grown)." />
       ) : (
         <Section>
           <div className="grid items-start gap-8 md:grid-cols-12 md:gap-10">
@@ -111,7 +115,7 @@ export default function LinePage({ loaderData }: Route.ComponentProps) {
 
       <Section screen width="text">
         <div className="flex flex-wrap items-center justify-between gap-6">
-          <p className="font-text max-w-xl text-[1.0625rem] text-ink-2">Every setting takes a natural or a man-made stone. The name on the box follows the stone.</p>
+          <p className="font-text max-w-xl text-[1.0625rem] text-ink-2">Every setting takes a natural or a lab-grown diamond. The name on the box follows the stone.</p>
           <Link to="/build/ring" className="btn">
             Build a ring
           </Link>
@@ -187,7 +191,7 @@ function RoyalAmerican() {
                 No.
               </th>
               <th scope="col">Piece</th>
-              <th scope="col" className="hidden md:table-cell">
+              <th scope="col" className="hidden sm:table-cell">
                 Stones
               </th>
               <th scope="col">State</th>
@@ -203,8 +207,9 @@ function RoyalAmerican() {
                   <Link to={`/pieces/${p.handle}`} className="font-display text-[1.125rem] hover:text-paper/70">
                     {p.name}
                   </Link>
+                  <p className="mt-2 text-sm text-paper/80 sm:hidden">{p.versions[0].stones}</p>
                 </td>
-                <td className="font-text hidden text-paper/80 md:table-cell">{p.versions[0].stones}</td>
+                <td className="font-text hidden text-paper/80 sm:table-cell">{p.versions[0].stones}</td>
                 <td className="font-text text-paper/80">{p.leadTime}</td>
               </tr>
             ))}

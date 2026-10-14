@@ -32,7 +32,8 @@ export function PieceGallery({
   open3d?: boolean;
   viewing?: { spec: ViewingSpec; metal?: RingConfig["metal"]; carat?: number };
 }) {
-  const [first, ...rest] = photos;
+  const [first] = photos;
+  const [active, setActive] = useState(0);
   const [inLight, setInLight] = useState(false);
   // Under reduced motion or without WebGL the room is never offered: the photograph stays (brief; canon Motion).
   const gl = useWebGL();
@@ -58,26 +59,10 @@ export function PieceGallery({
   );
 
   return (
-    <div className="flex flex-col gap-4 md:gap-6">
-      {firstFrame}
-      {/* The second frame shows scale (the hand) across the whole column; the rest follow in pairs. */}
-      {rest.length > 0 && (
-        <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3]">
-          <Pic k={rest[0]} sizes="(min-width: 1024px) 55vw, 100vw" position="55% 45%" />
-        </div>
-      )}
-      {rest.length > 1 && (
-        <div className="grid grid-cols-2 gap-4 md:gap-6">
-          {rest.slice(1).map((k, i, all) => {
-            const alone = all.length % 2 === 1 && i === all.length - 1;
-            return (
-              <div key={k} className={`relative overflow-hidden ${alone ? "col-span-2 aspect-[4/5] md:aspect-[4/3]" : "aspect-[4/5]"}`}>
-                <Pic k={k} sizes={alone ? "(min-width: 1024px) 55vw, 100vw" : "(min-width: 1024px) 27vw, 50vw"} />
-              </div>
-            );
-          })}
-        </div>
-      )}
+    <div className="piece-gallery flex flex-col gap-4">
+      <div className="piece-gallery-stage">{active === 0 ? firstFrame : <div className={frame}><Pic k={photos[active]} sizes="(min-width: 1024px) 55vw, 100vw" fit={PHOTO[photos[active]]?.contain ? 'contain' : 'cover'} /></div>}</div>
+      {photos.length > 1 && <div className="flex flex-wrap gap-3" role="group" aria-label={`${title} images`}>{photos.map((key, i) => <button key={key} type="button" className="gallery-thumb relative h-16 w-16 overflow-hidden border-2 border-transparent" aria-pressed={active === i} aria-label={`View ${i + 1}: ${PHOTO[key]?.alt ?? title}`} onClick={() => setActive(i)}><Pic k={key} sizes="64px" /></button>)}</div>}
+      <p className="label" aria-live="polite">Image {active + 1} of {photos.length}</p>
     </div>
   );
 }

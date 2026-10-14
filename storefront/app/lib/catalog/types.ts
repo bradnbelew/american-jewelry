@@ -53,7 +53,7 @@ export type VersionKey = "gold" | "gemstone" | "diamond" | "man-made";
 
 export interface Version {
   key: VersionKey;
-  name: string; // e.g. "Solid gold", "Birthstone", "Natural diamond", "Man-made diamond"
+  name: string; // e.g. "Solid gold", "Birthstone", "Natural diamond", "Lab-grown diamond"
   priceCents: number | null; // null = price on request
   stones?: string; // e.g. "0.42 ct natural diamonds, F–G, VS"
   origin: StoneOrigin;

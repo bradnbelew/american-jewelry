@@ -54,7 +54,7 @@ export default function AppointmentsPage({ loaderData, actionData }: Route.Compo
   return (
     <>
       <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Come and see it in your hand." lede="An hour with a member of the house, in the store, at the bench, or by video. Whatever you asked about is already on the table." />
+        <PageTitle title="Come and see it in your hand." lede="Tell us what you would like to explore. We will confirm a time, the location and the availability of any pieces you request." />
       </Section>
       <Section width="text">
         <AppointmentForm prefill={loaderData.prefill} result={actionData} />

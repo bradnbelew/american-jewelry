@@ -73,13 +73,13 @@ jobs.push(["pages/build-ring", { label: "Build a ring", title: "Three settings w
 jobs.push(["pages/services", { label: "Services", title: "A bench that looks after everyone's jewelry.", photo: await photoDataUri("bench") }]);
 jobs.push(["pages/journal", { label: "Journal", title: "Plain answers from the bench.", photo: null }]);
 jobs.push(["pages/appointments", { label: "Appointments", title: "Come and see it in your hand.", photo: await photoDataUri("hero-hand") }]);
-for (const t of TIERS) jobs.push([`lines/${t.slug}`, { label: t.tagline, title: t.name, photo: await photoDataUri(TIER_PHOTO[t.slug]) }]);
+for (const t of TIERS) jobs.push([`lines/${t.slug}`, { label: t.slug === "royal-american" ? "High Jewelry" : t.tagline, title: t.name, photo: await photoDataUri(TIER_PHOTO[t.slug]) }]);
 for (const d of DESIGNS) jobs.push([`designs/${d.slug}`, { label: "A house design", title: d.name, line: d.motif, photo: await photoDataUri(DESIGN_PHOTO[d.slug]) }]);
 for (const s of STORES) jobs.push([`stores/${s.slug}`, { label: `${s.address1}, ${s.city}`, title: `American Jewelry, ${s.name}`, photo: await photoDataUri(s.photo) }]);
 for (const p of PIECES) {
   const manMade = p.versions.some((v) => v.origin === "man-made");
   const price = startingPrice(p);
-  jobs.push([`pieces/${p.handle}`, { label: p.oneOfOne ? "One of one" : manMade ? "Man-made diamond" : "Natural diamond and solid gold", title: p.name, line: price === null ? "Price on request" : `From ${formatPrice(price)}`, photo: await photoDataUri((PIECE_PHOTOS[p.handle] ?? ["hero-box"])[0]) }]);
+  jobs.push([`pieces/${p.handle}`, { label: p.oneOfOne ? "One of one" : manMade ? "Lab-grown diamond" : "Natural diamond and solid gold", title: p.name, line: price === null ? "Price on request" : `From ${formatPrice(price)}`, photo: await photoDataUri((PIECE_PHOTOS[p.handle] ?? ["hero-box"])[0]) }]);
 }
 for (const a of ARTICLES) jobs.push([`journal/${a.slug}`, { label: "Journal", title: a.title, photo: await photoDataUri(a.photo) }]);
 

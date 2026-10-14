@@ -30,6 +30,7 @@ export default function StorePage({ loaderData }: Route.ComponentProps) {
     <>
       <SplitOpener eyebrow={`${s.address1}, ${s.city}, Tennessee`} title={s.name} lede={s.role} photo={s.photo}>
         <div className="flex flex-wrap gap-3">
+          <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="btn btn-outline">Call {s.phone}</a>
           <Link to={`/appointments?store=${s.slug}`} className="btn">
             Book {s.name}
           </Link>
@@ -104,7 +105,7 @@ export default function StorePage({ loaderData }: Route.ComponentProps) {
       <Section className="pb-8" width="text">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <p className="font-text max-w-xl text-ink-2">
-            {s.slug === "brentwood" ? "Repairs and resizing happen at the bench in Mt. Juliet. Bring a piece here and we carry it over." : "Royal American and most bridal fittings are shown in Brentwood by appointment."}
+            Contact either store to confirm the best location for your visit and the availability of the piece or service you have in mind.
           </p>
           <Link to={`/stores/${other.slug}`} className="link">
             {other.name}

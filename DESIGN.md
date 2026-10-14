@@ -180,6 +180,8 @@ Square corners everywhere (`rounded.none`). Buttons, fields, option tiles and im
 
 ## Do's and Don'ts
 
+**Private exploration override, 2026-10-13:** the latest owner instruction authorizes switchable major design alternatives. The tokens above describe the refined original. `app/directions.css` owns the Working Jeweler, In Good Company and In Full Light previews, specified in `docs/briefs/refs/design-preview-plan.md`. Their different hierarchy, accent colors, diagrams, image compositions and useful comparison/filter controls are deliberate. The categorical bans below do not veto these authorized previews or the functional shopping repairs. Public-live mode selects the original until a direction is chosen and implemented for launch.
+
 Do: one subject per screen; let names and photographs carry meaning; set prices round and once; keep controls at fixed heights; use `label` in sentence case; reveal with opacity and 12px travel at 600ms on `--ease-house`, at most once per screen, never on every section; crossfade pages in 300ms; respect reduced motion fully; keep gold at 24px and above; keep muted as the lightest text.
 
 Don't: promo bars, countdowns, discounts, "Shop now", review stars on product pages, carousels, For Her / For Him, value-prop trios, icon rows, bordered cards, chips, badges, line drawings, gradients, hover image swaps, 8-up grids, repeated intro blocks, tracked-caps eyebrows, middle-dot meta strings, "→" on links, 01/02/03 markers, drop shadows, pills, stock or AI imagery, model faces who are not the family, text on photos without an overlay, scroll-jacking or pins longer than one viewport, any hue outside the palette, any typeface outside the two families, equal tile rows, promo tiles in a menu.

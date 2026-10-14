@@ -1,6 +1,6 @@
 import type { MetaDescriptor } from "react-router";
 
-import { STORES, startingPrice } from "~/lib/catalog/data";
+import { STORES } from "~/lib/catalog/data";
 import { PHOTO, PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Design, Piece, Store } from "~/lib/catalog/types";
 import { METAL_LABEL } from "~/lib/catalog/types";
@@ -81,20 +81,12 @@ export function siteJsonLd() {
         logo: `${SITE}/favicon.svg`,
         image: `${SITE}${PHOTO["hero-box"].src}`,
         description:
-          "A house of fine jewelry in Tennessee. Our own designs, set and finished at our own bench: one-of-one pieces, signature designs in solid gold and natural diamond, and man-made (laboratory-grown) diamond pieces to one published standard.",
+          "American Jewelry is a family jeweler in Brentwood and Mt. Juliet, Tennessee, with shops visible to customers at both stores and in-house casting. Original designs in gold, natural and lab-grown diamonds, plus Royal American high jewelry.",
         slogan: "Designed in Tennessee. Set and finished in our workshop.",
         telephone: telephoneE164(STORES[0].phone),
         address: STORES.map(postal),
         department: STORES.map((s) => ({ "@id": `${SITE}/stores/${s.slug}#store` })),
         areaServed: ["Brentwood", "Franklin", "Nashville", "Mt. Juliet", "Middle Tennessee", "United States"],
-        hasMerchantReturnPolicy: {
-          "@type": "MerchantReturnPolicy",
-          applicableCountry: "US",
-          returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-          merchantReturnDays: 30,
-          returnMethod: "https://schema.org/ReturnByMail",
-          returnFees: "https://schema.org/FreeReturn",
-        },
       },
       { "@type": "WebSite", "@id": SITE_ID, url: `${SITE}/`, name: SITE_NAME, publisher: { "@id": ORG_ID }, inLanguage: "en-US" },
     ],
@@ -146,8 +138,6 @@ export function storeJsonLd(s: Store) {
 
 /** Product markup; a man-made piece says so in its name. */
 export function productJsonLd(p: Piece, design?: Design) {
-  const low = startingPrice(p);
-  const prices = p.versions.map((v) => v.priceCents).filter((x): x is number => x !== null);
   const manMade = p.versions.some((v) => v.origin === "man-made");
   const natural = p.versions.some((v) => v.origin === "natural" && v.key === "diamond");
   const images = (PIECE_PHOTOS[p.handle] ?? ["hero-box"]).map((k) => `${SITE}${PHOTO[k].src}`);
@@ -155,37 +145,25 @@ export function productJsonLd(p: Piece, design?: Design) {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE}/pieces/${p.handle}#product`,
-    name: manMade ? `${p.name}, man-made diamond` : p.name,
+    name: manMade ? `${p.name}, lab-grown diamond` : p.name,
     sku: p.handle.toUpperCase(),
     url: `${SITE}/pieces/${p.handle}`,
     image: images,
     description: manMade
-      ? `${p.description} Set with man-made (laboratory-grown) diamonds, D-F color, VVS clarity, with an IGI Laboratory Grown Diamond Report.`
+      ? `${p.description} Set with lab-grown (laboratory-grown) diamonds, D-F color, VVS clarity, with an IGI Laboratory Grown Diamond Report.`
       : p.description,
     brand: { "@type": "Brand", name: SITE_NAME },
     manufacturer: { "@id": ORG_ID },
     category: design ? `${design.name} design` : "One-of-one",
     material: p.metals.map((m) => METAL_LABEL[m]),
     additionalProperty: [
-      ...(manMade ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Man-made (laboratory-grown) diamond, IGI report, as grown" }] : []),
-      ...(natural ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Natural diamond, F-G color, VS1 clarity, GIA report" }] : []),
+      ...(manMade ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Lab-grown diamond (laboratory-grown). Growth method and treatments: refer to the individual report." }] : []),
+      ...(natural ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Natural diamond. Refer to the individual stone specification and report." }] : []),
       { "@type": "PropertyValue", name: "Made", value: "Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported." },
       ...(p.oneOfOne ? [{ "@type": "PropertyValue", name: "Edition", value: `One of one, Royal American No. ${p.oneOfOne.number}` }] : []),
     ],
   };
-  if (low !== null) {
-    node.offers = {
-      "@type": "AggregateOffer",
-      priceCurrency: "USD",
-      lowPrice: (low / 100).toFixed(0),
-      highPrice: (Math.max(...prices) / 100).toFixed(0),
-      offerCount: p.versions.length * p.metals.length,
-      availability: p.madeToOrder ? "https://schema.org/MadeToOrder" : "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition",
-      seller: { "@id": ORG_ID },
-      url: `${SITE}/pieces/${p.handle}`,
-    };
-  }
+  // The local catalog is a preview, not a verified purchasable offer.
   return node;
 }
 
@@ -208,19 +186,18 @@ export function productJsonLdFromStorefront(
   const manMade = p?.versions.some((v) => v.origin === "man-made") ?? false;
   const natural = p?.versions.some((v) => v.origin === "natural" && v.key === "diamond") ?? false;
   const images = product.media.nodes.map((m) => m.image?.url).filter((u): u is string => !!u);
-  const offerCount = product.options.reduce((n, o) => n * Math.max(1, o.optionValues.length), 1);
-  const round = (a: string) => Number.parseFloat(a).toFixed(0);
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE}/pieces/${product.handle}#product`,
-    name: manMade ? `${product.title}, man-made diamond` : product.title,
+    name: manMade ? `${product.title}, lab-grown diamond` : product.title,
     sku: product.selectedOrFirstAvailableVariant?.sku ?? product.handle.toUpperCase(),
     url: `${SITE}/pieces/${product.handle}`,
     image: images.length ? images : (PIECE_PHOTOS[product.handle] ?? ["hero-box"]).map((k) => `${SITE}${PHOTO[k].src}`),
     description: p
       ? manMade
-        ? `${p.description} Set with man-made (laboratory-grown) diamonds, D to F color, VVS clarity, with an IGI Laboratory Grown Diamond Report.`
+        ? `${p.description} Set with lab-grown (laboratory-grown) diamonds, D to F color, VVS clarity, with an IGI Laboratory Grown Diamond Report.`
         : p.description
       : product.title,
     brand: { "@type": "Brand", name: SITE_NAME },
@@ -228,17 +205,15 @@ export function productJsonLdFromStorefront(
     category: design ? `${design.name} design` : undefined,
     material: p?.metals.map((m) => METAL_LABEL[m]),
     additionalProperty: [
-      ...(manMade ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Man-made (laboratory-grown) diamond, IGI report, as grown" }] : []),
-      ...(natural ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Natural diamond, F to G color, VS1 clarity, GIA report" }] : []),
+      ...(manMade ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Lab-grown diamond (laboratory-grown). Growth method and treatments: refer to the individual report." }] : []),
+      ...(natural ? [{ "@type": "PropertyValue", name: "Stone origin", value: "Natural diamond. Refer to the individual stone specification and report." }] : []),
       { "@type": "PropertyValue", name: "Made", value: "Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported." },
     ],
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: product.priceRange.minVariantPrice.currencyCode,
-      lowPrice: round(product.priceRange.minVariantPrice.amount),
-      highPrice: round(product.priceRange.maxVariantPrice.amount),
-      offerCount,
-      availability: p?.madeToOrder ? "https://schema.org/MadeToOrder" : product.selectedOrFirstAvailableVariant?.availableForSale ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      lowPrice: product.priceRange.minVariantPrice.amount,
+      highPrice: product.priceRange.maxVariantPrice.amount,
       itemCondition: "https://schema.org/NewCondition",
       seller: { "@id": ORG_ID },
       url: `${SITE}/pieces/${product.handle}`,

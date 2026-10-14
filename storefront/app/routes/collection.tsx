@@ -58,7 +58,7 @@ export default function CollectionPage({ loaderData }: Route.ComponentProps) {
           <p className="h-section measure text-[1.75rem] md:col-span-7 md:text-[2.25rem]">{c.story}</p>
           <p className="font-text text-ink-2 md:col-span-4 md:col-start-9">
             {bridal
-              ? "A natural diamond places the ring in Americana; a man-made diamond places it in New American. The builder prices both and labels each plainly."
+              ? "A natural diamond places the ring in Americana; a lab-grown diamond places it in New American. The builder prices both and labels each plainly."
               : "Made for you after you order it. Two to five weeks, and a note from the bench when it is cast."}
           </p>
         </div>

@@ -2,7 +2,7 @@ import { Form, Link } from "react-router";
 
 import { PieceIndex } from "~/components/Catalog";
 import { Section } from "~/components/Section";
-import { searchCatalog } from "~/lib/catalog/browse";
+import { searchCatalog, searchSuggestion } from "~/lib/catalog/browse";
 import { pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/search";
@@ -10,13 +10,13 @@ import type { Route } from "./+types/search";
 /** /search?q=: the catalog's answer on a page of its own (the dialog's Enter key, and the no-script path). */
 export function loader({ request }: Route.LoaderArgs) {
   const q = (new URL(request.url).searchParams.get("q") ?? "").trim().slice(0, 80);
-  return { q, hits: searchCatalog(q, 40) };
+  return { q, hits: searchCatalog(q, 40), suggestion: searchSuggestion(q) };
 }
 
 export const meta: Route.MetaFunction = ({ data }) => pageMeta({ title: data?.q ? `Search: ${data.q}` : "Search", description: "Search the house by piece, design, line, stone or store.", path: "/search", noindex: true });
 
 export default function SearchPage({ loaderData }: Route.ComponentProps) {
-  const { q, hits } = loaderData;
+  const { q, hits, suggestion } = loaderData;
   const pieces = hits.filter((h) => h.piece).map((h) => h.piece!);
   const others = hits.filter((h) => !h.piece);
   return (
@@ -25,7 +25,7 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
         <div className="flex max-w-3xl flex-col gap-6">
           <h1 className="h-display text-[3rem] md:text-[4.5rem]">Search</h1>
           <Form method="get" className="flex gap-3">
-            <input name="q" defaultValue={q} className="field font-text text-[1.125rem]" placeholder="A piece, a design, a stone, a store" aria-label="Search" autoComplete="off" />
+            <input key={q} name="q" defaultValue={q} className="field font-text text-[1.125rem]" placeholder="A piece, a design, a stone, a store" aria-label="Search" autoComplete="off" />
             <button type="submit" className="btn btn-outline">
               Search
             </button>
@@ -41,6 +41,7 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
       {q && hits.length === 0 && (
         <Section screen>
           <p className="h-section max-w-[28ch] text-[1.75rem] md:text-[2.25rem]">Nothing in the house answers to that.</p>
+          {suggestion && <p className="mt-6"><Link className="link" to={`/search?q=${encodeURIComponent(suggestion)}`}>Did you mean {suggestion}?</Link></p>}
           <Link to="/jewelry" className="link mt-6">
             Every piece in the house
           </Link>

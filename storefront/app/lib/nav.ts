@@ -81,7 +81,7 @@ export const NAV: NavPanel[] = [
       {
         title: "Before you choose",
         links: [
-          { href: "/natural-or-man-made", label: "Natural or man-made" },
+          { href: "/natural-or-man-made", label: "Natural or lab-grown" },
           { href: `/journal/${ARTICLES.find((a) => a.slug === "ring-size-honestly")?.slug ?? "ring-size-honestly"}`, label: "Ring size, honestly" },
           { href: "/appointments?kind=bridal", label: "An hour with the settings" },
         ],
@@ -91,17 +91,17 @@ export const NAV: NavPanel[] = [
     line: "Choose the setting, then the stone. Each ring is labeled plainly with which it is.",
   },
   {
-    label: "Royal American",
+    label: "High Jewelry",
     href: "/royal-american",
     columns: [
       {
-        title: "The registry",
+        title: "Royal American",
         links: registry.map((p) => ({ href: `/pieces/${p.handle}`, label: `No. ${p.oneOfOne?.number}, ${p.name}` })),
       },
       {
         title: "By appointment",
         links: [
-          { href: "/royal-american", label: "The registry, whole" },
+          { href: "/royal-american", label: "Explore Royal American" },
           { href: "/appointments?tier=royal-american", label: "Request a private viewing" },
           { href: "/commission", label: "Commission a piece" },
         ],
@@ -157,13 +157,13 @@ export const NAV: NavPanel[] = [
         title: "The standard",
         links: [
           { href: "/new-american#standard", label: "The New American Standard" },
-          { href: "/natural-or-man-made", label: "Natural or man-made" },
+          { href: "/natural-or-man-made", label: "Natural or lab-grown" },
           { href: `/journal/${ARTICLES[0]?.slug ?? "journal"}`, label: "Reading an IGI report" },
         ],
       },
     ],
     photo: { key: "comp-new-american-opener", caption: "Signal, on limestone", href: "/new-american", position: "70% 50%" },
-    line: "Man-made diamonds (laboratory-grown), D to F, VVS, IGI report on every center stone.",
+    line: "Lab-grown diamonds (laboratory-grown), D to F, VVS, IGI report on every center stone.",
   },
   {
     label: "Services",
@@ -203,7 +203,7 @@ export const NAV: NavPanel[] = [
     href: "/stores",
     columns: [
       {
-        title: "Two stores, one bench",
+        title: "Two stores, two working shops",
         links: STORES.map((s) => ({ href: `/stores/${s.slug}`, label: s.name, note: `${s.address1}, ${s.city}` })),
       },
       {
@@ -223,9 +223,9 @@ export const NAV: NavPanel[] = [
       {
         title: "The House",
         links: [
-          { href: "/house", label: "A letter from the family" },
-          { href: "/house#making", label: "How a piece is made here" },
-          { href: "/natural-or-man-made", label: "Natural or man-made" },
+          { href: "/house", label: "Meet American Jewelry" },
+          { href: "/house#making", label: "Design and the bench" },
+          { href: "/natural-or-man-made", label: "Natural or lab-grown" },
         ],
       },
       {

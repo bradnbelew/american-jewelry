@@ -94,7 +94,7 @@ export default function DesignPage({ loaderData }: Route.ComponentProps) {
       <Section screen width="text">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <p className="font-text max-w-xl text-[1.0625rem] text-ink-2">
-            {drawable ? `Every ${d.name} setting takes a natural or a man-made stone. The name on the box follows the stone.` : `${d.name} belongs to ${tier.name}.`}
+            {drawable ? `Every ${d.name} setting takes a natural or a lab-grown diamond. The name on the box follows the stone.` : `${d.name} belongs to ${tier.name}.`}
           </p>
           {drawable ? (
             <Link to={`/build/ring?setting=${drawable}`} className="btn">
