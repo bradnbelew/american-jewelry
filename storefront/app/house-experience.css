@@ -231,7 +231,8 @@
 .metal-option[aria-pressed="true"] { border-color:var(--ink); }
 .metal-option .swatch-dot { flex-shrink:0; width:12px; height:12px; }
 .piece-size-engraving { display:flex; flex-direction:column; gap:24px; }
-.piece-choice-form { gap:20px; }
+.piece-choice-form { gap:16px; }
+.piece-choice-form .link-quiet { display:inline-flex; align-items:center; min-height:44px; }
 .piece-stone-description { min-height:3.2em; font-size:16px; line-height:1.6; }
 .engraving-option > summary { display:flex; justify-content:space-between; align-items:center; min-height:44px; font-size:13px; cursor:pointer; }
 .engraving-option > div { margin-top:16px; }
@@ -262,9 +263,9 @@
 }
 
 @media (min-width:1024px) {
- .piece-size-engraving { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:end; }
+ .piece-size-engraving { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
  .piece-size-engraving > .engraving-option:only-child { grid-column:1/-1; }
- .pdp-buy > div:first-child { gap:20px; }
+ .pdp-buy > div:first-child { gap:16px; }
  .metal-options { grid-template-columns:repeat(3,minmax(0,1fr)); }
  .house-header .nav-item { font-size:11px; letter-spacing:.075em; }
  .house-header .panel { border-top:1px solid var(--hair); }
@@ -428,4 +429,93 @@
  .commission-process li { grid-template-columns:1fr; gap:8px; }
  .policy-index { display:grid; grid-template-columns:1fr 1fr; gap:8px 16px; }
  .stone-links { padding-top:40px; }
+}
+
+/* Line context is navigation, separate from the product filter drawer. */
+.line-nav { display:flex; align-items:center; gap:32px; border-bottom:1px solid var(--hair, #d9d7d1); min-height:64px; }
+.line-nav > a, .line-nav > button { display:inline-flex; min-height:64px; align-items:center; padding:16px 0; border-bottom:1px solid transparent; margin-bottom:-1px; font-family:var(--font-sans); font-size:14px; color:var(--ink-2); white-space:nowrap; }
+.line-nav > [aria-current=page], .line-nav > [aria-pressed=true] { border-bottom-color:var(--ink); color:var(--ink); }
+.line-nav > a:hover, .line-nav > button:hover { color:var(--ink); }
+.line-choice { padding-top:48px; padding-bottom:64px; }
+.line-choice-heading { display:flex; justify-content:space-between; align-items:baseline; gap:24px; margin-bottom:32px; }
+.line-choice-heading h1 { font-family:var(--font-display); font-size:48px; line-height:1.08; font-weight:400; }
+.line-choice-heading p { font-size:18px; color:var(--ink-2); }
+.line-choice-grid { display:grid; gap:24px; }
+.line-choice-grid.three-lines { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.line-choice-grid.two-lines { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.line-choice-photo { position:relative; aspect-ratio:4/3; overflow:hidden; }
+.bridal-choice .line-choice-photo { aspect-ratio:6/5; }
+.line-choice-photo img { transition:transform 600ms ease; }
+.line-choice-link:hover .line-choice-photo img { transform:scale(1.025); }
+.line-choice-caption { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:16px; }
+.line-choice-caption h2 { font-family:var(--font-display); font-size:32px; font-weight:400; line-height:1.16; }
+.line-choice-caption p { margin-top:8px; font-size:14px; color:var(--ink-2); }
+.line-choice-caption > span { font-size:24px; }
+.line-choice-help { margin-top:40px; text-align:center; }
+.line-browse { padding-bottom:64px; }
+.line-browse-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; padding:40px 0 32px; }
+.line-browse-heading h1 { font-family:var(--font-display); font-size:48px; line-height:1.08; margin-top:12px; }
+.line-browse-heading > p { color:var(--ink-2); font-size:16px; }
+.line-browse .browse-kinds, .family-section > .browse-kinds { margin-bottom:32px; }
+.bridal-selected .collection-object { aspect-ratio:3/2; }
+.bridal-selected .collection-heading-copy .link { margin-top:24px; }
+.signature-line-nav { margin-bottom:20px; }
+.line-result-group + .line-result-group { margin-top:64px; padding-top:40px; border-top:1px solid var(--hair); }
+.search-line-groups { display:grid; gap:24px; padding-top:24px; }
+.search-line-groups h2 { margin-bottom:8px; }
+.royal-invitation { position:relative; background:#101c30; color:#fff; min-height:620px; }
+.royal-invitation-image { position:absolute; inset:0; }
+.royal-invitation-image img { object-position:65% 50%; }
+.royal-invitation-copy { position:relative; z-index:1; padding:80px max(48px,calc((100vw - 1344px)/2)); width:100%; min-height:620px; display:flex; align-items:start; flex-direction:column; justify-content:end; background:linear-gradient(90deg,rgba(7,14,27,.55),transparent 65%); }
+.royal-invitation-copy h2 { font-family:var(--font-display); font-size:44px; line-height:1.08; margin:12px 0 24px; }
+.saved-line-group + .saved-line-group { margin-top:40px; }
+.saved-line-group > h2 { font-family:var(--font-display); font-size:28px; margin-bottom:20px; }
+@media(max-width:1023px) {
+ .line-choice { padding-top:40px; }
+ .line-choice-heading { align-items:start; flex-direction:column; gap:12px; }
+ .line-choice-caption h2 { font-size:28px; }
+ .line-choice-caption p { font-size:13px; }
+}
+@media(max-width:767px) {
+ .line-nav { gap:20px; min-height:56px; }
+ .line-nav > a, .line-nav > button { min-height:56px; font-size:12px; }
+ .line-choice { padding-top:32px; padding-bottom:40px; }
+ .line-choice-heading { margin-bottom:24px; }
+ .line-choice-heading h1 { font-size:36px; }
+ .line-choice-heading p { font-size:16px; }
+ .line-choice-grid.two-lines, .line-choice-grid.three-lines { grid-template-columns:1fr; gap:32px; }
+ .line-choice-photo, .bridal-choice .line-choice-photo { aspect-ratio:1.6; }
+ .line-choice-caption { padding-top:16px; }
+ .line-choice-caption h2 { font-size:24px; }
+ .line-choice-caption p { margin-top:6px; font-size:14px; }
+ .line-choice-help { margin-top:32px; }
+ .line-browse-heading { flex-direction:column; align-items:start; gap:16px; padding:32px 0 24px; }
+ .line-browse-heading h1 { font-size:36px; }
+ .line-browse .browse-kinds, .family-section > .browse-kinds { margin-bottom:24px; }
+ .royal-invitation, .royal-invitation-copy { min-height:520px; }
+ .royal-invitation-copy { padding:40px 20px; background:linear-gradient(0deg,rgba(7,14,27,.65),transparent 70%); }
+ .royal-invitation-copy h2 { font-size:40px; }
+ .line-result-group + .line-result-group { margin-top:40px; padding-top:32px; }
+}
+@media(prefers-reduced-motion:reduce) { .line-choice-photo img { transition:none; } }
+
+.royal-piece .piece-gallery-stage > div { aspect-ratio:16/9; }
+.royal-piece .pdp-buy { max-width:62ch; font-size:16px; }
+
+@media(max-width:767px) { .line-campaign > picture > img { object-position:50% 45% !important; } }
+.royal-invitation-copy .label { color:inherit; }
+
+/* Configuration choices remain distinct without repeating the selected option. */
+.builder-heading { padding-bottom:64px; }
+.builder-inline-field { display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:13px; }
+.builder-inline-field select { width:144px; }
+.builder-size-row { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.builder-size-row select { width:144px; }
+.builder-engraving-label { display:flex; flex-direction:column; gap:16px; }
+.builder-engraving-label input { width:100%; }
+.builder-actions { padding-top:16px; }
+.line-campaign .campaign-copy { gap:16px; }
+@media(max-width:599px) {
+ .builder-heading { padding-bottom:32px; }
+ .ring-builder .builder-summary { gap:16px; }
 }

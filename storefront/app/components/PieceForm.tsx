@@ -44,7 +44,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
   const manMade = version?.origin === "man-made";
   const stoneLine = manMade
     ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report."
-    : (version?.stones ?? (piece ? "Solid 14k or 18k gold, karat-marked." : ""));
+    : (version?.stones ?? metalValue ?? "");
   const photo = (PIECE_PHOTOS[product.handle] ?? ["hero-box"])[0];
   const storeQuery = new URLSearchParams({ piece: product.handle, ...(versionValue ? { version: versionValue } : {}), ...(metalValue ? { metal: metalValue } : {}), ...(size ? { size } : {}), ...(engrave ? { engraving: engrave } : {}) }).toString();
   const savedParams = new URLSearchParams(base);
@@ -78,10 +78,11 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
         const isMetal = option.name === "Metal";
         return (
           <Field key={option.name} label={isMetal ? "Metal" : "Stone"} hint={isMetal ? metalValue : undefined}>
-            <div className={isMetal ? "metal-options" : option.values.length <= 3 ? "grid grid-cols-3 gap-2" : "flex flex-col gap-2"} role="group" aria-label={option.name}>
+            <div className={isMetal ? "metal-options" : "grid gap-2"} style={!isMetal ? {gridTemplateColumns:`repeat(${Math.min(option.values.length,3)},minmax(0,1fr))`} : undefined} role="group" aria-label={option.name}>
               {option.values.map((value) => {
                 const registered = register("optionValue", { optionName: option.name, value: value.name });
                 const metalKey = isMetal ? metalKeyFromLabel(value.name) : null;
+                const label = !isMetal && piece?.versions.find((v) => v.name === value.name)?.key === "gold" ? "No stones" : value.name;
                 const content: ReactNode = isMetal ? (
                   <>
                     <span className="swatch-dot" style={{ background: metalKey ? METAL_SWATCH[metalKey] : "#ccc" }} />
@@ -89,13 +90,13 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
                   </>
                 ) : (
                   <>
-                    <span>{value.name}</span>
+                    <span>{label}</span>
                     {!value.available ? <span className="label text-[0.8125rem]">Sold out</span> : null}
                   </>
                 );
                 if (!value.exists) {
                   return (
-                    <button key={value.name} type="button" disabled className={isMetal ? "metal-option opacity-40" : "opt justify-center opacity-40"} aria-pressed={value.selected} aria-label={isMetal ? value.name : undefined} title={value.name}>
+                    <button key={value.name} type="button" disabled className={isMetal ? "metal-option opacity-40" : "opt !justify-center opacity-40"} aria-pressed={value.selected} aria-label={isMetal ? value.name : undefined} title={value.name}>
                       {content}
                     </button>
                   );
@@ -107,11 +108,11 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
                     to={to}
                     replace
                     preventScrollReset
-                    className={isMetal ? "metal-option" : "opt justify-center"}
+                    className={isMetal ? "metal-option" : "opt !justify-center"}
                     aria-current={value.selected ? "true" : undefined}
                     aria-pressed={value.selected}
                     aria-label={isMetal ? value.name : undefined}
-                    title={value.name}
+                    title={label}
                     data-available={value.available ? "true" : "false"}
                     onClick={linkClick(() => {
                       registered.onClick();
@@ -131,7 +132,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
       {(piece?.sizes || piece?.engraving) && (
         <div className="piece-size-engraving">
           {piece?.sizes && (
-            <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet inline-flex min-h-11 items-center">Sizing help</Link>}>
+            <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet">Sizing help</Link>}>
               <select id={`size-${product.handle}`} form={`order-${product.handle}`} required className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
                 <option value="" disabled>Choose your size</option>
                 {piece.sizes.map((s) => (
@@ -144,7 +145,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
           )}
           {piece?.engraving && (
             <details className="engraving-option" open={Boolean(base.get("engraving"))}><summary>Add engraving <span className="label">Optional</span></summary><Field label="Engraving" hint="20 characters">
-              <input id={`engrave-${product.handle}`} value={engrave} onChange={(e) => setEngrave(e.target.value.slice(0, 20))} maxLength={20} placeholder="Initials, a date, a word" className="field font-text text-base" autoComplete="off" />
+              <input id={`engrave-${product.handle}`} value={engrave} onChange={(e) => setEngrave(e.target.value.slice(0, 20))} maxLength={20} aria-label="Engraving" placeholder="Initials, a date, a word" className="field font-text text-base" autoComplete="off" />
             </Field></details>
           )}
         </div>
@@ -201,7 +202,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
 function Field({ label, hint, children }: { label: string; hint?: ReactNode; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex h-5 items-baseline justify-between gap-4 text-[0.8125rem]">
+      <div className="flex min-h-5 items-baseline justify-between gap-4 text-[0.8125rem]">
         <span className="text-ink">{label}</span>
         {hint && <span className="min-h-5 text-muted">{hint}</span>}
       </div>

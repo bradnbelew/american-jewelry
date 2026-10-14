@@ -1,5 +1,5 @@
 import { getSelectedProductOptions } from "@shopify/hydrogen";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 
 import { PieceConfigurator, metalTone } from "~/components/PieceConfigurator";
@@ -11,6 +11,7 @@ import { viewingFor } from "~/components/three/viewing/pieces";
 import { STORES, designBySlug, pieceByHandle, pieceRef, piecesForDesign, tierBySlug } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Metal, Piece } from "~/lib/catalog/types";
+import { METAL_LABEL } from "~/lib/catalog/types";
 import { modelFor } from "~/lib/models";
 import { PIECE_OPTION_NAMES, PIECE_QUERY, type PieceProduct } from "~/lib/piece-query";
 import { ProductProvider, metalKeyFromLabel, pieceUrl } from "~/lib/product";
@@ -65,8 +66,10 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const piece = pieceByHandle(handle);
   const navigate = useNavigate();
   const location = useLocation();
-  const initialMetal = product ? (metalKeyFromLabel(product.selectedOrFirstAvailableVariant?.selectedOptions.find((o) => o.name === "Metal")?.value ?? "") ?? piece?.metals[0] ?? "14k-yellow") : (piece?.metals[0] ?? "14k-yellow");
+  const requestedMetal = new URLSearchParams(location.search).get("Metal");
+  const initialMetal = product ? (metalKeyFromLabel(product.selectedOrFirstAvailableVariant?.selectedOptions.find((o) => o.name === "Metal")?.value ?? "") ?? piece?.metals[0] ?? "14k-yellow") : (piece?.metals.find((m) => METAL_LABEL[m] === requestedMetal) ?? piece?.metals[0] ?? "14k-yellow");
   const [metal, setMetal] = useState<Metal>(initialMetal);
+  useEffect(() => setMetal(initialMetal), [initialMetal, handle]);
 
   const tier = piece ? tierBySlug(piece.tier) : null;
   const design = piece ? designBySlug(piece.design) : undefined;
@@ -82,7 +85,9 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const caratMatch = /(\d+(?:\.\d+)?)\s*ct/.exec(versionLabel) ?? /(\d+(?:\.\d+)?)\s*ct/.exec(piece?.versions.find((v) => v.name === versionLabel)?.stones ?? "");
   const carat = caratMatch ? Number(caratMatch[1]) : undefined;
 
-  const buyColumn = piece?.concept ? (
+  const buyColumn = royal && piece ? (
+    <div className="royal-enquiry"><p className="label">One of one</p><p className="font-display text-[1.75rem]">Price on request</p><Link className="btn mt-6" to={`/appointments?tier=royal-american&piece=${piece.handle}`}>Request a private viewing</Link></div>
+  ) : piece?.concept ? (
     <div className="concept-enquiry"><p className="label">Design concept</p><p className="font-text">Materials, dimensions and price confirmed at consultation.</p><Link className="btn" to={`/appointments?piece=${piece.handle}`}>Discuss this design</Link></div>
   ) : product ? (
     <ProductProvider
@@ -94,7 +99,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
       <PieceForm key={handle} product={product} piece={piece} onMetal={setMetal} />
     </ProductProvider>
   ) : piece ? (
-    <PieceConfigurator key={handle} piece={piece} onMetal={setMetal} />
+    <PieceConfigurator key={`${handle}:${location.search}`} piece={piece} onMetal={setMetal} />
   ) : null;
 
   return (
@@ -118,7 +123,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
       </Section>
 
       <Section className="pdp-main">
-        <div className="piece-layout">
+        <div className={`piece-layout ${royal ? "royal-piece" : ""}`}>
           <div className="pdp-heading">
             <h1>{title}</h1>
             {piece && !piece.concept && <p className="label">Ref. {pieceRef(piece)}{royal ? `, Royal American No. ${piece.oneOfOne?.number}` : tier ? `, ${tier.name}` : ""}</p>}
@@ -127,7 +132,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
             <PieceGallery
               photos={PIECE_PHOTOS[handle] ?? ["hero-box"]}
               title={title}
-              caption="Concept photograph. Confirm details with the house."
+              caption={handle === "shooting-star-ring" ? "Natural diamond version shown. Concept photograph." : handle === "prism-band" ? "Solid gold version shown. Concept photograph." : "Concept photograph. Selected options may differ."}
               model={galleryModel}
               metal={metalTone(metal)}
               open3d={open3d}
@@ -147,19 +152,6 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 
       {piece && design && <Siblings piece={piece} designSlug={design.slug} designName={design.name} />}
 
-      {royal && (
-        <Section className="pb-8" width="text">
-          <div className="grid gap-8 md:grid-cols-2 md:gap-16">
-            <h2 className="h-section text-[1.75rem] md:text-[2rem]">One of one</h2>
-            <div className="font-text flex flex-col gap-4 text-ink-2">
-              <p>Proposed as a single creation, with its own entry in the house registry. Availability and final details are confirmed by inquiry.</p>
-              <Link to="/royal-american" className="link self-start">
-                The registry
-              </Link>
-            </div>
-          </div>
-        </Section>
-      )}
     </>
   );
 }
@@ -168,7 +160,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 function Details({ piece }: { piece: Piece }) {
   const manMade = piece.versions.some((v) => v.origin === "man-made");
   const salon = STORES[1];
-  if (piece.oneOfOne) return <div className="font-text flex flex-col gap-5"><p>This registry entry is an illustrative design concept. Availability, stone weights, origin, treatment and reports must be confirmed with the house.</p><Link to={`/appointments?piece=${piece.handle}`} className="link self-start">Ask about this piece</Link></div>;
+  if (piece.oneOfOne) return <div className="font-text flex flex-col gap-5"><p>This registry entry is an illustrative design concept. Availability, stone weights, origin, treatment and reports must be confirmed with the house.</p></div>;
   return (
     <>
       <table className="spec">
@@ -242,7 +234,7 @@ function Details({ piece }: { piece: Piece }) {
 
 /** The siblings in the design, as a ledger of names: one photograph per row, the price aligned. */
 function Siblings({ piece, designSlug, designName }: { piece: Piece; designSlug: string; designName: string }) {
-  const siblings = piecesForDesign(piece.design).filter((p) => p.handle !== piece.handle).slice(0, 4);
+  const siblings = piecesForDesign(piece.design).filter((p) => p.handle !== piece.handle && p.tier === piece.tier && !p.oneOfOne).slice(0, 4);
   if (siblings.length === 0) return null;
   return (
     <Section className="related-pieces">

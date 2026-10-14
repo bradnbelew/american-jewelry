@@ -12,6 +12,7 @@ for (const [name, path] of Object.entries({
   types: "catalog/types",
   data: "catalog/data",
   browse: "catalog/browse",
+  lines: "catalog/lines",
   "design-preview": "design-preview",
   "piece-selection": "piece-selection",
 })) {
@@ -26,6 +27,7 @@ const { PIECES, DESIGNS, COLLECTIONS, pieceByHandle, piecesForCollection } = awa
 const { readQuery, applyQuery, searchCatalog, searchSuggestion, stonesOf, matchingVersion } = await load("browse");
 const { readDesign, designCookie } = await load("design-preview");
 const { sizeIsReady, explicitSize } = await load("piece-selection");
+const { selectedLine, shopPieces, lineHref } = await load("lines");
 let count = 0;
 const check = (name, fn) => {
   fn();
@@ -112,5 +114,24 @@ check("Proposed designs have no prices, production promises or existing-product 
 check("New styles are searchable and filterable without changing the existing catalog", () => {
  assert.equal(applyQuery(PIECES, query("design=meridian")).length, 3);
  assert(searchCatalog("horizon huggies").some(h => h.piece?.handle === "horizon-earrings"));
+});
+check("Every regular shopping line excludes Royal objects", () => {
+ for(const line of ["americana","new-american"]) assert(shopPieces(line).every(p => p.tier===line && !p.oneOfOne));
+ for(const c of COLLECTIONS) assert(piecesForCollection(c.slug).every(p=>p.tier!=="royal-american" && !p.oneOfOne));
+});
+check("Bridal has real catalog rings for each regular line", () => {
+ assert.deepEqual(shopPieces("americana",piecesForCollection("bridal")).map(p=>p.handle),["shooting-star-band","prism-band"]);
+ assert(shopPieces("new-american",piecesForCollection("bridal")).length>=2);
+});
+check("Ordinary search never returns individual Royal objects", () => {
+ for(const term of ["diamond","ring","gold","natural","high jewelry","cumberland","tennessee star","harpeth"]) assert(searchCatalog(term,99).every(h=>!h.piece?.oneOfOne));
+ for(const term of ["cumberland","tennessee star","harpeth"]) assert(searchCatalog(term,99).some(h=>h.href==="/royal-american"));
+});
+check("Line switching keeps category and sort while clearing incompatible facets", () => {
+ assert.equal(lineHref("/jewelry/rings","new-american",new URLSearchParams("line=americana&stone=birthstone&design=prism&sort=price-asc")),"/jewelry/rings?line=new-american&sort=price-asc");
+ assert.equal(lineHref("/collections/bridal","royal-american"),"/royal-american");
+ assert.equal(selectedLine(new URLSearchParams("stone=man-made")),"new-american");
+ assert.equal(selectedLine(new URLSearchParams("design=signal")),"new-american");
+ assert.equal(selectedLine(new URLSearchParams("line=americana&line=new-american")),"americana");
 });
 console.log(`\n${count} shopping regression checks passed.`);

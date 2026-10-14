@@ -92,3 +92,7 @@ Discounts, sales, coupons, percent-off, "free" or percent banners, countdowns, u
 - `marketing/10-positioning.md`, `11-marketing-plan.md`, `12-launch-plan.md` (all Proposed)
 - `site/20-site-plan.md`, `site/21-section-brief-template.md`, `site/pages/*.md`
 - `decisions.md`, `open-questions.md`, `roadmap.md`, `HANDOFF.md` (build state, gotchas), `docs/REMAKE-BLUEPRINT.md`
+
+## 14 October 2026 — three encompassing jewelry lines
+
+Owner direction supersedes earlier mixed-line catalog treatments. Americana (gold, gemstones, natural diamonds), New American (lab-grown diamonds), Royal American (one of one) are the foundation of shopping. Royal objects appear in their own registry and dedicated piece pages, never mixed into ordinary shopping, recommendations, bridal or comparison. Collections may span styles; their product results remain in a single clearly selected line. Bridal first offers Americana and New American with explicit diamond-origin labels. Keep all concept/availability disclosures truthful.

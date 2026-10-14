@@ -45,7 +45,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       <div className="flex flex-col gap-1.5">
         <span className="font-display num text-[1.75rem] leading-none">{price === null ? "Price on request" : formatPrice(price)}</span>
         <span className="piece-stone-description font-text text-base text-ink-2">
-          {manMade ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? "Solid 14k or 18k gold, karat-marked.")}
+          {manMade ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? METAL_LABEL[metal])}
         </span>
         <span className="label">
           {piece.leadTime}
@@ -59,18 +59,17 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
 
       {piece.versions.length > 1 && (
         <Field label="Stone">
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid gap-2" role="group" aria-label="Stone" style={{gridTemplateColumns:`repeat(${Math.min(piece.versions.length,3)},minmax(0,1fr))`}}>
             {piece.versions.map((v) => (
-              <button key={v.key + v.name} type="button" className="opt flex-col justify-center text-center" aria-pressed={v === version} onClick={() => setVersion(v)}>
-                <span>{v.name}</span>
-                <span className="num text-[0.8125rem] text-ink-2">{v.priceCents === null ? "On request" : formatPrice(v.priceCents)}</span>
+              <button key={v.key + v.name} type="button" className="opt flex-col !justify-center text-center" aria-pressed={v === version} onClick={() => setVersion(v)}>
+                <span>{v.key === "gold" ? "No stones" : v.name}</span>
               </button>
             ))}
           </div>
         </Field>
       )}
 
-      <Field label="Metal">
+      {piece.metals.length > 1 && <Field label="Metal">
         <div className="metal-options" role="group" aria-label="Metal">
           {piece.metals.map((m) => (
             <button key={m} type="button" aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="metal-option" aria-pressed={m === metal} onClick={() => setMetal(m)}>
@@ -78,7 +77,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
             </button>
           ))}
         </div>
-      </Field>
+      </Field>}
 
       <div className="piece-size-engraving">{piece.sizes && (
         <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet">Sizing help</Link>}>
@@ -95,7 +94,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
 
       {piece.engraving && (
         <details className="engraving-option" open={Boolean(params.get("engraving"))}><summary>Add engraving <span className="label">Optional</span></summary><Field label="Engraving" hint="20 characters">
-          <input id={`engrave-${piece.handle}`} value={engrave} onChange={(e) => setEngrave(e.target.value.slice(0, 20))} placeholder="Initials, a date, a word" className="field font-display text-lg" />
+          <input id={`engrave-${piece.handle}`} value={engrave} onChange={(e) => setEngrave(e.target.value.slice(0, 20))} maxLength={20} aria-label="Engraving" placeholder="Initials, a date, a word" className="field font-text text-base" />
         </Field></details>
       )}
 
@@ -123,7 +122,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
 function Field({ label, hint, children }: { label: string; hint?: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex h-5 items-baseline justify-between gap-4 text-[0.8125rem]">
+      <div className="flex min-h-5 items-baseline justify-between gap-4 text-[0.8125rem]">
         <span className="text-ink">{label}</span>
         {hint && <span className="text-muted">{hint}</span>}
       </div>

@@ -123,3 +123,20 @@ Format: date | decision | why | source
 - 2026-10-13 | P5: selectable thumbnail views with a full-screen, keyboard-operated photographic viewer replace a vertical gallery. All views remain visible and reachable. | mobile gallery requirement | house-direction implementation
 
 - 2026-10-13 | C5 photographic exception: retain the selected Family composition on a navy tray across home, Family, collection index and its navigation panel. The owner authorized a coordinated new image set and broader cross-style collection design; this is an implementation art-direction choice within that scope, not a claim that the owner specifically requested navy. Royal American keeps its distinctive full navy page ground. Other non-Royal pages remain paper. Keep all three objects uncropped at every width. | selected campaign delivery; campaign-manifest.json | final image integration
+
+## 14 October 2026 — line context before product filters
+
+The owner requires three encompassing lines and a two-line choice at the entrance to Bridal. Use two equal photographic doors here despite the older preference against equal tiles: this is a balanced material choice, not a promotional grid. Keep the names Americana and New American, explained by Natural diamonds and Lab-grown diamonds. Royal American is one of one and isolated from normal product results. A quiet line underline persists through browsing; clearing filters never clears the line. Royal name searches lead to its registry. Americana bridal initially uses the actual Shooting Star and Prism bands plus the existing natural-diamond builder; no new stocked solitaire is invented. The home Royal invitation is a dedicated line gateway without registry item names or selectors.
+
+## 14 October 2026 — final line review choices
+
+Bridal and Jewelry photographic captions use a 16px gap. General line gateways use 4:3 frames to preserve ring shapes; Bridal retains two wider worn photographs. Royal product photography uses its native 16:9 proportion at every width, with the inquiry text at 16px and limited to 62ch. The builder uses named setting controls and a 4:3 tablet stage. Its brief loading state remains truthful text rather than a static photograph that could misrepresent a configured ring. Royal PDPs intentionally prioritize one private-viewing action; adding another Keep button is not necessary for this inquiry-led flow and would work against the owner's request to remove unneeded controls. Existing saved records still remain grouped by line.
+
+
+## 14 October 2026 — final configuration review
+
+Owner requested meticulous review of the builder and product choices before the primary-branch push. The builder now presents setting, diamond, metal and size without repeating each selected option beside its label. Carat has its own visible label; engraving is optional and folded; prong style and count are separate groups. Keep and copy remain secondary. A single “Review your ring” link leads to the saved configuration summary, where the existing request action remains. The design code belongs on that summary, not among the editing controls. The ring opens in a stable three-quarter view and turns in response to choices or drag. Price/qualification disclosures remain truthful.
+
+T10/T12: individual configuration groups are form groups rather than page sections. The page heading has one 64px desktop boundary; label/control groups use 16px. Product engraving has an accessible label, product option grids match the actual choice count, and the size field stays in place when engraving expands. New American’s tablet campaign centers the complete ring in the frame.
+
+Final review corrections: product photographs identify the shown version where confirmed (Shooting Star Ring: natural diamond; Prism Band: solid gold); other fixed photographs disclose that selected options may differ. Saved fallback PDP links initialize and synchronize gallery metal with the same allowed query value used by the option controls. The review page keeps the request action and Edit design, removing the duplicate appointment route.

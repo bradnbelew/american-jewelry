@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { DESIGNS, STORES, pieceByHandle, piecesForDesign, piecesForTier } from "~/lib/catalog/data";
+import { DESIGNS, STORES, tierBySlug, pieceByHandle, piecesForDesign, piecesForTier } from "~/lib/catalog/data";
+import { SHOP_LINES, type ShopLine } from "~/lib/catalog/lines";
 import { DESIGN_PHOTO, PIECE_PHOTOS } from "~/lib/catalog/photos";
 import { priceLine } from "./Catalog";
 import { Pic } from "./Pic";
@@ -27,14 +28,16 @@ const SIGNATURE_WORDS: Record<string, string> = {
 
 /** Open a style family, then select its forms. Proposals are explicitly labeled. */
 export function SignatureCabinet({initial = "shooting-star"}: {initial?: string}) {
+  const [line, setLine] = useState<ShopLine>("americana");
   const [slug, setSlug] = useState(initial);
   const [selected, setSelected] = useState(0);
   const d = DESIGNS.find((design) => design.slug === slug)!;
   const pieces = piecesForDesign(slug);
   const focus = pieces[selected] ?? pieces[0];
   return <section className="signature-cabinet house-wrap" aria-label="Explore the house signatures">
-    <div className="house-heading"><h2>The house signatures</h2><Link to="/designs" className="link">All designs</Link></div>
-    <div className="signature-tabs" role="group" aria-label="Choose a design">{DESIGNS.map((design) => <button key={design.slug} type="button" aria-pressed={slug === design.slug} onClick={() => {setSlug(design.slug); setSelected(0);}}>{design.name}</button>)}</div>
+    <div className="house-heading"><h2>The house signatures</h2><Link to={`/designs?line=${line}`} className="link">All designs</Link></div>
+    <div className="line-nav signature-line-nav" role="group" aria-label="Signature line">{SHOP_LINES.map(l => <button type="button" key={l} aria-pressed={line===l} onClick={() => {setLine(l); setSlug(l==="americana" ? "shooting-star" : "signal"); setSelected(0);}}>{tierBySlug(l).name}</button>)}</div>
+    <div className="signature-tabs" role="group" aria-label="Choose a design">{DESIGNS.filter(design => design.tier===line).map((design) => <button key={design.slug} type="button" aria-pressed={slug === design.slug} onClick={() => {setSlug(design.slug); setSelected(0);}}>{design.name}</button>)}</div>
     <div className="signature-room" key={slug}>
       <div className="signature-story">
         {d.concept && <p className="label">Proposed design</p>}
@@ -55,9 +58,10 @@ export function RoyalPreview({full = false}: {full?: boolean}) {
   const pieces = piecesForTier("royal-american");
   const [index, setIndex] = useState(0);
   const piece = pieces[index];
+  if (!full) return <section className="royal-invitation"><div className="royal-invitation-image"><Pic k="comp-cumberland-velvet" /></div><div className="royal-invitation-copy"><p className="label">One of one</p><h2>Royal American</h2><Link className="campaign-link" to="/royal-american">Enter the collection</Link></div></section>;
   return <section className={`royal-room ${full ? "royal-room-full" : ""}`} aria-label="Royal American high jewelry">
     <div className="royal-display house-wrap">
-      <div className="royal-room-heading"><p className="label">High Jewelry</p>{full ? <h1>Royal American</h1> : <h2>Royal American</h2>}</div>
+      <div className="royal-room-heading"><p className="label">One of one</p>{full ? <h1>Royal American</h1> : <h2>Royal American</h2>}</div>
       <div className="royal-object"><Pic k={PIECE_PHOTOS[piece.handle][0]} /></div>
       <div className="royal-description"><h3>{piece.name}</h3><p>{index === 0 ? "A round brilliant held in a sculpted platinum setting." : index === 1 ? "A blue sapphire at the heart of a diamond star." : "Graduated diamonds in a flowing line of gold."}</p><Link className="campaign-link" to={`/pieces/${piece.handle}`}>Discover the piece</Link></div>
       <div className="royal-list" role="group" aria-label="Choose a registry concept">{pieces.map((p, i) => <button type="button" key={p.handle} onClick={() => setIndex(i)} aria-pressed={index === i}><span className="royal-entry-number">{p.oneOfOne?.number}</span><span>{p.name}</span></button>)}</div>
@@ -83,5 +87,5 @@ export function VisitInvitation() {
   return <section className="visit-invitation house-wrap"><div><h2>Visit us</h2></div><div className="visit-places">{STORES.map((store) => <Link key={store.slug} to={`/stores/${store.slug}`}><span>{store.name}</span><small>{store.address1}</small></Link>)}</div></section>;
 }
 export function ObjectEdit({handles, title}: {handles: string[]; title: string}) {
-  return <section className="object-edit house-wrap"><h2>{title}</h2><div className="object-edit-grid">{handles.map((handle) => {const p = pieceByHandle(handle)!; return <Link key={handle} to={`/pieces/${handle}`}><span className="object-edit-image"><Pic k={PIECE_PHOTOS[handle][0]} /></span><span className="object-edit-name">{p.name}</span><span className="label">{priceLine(p)}</span></Link>;})}</div></section>;
+  return <section className="object-edit house-wrap"><h2>{title}</h2><div className="object-edit-grid">{handles.map((handle) => {const p = pieceByHandle(handle); if (!p || p.oneOfOne) return null; return <Link key={handle} to={`/pieces/${handle}`}><span className="object-edit-image"><Pic k={PIECE_PHOTOS[handle][0]} /></span><span className="object-edit-name">{p.name}</span><span className="label">{priceLine(p)}</span></Link>;})}</div></section>;
 }

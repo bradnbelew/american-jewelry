@@ -70,9 +70,6 @@ export function DesignView({ config: c, code, hint }: { config: RingConfig; code
                 <Link to={`/build/ring?code=${encoded}`} className="link inline-flex min-h-11 items-center">
                   Edit design
                 </Link>
-                <Link to={`/appointments?build=ring&code=${encoded}`} className="link inline-flex min-h-11 items-center">
-                  See it in store
-                </Link>
               </div>
               <Link to={`/design/${encoded}/certificate`} className="link-quiet self-start text-[0.875rem]">
                 Certificate

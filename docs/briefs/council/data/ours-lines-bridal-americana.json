@@ -1,0 +1,524 @@
+{
+ "url": "http://127.0.0.1:3032/collections/bridal?line=americana",
+ "kind": "line",
+ "slug": "lines-bridal-americana",
+ "ref": false,
+ "measuredAt": "2026-10-14T05:06:16.423Z",
+ "widths": {
+  "390": {
+   "text": {
+    "words": 53,
+    "sentences": 6,
+    "sentenceP50": 8,
+    "sentenceP90": 20,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 390,
+   "vh": 844,
+   "pageViewports": 2.7,
+   "type": {
+    "families": [
+     {
+      "v": "Public Sans Variable",
+      "share": 0.622
+     },
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.378
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 8,
+    "sizes": [
+     {
+      "v": 13,
+      "share": 0.448
+     },
+     {
+      "v": 18,
+      "share": 0.214
+     },
+     {
+      "v": 12,
+      "share": 0.07
+     },
+     {
+      "v": 32,
+      "share": 0.07
+     },
+     {
+      "v": 24,
+      "share": 0.064
+     },
+     {
+      "v": 11,
+      "share": 0.05
+     },
+     {
+      "v": 15,
+      "share": 0.05
+     },
+     {
+      "v": 44,
+      "share": 0.03
+     },
+     {
+      "v": 20,
+      "share": 0.003
+     }
+    ],
+    "displayMax": 44,
+    "h1": {
+     "size": 44,
+     "chars": 9,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": null,
+    "bodyLeading": null,
+    "measureCpl": {
+     "p50": null,
+     "p90": null,
+     "max": null
+    },
+    "smallest": 11,
+    "capsBlocks": 1,
+    "capsShareOfBlocks": 0.05,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 20,
+    "textBlocks": 10,
+    "images": 1,
+    "controls": 4,
+    "elements": 13,
+    "imageShare": 0.25
+   },
+   "spacing": {
+    "gapP50": 32,
+    "gapP90": 83,
+    "gapMax": 208,
+    "sectionGapVh": 0.1,
+    "distinctGaps": 10,
+    "alignmentAxes": 4
+   },
+   "images": {
+    "count": 1,
+    "fullBleed": 0,
+    "ratios": [
+     1.5
+    ],
+    "firstAbove": {
+     "ratio": 1.5,
+     "w": 350,
+     "h": 233,
+     "top": 378
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f5f2",
+      "share": 1,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 3,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 4,
+    "heights": [
+     44,
+     50
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.25,
+    "under44": 0
+   },
+   "commerce": {
+    "price": {
+     "text": "From $1,600",
+     "size": 13,
+     "top": 1010,
+     "aboveFold": false
+    },
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 5
+   },
+   "status": 200
+  },
+  "768": {
+   "text": {
+    "words": 54,
+    "sentences": 6,
+    "sentenceP50": 8,
+    "sentenceP90": 21,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 768,
+   "vh": 1024,
+   "pageViewports": 1.9,
+   "type": {
+    "families": [
+     {
+      "v": "Public Sans Variable",
+      "share": 0.627
+     },
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.373
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 10,
+    "sizes": [
+     {
+      "v": 13,
+      "share": 0.383
+     },
+     {
+      "v": 15,
+      "share": 0.122
+     },
+     {
+      "v": 18,
+      "share": 0.119
+     },
+     {
+      "v": 20,
+      "share": 0.096
+     },
+     {
+      "v": 14,
+      "share": 0.069
+     },
+     {
+      "v": 24,
+      "share": 0.063
+     },
+     {
+      "v": 11,
+      "share": 0.05
+     },
+     {
+      "v": 44,
+      "share": 0.043
+     },
+     {
+      "v": 48,
+      "share": 0.03
+     },
+     {
+      "v": 40,
+      "share": 0.026
+     }
+    ],
+    "displayMax": 48,
+    "h1": {
+     "size": 48,
+     "chars": 9,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": null,
+    "bodyLeading": null,
+    "measureCpl": {
+     "p50": null,
+     "p90": null,
+     "max": null
+    },
+    "smallest": 11,
+    "capsBlocks": 1,
+    "capsShareOfBlocks": 0.05,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 36,
+    "textBlocks": 16,
+    "images": 1,
+    "controls": 4,
+    "elements": 19,
+    "imageShare": 0.13
+   },
+   "spacing": {
+    "gapP50": 48,
+    "gapP90": 266,
+    "gapMax": 266,
+    "sectionGapVh": 0.26,
+    "distinctGaps": 8,
+    "alignmentAxes": 5
+   },
+   "images": {
+    "count": 1,
+    "fullBleed": 0,
+    "ratios": [
+     1.5
+    ],
+    "firstAbove": {
+     "ratio": 1.5,
+     "w": 392,
+     "h": 261,
+     "top": 193
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f5f2",
+      "share": 1,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 3,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 4,
+    "heights": [
+     44,
+     50
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.25,
+    "under44": 0
+   },
+   "commerce": {
+    "price": {
+     "text": "From $1,600",
+     "size": 15,
+     "top": 935,
+     "aboveFold": true
+    },
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 6
+   },
+   "status": 200
+  },
+  "1440": {
+   "text": {
+    "words": 54,
+    "sentences": 6,
+    "sentenceP50": 8,
+    "sentenceP90": 21,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 1440,
+   "vh": 900,
+   "pageViewports": 2.6,
+   "type": {
+    "families": [
+     {
+      "v": "Public Sans Variable",
+      "share": 0.627
+     },
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.373
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 10,
+    "sizes": [
+     {
+      "v": 13,
+      "share": 0.383
+     },
+     {
+      "v": 15,
+      "share": 0.122
+     },
+     {
+      "v": 18,
+      "share": 0.119
+     },
+     {
+      "v": 20,
+      "share": 0.096
+     },
+     {
+      "v": 14,
+      "share": 0.069
+     },
+     {
+      "v": 24,
+      "share": 0.063
+     },
+     {
+      "v": 11,
+      "share": 0.05
+     },
+     {
+      "v": 44,
+      "share": 0.043
+     },
+     {
+      "v": 64,
+      "share": 0.03
+     },
+     {
+      "v": 40,
+      "share": 0.026
+     }
+    ],
+    "displayMax": 64,
+    "h1": {
+     "size": 64,
+     "chars": 9,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": null,
+    "bodyLeading": null,
+    "measureCpl": {
+     "p50": null,
+     "p90": null,
+     "max": null
+    },
+    "smallest": 11,
+    "capsBlocks": 1,
+    "capsShareOfBlocks": 0.05,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 21,
+    "textBlocks": 11,
+    "images": 1,
+    "controls": 9,
+    "elements": 14,
+    "imageShare": 0.29
+   },
+   "spacing": {
+    "gapP50": 64,
+    "gapP90": 480,
+    "gapMax": 480,
+    "sectionGapVh": 0.53,
+    "distinctGaps": 7,
+    "alignmentAxes": 6
+   },
+   "images": {
+    "count": 1,
+    "fullBleed": 0,
+    "ratios": [
+     1.5
+    ],
+    "firstAbove": {
+     "ratio": 1.5,
+     "w": 747,
+     "h": 498,
+     "top": 238
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#f6f5f2",
+      "share": 1,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 3,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 9,
+    "heights": [
+     44,
+     50
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.67,
+    "under44": 0
+   },
+   "commerce": {
+    "price": {
+     "text": "From $1,600",
+     "size": 15,
+     "top": 1430,
+     "aboveFold": false
+    },
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 13
+   },
+   "status": 200
+  }
+ }
+}

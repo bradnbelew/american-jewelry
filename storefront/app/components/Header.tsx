@@ -3,6 +3,7 @@ import { Form, Link, useLocation } from "react-router";
 
 import { useCart } from "~/lib/cart";
 import { CART_DRAWER_ID, SAVED_DRAWER_ID, openDialogFromLinkClick } from "~/lib/cart-drawer";
+import { pieceByHandle } from "~/lib/catalog/data";
 import { NAV, type NavPanel } from "~/lib/nav";
 
 import { Pic } from "./Pic";
@@ -68,7 +69,9 @@ export function Header() {
 
   const current = (p: NavPanel) => {
     const path = location.pathname;
-    if (p.href === "/jewelry") return path.startsWith("/jewelry") || path.startsWith("/designs") || path.startsWith("/pieces");
+    const royalPiece = path.startsWith("/pieces/") && pieceByHandle(path.split("/").pop() ?? "")?.tier === "royal-american";
+    if (p.href === "/royal-american") return path === "/royal-american" || royalPiece;
+    if (p.href === "/jewelry") return path.startsWith("/jewelry") || path.startsWith("/designs") || (path.startsWith("/pieces") && !royalPiece) || path === "/americana" || path === "/new-american";
     if (p.href === "/collections") return path.startsWith("/collections") && !path.endsWith("/bridal");
     if (p.href === "/collections/bridal") return path === "/collections/bridal" || path.startsWith("/build");
     if (p.href === "/services") return ["/services", "/commission", "/care"].includes(path);

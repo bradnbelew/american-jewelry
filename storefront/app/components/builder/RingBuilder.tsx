@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { Form, Link } from "react-router";
+import { Link } from "react-router";
 
-import { Pic } from "~/components/Pic";
 import { useSaved } from "~/components/saved/SavedProvider";
 import type { View } from "~/components/three/ParametricRing.client";
 import { RingViewer } from "~/components/three/RingViewer";
@@ -34,7 +33,7 @@ import { price, usd } from "~/lib/builder/pricing";
 
 /** Which camera to show after a decision, so the ring turns to show what just changed. */
 const VIEW_FOR: Partial<Record<keyof RingConfig, View>> = {
-  setting: "hero",
+  setting: "set",
   origin: "stone",
   carat: "stone",
   halo: "side",
@@ -61,13 +60,11 @@ const METAL_SWATCH: Record<RingConfig["metal"], string> = {
 
 /**
  * The builder: the ring on the left, the decisions on the right. One label row per decision over one control.
- * Everything finer under one disclosure. Nothing moves when something is clicked.
- * "Add to bag" for a designed ring arrives with draft orders in phase 2; today the ring is saved or brought to the store.
+ * Fine details and optional engraving stay folded. Review preserves every choice in the design code.
  */
 export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
   const [c, setC] = useState<RingConfig>(() => normalize(initial ?? {}));
-  const [view, setView] = useState<View>("hero");
-  const [idle, setIdle] = useState(true);
+  const [view, setView] = useState<View>("set");
   const [copied, setCopied] = useState<string | null>(null);
   const { has, toggle, ready } = useSaved();
 
@@ -76,7 +73,6 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
     setC((prev) => normalize({ ...prev, [k]: v }));
     const next = VIEW_FOR[k];
     if (!next) return;
-    setIdle(false);
     if (k === "engraving") {
       if (engraveTimer.current) clearTimeout(engraveTimer.current);
       engraveTimer.current = setTimeout(() => setView(next), 400);
@@ -109,8 +105,8 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
   return (
     <div className="ring-builder grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
       <div className="flex flex-col gap-4 lg:sticky lg:top-32 lg:col-span-7">
-        <div className="relative aspect-[4/3] overflow-hidden bg-paper sm:aspect-square lg:aspect-[5/4]">
-          <RingViewer config={c} view={view} autoRotate={idle} className="absolute inset-0" />
+        <div className="relative aspect-[4/3] overflow-hidden bg-paper lg:aspect-[5/4]">
+          <RingViewer config={c} view={view} className="absolute inset-0" />
         </div>
         <details className="acc">
           <summary className="label min-h-11 !justify-start gap-2 !py-0 !font-normal !tracking-normal !normal-case">Price breakdown</summary>
@@ -131,8 +127,9 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
         </details>
       </div>
 
-      <div className="flex flex-col gap-7 lg:col-span-5">
-        <div className="flex flex-col gap-1.5">
+      <div className="builder-decisions flex flex-col gap-7 lg:col-span-5">
+        <div className="builder-summary flex flex-col gap-4">
+          <Link className="label self-start" to={`/collections/bridal?line=${c.origin === "natural" ? "americana" : "new-american"}`}>{c.origin === "natural" ? "Americana" : "New American"}</Link>
           <div className="flex items-baseline justify-between gap-6">
             <h2 className="h-item text-[1.5rem] leading-snug md:text-[1.75rem]">{note.name}</h2>
             <span className="h-item num whitespace-nowrap text-[1.5rem] md:text-[1.75rem]">{usd(p.total)}</span>
@@ -143,43 +140,40 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
           <p className="label">Made to order, about {weeks} weeks. Price before sales tax.</p>
         </div>
 
-        <Row label="Setting" value={note.name}>
-          <div className="grid grid-cols-3 gap-2" role="radiogroup" aria-label="Setting">
+        <Row label="Setting">
+          <div className="grid grid-cols-3 gap-2" role="group" aria-label="Setting">
             {SETTINGS.map((s) => (
-              <button key={s} type="button" role="radio" aria-checked={c.setting === s} className="opt !min-h-0 !flex-col !items-stretch !gap-0 !p-1" aria-pressed={c.setting === s} onClick={() => set("setting", s)} title={DESIGN_NOTES[s].name}>
-                <span className="relative block aspect-[5/4] overflow-hidden bg-paper">
-                  <Pic k={SETTING_PHOTO[s]} sizes="(min-width: 1024px) 11vw, 30vw" />
-                </span>
+              <button key={s} type="button" className="opt !min-h-12 !justify-center !px-2" aria-pressed={c.setting === s} onClick={() => set("setting", s)} title={DESIGN_NOTES[s].name}>
                 <span className="flex h-7 items-center justify-center text-[0.75rem] leading-none">{DESIGN_NOTES[s].name}</span>
               </button>
             ))}
           </div>
         </Row>
 
-        <Row label="Stone" value={`${STONE_STANDARD[c.origin].short}, ${c.carat.toFixed(2)} ct`}>
-          <div className="grid grid-cols-[1fr_1fr_7.5rem] gap-2" role="radiogroup" aria-label="Stone">
+        <Row label="Diamond">
+          <div className="grid grid-cols-2 gap-2" role="group" aria-label="Diamond origin">
             {(["natural", "man-made"] as const).map((o) => (
-              <button key={o} type="button" role="radio" aria-checked={c.origin === o} className="opt !h-12 !min-h-0 !justify-center !px-2 text-[0.8125rem]" aria-pressed={c.origin === o} onClick={() => set("origin", o)} title={STONE_STANDARD[o].grade}>
+              <button key={o} type="button" className="opt !h-12 !min-h-0 !justify-center !px-2 text-[0.8125rem]" aria-pressed={c.origin === o} onClick={() => set("origin", o)} title={STONE_STANDARD[o].grade}>
                 {STONE_STANDARD[o].short}
               </button>
             ))}
-            <select className="field !h-12 text-[0.8125rem]" value={c.carat} onChange={(e) => set("carat", parseFloat(e.target.value) as RingConfig["carat"])} aria-label="Carat">
+          </div>
+          <label className="builder-inline-field"><span>Carat</span><select className="field !h-12 text-[0.8125rem]" value={c.carat} onChange={(e) => set("carat", parseFloat(e.target.value) as RingConfig["carat"])}>
               {CARATS.map((x) => (
                 <option key={x} value={x}>
                   {x.toFixed(2)} ct
                 </option>
               ))}
-            </select>
-          </div>
+            </select></label>
           <p className="label min-h-[1.125rem]">
             {STONE_STANDARD[c.origin].grade}. {STONE_STANDARD[c.origin].report}. {stoneDiameterMm(c.carat).toFixed(1)} mm across.
           </p>
         </Row>
 
-        <Row label="Metal" value={METAL_LABEL[c.metal]}>
-          <div className="metal-options" role="radiogroup" aria-label="Metal">
+        <Row label="Metal">
+          <div className="metal-options" role="group" aria-label="Metal">
             {METALS.map((m) => (
-              <button key={m} type="button" role="radio" aria-checked={c.metal === m} aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="metal-option" aria-pressed={c.metal === m} onClick={() => set("metal", m)}>
+              <button key={m} type="button" aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="metal-option" aria-pressed={c.metal === m} onClick={() => set("metal", m)}>
                 <span className="swatch-dot" style={{ background: METAL_SWATCH[m] }} />
                 <span>{METAL_LABEL[m].replace(" gold","")}</span>
               </button>
@@ -187,8 +181,8 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
           </div>
         </Row>
 
-        <Row label="Fit" value={`Size ${c.size}${c.engraving ? ", engraved" : ""}`}>
-          <div className="grid grid-cols-[7.5rem_1fr] gap-2">
+        <Row label="Size">
+          <div className="builder-size-row">
             <select className="field !h-12 text-[0.8125rem]" value={c.size} onChange={(e) => set("size", e.target.value as RingConfig["size"])} aria-label="Ring size">
               {SIZES.map((x) => (
                 <option key={x} value={x}>
@@ -196,20 +190,23 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
                 </option>
               ))}
             </select>
-            <input value={c.engraving} onChange={(e) => set("engraving", e.target.value.slice(0, 20))} placeholder="Engraving, up to 20 characters" className="field font-display !h-12 text-[1rem]" aria-label="Engraving" />
+            <Link to="/care#sizing" className="link-quiet">Sizing help</Link>
           </div>
-          <div className="flex min-h-7 items-center justify-between gap-4">
-            <p className="label">{c.width >= 2.4 ? "This width wears a little tighter; we usually size up a half." : "We size in store and resize once at no charge."}</p>
+          <details className="engraving-option" open={c.engraving ? true : undefined}>
+            <summary>Add engraving <span className="label">Optional</span></summary>
+            <div className="flex flex-col gap-4">
+              <label className="builder-engraving-label"><span className="label">Up to 20 characters</span><input value={c.engraving} onChange={(e) => set("engraving", e.target.value.slice(0, 20))} maxLength={20} placeholder="Initials, a date, a word" className="field !h-12 text-[1rem]" aria-label="Engraving" /></label>
             {c.engraving && (
-              <div className="flex shrink-0 gap-1" role="radiogroup" aria-label="Engraving hand">
+              <div className="grid grid-cols-2 gap-2" role="group" aria-label="Engraving style">
                 {HANDS.map((h) => (
-                  <button key={h} type="button" role="radio" aria-checked={c.hand === h} className="pill !h-7 !min-w-0 !px-2 text-[0.6875rem]" aria-pressed={c.hand === h} onClick={() => set("hand", h)}>
+                  <button key={h} type="button" className="opt !min-h-12 !justify-center text-[0.8125rem]" aria-pressed={c.hand === h} onClick={() => set("hand", h)}>
                     {HAND_LABEL[h]}
                   </button>
                 ))}
               </div>
             )}
-          </div>
+            </div>
+          </details>
         </Row>
 
         <details className="acc hair">
@@ -224,27 +221,29 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
                 ))}
               </Field>
             )}
-            <Field label="Band width">
+            <Field label="Band width" block>
+              <div className="grid grid-cols-5 gap-2">
               {WIDTHS.map((x) => (
-                <button key={x} type="button" className="pill !h-9 text-[0.75rem]" aria-pressed={c.width === x} onClick={() => set("width", x)}>
+                <button key={x} type="button" className="pill !h-9 !px-1 text-[0.75rem]" aria-pressed={c.width === x} onClick={() => set("width", x)}>
                   {x.toFixed(1)} mm
                 </button>
               ))}
+              </div>
             </Field>
             {c.setting !== "prism" && (
-              <Field label="Prongs">
+              <><Field label="Prong style">
                 {PRONG_STYLES.map((x) => (
                   <button key={x} type="button" className="pill !h-9 text-[0.75rem]" aria-pressed={c.prongStyle === x} onClick={() => set("prongStyle", x)}>
                     {PRONG_LABEL[x]}
                   </button>
                 ))}
-                <span className="mx-1 w-px self-stretch bg-hair" aria-hidden />
+              </Field><Field label="Prong count">
                 {PRONG_COUNTS.map((x) => (
                   <button key={x} type="button" className="pill !h-9 text-[0.75rem]" aria-pressed={c.prongs === x} onClick={() => set("prongs", x)}>
                     {x}
                   </button>
                 ))}
-              </Field>
+              </Field></>
             )}
             <div className="grid gap-2 sm:grid-cols-2">
               {c.setting !== "prism" && <Toggle on={c.taper} label="Tapered shank" hint="Thinner at the bottom" onClick={() => set("taper", !c.taper)} />}
@@ -252,9 +251,9 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
               {c.setting === "shooting-star" && <Toggle on={c.tail === "long"} label="Long tail" hint="Five stones instead of three" onClick={() => set("tail", c.tail === "long" ? "short" : "long")} />}
             </div>
             {c.setting === "shooting-star" && (
-              <Field label="A family stone in the first stone of the tail" block>
+              <Field label="Family stone" block>
                 <select className="field !h-12 text-[0.8125rem]" value={c.birthstone} onChange={(e) => set("birthstone", parseInt(e.target.value))} aria-label="Birthstone">
-                  <option value={0}>None, diamonds all the way</option>
+                  <option value={0}>Diamond</option>
                   {BIRTHSTONES.map((b) => (
                     <option key={b.month} value={b.month}>
                       {b.name}, {b.stone.toLowerCase()}
@@ -266,16 +265,9 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
           </div>
         </details>
 
-        <div className="flex flex-col gap-3">
-          <Form method="post" action={`/design/${encodeURIComponent(code)}`}>
-            <input type="hidden" name="intent" value="request" />
-            <input type="hidden" name="code" value={code} />
-            <button type="submit" className="btn w-full">
-              Request this ring
-            </button>
-          </Form>
-          <Link to={`/appointments?build=ring&code=${encodeURIComponent(code)}`} className="link self-start">
-            See it in store
+        <div className="builder-actions flex flex-col gap-4">
+          <Link to={`/design/${encodeURIComponent(code)}`} className="btn w-full">
+            Review your ring
           </Link>
           <div className="grid grid-cols-2 gap-2 text-[0.75rem]">
             <button type="button" className="quiet" aria-pressed={saved} onClick={() => toggle({ id: savedId, href: `/design/${code}`, name: `${note.name} ring`, detail: name, photo })}>
@@ -285,19 +277,8 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
               {copied === "share" ? "Copied" : "Copy link"}
             </button>
           </div>
-          <div className="flex items-baseline justify-between gap-3 pt-1 text-[0.75rem] text-muted">
-            <span>
-              Design code{" "}
-              <button type="button" className="font-display min-w-[8.5rem] text-left text-[1rem] tracking-[0.06em] text-ink" onClick={() => copy(code, "code")} title="Copy the design code">
-                {copied === "code" ? "Copied" : code}
-              </button>
-            </span>
-            <Link to={`/design/${encodeURIComponent(code)}`} className="link-quiet text-ink">
-              Review design
-            </Link>
-          </div>
           <p className="label leading-relaxed">
-            {c.origin === "man-made" ? "Lab-grown diamond (laboratory-grown); growth method and any treatment are disclosed before purchase." : "Natural diamond with a GIA report; any treatment is disclosed before purchase."} Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
+            {c.origin === "man-made" ? "Lab-grown diamond. Growth method and any treatment are disclosed before purchase." : "Any diamond treatment is disclosed before purchase."}
           </p>
         </div>
       </div>
@@ -305,22 +286,19 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
   );
 }
 
-/** A decision: its name on the left, what is chosen on the right, the control beneath. The row never changes height. */
-function Row({ label, value, children }: { label: string; value: string; children: ReactNode }) {
+/** One decision group, with a label and controls separated by the house spacing token. */
+function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <section className="hair flex flex-col gap-2.5 pt-5" aria-label={label}>
-      <div className="flex h-5 items-baseline justify-between gap-4 text-[0.8125rem]">
-        <span className="text-ink">{label}</span>
-        <span className="truncate text-muted">{value}</span>
-      </div>
+    <div className="builder-choice hair flex flex-col gap-4 pt-5" role="group" aria-label={label}>
+      <span className="text-[0.8125rem] text-ink">{label}</span>
       {children}
-    </section>
+    </div>
   );
 }
 
 function Field({ label, children, block = false }: { label: string; children: ReactNode; block?: boolean }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4" role="group" aria-label={label}>
       <span className="label">{label}</span>
       {block ? children : <div className="flex flex-wrap gap-1.5">{children}</div>}
     </div>
@@ -329,7 +307,7 @@ function Field({ label, children, block = false }: { label: string; children: Re
 
 function Toggle({ on, label, hint, onClick }: { on: boolean; label: string; hint: string; onClick: () => void }) {
   return (
-    <button type="button" className="opt !h-12 !min-h-0 text-[0.8125rem]" aria-pressed={on} onClick={onClick}>
+    <button type="button" className="opt !h-auto !min-h-16 text-[0.8125rem]" aria-pressed={on} onClick={onClick}>
       <span className="flex flex-col leading-tight">
         <span>{label}</span>
         <span className="text-[0.8125rem] text-muted">{hint}</span>

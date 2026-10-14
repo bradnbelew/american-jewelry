@@ -65,3 +65,26 @@ Filtering: the drawer works on desktop and phone. Options are grouped by Style, 
 Buying: product name, photograph, price and required choices lead. All metal choices have visible names. Ring size is explicit and never silently assumed. Engraving is optional and folded. The purchase action is primary, with saving and an in-store visit secondary. The bag shows configuration and subtotal before optional packaging information. Empty bag and saved states offer one clear browse action. Public checkout and appointment delivery remain subject to their existing configuration, not implied by this UI review.
 
 Support: store locations, telephone and directions are immediately legible; care, service, commissioning, account, saved, compare and appointment pages have concise headings and shared content edges. Legal and technical stone information is retained where it communicates an actual term or decision.
+
+## Line-first shopping — owner direction, 14 October 2026
+
+Americana, New American and Royal American are the three encompassing jewelry lines. The line is selected before product browsing, and remains visible above the category and filters. Royal American is exclusively one of one: only its own registry and piece pages show its objects. Home may link to the line, but does not preview registry pieces among ordinary jewelry. Search returns the Royal destination for a matching registry name, not a product card in the everyday results. Saved pieces are grouped by line; comparison stays within one regular line.
+
+Bridal opens with two photographic doors: Americana / Natural diamonds, New American / Lab-grown diamonds. Retain the names; short material descriptions explain the distinction. The selected line leads to its own rings and a builder initialized to that diamond origin. Americana includes its two existing wedding bands, not an invented stocked engagement solitaire. The builder provides the engagement design route. Royal has no bridal tab.
+
+Palette and typography stay as above. Desktop: 48px gutters, 24px gap, two equal photographs, aligned captions, a 48px title. Phone: 20px gutters, stacked landscape crops, 24px titles, 32px between choices. Every photographic door is one link; no duplicated button. Selected line is a thin underline; category links and a separate utility row follow below it.
+
+```
+BRIDAL                       Choose your diamond.
+[ Americana photograph                 ][ New American photograph              ]
+Americana                            ↗  New American                         ↗
+Natural diamonds                        Lab-grown diamonds
+                         Natural or lab-grown?
+
+Selected: [ Americana____  New American ]
+Bridal / Americana                     [ short image / build a ring link ]
+[ result count                                      sort / filter ]
+[ only Americana bands; no Royal or New American product cards    ]
+```
+
+Self-review: equal doors are deliberate here because the visitor is choosing two equally valid diamond origins. Photographs, visible names and concise material labels carry the choice. Product counts and filters appear only after it. Switching line clears incompatible product facets but retains sort and the current category or collection; clearing filters retains the line. Collections and signatures may span styles but are browsed one line at a time. No popularity, scarcity or stock claim is added.

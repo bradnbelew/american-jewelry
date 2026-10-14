@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 import { Pic } from "../Pic";
-import { useSaved } from "./SavedProvider";
+import { savedGroups, useSaved } from "./SavedProvider";
 
 export function SavedList() {
   const { items, remove, ready } = useSaved();
@@ -19,8 +19,8 @@ export function SavedList() {
     );
   }
   return (
-    <ul className="hair grid grid-cols-2 gap-x-5 gap-y-10 pt-10 md:gap-x-8 lg:grid-cols-4">
-      {items.map((it) => (
+    <div>{savedGroups(items).map(group=><section className="saved-line-group" key={group.name}><h2>{group.name}</h2><ul className="hair grid grid-cols-2 gap-x-5 gap-y-10 pt-10 md:gap-x-8 lg:grid-cols-4">
+      {group.items.map((it) => (
         <li key={it.id} className="flex min-w-0 flex-col gap-3">
           <Link to={it.href} className="relative block aspect-[4/5] overflow-hidden bg-white">
             <Pic k={it.photo} sizes="(min-width: 1024px) 25vw, 50vw" />
@@ -36,6 +36,6 @@ export function SavedList() {
           </div>
         </li>
       ))}
-    </ul>
+    </ul></section>)}</div>
   );
 }

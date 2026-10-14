@@ -1,0 +1,595 @@
+{
+ "url": "http://127.0.0.1:3033/",
+ "kind": "home",
+ "slug": "lines-home",
+ "ref": false,
+ "measuredAt": "2026-10-14T05:11:30.101Z",
+ "widths": {
+  "390": {
+   "text": {
+    "words": 94,
+    "sentences": 7,
+    "sentenceP50": 9,
+    "sentenceP90": 29,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 390,
+   "vh": 844,
+   "pageViewports": 5.9,
+   "type": {
+    "families": [
+     {
+      "v": "Public Sans Variable",
+      "share": 0.593
+     },
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.407
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 10,
+    "sizes": [
+     {
+      "v": 13,
+      "share": 0.392
+     },
+     {
+      "v": 18,
+      "share": 0.147
+     },
+     {
+      "v": 24,
+      "share": 0.131
+     },
+     {
+      "v": 12,
+      "share": 0.102
+     },
+     {
+      "v": 11,
+      "share": 0.072
+     },
+     {
+      "v": 32,
+      "share": 0.07
+     },
+     {
+      "v": 15,
+      "share": 0.027
+     },
+     {
+      "v": 40,
+      "share": 0.025
+     },
+     {
+      "v": 44,
+      "share": 0.023
+     },
+     {
+      "v": 36,
+      "share": 0.011
+     }
+    ],
+    "displayMax": 44,
+    "h1": {
+     "size": 44,
+     "chars": 13,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": null,
+    "bodyLeading": null,
+    "measureCpl": {
+     "p50": null,
+     "p90": null,
+     "max": null
+    },
+    "smallest": 11,
+    "capsBlocks": 3,
+    "capsShareOfBlocks": 0.07,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 11,
+    "textBlocks": 5,
+    "images": 1,
+    "controls": 2,
+    "elements": 6,
+    "imageShare": 0.79
+   },
+   "spacing": {
+    "gapP50": 24,
+    "gapP90": 83,
+    "gapMax": 114,
+    "sectionGapVh": 0.1,
+    "distinctGaps": 14,
+    "alignmentAxes": 7
+   },
+   "images": {
+    "count": 7,
+    "fullBleed": 2,
+    "ratios": [
+     0.59,
+     1.17,
+     1.78,
+     1,
+     1,
+     0.75,
+     0.8
+    ],
+    "firstAbove": {
+     "ratio": 0.59,
+     "w": 390,
+     "h": 666,
+     "top": 69
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#101c30",
+      "share": 0.48,
+      "h": 218,
+      "s": 0.5,
+      "l": 0.13
+     },
+     {
+      "hex": "#2c312c",
+      "share": 0.46,
+      "h": 120,
+      "s": 0.05,
+      "l": 0.18
+     },
+     {
+      "hex": "#f6f5f2",
+      "share": 0.06,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 4,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 0
+   },
+   "controls": {
+    "count": 16,
+    "heights": [
+     44,
+     50,
+     56,
+     120
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.06,
+    "under44": 0
+   },
+   "commerce": {
+    "price": {
+     "text": "From $1,900",
+     "size": 13,
+     "top": 1549,
+     "aboveFold": false
+    },
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 3
+   },
+   "status": 200
+  },
+  "768": {
+   "text": {
+    "words": 94,
+    "sentences": 7,
+    "sentenceP50": 9,
+    "sentenceP90": 29,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 768,
+   "vh": 1024,
+   "pageViewports": 4.1,
+   "type": {
+    "families": [
+     {
+      "v": "Public Sans Variable",
+      "share": 0.593
+     },
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.407
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 11,
+    "sizes": [
+     {
+      "v": 13,
+      "share": 0.314
+     },
+     {
+      "v": 18,
+      "share": 0.147
+     },
+     {
+      "v": 14,
+      "share": 0.116
+     },
+     {
+      "v": 44,
+      "share": 0.091
+     },
+     {
+      "v": 11,
+      "share": 0.072
+     },
+     {
+      "v": 24,
+      "share": 0.066
+     },
+     {
+      "v": 12,
+      "share": 0.065
+     },
+     {
+      "v": 28,
+      "share": 0.065
+     },
+     {
+      "v": 15,
+      "share": 0.027
+     },
+     {
+      "v": 64,
+      "share": 0.023
+     }
+    ],
+    "displayMax": 64,
+    "h1": {
+     "size": 64,
+     "chars": 13,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": null,
+    "bodyLeading": null,
+    "measureCpl": {
+     "p50": null,
+     "p90": null,
+     "max": null
+    },
+    "smallest": 11,
+    "capsBlocks": 3,
+    "capsShareOfBlocks": 0.07,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 14,
+    "textBlocks": 7,
+    "images": 1,
+    "controls": 4,
+    "elements": 10,
+    "imageShare": 0.74
+   },
+   "spacing": {
+    "gapP50": 48,
+    "gapP90": 80,
+    "gapMax": 95,
+    "sectionGapVh": 0.08,
+    "distinctGaps": 10,
+    "alignmentAxes": 11
+   },
+   "images": {
+    "count": 8,
+    "fullBleed": 2,
+    "ratios": [
+     1.01,
+     1,
+     1.31,
+     1.78,
+     1,
+     1,
+     1.24,
+     0.8
+    ],
+    "firstAbove": {
+     "ratio": 1.01,
+     "w": 768,
+     "h": 760,
+     "top": 81
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#2c312c",
+      "share": 0.49,
+      "h": 120,
+      "s": 0.05,
+      "l": 0.18
+     },
+     {
+      "hex": "#101c30",
+      "share": 0.45,
+      "h": 218,
+      "s": 0.5,
+      "l": 0.13
+     },
+     {
+      "hex": "#f6f5f2",
+      "share": 0.06,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 4,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 3
+   },
+   "controls": {
+    "count": 16,
+    "heights": [
+     44,
+     50,
+     64,
+     102
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.06,
+    "under44": 0
+   },
+   "commerce": {
+    "price": {
+     "text": "From $1,900",
+     "size": 13,
+     "top": 1507,
+     "aboveFold": false
+    },
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 4
+   },
+   "status": 200
+  },
+  "1440": {
+   "text": {
+    "words": 94,
+    "sentences": 7,
+    "sentenceP50": 9,
+    "sentenceP90": 29,
+    "exclamations": 0,
+    "emDashes": 0
+   },
+   "vw": 1440,
+   "vh": 900,
+   "pageViewports": 5.2,
+   "type": {
+    "families": [
+     {
+      "v": "Public Sans Variable",
+      "share": 0.593
+     },
+     {
+      "v": "Source Serif 4 Variable",
+      "share": 0.407
+     }
+    ],
+    "familyCount": 2,
+    "sizesUsed": 11,
+    "sizes": [
+     {
+      "v": 13,
+      "share": 0.314
+     },
+     {
+      "v": 18,
+      "share": 0.147
+     },
+     {
+      "v": 14,
+      "share": 0.116
+     },
+     {
+      "v": 44,
+      "share": 0.091
+     },
+     {
+      "v": 11,
+      "share": 0.072
+     },
+     {
+      "v": 24,
+      "share": 0.066
+     },
+     {
+      "v": 12,
+      "share": 0.065
+     },
+     {
+      "v": 32,
+      "share": 0.065
+     },
+     {
+      "v": 15,
+      "share": 0.027
+     },
+     {
+      "v": 64,
+      "share": 0.023
+     }
+    ],
+    "displayMax": 64,
+    "h1": {
+     "size": 64,
+     "chars": 13,
+     "lines": 1,
+     "family": "Source Serif 4 Variable",
+     "weight": 400,
+     "track": -0.025
+    },
+    "bodySize": null,
+    "bodyLeading": null,
+    "measureCpl": {
+     "p50": null,
+     "p90": null,
+     "max": null
+    },
+    "smallest": 11,
+    "capsBlocks": 3,
+    "capsShareOfBlocks": 0.07,
+    "capsSizes": [
+     11
+    ],
+    "capsTrackP50": 0.1,
+    "italicShare": 0
+   },
+   "fold": {
+    "words": 6,
+    "textBlocks": 3,
+    "images": 1,
+    "controls": 7,
+    "elements": 4,
+    "imageShare": 0.84
+   },
+   "spacing": {
+    "gapP50": 45,
+    "gapP90": 105,
+    "gapMax": 140,
+    "sectionGapVh": 0.12,
+    "distinctGaps": 8,
+    "alignmentAxes": 11
+   },
+   "images": {
+    "count": 8,
+    "fullBleed": 2,
+    "ratios": [
+     1.89,
+     1.5,
+     2.07,
+     1.78,
+     1,
+     1,
+     2.32,
+     1.17
+    ],
+    "firstAbove": {
+     "ratio": 1.89,
+     "w": 1440,
+     "h": 760,
+     "top": 126
+    }
+   },
+   "surfaces": {
+    "boxed": 0,
+    "rounded": 0,
+    "pills": 0,
+    "shadowed": 0
+   },
+   "color": {
+    "ground": "#f6f5f2",
+    "groundHsl": {
+     "h": 45,
+     "s": 0.18,
+     "l": 0.96
+    },
+    "backgrounds": [
+     {
+      "hex": "#101c30",
+      "share": 0.46,
+      "h": 218,
+      "s": 0.5,
+      "l": 0.13
+     },
+     {
+      "hex": "#2c312c",
+      "share": 0.46,
+      "h": 120,
+      "s": 0.05,
+      "l": 0.18
+     },
+     {
+      "hex": "#f6f5f2",
+      "share": 0.08,
+      "h": 45,
+      "s": 0.18,
+      "l": 0.96
+     }
+    ],
+    "textColors": 4,
+    "chromaticText": [],
+    "lowContrast": [],
+    "textOnPhoto": 3
+   },
+   "controls": {
+    "count": 15,
+    "heights": [
+     44,
+     50,
+     64
+    ],
+    "radiusMax": 0,
+    "capsShare": 0.4,
+    "under44": 0
+   },
+   "commerce": {
+    "price": {
+     "text": "From $1,900",
+     "size": 13,
+     "top": 1614,
+     "aboveFold": false
+    },
+    "cta": null,
+    "priceToCta": null
+   },
+   "nav": {
+    "visibleLinks": 11
+   },
+   "status": 200
+  }
+ }
+}

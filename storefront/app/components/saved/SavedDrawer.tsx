@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { SAVED_DRAWER_ID, closeDialog } from "~/lib/cart-drawer";
 
 import { Pic } from "../Pic";
-import { useSaved } from "./SavedProvider";
+import { savedGroups, useSaved } from "./SavedProvider";
 
 /**
  * What you have kept, as a drawer on paper. Opened from the header's Kept link after hydration;
@@ -29,13 +29,13 @@ export function SavedDrawer() {
           ) : items.length === 0 ? (
             <div className="flex h-full flex-col items-start justify-center gap-5">
               <p className="font-display text-[1.5rem]">Nothing kept yet.</p>
-              <Link to="/americana" className="link" onClick={close}>
-                The designs
+              <Link to="/jewelry" className="link" onClick={close}>
+                Browse jewelry
               </Link>
             </div>
           ) : (
-            <ul role="list" className="divide-y divide-hair">
-              {items.map((it) => (
+            <div>{savedGroups(items).map(group=><section className="saved-line-group" key={group.name}><h3 className="label pt-5">{group.name}</h3><ul role="list" className="divide-y divide-hair">
+              {group.items.map((it) => (
                 <li key={it.id} className="flex gap-4 py-5">
                   <Link to={it.href} onClick={close} className="relative block aspect-[4/5] w-20 shrink-0 overflow-hidden bg-white">
                     <Pic k={it.photo} sizes="80px" />
@@ -51,7 +51,7 @@ export function SavedDrawer() {
                   </div>
                 </li>
               ))}
-            </ul>
+            </ul></section>)}</div>
           )}
         </div>
         {ready && items.length > 0 ? (

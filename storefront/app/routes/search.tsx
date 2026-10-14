@@ -2,6 +2,8 @@ import { Form, Link } from "react-router";
 
 import { PieceIndex } from "~/components/Catalog";
 import { Section } from "~/components/Section";
+import { SHOP_LINES } from "~/lib/catalog/lines";
+import { tierBySlug } from "~/lib/catalog/data";
 import { searchCatalog, searchSuggestion } from "~/lib/catalog/browse";
 import { pageMeta } from "~/lib/seo";
 
@@ -65,7 +67,7 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
 
       {pieces.length > 0 && (
         <Section className="pt-14 pb-8">
-          <PieceIndex pieces={pieces} showLine />
+          {SHOP_LINES.map(line => {const group=pieces.filter(piece=>piece.tier===line); return group.length ? <section key={line} className="line-result-group" aria-label={tierBySlug(line).name}><div className="house-heading"><h2>{tierBySlug(line).name}</h2><Link className="link" to={`/${line}`}>Explore the line</Link></div><PieceIndex pieces={group} /></section> : null;})}
           <p className="label mt-10">Price before sales tax.</p>
         </Section>
       )}

@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { useCart, useCartForm } from "~/lib/cart";
 import { closeCartDrawer, configureOpenCartAction, CART_DRAWER_ID } from "~/lib/cart-drawer";
 import { formatPriceRound } from "~/lib/money";
+import { pieceByHandle, tierBySlug } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import { bagLineLeadTime, bagLineName } from "~/lib/product";
 
@@ -82,6 +83,7 @@ export function CartLineItem({ line, emptyCartFocusId }: { line: CartLineView; e
   const merchandise = line.merchandise;
   const product = merchandise?.product;
   const pending = pendingLines.has(line.id);
+  const piece = product?.handle ? pieceByHandle(product.handle) : undefined;
   const name = bagLineName(product?.handle, product?.title ?? merchandise?.title ?? "Piece", merchandise?.selectedOptions, merchandise?.title);
   const attributes = (line.attributes ?? []).filter((a) => !a.key.startsWith("_") && a.value != null);
   const photo = product?.handle ? PIECE_PHOTOS[product.handle]?.[0] : undefined;
@@ -113,6 +115,7 @@ export function CartLineItem({ line, emptyCartFocusId }: { line: CartLineView; e
         {photo ? <Pic k={photo} sizes="80px" fit="contain" /> : merchandise?.image ? <img src={merchandise.image.url} alt={merchandise.image.altText ?? ""} className="absolute inset-0 h-full w-full object-contain" loading="lazy" /> : null}
       </div>
       <div className="flex min-w-0 flex-1 flex-col gap-2">
+        {piece && <p className="label">{tierBySlug(piece.tier).name}</p>}
         <p className="font-display text-[1.0625rem] leading-snug">
           {product?.handle ? (
             <Link to={`/pieces/${product.handle}?${selection}`} className="hover:text-paper/70" onClick={() => closeCartDrawer()}>

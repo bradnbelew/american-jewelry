@@ -27,7 +27,7 @@ export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px
   const metal = query?.metal.find((m) => piece.metals.includes(m));
   if (metal) selected.set("Metal", METAL_LABEL[metal]);
   return (
-    <Link to={`/pieces/${piece.handle}${selected.size ? `?${selected}` : ''}`} viewTransition className="group flex min-w-0 flex-col gap-3">
+    <Link to={`/pieces/${piece.handle}${selected.size ? `?${selected}` : ''}`} viewTransition className="group flex min-w-0 flex-col gap-4">
       <span className={`piece-card-image relative block aspect-[4/5] overflow-hidden ${piece.oneOfOne ? "is-royal" : ""}`}>
         <Pic k={key} sizes={sizes} priority={priority} />
       </span>
@@ -69,9 +69,11 @@ export function PieceLedger({ pieces, showLine = false }: { pieces: Piece[]; sho
 }
 
 /** The kinds, as a row of names with their counts: the index of the house. */
-export function KindsRow({ current, pieces }: { current?: string; pieces?: Piece[] }) {
+export function KindsRow({ current, pieces, line }: { current?: string; pieces?: Piece[]; line?: string }) {
   const [params] = useSearchParams();
-  const query = params.size ? "?" + params : "";
+  const context = new URLSearchParams(params);
+  if (line) context.set("line",line);
+  const query = context.size ? "?" + context : "";
   return (
     <nav aria-label="By kind" className="browse-kinds">
       <Link to={"/jewelry"+query} className={`inline-flex min-h-11 items-baseline border-b ${!current ? "border-ink" : "border-transparent hover:border-hair"}`} aria-current={!current ? "page" : undefined}><span className="h-item">All</span></Link>
@@ -104,6 +106,8 @@ export function ProductResults({base, hide = [], emptyLine = "No pieces match th
 }) {
   const [params] = useSearchParams();
   const selectedQuery = readQuery(params);
+  // The parent chooses the line. Stale URLs must never override that context.
+  if (hide.includes("line")) selectedQuery.line = [];
   const hasPrices = base.some(piece => !piece.concept && piece.versions.some(version => version.priceCents !== null));
   const sorts = hasPrices ? SORTS : SORTS.filter(sort => !sort.key.startsWith("price"));
   const q: BrowseQuery = {...selectedQuery, sort: sorts.some(sort => sort.key === selectedQuery.sort) ? selectedQuery.sort : "house"};
@@ -127,6 +131,7 @@ export function ProductResults({base, hide = [], emptyLine = "No pieces match th
   }, [open]);
   const clearParams = new URLSearchParams();
   if (q.sort !== "house") clearParams.set("sort",q.sort);
+  if (hide.includes("line") && params.has("line")) clearParams.set("line",params.get("line")!);
   const clearHref = pathname + (clearParams.size ? "?" + clearParams : "");
   return <div className="product-results" aria-busy={navigation.state !== "idle"}>
     <div className="results-toolbar">
@@ -150,14 +155,14 @@ export function ProductResults({base, hide = [], emptyLine = "No pieces match th
     <dialog ref={dialog} className="filter-dialog" aria-labelledby={titleId} onClose={() => setOpen(false)} onClick={e => { if(e.target === e.currentTarget) close(); }}>
       <div className="filter-dialog-shell">
         <div className="filter-dialog-heading"><h2 id={titleId}>Filter</h2><button type="button" onClick={close}>Close</button></div>
-        {open && <FilterForm key={params.toString()} base={base} hide={hide} q={q} close={close} />}
+        {open && <FilterForm key={params.toString()} base={base} hide={hide} q={q} contextLine={hide.includes("line") ? params.get("line") : null} close={close} />}
       </div>
     </dialog>
-    <noscript><details><summary>Filter pieces</summary><FilterForm base={base} hide={hide} q={q} close={() => undefined} /></details></noscript>
+    <noscript><details><summary>Filter pieces</summary><FilterForm base={base} hide={hide} q={q} contextLine={hide.includes("line") ? params.get("line") : null} close={() => undefined} /></details></noscript>
   </div>;
 }
 
-function FilterForm({base,hide,q,close}: {base:Piece[]; hide:FilterGroup["key"][]; q:BrowseQuery; close:()=>void}) {
+function FilterForm({base,hide,q,contextLine,close}: {base:Piece[]; hide:FilterGroup["key"][]; q:BrowseQuery; contextLine?: string | null; close:()=>void}) {
   const [draft,setDraft] = useState(q);
   const empty = readQuery(new URLSearchParams());
   const groups = filterGroups(base,empty,hide);
@@ -165,6 +170,7 @@ function FilterForm({base,hide,q,close}: {base:Piece[]; hide:FilterGroup["key"][
   const toggle = (key:FilterGroup["key"],value:string) => setDraft(previous => ({...previous,[key]:(previous[key] as string[]).includes(value) ? (previous[key] as string[]).filter(v => v!==value) : [...previous[key],value]}));
   return <Form method="get" preventScrollReset replace className="filter-form" onSubmit={close}>
     <input type="hidden" name="sort" value={q.sort} />
+    {contextLine && <input type="hidden" name="line" value={contextLine} />}
     {(["design","metal","stone","price","production","line"] as FilterGroup["key"][]).filter(key => !groups.some(group => group.key === key)).flatMap(key => (draft[key] as string[]).map(value => <input key={key+value} type="hidden" name={key} value={value} />))}
     <div className="filter-dialog-options">{groups.map((group,index) => <details key={group.key} open={index === 0 || draft[group.key].length > 0}>
       <summary>{group.label}{draft[group.key].length ? " ("+draft[group.key].length+")" : ""}</summary>

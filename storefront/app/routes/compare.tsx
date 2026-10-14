@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigation, useSearchParams } from "react-router";
 import { PieceCard } from "~/components/Catalog";
 import { Section } from "~/components/Section";
-import { PIECES, pieceByHandle } from "~/lib/catalog/data";
+import { LineNav } from "~/components/HouseLines";
+import { SHOP_LINES, selectedLine, shopPieces } from "~/lib/catalog/lines";
+import { tierBySlug } from "~/lib/catalog/data";
 import { whatItIs } from "~/lib/catalog/browse";
 import { METAL_LABEL } from "~/lib/catalog/types";
 import { envContext } from "~/lib/env";
@@ -16,6 +18,8 @@ export const meta: Route.MetaFunction = () => [{ title: "Set out three pieces | 
 export default function ComparePage() {
   const [params, setParams] = useSearchParams();
   const navigation = useNavigation();
+  const line = selectedLine(params) ?? "americana";
+  const available = shopPieces(line);
   const fromUrl = () => [0, 1, 2].map((i) => params.get(`piece${i + 1}`) ?? "");
   const [handles, setHandles] = useState(fromUrl);
   const pendingHandles = useRef(handles);
@@ -25,14 +29,15 @@ export default function ComparePage() {
     pendingHandles.current = next;
     setHandles(next);
   }, [params, navigation.state]);
-  const pieces = handles.map(pieceByHandle);
+  const pieces = handles.map(handle => available.find(p => p.handle===handle));
   const selected = pieces.filter((p) => p !== undefined);
   const appointment = new URLSearchParams({ kind: "fitting", pieces: selected.map((p) => p.handle).join(",") });
   return (
     <Section className="py-12">
-      <h1 className="h-display text-[36px] md:text-[48px]">Compare pieces</h1>
+      <LineNav current={line} path="/compare" lines={SHOP_LINES} />
+      <h1 className="mt-8 h-display text-[36px] md:text-[48px]">Compare pieces</h1>
       <p className="lede mt-6 max-w-2xl">
-        Choose up to three pieces.
+        Choose up to three {tierBySlug(line).name} pieces.
       </p>
       <div className="compare-scroll" role="region" aria-label="Piece comparison" tabIndex={0}><div className="compare-tray mt-10 grid gap-8 md:grid-cols-3">
         {pieces.map((p, i) => (
@@ -41,7 +46,7 @@ export default function ComparePage() {
               <span className="mb-2 block">Piece {i + 1}</span>
               <select
                 className="field"
-                value={handles[i]}
+                value={p?.handle ?? ""}
                 onChange={(e) => {
                   const next = new URLSearchParams(params);
                   const chosen = [...pendingHandles.current];
@@ -56,7 +61,7 @@ export default function ComparePage() {
                 }}
               >
                 <option value="">Choose a piece</option>
-                {PIECES.filter((x) => x.handle === handles[i] || !handles.includes(x.handle)).map((x) => (
+                {available.filter((x) => x.handle === handles[i] || !handles.includes(x.handle)).map((x) => (
                   <option key={x.handle} value={x.handle}>
                     {x.name}
                   </option>

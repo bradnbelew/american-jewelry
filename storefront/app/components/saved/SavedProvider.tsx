@@ -1,3 +1,6 @@
+import { pieceByHandle, tierBySlug } from "~/lib/catalog/data";
+import { LINE_ORDER } from "~/lib/catalog/lines";
+import { decodeCode } from "~/lib/builder/code";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 /**
@@ -71,4 +74,17 @@ export function useSaved() {
   const v = useContext(Ctx);
   if (!v) throw new Error("useSaved outside SavedProvider");
   return v;
+}
+
+/** Explicitly saved registry objects stay in their own group. */
+export function savedGroups(items: SavedItem[]) {
+  const classified = items.map(item => {
+    const piece = pieceByHandle(item.id);
+    const design = item.id.startsWith("design:") ? decodeCode(item.id.slice(7)) : null;
+    return {item,line:piece?.tier ?? (design ? design.origin === "natural" ? "americana" : "new-american" : "designs")};
+  });
+  return [...LINE_ORDER,"designs"].map(line => ({
+    name:line === "designs" ? "Your designs" : tierBySlug(line as typeof LINE_ORDER[number]).name,
+    items:classified.filter(entry=>entry.line===line).map(entry=>entry.item),
+  })).filter(group=>group.items.length);
 }

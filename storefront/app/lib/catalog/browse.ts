@@ -237,6 +237,8 @@ export function searchCatalog(query: string, limit = 12): SearchHit[] {
   };
   const hits: { hit: SearchHit; s: number }[] = [];
   for (const p of PIECES) {
+    // Registry objects are discovered in Royal American, never in a mixed product list.
+    if (p.oneOfOne || p.tier === "royal-american") continue;
     const design = designBySlug(p.design);
     const tier = tierBySlug(p.tier);
     const hay = [p.name, design?.name ?? "", tier.name, p.oneOfOne ? "high jewelry registry" : "", PIECE_TYPE_LABEL[p.pieceType], categoryOf(p)?.name ?? "", whatItIs(p), ...p.versions.map((v) => `${v.name} ${v.stones ?? ''}`), ...p.collections.map((c) => COLLECTIONS.find((x) => x.slug === c)?.name ?? ""), ...p.metals.map((m) => METAL_LABEL[m])].join(" ");
@@ -248,8 +250,9 @@ export function searchCatalog(query: string, limit = 12): SearchHit[] {
     if (s) hits.push({ hit: { kind: "design", name: `${d.name}, a design`, href: `/designs/${d.slug}`, line: d.motif }, s: s + 1 });
   }
   for (const t of TIERS) {
-    const s = score(`${t.name} line ${t.slug === 'royal-american' ? 'high jewelry registry' : ''} ${t.tagline} ${t.stones}`);
-    if (s) hits.push({ hit: { kind: "line", name: t.slug === 'royal-american' ? 'High Jewelry / Royal American' : t.name, href: `/${t.slug}`, line: t.tagline }, s: s + 1 });
+    const registryNames = t.slug === "royal-american" ? PIECES.filter(p => p.oneOfOne).map(p => p.name).join(" ") : "";
+    const s = score(`${registryNames} ${t.name} line ${t.slug === 'royal-american' ? 'high jewelry registry' : ''} ${t.tagline} ${t.stones}`);
+    if (s) hits.push({ hit: { kind: "line", name: t.name, href: `/${t.slug}`, line: t.tagline }, s: s + 1 });
   }
   for (const c of COLLECTIONS) {
     const s = score(`${c.name} collection ${c.intro}`);

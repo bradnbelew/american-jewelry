@@ -141,8 +141,8 @@ export const COLLECTIONS: Collection[] = [
   {
     "slug": "bridal",
     "name": "Bridal",
-    "intro": "Rings for a promise. Jewelry for the day.",
-    "story": "Explore engagement settings, wedding bands and a few finishing touches. Proposed designs are identified on each piece.",
+    "intro": "Engagement rings and wedding bands.",
+    "story": "Choose Americana for natural diamonds or New American for lab-grown diamonds.",
     "crossTier": true
   },
   {
@@ -381,7 +381,6 @@ export const PIECES: Piece[] = [
     }
   ],
   "collections": [
-    "bridal",
     "statement",
     "gifts"
   ],
@@ -467,7 +466,6 @@ export const PIECES: Piece[] = [
     }
   ],
   "collections": [
-    "bridal",
     "statement",
     "gifts"
   ],
@@ -510,7 +508,6 @@ export const PIECES: Piece[] = [
     }
   ],
   "collections": [
-    "bridal",
     "the-stack",
     "everyday"
   ],
@@ -596,7 +593,6 @@ export const PIECES: Piece[] = [
     }
   ],
   "collections": [
-    "bridal",
     "everyday",
     "gifts"
   ],
@@ -728,7 +724,6 @@ export const PIECES: Piece[] = [
   ],
   "collections": [
     "family",
-    "bridal",
     "gifts",
     "color"
   ],
@@ -838,7 +833,7 @@ export const PIECES: Piece[] = [
       { label: "Band", value: "3.0 mm flat, comfort fit" },
       { label: "Hallmark", value: "Karat mark, inside the shank" },
     ],
-    collections: ["family", "the-stack"],
+    collections: ["family", "the-stack", "bridal"],
     art: "band",
   },
   {
@@ -989,7 +984,7 @@ export const PIECES: Piece[] = [
     madeToOrder: true,
     description: "A knife-edge band faceted all the way around.",
     specs: [{ label: "Band", value: "2.6 mm knife edge, comfort fit" }],
-    collections: ["the-stack"],
+    collections: ["the-stack", "bridal"],
     art: "band",
   },
 
@@ -1220,7 +1215,7 @@ const TIER_CODE: Record<TierSlug, string> = { "royal-american": "RA", americana:
 export const pieceRef = (p: Piece) => `${TIER_CODE[p.tier]} ${String(PIECES.indexOf(p) + 1).padStart(3, "0")}`;
 export const piecesForTier = (tier: TierSlug) => PIECES.filter((p) => p.tier === tier);
 export const piecesForDesign = (design: string) => PIECES.filter((p) => p.design === design);
-export const piecesForCollection = (slug: string) => PIECES.filter((p) => p.collections.includes(slug));
+export const piecesForCollection = (slug: string) => PIECES.filter((p) => !p.oneOfOne && p.tier !== "royal-american" && p.collections.includes(slug));
 
 export const startingPrice = (p: Piece): number | null => {
   const prices = p.versions.map((v) => v.priceCents).filter((x): x is number => x !== null);

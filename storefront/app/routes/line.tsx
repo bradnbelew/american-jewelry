@@ -1,6 +1,7 @@
 import { Link } from "react-router";
-import { ProductResults } from "~/components/Catalog";
+import { KindsRow, ProductResults } from "~/components/Catalog";
 import { Campaign, RoyalPreview, VisitInvitation } from "~/components/HouseExperience";
+import { LineNav } from "~/components/HouseLines";
 import { TIERS, piecesForTier } from "~/lib/catalog/data";
 import { TIER_PHOTO } from "~/lib/catalog/photos";
 import type { TierSlug } from "~/lib/catalog/types";
@@ -19,11 +20,12 @@ export const meta: Route.MetaFunction = ({data}) => {
 export default function LinePage({loaderData}: Route.ComponentProps) {
   const slug = loaderData.slug;
   const tier = TIERS.find((t) => t.slug === slug)!;
-  if (slug === "royal-american") return <><RoyalPreview full /><VisitInvitation /></>;
+  if (slug === "royal-american") return <><div className="house-wrap"><LineNav current={slug} /></div><RoyalPreview full /><VisitInvitation /></>;
   const lab = slug === "new-american";
   return <>
-    <Campaign photo={TIER_PHOTO[slug]} title={tier.name} label={lab ? "Lab-grown diamonds" : "Gold, gemstone and natural diamond"} line={lab ? "The clarity of a single idea." : "A signature in every form."} href="#pieces" action="Explore the pieces" className={`line-campaign ${lab ? "line-campaign-light" : ""}`} position={lab ? "65% 50%" : "60% 50%"} />
-    <section className="family-section house-wrap" id="pieces"><ProductResults base={piecesForTier(slug)} hide={["line"]} /><p className="concept-note">Concept photographs. Price before sales tax.</p></section>
+    <div className="house-wrap"><LineNav current={slug} /></div>
+    <Campaign photo={TIER_PHOTO[slug]} tall={lab ? "campaign-03-signal-bridal-hand" : "campaign-09-shooting-star-hero-mobile"} title={tier.name} label={lab ? "Lab-grown diamonds" : "Gold, gemstone and natural diamond"} href="#pieces" action="Explore the pieces" className={`line-campaign ${lab ? "line-campaign-light" : ""}`} position={lab ? "90% 50%" : "60% 50%"} />
+    <section className="family-section house-wrap" id="pieces"><KindsRow line={slug} /><ProductResults base={piecesForTier(slug)} hide={["line"]} /><p className="concept-note">Concept photographs. Price before sales tax.</p></section>
     {lab && <section className="house-essay house-wrap" id="standard"><h2>The New American Standard</h2><div><p>Lab-grown diamonds, D to F color, VVS1 or VVS2 clarity. Growth method and any treatment are disclosed on the individual report.</p><p>Center stones from 0.30 ct carry an IGI report. Confirm the specification of your selected version before ordering.</p><Link to="/natural-or-man-made" className="link">Natural and lab-grown diamonds</Link></div></section>}
     <VisitInvitation />
   </>;

@@ -1,7 +1,7 @@
 import type { SettingKey } from "./model";
 
 /** The photograph that stands for each setting until the house designs are shot. PHOTO keys. */
-export const SETTING_PHOTO: Record<SettingKey, string> = { signal: "ring-halo", "shooting-star": "ring-radiant", prism: "signet-b" };
+export const SETTING_PHOTO: Record<SettingKey, string> = { signal: "comp-signal-packshot", "shooting-star": "comp-object-shooting-star-ring", prism: "comp-object-prism-band" };
 
 /** The designer's note on each setting: why it exists, what the house decided, what is yours to decide. */
 export const DESIGN_NOTES: Record<

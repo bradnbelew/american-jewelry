@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Form, Link, useLocation } from "react-router";
 
 import { searchCatalog, searchSuggestion } from "~/lib/catalog/browse";
-import { DESIGNS } from "~/lib/catalog/data";
+import { tierBySlug } from "~/lib/catalog/data";
+import { SHOP_LINES } from "~/lib/catalog/lines";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 
 import { Pic } from "./Pic";
@@ -67,8 +68,9 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
         <div id="search-results" aria-live="polite" className="mt-2">
           {q.trim() && hits.length === 0 && <p className="font-text py-6 text-ink-2">No results for “{q}”. {suggestion ? <Link className="link" to={`/search?q=${encodeURIComponent(suggestion)}`}>Did you mean {suggestion}?</Link> : 'Try a design, a kind of piece or a stone.'}</p>}
           {hits.length > 0 && (
-            <ul className="grid gap-x-10 md:grid-cols-2">
-              {hits.map((h) => {
+            <div className="search-line-groups">
+            {[{name:"Explore",items:hits.filter(h=>!h.piece)},...SHOP_LINES.map(line=>({name:tierBySlug(line).name,items:hits.filter(h=>h.piece?.tier===line)}))].filter(group=>group.items.length).map(group=><section key={group.name}><h2 className="label">{group.name}</h2><ul className="grid gap-x-10 md:grid-cols-2">
+              {group.items.map((h) => {
                 const photo = h.piece ? (PIECE_PHOTOS[h.piece.handle] ?? ["hero-box"])[0] : null;
                 return (
                   <li key={h.href + h.name} className="border-b border-hair">
@@ -82,12 +84,13 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
                   </li>
                 );
               })}
-            </ul>
+            </ul></section>)}
+            </div>
           )}
           {!q.trim() && (
             <div className="grid gap-x-10 gap-y-6 pt-6 md:grid-cols-3">
               <Column title="By type" links={[["/jewelry/rings", "Rings"], ["/jewelry/necklaces", "Necklaces"], ["/jewelry/earrings", "Earrings"], ["/jewelry/bracelets", "Bracelets"]]} />
-              <Column title="By style" links={DESIGNS.map((d) => [`/designs/${d.slug}`, d.name])} />
+              <Column title="By line" links={[["/americana","Americana"],["/new-american","New American"],["/royal-american","Royal American"]]} />
               <Column title="Often looked for" links={[["/royal-american", "High Jewelry"], ["/new-american", "Lab-grown diamonds"], ["/build/ring", "Build a ring"], ["/stores", "Stores and hours"]]} />
             </div>
           )}
