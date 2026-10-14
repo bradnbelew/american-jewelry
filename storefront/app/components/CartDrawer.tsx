@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { useCart, useCartForm } from "~/lib/cart";
 import { closeCartDrawer, configureOpenCartAction, CART_DRAWER_ID } from "~/lib/cart-drawer";
 import { formatPriceRound } from "~/lib/money";
+import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import { bagLineLeadTime, bagLineName } from "~/lib/product";
 
 import { publishCartViewed } from "./AnalyticsTrackers";
@@ -83,6 +84,12 @@ export function CartLineItem({ line, emptyCartFocusId }: { line: CartLineView; e
   const pending = pendingLines.has(line.id);
   const name = bagLineName(product?.handle, product?.title ?? merchandise?.title ?? "Piece", merchandise?.selectedOptions, merchandise?.title);
   const attributes = (line.attributes ?? []).filter((a) => !a.key.startsWith("_") && a.value != null);
+  const photo = product?.handle ? PIECE_PHOTOS[product.handle]?.[0] : undefined;
+  const selection = new URLSearchParams((merchandise?.selectedOptions ?? []).map(({name, value}) => [name, value]));
+  for (const attribute of attributes) {
+    if (attribute.key === "Size") selection.set("size", attribute.value!);
+    if (attribute.key === "Engraving") selection.set("engraving", attribute.value!);
+  }
   const errorId = `bag-line-error-${line.id.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
 
   // Removing a line unmounts the control that holds focus. Move it to a neighbouring line first.
@@ -102,13 +109,13 @@ export function CartLineItem({ line, emptyCartFocusId }: { line: CartLineView; e
 
   return (
     <li className={`flex gap-4 py-5 transition-opacity ${pending ? "opacity-60" : ""}`} data-testid="cart-line" {...(pending ? { "aria-busy": "true" } : {})}>
-      <div className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden bg-white">
-        {merchandise?.image ? <img src={merchandise.image.url} alt={merchandise.image.altText ?? ""} className="absolute inset-0 h-full w-full object-cover" loading="lazy" /> : null}
+      <div className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden bg-paper">
+        {photo ? <Pic k={photo} sizes="80px" fit="contain" /> : merchandise?.image ? <img src={merchandise.image.url} alt={merchandise.image.altText ?? ""} className="absolute inset-0 h-full w-full object-contain" loading="lazy" /> : null}
       </div>
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <p className="font-display text-[1.0625rem] leading-snug">
           {product?.handle ? (
-            <Link to={`/pieces/${product.handle}`} className="hover:text-paper/70" onClick={() => closeCartDrawer()}>
+            <Link to={`/pieces/${product.handle}?${selection}`} className="hover:text-paper/70" onClick={() => closeCartDrawer()}>
               {name}
             </Link>
           ) : (

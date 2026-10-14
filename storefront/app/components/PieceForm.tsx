@@ -33,7 +33,7 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
   const [size, setSize] = useState(() => explicitSize(piece?.sizes, base.get("size")));
   const sizeReady = sizeIsReady(piece?.sizes, size);
   const chooseSize = () => document.getElementById(`size-${product.handle}`)?.focus();
-  const [engrave, setEngrave] = useState("");
+  const [engrave, setEngrave] = useState(() => (base.get("engraving") ?? "").slice(0, 20));
 
   const addable = canAddToCart(product, options);
   const price = selectedVariant?.price ?? product.priceRange.minVariantPrice;
@@ -46,10 +46,12 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
     ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report."
     : (version?.stones ?? (piece ? "Solid 14k or 18k gold, karat-marked." : ""));
   const photo = (PIECE_PHOTOS[product.handle] ?? ["hero-box"])[0];
-  const storeQuery = new URLSearchParams({ piece: product.handle, ...(versionValue ? { version: versionValue } : {}), ...(metalValue ? { metal: metalValue } : {}), ...(size ? { size } : {}) }).toString();
+  const storeQuery = new URLSearchParams({ piece: product.handle, ...(versionValue ? { version: versionValue } : {}), ...(metalValue ? { metal: metalValue } : {}), ...(size ? { size } : {}), ...(engrave ? { engraving: engrave } : {}) }).toString();
   const savedParams = new URLSearchParams(base);
   if (size) savedParams.set("size", size);
   else savedParams.delete("size");
+  if (engrave) savedParams.set("engraving", engrave);
+  else savedParams.delete("engraving");
   const savedHref = pieceUrl(product, selectedVariant?.selectedOptions ?? [], product.handle, savedParams);
   // A Shop Pay permalink cannot carry line attributes, so it only appears where there is nothing to carry.
   const shopPayHere = !piece?.sizes && !engrave;
