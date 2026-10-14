@@ -10,6 +10,7 @@
     "dev:https": "hydrogen skills check --mode=warn && vite dev",
     "preview": "react-router build && vite preview",
     "lint:house": "node scripts/house-lint.mjs",
+    "test:shopping": "node scripts/test-shopping.mjs",
     "typecheck": "react-router typegen && tsc && node scripts/gql-check.mjs --fail-on-warn"
   },
   "dependencies": {

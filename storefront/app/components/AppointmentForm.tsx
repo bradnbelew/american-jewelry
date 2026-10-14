@@ -16,8 +16,8 @@ export const KIND_LABEL: Record<string, string> = Object.fromEntries(KINDS);
 export const STORE_LABEL: Record<string, string> = { ...Object.fromEntries(STORES.map((s) => [s.slug, s.name])), virtual: "By video" };
 
 /** Query params that ride along as hidden fields so the request arrives with the piece on the table. */
-export const CONTEXT_KEYS = ["piece", "code", "build", "version", "metal", "size", "tier"] as const;
-const LABELS: Record<string, string> = { piece: "Piece", code: "Design code", build: "Builder", version: "Version", metal: "Metal", size: "Size", tier: "Line" };
+export const CONTEXT_KEYS = ["piece", "pieces", "code", "build", "version", "metal", "size", "tier"] as const;
+const LABELS: Record<string, string> = { piece: "Piece", pieces: "Shortlist", code: "Design code", build: "Builder", version: "Version", metal: "Metal", size: "Size", tier: "Line" };
 
 export type AppointmentResult = { sent: true; delivered: "email" | "webhook" | "log"; name: string; store: string; kind: string } | { sent: false; error: string } | undefined;
 
@@ -37,9 +37,8 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
       <div className="letter flex min-h-[20rem] flex-col gap-5 pt-10">
         <p>Dear {first},</p>
         <p>
-          We have your request: {storeName}, {KIND_LABEL[result.kind]?.toLowerCase() ?? result.kind}. Someone from the house will write or call to set the hour. If it is for today, call the store and we will make room.
+          {result.delivered === "log" ? "This preview did not send your request to the store. Please call either location to arrange your visit." : `We have your request: ${storeName}, ${KIND_LABEL[result.kind]?.toLowerCase() ?? result.kind}. Someone from the house will write or call to confirm a time. For a visit today, please call the store.`}
         </p>
-        {result.delivered === "log" && <p className="label">Our booking system is not connected yet. If you do not hear from us within a few days, please call either store.</p>}
         <p className="font-text italic">The family, Brentwood and Mt. Juliet, Tennessee</p>
       </div>
     );
@@ -50,7 +49,7 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
       {CONTEXT_KEYS.map((k) => (prefill[k] ? <input key={k} type="hidden" name={k} value={prefill[k]} /> : null))}
       {context.length > 0 && (
         <p className="font-text bg-paper px-4 py-3 text-[0.9375rem] text-ink-2 md:col-span-2">
-          We will have this ready: <span className="text-ink">{context.join(", ")}</span>
+          Your request includes: <span className="text-ink">{context.join(", ")}</span>
         </p>
       )}
 

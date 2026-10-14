@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Form, Link, useLocation } from "react-router";
 
-import { searchCatalog } from "~/lib/catalog/browse";
+import { searchCatalog, searchSuggestion } from "~/lib/catalog/browse";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 
 import { Pic } from "./Pic";
@@ -18,6 +18,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
   const [q, setQ] = useState("");
   const location = useLocation();
   const hits = useMemo(() => searchCatalog(q, 8), [q]);
+  const suggestion = useMemo(() => searchSuggestion(q), [q]);
 
   useEffect(() => {
     const d = dialog.current;
@@ -63,7 +64,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
           </button>
         </Form>
         <div id="search-results" aria-live="polite" className="mt-2">
-          {q.trim() && hits.length === 0 && <p className="font-text py-6 text-ink-2">Nothing in the house answers to that. Try a design, a kind of piece or a store.</p>}
+          {q.trim() && hits.length === 0 && <p className="font-text py-6 text-ink-2">No results for “{q}”. {suggestion ? <Link className="link" to={`/search?q=${encodeURIComponent(suggestion)}`}>Did you mean {suggestion}?</Link> : 'Try a design, a kind of piece or a stone.'}</p>}
           {hits.length > 0 && (
             <ul className="grid gap-x-10 md:grid-cols-2">
               {hits.map((h) => {
@@ -86,7 +87,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
             <div className="grid gap-x-10 gap-y-6 pt-6 md:grid-cols-3">
               <Column title="By kind" links={[["/jewelry/rings", "Rings"], ["/jewelry/necklaces", "Necklaces"], ["/jewelry/earrings", "Earrings"], ["/jewelry/bracelets", "Bracelets"]]} />
               <Column title="By design" links={[["/designs/shooting-star", "Shooting Star"], ["/designs/prism", "Prism"], ["/designs/signal", "Signal"], ["/designs/grid", "Grid"]]} />
-              <Column title="Often looked for" links={[["/build/ring", "Build a ring"], ["/collections/bridal", "Bridal"], ["/services#resizing", "Resizing"], ["/stores", "Stores and hours"]]} />
+              <Column title="Often looked for" links={[["/royal-american", "High Jewelry · Royal American"], ["/new-american", "Lab-grown diamonds"], ["/build/ring", "Build a ring"], ["/stores", "Stores and hours"]]} />
             </div>
           )}
         </div>

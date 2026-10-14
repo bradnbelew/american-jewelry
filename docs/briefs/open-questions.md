@@ -1,18 +1,24 @@
 # Open questions
 
 Purpose: what the family must confirm, and every conflict found between sources. Until answered, the briefs follow the rule named in "Briefs follow".
-Last updated: 2026-10-11
+Last updated: 2026-10-13
 Sources: all briefs sources; conflicts from research/01-11 (digest), the HTML boards, storefront code and memory notes.
 
 When answered: move the item to `decisions.md` with the date and who decided, then fix every file that carried a TODO.
 
 ## A. Facts only the family can supply
 
+### Astra implementation reconciliation, 2026-10-13
+
+Resolved by the owner: lab-grown wording is permitted; High Jewelry is the discovery label while Royal American remains the line; selectable major design explorations are authorized again. Older contradictory statements in historical briefs are superseded by the latest canon/decisions entry.
+
+Still unconfirmed: real Royal pieces/specifications/report numbers and availability, names/permissions for family and bench photography, final opening hours and final policy terms. The implementation removes unsupported location claims and the fake-looking truncated report number. Existing Royal catalog specifications remain illustrative private mockup data, not verified stock. The preview desk lists the asset/evidence requests. Owner confirmation during implementation: both locations have shops visible to customers and casting is done in-house. “Behind glass” was not specified; do not reintroduce it.
+
 1. **Store hours.** Old site: Brentwood Tue-Fri 10-6, Sat 10-5; Mt. Juliet Mon-Sat 10-6. Storefront draft: both Mon-Fri 10-6, Sat 10-5, Sun closed (provisional). research/08: Mt. Juliet "Tuesday to Saturday". Needed for store pages, schema and both Google profiles.
 2. **Founding year.** Unknown everywhere; research/08 and 11 want "Since [year]".
 3. **Owners' names, and first names at the counter and bench**, with consent to publish them.
-4. **Where the bench is, and what form it takes.** See conflict C1.
-5. **Is casting done in house?** Drives what we may say ("cast" vs "set and finished"). research/01 "designed and cast in Tennessee" is unverified.
+4. **Resolved: visible shops at both locations.** Owner confirmed 2026-10-13. The physical enclosure and specific equipment still need authentic photography; do not infer “behind glass.”
+5. **Resolved: casting is in-house.** Owner confirmed 2026-10-13. No specific casting location was supplied.
 6. **Financing partner** (Wells Fargo on the old site; Affirm per research/02) and whether it is mentioned at all beyond "Financing available in store."
 7. **Old lines:** are Arch, Honey and Stripes real motifs, tags, or retired? How do Classic, Rugged, Faith, TriStar, paperclip and beaded disc map?
 8. **Watch brands kept** (old site: Citizen, Tissot, Kronaby, Shinola, Michele) and whether watch service is listed.
@@ -63,7 +69,7 @@ When answered: move the item to `decisions.md` with the date and who decided, th
 
 | # | Topic | Source A | Source B | Briefs follow |
 |---|---|---|---|---|
-| C1 | Bench location and form | research/08, storefront data.ts and home: Mt. Juliet, "behind glass" / "on the floor", casting there | research/04, 05, 11: "set and finished in Brentwood"; old site: "open air studio", store unnamed; brand-playbook weeks 3-6 lists "glass on the bench in Mt. Juliet" as a to-do | Say "our workshop" and "the bench" without a store or "glass" until confirmed |
+| C1 resolved 2026-10-13 | Bench location and form | Earlier sources conflicted about Brentwood and Mt. Juliet and asserted “behind glass” | Owner: both locations have shops visible to customers; casting is in-house | Name both visible shops and in-house casting. Do not infer glass or a specific casting location. |
 | C2 | Home hero eyebrow case | REMAKE-BLUEPRINT §6 and research/08: "BRENTWOOD AND MT. JULIET, TENNESSEE" in caps; research/05 "keep the uppercase eyebrow"; research/11 `.eyebrow` uppercase .14em | Decision 2026-10-10 (HANDOFF remake section, git 9d3c508): labels sentence case; research/10 lists caps eyebrows as an AI tell; code already sentence case | Sentence case (newest dated decision) |
 | C3 | Middle dots | research/08 ("Ref. AM 004 · Americana", "Shooting Star (6) · Prism (4)"), research/05 card lines; data.ts names "No. 001 · The Cumberland" | Decision 2026-10-10: no middle-dot meta strings (AI tell, research/10) | No middle dots in new copy; the Royal American name strings in data.ts still carry one (the page strips it) |
 | C4 | Made in Tennessee / USA | research/05 hero "Made in Tennessee since [year]"; research/04 allows "Made in USA of imported materials" later; research/08 cites Red Wing's "Made in USA w/ Imported Materials"; brand-playbook "Drawn, set and finished in Tennessee" and "American, by design. Designed in America"; new-american-tier "Made in our Tennessee workshop", "designed and cast in Tennessee", "designed and handcrafted in Tennessee" | Family rule: no Made in America/Tennessee; exact provenance line only | The exact provenance line; nothing else |

@@ -30,7 +30,7 @@ export default function CartRoute() {
           <div className="lg:col-span-7">
             <CartLines emptyCartFocusId="cart-page-title" />
           </div>
-          <aside className="lg:col-span-4 lg:col-start-9" aria-label="What arrives">
+          <aside className="lg:col-span-4 lg:col-start-9" aria-label="Order summary">
             <CartSummary />
           </aside>
         </div>

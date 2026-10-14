@@ -17,7 +17,7 @@ const SERVICES: [string, string][] = [
   ["/commission", "Commission a piece"],
   ["/services", "Repair and restoration"],
   ["/care", "Lifetime care"],
-  ["/natural-or-man-made", "Natural or man-made"],
+  ["/natural-or-man-made", "Natural or lab-grown"],
   ["/saved", "Kept"],
 ];
 

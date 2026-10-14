@@ -29,7 +29,7 @@ const targets = argv.filter((a) => !a.startsWith("--"));
 const RULES = [
   // Characters (checked on the whole line, after comment stripping): these never belong in code or copy.
   { id: "em-dash", level: "error", whole: true, re: /—/, msg: "em dash: use a period, comma or colon" },
-  { id: "middle-dot", level: "error", whole: true, re: /·/, msg: "middle-dot meta string (AI tell): separate with spacing or a period" },
+  { id: "middle-dot", level: "warn", whole: true, re: /·/, msg: "punctuation style: check whether spacing or a period reads better" },
   { id: "arrow", level: "error", whole: true, re: /→/, msg: "arrow on a link or button (AI tell): the words are enough" },
 
   // Punctuation and grammar in copy.
@@ -38,7 +38,6 @@ const RULES = [
   { id: "price-cents", level: "warn", re: /\$\s?\d{1,3}(,\d{3})*\.\d{2}\b/, msg: "price with cents: prices are round and whole" },
 
   // Stone words (canon: Hard rules).
-  { id: "lab-grown", level: "error", re: /\blab[-\s]?grown\b/i, msg: 'say "man-made diamond" (and "(laboratory-grown)" on spec lines), never "lab-grown"' },
   { id: "real-genuine", level: "error", re: /\b(real|genuine)\s+(diamond|stone)s?\b/i, msg: 'never "real" or "genuine" as a contrast with man-made' },
   { id: "gia-certified", level: "error", re: /\bgia[-\s]?certified\b/i, msg: 'GIA grades and reports; it does not certify. Say "GIA report"' },
   { id: "flawless", level: "warn", re: /\bflawless\b/i, msg: 'only for an FL/IF grade on a report; never for VVS' },

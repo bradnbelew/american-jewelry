@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 import { formatPrice } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Metal, Piece, Version } from "~/lib/catalog/types";
 import { METAL_LABEL } from "~/lib/catalog/types";
+import { explicitSize } from "~/lib/piece-selection";
 
 import { SaveButton } from "./saved/SaveButton";
 
@@ -23,9 +24,10 @@ export const metalTone = (m: Metal): "yellow" | "white" | "rose" => (m === "14k-
  * "Add to bag" arrives with the Shopify link (phase 2); until then the bag is a preview.
  */
 export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: (m: Metal) => void }) {
-  const [version, setVersion] = useState<Version>(piece.versions[0]);
-  const [metal, setMetalState] = useState<Metal>(piece.metals[0]);
-  const [size, setSize] = useState<string>(piece.sizes?.[6] ?? piece.sizes?.[0] ?? "");
+  const [params] = useSearchParams();
+  const [version, setVersion] = useState<Version>(() => piece.versions.find((v) => v.name === params.get('Version')) ?? piece.versions[0]);
+  const [metal, setMetalState] = useState<Metal>(() => piece.metals.find((m) => METAL_LABEL[m] === params.get('Metal')) ?? piece.metals[0]);
+  const [size, setSize] = useState(() => explicitSize(piece.sizes, params.get("size")));
   const [engrave, setEngrave] = useState("");
   const setMetal = (m: Metal) => {
     setMetalState(m);
@@ -36,13 +38,14 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
   const manMade = version.origin === "man-made";
   const query = new URLSearchParams({ piece: piece.handle, version: version.key, metal, ...(size ? { size } : {}) }).toString();
   const photo = (PIECE_PHOTOS[piece.handle] ?? ["hero-box"])[0];
+  const savedQuery = new URLSearchParams({Version:version.name, Metal:METAL_LABEL[metal], ...(size ? {size} : {})});
 
   return (
     <div className="flex flex-col gap-7">
       <div className="flex flex-col gap-1.5">
         <span className="font-display num text-[1.75rem]">{price === null ? "Price on request" : formatPrice(price)}</span>
         <span className="font-text text-[0.9375rem] text-ink-2">
-          {manMade ? "Man-made diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? "Solid 14k or 18k gold, karat-marked.")}
+          {manMade ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? "Solid 14k or 18k gold, karat-marked.")}
         </span>
         <span className="label">
           {piece.leadTime}
@@ -64,9 +67,9 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       )}
 
       <Field label="Metal" hint={METAL_LABEL[metal]}>
-        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Metal">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Metal">
           {piece.metals.map((m) => (
-            <button key={m} type="button" role="radio" aria-checked={m === metal} aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="swatch" aria-pressed={m === metal} onClick={() => setMetal(m)}>
+            <button key={m} type="button" aria-label={METAL_LABEL[m]} title={METAL_LABEL[m]} className="swatch" aria-pressed={m === metal} onClick={() => setMetal(m)}>
               <span className="swatch-dot" style={{ background: METAL_SWATCH[m] }} />
             </button>
           ))}
@@ -76,6 +79,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       {piece.sizes && (
         <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet">Sizing help</Link>}>
           <select id={`size-${piece.handle}`} className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
+            <option value="" disabled>Choose your size</option>
             {piece.sizes.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -98,14 +102,15 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
           </Link>
         ) : (
           <>
-            <button type="button" className="btn" disabled title="Checkout opens when the store is connected">
-              Add to bag
+            <button type="button" className="btn" disabled title="This local preview has no connected Shopify product">
+              Checkout unavailable in this preview
             </button>
+            <p className="label">Catalog price shown for review. Confirm the configuration and current price with the store.</p>
             <div className="grid grid-cols-2 gap-3">
               <Link to={`/appointments?${query}`} className="btn btn-outline">
                 See it in store
               </Link>
-              <SaveButton item={{ id: piece.handle, href: `/pieces/${piece.handle}`, name: piece.name, detail: version.name, photo }} />
+              <SaveButton item={{ id: piece.handle, href: `/pieces/${piece.handle}?${savedQuery}`, name: piece.name, detail: [version.name, METAL_LABEL[metal], size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
             </div>
           </>
         )}

@@ -300,7 +300,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
             </Link>
           </div>
           <p className="label leading-relaxed">
-            {c.origin === "man-made" ? "Man-made diamond (laboratory-grown), as grown, not mined." : "Natural diamond with a GIA report; any treatment is disclosed before purchase."} Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
+            {c.origin === "man-made" ? "Lab-grown diamond (laboratory-grown); growth method and any treatment are disclosed before purchase." : "Natural diamond with a GIA report; any treatment is disclosed before purchase."} Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
           </p>
         </div>
       </div>

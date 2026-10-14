@@ -6,20 +6,20 @@ import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
 import type { Route } from "./+types/care";
 
 export const meta: Route.MetaFunction = () =>
-  pageMeta({ title: "Lifetime care", description: "Cleaning, prong checks, polishing, resizing and repair at American Jewelry's bench in Mt. Juliet, free for as long as you own the piece.", path: "/care" }, [breadcrumbJsonLd([{ name: "Lifetime care", href: "/care" }])]);
+  pageMeta({ title: "Lifetime care", description: "Cleaning, inspection, resizing and repair at American Jewelry. Contact our Brentwood or Mt. Juliet store to discuss your piece.", path: "/care" }, [breadcrumbJsonLd([{ name: "Lifetime care", href: "/care" }])]);
 
 export default function CarePage() {
   return (
     <>
       <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Lifetime care" lede="Bring it in two or three times a year. We clean it, check every prong and polish it while you wait. No charge, for as long as you own it." />
+        <PageTitle title="Lifetime care" lede="Bring your jewelry in for assessment. We can discuss cleaning, inspection, resizing and repair, including the right care for its stones and setting." />
       </Section>
       <Section width="text">
         <div className="grid gap-10 md:grid-cols-3">
           {[
-            ["Clean and check", "Ultrasonic and steam, a loupe over every setting. Fifteen minutes, free."],
-            ["Resize", "One free resize within 60 days on rings we made; after that, at cost. Full eternity bands are remade."],
-            ["Repair", "Retipping, re-shanking, chains, clasps, stones and laser welding at the bench in Mt. Juliet."],
+            ["Clean and check", "Cleaning methods depend on the stones and setting. Ask us to inspect the piece and recommend suitable care."],
+            ["Resize", "We assess the design before recommending a new size. Some settings, including full eternity bands, may need to be remade. Ask for timing and a quote."],
+            ["Repair", "Retipping, re-shanking, chains, clasps, stones and laser welding through our in-house bench."],
           ].map(([k, v]) => (
             <div key={k} className="flex flex-col gap-2">
               <span className="font-display text-[1.5rem]">{k}</span>

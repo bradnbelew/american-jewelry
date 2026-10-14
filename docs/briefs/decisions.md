@@ -6,6 +6,15 @@ Sources: memory notes (american-jewelry-family-business, -remake-oxygen, -shopif
 
 Format: date | decision | why | source
 
+## 2026-10-13: later owner direction after Astra review
+
+- Lab-grown wording is now approved for SEO, GEO, AEO and customer copy. Laboratory-grown and man-made remain synonyms; origin disclosure is still required. Source: owner's direct follow-up, “we can use lab grown ... backtracking now.”
+- Navigation and search use High Jewelry for discovery; the line remains Royal American and keeps its URL. Source: owner's direct follow-up.
+- Implement the functional audit fixes. Major heroes, layouts and complete design alternatives must be selectable previews; retain the original for comparison. Source: owner requested a picker and invited changes in assumptions and design rules.
+- The earlier exploration withdrawal and man-made-only rule no longer constrain this authorized private review. Aligned grids, functional chips, a labeled motif study, manual gallery controls and the preview palette/font variations are allowed here. This is not approval to invent facts or promote a chosen redesign to the live custom domain.
+- Implementation interpretation: keep Shopify/API keys and existing paths stable; update human labels, metadata, search normalization and the copy lint. Family names, authentic drawings and Royal reports still require evidence.
+- Later owner confirmation in this implementation: both locations have shops, both are visible to customers, and casting is in-house. This retires the unsupported Brentwood-salon/Mt.-Juliet-workshop split. The owner did not establish “behind glass” or which location performs casting.
+
 ## 2026-10-08
 
 - 2026-10-08 | Reposition from "average local family jeweler" to a high-end American house of fine jewelry, "the Cartier of America" (references Cartier, Van Cleef & Arpels, Harry Winston, Rolex, Patek, Ralph Lauren) | family ambition | memory: american-jewelry-family-business

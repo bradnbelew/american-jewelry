@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Form, Link, useLocation, useNavigate } from "react-router";
+import { Form, Link, useLocation } from "react-router";
 
 import { useCart } from "~/lib/cart";
 import { CART_DRAWER_ID, SAVED_DRAWER_ID, openDialogFromLinkClick } from "~/lib/cart-drawer";
@@ -22,7 +22,6 @@ export function Header() {
   const totalQuantity = useCart((state) => state.data.totalQuantity);
   const { count: saved, ready } = useSaved();
   const location = useLocation();
-  const navigate = useNavigate();
   const header = useRef<HTMLElement>(null);
   const timer = useRef<number | null>(null);
 
@@ -30,10 +29,6 @@ export function Header() {
     if (timer.current) window.clearTimeout(timer.current);
     timer.current = null;
   };
-  const openSoon = useCallback((label: string) => {
-    clearTimer();
-    timer.current = window.setTimeout(() => setPanel(label), 90);
-  }, []);
   const closeSoon = useCallback(() => {
     clearTimer();
     timer.current = window.setTimeout(() => setPanel(null), 160);
@@ -148,13 +143,9 @@ export function Header() {
               aria-expanded={panel === p.label}
               aria-controls={`panel-${p.label.replace(/\s+/g, "-").toLowerCase()}`}
               data-current={current(p) ? "true" : undefined}
-              onMouseEnter={() => openSoon(p.label)}
-              onFocus={() => setPanel(p.label)}
               onClick={() => {
                 clearTimer();
-                // First press opens the panel; a press on an open name goes to its page (Escape closes).
-                if (panel === p.label) void navigate(p.href);
-                else setPanel(p.label);
+                setPanel((current) => current === p.label ? null : p.label);
               }}
             >
               {p.label}

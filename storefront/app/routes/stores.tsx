@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import { Plate, Section } from "~/components/Section";
+import { Section } from "~/components/Section";
 import { STORES } from "~/lib/catalog/data";
 import { breadcrumbJsonLd, pageMeta, storeJsonLd } from "~/lib/seo";
 
@@ -21,13 +21,10 @@ export default function StoresPage() {
     <>
       <Section className="pt-12 pb-12 md:pt-20 md:pb-16">
         <div className="flex max-w-3xl flex-col gap-5">
-          <h1 className="h-display text-[3rem] md:text-[4.5rem]">Two stores. One bench.</h1>
-          <p className="lede measure">Brentwood shows the pieces. Mt. Juliet makes them and cares for them.</p>
+          <h1 className="h-display text-[3rem] md:text-[4.5rem]">Two stores. Two working shops.</h1>
+          <p className="lede measure">Both our Brentwood and Mt. Juliet stores have shops visible to customers. We cast in-house. Call, get directions or arrange a visit.</p>
         </div>
       </Section>
-
-      {/* A plate: one store, across the page. */}
-      <Plate photo={STORES[1].photo} priority caption={`${STORES[1].name}. ${STORES[1].place}`} href={`/stores/${STORES[1].slug}`} ratio="aspect-[4/5] md:aspect-[2.2/1]" />
 
       {/* A ledger: both stores, side by side, every fact in a row. */}
       <Section screen>
@@ -62,9 +59,7 @@ export default function StoresPage() {
                 <Link to={`/appointments?store=${s.slug}`} className="btn">
                   Book {s.name}
                 </Link>
-                <Link to={`/stores/${s.slug}`} className="btn btn-outline">
-                  The store
-                </Link>
+                <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.mapQuery)}`} target="_blank" rel="noreferrer" className="btn btn-outline">Directions</a>
               </div>
             </article>
           ))}

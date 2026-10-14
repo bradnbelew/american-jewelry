@@ -26,7 +26,7 @@ export function metalKeyFromLabel(label: string): Metal | null {
 
 /**
  * The name of a bag line, with the stone qualifier the canon requires:
- * "Signal Solitaire, 1.50 ct man-made diamond, 14k yellow gold".
+ * "Signal Solitaire, 1.50 ct lab-grown diamond, 14k yellow gold".
  * Falls back to the Shopify title and variant title when the handle is not in the catalog.
  */
 export function bagLineName(handle: string | null | undefined, productTitle: string, selectedOptions: { name: string; value: string }[] | null | undefined, variantTitle?: string | null): string {
@@ -36,7 +36,7 @@ export function bagLineName(handle: string | null | undefined, productTitle: str
   const piece = handle ? pieceByHandle(handle) : undefined;
   if (!piece) return [productTitle, variantTitle].filter(Boolean).join(", ");
   const v = piece.versions.find((x) => x.name === version);
-  const stone = v?.origin === "man-made" ? `${version} man-made diamond` : v?.key === "diamond" ? "natural diamond" : v?.key === "gemstone" ? "birthstone" : null;
+  const stone = v?.origin === "man-made" ? `${version} lab-grown diamond` : v?.key === "diamond" ? "natural diamond" : v?.key === "gemstone" ? "birthstone" : null;
   return [productTitle, stone, metal].filter(Boolean).join(", ");
 }
 

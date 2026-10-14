@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { useCart, useCartForm } from "~/lib/cart";
 import { closeCartDrawer, configureOpenCartAction, CART_DRAWER_ID } from "~/lib/cart-drawer";
 import { formatPriceRound } from "~/lib/money";
-import { bagLineHasStones, bagLineLeadTime, bagLineName } from "~/lib/product";
+import { bagLineLeadTime, bagLineName } from "~/lib/product";
 
 import { publishCartViewed } from "./AnalyticsTrackers";
 import { Pic } from "./Pic";
@@ -192,37 +192,33 @@ export function CartSummary() {
   const hasLines = cart.lines.nodes.length > 0;
   const isPending = hasPendingCost(pending) || revalidating;
   const leadTimes = Array.from(new Set(cart.lines.nodes.map((l) => bagLineLeadTime(l.merchandise?.product?.handle)).filter((x): x is string => !!x)));
-  const anyStones = cart.lines.nodes.some((l) => bagLineHasStones(l.merchandise?.product?.handle, l.merchandise?.selectedOptions));
 
   if (!hasLines) return null;
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex flex-col gap-1.5">
-        <span className="label">What arrives</span>
-        <span className="dissolve relative block aspect-[4/3] overflow-hidden">
-          <Pic k="comp-the-box" sizes="(min-width: 1024px) 30vw, 100vw" />
-        </span>
-        <p className="font-text text-[0.9375rem] text-paper/85">
-          {leadTimes.length > 0 ? `${leadTimes.join(". ")}. ` : ""}
-          In the navy box, with its card{anyStones ? " and the report on its stones" : ""}. Insured, signature required, or collected in either store.
-        </p>
-      </div>
       <div className="flex items-baseline justify-between" aria-busy={isPending}>
         <span className="font-text">Subtotal</span>
         <span className={`num text-[1.125rem] ${isPending ? "opacity-50" : ""}`}>{formatPriceRound(cart.cost.subtotalAmount ?? cart.cost.totalAmount)}</span>
       </div>
-      <p className="label">Price before sales tax.</p>
+      <p className="label">Tax and delivery calculated at checkout.</p>
       {cart.checkoutUrl ? (
         <div className="flex flex-col gap-3">
-          <a href={cart.checkoutUrl} className="btn btn-light">
-            Checkout
+          <a href={cart.checkoutUrl} className="btn btn-light" aria-disabled={isPending} onClick={(event) => { if (isPending) event.preventDefault(); }}>
+            {isPending ? "Updating total…" : "Checkout"}
           </a>
           <Link to="/appointments" className="link link-light self-start" onClick={() => closeCartDrawer()}>
             See it in store first
           </Link>
         </div>
       ) : null}
+      <details className="border-t border-paper/20 pt-3">
+        <summary className="cursor-pointer text-sm">Packaging and delivery</summary>
+        <div className="mt-3 flex items-start gap-3">
+          <span className="relative block aspect-square w-20 shrink-0 overflow-hidden"><Pic k="comp-the-box" sizes="80px" /></span>
+          <p className="font-text text-sm text-paper/85">{leadTimes.length ? `${leadTimes.join('. ')}. ` : ''}Packaging and delivery details are confirmed with your order. Ask about collection at either store and the report for your selected stone.</p>
+        </div>
+      </details>
     </div>
   );
 }

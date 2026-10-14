@@ -9,6 +9,7 @@ import type { Metal, Piece } from "~/lib/catalog/types";
 import { formatPriceRound } from "~/lib/money";
 import { metalKeyFromLabel, pieceUrl, useProductForm } from "~/lib/product";
 import type { PieceProduct } from "~/lib/piece-query";
+import { explicitSize, sizeIsReady } from "~/lib/piece-selection";
 
 import { SaveButton } from "./saved/SaveButton";
 
@@ -29,7 +30,9 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
   const { options, selectedVariant, register, formProps, errors, pending } = useProductForm();
   const location = useLocation();
   const base = useMemo(() => new URLSearchParams(location.search), [location.search]);
-  const [size, setSize] = useState<string>(piece?.sizes?.[6] ?? piece?.sizes?.[0] ?? "");
+  const [size, setSize] = useState(() => explicitSize(piece?.sizes, base.get("size")));
+  const sizeReady = sizeIsReady(piece?.sizes, size);
+  const chooseSize = () => document.getElementById(`size-${product.handle}`)?.focus();
   const [engrave, setEngrave] = useState("");
 
   const addable = canAddToCart(product, options);
@@ -40,10 +43,14 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
   const version = piece?.versions.find((v) => v.name === versionValue);
   const manMade = version?.origin === "man-made";
   const stoneLine = manMade
-    ? "Man-made diamond (laboratory-grown), D to F, VVS, IGI report."
+    ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report."
     : (version?.stones ?? (piece ? "Solid 14k or 18k gold, karat-marked." : ""));
   const photo = (PIECE_PHOTOS[product.handle] ?? ["hero-box"])[0];
   const storeQuery = new URLSearchParams({ piece: product.handle, ...(versionValue ? { version: versionValue } : {}), ...(metalValue ? { metal: metalValue } : {}), ...(size ? { size } : {}) }).toString();
+  const savedParams = new URLSearchParams(base);
+  if (size) savedParams.set("size", size);
+  else savedParams.delete("size");
+  const savedHref = pieceUrl(product, selectedVariant?.selectedOptions ?? [], product.handle, savedParams);
   // A Shop Pay permalink cannot carry line attributes, so it only appears where there is nothing to carry.
   const shopPayHere = !piece?.sizes && !engrave;
   const firstError = errors.userErrors[0]?.message ?? errors.networkErrors[0]?.message ?? null;
@@ -123,7 +130,8 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
         <div className={`grid gap-4 ${piece?.sizes && piece?.engraving ? "grid-cols-[minmax(0,2fr)_minmax(0,3fr)]" : "grid-cols-1"}`}>
           {piece?.sizes && (
             <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet inline-flex min-h-11 items-center">Sizing help</Link>}>
-              <select id={`size-${product.handle}`} className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
+              <select id={`size-${product.handle}`} form={`order-${product.handle}`} required className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
+                <option value="" disabled>Choose your size</option>
                 {piece.sizes.map((s) => (
                   <option key={s} value={s}>
                     {s}
@@ -140,13 +148,16 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
         </div>
       )}
 
-      <form {...formProps({ beforeSubmit: () => openCartDrawer() })} className="flex flex-col gap-3 pt-1">
+      <form id={`order-${product.handle}`} {...formProps({ beforeSubmit: (event) => {
+        if (!sizeReady) { event.preventDefault(); chooseSize(); return; }
+        openCartDrawer();
+      } })} className="flex flex-col gap-3 pt-1">
         <input type="hidden" {...register("merchandiseId", {})} />
         <input type="hidden" {...register("quantity", { value: 1 })} />
         {size ? <input type="hidden" {...register("attributeValue", { key: "Size", value: size })} /> : null}
         {engrave ? <input type="hidden" {...register("attributeValue", { key: "Engraving", value: engrave })} /> : null}
-        <button {...register("addToCart", {})} id={`add-${product.handle}`} className="btn" disabled={!addable || pending} aria-busy={pending}>
-          {selectedVariant ? (addable ? "Add to bag" : "Not available") : "Choose the version"}
+        <button {...register("addToCart", {})} id={`add-${product.handle}`} className="btn" disabled={!addable || pending || !sizeReady} aria-busy={pending}>
+          {!sizeReady ? "Choose your size above" : selectedVariant ? (addable ? "Add to bag" : "Not available") : "Choose the version"}
         </button>
         {firstError ? (
           <p className="font-text text-[0.9375rem] text-ink-2" role="alert">
@@ -158,25 +169,26 @@ export function PieceForm({ product, piece, onMetal }: { product: PieceProduct; 
           <Link to={`/appointments?${storeQuery}`} className="btn btn-outline">
             See it in store
           </Link>
-          <SaveButton item={{ id: product.handle, href: `/pieces/${product.handle}`, name: product.title, detail: versionValue ?? "", photo }} />
+          <SaveButton item={{ id: product.handle, href: savedHref, name: product.title, detail: [versionValue, metalValue, size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
         </div>
       </form>
 
       {/* Below 1024 the photograph fills the first screen, so the price and the action stay with it (council P1). */}
       <div className="buy-bar fixed inset-x-0 bottom-0 z-30 border-t border-hair bg-paper lg:hidden">
         <div className="wrap flex h-[4.5rem] items-center justify-between gap-4">
-          <span className="num text-[1.25rem] leading-none">{priceText}</span>
+          <span className="flex flex-col gap-1"><span className="num text-[1.25rem] leading-none">{priceText}</span><span className="label">{piece?.sizes ? sizeReady ? `Size ${size}` : 'Size not selected' : versionValue}</span></span>
           <button
             type="button"
             className="btn"
             disabled={pending}
             onClick={() => {
+              if (!sizeReady) { chooseSize(); return; }
               const real = document.getElementById(`add-${product.handle}`) as HTMLButtonElement | null;
               if (real && !real.disabled) real.click();
-              else real?.closest("form")?.scrollIntoView({ behavior: "smooth", block: "center" });
+              else real?.closest("form")?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? "auto" : "smooth", block: "center" });
             }}
           >
-            {addable && selectedVariant ? "Add to bag" : "Choose the version"}
+            {!sizeReady ? "Choose size" : addable && selectedVariant ? "Add to bag" : "Choose the version"}
           </button>
         </div>
       </div>

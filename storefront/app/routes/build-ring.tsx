@@ -14,7 +14,7 @@ export const meta: Route.MetaFunction = () =>
   pageMeta(
     {
       title: "Build a ring",
-      description: "Three house settings, a natural or man-made diamond at a set quality, and the metal. Priced from its own geometry and made to order at our bench in Tennessee.",
+      description: "Three house settings, a natural or lab-grown diamond at a set quality, and the metal. Priced from its own geometry and made to order at our bench in Tennessee.",
       path: "/build/ring", og: "pages/build-ring",
     },
     [breadcrumbJsonLd([{ name: "Bridal", href: "/collections/bridal" }, { name: "Build a ring", href: "/build/ring" }])],
@@ -103,10 +103,10 @@ function Settings() {
           <div className="flex flex-col gap-4">
             <h2 className="h-section text-[1.75rem]">One quality for each stone</h2>
             <p className="font-text text-ink-2">
-              Natural diamonds: {STONE_STANDARD.natural.grade}, with a {STONE_STANDARD.natural.report}. Man-made diamonds: {STONE_STANDARD["man-made"].grade}, with an {STONE_STANDARD["man-made"].report}. You choose the size.
+              Natural diamonds: {STONE_STANDARD.natural.grade}, with a {STONE_STANDARD.natural.report}. Lab-grown diamonds: {STONE_STANDARD["man-made"].grade}, with an {STONE_STANDARD["man-made"].report}. You choose the size.
             </p>
             <Link to="/natural-or-man-made" className="link self-start">
-              Natural or man-made
+              Natural or lab-grown
             </Link>
           </div>
           <div className="flex flex-col gap-4">

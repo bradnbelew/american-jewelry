@@ -17,7 +17,7 @@ export const meta: Route.MetaFunction = ({ data }) => {
   return pageMeta(
     {
       title: c ? c.name : "Jewelry",
-      description: c ? `${c.name} by American Jewelry: ${c.line} Natural and man-made diamond, solid gold. Designed in Tennessee.` : "Every piece American Jewelry makes, by kind, design, line and stone. Designed in Tennessee, set and finished in our workshop.",
+      description: c ? `${c.name} by American Jewelry: ${c.line} Natural and lab-grown diamond, solid gold. Designed in Tennessee.` : "Every piece American Jewelry makes, by kind, design, line and stone. Designed in Tennessee, set and finished in our workshop.",
       path: c ? `/jewelry/${c.slug}` : "/jewelry",
       image: "comp-americana-ground",
     },

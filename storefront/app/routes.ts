@@ -2,6 +2,8 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
   index("routes/home.tsx"),
+  route("preview", "routes/preview.tsx"),
+  route("compare", "routes/compare.tsx"),
 
   // The house
   route("royal-american", "routes/line.tsx", { id: "line-royal" }),

@@ -1,5 +1,20 @@
 # American Jewelry — handoff
 
+## Latest: Astra implementation and selectable previews (2026-10-13)
+
+The owner reversed the man-made-only wording rule and explicitly requested implementation plus selectable major design alternatives. This supersedes the withdrawn-explorations note below. Work is on `codex/astra-design-preview`, not master. Start at `/preview`. The header picker uses `?preview=classic|working|company|light` and a server-read cookie; it follows navigation and is disabled in public-live mode.
+
+- New homepage and line-page compositions for The Working Jeweler, In Good Company and In Full Light; the original remains available. Shared product/browse pages carry the direction and repaired shopping flow. `/compare` sets out up to three real catalog entries and carries a shortlist to an appointment request.
+- High Jewelry is the primary navigation/search label; Royal American and `/royal-american` remain intact. Lab-grown / laboratory-grown / man-made search normalization, an explicit typo suggestion and revised visible/meta/schema language are implemented.
+- Ring size starts blank. The actual product form guards submission, and the sticky action focuses size selection. Saved links retain configuration. The gallery uses manual thumbnails. Browse matches price and stone on the same version, retains Royal pieces under their actual stone facet, splits production from stone and exposes removable filters. Mobile Apply closes the compact filter panel.
+- Bag totals/checkout precede optional packaging. Stores put contact facts first. The House copy uses the confirmed family/designer/bench facts instead of an invented signed letter and a typography essay. Bench-behind-glass and casting-location claims were removed where found. Disconnected appointment delivery no longer promises a reply.
+- Removed unsupported “as grown” schema claims, contradictory blanket natural grades and draft return-policy schema. Catalog-only fallback no longer emits purchase offers. Actual Shopify price ranges keep their precision. Catalog browse prices still come from the local catalog; live per-metal price/inventory reconciliation is separate work.
+- `npm run test:shopping` covers aliases, typos, cross-facet version/price matching, Royal gemstone/natural membership, preview gates and explicit sizes. Continue running `npm run typecheck`, `npm run build` and `npm run lint:house`.
+- Shopify AI Toolkit's installed validator only supports through Hydrogen 2026-04, while this app uses 2026.10. Its version rejection is not a code failure. Do not downgrade the app to satisfy it; verify with the installed package types and GraphQL check.
+- Remaining evidence: actual designer drawings, real family/bench/wearing photography, documented repairs, exact Royal inventory/reports, confirmed hours and finalized policies. The owner has now confirmed both stores have shops visible to customers and casting is in-house. No invented substitutes have been presented as evidence. The local preview cannot verify real checkout without the linked Shopify environment; existing store password/payment setup may still limit checkout.
+
+See `docs/briefs/refs/astra-review.md` and `docs/briefs/refs/design-preview-plan.md`. This is a private review branch, not council approval or public-launch clearance.
+
 _Updated 2026-10-13 after the finishing session (type, art direction, navigation, browsing, the viewing, the mockup's comps). Read this whole file before touching anything._
 
 ## LAUNCH BLOCKER (2026-10-13): AI comps are on the mockup

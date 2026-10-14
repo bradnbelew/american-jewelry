@@ -7,32 +7,33 @@ import type { Route } from "./+types/stones";
 
 const ROWS: [string, string, string][] = [
   ["What it is", "Carbon crystallized in the earth over a billion years.", "Carbon crystallized in a reactor over weeks. The same crystal, hardness and fire."],
-  ["How to tell", "Only with laboratory instruments.", "Only with laboratory instruments. Every one of ours is inscribed with its report number."],
+  ["How to tell", "Only with laboratory instruments.", "Only with laboratory instruments. Check the inscription and report for the individual center stone."],
   ["How it is graded", "GIA. Ours are F to G, VS1, Excellent cut.", "IGI. Ours are D to F, VVS1 to VVS2, Ideal cut."],
-  ["What sets the price", "Rarity.", "The making."],
+  ["What sets the price", "Origin, rarity, size, quality, setting and market conditions.", "Production, grading, size, quality, setting and market conditions."],
   ["Where it belongs", "Americana and Royal American.", "New American, and any bridal setting when you choose it."],
-  ["What we call it", "Natural diamond.", "Man-made diamond, every time, with laboratory-grown on the spec line."],
+  ["What we call it", "Natural diamond.", "Lab-grown diamond, every time, with laboratory-grown on the spec line."],
 ];
 
 const FAQ: [string, string][] = [
+  ["Where can I see lab-grown diamond jewelry in Middle Tennessee?", "Explore New American at American Jewelry, with stores in Brentwood and Mt. Juliet. Request an appointment and the store will confirm which pieces are available to view."],
   // house-lint: allow (the customer's own question; the answer never calls natural stones real)
-  ["Is a man-made diamond a real diamond?", "It is a diamond: the same carbon crystal, hardness and optical properties as a mined one, grown in a laboratory instead of the earth. Under the FTC's jewelry guides it may not be called simply a diamond, so we call it a man-made diamond every time, and we do not call either kind real or fake."],
-  ["Can anyone tell the difference?", "Not by eye and not with a jeweler's loupe. A gemological laboratory can, which is why every man-made diamond we sell at 0.30 ct and above carries an IGI report and a laser inscription."],
+  ["Is a lab-grown diamond a real diamond?", "It is a diamond: the same carbon crystal, hardness and optical properties as a mined one, grown in a laboratory instead of the earth. We identify it as lab-grown, laboratory-grown or man-made diamond so its origin is clear."],
+  ["Can anyone tell the difference?", "Not by eye and not with a jeweler's loupe. A gemological laboratory can, which is why every lab-grown diamond we sell at 0.30 ct and above carries an IGI report and a laser inscription."],
   ["Why two laboratories?", "GIA stopped issuing letter grades for laboratory-grown diamonds in October 2025. IGI still grades them with the full color and clarity scales, so a D to F, VVS promise is an IGI promise. Natural diamonds carry a GIA report."],
-  ["Which should I choose?", "If the rarity of a stone from the earth matters to you, choose natural. If the stone itself, grown to the same crystal, is what matters, choose man-made. The design, the gold and the hands are the same, and the ring is labeled plainly either way."],
+  ["Which should I choose?", "If the rarity of a stone from the earth matters to you, choose natural. If the stone itself, grown to the same crystal, is what matters, choose lab-grown. The design, the gold and the hands are the same, and the ring is labeled plainly either way."],
 ];
 
 export const meta: Route.MetaFunction = () =>
   pageMeta(
-    { title: "Natural or man-made diamond", description: "An honest comparison of natural and man-made (laboratory-grown) diamonds from a house that sells both: what each is, how to tell, how each is graded, and where each belongs.", path: "/natural-or-man-made" },
-    [breadcrumbJsonLd([{ name: "Natural or man-made", href: "/natural-or-man-made" }]), faqJsonLd(FAQ)],
+    { title: "Natural or lab-grown diamond", description: "Compare natural and lab-grown diamonds at American Jewelry in Brentwood and Mt. Juliet, Tennessee. Understand origin, grading and the New American collection.", path: "/natural-or-man-made" },
+    [breadcrumbJsonLd([{ name: "Natural or lab-grown", href: "/natural-or-man-made" }]), faqJsonLd(FAQ)],
   );
 
 export default function StonesPage() {
   return (
     <>
       <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Natural or man-made?" lede="We sell both. Here is the whole comparison, without a side." />
+        <PageTitle title="Natural or lab-grown?" lede="We sell both. Here is the whole comparison, without a side." />
       </Section>
       <Section width="text">
         <div>
@@ -44,7 +45,7 @@ export default function StonesPage() {
                   Natural diamond
                 </th>
                 <th scope="col" className="h-item !w-auto !normal-case !tracking-normal !text-ink !text-[1.25rem]">
-                  Man-made diamond
+                  Lab-grown diamond
                 </th>
               </tr>
             </thead>
@@ -70,7 +71,7 @@ export default function StonesPage() {
             </Link>
           </div>
           <div className="flex flex-col gap-3">
-            <h2 className="h-item text-[1.25rem]">The man-made stone</h2>
+            <h2 className="h-item text-[1.25rem]">The lab-grown diamond</h2>
             <p className="font-text text-ink-2">Start in New American. D to F, VVS, Ideal cut, IGI report, laser inscribed. The price is in the design and the gold.</p>
             <Link to="/new-american" className="link self-start">
               New American
@@ -89,7 +90,7 @@ export default function StonesPage() {
           ))}
         </dl>
         <p className="label mt-12 leading-relaxed">
-          On this site, man-made diamond means a laboratory-grown diamond. Man-made diamonds are not mined. The growth method and any post-growth treatment are stated on each piece. We make no claims about the resale value of either kind of stone.
+          On this site, lab-grown diamond means a laboratory-grown diamond. Lab-grown diamonds are not mined. The growth method and any post-growth treatment are stated on each piece. We make no claims about the resale value of either kind of stone.
         </p>
       </Section>
     </>
