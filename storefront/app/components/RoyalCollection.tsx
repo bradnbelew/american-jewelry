@@ -12,9 +12,17 @@ const COLLECTION = [
 /** An open photographic collection; every piece is visible without a selector. */
 export function RoyalCollection() {
   return <div className="royal-collection">
-    <header className="royal-intro house-wrap">
-      <h1>Royal American</h1>
-      <p>One of one.</p>
+    <header className="royal-room">
+      <div className="house-wrap royal-room-inner">
+        <div>
+          <p className="label">One of one</p>
+          <h1>Royal American</h1>
+        </div>
+        <div className="royal-room-aside">
+          <p>Price on request. Seen with the house, by appointment.</p>
+          <Link className="campaign-link" to="/appointments?tier=royal-american">Arrange a private viewing</Link>
+        </div>
+      </div>
     </header>
     <div className="royal-gallery house-wrap">
       {COLLECTION.map(({ handle, detail }, index) => {

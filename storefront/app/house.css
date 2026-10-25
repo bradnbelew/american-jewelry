@@ -25,8 +25,8 @@
   --font-sans: 'Public Sans Variable', 'Public Sans', 'Franklin Gothic', system-ui, sans-serif;
 
   --ease-house: cubic-bezier(0.2, 0, 0, 1);
-  --section-y: 12vh;
-  --header-h: 4.25rem;
+  --section-y: 14vh;
+  --header-h: 6.5rem;
 }
 
 @theme inline {
@@ -70,7 +70,7 @@ body {
 
 @media (min-width: 1024px) {
   :root {
-    --header-h: 7.75rem;
+    --header-h: 10.0625rem;
   }
 }
 

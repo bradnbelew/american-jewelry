@@ -6,6 +6,10 @@ Sources: all briefs sources; conflicts from research/01-11 (digest), the HTML bo
 
 When answered: move the item to `decisions.md` with the date and who decided, then fix every file that carried a TODO.
 
+## 25 October 2026 — navigation order for the salon rework
+
+The 13 October canon lists the five destinations as Jewelry, Collections, Bridal, High Jewelry, The House. The 25 October rework, which Braden approved for a drastic pass, leads with Royal American, then Jewelry, Bridal, Collections, The House. This build follows the later approval. Hours, founding year, names, and which Royal pieces are real remain unconfirmed, so the pages still omit them.
+
 ## A. Facts only the family can supply
 
 ### Astra implementation reconciliation, 2026-10-13

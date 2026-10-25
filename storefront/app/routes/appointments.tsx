@@ -1,5 +1,6 @@
+import { Link } from "react-router";
 import { AppointmentForm, CONTEXT_KEYS, KIND_LABEL, STORE_LABEL } from "~/components/AppointmentForm";
-import { PageTitle, Section } from "~/components/Section";
+import { Pic } from "~/components/Pic";
 import { deliverAppointment } from "~/lib/appointments.server";
 import { STORES } from "~/lib/catalog/data";
 import { envContext } from "~/lib/env";
@@ -9,10 +10,10 @@ import type { Route } from "./+types/appointments";
 
 export const meta: Route.MetaFunction = () =>
   pageMeta({
-    title: "Book an appointment",
+    title: "Book a visit",
     description: "An hour with a member of the house in Brentwood or Mt. Juliet, Tennessee, or by video. Bridal, private viewings, commissions, fittings, care and repair.",
     path: "/appointments", og: "pages/appointments",
-  }, [breadcrumbJsonLd([{ name: "Book an appointment", href: "/appointments" }])]);
+  }, [breadcrumbJsonLd([{ name: "Book a visit", href: "/appointments" }])]);
 
 export function loader({ request }: Route.LoaderArgs) {
   const prefill: Record<string, string> = {};
@@ -52,29 +53,35 @@ export async function action({ request, context }: Route.ActionArgs) {
 
 export default function AppointmentsPage({ loaderData, actionData }: Route.ComponentProps) {
   return (
-    <>
-      <Section width="text" className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Request a visit" lede="We’ll confirm the time and availability of your chosen pieces." />
-      </Section>
-      <Section width="text">
-        <AppointmentForm prefill={loaderData.prefill} result={actionData} />
-      </Section>
-      <Section width="text" className="pt-16 pb-8 md:pt-20">
-        <div className="grid gap-8 sm:grid-cols-2">
-          <p className="font-text text-ink-2">For a visit today, call the store.</p>
-          <div className="flex flex-col gap-3">
-            {STORES.map((s) => (
-              <p key={s.slug} className="font-text text-ink-2">
-                <span className="text-ink">{s.name}</span>
-                <br />
-                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="link-quiet num">
-                  {s.phone}
-                </a>
-              </p>
-            ))}
-          </div>
-        </div>
-      </Section>
-    </>
+    <section className="salon-visit house-wrap">
+      <div className="salon-visit-intro">
+        <p className="label">Brentwood and Mt. Juliet</p>
+        <h1>Book a visit</h1>
+        <p className="lede">An hour with the house, in either store or by video. We will confirm the time, and what is in the case.</p>
+        <ul className="salon-visit-stores">
+          {STORES.map((s) => (
+            <li key={s.slug}>
+              <LinkPhoto slug={s.slug} />
+              <div>
+                <Link className="salon-visit-name" to={`/stores/${s.slug}`}>{s.name}</Link>
+                <p>{s.address1}<br />{s.city}, {s.state} {s.zip}</p>
+                <a className="num" href={`tel:${s.phone.replace(/\D/g, "")}`}>{s.phone}</a>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="label">Call for hours.</p>
+      </div>
+      <AppointmentForm prefill={loaderData.prefill} result={actionData} />
+    </section>
+  );
+}
+
+function LinkPhoto({ slug }: { slug: string }) {
+  const photo = slug === "mt-juliet" ? "aj-salon-cases" : "aj-consult-hands";
+  return (
+    <Link className="salon-visit-photo" to={`/stores/${slug}`} tabIndex={-1} aria-hidden="true">
+      <Pic k={photo} sizes="160px" />
+    </Link>
   );
 }

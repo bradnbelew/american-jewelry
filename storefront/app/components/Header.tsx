@@ -3,7 +3,7 @@ import { Form, Link, useLocation } from "react-router";
 
 import { useCart } from "~/lib/cart";
 import { CART_DRAWER_ID, SAVED_DRAWER_ID, openDialogFromLinkClick } from "~/lib/cart-drawer";
-import { pieceByHandle } from "~/lib/catalog/data";
+import { STORES, pieceByHandle } from "~/lib/catalog/data";
 import { NAV, type NavPanel } from "~/lib/nav";
 
 import { Pic } from "./Pic";
@@ -91,6 +91,19 @@ export function Header() {
         if (panel && !e.currentTarget.contains(e.relatedTarget as Node)) setPanel(null);
       }}
     >
+      <div className="service-bar">
+        <div className="wrap service-bar-inner">
+          <Link to="/appointments" className="caps">Book a visit</Link>
+          <div className="service-bar-stores">
+            {STORES.map((s) => (
+              <a key={s.slug} className="caps" href={`tel:${s.phone.replace(/\D/g, "")}`}>
+                <span>{s.name}</span>
+                <span className="service-bar-phone num">{s.phone}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="wrap">
         <div className="grid h-[4.25rem] grid-cols-[1fr_auto_1fr] items-center gap-3 md:h-20">
           <div className="flex items-center gap-2 md:gap-5">
@@ -102,7 +115,7 @@ export function Header() {
             </button>
           </div>
 
-          <Link to="/" className="font-display inline-flex h-11 items-center justify-self-center text-[1rem] uppercase tracking-[0.22em] whitespace-nowrap sm:text-[1.25rem] md:text-[1.5rem] md:tracking-[0.28em]" aria-label="American Jewelry home">
+          <Link to="/" className="font-display inline-flex h-11 items-center justify-self-center text-[0.95rem] uppercase tracking-[0.16em] whitespace-nowrap sm:text-[1.15rem] md:text-[1.35rem] md:tracking-[0.2em]" aria-label="American Jewelry home">
             American Jewelry
           </Link>
 
@@ -165,7 +178,7 @@ export function Header() {
         </div>
       )}
 
-      <div id="menu" hidden={!menu} className="fixed inset-x-0 top-[4.25rem] bottom-0 overflow-y-auto bg-paper lg:hidden">
+      <div id="menu" hidden={!menu} className="fixed inset-x-0 top-[var(--header-h)] bottom-0 overflow-y-auto bg-paper lg:hidden">
         <MobileMenu saved={ready ? saved : 0} />
       </div>
 
@@ -248,7 +261,7 @@ function MobileMenu({ saved }: { saved: number }) {
           Account
         </Link>
         <Link to="/appointments" className="btn mt-6 self-start">
-          Book an appointment
+          Book a visit
         </Link>
       </div>
       <p className="label mt-10">Brentwood and Mt. Juliet, Tennessee</p>

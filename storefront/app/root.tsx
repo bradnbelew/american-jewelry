@@ -172,7 +172,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
             The designs
           </Link>
           <Link to="/appointments" className="btn btn-outline">
-            Book an appointment
+            Book a visit
           </Link>
         </div>
         {details ? <pre className="mx-auto mt-10 max-w-3xl overflow-x-auto text-xs text-muted">{details}</pre> : null}
