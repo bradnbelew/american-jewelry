@@ -51,7 +51,6 @@ export function DesignView({ config: c, code, hint }: { config: RingConfig; code
             )}
           </tbody>
         </table>
-        {!hint && <p className="label">Price before sales tax.</p>}
         <div className="flex flex-col gap-3">
           {hint ? (
             <Link to={`/appointments?build=ring&code=${encoded}`} className="btn">

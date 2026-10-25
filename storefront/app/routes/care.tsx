@@ -24,7 +24,7 @@ export default function CarePage() {
           <div>
             <h1 className="h-display">Lifetime care</h1>
             <p className="lede">Cleaning and inspection at either store, for as long as you own a piece we made.</p>
-            <Link to="/appointments?kind=care" className="campaign-link">Book a visit</Link>
+            <Link to="/appointments?kind=care" className="link">Book an appointment</Link>
           </div>
           <div className="care-open-photo"><Pic k="aj-gemstone-rings" sizes="(min-width: 768px) 46vw, 100vw" /></div>
         </div>

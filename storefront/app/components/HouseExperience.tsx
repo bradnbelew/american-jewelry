@@ -41,7 +41,6 @@ export function SignatureCabinet({initial = "shooting-star"}: {initial?: string}
     <div className="signature-tabs" role="group" aria-label="Choose a design">{DESIGNS.filter(design => design.tier===line).map((design) => <button key={design.slug} type="button" aria-pressed={slug === design.slug} onClick={() => {setSlug(design.slug); setSelected(0);}}>{design.name}</button>)}</div>
     <div className="signature-room" key={slug}>
       <div className="signature-story">
-        {d.concept && <p className="label">Proposed design</p>}
         <h3><Link to={`/designs/${slug}`}>{d.name}</Link></h3>
         <p>{SIGNATURE_WORDS[slug] ?? d.motif}</p>
         <div className="signature-detail"><Pic k={DESIGN_PHOTO[slug]} sizes="25vw" /></div>
@@ -52,11 +51,11 @@ export function SignatureCabinet({initial = "shooting-star"}: {initial?: string}
         <div className="signature-forms" role="group" aria-label={`${d.name} forms`}>{pieces.map((p, i) => <button type="button" key={p.handle} aria-label={`Show ${p.name}`} aria-pressed={i === selected} onClick={() => setSelected(i)}><span className="signature-form-image"><Pic k={PIECE_PHOTOS[p.handle][0]} /></span><span>{p.name.replace(d.name, "").replace("Link ", "").trim()}</span></button>)}</div>
       </div>
     </div>
-    <p className="concept-note">Concept photographs. Confirm final details with the house.</p>
+    {null}
   </section>;
 }
 export function RoyalPreview() {
-  return <section className="royal-invitation"><div className="royal-invitation-image"><Pic k="comp-cumberland-velvet" /></div><div className="royal-invitation-copy"><p className="label">One of one</p><h2>Royal American</h2><Link className="campaign-link" to="/royal-american">Enter the collection</Link></div></section>;
+  return <section className="royal-invitation"><div className="royal-invitation-image"><Pic k="comp-cumberland-velvet" /></div><div className="royal-invitation-copy"><h2>Royal American</h2><Link className="link" to="/royal-american">Royal American</Link></div></section>;
 }
 export function BridalPortrait() {
   return <section className="bridal-portrait house-wrap">
@@ -77,7 +76,7 @@ export function VisitInvitation() {
     <div className="salon-pair-head">
       <h2>The stores</h2>
       <p>A working shop, visible to you, in Brentwood and in Mt. Juliet.</p>
-      <Link to="/appointments" className="campaign-link">Book a visit</Link>
+      <Link to="/appointments" className="link">Book an appointment</Link>
     </div>
     <div className="salon-pair-grid">
       {STORES.map((store) => (
@@ -119,14 +118,13 @@ export function HomeHouse() {
       <div className="home-claim-copy">
         <h2>Designed in Tennessee.</h2>
         <p>Original designs, set and finished in our workshop.</p>
-        <Link to="/house" className="campaign-link">The house</Link>
+        <Link to="/our-story" className="link">Our story</Link>
       </div>
     </section>
 
     <section className="home-royal">
       <div className="house-wrap home-royal-grid">
         <div className="home-royal-copy">
-          <p className="label">One of one</p>
           <h2>Royal American</h2>
           <p>Price on request. A private viewing, in either store.</p>
           <Link to="/royal-american" className="campaign-link">The collection</Link>
@@ -149,7 +147,7 @@ export function HomeHouse() {
       </div>
       <figure className="home-codes-figure">
         <div className="home-codes-photo"><Pic k="aj-signet-worn" sizes="(min-width: 900px) 42vw, 100vw" /></div>
-        <figcaption className="label">A signet from the house. The new designs are still to be photographed.</figcaption>
+        <figcaption className="label">A gold signet, engraved in our workshop.</figcaption>
       </figure>
     </section>
 
@@ -157,10 +155,10 @@ export function HomeHouse() {
       <div className="home-bridal-photo"><Pic k="aj-wedding-bands" sizes="(min-width: 900px) 48vw, 100vw" /></div>
       <div className="home-bridal-copy">
         <h2>Bridal</h2>
-        <p>Natural diamonds in Americana. Lab-grown diamonds in New American.</p>
+        <p>Natural diamonds, or lab-grown diamonds. The design is the same.</p>
         <div className="home-bridal-actions">
           <Link to="/collections/bridal" className="campaign-link">Choose a stone</Link>
-          <Link to="/appointments?kind=bridal" className="campaign-link">Book a visit</Link>
+          <Link to="/appointments?kind=bridal" className="link">Book an appointment</Link>
         </div>
       </div>
     </section>

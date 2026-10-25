@@ -1,39 +1,60 @@
-import { redirect } from "react-router";
-import { KindsRow, ProductResults } from "~/components/Catalog";
-import { LineChoice, LineNav } from "~/components/HouseLines";
-import { categoryBySlug, piecesForCategory } from "~/lib/catalog/browse";
-import { tierBySlug } from "~/lib/catalog/data";
-import { LINE_DESCRIPTION, selectedLine, shopPieces } from "~/lib/catalog/lines";
-import { breadcrumbJsonLd, itemListJsonLd, pageMeta } from "~/lib/seo";
+import { Link, redirect, useRouteLoaderData } from "react-router";
+
+import { ProductResults } from "~/components/Catalog";
+import { Pic } from "~/components/Pic";
+import { categoryBySlug, categoryOf } from "~/lib/catalog/browse";
+import { publicPieces } from "~/lib/catalog/data";
+import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
+
+import type { loader as rootLoader } from "~/root";
 import type { Route } from "./+types/jewelry";
 
-export function loader({params,request}: Route.LoaderArgs) {
-  if (params.category && !categoryBySlug(params.category)) throw new Response("Not found", {status:404});
+export function loader({ params, request }: Route.LoaderArgs) {
+  if (params.category && !categoryBySlug(params.category)) throw new Response("Not found", { status: 404 });
   const paramsUrl = new URL(request.url).searchParams;
-  if (paramsUrl.get("line") === "royal-american" || paramsUrl.get("production") === "one-of-one" || paramsUrl.get("stone") === "one-of-one") throw redirect("/royal-american");
-  const line = selectedLine(paramsUrl) ?? null;
-  if (line && paramsUrl.get("line") !== line) {
-    paramsUrl.set("line",line);
-    throw redirect(`${new URL(request.url).pathname}?${paramsUrl}`);
+  if (paramsUrl.get("line") === "royal-american" || paramsUrl.get("production") === "one-of-one" || paramsUrl.get("stone") === "one-of-one") {
+    throw redirect("/royal-american");
   }
-  return {category:params.category ?? null, line};
+  return { category: params.category ?? null };
 }
-export const meta: Route.MetaFunction = ({data}) => {
-  const c = categoryBySlug(data?.category ?? undefined);
-  const title = c?.name ?? "Jewelry";
-  const pieces = data?.line ? shopPieces(data.line,c ? piecesForCategory(c.slug) : undefined) : [];
-  return pageMeta({title,description:"Explore Americana, New American and the one-of-one world of Royal American.",path:c ? `/jewelry/${c.slug}` : "/jewelry",image:"comp-americana-ground"},[breadcrumbJsonLd([{name:title,href:c ? `/jewelry/${c.slug}` : "/jewelry"}]),...(pieces.length ? [itemListJsonLd(title,pieces)] : [])]);
+
+export const meta: Route.MetaFunction = ({ data }) => {
+  const category = categoryBySlug(data?.category ?? undefined);
+  const title = category?.name ?? "Jewelry";
+  const path = category ? `/jewelry/${category.slug}` : "/jewelry";
+  return pageMeta(
+    {
+      title,
+      description: category?.line ?? "Rings, necklaces, earrings and bracelets from American Jewelry in Brentwood and Mt. Juliet.",
+      path,
+      image: category?.slug === "rings" ? "ed-radiant" : "ed-names",
+    },
+    [breadcrumbJsonLd([{ name: "Jewelry", href: "/jewelry" }, ...(category ? [{ name: category.name, href: path }] : [])])],
+  );
 };
-export default function JewelryPage({loaderData}: Route.ComponentProps) {
-  const c = categoryBySlug(loaderData.category ?? undefined);
-  const line = loaderData.line;
-  const path = c ? `/jewelry/${c.slug}` : "/jewelry";
-  if (!line) return <LineChoice title={c?.name ?? "Jewelry"} path={path} includeRoyal={!c} />;
-  const base = shopPieces(line,c ? piecesForCategory(c.slug) : undefined);
-  return <div className="house-wrap line-browse">
-    <LineNav current={line} path={path} />
-    <header className="line-browse-heading"><div><p className="label">{tierBySlug(line).name}</p><h1>{c?.name ?? "Jewelry"}</h1></div><p>{LINE_DESCRIPTION[line]}</p></header>
-    <KindsRow current={c?.slug} line={line} />
-    <ProductResults base={base} hide={["line"]} />
-  </div>;
+
+export default function JewelryPage({ loaderData }: Route.ComponentProps) {
+  const root = useRouteLoaderData<typeof rootLoader>("root");
+  const category = categoryBySlug(loaderData.category ?? undefined);
+  const base = publicPieces(root?.live === true).filter((piece) => piece.tier !== "royal-american" && !piece.oneOfOne && (!category || categoryOf(piece)?.slug === category.slug));
+  const interrupt = category?.slug === "rings" ? (
+    <Link to="/build/ring" className="block">
+      <span className="frame-45 block">
+        <Pic k="ed-radiant" sizes="(min-width: 1024px) 40vw, 100vw" position="50% 40%" />
+      </span>
+      <span className="product-name mt-4 block text-center">Design your ring</span>
+      <span className="link">Design your ring</span>
+    </Link>
+  ) : undefined;
+
+  return (
+    <div className="wrap" style={{ paddingBottom: "var(--section-y)" }}>
+      <header className="page-intro">
+        {category ? <p className="crumb">Jewelry / {category.name}</p> : null}
+        <h1>{category?.name ?? "Jewelry"}</h1>
+        <p className="body center-copy">{category?.line ?? "Rings, necklaces, earrings and bracelets."}</p>
+      </header>
+      <ProductResults base={base} hide={["line", "production", "design"]} interrupt={interrupt} emptyLine="No pieces match these filters." />
+    </div>
+  );
 }

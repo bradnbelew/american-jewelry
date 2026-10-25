@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router";
 
+import { materialLine } from "~/lib/catalog/browse";
 import { formatPrice } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Metal, Piece, Version } from "~/lib/catalog/types";
@@ -9,7 +10,6 @@ import { explicitSize } from "~/lib/piece-selection";
 
 import { SaveButton } from "./saved/SaveButton";
 import { SizeOptions } from "./SizeOptions";
-import { StoreChoice } from "./StoreChoice";
 
 const METAL_SWATCH: Record<Metal, string> = {
   "14k-yellow": "#d6b25e",
@@ -47,16 +47,15 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       <div className="flex flex-col gap-1.5">
         <span className="font-display num text-[1.75rem] leading-none">{price === null ? "Price on request" : formatPrice(price)}</span>
         <span className="piece-stone-description font-text text-base text-ink-2">
-          {manMade ? "Lab-grown diamond (laboratory-grown), D to F, VVS, IGI report." : (version.stones ?? METAL_LABEL[metal])}
+          {version.stones && !/proposed|concept|illustrative|unconfirmed/i.test(version.stones)
+            ? (manMade ? "Lab-grown diamond, D to F, VVS, IGI report." : version.stones)
+            : materialLine(piece)}
         </span>
-        <span className="label">
-          {piece.leadTime}
-          {price !== null ? ". Price before sales tax." : ""}
-        </span>
+        {piece.leadTime && !/concept|illustrative|unconfirmed/i.test(piece.leadTime) ? <span className="small mute">{piece.leadTime}</span> : null}
       </div>
 
       <div className="buy-bar fixed inset-x-0 bottom-0 z-30 border-t border-hair bg-paper lg:hidden">
-        <div className="wrap flex items-center justify-between gap-4 py-3"><span className="num">{price === null ? "Price on request" : formatPrice(price)}</span><Link to={`/appointments?${query}`} className="btn">{price === null ? "Private viewing" : "Book a visit"}</Link></div>
+        <div className="wrap flex items-center justify-between gap-4 py-3"><span className="num">{price === null ? "Price on request" : formatPrice(price)}</span><Link to={piece.tier === "royal-american" ? `/appointments?tier=royal-american&piece=${piece.handle}` : `/appointments?${query}`} className="btn">{price === null ? (piece.tier === "royal-american" ? "Request a private viewing" : "Book an appointment") : "Book an appointment to see it"}</Link></div>
       </div>
 
       {piece.versions.length > 1 && (
@@ -94,23 +93,10 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       )}
 
       </div><div className="flex flex-col gap-3 pt-1">
-        {price === null ? (
-          <>
-            <Link to={`/appointments?${query}`} className="btn">
-              Request a private viewing
-            </Link>
-            <StoreChoice storeQuery={query} />
-          </>
-        ) : (
-          <>
-            <p className="label">Contact the store to confirm price and availability.</p>
-            <Link to={`/appointments?${query}`} className="btn">
-              Book a visit
-            </Link>
-            <StoreChoice storeQuery={query} />
-            <SaveButton className="quiet-save self-start" item={{ id: piece.handle, href: `/pieces/${piece.handle}?${savedQuery}`, name: piece.name, detail: [version.name, METAL_LABEL[metal], size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
-          </>
-        )}
+        <Link to={piece.tier === "royal-american" ? `/appointments?tier=royal-american&${query}` : `/appointments?${query}`} className="btn">
+          {price === null ? (piece.tier === "royal-american" ? "Request a private viewing" : "Book an appointment") : "Book an appointment to see it"}
+        </Link>
+        <SaveButton className="quiet-save self-start" item={{ id: piece.handle, href: `/pieces/${piece.handle}?${savedQuery}`, name: piece.name, detail: [version.name, METAL_LABEL[metal], size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
       </div>
     </div>
   );

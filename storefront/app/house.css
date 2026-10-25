@@ -6,27 +6,36 @@
  * Rules: one subject per screen; controls have fixed heights and 1px borders in every state; nothing shifts when clicked.
  * See docs/briefs/00-house-canon.md and DESIGN.md.
  */
-@import '@fontsource-variable/source-serif-4/opsz.css';
-@import '@fontsource-variable/public-sans';
+@import '@fontsource-variable/bodoni-moda/opsz.css';
+@import '@fontsource-variable/jost';
 
 :root {
-  --paper: #f6f5f2;
+  --paper: #ffffff;
+  --ivory: #f6f4f1;
   --white: #ffffff;
-  --ink: #121212;
-  --ink-2: #3f3f3f;
-  --muted: #63676e;
-  --hair: #ddd8cf;
-  --navy: #16213a;
-  --navy-2: #1f2d4d;
-  --gold: #b08d57;
+  --ink: #111111;
+  --ink-2: #4a4a4a;
+  --muted: #6e6e6e;
+  --hair: #e4e0da;
+  --line: #e4e0da;
+  --navy: #1e2f66;
+  --navy-2: #16224a;
+  --blue: #1e2f66;
+  --blue-deep: #16224a;
+  --on-blue: #ffffff;
+  --on-blue-2: #c8cedf;
+  --gold: #111111;
+  --error: #9b1c1c;
+  --success: #2f5d3a;
 
-  --font-display: 'Source Serif 4 Variable', 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
-  --font-text: 'Source Serif 4 Variable', 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
-  --font-sans: 'Public Sans Variable', 'Public Sans', 'Franklin Gothic', system-ui, sans-serif;
+  --font-display: 'Bodoni Moda Variable', 'Bodoni 72', Didot, 'Bodoni MT', Georgia, serif;
+  --font-text: 'Jost Variable', Futura, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Jost Variable', Futura, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
 
   --ease-house: cubic-bezier(0.2, 0, 0, 1);
-  --section-y: 14vh;
-  --header-h: 6.5rem;
+  --section-y: 128px;
+  --header-h: 92px;
+  --header-block: 92px;
 }
 
 @theme inline {
@@ -39,6 +48,9 @@
   --color-navy: var(--navy);
   --color-navy-2: var(--navy-2);
   --color-gold: var(--gold);
+  --color-ivory: var(--ivory);
+  --color-blue: var(--blue);
+  --color-blue-deep: var(--blue-deep);
   --font-display: var(--font-display);
   --font-text: var(--font-text);
   --font-sans: var(--font-sans);
@@ -64,13 +76,20 @@ body {
 
 @media (max-width: 767px) {
   :root {
-    --section-y: 8vh;
+    --section-y: 64px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --section-y: 96px;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --header-h: 10.0625rem;
+    --header-h: 152px;
+    --header-block: 152px;
   }
 }
 
@@ -79,6 +98,7 @@ h2,
 h3 {
   font-family: var(--font-display);
   font-weight: 400;
+  font-optical-sizing: auto;
 }
 
 /* ---------------------------------------------------------------- */
@@ -116,9 +136,9 @@ h3 {
 }
 .caps {
   font-family: var(--font-sans);
-  font-size: 0.6875rem; /* 11px */
+  font-size: 11.5px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 .label {
@@ -129,9 +149,9 @@ h3 {
 }
 .caps-sm {
   font-family: var(--font-sans);
-  font-size: 0.625rem;
+  font-size: 10.5px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 .lede {
@@ -178,12 +198,13 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 3rem;
+  height: 52px;
   padding: 0 1.75rem;
+  border-radius: 0;
   font-family: var(--font-sans);
-  font-size: 0.6875rem;
+  font-size: 11.5px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   border: 1px solid var(--ink);
   background: var(--ink);
@@ -192,15 +213,17 @@ h3 {
   transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 .btn:hover {
-  background: var(--ink-2);
-  border-color: var(--ink-2);
+  background: #2b2b2b;
+  border-color: #2b2b2b;
 }
 .btn:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
 }
 .btn:disabled {
-  opacity: 0.45;
+  background: #bdbdbd;
+  border-color: #bdbdbd;
+  color: #ffffff;
   cursor: not-allowed;
 }
 .btn-outline {
@@ -228,10 +251,10 @@ h3 {
   align-items: flex-end;
   min-height: 2.75rem;
   font-family: var(--font-sans);
-  font-size: 0.6875rem;
+  font-size: 11.5px;
   font-weight: 500;
-  line-height: 1.6;
-  letter-spacing: 0.08em;
+  line-height: 16px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink);
   padding-bottom: 0.3rem;
@@ -243,8 +266,8 @@ h3 {
   border-color: var(--muted);
 }
 .link:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
 }
 .link-light {
   color: var(--paper);

@@ -179,7 +179,7 @@ export function CartLines({ emptyCartFocusId }: { emptyCartFocusId: string }) {
       <div className="flex h-full flex-col items-start justify-center gap-5">
         <p className="font-display text-[1.5rem]">Your bag is empty.</p>
         <Link to="/jewelry" className="link link-light" onClick={() => closeCartDrawer()}>
-          Browse jewelry
+          Continue shopping
         </Link>
       </div>
     );
@@ -211,7 +211,7 @@ export function CartSummary() {
         <span className="font-text">Subtotal</span>
         <span className={`num text-[1.125rem] ${isPending ? "opacity-50" : ""}`}>{formatPriceRound(cart.cost.subtotalAmount ?? cart.cost.totalAmount)}</span>
       </div>
-      <p className="label">Tax and delivery calculated at checkout.</p>
+      <p className="small">Taxes and shipping calculated at checkout.</p>
       {cart.checkoutUrl ? (
         <div className="flex flex-col gap-3">
           <a href={cart.checkoutUrl} className="btn btn-light" aria-disabled={isPending} onClick={(event) => { if (isPending) event.preventDefault(); }}>
@@ -219,13 +219,7 @@ export function CartSummary() {
           </a>
         </div>
       ) : null}
-      <details className="border-t border-paper/20 pt-3">
-        <summary className="cursor-pointer text-sm">Packaging and delivery</summary>
-        <div className="mt-3 flex items-start gap-3">
-          <span className="relative block aspect-square w-20 shrink-0 overflow-hidden"><Pic k="comp-the-box" sizes="80px" /></span>
-          <p className="font-text text-sm text-paper/85">{leadTimes.length ? `${leadTimes.join('. ')}. ` : ''}Packaging and delivery details are confirmed with your order. Ask about collection at either store and the report for your selected stone.</p>
-        </div>
-      </details>
+      {leadTimes.length ? <p className="small">{leadTimes.join(". ")}</p> : null}
     </div>
   );
 }

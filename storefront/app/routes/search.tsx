@@ -2,20 +2,20 @@ import { Form, Link } from "react-router";
 
 import { PieceIndex } from "~/components/Catalog";
 import { Section } from "~/components/Section";
-import { SHOP_LINES } from "~/lib/catalog/lines";
-import { tierBySlug } from "~/lib/catalog/data";
 import { searchCatalog, searchSuggestion } from "~/lib/catalog/browse";
+import { envContext } from "~/lib/env";
 import { pageMeta } from "~/lib/seo";
+import { isLive } from "~/lib/site";
 
 import type { Route } from "./+types/search";
 
 /** /search?q=: the catalog's answer on a page of its own (the dialog's Enter key, and the no-script path). */
-export function loader({ request }: Route.LoaderArgs) {
+export function loader({ request, context }: Route.LoaderArgs) {
   const q = (new URL(request.url).searchParams.get("q") ?? "").trim().slice(0, 80);
-  return { q, hits: searchCatalog(q, 40), suggestion: searchSuggestion(q) };
+  return { q, hits: searchCatalog(q, 40, isLive(context.get(envContext))), suggestion: searchSuggestion(q) };
 }
 
-export const meta: Route.MetaFunction = ({ data }) => pageMeta({ title: data?.q ? `Search: ${data.q}` : "Search", description: "Search the house by piece, design, line, stone or store.", path: "/search", noindex: true });
+export const meta: Route.MetaFunction = ({ data }) => pageMeta({ title: data?.q ? `Search: ${data.q}` : "Search", description: "Search jewelry, bridal, services and stores.", path: "/search", noindex: true });
 
 export default function SearchPage({ loaderData }: Route.ComponentProps) {
   const { q, hits, suggestion } = loaderData;
@@ -45,7 +45,7 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
           <p className="h-section max-w-[28ch] text-[1.75rem] md:text-[2.25rem]">No matching pieces.</p>
           {suggestion && <p className="mt-6"><Link className="link" to={`/search?q=${encodeURIComponent(suggestion)}`}>Did you mean {suggestion}?</Link></p>}
           <Link to="/jewelry" className="link mt-6">
-            Browse jewelry
+            View all jewelry
           </Link>
         </Section>
       )}
@@ -67,8 +67,10 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
 
       {pieces.length > 0 && (
         <Section className="pt-14 pb-8">
-          {SHOP_LINES.map(line => {const group=pieces.filter(piece=>piece.tier===line); return group.length ? <section key={line} className="line-result-group" aria-label={tierBySlug(line).name}><div className="house-heading"><h2>{tierBySlug(line).name}</h2><Link className="link" to={`/${line}`}>Explore the line</Link></div><PieceIndex pieces={group} /></section> : null;})}
-          <p className="label mt-10">Price before sales tax.</p>
+          <section aria-label="Jewelry">
+            <div className="house-heading"><h2>Jewelry</h2></div>
+            <PieceIndex pieces={pieces} />
+          </section>
         </Section>
       )}
     </>

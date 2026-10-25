@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Form, Link, useLocation } from "react-router";
+import { Form, Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { searchCatalog, searchSuggestion } from "~/lib/catalog/browse";
-import { tierBySlug } from "~/lib/catalog/data";
-import { SHOP_LINES } from "~/lib/catalog/lines";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
+
+import type { loader as rootLoader } from "~/root";
 
 import { Pic } from "./Pic";
 
@@ -19,7 +19,8 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
   const input = useRef<HTMLInputElement>(null);
   const [q, setQ] = useState("");
   const location = useLocation();
-  const hits = useMemo(() => searchCatalog(q, 8), [q]);
+  const root = useRouteLoaderData<typeof rootLoader>("root");
+  const hits = useMemo(() => searchCatalog(q, 8, root?.live === true), [q, root?.live]);
   const suggestion = useMemo(() => searchSuggestion(q), [q]);
 
   useEffect(() => {
@@ -50,13 +51,13 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
         if (e.target === dialog.current) onClose();
       }}
       className="m-0 h-auto max-h-[100dvh] w-screen max-w-none border-0 border-b border-hair bg-paper p-0 text-ink backdrop:bg-ink/40"
-      aria-label="Search the house"
+      aria-label="Search jewelry, bridal, services"
     >
       <div className="wrap py-6 md:py-8">
         <Form method="get" action="/search" className="flex items-end gap-4" onSubmit={() => onClose()}>
           <label className="flex min-w-0 flex-1 flex-col gap-2">
             <span className="label">Search</span>
-            <input ref={input} name="q" value={q} onChange={(e) => setQ(e.target.value)} className="field font-text text-[1.125rem]" placeholder="Search jewelry, styles or collections" autoComplete="off" aria-controls="search-results" />
+            <input ref={input} name="q" value={q} onChange={(e) => setQ(e.target.value)} className="field font-text text-[1.125rem]" placeholder="Search jewelry, bridal, services" autoComplete="off" aria-controls="search-results" />
           </label>
           <button type="submit" className="btn btn-outline">
             Search
@@ -66,10 +67,10 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
           </button>
         </Form>
         <div id="search-results" aria-live="polite" className="mt-2">
-          {q.trim() && hits.length === 0 && <p className="font-text py-6 text-ink-2">No results for “{q}”. {suggestion ? <Link className="link" to={`/search?q=${encodeURIComponent(suggestion)}`}>Did you mean {suggestion}?</Link> : 'Try a design, a kind of piece or a stone.'}</p>}
+          {q.trim() && hits.length === 0 && <p className="font-text py-6 text-ink-2">No results for "{q}". Try a category below, or call us and we will help you find it.</p>}
           {hits.length > 0 && (
             <div className="search-line-groups">
-            {[{name:"Explore",items:hits.filter(h=>!h.piece)},...SHOP_LINES.map(line=>({name:tierBySlug(line).name,items:hits.filter(h=>h.piece?.tier===line)}))].filter(group=>group.items.length).map(group=><section key={group.name}><h2 className="label">{group.name}</h2><ul className="grid gap-x-10 md:grid-cols-2">
+            {[{name:"Explore",items:hits.filter(h=>!h.piece)},{name:"Jewelry",items:hits.filter(h=>h.piece)}].filter(group=>group.items.length).map(group=><section key={group.name}><h2 className="label">{group.name}</h2><ul className="grid gap-x-10 md:grid-cols-2">
               {group.items.map((h) => {
                 const photo = h.piece ? (PIECE_PHOTOS[h.piece.handle] ?? ["hero-box"])[0] : null;
                 return (
@@ -90,8 +91,8 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
           {!q.trim() && (
             <div className="grid gap-x-10 gap-y-6 pt-6 md:grid-cols-3">
               <Column title="By type" links={[["/jewelry/rings", "Rings"], ["/jewelry/necklaces", "Necklaces"], ["/jewelry/earrings", "Earrings"], ["/jewelry/bracelets", "Bracelets"]]} />
-              <Column title="By line" links={[["/americana","Americana"],["/new-american","New American"],["/royal-american","Royal American"]]} />
-              <Column title="Often looked for" links={[["/royal-american", "High Jewelry"], ["/new-american", "Lab-grown diamonds"], ["/build/ring", "Build a ring"], ["/stores", "Stores and hours"]]} />
+              <Column title="By stone" links={[["/jewelry?stone=natural","Natural diamonds"],["/jewelry?stone=lab-grown","Lab-grown diamonds"],["/jewelry?stone=gemstone","Gemstones"],["/jewelry?stone=gold","Gold"]]} />
+              <Column title="Often looked for" links={[["/royal-american", "High Jewelry"], ["/collections/bridal", "Bridal"], ["/custom-design", "Custom design"], ["/stores", "Stores"]]} />
             </div>
           )}
         </div>

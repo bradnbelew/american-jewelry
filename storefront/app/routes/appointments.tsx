@@ -1,87 +1,72 @@
-import { Link } from "react-router";
 import { AppointmentForm, CONTEXT_KEYS, KIND_LABEL, STORE_LABEL } from "~/components/AppointmentForm";
-import { Pic } from "~/components/Pic";
 import { deliverAppointment } from "~/lib/appointments.server";
-import { STORES } from "~/lib/catalog/data";
 import { envContext } from "~/lib/env";
 import { breadcrumbJsonLd, pageMeta } from "~/lib/seo";
 
 import type { Route } from "./+types/appointments";
 
+const SEND_ERROR = "Something went wrong sending your request. Please call Brentwood at (615) 457-2089 or Mt. Juliet at (615) 754-6046.";
+
 export const meta: Route.MetaFunction = () =>
-  pageMeta({
-    title: "Book a visit",
-    description: "An hour with a member of the house in Brentwood or Mt. Juliet, Tennessee, or by video. Bridal, private viewings, commissions, fittings, care and repair.",
-    path: "/appointments", og: "pages/appointments",
-  }, [breadcrumbJsonLd([{ name: "Book a visit", href: "/appointments" }])]);
+  pageMeta(
+    {
+      title: "Book an appointment",
+      description: "Book an appointment at American Jewelry in Brentwood or Mt. Juliet for bridal, custom design, a repair, an appraisal, or pre-owned watches.",
+      path: "/appointments",
+      image: "ed-bridal",
+    },
+    [breadcrumbJsonLd([{ name: "Book an appointment", href: "/appointments" }])],
+  );
 
 export function loader({ request }: Route.LoaderArgs) {
   const prefill: Record<string, string> = {};
-  for (const [k, v] of new URL(request.url).searchParams) prefill[k] = v;
+  for (const [key, value] of new URL(request.url).searchParams) prefill[key] = value;
   return { prefill };
 }
 
-/** Two clicks to a human. The request is delivered by appointments.server.ts; the reply is a letter. */
 export async function action({ request, context }: Route.ActionArgs) {
   const form = await request.formData();
-  const get = (k: string) => String(form.get(k) ?? "").trim();
-  const name = get("name").slice(0, 120);
-  const contact = get("contact").slice(0, 160);
+  const get = (key: string) => String(form.get(key) ?? "").trim();
+  const first = get("first").slice(0, 60);
+  const last = get("last").slice(0, 60);
+  const name = [first, last].filter(Boolean).join(" ").slice(0, 120) || get("name").slice(0, 120);
+  const contact = [get("phone"), get("email")].filter(Boolean).join(", ").slice(0, 160) || get("contact").slice(0, 160);
   const store = get("store") || "brentwood";
   const kind = get("kind") || "bridal";
-  if (!name || !contact) return { sent: false as const, error: "A name and a phone or email, so a person can reply." };
+  if (!name || !contact) return { sent: false as const, error: SEND_ERROR };
+  const when = [get("date"), get("daypart")].filter(Boolean).join(", ").slice(0, 200) || get("when").slice(0, 200);
   const ctx: Record<string, string> = {};
-  for (const k of CONTEXT_KEYS) {
-    const v = get(k);
-    if (v) ctx[k] = v.slice(0, 120);
+  for (const key of CONTEXT_KEYS) {
+    const value = get(key);
+    if (value) ctx[key] = value.slice(0, 120);
   }
-  const delivered = await deliverAppointment(context.get(envContext), {
-    store: STORE_LABEL[store] ?? store,
-    kind: KIND_LABEL[kind] ?? kind,
-    name,
-    contact,
-    when: get("when").slice(0, 200),
-    notes: get("notes").slice(0, 600),
-    consentEmail: form.get("consentEmail") === "on",
-    consentSms: form.get("consentSms") === "on",
-    context: ctx,
-    receivedAt: new Date().toISOString(),
-    page: request.headers.get("referer") ?? "/appointments",
-  });
-  return { sent: true as const, delivered, name, store, kind };
+  try {
+    const delivered = await deliverAppointment(context.get(envContext), {
+      store: STORE_LABEL[store] ?? store,
+      kind: KIND_LABEL[kind] ?? kind,
+      name,
+      contact,
+      when,
+      notes: get("notes").slice(0, 600),
+      consentEmail: form.get("consentEmail") === "on",
+      consentSms: form.get("consentSms") === "on",
+      context: ctx,
+      receivedAt: new Date().toISOString(),
+      page: request.headers.get("referer") ?? "/appointments",
+    });
+    return { sent: true as const, delivered, name, store, kind };
+  } catch (error) {
+    console.error(error);
+    return { sent: false as const, error: SEND_ERROR };
+  }
 }
 
 export default function AppointmentsPage({ loaderData, actionData }: Route.ComponentProps) {
   return (
-    <section className="salon-visit house-wrap">
-      <div className="salon-visit-intro">
-        <p className="label">Brentwood and Mt. Juliet</p>
-        <h1>Book a visit</h1>
-        <p className="lede">An hour with the house, in either store or by video. We will confirm the time, and what is in the case.</p>
-        <ul className="salon-visit-stores">
-          {STORES.map((s) => (
-            <li key={s.slug}>
-              <LinkPhoto slug={s.slug} />
-              <div>
-                <Link className="salon-visit-name" to={`/stores/${s.slug}`}>{s.name}</Link>
-                <p>{s.address1}<br />{s.city}, {s.state} {s.zip}</p>
-                <a className="num" href={`tel:${s.phone.replace(/\D/g, "")}`}>{s.phone}</a>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <p className="label">Call for hours.</p>
-      </div>
+    <div className="appointments wrap">
+      <h1>Book an appointment</h1>
+      <p className="body">Choose a store and what you would like to see. We will call or text to confirm a time.</p>
       <AppointmentForm prefill={loaderData.prefill} result={actionData} />
-    </section>
-  );
-}
-
-function LinkPhoto({ slug }: { slug: string }) {
-  const photo = slug === "mt-juliet" ? "aj-salon-cases" : "aj-consult-hands";
-  return (
-    <Link className="salon-visit-photo" to={`/stores/${slug}`} tabIndex={-1} aria-hidden="true">
-      <Pic k={photo} sizes="160px" />
-    </Link>
+    </div>
   );
 }

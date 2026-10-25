@@ -1,3 +1,4 @@
+import { LEGACY_COLLECTIONS, LEGACY_DESIGNS, LEGACY_PIECES } from "./legacy";
 import type { Collection, Design, Piece, Store, Tier, TierSlug, Version } from "./types";
 
 /* ------------------------------------------------------------------ */
@@ -9,10 +10,9 @@ export const TIERS: Tier[] = [
     slug: "royal-american",
     name: "Royal American",
     numeral: "I",
-    tagline: "One of one. Never made again.",
-    stones: "Natural diamonds and gemstones of exceptional character.",
-    intro:
-      "Royal American is our high jewelry collection: one-of-one designs, numbered in the registry and named for Tennessee places. Arrange a viewing to discuss the piece, its stones and its details.",
+    tagline: "One-of-a-kind pieces, shown privately in either store.",
+    stones: "Natural diamonds and gemstones. Details confirmed at a private viewing.",
+    intro: "One-of-a-kind pieces, shown privately in either store.",
     pricing: "on-request",
     hallmark: "crown",
   },
@@ -53,7 +53,7 @@ export const DESIGNS: Design[] = [
   "name": "Meridian",
   "tier": "americana",
   "motif": "An open oval in polished gold, interrupted by an emerald-cut green stone.",
-  "story": "An open oval in polished gold, interrupted by an emerald-cut green stone. A proposed family of rings, pendants and earrings.",
+  "story": "An open oval in polished gold, interrupted by an emerald-cut green stone.",
   "signature": "An open oval in polished gold, interrupted by an emerald-cut green stone."
 },
 {
@@ -62,7 +62,7 @@ export const DESIGNS: Design[] = [
   "name": "Ribbon",
   "tier": "americana",
   "motif": "One broad gold ribbon folds back on itself, ending in a line of diamonds.",
-  "story": "One broad gold ribbon folds back on itself, ending in a line of diamonds. A proposed family of rings, pendants and earrings.",
+  "story": "One broad gold ribbon folds back on itself, ending in a line of diamonds.",
   "signature": "One broad gold ribbon folds back on itself, ending in a line of diamonds."
 },
 {
@@ -71,7 +71,7 @@ export const DESIGNS: Design[] = [
   "name": "Horizon",
   "tier": "americana",
   "motif": "Two gold lines meet a bridge of three baguette diamonds.",
-  "story": "Two gold lines meet a bridge of three baguette diamonds. A proposed family of rings, pendants and earrings.",
+  "story": "Two gold lines meet a bridge of three baguette diamonds.",
   "signature": "Two gold lines meet a bridge of three baguette diamonds."
 },
 {
@@ -80,7 +80,7 @@ export const DESIGNS: Design[] = [
   "name": "Petal",
   "tier": "americana",
   "motif": "Three curved gold petals gather around a blue sapphire.",
-  "story": "Three curved gold petals gather around a blue sapphire. A proposed family of rings, pendants and earrings.",
+  "story": "Three curved gold petals gather around a blue sapphire.",
   "signature": "Three curved gold petals gather around a blue sapphire."
 },
   {
@@ -121,6 +121,7 @@ export const DESIGNS: Design[] = [
   },
 ];
 
+DESIGNS.push(...LEGACY_DESIGNS);
 DESIGNS.sort((a, b) => Number(!!a.concept) - Number(!!b.concept));
 
 export const designBySlug = (slug: string) => DESIGNS.find((d) => d.slug === slug);
@@ -142,7 +143,7 @@ export const COLLECTIONS: Collection[] = [
     "slug": "bridal",
     "name": "Bridal",
     "intro": "Engagement rings and wedding bands.",
-    "story": "Choose Americana for natural diamonds or New American for lab-grown diamonds.",
+    "story": "Engagement rings and wedding bands, with natural or lab-grown diamonds.",
     "crossTier": true
   },
   {
@@ -188,6 +189,8 @@ export const COLLECTIONS: Collection[] = [
     "crossTier": true
   }
 ];
+
+COLLECTIONS.push(...LEGACY_COLLECTIONS);
 
 export const collectionBySlug = (slug: string) => COLLECTIONS.find((c) => c.slug === slug);
 
@@ -742,7 +745,7 @@ export const PIECES: Piece[] = [
     leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
     description:
-      "A round brilliant in sculpted platinum. A Royal American registry concept.",
+      "A round brilliant in sculpted platinum.",
     specs: [
       { label: "Center", value: "Illustrative specification: 5.02 ct round brilliant, D, IF. Actual report to be confirmed." },
       { label: "Metal", value: "Platinum 950" },
@@ -763,7 +766,7 @@ export const PIECES: Piece[] = [
     leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
     description:
-      "A blue sapphire at the center of a five-point diamond star. A Royal American registry concept.",
+      "A blue sapphire at the center of a five-point diamond star.",
     specs: [
       { label: "Center", value: "Illustrative: 12.40 ct sapphire. Origin and treatment unconfirmed." },
       { label: "Diamonds", value: "Illustrative: 6.10 ct tw diamonds. Individual reports unconfirmed." },
@@ -783,7 +786,7 @@ export const PIECES: Piece[] = [
     metals: ["18k-yellow"],
     leadTime: "Viewing and availability by inquiry",
     madeToOrder: false,
-    description: "Graduated diamonds in a flowing line of gold. A Royal American registry concept.",
+    description: "Graduated diamonds in a flowing line of gold.",
     specs: [
       { label: "Diamonds", value: "Illustrative: 14.8 ct tw diamonds. Count and grading unconfirmed." },
       { label: "Metal", value: "18k yellow gold" },
@@ -1157,7 +1160,8 @@ export const PIECES: Piece[] = [
 ];
 
 // Preserve the established product reference sequence; proposals follow existing pieces.
-PIECES.sort((a, b) => Number(!!a.concept) - Number(!!b.concept));
+PIECES.push(...LEGACY_PIECES);
+PIECES.sort((a, b) => Number(!!a.concept) - Number(!!b.concept) || Number(!!b.realPhoto) - Number(!!a.realPhoto));
 const curatedEdits: Record<string, string[]> = {
   "family": [
     "shooting-star-ring",
@@ -1207,6 +1211,16 @@ const curatedEdits: Record<string, string[]> = {
 for (const [collection, handles] of Object.entries(curatedEdits)) {
   for (const piece of PIECES) if (handles.includes(piece.handle) && !piece.collections.includes(collection)) piece.collections.push(collection);
 }
+
+for (const piece of PIECES) {
+  if (["band", "eternity-band", "stack-band"].includes(piece.pieceType) && !piece.oneOfOne && !piece.collections.includes("wedding-bands")) {
+    piece.collections.push("wedding-bands");
+  }
+}
+
+/** Planned and proposed pieces stay on the mock. They leave the public catalog when the site is live. */
+export const isPublicPiece = (piece: Piece, live: boolean) => !live || piece.realPhoto === true;
+export const publicPieces = (live: boolean) => PIECES.filter((piece) => isPublicPiece(piece, live));
 
 export const pieceByHandle = (handle: string) => PIECES.find((p) => p.handle === handle);
 

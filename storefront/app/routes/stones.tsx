@@ -10,12 +10,12 @@ const ROWS: [string, string, string][] = [
   ["How to tell", "Only with laboratory instruments.", "Only with laboratory instruments. Check the inscription and report for the individual center stone."],
   ["How it is graded", "GIA. Ours are F to G, VS1, Excellent cut.", "IGI. Ours are D to F, VVS1 to VVS2, Ideal cut."],
   ["What sets the price", "Origin, rarity, size, quality, setting and market conditions.", "Production, grading, size, quality, setting and market conditions."],
-  ["Where it belongs", "Americana and Royal American.", "New American, and any bridal setting when you choose it."],
+  ["Where it belongs", "Bridal and high jewelry, when you choose a natural center stone.", "Bridal and any setting, when you choose a lab-grown diamond."],
   ["What we call it", "Natural diamond.", "Lab-grown diamond, every time, with laboratory-grown on the spec line."],
 ];
 
 const FAQ: [string, string][] = [
-  ["Where can I see lab-grown diamond jewelry in Middle Tennessee?", "Explore New American at American Jewelry, with stores in Brentwood and Mt. Juliet. Request an appointment and the store will confirm which pieces are available to view."],
+  ["Where can I see lab-grown diamond jewelry in Middle Tennessee?", "At American Jewelry in Brentwood and Mt. Juliet. Book an appointment and the store will confirm which pieces are available to view."],
   // house-lint: allow (the customer's own question; the answer never calls natural stones real)
   ["Is a lab-grown diamond a real diamond?", "It is a diamond: the same carbon crystal, hardness and optical properties as a mined one, grown in a laboratory instead of the earth. We identify it as lab-grown, laboratory-grown or man-made diamond so its origin is clear."],
   ["Can anyone tell the difference?", "Not by eye and not with a jeweler's loupe. A gemological laboratory can, which is why every lab-grown diamond we sell at 0.30 ct and above carries an IGI report and a laser inscription."],
@@ -25,7 +25,7 @@ const FAQ: [string, string][] = [
 
 export const meta: Route.MetaFunction = () =>
   pageMeta(
-    { title: "Natural or lab-grown diamond", description: "Compare natural and lab-grown diamonds at American Jewelry in Brentwood and Mt. Juliet, Tennessee. Understand origin, grading and the New American collection.", path: "/natural-or-man-made" },
+    { title: "Natural or lab-grown diamond", description: "Compare natural and lab-grown diamonds at American Jewelry in Brentwood and Mt. Juliet, Tennessee. Origin, grading and what we call each stone.", path: "/natural-or-man-made" },
     [breadcrumbJsonLd([{ name: "Natural or lab-grown", href: "/natural-or-man-made" }]), faqJsonLd(FAQ)],
   );
 
@@ -65,16 +65,16 @@ export default function StonesPage() {
         <div className="grid gap-10 md:grid-cols-2">
           <div className="flex flex-col gap-3">
             <h2 className="h-item text-[1.25rem]">The stone from the earth</h2>
-            <p className="font-text text-ink-2">Start in Americana, or bring us a budget and we find the stone. Every natural center stone comes with a GIA report.</p>
-            <Link to="/americana" className="link self-start">
-              Americana
+            <p className="font-text text-ink-2">Bring us a budget and we find the stone. Every natural center stone comes with a GIA report.</p>
+            <Link to="/jewelry?stone=natural" className="link self-start">
+              Natural diamonds
             </Link>
           </div>
           <div className="flex flex-col gap-3">
             <h2 className="h-item text-[1.25rem]">The lab-grown diamond</h2>
-            <p className="font-text text-ink-2">Start in New American. D to F, VVS, Ideal cut, IGI report, laser inscribed. The price is in the design and the gold.</p>
-            <Link to="/new-american" className="link self-start">
-              New American
+            <p className="font-text text-ink-2">D to F, VVS, Ideal cut, IGI report, laser inscribed. The price is in the design and the gold.</p>
+            <Link to="/jewelry?stone=lab-grown" className="link self-start">
+              Lab-grown diamonds
             </Link>
           </div>
         </div>

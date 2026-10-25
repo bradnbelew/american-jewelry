@@ -4,12 +4,15 @@ import { Link, useLocation, useNavigate } from "react-router";
 
 import { PieceConfigurator, metalTone } from "~/components/PieceConfigurator";
 import { PieceForm } from "~/components/PieceForm";
-import { StoreChoice } from "~/components/StoreChoice";
 import { PieceGallery } from "~/components/PieceGallery";
-import { PieceLedger } from "~/components/Catalog";
+import { PieceCard } from "~/components/Catalog";
 import { Section } from "~/components/Section";
 import { viewingFor } from "~/components/three/viewing/pieces";
-import { STORES, designBySlug, pieceByHandle, pieceRef, piecesForDesign, tierBySlug } from "~/lib/catalog/data";
+import { categoryOf } from "~/lib/catalog/browse";
+import { materialLine } from "~/lib/catalog/browse";
+import { designBySlug, isPublicPiece, pieceByHandle, piecesForDesign } from "~/lib/catalog/data";
+import { envContext } from "~/lib/env";
+import { isLive } from "~/lib/site";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Metal, Piece } from "~/lib/catalog/types";
 import { METAL_LABEL } from "~/lib/catalog/types";
@@ -30,7 +33,8 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const local = pieceByHandle(params.handle);
   const open3d = url.searchParams.get("view") === "3d";
-  if (local?.concept || local?.oneOfOne) return { handle: params.handle, open3d: false, product: null };
+  if (local && !isPublicPiece(local, isLive(context.get(envContext)))) throw new Response("Not found", { status: 404 });
+  if (local?.concept || local?.oneOfOne || local?.tier === "royal-american") return { handle: params.handle, open3d: false, product: null };
   let product: PieceProduct | null = null;
   try {
     const sf = context.get(storefrontClientContext);
@@ -50,17 +54,24 @@ export const meta: Route.MetaFunction = ({ data }) => {
   const product = data?.product ?? null;
   const manMade = p?.versions.some((v) => v.origin === "man-made") ?? false;
   const name = product?.title ?? p?.name ?? "A piece";
-  const tier = p ? tierBySlug(p.tier) : null;
   const design = p ? designBySlug(p.design) : undefined;
   const handle = data?.handle ?? "";
+  const crumbs = p ? crumbTrail(p) : [];
   return pageMeta(
-    { title: manMade ? `${name}, lab-grown diamond` : name, description: p?.description ?? "", path: `/pieces/${handle}`, og: `pieces/${handle}`, image: (PIECE_PHOTOS[handle] ?? ["hero-box"])[0] },
+    { title: manMade ? `${name}, lab-grown diamond` : name, description: p?.description ?? "", path: `/pieces/${handle}`, image: (PIECE_PHOTOS[handle] ?? ["hero-box"])[0] },
     [
       product ? productJsonLdFromStorefront(product, p, design) : p ? productJsonLd(p, design) : {},
-      breadcrumbJsonLd([...(tier ? [{ name: tier.name, href: `/${tier.slug}` }] : []), ...(design ? [{ name: design.name, href: `/designs/${design.slug}` }] : []), { name, href: `/pieces/${handle}` }]),
+      breadcrumbJsonLd([...crumbs, { name, href: `/pieces/${handle}` }]),
     ],
   );
 };
+
+function crumbTrail(piece: Piece) {
+  if (piece.tier === "royal-american") return [{ name: "High Jewelry", href: "/royal-american" }];
+  if (piece.collections.includes("bridal")) return [{ name: "Bridal", href: "/collections/bridal" }, { name: "Engagement rings", href: "/collections/bridal" }];
+  const category = categoryOf(piece);
+  return [{ name: "Jewelry", href: "/jewelry" }, ...(category ? [{ name: category.name, href: `/jewelry/${category.slug}` }] : [])];
+}
 
 export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const { product, handle, open3d } = loaderData;
@@ -73,9 +84,9 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const [metal, setMetal] = useState<Metal>(initialMetal);
   useEffect(() => setMetal(initialMetal), [initialMetal, handle]);
 
-  const tier = piece ? tierBySlug(piece.tier) : null;
   const design = piece ? designBySlug(piece.design) : undefined;
   const royal = piece?.tier === "royal-american";
+  const crumbs = piece ? crumbTrail(piece) : [];
   const title = product?.title ?? piece?.name ?? "";
   const embed = product?.modelEmbed?.value ?? undefined;
   const model = royal ? undefined : (modelFor(handle) ?? (embed ? { embed } : undefined));
@@ -87,11 +98,7 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const caratMatch = /(\d+(?:\.\d+)?)\s*ct/.exec(versionLabel) ?? /(\d+(?:\.\d+)?)\s*ct/.exec(piece?.versions.find((v) => v.name === versionLabel)?.stones ?? "");
   const carat = caratMatch ? Number(caratMatch[1]) : undefined;
 
-  const buyColumn = royal && piece ? (
-    <div className="royal-enquiry"><p className="label">One of one</p><p className="font-display text-[1.75rem]">Price on request</p><Link className="btn mt-6" to={`/appointments?tier=royal-american&piece=${piece.handle}`}>Request a private viewing</Link><StoreChoice storeQuery={`tier=royal-american&piece=${piece.handle}`} /></div>
-  ) : piece?.concept ? (
-    <div className="concept-enquiry"><p className="label">Design concept</p><p className="font-text">Materials, dimensions and price confirmed at consultation.</p><Link className="btn" to={`/appointments?piece=${piece.handle}`}>Discuss this design</Link><StoreChoice storeQuery={`piece=${piece.handle}`} /></div>
-  ) : product ? (
+  const buyColumn = product ? (
     <ProductProvider
       product={product}
       onSelect={(result) => {
@@ -108,35 +115,12 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <Section className="pdp-breadcrumb pt-3 md:pt-4">
-        <nav className="label flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-          {tier && (
-            <Link to={`/${tier.slug}`} className="inline-flex min-h-11 items-center hover:text-ink">
-              {tier.name}
-            </Link>
-          )}
-          {design && (
-            <>
-              <span aria-hidden>/</span>
-              <Link to={`/designs/${design.slug}`} className="inline-flex min-h-11 items-center hover:text-ink">
-                {design.name}
-              </Link>
-            </>
-          )}
-        </nav>
-      </Section>
-
       <Section className="pdp-main">
-        <div className={`piece-layout ${royal ? "royal-piece" : ""}`}>
-          <div className="pdp-heading">
-            <h1>{title}</h1>
-            {piece && !piece.concept && <p className="label">Ref. {pieceRef(piece)}{royal ? `, Royal American No. ${piece.oneOfOne?.number}` : tier ? `, ${tier.name}` : ""}</p>}
-          </div>
+        <div className="piece-layout">
           <div className="pdp-gallery">
             <PieceGallery
               photos={PIECE_PHOTOS[handle] ?? ["hero-box"]}
               title={title}
-              caption={handle === "shooting-star-ring" ? "Natural diamond version shown. Concept photograph." : handle === "prism-band" ? "Solid gold version shown. Concept photograph." : "Concept photograph. Selected options may differ."}
               model={galleryModel}
               metal={metalTone(metal)}
               open3d={open3d}
@@ -145,113 +129,94 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
           </div>
 
           <div className="pdp-buy flex flex-col gap-6">
+            <nav className="crumb" aria-label="Breadcrumb">
+              {crumbs.map((crumb, index) => (
+                <span key={crumb.href}>
+                  {index > 0 ? " / " : null}
+                  <Link to={crumb.href}>{crumb.name}</Link>
+                </span>
+              ))}
+            </nav>
+            <h1 className="pdp-name">{title}</h1>
+            {piece ? <p className="body">{materialLine(piece)}</p> : null}
             {buyColumn}
-
-            {piece && <p className="pdp-description">{piece.description}</p>}
-            {piece && !piece.concept && <Details piece={piece} />}
-            {piece?.concept && <table className="spec"><tbody>{piece.specs.map((s) => <tr key={s.label}><th scope="row">{s.label}</th><td>{s.value}</td></tr>)}</tbody></table>}
+            <ul className="pdp-services">
+              <li className="small">Collect in Brentwood or Mt. Juliet.</li>
+              <li className="small">30-day returns on unworn, unaltered pieces. <Link to="/policies#returns">Details</Link></li>
+              <li className="small">Lifetime care: cleaning and inspection at no charge.</li>
+              <li className="small">Questions? Call or text <a href="tel:6154572089">(615) 457-2089</a>.</li>
+            </ul>
+            {piece ? <Details piece={piece} /> : null}
           </div>
         </div>
       </Section>
 
-      {piece && design && <Siblings piece={piece} designSlug={design.slug} designName={design.name} />}
-
+      {piece && design ? <Siblings piece={piece} designName={design.name} /> : null}
     </>
   );
 }
 
-/** The spec table and the four folded answers. */
+const HIDDEN_SPEC = /illustrative|unconfirmed|concept|proposed/i;
+
 function Details({ piece }: { piece: Piece }) {
-  const manMade = piece.versions.some((v) => v.origin === "man-made");
-  if (piece.oneOfOne) return <div className="font-text flex flex-col gap-5"><p>This registry entry is an illustrative design concept. Availability, stone weights, origin, treatment and reports must be confirmed with the house.</p></div>;
+  const specs = piece.specs.filter((spec) => !HIDDEN_SPEC.test(`${spec.label} ${spec.value}`));
+  const manMade = piece.versions.some((version) => version.origin === "man-made");
   return (
-    <>
-      <table className="spec">
-        <tbody>
-          {piece.specs.map((s) => (
-            <tr key={s.label}>
-              <th scope="row">{s.label}</th>
-              <td className="font-text">{s.value}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div>
-        <details className="acc border-b border-hair">
-          <summary>{manMade ? "The stone and its report" : "The stones"}</summary>
-          <div className="font-text flex flex-col gap-3 pb-6 text-[1rem] text-ink-2">
-            {manMade ? (
-              <>
-                <p>D to F color, VVS1 or VVS2, Ideal cut. Growth method and any post-growth treatment are printed on the IGI report. Not mined.</p>
-                <p>
-                  Stones from 0.30 ct carry an IGI report, laser inscribed on the girdle, verifiable at{" "}
-                  <a href="https://www.igi.org/verify-your-report/" className="link-quiet" target="_blank" rel="noreferrer">
-                    igi.org
-                  </a>
-                  .
-                </p>
-              </>
-            ) : (
-              <>
-                <p>Natural diamonds are F to G color, VS1, Excellent cut. Center stones carry a GIA report; any treatment is disclosed before purchase.</p>
-                <p>Birthstone versions take one natural gemstone of your choosing. We will tell you which stones suit daily wear.</p>
-              </>
-            )}
-          </div>
-        </details>
-        <details className="acc border-b border-hair">
-          <summary>Care and warranty</summary>
-          <p className="font-text pb-6 text-[1rem] text-ink-2">
-            Cleaning and inspection at either store, at no charge, for life. Defects in materials and workmanship covered for the life of the piece. The center stone is not covered; insure it separately. Terms on the{" "}
-            <Link to="/policies#warranty" className="link-quiet">
-              policies page
-            </Link>
-            .
-          </p>
-        </details>
-        <details className="acc border-b border-hair">
-          <summary>Delivery and returns</summary>
-          <p className="font-text pb-6 text-[1rem] text-ink-2">
-            Insured, signature required, in the house box, or collected in either store. Confirm the return and exchange terms for your selected configuration before ordering. See the policies page or contact the store.
-          </p>
-        </details>
-        <details className="acc border-b border-hair">
-          <summary>A question about this piece</summary>
-          <p className="font-text pb-6 text-[1rem] text-ink-2">
-            Call{" "}
-            {STORES.map((s, i) => (
-              <span key={s.slug}>
-                {i ? " or " : ""}
-                {s.name} at{" "}
-                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="link-quiet num">{s.phone}</a>
-              </span>
-            ))}{" "}
-            to discuss the piece, or{" "}
-            <Link to={`/appointments?piece=${piece.handle}`} className="link-quiet">
-              book an hour
-            </Link>
-            .
-          </p>
-        </details>
-      </div>
-    </>
+    <div>
+      <details className="acc border-b border-hair">
+        <summary className="caps">Details</summary>
+        <div className="flex flex-col gap-3 pb-6">
+          <p className="body">{piece.description}</p>
+          {specs.length > 0 ? (
+            <table className="spec">
+              <tbody>
+                {specs.map((spec) => (
+                  <tr key={spec.label}>
+                    <th scope="row">{spec.label}</th>
+                    <td>{spec.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+        </div>
+      </details>
+      <details className="acc border-b border-hair">
+        <summary className="caps">Stones and certificate</summary>
+        <div className="pb-6">
+          {manMade ? (
+            <p className="body">Lab-grown diamond, D to F color, VVS clarity, IGI report. Growth method and any treatment are on the report.</p>
+          ) : (
+            <p className="body">Natural diamonds are disclosed with their report before you buy. Gemstone versions use one natural stone, and we will tell you which stones suit daily wear.</p>
+          )}
+        </div>
+      </details>
+      <details className="acc border-b border-hair">
+        <summary className="caps">Care and warranty</summary>
+        <p className="body pb-6">Cleaning and inspection at either store, at no charge, for as long as you own the piece. <Link to="/policies#warranty">Warranty</Link></p>
+      </details>
+      <details className="acc border-b border-hair">
+        <summary className="caps">Shipping and returns</summary>
+        <p className="body pb-6">Collect in Brentwood or Mt. Juliet. 30-day returns on unworn, unaltered pieces. <Link to="/policies#returns">Details</Link></p>
+      </details>
+    </div>
   );
 }
 
-/** The siblings in the design, as a ledger of names: one photograph per row, the price aligned. */
-function Siblings({ piece, designSlug, designName }: { piece: Piece; designSlug: string; designName: string }) {
-  const siblings = piecesForDesign(piece.design).filter((p) => p.handle !== piece.handle && p.tier === piece.tier && !p.oneOfOne).slice(0, 4);
+function Siblings({ piece, designName }: { piece: Piece; designName: string }) {
+  const siblings = piecesForDesign(piece.design).filter((item) => item.handle !== piece.handle && !item.oneOfOne).slice(0, 4);
   if (siblings.length === 0) return null;
   return (
     <Section className="related-pieces">
-        <div className="house-heading">
-          <h2 className="h-section text-[1.75rem] md:text-[2.25rem]">More in this design</h2>
-          <Link to={`/designs/${designSlug}`} className="link self-start">
-            The {designName} design
-          </Link>
-        </div>
-          <PieceLedger pieces={siblings} />
+      <h2>You may also like</h2>
+      <p className="small mute">{designName}</p>
+      <ul className="piece-grid">
+        {siblings.map((item) => (
+          <li key={item.handle}>
+            <PieceCard piece={item} />
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }

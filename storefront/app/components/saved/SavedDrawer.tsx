@@ -17,7 +17,7 @@ export function SavedDrawer() {
       <div className="flex h-full flex-col">
         <div className="flex shrink-0 items-center justify-between py-5 pl-6 pr-3">
           <h2 id="saved-drawer-title" tabIndex={-1} className="font-display text-[1.375rem]">
-            Kept
+            Saved
           </h2>
           <button type="button" commandfor={SAVED_DRAWER_ID} command="close" className="caps inline-flex h-11 items-center px-3 hover:text-muted" onClick={close}>
             Close
@@ -28,9 +28,9 @@ export function SavedDrawer() {
             <p className="label flex min-h-[6rem] items-center">Opening</p>
           ) : items.length === 0 ? (
             <div className="flex h-full flex-col items-start justify-center gap-5">
-              <p className="font-display text-[1.5rem]">Nothing kept yet.</p>
+              <p className="font-display text-[1.5rem]">Nothing saved yet. Tap the heart on any piece to keep it here.</p>
               <Link to="/jewelry" className="link" onClick={close}>
-                Browse jewelry
+                View all jewelry
               </Link>
             </div>
           ) : (

@@ -1,18 +1,18 @@
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Form, Link, useLocation, useNavigation, useSearchParams, useSubmit } from "react-router";
 
-import { CATEGORIES, SORTS, activeCount, applyQuery, filterGroups, readQuery, matchingVersion, matchingVersions, type BrowseQuery, type FilterGroup } from "~/lib/catalog/browse";
+import { CATEGORIES, SORTS, activeCount, applyQuery, filterGroups, materialLine, readQuery, matchingVersion, matchingVersions, type BrowseQuery, type FilterGroup } from "~/lib/catalog/browse";
 import { formatPrice, startingPrice } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
 import type { Piece } from "~/lib/catalog/types";
 import { METAL_LABEL, PIECE_TYPE_LABEL } from "~/lib/catalog/types";
 
 import { Pic } from "./Pic";
+import { SaveButton } from "./saved/SaveButton";
 import { Section } from "./Section";
 
-/** The price line on a card or a row: fixed, "From $" when the stone varies, "Price on request" for one-of-ones. */
+/** The price line on a card or a row: fixed, "From $" when the stone varies, "Price on request" when it is not listed. */
 export const priceLine = (p: Piece, q?: BrowseQuery) => {
-  if (p.concept) return "Design concept";
   const price = q ? matchingVersion(p, q)?.priceCents ?? null : startingPrice(p);
   const count = q ? matchingVersions(p, q).length : p.versions.length;
   return price === null ? "Price on request" : count > 1 ? `From ${formatPrice(price)}` : formatPrice(price);
@@ -27,30 +27,31 @@ export function PieceCard({ piece, showLine = false, sizes = "(min-width: 1024px
   const metal = query?.metal.find((m) => piece.metals.includes(m));
   if (metal) selected.set("Metal", METAL_LABEL[metal]);
   return (
-    <Link to={`/pieces/${piece.handle}${selected.size ? `?${selected}` : ''}`} viewTransition className="group flex min-w-0 flex-col gap-4">
-      <span className={`piece-card-image relative block aspect-[4/5] overflow-hidden ${piece.oneOfOne ? "is-royal" : ""}`}>
-        <Pic k={key} sizes={sizes} priority={priority} />
+    <Link to={`/pieces/${piece.handle}${selected.size ? `?${selected}` : ''}`} viewTransition className="piece-card group flex min-w-0 flex-col">
+      <span className={`piece-card-image relative block aspect-[4/5] overflow-hidden bg-ivory ${piece.oneOfOne ? "is-royal" : ""}`}>
+        <Pic k={key} sizes={sizes} priority={priority} fit="contain" />
+        <SaveButton className="piece-heart" item={{ id: piece.handle, href: `/pieces/${piece.handle}`, name: piece.name, detail: materialLine(piece), photo: key }} />
       </span>
-      <span className="piece-card-copy flex min-w-0 flex-col gap-0.5">
-        <span className="h-item text-[1.125rem] group-hover:text-muted md:text-[1.25rem]">{piece.name}</span>
-        {!piece.concept && (showLine || version || piece.tier === "new-american") && <span className="label">
-          {showLine ? `${piece.tier === "royal-american" ? "Royal American" : piece.tier === "americana" ? "Americana" : "New American"}. ` : ""}
-          {version ? version.origin === "man-made" ? "Lab-grown diamond" : version.name : piece.tier === "new-american" ? "Lab-grown diamond" : ""}
-        </span>}
-        <span className="num text-[0.9375rem] text-ink-2">{priceLine(piece, query)}</span>
+      <span className="piece-card-copy flex min-w-0 flex-col items-center gap-1 pt-4 text-center">
+        <span className="product-name">{piece.name}</span>
+        <span className="small mute">{materialLine(piece)}</span>
+        <span className="price">{priceLine(piece, query)}</span>
       </span>
     </Link>
   );
 }
 
 /** Aligned product rows: three across on desktop and two on phone. */
-export function PieceIndex({ pieces, showLine = false, query }: { pieces: Piece[]; showLine?: boolean; query?: BrowseQuery }) {
+export function PieceIndex({ pieces, showLine = false, query, interrupt }: { pieces: Piece[]; showLine?: boolean; query?: BrowseQuery; interrupt?: ReactNode }) {
   return (
-    <ul className="piece-grid grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-8 lg:grid-cols-3 lg:gap-y-14">
+    <ul className="piece-grid">
       {pieces.map((p, i) => (
-        <li key={p.handle}>
-          <PieceCard piece={p} showLine={showLine} priority={i < 3} query={query} />
-        </li>
+        <Fragment key={p.handle}>
+          <li>
+            <PieceCard piece={p} showLine={showLine} priority={i < 4} query={query} />
+          </li>
+          {interrupt && i === 7 ? <li className="piece-interrupt">{interrupt}</li> : null}
+        </Fragment>
       ))}
     </ul>
   );
@@ -101,8 +102,8 @@ export function Browse({title, base, kind, hide = [], children, emptyLine}: {
   </>;
 }
 
-export function ProductResults({base, hide = [], emptyLine = "No pieces match these filters."}: {
-  base:Piece[]; hide?:FilterGroup["key"][]; emptyLine?:string;
+export function ProductResults({base, hide = [], emptyLine = "No pieces match these filters.", interrupt}: {
+  base:Piece[]; hide?:FilterGroup["key"][]; emptyLine?:string; interrupt?: ReactNode;
 }) {
   const [params] = useSearchParams();
   const selectedQuery = readQuery(params);
@@ -112,6 +113,9 @@ export function ProductResults({base, hide = [], emptyLine = "No pieces match th
   const sorts = hasPrices ? SORTS : SORTS.filter(sort => !sort.key.startsWith("price"));
   const q: BrowseQuery = {...selectedQuery, sort: sorts.some(sort => sort.key === selectedQuery.sort) ? selectedQuery.sort : "house"};
   const pieces = applyQuery(base, q);
+  const [shown, setShown] = useState(12);
+  useEffect(() => setShown(12), [params]);
+  const visible = pieces.slice(0, shown);
   const active = activeCount(q);
   const navigation = useNavigation();
   const submit = useSubmit();
@@ -135,15 +139,13 @@ export function ProductResults({base, hide = [], emptyLine = "No pieces match th
   const clearHref = pathname + (clearParams.size ? "?" + clearParams : "");
   return <div className="product-results" aria-busy={navigation.state !== "idle"}>
     <div className="results-toolbar">
-      <p className="label" role="status">{pieces.length} {pieces.length === 1 ? "piece" : "pieces"}</p>
-      <div className="results-controls">
-        <Form method="get" onChange={e => submit(e.currentTarget,{method:"get",preventScrollReset:true,replace:true})}>
-          {[...params].filter(([key]) => key !== "sort").map(([key,value],i) => <input key={key+i} type="hidden" name={key} value={value} />)}
-          <label className="sort-control"><span>Sort</span><select name="sort" aria-label="Sort pieces" value={q.sort} onChange={() => undefined}>{sorts.map(sort => <option key={sort.key} value={sort.key}>{sort.label}</option>)}</select></label>
-          <noscript><button type="submit" className="link">Sort pieces</button></noscript>
-        </Form>
-        {groups.length > 0 && <button type="button" className="filter-trigger" aria-haspopup="dialog" onClick={() => { setOpen(true); dialog.current?.showModal(); }}>Filter{active ? " ("+active+")" : ""}<span aria-hidden="true">+</span></button>}
-      </div>
+      {groups.length > 0 && <button type="button" className="filter-trigger caps" aria-haspopup="dialog" onClick={() => { setOpen(true); dialog.current?.showModal(); }}>Filter{active ? ` (${active})` : ""}</button>}
+      <p className="small mute results-count" role="status">{pieces.length} {pieces.length === 1 ? "piece" : "pieces"}</p>
+      <Form className="results-sort" method="get" onChange={e => submit(e.currentTarget,{method:"get",preventScrollReset:true,replace:true})}>
+        {[...params].filter(([key]) => key !== "sort").map(([key,value],i) => <input key={key+i} type="hidden" name={key} value={value} />)}
+        <label className="sort-control caps"><span>Sort</span><select name="sort" aria-label="Sort pieces" value={q.sort} onChange={() => undefined}>{sorts.map(sort => <option key={sort.key} value={sort.key}>{sort.label}</option>)}</select></label>
+        <noscript><button type="submit" className="link">Sort pieces</button></noscript>
+      </Form>
     </div>
     {active > 0 && <div className="filter-chips" aria-label="Selected filters">{groups.flatMap(g => g.options.filter(o => (q[g.key] as string[]).includes(o.value)).map(o => {
       const next = new URLSearchParams(params);
@@ -151,7 +153,8 @@ export function ProductResults({base, hide = [], emptyLine = "No pieces match th
       (q[g.key] as string[]).filter(value => value !== o.value).forEach(value => next.append(g.key,value));
       return <Link key={g.key+o.value} to={pathname+(next.size ? "?"+next : "")} preventScrollReset replace aria-label={"Remove "+o.label+" filter"}>{o.label}<span aria-hidden="true">×</span></Link>;
     }))}<Link to={clearHref} preventScrollReset replace>Clear all</Link></div>}
-    {pieces.length ? <PieceIndex pieces={pieces} query={q} /> : <div className="browse-empty"><p>{emptyLine}</p><Link className="link" to={clearHref} preventScrollReset>Clear filters</Link></div>}
+    {visible.length ? <PieceIndex pieces={visible} query={q} interrupt={pieces.length > 8 ? interrupt : undefined} /> : <div className="browse-empty"><p>{emptyLine}</p><Link className="link" to={clearHref} preventScrollReset>Clear filters</Link></div>}
+    {pieces.length > shown ? <button type="button" className="link load-more" onClick={() => setShown((count) => count + 12)}>Load more</button> : null}
     <dialog ref={dialog} className="filter-dialog" aria-labelledby={titleId} onClose={() => setOpen(false)} onClick={e => { if(e.target === e.currentTarget) close(); }}>
       <div className="filter-dialog-shell">
         <div className="filter-dialog-heading"><h2 id={titleId}>Filter</h2><button type="button" onClick={close}>Close</button></div>
@@ -171,7 +174,7 @@ function FilterForm({base,hide,q,contextLine,close}: {base:Piece[]; hide:FilterG
   return <Form method="get" preventScrollReset replace className="filter-form" onSubmit={close}>
     <input type="hidden" name="sort" value={q.sort} />
     {contextLine && <input type="hidden" name="line" value={contextLine} />}
-    {(["design","metal","stone","price","production","line"] as FilterGroup["key"][]).filter(key => !groups.some(group => group.key === key)).flatMap(key => (draft[key] as string[]).map(value => <input key={key+value} type="hidden" name={key} value={value} />))}
+    {(["design","collection","metal","stone","price","production","line"] as FilterGroup["key"][]).filter(key => !groups.some(group => group.key === key)).flatMap(key => (draft[key] as string[]).map(value => <input key={key+value} type="hidden" name={key} value={value} />))}
     <div className="filter-dialog-options">{groups.map((group,index) => <details key={group.key} open={index === 0 || draft[group.key].length > 0}>
       <summary>{group.label}{draft[group.key].length ? " ("+draft[group.key].length+")" : ""}</summary>
       <fieldset><legend className="sr-only">{group.label}</legend>{group.options.map(option => {

@@ -129,7 +129,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
 
       <div className="builder-decisions flex flex-col gap-7 lg:col-span-5">
         <div className="builder-summary flex flex-col gap-4">
-          <Link className="label self-start" to={`/collections/bridal?line=${c.origin === "natural" ? "americana" : "new-american"}`}>{c.origin === "natural" ? "Americana" : "New American"}</Link>
+          <Link className="label self-start" to={`/collections/bridal?stone=${c.origin === "natural" ? "natural" : "lab-grown"}`}>{c.origin === "natural" ? "Natural diamond" : "Lab-grown diamond"}</Link>
           <div className="flex items-baseline justify-between gap-6">
             <h2 className="h-item text-[1.5rem] leading-snug md:text-[1.75rem]">{note.name}</h2>
             <span className="h-item num whitespace-nowrap text-[1.5rem] md:text-[1.75rem]">{usd(p.total)}</span>
@@ -137,7 +137,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
           <p className="font-text text-[0.9375rem] text-ink-2">
             {c.carat.toFixed(2)} ct {STONE_STANDARD[c.origin].short.toLowerCase()}, {METAL_LABEL[c.metal]}.
           </p>
-          <p className="label">Made to order, about {weeks} weeks. Price before sales tax.</p>
+          <p className="label">Made to order, about {weeks} weeks.</p>
         </div>
 
         <Row label="Setting">
@@ -271,7 +271,7 @@ export function RingBuilder({ initial }: { initial?: Partial<RingConfig> }) {
           </Link>
           <div className="grid grid-cols-2 gap-2 text-[0.75rem]">
             <button type="button" className="quiet" aria-pressed={saved} onClick={() => toggle({ id: savedId, href: `/design/${code}`, name: `${note.name} ring`, detail: name, photo })}>
-              {saved ? "Kept" : "Keep"}
+              {saved ? "Saved" : "Save"}
             </button>
             <button type="button" className="quiet" onClick={() => copy(`${origin}/design/${code}`, "share")}>
               {copied === "share" ? "Copied" : "Copy link"}
