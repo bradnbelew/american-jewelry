@@ -18,13 +18,13 @@ colors:
 typography:
   display:
     fontFamily: "Source Serif 4 Variable"
-    fontSize: 76px
+    fontSize: 96px
     fontWeight: 400
     lineHeight: 0.98
     letterSpacing: -0.015em
   section:
     fontFamily: "Source Serif 4 Variable"
-    fontSize: 40px
+    fontSize: 72px
     fontWeight: 400
     lineHeight: 1.05
     letterSpacing: -0.01em

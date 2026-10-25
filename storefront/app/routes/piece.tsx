@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 
 import { PieceConfigurator, metalTone } from "~/components/PieceConfigurator";
 import { PieceForm } from "~/components/PieceForm";
+import { StoreChoice } from "~/components/StoreChoice";
 import { PieceGallery } from "~/components/PieceGallery";
 import { PieceLedger } from "~/components/Catalog";
 import { Section } from "~/components/Section";
@@ -87,9 +88,9 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
   const carat = caratMatch ? Number(caratMatch[1]) : undefined;
 
   const buyColumn = royal && piece ? (
-    <div className="royal-enquiry"><p className="label">One of one</p><p className="font-display text-[1.75rem]">Price on request</p><Link className="btn mt-6" to={`/appointments?tier=royal-american&piece=${piece.handle}`}>Request a private viewing</Link></div>
+    <div className="royal-enquiry"><p className="label">One of one</p><p className="font-display text-[1.75rem]">Price on request</p><Link className="btn mt-6" to={`/appointments?tier=royal-american&piece=${piece.handle}`}>Request a private viewing</Link><StoreChoice storeQuery={`tier=royal-american&piece=${piece.handle}`} /></div>
   ) : piece?.concept ? (
-    <div className="concept-enquiry"><p className="label">Design concept</p><p className="font-text">Materials, dimensions and price confirmed at consultation.</p><Link className="btn" to={`/appointments?piece=${piece.handle}`}>Discuss this design</Link></div>
+    <div className="concept-enquiry"><p className="label">Design concept</p><p className="font-text">Materials, dimensions and price confirmed at consultation.</p><Link className="btn" to={`/appointments?piece=${piece.handle}`}>Discuss this design</Link><StoreChoice storeQuery={`piece=${piece.handle}`} /></div>
   ) : product ? (
     <ProductProvider
       product={product}
@@ -162,7 +163,6 @@ export default function PiecePage({ loaderData }: Route.ComponentProps) {
 /** The spec table and the four folded answers. */
 function Details({ piece }: { piece: Piece }) {
   const manMade = piece.versions.some((v) => v.origin === "man-made");
-  const salon = STORES[1];
   if (piece.oneOfOne) return <div className="font-text flex flex-col gap-5"><p>This registry entry is an illustrative design concept. Availability, stone weights, origin, treatment and reports must be confirmed with the house.</p></div>;
   return (
     <>
@@ -219,10 +219,14 @@ function Details({ piece }: { piece: Piece }) {
         <details className="acc border-b border-hair">
           <summary>A question about this piece</summary>
           <p className="font-text pb-6 text-[1rem] text-ink-2">
-            Call Mt. Juliet at{" "}
-            <a href={`tel:${salon.phone.replace(/\D/g, "")}`} className="link-quiet num">
-              {salon.phone}
-            </a>{" "}
+            Call{" "}
+            {STORES.map((s, i) => (
+              <span key={s.slug}>
+                {i ? " or " : ""}
+                {s.name} at{" "}
+                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="link-quiet num">{s.phone}</a>
+              </span>
+            ))}{" "}
             to discuss the piece, or{" "}
             <Link to={`/appointments?piece=${piece.handle}`} className="link-quiet">
               book an hour

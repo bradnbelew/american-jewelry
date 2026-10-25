@@ -12,6 +12,8 @@ import type { PieceProduct } from "~/lib/piece-query";
 import { explicitSize, sizeIsReady } from "~/lib/piece-selection";
 
 import { SaveButton } from "./saved/SaveButton";
+import { SizeOptions } from "./SizeOptions";
+import { StoreChoice } from "./StoreChoice";
 
 const METAL_SWATCH: Record<Metal, string> = {
   "14k-yellow": "#d6b25e",
@@ -134,14 +136,7 @@ export function PieceForm({ product, piece, onMetal, onSelectionQuery }: { produ
         <div className="piece-size-engraving">
           {piece?.sizes && (
             <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet">Sizing help</Link>}>
-              <select id={`size-${product.handle}`} form={`order-${product.handle}`} required className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
-                <option value="" disabled>Choose your size</option>
-                {piece.sizes.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
+              <SizeOptions id={`size-${product.handle}`} sizes={piece.sizes} value={size} onChange={setSize} />
             </Field>
           )}
           {piece?.engraving && (
@@ -169,10 +164,8 @@ export function PieceForm({ product, piece, onMetal, onSelectionQuery }: { produ
           </p>
         ) : null}
         {selectedVariant && shopPayHere ? <ShopPayButton variants={[{ id: selectedVariant.id, quantity: 1 }]} disabled={!addable || pending} width="100%" borderRadius="0px" /> : null}
+        <StoreChoice storeQuery={storeQuery} />
         <div className="purchase-secondary">
-          <Link to={`/appointments?${storeQuery}`} className="link">
-            See it in store
-          </Link>
           <SaveButton className="quiet-save" item={{ id: product.handle, href: savedHref, name: product.title, detail: [versionValue, metalValue, size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
         </div>
       </form>

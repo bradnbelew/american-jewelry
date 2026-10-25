@@ -40,6 +40,7 @@ export function Footer({ year }: { year: number }) {
           <p className="font-text max-w-xs text-[0.9375rem] leading-relaxed text-ink-2">
             Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
           </p>
+          <Link to="/appointments" className="campaign-link self-start">Book a visit</Link>
         </div>
         <Col className="md:col-span-2" title="The House" links={HOUSE} />
         <Col className="md:col-span-2" title="Services" links={SERVICES} />

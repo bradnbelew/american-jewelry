@@ -1250,7 +1250,7 @@ export const STORES: Store[] = [
     mapQuery: "American Jewelry 157 Franklin Rd Brentwood TN 37027",
     lat: 36.03433,
     lng: -86.78828,
-    photo: "box-peach",
+    photo: "aj-consult-hands",
     place: "On Franklin Road in Brentwood.",
     expect:
       "Our Brentwood shop is visible to customers. Tell us what you would like to see when you arrange your visit. We can discuss bridal settings, a commission or a Royal American viewing and confirm what is available.",
@@ -1276,7 +1276,7 @@ export const STORES: Store[] = [
     mapQuery: "American Jewelry 401 S Mt Juliet Rd Ste 165 Mt Juliet TN 37122",
     lat: 36.16746,
     lng: -86.50746,
-    photo: "bench",
+    photo: "aj-salon-cases",
     place: "Suite 165 at Providence Marketplace, off South Mt. Juliet Road.",
     expect:
       "Our Mt. Juliet shop is visible to customers. Bring your piece or your ideas. Contact the store to discuss a repair, cleaning, a new design or an appointment; we will confirm the service and timing.",

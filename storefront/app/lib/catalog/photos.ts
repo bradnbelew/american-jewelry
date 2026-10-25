@@ -15,6 +15,16 @@ export const PHOTO: Record<string, HousePhoto> = {
   "ring-radiant": { src: "/photos/ring-radiant.jpg", alt: "A radiant-cut diamond on a star-set gold band", w: 1050, h: 800, float: true },
   "ring-halo": { src: "/photos/ring-halo.jpg", alt: "An emerald-cut diamond ring with a baguette halo", w: 2000, h: 1546, float: true },
   bench: { src: "/photos/bench.jpg", alt: "Loose diamonds and a grading chart on the bench", w: 2000, h: 1546 },
+  "aj-solitaire-hand": { src: "/photos/aj-solitaire-hand.jpg", alt: "A hand wearing a yellow gold solitaire and a diamond band", w: 2400, h: 2000 },
+  "aj-round-brilliant": { src: "/photos/aj-round-brilliant.jpg", alt: "A round brilliant diamond on a white ground", w: 2400, h: 2000, float: true },
+  "aj-wedding-bands": { src: "/photos/aj-wedding-bands.jpg", alt: "Three diamond bands standing on white", w: 2400, h: 1960, float: true, contain: true },
+  "aj-name-necklace": { src: "/photos/aj-name-necklace.jpg", alt: "A gold name necklace on white", w: 2400, h: 2000, float: true, contain: true },
+  "aj-gemstone-rings": { src: "/photos/aj-gemstone-rings.jpg", alt: "Three gold rings set with blue and green gemstones", w: 2400, h: 2000, float: true, contain: true },
+  "aj-signet-worn": { src: "/photos/aj-signet-worn.jpg", alt: "A gold signet worn on a hand, with a chain", w: 2400, h: 1980 },
+  "aj-consult-hands": { src: "/photos/aj-consult-hands.jpg", alt: "Hands holding a round diamond over a grading tray", w: 550, h: 800 },
+  "aj-bench-hands": { src: "/photos/aj-bench-hands.jpg", alt: "A jeweler's hands at the bench, loupe raised, setting a ring", w: 960, h: 875 },
+  "aj-watch-bench": { src: "/photos/aj-watch-bench.jpg", alt: "A watchmaker at the bench with a loupe and a movement", w: 2048, h: 1265 },
+  "aj-salon-cases": { src: "/photos/aj-salon-cases.jpg", alt: "Jewelry cases in the Mt. Juliet store", w: 680, h: 700 },
   "tristar-charm": { src: "/photos/tristar-charm.jpg", alt: "Gold Tennessee tri-star medallion on a chain", w: 1400, h: 1400, float: true },
   "huggie-diamond": { src: "/photos/huggie-diamond.jpg", alt: "Diamond huggie hoops in gold", w: 1400, h: 1400, float: true },
   "name-riley": { src: "/photos/name-riley.jpg", alt: "A gold script name necklace", w: 1400, h: 1400, float: true },
@@ -46,9 +56,9 @@ export const PHOTO: Record<string, HousePhoto> = {
 export const PIECE_PHOTOS: Record<string, string[]> = {};
 
 export const TIER_PHOTO: Record<string, string> = {
-  "royal-american": "comp-cumberland-velvet",
-  americana: "comp-americana-ground",
-  "new-american": "comp-new-american-opener",
+  "royal-american": "aj-round-brilliant",
+  americana: "aj-signet-worn",
+  "new-american": "aj-round-brilliant",
 };
 
 export const DESIGN_PHOTO: Record<string, string> = {
@@ -66,8 +76,8 @@ export const COLLECTION_PHOTO: Record<string, string> = {
 };
 
 export const STORE_PHOTO: Record<string, string> = {
-  brentwood: "box-peach",
-  "mt-juliet": "bench",
+  brentwood: "aj-consult-hands",
+  "mt-juliet": "aj-salon-cases",
 };
 
 export const photosFor = (handle: string) => (PIECE_PHOTOS[handle] ?? ["hero-box"]).map((k) => PHOTO[k]);
@@ -156,7 +166,7 @@ DESIGN_PHOTO.grid = 'comp-object-grid-tennis-bracelet';
 for (const design of ['meridian','ribbon','horizon','petal']) DESIGN_PHOTO[design] = 'campaign-'+design+'-family';
 PHOTO['campaign-07-family-collection-editorial'].contain = true;
 COLLECTION_PHOTO.family = 'campaign-07-family-collection-editorial';
-COLLECTION_PHOTO.bridal = 'comp-signal-hand';
+COLLECTION_PHOTO.bridal = 'aj-solitaire-hand';
 COLLECTION_PHOTO.signets = 'comp-object-prism-signet';
 COLLECTION_PHOTO['the-stack'] = 'comp-object-grid-stack-band';
 COLLECTION_PHOTO.everyday = 'comp-object-meridian-pendant';

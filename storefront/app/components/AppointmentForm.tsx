@@ -109,7 +109,7 @@ export function AppointmentForm({ prefill, result }: { prefill: Record<string, s
 
       <div className="flex flex-wrap items-center gap-6 pt-2 md:col-span-2">
         <button type="submit" className="btn" disabled={pending}>
-          Request a visit
+          Book a visit
         </button>
       </div>
     </Form>

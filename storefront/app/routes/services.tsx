@@ -45,11 +45,11 @@ export default function ServicesPage() {
             <h1 className="h-display measure-display text-[44px] md:text-[64px]">Services</h1>
             <p className="lede measure">Repair, resizing, engraving and care. Quoted before work begins.</p>
             <Link to="/appointments?kind=care" className="btn self-start">
-              Book a care visit
+              Book a visit
             </Link>
           </div>
           <div className="settle relative aspect-[4/5] overflow-hidden md:col-span-7 md:aspect-[4/3]">
-            <Pic k="comp-bench-hands" priority sizes="(min-width: 768px) 58vw, 100vw" position="50% 40%" />
+            <Pic k="aj-watch-bench" priority sizes="(min-width: 768px) 58vw, 100vw" position="50% 40%" />
           </div>
         </div>
       </Section>

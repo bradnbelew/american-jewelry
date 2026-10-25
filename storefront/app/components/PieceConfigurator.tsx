@@ -8,6 +8,8 @@ import { METAL_LABEL } from "~/lib/catalog/types";
 import { explicitSize } from "~/lib/piece-selection";
 
 import { SaveButton } from "./saved/SaveButton";
+import { SizeOptions } from "./SizeOptions";
+import { StoreChoice } from "./StoreChoice";
 
 const METAL_SWATCH: Record<Metal, string> = {
   "14k-yellow": "#d6b25e",
@@ -54,7 +56,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
       </div>
 
       <div className="buy-bar fixed inset-x-0 bottom-0 z-30 border-t border-hair bg-paper lg:hidden">
-        <div className="wrap flex items-center justify-between gap-4 py-3"><span className="num">{price === null ? "Price on request" : formatPrice(price)}</span><Link to={`/appointments?${query}`} className="btn">Request a viewing</Link></div>
+        <div className="wrap flex items-center justify-between gap-4 py-3"><span className="num">{price === null ? "Price on request" : formatPrice(price)}</span><Link to={`/appointments?${query}`} className="btn">{price === null ? "Private viewing" : "Book a visit"}</Link></div>
       </div>
 
       {piece.versions.length > 1 && (
@@ -81,14 +83,7 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
 
       <div className="piece-size-engraving">{piece.sizes && (
         <Field label="Size" hint={<Link to="/care#sizing" className="link-quiet">Sizing help</Link>}>
-          <select id={`size-${piece.handle}`} className="field" value={size} onChange={(e) => setSize(e.target.value)} aria-label="Ring size">
-            <option value="" disabled>Choose your size</option>
-            {piece.sizes.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
+          <SizeOptions id={`size-${piece.handle}`} sizes={piece.sizes} value={size} onChange={setSize} />
         </Field>
       )}
 
@@ -100,18 +95,20 @@ export function PieceConfigurator({ piece, onMetal }: { piece: Piece; onMetal?: 
 
       </div><div className="flex flex-col gap-3 pt-1">
         {price === null ? (
-          <Link to={`/appointments?${query}`} className="btn">
-            Request a private viewing
-          </Link>
+          <>
+            <Link to={`/appointments?${query}`} className="btn">
+              Request a private viewing
+            </Link>
+            <StoreChoice storeQuery={query} />
+          </>
         ) : (
           <>
             <p className="label">Contact the store to confirm price and availability.</p>
-            <div className="flex items-center gap-6">
-              <Link to={`/appointments?${query}`} className="btn flex-1">
-                Request a viewing
-              </Link>
-              <SaveButton className="quiet-save" item={{ id: piece.handle, href: `/pieces/${piece.handle}?${savedQuery}`, name: piece.name, detail: [version.name, METAL_LABEL[metal], size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
-            </div>
+            <Link to={`/appointments?${query}`} className="btn">
+              Book a visit
+            </Link>
+            <StoreChoice storeQuery={query} />
+            <SaveButton className="quiet-save self-start" item={{ id: piece.handle, href: `/pieces/${piece.handle}?${savedQuery}`, name: piece.name, detail: [version.name, METAL_LABEL[metal], size ? `Size ${size}` : null].filter(Boolean).join(", "), photo }} />
           </>
         )}
       </div>
