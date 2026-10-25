@@ -2,6 +2,7 @@
 @import "./tokens.css";
 @import "./house.css";
 @import "./house-experience.css";
+@import "./maison.css";
 
 /* App-only CSS the frozen core (tokens.css) does not own.
  *

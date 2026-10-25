@@ -9,7 +9,7 @@ export function SavedList() {
   if (items.length === 0) {
     return (
       <div className="hair flex max-w-xl flex-col gap-4 pt-10">
-        <p className="text-ink-2">Nothing saved yet.</p>
+        <p className="text-ink-2">Nothing saved yet. Tap the heart on any piece to keep it here.</p>
         <div className="flex flex-wrap gap-3">
           <Link to="/jewelry" className="btn">
             Browse jewelry

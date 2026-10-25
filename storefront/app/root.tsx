@@ -1,6 +1,7 @@
 import { handleShopifyRedirects, handleShopifyRoutes } from "@shopify/hydrogen";
 import { ShopifyScripts } from "@shopify/hydrogen/react";
 import type { ReactNode } from "react";
+import { useEffect } from "react";
 import {
   data,
   isRouteErrorResponse,
@@ -10,6 +11,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
   useNavigate,
   useRouteLoaderData,
 } from "react-router";
@@ -17,6 +19,7 @@ import {
 import { CartAnalyticsTracker, PageViewedTracker } from "~/components/AnalyticsTrackers";
 import { CartDrawer } from "~/components/CartDrawer";
 import { SavedDrawer } from "~/components/saved/SavedDrawer";
+import { CookieBar } from "~/components/HouseBlocks";
 import { Footer } from "~/components/Footer";
 import { Header } from "~/components/Header";
 import { readDesign, designCookie } from "~/lib/design-preview";
@@ -38,11 +41,12 @@ import { createRequestStorefrontClient, storefrontClientContext, storefrontReque
 import type { Route } from "./+types/root";
 
 import appStylesHref from "./app.css?url";
-import serifHref from "@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-normal.woff2?url";
+import bodoniHref from "@fontsource-variable/bodoni-moda/files/bodoni-moda-latin-opsz-normal.woff2?url";
+import jostHref from "@fontsource-variable/jost/files/jost-latin-wght-normal.woff2?url";
 
 export const links: Route.LinksFunction = () => [
-  // The one serif every page paints first (names, headlines and reading text); Public Sans arrives through the stylesheet.
-  { rel: "preload", href: serifHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+  { rel: "preload", href: bodoniHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+  { rel: "preload", href: jostHref, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
   { rel: "stylesheet", href: appStylesHref },
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 ];
@@ -138,10 +142,19 @@ export function Layout({ children }: { children: ReactNode }) {
   );
 }
 
+function HomeFlag() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.body.dataset.home = pathname === "/" ? "true" : "false";
+  }, [pathname]);
+  return null;
+}
+
 export default function App({ loaderData }: Route.ComponentProps) {
   return (
     <CartProvider initialData={loaderData.cartData}>
       <SavedProvider>
+        <HomeFlag />
         <PageViewedTracker />
         <CartAnalyticsTracker />
         <Header />
@@ -151,6 +164,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
         <Footer year={loaderData.year} />
         <CartDrawer />
         <SavedDrawer />
+        <CookieBar />
       </SavedProvider>
     </CartProvider>
   );
@@ -164,15 +178,12 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     <main id="main" className="flex-1">
       <Section className="pt-24 pb-16 md:pt-32">
         <PageTitle
-          title={notFound ? "This page is not in the registry." : "Something went wrong."}
-          lede={notFound ? "It may have moved when the house did." : "Call either store and we will help directly."}
+          title={notFound ? "We couldn't find that page." : "Something went wrong."}
+          lede={notFound ? "Try the jewelry, or visit us in Brentwood or Mt. Juliet." : "Call either store and we will help directly."}
         />
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link to="/americana" className="btn">
-            The designs
-          </Link>
-          <Link to="/appointments" className="btn btn-outline">
-            Book a visit
+          <Link to="/jewelry" className="link">
+            View all jewelry
           </Link>
         </div>
         {details ? <pre className="mx-auto mt-10 max-w-3xl overflow-x-auto text-xs text-muted">{details}</pre> : null}

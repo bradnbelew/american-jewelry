@@ -41,6 +41,37 @@ export const PHOTO: Record<string, HousePhoto> = {
   "bezel-studs": { src: "/photos/bezel-studs.jpg", alt: "Bezel-set diamond studs", w: 1400, h: 1400, float: true },
   "signet-b": { src: "/photos/signet-b.jpg", alt: "A gold oval signet engraved with a B", w: 1400, h: 1400, float: true },
   medallion: { src: "/photos/medallion.jpg", alt: "A beaded gold disc pendant", w: 1400, h: 1400, float: true },
+  "hero-hands": { src: "/photos/hero-hands.webp", alt: "Two hands on linen, an engagement ring and a wedding band", w: 2000, h: 875 },
+  "hero-hands-tall": { src: "/photos/hero-hands-tall.webp", alt: "Two hands on linen, an engagement ring and a wedding band", w: 700, h: 875 },
+  "ed-names": { src: "/photos/ed-names.webp", alt: "Four gold name necklaces on white satin", w: 2400, h: 2232, float: true },
+  "ed-peach": { src: "/photos/ed-peach.webp", alt: "Diamond hoops, bar necklaces and studs in a peach suede box", w: 2000, h: 875 },
+  "ed-signets": { src: "/photos/ed-signets.webp", alt: "Three gold signets, one in a blue velvet box, with gold chains", w: 2400, h: 1743 },
+  "ed-opal": { src: "/photos/ed-opal.webp", alt: "An opal ring and pendants in a blue velvet box", w: 2400, h: 2232 },
+  "ed-bridal": { src: "/photos/ed-bridal.webp", alt: "Engagement rings and wedding bands in a blue velvet tray", w: 2400, h: 2232 },
+  "ed-diamonds": { src: "/photos/ed-diamonds.webp", alt: "Loose diamonds of several cuts on midnight blue", w: 2400, h: 2232 },
+  "ed-bands": { src: "/photos/ed-bands.webp", alt: "Stacked eternity bands on a finger", w: 2400, h: 2232 },
+  "ed-tennis": { src: "/photos/ed-tennis.webp", alt: "A tennis necklace in a blue velvet case, with studs and bands", w: 2400, h: 2232 },
+  "ed-mens": { src: "/photos/ed-mens.webp", alt: "A figaro chain, a cross and men's bands", w: 2400, h: 2232 },
+  "ed-watches": { src: "/photos/ed-watches.webp", alt: "Three watches on a leather strap", w: 2400, h: 2232 },
+  "ed-radiant": { src: "/photos/ed-radiant.webp", alt: "A radiant solitaire on a gold star-set band", w: 966, h: 768, float: true },
+  "ed-cluster": { src: "/photos/ed-cluster.webp", alt: "A baguette and emerald-cut cluster ring", w: 2000, h: 1546, float: true },
+  "ed-workshop": { src: "/photos/ed-workshop.webp", alt: "A jeweler's hands with calipers and a scale, measuring a name necklace", w: 2400, h: 2400 },
+  "pack-tristar": { src: "/photos/pack-tristar.webp", alt: "Tennessee tri-star charm in yellow gold", w: 2400, h: 2232, float: true, contain: true },
+  "pack-disc": { src: "/photos/pack-disc.webp", alt: "Beaded disc pendant in 14k yellow gold", w: 2400, h: 2232, float: true, contain: true },
+  "pack-cross": { src: "/photos/pack-cross.webp", alt: "Small gold cross necklace", w: 2400, h: 2232, float: true, contain: true },
+  "pack-name-gold": { src: "/photos/pack-name-gold.webp", alt: "Gold script name necklace", w: 2400, h: 2232, float: true, contain: true },
+  "pack-paperclip": { src: "/photos/pack-paperclip.webp", alt: "Gold paperclip bracelet", w: 2400, h: 2232, float: true, contain: true },
+  "pack-name-diamond": { src: "/photos/pack-name-diamond.webp", alt: "Diamond script name necklace", w: 2400, h: 2232, float: true, contain: true },
+  "pack-initial": { src: "/photos/pack-initial.webp", alt: "Diamond initial necklace with a gemstone", w: 2400, h: 2232, float: true, contain: true },
+  "pack-signet": { src: "/photos/pack-signet.webp", alt: "Oval gold signet ring", w: 2400, h: 2232, float: true, contain: true },
+  "pack-name-wrap": { src: "/photos/pack-name-wrap.webp", alt: "Gold name wrap ring", w: 2400, h: 2232, float: true, contain: true },
+  "pack-family-ring": { src: "/photos/pack-family-ring.webp", alt: "Gold family ring", w: 2400, h: 2232, float: true, contain: true },
+  "pack-bezel-stack": { src: "/photos/pack-bezel-stack.webp", alt: "Bezel-set gemstone stacking ring", w: 2400, h: 2232, float: true, contain: true },
+  "pack-trio": { src: "/photos/pack-trio.webp", alt: "Diamond trio stud earrings", w: 2400, h: 2232, float: true, contain: true },
+  "pack-huggie-bag": { src: "/photos/pack-huggie-bag.webp", alt: "Baguette diamond huggie hoops", w: 2400, h: 2232, float: true, contain: true },
+  "pack-huggie-mini": { src: "/photos/pack-huggie-mini.webp", alt: "Mini diamond huggie hoops", w: 2400, h: 2232, float: true, contain: true },
+  "pack-bezel-stud": { src: "/photos/pack-bezel-stud.webp", alt: "Gold diamond bezel studs", w: 2400, h: 2232, float: true, contain: true },
+  "pack-candy": { src: "/photos/pack-candy.webp", alt: "Gemstone stud earrings", w: 2400, h: 2232, float: true, contain: true },
   // Layout comps (AI-generated, mockup only; see PHOTOS-TODO). Keys stay when the photographs replace them.
   "comp-home-hand": { src: "/photos/comp-home-hand.webp", alt: "A hand on linen in window light, wearing the Shooting Star ring in yellow gold", w: 1448, h: 1086 },
   "comp-home-hand-tall": { src: "/photos/comp-home-hand-tall.webp", alt: "A hand on linen in window light, wearing the Shooting Star ring in yellow gold", w: 1122, h: 1402 },
@@ -94,7 +125,7 @@ const plates = [
 for (const plate of plates) {
   plate.handles.forEach((handle, i) => {
     const key = `comp-object-${handle}`;
-    PHOTO[key] = {src: `/photos/comp-${plate.name}-family.webp`, alt: `${handle.replace(/^no-\d+-/, "").replace(/-/g, " ")}, concept product photograph`, w: plate.w, h: plate.h, cell: [plate.columns, plate.rows, i % plate.columns, Math.floor(i / plate.columns)], contain: true, concept: true, raw: true};
+    PHOTO[key] = {src: `/photos/comp-${plate.name}-family.webp`, alt: `${handle.replace(/^no-\d+-/, "").replace(/-/g, " ")}, yellow gold`, w: plate.w, h: plate.h, cell: [plate.columns, plate.rows, i % plate.columns, Math.floor(i / plate.columns)], contain: true, concept: true, raw: true};
     PIECE_PHOTOS[handle] = [key];
   });
 }
@@ -107,40 +138,40 @@ PHOTO["campaign-meridian-family"] = {"src":"/photos/campaign-meridian-family.web
 PHOTO["campaign-ribbon-family"] = {"src":"/photos/campaign-ribbon-family.webp","alt":"Ribbon ring, pendant and matching earrings on a pale gray surface","w":1536,"h":1024,"concept":true};
 PHOTO["campaign-horizon-family"] = {"src":"/photos/campaign-horizon-family.webp","alt":"Horizon ring, pendant and matching earrings on a pale gray surface","w":1536,"h":1024,"concept":true};
 PHOTO["campaign-petal-family"] = {"src":"/photos/campaign-petal-family.webp","alt":"Petal ring, pendant and matching earrings on a pale gray surface","w":1536,"h":1024,"concept":true};
-PHOTO["campaign-meridian-ring"] = {"src":"/photos/campaign-meridian-ring.webp","alt":"Meridian Open Ring, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-meridian-ring"] = {"src":"/photos/campaign-meridian-ring.webp","alt":"Meridian Open Ring, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-meridian-ring"] = PHOTO["campaign-meridian-ring"];
 PIECE_PHOTOS["meridian-ring"] = ["comp-object-meridian-ring"];
-PHOTO["campaign-meridian-pendant"] = {"src":"/photos/campaign-meridian-pendant.webp","alt":"Meridian Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-meridian-pendant"] = {"src":"/photos/campaign-meridian-pendant.webp","alt":"Meridian Pendant, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-meridian-pendant"] = PHOTO["campaign-meridian-pendant"];
 PIECE_PHOTOS["meridian-pendant"] = ["comp-object-meridian-pendant"];
-PHOTO["campaign-meridian-earrings"] = {"src":"/photos/campaign-meridian-earrings.webp","alt":"Meridian Earrings, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-meridian-earrings"] = {"src":"/photos/campaign-meridian-earrings.webp","alt":"Meridian Earrings, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-meridian-earrings"] = PHOTO["campaign-meridian-earrings"];
 PIECE_PHOTOS["meridian-earrings"] = ["comp-object-meridian-earrings"];
-PHOTO["campaign-ribbon-ring"] = {"src":"/photos/campaign-ribbon-ring.webp","alt":"Ribbon Fold Ring, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-ribbon-ring"] = {"src":"/photos/campaign-ribbon-ring.webp","alt":"Ribbon Fold Ring, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-ribbon-ring"] = PHOTO["campaign-ribbon-ring"];
 PIECE_PHOTOS["ribbon-ring"] = ["comp-object-ribbon-ring"];
-PHOTO["campaign-ribbon-pendant"] = {"src":"/photos/campaign-ribbon-pendant.webp","alt":"Ribbon Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-ribbon-pendant"] = {"src":"/photos/campaign-ribbon-pendant.webp","alt":"Ribbon Pendant, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-ribbon-pendant"] = PHOTO["campaign-ribbon-pendant"];
 PIECE_PHOTOS["ribbon-pendant"] = ["comp-object-ribbon-pendant"];
-PHOTO["campaign-ribbon-earrings"] = {"src":"/photos/campaign-ribbon-earrings.webp","alt":"Ribbon Earrings, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-ribbon-earrings"] = {"src":"/photos/campaign-ribbon-earrings.webp","alt":"Ribbon Earrings, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-ribbon-earrings"] = PHOTO["campaign-ribbon-earrings"];
 PIECE_PHOTOS["ribbon-earrings"] = ["comp-object-ribbon-earrings"];
-PHOTO["campaign-horizon-ring"] = {"src":"/photos/campaign-horizon-ring.webp","alt":"Horizon Band, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-horizon-ring"] = {"src":"/photos/campaign-horizon-ring.webp","alt":"Horizon Band, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-horizon-ring"] = PHOTO["campaign-horizon-ring"];
 PIECE_PHOTOS["horizon-ring"] = ["comp-object-horizon-ring"];
-PHOTO["campaign-horizon-pendant"] = {"src":"/photos/campaign-horizon-pendant.webp","alt":"Horizon Bar Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-horizon-pendant"] = {"src":"/photos/campaign-horizon-pendant.webp","alt":"Horizon Bar Pendant, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-horizon-pendant"] = PHOTO["campaign-horizon-pendant"];
 PIECE_PHOTOS["horizon-pendant"] = ["comp-object-horizon-pendant"];
-PHOTO["campaign-horizon-earrings"] = {"src":"/photos/campaign-horizon-earrings.webp","alt":"Horizon Huggies, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-horizon-earrings"] = {"src":"/photos/campaign-horizon-earrings.webp","alt":"Horizon Huggies, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-horizon-earrings"] = PHOTO["campaign-horizon-earrings"];
 PIECE_PHOTOS["horizon-earrings"] = ["comp-object-horizon-earrings"];
-PHOTO["campaign-petal-ring"] = {"src":"/photos/campaign-petal-ring.webp","alt":"Petal Sapphire Ring, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-petal-ring"] = {"src":"/photos/campaign-petal-ring.webp","alt":"Petal Sapphire Ring, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-petal-ring"] = PHOTO["campaign-petal-ring"];
 PIECE_PHOTOS["petal-ring"] = ["comp-object-petal-ring"];
-PHOTO["campaign-petal-pendant"] = {"src":"/photos/campaign-petal-pendant.webp","alt":"Petal Pendant, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-petal-pendant"] = {"src":"/photos/campaign-petal-pendant.webp","alt":"Petal Pendant, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-petal-pendant"] = PHOTO["campaign-petal-pendant"];
 PIECE_PHOTOS["petal-pendant"] = ["comp-object-petal-pendant"];
-PHOTO["campaign-petal-earrings"] = {"src":"/photos/campaign-petal-earrings.webp","alt":"Petal Earrings, proposed yellow-gold jewelry design on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
+PHOTO["campaign-petal-earrings"] = {"src":"/photos/campaign-petal-earrings.webp","alt":"Petal Earrings, yellow gold on a pale gray surface","w":1254,"h":1254,"concept":true,"contain":true};
 PHOTO["comp-object-petal-earrings"] = PHOTO["campaign-petal-earrings"];
 PIECE_PHOTOS["petal-earrings"] = ["comp-object-petal-earrings"];
 PHOTO["campaign-06-shooting-star-hero-final"] = {"src":"/photos/campaign-06-shooting-star-hero-final.webp","alt":"Hand wearing a yellow-gold Shooting Star ring on forest-green silk","w":1672,"h":941,"concept":true};
@@ -156,8 +187,8 @@ PHOTO['comp-cumberland-velvet'] = PHOTO['campaign-05-royal-american-velvet'];
 PHOTO['comp-new-american-opener'] = PHOTO['campaign-04-signal-light-study'];
 PHOTO['comp-signal-hand'] = PHOTO['campaign-03-signal-bridal-hand'];
 PHOTO['comp-object-no-001-the-cumberland'] = {...PHOTO['comp-cumberland-velvet'],contain:true};
-PHOTO['comp-object-shooting-star-ring'] = {src:'/photos/comp-shooting-star-object.webp',alt:'Shooting Star ring with a gold star and five graduated diamonds, concept photograph',w:1254,h:1254,contain:true,concept:true};
-PHOTO['comp-prism-campaign'] = {src:'/photos/comp-prism-campaign.webp',alt:'Faceted gold Prism links curving across dark green leather, concept photograph',w:1536,h:1024,concept:true};
+PHOTO['comp-object-shooting-star-ring'] = {src:'/photos/comp-shooting-star-object.webp',alt:'Shooting Star ring with a gold star and five graduated diamonds',w:1254,h:1254,contain:true,concept:true};
+PHOTO['comp-prism-campaign'] = {src:'/photos/comp-prism-campaign.webp',alt:'Faceted gold Prism links curving across dark green leather',w:1536,h:1024,concept:true};
 PIECE_PHOTOS['shooting-star-ring'] = ['comp-object-shooting-star-ring','comp-home-hand','comp-americana-ground'];
 PIECE_PHOTOS['signal-solitaire'] = ['comp-signal-packshot','comp-signal-hand','comp-new-american-opener'];
 PIECE_PHOTOS['ribbon-ring'].push('campaign-08-ribbon-worn-editorial');
@@ -173,3 +204,32 @@ COLLECTION_PHOTO.everyday = 'comp-object-meridian-pendant';
 COLLECTION_PHOTO.statement = 'campaign-08-ribbon-worn-editorial';
 COLLECTION_PHOTO.gifts = 'comp-object-shooting-star-pendant';
 COLLECTION_PHOTO.color = 'comp-object-petal-ring';
+COLLECTION_PHOTO["american-classic"] = "ed-signets";
+COLLECTION_PHOTO.personalized = "ed-names";
+COLLECTION_PHOTO.mens = "ed-mens";
+COLLECTION_PHOTO["wedding-bands"] = "ed-bands";
+COLLECTION_PHOTO.bridal = "ed-bridal";
+DESIGN_PHOTO["american-classic"] = "ed-signets";
+DESIGN_PHOTO.personalized = "ed-names";
+STORE_PHOTO.brentwood = "ed-bridal";
+STORE_PHOTO["mt-juliet"] = "aj-salon-cases";
+
+const LEGACY_PHOTO: Record<string, string> = {
+  "tristar-charm": "pack-tristar",
+  "beaded-disc-pendant": "pack-disc",
+  "rugged-cross": "pack-cross",
+  "script-name-necklace": "pack-name-gold",
+  "paperclip-bracelet": "pack-paperclip",
+  "diamond-name-necklace": "pack-name-diamond",
+  "initial-station-necklace": "pack-initial",
+  "american-classic-signet": "pack-signet",
+  "name-wrap-ring": "pack-name-wrap",
+  "family-ring": "pack-family-ring",
+  "bezel-stack-ring": "pack-bezel-stack",
+  "diamond-trio-studs": "pack-trio",
+  "baguette-huggies": "pack-huggie-bag",
+  "diamond-huggies": "pack-huggie-mini",
+  "bezel-studs": "pack-bezel-stud",
+  "candy-studs": "pack-candy",
+};
+for (const [handle, key] of Object.entries(LEGACY_PHOTO)) PIECE_PHOTOS[handle] = [key];

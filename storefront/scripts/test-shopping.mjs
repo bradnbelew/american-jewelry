@@ -10,6 +10,7 @@ const cache = resolve(root, "node_modules/.cache/aj-shopping-tests");
 mkdirSync(cache, { recursive: true });
 for (const [name, path] of Object.entries({
   types: "catalog/types",
+  legacy: "catalog/legacy",
   data: "catalog/data",
   browse: "catalog/browse",
   lines: "catalog/lines",
@@ -96,8 +97,8 @@ check("Only a deliberate valid size URL can preselect a size", () => {
   assert.equal(explicitSize(["6", "7"], "6"), "6");
 });
 check("Un-sized products need no size selection", () => assert.equal(sizeIsReady(undefined, ""), true));
-check("Expanded catalog has eight styles, eight populated edits and 33 pieces", () => {
- assert.equal(DESIGNS.length, 8); assert.equal(COLLECTIONS.length, 8); assert.equal(PIECES.length, 33);
+check("Catalog includes the planned designs and the old-site collections", () => {
+ assert.equal(DESIGNS.length, 10); assert.equal(COLLECTIONS.length, 12); assert.equal(PIECES.length, 49);
  for (const collection of COLLECTIONS) assert(piecesForCollection(collection.slug).length > 1);
 });
 check("Family is a cross-style curation including original and proposed designs", () => {

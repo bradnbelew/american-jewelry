@@ -78,6 +78,10 @@ export interface Piece {
   leadTime: string;
   madeToOrder: boolean;
   description: string;
+  /** Customer-facing material line. Set when the catalog line should not be inferred. */
+  descriptor?: string;
+  /** A photograph from american.jewelry, not a generated plate. Required once PUBLIC_SITE_LIVE is true. */
+  realPhoto?: boolean;
   specs: { label: string; value: string }[];
   collections: string[]; // Collection.slug
   art: ArtKey; // placeholder illustration key until photography exists

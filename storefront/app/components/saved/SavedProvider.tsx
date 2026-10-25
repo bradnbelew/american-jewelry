@@ -1,6 +1,4 @@
-import { pieceByHandle, tierBySlug } from "~/lib/catalog/data";
-import { LINE_ORDER } from "~/lib/catalog/lines";
-import { decodeCode } from "~/lib/builder/code";
+import { pieceByHandle } from "~/lib/catalog/data";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 /**
@@ -78,13 +76,13 @@ export function useSaved() {
 
 /** Explicitly saved registry objects stay in their own group. */
 export function savedGroups(items: SavedItem[]) {
-  const classified = items.map(item => {
+  const groups = new Map<string, SavedItem[]>();
+  for (const item of items) {
     const piece = pieceByHandle(item.id);
-    const design = item.id.startsWith("design:") ? decodeCode(item.id.slice(7)) : null;
-    return {item,line:piece?.tier ?? (design ? design.origin === "natural" ? "americana" : "new-american" : "designs")};
-  });
-  return [...LINE_ORDER,"designs"].map(line => ({
-    name:line === "designs" ? "Your designs" : tierBySlug(line as typeof LINE_ORDER[number]).name,
-    items:classified.filter(entry=>entry.line===line).map(entry=>entry.item),
-  })).filter(group=>group.items.length);
+    const name = !piece ? "Your designs" : piece.tier === "royal-american" ? "High Jewelry" : piece.collections.includes("bridal") ? "Bridal" : piece.collections.includes("personalized") ? "Personalized" : "Jewelry";
+    const list = groups.get(name) ?? [];
+    list.push(item);
+    groups.set(name, list);
+  }
+  return [...groups].map(([name, group]) => ({ name, items: group }));
 }

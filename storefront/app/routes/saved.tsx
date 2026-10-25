@@ -8,7 +8,7 @@ import type { loader } from "~/root";
 
 import type { Route } from "./+types/saved";
 
-export const meta: Route.MetaFunction = () => pageMeta({ title: "Kept", description: "Pieces and ring designs you have saved, kept in this browser.", path: "/saved", noindex: true });
+export const meta: Route.MetaFunction = () => pageMeta({ title: "Saved", description: "Pieces and ring designs you have saved in this browser.", path: "/saved", noindex: true });
 
 export default function SavedPage() {
   const root = useRouteLoaderData<typeof loader>("root");
@@ -17,7 +17,7 @@ export default function SavedPage() {
   return (
     <>
       <Section className="pt-16 pb-12 md:pt-24 md:pb-16">
-        <PageTitle title="Kept" lede="Your saved pieces and ring designs." />
+        <PageTitle title="Saved" lede="Nothing here until you tap the heart on a piece." />
         {root && !root.live && items.length > 1 && <div className="mt-6"><Link className="btn btn-outline" to={`/compare?${shortlist}`}>Compare pieces</Link></div>}
       </Section>
       <Section className="pb-8">

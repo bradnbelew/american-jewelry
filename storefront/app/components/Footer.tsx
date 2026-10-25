@@ -2,90 +2,102 @@ import { Link } from "react-router";
 
 import { STORES } from "~/lib/catalog/data";
 
-const HOUSE: [string, string][] = [
-  ["/jewelry", "Jewelry"],
-  ["/royal-american", "Royal American"],
-  ["/americana", "Americana"],
-  ["/new-american", "New American"],
-  ["/collections/bridal", "Bridal"],
-  ["/house", "The House"],
-  ["/journal", "Journal"],
+import { Logo } from "./Logo";
+import { ServicesStrip } from "./HouseBlocks";
+
+const COLS: { title: string; links: [string, string][] }[] = [
+  {
+    title: "Jewelry",
+    links: [
+      ["/collections/bridal", "Bridal"],
+      ["/jewelry", "Jewelry"],
+      ["/custom-design", "Custom design"],
+      ["/services#watch-service", "Watches"],
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      ["/services#repairs", "Repairs"],
+      ["/services#engraving", "Engraving"],
+      ["/services#appraisals", "Appraisals"],
+      ["/services#care", "Lifetime care"],
+    ],
+  },
+  {
+    title: "Our story",
+    links: [
+      ["/our-story", "The family"],
+      ["/our-story#workshop", "The workshop"],
+      ["/journal", "Journal"],
+    ],
+  },
+  {
+    title: "Client care",
+    links: [
+      ["/appointments", "Contact us"],
+      ["/policies#shipping", "Shipping"],
+      ["/policies#returns", "Returns and exchanges"],
+      ["/policies#warranty", "Warranty"],
+      ["/policies", "FAQs"],
+    ],
+  },
 ];
 
-const SERVICES: [string, string][] = [
-  ["/build/ring", "Build a ring"],
-  ["/commission", "Commission a piece"],
-  ["/services", "Repair and restoration"],
-  ["/care", "Lifetime care"],
-  ["/natural-or-man-made", "Natural or lab-grown"],
-  ["/saved", "Kept"],
+const SOCIAL: [string, string][] = [
+  ["https://www.instagram.com/americanjewelryco/", "Instagram"],
+  ["https://www.tiktok.com/@americanjewelryco", "TikTok"],
+  ["https://www.facebook.com/americanjewelryco", "Facebook"],
 ];
 
-const LEGAL: [string, string][] = [
-  ["/policies#shipping", "Shipping"],
-  ["/policies#returns", "Returns"],
-  ["/policies#warranty", "Warranty"],
-  ["/policies#disclosures", "Disclosures"],
-  ["/policies#privacy", "Privacy"],
-  ["/policies#accessibility", "Accessibility"],
-];
-
-/** A sitemap in the small serif, the two addresses, the legal line. Nothing promotional, no capture. */
 export function Footer({ year }: { year: number }) {
   return (
-    <footer className="house-footer border-t border-hair">
-      <div className="wrap grid gap-12 py-16 md:grid-cols-12">
-        <div className="flex flex-col gap-5 md:col-span-4">
-          <span className="font-display text-xl uppercase tracking-[0.28em]">American Jewelry</span>
-          <p className="font-text max-w-xs text-[0.9375rem] leading-relaxed text-ink-2">
-            Designed in Tennessee. Set and finished in our workshop. Diamonds and gold are imported.
-          </p>
-          <Link to="/appointments" className="campaign-link self-start">Book a visit</Link>
-        </div>
-        <Col className="md:col-span-2" title="The House" links={HOUSE} />
-        <Col className="md:col-span-2" title="Services" links={SERVICES} />
-        <div className="grid gap-8 sm:grid-cols-2 md:col-span-4">
-          {STORES.map((s) => (
-            <div key={s.slug} className="flex flex-col gap-1 text-sm leading-relaxed">
-              <Link to={`/stores/${s.slug}`} className="font-display inline-flex min-h-11 items-center self-start text-lg hover:text-muted">
-                {s.name}
-              </Link>
-              <address className="font-text not-italic text-ink-2">
-                {s.address1}
-                <br />
-                {s.city}, {s.state} {s.zip}
-                <br />
-                <a href={`tel:${s.phone.replace(/\D/g, "")}`} className="num inline-flex min-h-11 items-center hover:text-ink">
-                  {s.phone}
-                </a>
-              </address>
+    <footer className="site-footer">
+      <div className="wrap">
+        <ServicesStrip />
+        <nav className="foot-links" aria-label="Footer">
+          {COLS.map((col) => (
+            <div key={col.title}>
+              <h2 className="caps-sm">{col.title}</h2>
+              {col.links.map(([href, label]) => (
+                <Link key={href} to={href}>{label}</Link>
+              ))}
             </div>
           ))}
-        </div>
-      </div>
-      <div className="border-t border-hair">
-        <div className="wrap flex flex-wrap items-center gap-x-8 py-2 text-[0.8125rem] text-muted">
-          <span>© {year} American Jewelry</span>
-          {LEGAL.map(([href, label]) => (
-            <Link key={href} to={href} className="inline-flex min-h-11 items-center hover:text-ink">
-              {label}
-            </Link>
+        </nav>
+        <div className="foot-stores">
+          {STORES.map((store) => (
+            <address key={store.slug} className="not-italic">
+              <h3>
+                <Link to={`/stores/${store.slug}`}>{store.name}</Link>
+              </h3>
+              <p className="small">
+                {store.address1}
+                <br />
+                {store.city}, {store.state} {store.zip}
+              </p>
+              <p>
+                <a className="price" href={`tel:${store.phone.replace(/\D/g, "")}`}>{store.phone}</a>
+              </p>
+            </address>
           ))}
+          <div>
+            <h2 className="caps-sm">Social</h2>
+            {SOCIAL.map(([href, label]) => (
+              <a key={label} href={href} className="flex min-h-9 items-center" target="_blank" rel="noreferrer">{label}</a>
+            ))}
+            <p className="small mute">@americanjewelryco</p>
+          </div>
+        </div>
+        <div className="foot-base">
+          <Logo className="h-7 w-auto" />
+          <span className="small">© {year} American Jewelry</span>
+          <Link to="/policies#privacy">Privacy</Link>
+          <Link to="/policies">Terms</Link>
+          <Link to="/policies#accessibility">Accessibility</Link>
+          <Link to="/policies#disclosures">Disclosures</Link>
         </div>
       </div>
     </footer>
-  );
-}
-
-function Col({ title, links, className = "" }: { title: string; links: [string, string][]; className?: string }) {
-  return (
-    <div className={`flex flex-col ${className}`}>
-      <span className="label mb-2">{title}</span>
-      {links.map(([href, label]) => (
-        <Link key={href} to={href} className="font-text inline-flex min-h-11 items-center self-start text-[0.9375rem] text-ink hover:text-muted">
-          {label}
-        </Link>
-      ))}
-    </div>
   );
 }

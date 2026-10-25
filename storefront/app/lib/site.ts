@@ -6,7 +6,7 @@ export const SITE_NAME = "American Jewelry";
 export const FIGURES_AS_OF = "August 26, 2026";
 
 /** Sitemap lastmod. Bump on content changes; Oxygen freezes Date.now() per request, so a constant is the honest value. */
-export const CONTENT_DATE = "2026-10-13";
+export const CONTENT_DATE = "2026-10-25";
 
 /** Read once in the root loader from the worker env; `true` only on the custom domain. */
 export const isLive = (env: Env) => env.PUBLIC_SITE_LIVE === "true";

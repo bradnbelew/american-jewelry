@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+
 import { pieceByHandle } from "~/lib/catalog/data";
 import { PIECE_PHOTOS } from "~/lib/catalog/photos";
+
 import { Pic } from "./Pic";
 
 const COLLECTION = [
@@ -9,42 +11,38 @@ const COLLECTION = [
   { handle: "no-003-the-harpeth", detail: "Diamond and gold" },
 ];
 
-/** An open photographic collection; every piece is visible without a selector. */
 export function RoyalCollection() {
-  return <div className="royal-collection">
-    <header className="royal-room">
-      <div className="house-wrap royal-room-inner">
-        <div>
-          <p className="label">One of one</p>
-          <h1>Royal American</h1>
+  return (
+    <div>
+      <header className="royal-band" style={{ padding: "96px 0 64px" }}>
+        <div className="wrap">
+          <p className="caps eyebrow">High jewelry</p>
+          <h1 className="display">Royal American</h1>
+          <p className="center-copy">One-of-a-kind pieces, shown privately in either store.</p>
+          <Link className="link link-on-photo" to="/appointments?tier=royal-american">Request a private viewing</Link>
         </div>
-        <div className="royal-room-aside">
-          <p>Price on request. Seen with the house, by appointment.</p>
-          <Link className="campaign-link" to="/appointments?tier=royal-american">Arrange a private viewing</Link>
+      </header>
+      <div className="wrap" style={{ paddingBlock: "var(--section-y)" }}>
+        <div className="port-grid">
+          {COLLECTION.map(({ handle, detail }, index) => {
+            const piece = pieceByHandle(handle);
+            if (!piece) return null;
+            const photo = index === 0 ? "comp-cumberland-velvet" : PIECE_PHOTOS[handle]?.[0];
+            return (
+              <article key={handle}>
+                <Link to={`/pieces/${handle}`}>
+                  <span className="frame-45 block">
+                    <Pic k={photo} priority={index === 0} sizes="(min-width: 768px) 30vw, 100vw" position={index === 0 ? "50% 45%" : undefined} fit={index === 0 ? "cover" : "contain"} />
+                  </span>
+                  <h2 className="product-name mt-4">{piece.name}</h2>
+                  <p className="small mute">{detail}</p>
+                  <p className="price">Price on request</p>
+                </Link>
+              </article>
+            );
+          })}
         </div>
       </div>
-    </header>
-    <div className="royal-gallery house-wrap">
-      {COLLECTION.map(({ handle, detail }, index) => {
-        const piece = pieceByHandle(handle)!;
-        return <article key={handle} className={`royal-work${index === 0 ? " royal-work-feature" : ""}`}>
-          <Link to={`/pieces/${handle}`} aria-labelledby={`royal-${handle}`}>
-            <div className="royal-work-image">
-              <Pic k={index === 0 ? "comp-cumberland-velvet" : PIECE_PHOTOS[handle][0]} priority={index === 0} sizes={index === 0 ? "(min-width: 1440px) 1200px, 90vw" : "(min-width: 768px) 42vw, 100vw"} position={index === 0 ? "90% 50%" : undefined} />
-            </div>
-            <div className="royal-work-caption">
-              <h2 id={`royal-${handle}`}>{piece.name}</h2>
-              <p>{detail}</p>
-            </div>
-          </Link>
-        </article>;
-      })}
     </div>
-    <section className="royal-viewing house-wrap" aria-labelledby="royal-viewing-title">
-      <h2 id="royal-viewing-title">A private viewing</h2>
-      <p>Discover the pieces with the house, by appointment.</p>
-      <Link className="campaign-link" to="/appointments?tier=royal-american">Arrange a viewing</Link>
-      <p className="royal-disclosure">Concept pieces shown. Availability and stone details confirmed by the house.</p>
-    </section>
-  </div>;
+  );
 }

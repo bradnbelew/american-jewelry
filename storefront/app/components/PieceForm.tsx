@@ -70,9 +70,7 @@ export function PieceForm({ product, piece, onMetal, onSelectionQuery }: { produ
       <div className="flex flex-col gap-1.5">
         <span className="num inline-block min-w-[9ch] text-[2rem] leading-none">{priceText}</span>
         <span className="piece-stone-description font-text text-ink-2">{stoneLine}</span>
-        <span className="label">
-          {piece?.leadTime ?? "Made to order"}. Price before sales tax.
-        </span>
+        {piece?.leadTime && !/concept|illustrative|unconfirmed/i.test(piece.leadTime) ? <span className="small mute">{piece.leadTime}</span> : null}
       </div>
 
       {options.map((option) => {
@@ -156,7 +154,7 @@ export function PieceForm({ product, piece, onMetal, onSelectionQuery }: { produ
         {size ? <input type="hidden" {...register("attributeValue", { key: "Size", value: size })} /> : null}
         {engrave ? <input type="hidden" {...register("attributeValue", { key: "Engraving", value: engrave })} /> : null}
         <button {...register("addToCart", {})} id={`add-${product.handle}`} className="btn" disabled={!addable || pending || !sizeReady} aria-busy={pending}>
-          {!sizeReady ? "Choose size" : selectedVariant ? (addable ? "Add to bag" : "Not available") : "Choose the version"}
+          {!sizeReady ? "Select a size" : selectedVariant ? (addable ? "Add to bag" : "Not available") : "Choose the version"}
         </button>
         {firstError ? (
           <p className="font-text text-[0.9375rem] text-ink-2" role="alert">
@@ -185,7 +183,7 @@ export function PieceForm({ product, piece, onMetal, onSelectionQuery }: { produ
               else real?.closest("form")?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? "auto" : "smooth", block: "center" });
             }}
           >
-            {!sizeReady ? "Choose size" : addable && selectedVariant ? "Add to bag" : "Choose the version"}
+            {!sizeReady ? "Select a size" : addable && selectedVariant ? "Add to bag" : "Choose the version"}
           </button>
         </div>
       </div>
